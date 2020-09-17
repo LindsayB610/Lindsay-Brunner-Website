@@ -1,11 +1,11 @@
-title = "Lindsay Brunner"
+title = "LB"
 baseURL = "https://example.com"
 languageCode = "en-us"
 theme = "ananke"
 
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
-Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
+Paginate = 9
 googleAnalytics = ""
 enableRobotsTXT = true
 
@@ -15,15 +15,15 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
-  favicon = ""
+  favicon = "/images/avatar-color-trans-icon.png"
   site_logo = ""
-  description = "The last theme you'll ever need. Maybe."
   twitter = "https://twitter.com/GoHugoIO"
-  instagram = ""
-  github = ""
-  linkedin = ""
+  instagram = "https://www.instagram.com/lindsayb610/"
+  github = "https://github.com/LindsayB610"
+  linkedin = "https://www.linkedin.com/in/lindsaybrunner/"
   rss = ""
   # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
   background_color_class = "bg-black"
   featured_image = "/images/gohugo-default-sample-hero-image.jpg"
   recent_posts_number = 2
+  custom_css=["css/custom.css"]
