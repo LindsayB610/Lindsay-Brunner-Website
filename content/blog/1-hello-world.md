@@ -1,8 +1,8 @@
 ---
-date: 2017-04-09T10:58:08-04:00
+date: 2020-09-09
 description: "The Grand Hall"
-featured_image: "/images/Pope-Edouard-de-Beaumont-1844.jpg"
-tags: ["scene"]
+featured_image: ""
+tags: ["personal, devrel, marketing, content"]
 title: "Hello World"
 ---
 
