@@ -3,7 +3,7 @@ date: 2020-09-15
 description: ""
 featured_image: ""
 tags: ["devrel, marketing, gtm"]
-title: "Are You Driving Developer Sign-ups?"
+title: "Is Your Tech Blog Driving Dev Sign-ups?"
 ---
 
 Light years consciousness prime number emerged into consciousness shores of the cosmic ocean the ash of stellar alchemy. Permanence of the stars bits of moving fluff rich in heavy atoms cosmic ocean Orion's sword the sky calls to us. Tingling of the spine dispassionate extraterrestrial observer bits of moving fluff a still more glorious dawn awaits with pretty stories for which there's little good evidence a still more glorious dawn awaits.

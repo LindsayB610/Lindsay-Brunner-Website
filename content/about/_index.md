@@ -1,8 +1,10 @@
 ---
 title: "About"
-description: "A few years ago, while visiting or, rather, rummaging about Notre-Dame, the author of this book found, in an obscure nook of one of the towers, the following word, engraved by hand upon the wall: —ANANKE."
+description: "Lindsay Brunner is an accomplished content and developer advocacy leader. She has built technical content strategies for companies like Split, Okta, and Stormpath. "
 featured_image: '/images/about-header.jpg'
 ---
-{{< figure src="/images/Victor_Hugo-Hunchback.jpg" title="Illustration from Victor Hugo et son temps (1881)" >}}
+Lindsay’s core competencies in content cross both digital and print spaces. She has experience producing executive-level thought leadership and analytical research, as well as technical content for a developer audience. She brings a data-driven approach to inbound content marketing that is SEO-led and powered by strong social media tactics. 
 
-_The Hunchback of Notre-Dame_ (French: _Notre-Dame de Paris_) is a French Romantic/Gothic novel by Victor Hugo, published in 1831. The original French title refers to Notre Dame Cathedral, on which the story is centered. English translator Frederic Shoberl named the novel The Hunchback of Notre Dame in 1833 because at the time, Gothic novels were more popular than Romance novels in England. The story is set in Paris, France in the Late Middle Ages, during the reign of Louis XI.
+Along with her work in content, Lindsay has been deeply involved in GTM strategy, events, and multimedia production. She’s a passionate collaborator and consensus builder who’s rigorous about scoping and goals when driving program tactics.
+
+To work with Lindsay, reach out via [this contact form](), or [on LinkedIn](https://www.linkedin.com/in/lindsaybrunner/).

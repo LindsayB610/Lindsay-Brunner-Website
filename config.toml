@@ -26,4 +26,13 @@ enableRobotsTXT = true
   background_color_class = "bg-black"
   featured_image = "/images/gohugo-default-sample-hero-image.jpg"
   recent_posts_number = 2
-  custom_css=["css/custom.css"]
+  custom_css=["css/custom.scss"]
+  
+  google_fonts = [
+  ["Montserrat", "200, 300, 400, 500"],
+  ["Lato", "300, 300i, 700, 700i"]
+  ]
+
+  heading_font = "Montserrat"
+  body_font = "Lato"
+  
