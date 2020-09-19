@@ -1,3 +1,5 @@
+/*
+This is if scss is availabe, still investigating
 $font-heading: {{ $.Site.Params.heading_font | default "'Montserrat', sans-serif" }};
 $font-body: {{ $.Site.Params.body_font | default "'Lato', sans-serif" }};
 
@@ -7,7 +9,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
  font-family: $font-heading; 
-}
+} */
 
 .bg-black-60 {
     background-color: rgba(0, 0, 0, 0.85);
@@ -15,4 +17,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .measure-wide {
     max-width: 60em;
+}
+
+.monsterrat {
+    font-family: Montserrat, sans-serif;
+}
+
+.lato {
+    font-family: Lato, sans-serif;
 }
