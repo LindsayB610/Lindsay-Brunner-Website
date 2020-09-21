@@ -37,4 +37,6 @@ enableRobotsTXT = true
   post_title_classes = "monsterrat"
   post_content_classes = "lato bg-near-white"
   mian_content_classes = "lato bg-near-white"
+
+  recent_copy = "Latest Blog Posts"
   
