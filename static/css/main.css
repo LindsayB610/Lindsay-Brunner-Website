@@ -164,13 +164,17 @@ h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.025em;
+  /* 🔒 CRITICAL: This gradient configuration is PERFECT - DO NOT MODIFY! */
+  /* The hero text is larger than header text, so it stretches the gradient over more pixels */
+  /* background-size: 80% 100% compresses the gradient so the yellow reaches the final "r" */
+  /* Changing the percentages or removing background-size will break the gradient match */
   background: linear-gradient(
     135deg,
     var(--color-red) 0%,
     var(--color-pink) 50%,
     var(--color-yellow) 100%
   );
-  background-size: 80% 100%;
+  background-size: 80% 100%; /* 🔒 LOCKED: Required for gradient to reach yellow at end of text */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
