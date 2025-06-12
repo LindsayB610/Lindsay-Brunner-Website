@@ -3,88 +3,54 @@
   <div class="container">
     <div class="section-title">
       <h1>{{ .Title }}</h1>
-      {{ if .Content }}
-      <div class="article-content" style="max-width: 600px; margin: 0 auto">
-        {{ .Content }}
-      </div>
-      {{ else }}
-      <p>
-        Insights on developer advocacy, content strategy, technical leadership,
-        and building technology that serves humanity better.
-      </p>
-      {{ end }}
+      <p>{{ .Description }}</p>
     </div>
 
-    {{ $paginator := .Paginate .Pages }}
-    <div class="grid grid-2">
-      {{ range $paginator.Pages }}
-      <article class="post-card card">
+    {{ $posts := .Pages }} {{ if $posts }}
+    <!-- Featured post (first/most recent) -->
+    {{ $featured := index $posts 0 }}
+    <article class="featured-post">
+      <div class="featured-content">
         <div class="post-meta">
-          <time>{{ .Date.Format "January 2, 2006" }}</time>
-          {{ if .Params.tags }}
-          <span>•</span>
-          <span>{{ delimit .Params.tags ", " }}</span>
-          {{ end }} {{ if .Site.Params.show_reading_time }}
-          <span>•</span>
-          <span>{{ .ReadingTime }} min read</span>
-          {{ end }}
+          <time>{{ $featured.Date.Format "January 2, 2006" }}</time>
         </div>
-
-        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-
-        <div class="post-excerpt">{{ .Summary }}</div>
-
-        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
-      </article>
-      {{ end }}
-    </div>
-
-    {{ if gt $paginator.TotalPages 1 }}
-    <nav style="margin-top: 4rem; text-align: center">
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          gap: 1.5rem;
-          align-items: center;
-          flex-wrap: wrap;
-        "
-      >
-        {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="hero-cta">← Previous</a>
-        {{ end }}
-
-        <span
-          style="
-            color: var(--dark-text-secondary);
-            font-family: var(--font-mono);
-            padding: 0.75rem 1.5rem;
-            background: var(--dark-surface);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--dark-border);
-            position: relative;
-            overflow: hidden;
-          "
+        <h2><a href="{{ $featured.Permalink }}">{{ $featured.Title }}</a></h2>
+        <p class="featured-excerpt">{{ $featured.Summary }}</p>
+        <a href="{{ $featured.Permalink }}" class="read-more-featured"
+          >Read more</a
         >
-          <div
-            style="
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              height: 1px;
-              background: var(--gradient-rainbow);
-              animation: pagination-flow 3s linear infinite;
-            "
-          ></div>
-          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
-        </span>
+      </div>
+    </article>
 
-        {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="hero-cta">Next →</a>
+    <!-- Rest of posts in grid -->
+    {{ $remaining := after 1 $posts }} {{ if $remaining }}
+    <div class="posts-grid">
+      <h3 class="grid-title">Latest Thoughts</h3>
+      <div class="grid grid-3">
+        {{ range $remaining }}
+        <article class="post-card card">
+          <div class="post-meta">
+            <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+          </div>
+
+          <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+
+          <div class="post-excerpt">{{ .Summary }}</div>
+
+          <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        </article>
         {{ end }}
       </div>
-    </nav>
+    </div>
+    {{ end }} {{ else }}
+    <!-- No posts yet -->
+    <div class="no-posts">
+      <h2>Coming Soon</h2>
+      <p>
+        Thoughts are brewing! Check back soon for insights on developer
+        experience, content strategy, and building things that matter.
+      </p>
+    </div>
     {{ end }}
   </div>
 </section>
