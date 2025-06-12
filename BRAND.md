@@ -198,6 +198,39 @@ border-radius: var(--radius-xl);
 - **Hover**: Brightness increase
 - **Applies to**: "Hugo" and "Builder.io" links
 
+## Page Layouts
+
+### Thoughts List Page (Builder.io inspired)
+
+```css
+.featured-post          /* Large hero post layout */
+.posts-grid             /* 3-column grid for remaining posts */
+.grid-title             /* "Latest Thoughts" section header */
+.no-posts               /* Coming soon message when no content */
+```
+
+**Features**:
+
+- Featured post prominently displayed
+- Clean grid layout for additional posts
+- No category tags (removed for simplicity)
+- Responsive design
+
+### 404 Error Page
+
+```css
+Giant "404" with var(--gradient-main)
+Error messages in brand colors (yellow, pink, red)
+Two CTA buttons: "Go home" + "Browse thoughts"
+Techy error console styling
+```
+
+### About Page
+
+- **Hugo config**: `unsafe = true` for raw HTML support
+- **Layout**: Left-aligned with headshot placeholder
+- **Template**: Custom `layouts/about/single.html`
+
 ## Navigation Structure
 
 **Layout**: LB logo → About → Thoughts → (space) → Social Icons
