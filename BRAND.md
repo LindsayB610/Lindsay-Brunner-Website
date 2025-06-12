@@ -334,6 +334,24 @@ content/thoughts/
 - LB logo + h1 font family: Must stay Inter for gradient rendering
 - Button hover: White text explicitly maintained for readability
 
+## Troubleshooting 🔧
+
+### Hugo Template Issues
+
+If navigation links appear broken (showing as plain text instead of clickable links) or page layouts don't render correctly:
+
+1. **Restart dev server**: `dev_server_control restart`
+2. **Clear browser cache**: Hard refresh (Ctrl+F5 / Cmd+Shift+R)
+3. **Check template conflicts**: The `layouts/_default/list.html` file overrides theme conflicts
+
+### Template Hierarchy
+
+Hugo follows this order (our templates override old theme):
+
+1. `layouts/[section]/list.html` (specific section)
+2. `layouts/_default/list.html` (our override)
+3. `themes/[theme]/layouts/` (old theme - ignored)
+
 ---
 
 **Philosophy:** The magic is in the restraint. This palette works because we use gradients strategically, embrace rounded corners for approachability, and let Space Grotesk add personality while keeping the core elements perfectly calibrated.
