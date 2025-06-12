@@ -159,12 +159,20 @@ Subtle shapes inspired by modern tech design:
 
 ## Navigation Structure
 
-Main navigation: About, Thoughts
+**Layout**: LB logo → About → Thoughts → (space) → Social Icons
 
-- Home: Accessible via LB logo (no redundant nav item)
-- Contact page: Redirects to home (removed from navigation)
-- Thoughts: Active section with blog posts
-- Blog: Redirects to home (legacy URL)
+- **Position**: Left-aligned next to LB logo
+- **Font**: Space Grotesk accent font
+- **Color**: Warm off-white (#f5f5f0)
+- **Hover**: Bold + gradient text effect (matches footer links)
+- **Spacing**: Tight gaps for cohesive grouping
+
+### Navigation Pages
+
+- **Home**: Accessible via LB logo (no redundant nav item)
+- **About**: Left-aligned content with headshot placeholder
+- **Thoughts**: Active blog section
+- **Contact/Blog**: Legacy redirects to home
 
 ## File Structure
 
