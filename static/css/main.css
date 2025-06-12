@@ -167,8 +167,8 @@ h1 {
   background: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-pink) 30%,
-    var(--color-yellow) 55%
+    var(--color-pink) 25%,
+    var(--color-yellow) 45%
   );
   background-clip: text;
   -webkit-background-clip: text;
