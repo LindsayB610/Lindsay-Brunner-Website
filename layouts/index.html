@@ -3,12 +3,12 @@
   <div class="container">
     <h1>Lindsay Brunner</h1>
     <p>
-      I lead developer advocacy and content strategy at tech companies, helping
-      organizations build stronger connections with developer communities while
-      driving meaningful business outcomes.
+      Developer advocate, content strategist, and digital architect building
+      bridges between emerging tech and the humans who shape our future. I lead
+      teams that turn complex ideas into experiences developers actually love.
     </p>
     <a href="/about/" class="hero-cta">
-      Learn more about my work
+      Enter the matrix
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path
           fill-rule="evenodd"
@@ -22,11 +22,10 @@
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <h2>What I Do</h2>
+      <h2>Digital Alchemy</h2>
       <p>
-        I specialize in bridging the gap between complex technology and the
-        developers who build with it, combining strategic leadership with
-        hands-on execution.
+        Transforming complex technology into experiences that feel like magic,
+        not obstacles. Where business strategy meets cyberpunk aesthetics.
       </p>
     </div>
 
@@ -34,29 +33,27 @@
       <div class="card">
         <h3>🚀 Developer Advocacy</h3>
         <p>
-          Building and scaling developer communities, creating content that
-          drives adoption, and establishing thought leadership in competitive
-          markets. I focus on measurable outcomes that support business
-          objectives.
+          Building communities in the digital frontier. I believe in
+          understanding developer pain points and creating solutions that feel
+          like augmented reality - seamless, powerful, and oddly addictive.
         </p>
       </div>
 
       <div class="card">
-        <h3>📈 Content Strategy</h3>
+        <h3>⚡ Content Strategy</h3>
         <p>
-          Developing comprehensive content programs that combine SEO best
-          practices with genuine developer value. I lead teams that create
-          documentation, tutorials, and resources that actually solve problems.
+          Crafting narratives that cut through the noise. Data-driven content
+          with a human heart, combining SEO science with storytelling that makes
+          developers feel seen and understood.
         </p>
       </div>
 
       <div class="card">
-        <h3>🎯 Technical Leadership</h3>
+        <h3>🌐 Technical Leadership</h3>
         <p>
-          Leading cross-functional initiatives that improve developer
-          experience, from API design to documentation standards. I translate
-          technical complexity into accessible experiences that drive product
-          adoption.
+          Leading cross-functional teams that ship experiences developers
+          remember. From API design to documentation that doesn't suck, I
+          translate technical complexity into joy.
         </p>
       </div>
     </div>
@@ -68,10 +65,10 @@
 <section class="section bg-surface">
   <div class="container">
     <div class="section-title">
-      <h2>Recent Insights</h2>
+      <h2>Neural Feed</h2>
       <p>
-        Thoughts on developer advocacy, content strategy, and building scalable
-        developer programs that drive business growth.
+        Transmissions from the intersection of technology, humanity, and the
+        future we're building together. Sometimes technical, always human.
       </p>
     </div>
 
@@ -79,13 +76,13 @@
       {{ range $recent_posts }}
       <article class="post-card card">
         <div class="post-meta">
-          <time>{{ .Date.Format "January 2, 2006" }}</time>
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
           {{ if .Params.tags }}
           <span>•</span>
-          <span>{{ delimit .Params.tags ", " }}</span>
+          <span>{{ delimit .Params.tags " | " }}</span>
           {{ end }} {{ if .Site.Params.show_reading_time }}
           <span>•</span>
-          <span>{{ .ReadingTime }} min read</span>
+          <span>{{ .ReadingTime }}min</span>
           {{ end }}
         </div>
 
@@ -93,13 +90,13 @@
 
         <div class="post-excerpt">{{ .Summary }}</div>
 
-        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        <a href="{{ .Permalink }}" class="read-more">Read transmission →</a>
       </article>
       {{ end }}
     </div>
 
     <div class="text-center" style="margin-top: 3rem">
-      <a href="/blog/" class="hero-cta">View all posts</a>
+      <a href="/blog/" class="hero-cta">All transmissions</a>
     </div>
   </div>
 </section>
@@ -107,13 +104,14 @@
 
 <section class="section">
   <div class="container-narrow text-center">
-    <h2>Let's Connect</h2>
+    <h2>Connect Across Dimensions</h2>
     <p>
-      I'm always interested in discussing developer advocacy strategies, content
-      program development, or opportunities to collaborate on meaningful
-      projects that advance the developer experience.
+      Always down to chat with fellow builders, creators, and digital explorers.
+      Whether you want to discuss the future of developer experience,
+      collaborate on something ambitious, or just vibe about where tech meets
+      humanity.
     </p>
-    <a href="/contact/" class="hero-cta">Get in touch</a>
+    <a href="/contact/" class="hero-cta">Initiate contact protocol</a>
   </div>
 </section>
 {{ end }}

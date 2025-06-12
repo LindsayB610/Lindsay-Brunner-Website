@@ -9,8 +9,9 @@
       </div>
       {{ else }}
       <p>
-        Insights on developer advocacy, content strategy, technical leadership,
-        and building programs that drive business outcomes.
+        Neural feed from the digital frontier. Thoughts on developer advocacy,
+        content strategy, technical leadership, and building the future we want
+        to live in.
       </p>
       {{ end }}
     </div>
@@ -20,13 +21,13 @@
       {{ range $paginator.Pages }}
       <article class="post-card card">
         <div class="post-meta">
-          <time>{{ .Date.Format "January 2, 2006" }}</time>
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
           {{ if .Params.tags }}
           <span>•</span>
-          <span>{{ delimit .Params.tags ", " }}</span>
+          <span>{{ delimit .Params.tags " | " }}</span>
           {{ end }} {{ if .Site.Params.show_reading_time }}
           <span>•</span>
-          <span>{{ .ReadingTime }} min read</span>
+          <span>{{ .ReadingTime }}min</span>
           {{ end }}
         </div>
 
@@ -34,7 +35,7 @@
 
         <div class="post-excerpt">{{ .Summary }}</div>
 
-        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        <a href="{{ .Permalink }}" class="read-more">Read transmission →</a>
       </article>
       {{ end }}
     </div>
@@ -51,7 +52,7 @@
         "
       >
         {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="hero-cta">← Previous</a>
+        <a href="{{ $paginator.Prev.URL }}" class="hero-cta">← Previous feed</a>
         {{ end }}
 
         <span
@@ -62,13 +63,26 @@
             background: var(--dark-surface);
             border-radius: var(--radius-lg);
             border: 1px solid var(--dark-border);
+            position: relative;
+            overflow: hidden;
           "
         >
-          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+          <div
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 1px;
+              background: var(--gradient-holographic);
+              animation: pagination-scan 2s linear infinite;
+            "
+          ></div>
+          Feed {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
         </span>
 
         {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="hero-cta">Next →</a>
+        <a href="{{ $paginator.Next.URL }}" class="hero-cta">Next feed →</a>
         {{ end }}
       </div>
     </nav>

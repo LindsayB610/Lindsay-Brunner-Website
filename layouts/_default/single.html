@@ -9,10 +9,10 @@
         <time>{{ .Date.Format "January 2, 2006" }}</time>
         {{ if .Params.tags }}
         <span>•</span>
-        <span>{{ delimit .Params.tags ", " }}</span>
+        <span>{{ delimit .Params.tags " | " }}</span>
         {{ end }} {{ if .Site.Params.show_reading_time }}
         <span>•</span>
-        <span>{{ .ReadingTime }} min read</span>
+        <span>{{ .ReadingTime }} min transmission</span>
         {{ end }}
       </div>
 
@@ -42,22 +42,45 @@
         background: var(--dark-surface);
         border-radius: var(--radius-lg);
         border: 1px solid var(--dark-border);
+        position: relative;
+        overflow: hidden;
       "
     >
-      <h4 style="margin-bottom: 1rem; color: var(--primary-blue)">Topics:</h4>
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: var(--gradient-holographic);
+          animation: tag-scan 3s linear infinite;
+        "
+      ></div>
+      <h4
+        style="
+          margin-bottom: 1rem;
+          color: var(--neon-purple);
+          text-shadow: var(--glow-purple);
+        "
+      >
+        Neural Tags:
+      </h4>
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
         {{ range .Params.tags }}
         <span
           style="
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary-blue);
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--matrix-green);
             padding: 0.5rem 1rem;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             font-size: 0.875rem;
-            font-weight: 500;
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            font-family: var(--font-mono);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            text-shadow: var(--glow-green);
+            box-shadow: var(--glow-green);
           "
-          >{{ . }}</span
+          >#{{ . }}</span
         >
         {{ end }}
       </div>
@@ -68,10 +91,10 @@
 
 <section class="section bg-surface">
   <div class="container-narrow text-center">
-    <h3>Found this useful?</h3>
+    <h3>Signal Received?</h3>
     <p>
-      Follow me for more insights on developer advocacy, technical leadership,
-      and building programs that drive real business impact.
+      Follow me for more transmissions on developer advocacy, technical
+      leadership, and building experiences that developers actually want to use.
     </p>
     <div
       style="
@@ -84,7 +107,7 @@
     >
       {{ with .Site.Params.twitter }}
       <a href="{{ . }}" target="_blank" rel="noopener" class="hero-cta"
-        >Follow on Twitter</a
+        >Follow signal</a
       >
       {{ end }}
       <a
@@ -92,9 +115,9 @@
         class="hero-cta"
         style="
           background: rgba(255, 255, 255, 0.05);
-          border: 2px solid var(--primary-blue);
+          border: 2px solid var(--neon-purple);
         "
-        >More insights</a
+        >More transmissions</a
       >
     </div>
   </div>
