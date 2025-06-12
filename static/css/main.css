@@ -402,11 +402,7 @@ blockquote {
 }
 
 .main-nav a:hover {
-  font-weight: 700;
-  background: var(--gradient-main);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--brand-primary);
   background: rgba(255, 27, 141, 0.08);
   border-color: var(--brand-primary);
 }
