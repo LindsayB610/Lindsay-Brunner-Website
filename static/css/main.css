@@ -855,6 +855,106 @@ blockquote {
   }
 }
 
+/* Thoughts page - Builder.io inspired layout */
+.featured-post {
+  background: var(--dark-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+  position: relative;
+}
+
+.featured-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
+}
+
+.featured-content h2 a {
+  color: var(--dark-text);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.featured-content h2 a:hover {
+  color: var(--brand-primary);
+}
+
+.featured-content h2 a::after {
+  display: none;
+}
+
+.featured-excerpt {
+  font-size: 1.25rem;
+  color: var(--dark-text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+.read-more-featured {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--brand-primary);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.read-more-featured:hover {
+  color: var(--brand-warm);
+  transform: translateX(4px);
+}
+
+.read-more-featured::after {
+  display: none;
+}
+
+.posts-grid {
+  margin-top: var(--space-3xl);
+}
+
+.grid-title {
+  font-family: var(--font-accent);
+  color: var(--brand-primary);
+  margin-bottom: var(--space-xl);
+  font-size: 1.5rem;
+}
+
+.post-tag {
+  display: inline-block;
+  background: rgba(255, 27, 141, 0.1);
+  color: var(--brand-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-family: var(--font-accent);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: var(--space-sm);
+}
+
+.no-posts {
+  text-align: center;
+  padding: var(--space-3xl);
+  background: var(--dark-surface);
+  border-radius: var(--radius-xl);
+}
+
+.no-posts h2 {
+  color: var(--brand-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.no-posts p {
+  color: var(--dark-text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* Utility classes */
 .sr-only {
   position: absolute;
