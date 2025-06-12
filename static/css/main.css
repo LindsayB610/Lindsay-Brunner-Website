@@ -425,7 +425,6 @@ blockquote {
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  border-radius: var(--radius-lg);
   color: var(--dark-text-muted);
   transition: all var(--transition-normal);
   border: 1px solid var(--dark-border);
@@ -438,7 +437,6 @@ blockquote {
   content: "";
   position: absolute;
   inset: -2px;
-  border-radius: var(--radius-lg);
   background: var(--gradient-main);
   opacity: 0;
   transition: opacity var(--transition-normal);
