@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url={{ .Site.BaseURL }}" />
+    <link rel="canonical" href="{{ .Site.BaseURL }}" />
+  </head>
+  <body>
+    <script>
+      window.location.replace("{{ .Site.BaseURL }}");
+    </script>
+    <p>
+      If you are not redirected automatically,
+      <a href="{{ .Site.BaseURL }}">click here</a>.
+    </p>
+  </body>
+</html>
