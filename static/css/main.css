@@ -485,36 +485,23 @@ blockquote {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  background: var(--dark-surface);
-  color: var(--dark-text);
+  background: var(--gradient-main);
+  color: var(--dark-bg);
   padding: var(--space-lg) var(--space-xl);
+  font-family: var(--font-accent);
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-normal);
-  border: 2px solid var(--dark-border);
+  border: none;
   position: relative;
-  z-index: 2;
   overflow: hidden;
-}
-
-.hero-cta::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background: var(--gradient-main);
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-  z-index: -1;
+  box-shadow: 0 4px 20px rgba(255, 27, 141, 0.3);
 }
 
 .hero-cta:hover {
-  transform: translateY(-3px);
-  border-color: transparent;
-  color: var(--dark-text);
-}
-
-.hero-cta:hover::before {
-  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(255, 27, 141, 0.4);
+  filter: brightness(1.1);
 }
 
 .hero-cta::after {
