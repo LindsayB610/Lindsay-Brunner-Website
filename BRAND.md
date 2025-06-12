@@ -140,8 +140,9 @@ Subtle shapes inspired by modern tech design:
 
 ## Navigation Structure
 
-Main navigation: Home, About, Thoughts
+Main navigation: About, Thoughts
 
+- Home: Accessible via LB logo (no redundant nav item)
 - Contact page: Redirects to home (removed from navigation)
 - Blog/Thoughts pages: Redirect to home until content is added
 
