@@ -205,7 +205,7 @@ h2::after {
 
 h3 {
   font-size: 1.875rem;
-  color: var(--color-pink);
+  color: var(--brand-warm);
 }
 
 h4 {
