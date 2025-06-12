@@ -348,11 +348,15 @@ blockquote {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: var(--space-lg) 0;
   min-width: 0;
   flex-wrap: wrap;
-  gap: var(--space-md);
+  gap: var(--space-xl);
+}
+
+.social-links {
+  margin-left: auto;
 }
 
 .site-logo {
