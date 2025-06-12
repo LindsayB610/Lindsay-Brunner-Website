@@ -397,7 +397,6 @@ blockquote {
   text-decoration: none;
   transition: all var(--transition-fast);
   padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
   border: 1px solid transparent;
 }
 
