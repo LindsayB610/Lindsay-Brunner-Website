@@ -40,11 +40,12 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* Simple Two-Color Palette */
+/* Three-Color Gradient Palette */
 :root {
-  /* Only two colors from the header gradient */
+  /* Three colors - pink and red primary, yellow accent */
   --color-red: #ff0037;
   --color-pink: #ff1b8d;
+  --color-yellow: #ffdd00;
 
   /* Dark Base */
   --dark-bg: #000000;
@@ -55,11 +56,12 @@ h6 {
   --dark-text-secondary: #cccccc;
   --dark-text-muted: #888888;
 
-  /* Single Gradient - Same as header */
+  /* Enhanced Gradient - red/pink primary with yellow accent */
   --gradient-main: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-pink) 100%
+    var(--color-pink) 70%,
+    var(--color-yellow) 100%
   );
 
   /* Typography */
@@ -195,7 +197,7 @@ h3 {
 
 h4 {
   font-size: 1.5rem;
-  color: var(--color-red);
+  color: var(--color-yellow);
 }
 
 p {
@@ -233,11 +235,11 @@ a:hover::after {
 code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: rgba(255, 27, 141, 0.1);
-  color: var(--color-pink);
+  background: rgba(255, 221, 0, 0.1);
+  color: var(--color-yellow);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 27, 141, 0.2);
+  border: 1px solid rgba(255, 221, 0, 0.2);
 }
 
 pre {
@@ -688,7 +690,7 @@ blockquote {
 }
 
 .article-content li::marker {
-  color: var(--color-pink);
+  color: var(--color-yellow);
 }
 
 /* Footer */
