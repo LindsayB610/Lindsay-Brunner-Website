@@ -1,14 +1,14 @@
 {{ define "main" }}
 <section class="hero">
   <div class="container">
-    <h1>Hey, I'm Lindsay! 👋</h1>
+    <h1>Hey, I'm Lindsay! ✨</h1>
     <p>
-      I'm a developer advocate, content strategist, and technical writer who
-      helps developers build better experiences. I love creating content that
-      makes complex technical concepts accessible and actionable.
+      Developer advocate, content strategist, and technical writer who codes in
+      the intersection of tech and creativity. Building bridges between complex
+      concepts and the developers who bring them to life.
     </p>
     <a href="/about/" class="hero-cta">
-      Learn more about me
+      Enter the matrix
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path
           fill-rule="evenodd"
@@ -22,38 +22,38 @@
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <h2>What I Do</h2>
+      <h2>Digital Alchemy</h2>
       <p>
-        I focus on creating content and experiences that bridge the gap between
-        complex technology and the developers who use it.
+        Transforming complex technical concepts into experiences that developers
+        actually want to engage with.
       </p>
     </div>
 
     <div class="grid grid-3">
-      <div class="card">
+      <div class="card glow-element">
         <h3>🥑 Developer Advocacy</h3>
         <p>
-          Building communities and creating content that helps developers
-          succeed. I believe in understanding developer pain points and creating
-          solutions that actually solve problems.
+          Building communities in the digital frontier. I believe in
+          understanding developer pain points and creating solutions that feel
+          like magic, not friction.
         </p>
       </div>
 
-      <div class="card">
-        <h3>✍️ Technical Writing</h3>
+      <div class="card glow-element">
+        <h3>⚡ Technical Writing</h3>
         <p>
-          Crafting documentation, tutorials, and guides that make complex
-          concepts clear and actionable. Good documentation can make or break
-          developer experience.
+          Crafting documentation that doesn't suck. Clear, actionable content
+          that makes complex systems feel intuitive and empowers developers to
+          ship faster.
         </p>
       </div>
 
-      <div class="card">
-        <h3>📊 Content Strategy</h3>
+      <div class="card glow-element">
+        <h3>🌈 Content Strategy</h3>
         <p>
-          Data-driven content planning that combines SEO best practices with
-          genuine value for developers. I believe in content that serves both
-          users and business goals.
+          Data-driven content with a human heart. Combining SEO science with
+          genuine value, creating content that serves both algorithms and actual
+          humans.
         </p>
       </div>
     </div>
@@ -65,24 +65,24 @@
 <section class="section bg-surface">
   <div class="container">
     <div class="section-title">
-      <h2>Latest Posts</h2>
+      <h2>Latest Transmissions</h2>
       <p>
         Thoughts on developer advocacy, content strategy, and building better
-        developer experiences.
+        developer experiences in the digital realm.
       </p>
     </div>
 
     <div class="grid grid-2">
       {{ range $recent_posts }}
-      <article class="post-card card">
+      <article class="post-card card float-element">
         <div class="post-meta">
-          <time>{{ .Date.Format "January 2, 2006" }}</time>
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
           {{ if .Params.tags }}
           <span>•</span>
-          <span>{{ delimit .Params.tags ", " }}</span>
+          <span>{{ delimit .Params.tags " | " }}</span>
           {{ end }} {{ if .Site.Params.show_reading_time }}
           <span>•</span>
-          <span>{{ .ReadingTime }} min read</span>
+          <span>{{ .ReadingTime }}min</span>
           {{ end }}
         </div>
 
@@ -90,13 +90,13 @@
 
         <div class="post-excerpt">{{ .Summary }}</div>
 
-        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        <a href="{{ .Permalink }}" class="read-more">Read transmission →</a>
       </article>
       {{ end }}
     </div>
 
-    <div class="text-center" style="margin-top: 2rem">
-      <a href="/blog/" class="hero-cta">View all posts</a>
+    <div class="text-center" style="margin-top: 3rem">
+      <a href="/blog/" class="hero-cta">All transmissions</a>
     </div>
   </div>
 </section>
@@ -104,13 +104,13 @@
 
 <section class="section">
   <div class="container-narrow text-center">
-    <h2>Let's Connect</h2>
+    <h2>Let's Connect in Cyberspace</h2>
     <p>
-      I'm always interested in connecting with fellow developers, advocates, and
-      content creators. Whether you want to chat about developer experience,
-      collaborate on content, or just say hi, feel free to reach out!
+      Always down to chat with fellow developers, advocates, and digital
+      creators. Whether you want to discuss developer experience, collaborate on
+      content, or just vibe about the intersection of tech and creativity.
     </p>
-    <a href="/contact/" class="hero-cta">Get in touch</a>
+    <a href="/contact/" class="hero-cta">Initiate contact</a>
   </div>
 </section>
 {{ end }}

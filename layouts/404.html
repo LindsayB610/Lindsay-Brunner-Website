@@ -1,28 +1,55 @@
 {{ define "main" }}
 <section class="section">
   <div class="container-narrow text-center">
-    <h1 style="font-size: 6rem; margin-bottom: 0; color: var(--color-primary)">
+    <h1
+      style="
+        font-size: 8rem;
+        margin-bottom: 0;
+        background: var(--gradient-holographic);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: var(--shadow-neon);
+      "
+    >
       404
     </h1>
-    <h2>Page not found</h2>
+    <h2>Signal Lost</h2>
     <p>
-      Sorry, the page you're looking for doesn't exist. Maybe it moved, or
-      perhaps you mistyped the URL?
+      The page you're looking for has vanished into the digital void. Maybe it
+      got corrupted, or perhaps you mistyped the coordinates?
     </p>
 
-    <div style="margin-top: 2rem">
-      <a href="/" class="hero-cta">Go home</a>
+    <div
+      style="
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      "
+    >
+      <a href="/" class="hero-cta">Return to base</a>
       <a
         href="/blog/"
         class="hero-cta"
         style="
-          background-color: transparent;
-          color: var(--color-primary);
-          border: 2px solid var(--color-primary);
-          margin-left: 1rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid var(--neon-green);
         "
-        >Browse blog</a
+        >Browse transmissions</a
       >
+    </div>
+
+    <div
+      style="
+        margin-top: 4rem;
+        font-family: var(--font-mono);
+        color: var(--dark-text-muted);
+      "
+    >
+      <p>Error code: PAGE_NOT_FOUND</p>
+      <p>Status: DISCONNECTED</p>
     </div>
   </div>
 </section>

@@ -4,15 +4,15 @@
     <header style="text-align: center; margin-bottom: 3rem">
       <div
         class="post-meta"
-        style="justify-content: center; margin-bottom: 1rem"
+        style="justify-content: center; margin-bottom: 1.5rem"
       >
         <time>{{ .Date.Format "January 2, 2006" }}</time>
         {{ if .Params.tags }}
         <span>•</span>
-        <span>{{ delimit .Params.tags ", " }}</span>
+        <span>{{ delimit .Params.tags " | " }}</span>
         {{ end }} {{ if .Site.Params.show_reading_time }}
         <span>•</span>
-        <span>{{ .ReadingTime }} min read</span>
+        <span>{{ .ReadingTime }} min transmission</span>
         {{ end }}
       </div>
 
@@ -22,8 +22,9 @@
       <p
         style="
           font-size: 1.25rem;
-          color: var(--color-text-light);
-          margin-top: 1rem;
+          color: var(--dark-text-secondary);
+          margin-top: 1.5rem;
+          font-style: italic;
         "
       >
         {{ .Params.description }}
@@ -36,20 +37,28 @@
     {{ if .Params.tags }}
     <footer
       style="
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--color-border);
+        margin-top: 4rem;
+        padding: 2rem;
+        background: var(--dark-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--dark-border);
       "
     >
-      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+      <h4 style="margin-bottom: 1rem; color: var(--neon-purple)">
+        Tagged with:
+      </h4>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
         {{ range .Params.tags }}
         <span
           style="
-            background-color: var(--color-gray-100);
-            color: var(--color-gray-700);
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-md);
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--neon-green);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
             font-size: 0.875rem;
+            font-family: var(--font-mono);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            text-shadow: var(--glow-green);
           "
           >#{{ . }}</span
         >
@@ -62,17 +71,18 @@
 
 <section class="section bg-surface">
   <div class="container-narrow text-center">
-    <h3>Enjoyed this post?</h3>
+    <h3>Enjoyed this transmission?</h3>
     <p>
       Follow me for more content on developer advocacy, technical writing, and
-      building better developer experiences.
+      building experiences that developers actually love.
     </p>
     <div
       style="
         display: flex;
         justify-content: center;
-        gap: 1rem;
-        margin-top: 1.5rem;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
       "
     >
       {{ with .Site.Params.twitter }}
@@ -84,11 +94,10 @@
         href="/blog/"
         class="hero-cta"
         style="
-          background-color: transparent;
-          color: var(--color-primary);
-          border: 2px solid var(--color-primary);
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid var(--neon-purple);
         "
-        >More posts</a
+        >More transmissions</a
       >
     </div>
   </div>

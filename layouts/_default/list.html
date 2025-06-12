@@ -4,11 +4,14 @@
     <div class="section-title">
       <h1>{{ .Title }}</h1>
       {{ if .Content }}
-      <div class="article-content">{{ .Content }}</div>
+      <div class="article-content" style="max-width: 600px; margin: 0 auto">
+        {{ .Content }}
+      </div>
       {{ else }}
       <p>
-        Thoughts on developer advocacy, content strategy, technical writing, and
-        building better developer experiences.
+        Transmissions from the digital frontier. Thoughts on developer advocacy,
+        content strategy, technical writing, and building experiences that make
+        developers' lives better.
       </p>
       {{ end }}
     </div>
@@ -18,13 +21,13 @@
       {{ range $paginator.Pages }}
       <article class="post-card card">
         <div class="post-meta">
-          <time>{{ .Date.Format "January 2, 2006" }}</time>
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
           {{ if .Params.tags }}
           <span>•</span>
-          <span>{{ delimit .Params.tags ", " }}</span>
+          <span>{{ delimit .Params.tags " | " }}</span>
           {{ end }} {{ if .Site.Params.show_reading_time }}
           <span>•</span>
-          <span>{{ .ReadingTime }} min read</span>
+          <span>{{ .ReadingTime }}min</span>
           {{ end }}
         </div>
 
@@ -32,31 +35,43 @@
 
         <div class="post-excerpt">{{ .Summary }}</div>
 
-        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        <a href="{{ .Permalink }}" class="read-more">Read transmission →</a>
       </article>
       {{ end }}
     </div>
 
     {{ if gt $paginator.TotalPages 1 }}
-    <nav style="margin-top: 3rem; text-align: center">
+    <nav style="margin-top: 4rem; text-align: center">
       <div
         style="
           display: flex;
           justify-content: center;
-          gap: 1rem;
+          gap: 1.5rem;
           align-items: center;
+          flex-wrap: wrap;
         "
       >
         {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="hero-cta">← Previous</a>
+        <a href="{{ $paginator.Prev.URL }}" class="hero-cta"
+          >← Previous batch</a
+        >
         {{ end }}
 
-        <span style="color: var(--color-text-light)">
-          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+        <span
+          style="
+            color: var(--dark-text-secondary);
+            font-family: var(--font-mono);
+            padding: 0.75rem 1.5rem;
+            background: var(--dark-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--dark-border);
+          "
+        >
+          Batch {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
         </span>
 
         {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="hero-cta">Next →</a>
+        <a href="{{ $paginator.Next.URL }}" class="hero-cta">Next batch →</a>
         {{ end }}
       </div>
     </nav>
