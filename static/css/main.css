@@ -56,11 +56,12 @@ h6 {
   --dark-text-secondary: #cccccc;
   --dark-text-muted: #888888;
 
-  /* Enhanced Gradient - red/pink primary with yellow accent */
+  /* Enhanced Gradient - distinct sections for each color */
   --gradient-main: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-pink) 70%,
+    var(--color-red) 35%,
+    var(--color-pink) 65%,
     var(--color-yellow) 100%
   );
 
