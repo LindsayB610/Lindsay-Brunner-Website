@@ -56,11 +56,11 @@ h6 {
   --dark-text-secondary: #cccccc;
   --dark-text-muted: #888888;
 
-  /* Red to Pink to Yellow gradient with more yellow prominence */
+  /* Red to Pink to Yellow gradient with maximum yellow prominence */
   --gradient-main: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-pink) 40%,
+    var(--color-pink) 30%,
     var(--color-yellow) 100%
   );
 
