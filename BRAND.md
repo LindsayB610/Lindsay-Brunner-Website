@@ -144,7 +144,8 @@ Main navigation: About, Thoughts
 
 - Home: Accessible via LB logo (no redundant nav item)
 - Contact page: Redirects to home (removed from navigation)
-- Blog/Thoughts pages: Redirect to home until content is added
+- Thoughts: Active section with blog posts
+- Blog: Redirects to home (legacy URL)
 
 ## File Structure
 
