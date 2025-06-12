@@ -1,4 +1,4 @@
-/* Clean Holographic Theme with Geometric Patterns */
+/* Arcade-Inspired Dark Theme with Clean Colors */
 *,
 *::before,
 *::after {
@@ -40,58 +40,53 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* Holographic Color Palette */
+/* Arcade-Inspired Color Palette */
 :root {
-  /* Neon Colors */
-  --neon-pink: #ff0080;
-  --neon-cyan: #00ffff;
-  --neon-purple: #8000ff;
-  --neon-green: #00ff80;
-  --neon-yellow: #ffff00;
-  --electric-blue: #0080ff;
-  --hot-magenta: #ff006e;
+  /* Primary Colors */
+  --electric-red: #ff0037;
+  --neon-green: #c4ff00;
+  --electric-purple: #4706f9;
+  --bright-cyan: #00ffff;
+  --hot-pink: #ff1b8d;
 
-  /* Accent Colors */
-  --plasma-pink: #ff1b8d;
-  --cyber-cyan: #00e5ff;
-  --void-purple: #7c4dff;
-  --matrix-green: #39ff14;
-  --laser-red: #ff073a;
+  /* Supporting Colors */
+  --warm-orange: #ff6b35;
+  --electric-blue: #0080ff;
+  --lime-green: #32ff32;
+  --magenta: #ff006e;
 
   /* Dark Base */
-  --dark-bg: #0a0a0f;
-  --dark-surface: #151520;
-  --dark-surface-lighter: #1e1e2e;
-  --dark-border: #2a2a3a;
+  --dark-bg: #000000;
+  --dark-surface: #0f0f0f;
+  --dark-surface-lighter: #1a1a1a;
+  --dark-border: #3d3d3d;
   --dark-text: #ffffff;
-  --dark-text-secondary: #b8b8cc;
-  --dark-text-muted: #7a7a8a;
+  --dark-text-secondary: #cccccc;
+  --dark-text-muted: #888888;
 
   /* Clean Gradients */
-  --gradient-holographic: linear-gradient(
+  --gradient-primary: linear-gradient(
     135deg,
-    var(--neon-pink) 0%,
-    var(--neon-cyan) 25%,
-    var(--neon-purple) 50%,
-    var(--neon-green) 75%,
-    var(--neon-pink) 100%
+    var(--electric-red) 0%,
+    var(--hot-pink) 100%
   );
-  --gradient-plasma: linear-gradient(
+  --gradient-secondary: linear-gradient(
     135deg,
-    var(--plasma-pink) 0%,
-    var(--cyber-cyan) 50%,
-    var(--void-purple) 100%
+    var(--neon-green) 0%,
+    var(--lime-green) 100%
   );
-  --gradient-matrix: linear-gradient(
+  --gradient-accent: linear-gradient(
     135deg,
-    var(--matrix-green) 0%,
-    var(--cyber-cyan) 100%
+    var(--electric-purple) 0%,
+    var(--electric-blue) 100%
   );
-  --gradient-synthwave: linear-gradient(
+  --gradient-rainbow: linear-gradient(
     135deg,
-    var(--hot-magenta) 0%,
-    var(--electric-blue) 50%,
-    var(--neon-cyan) 100%
+    var(--electric-red) 0%,
+    var(--hot-pink) 25%,
+    var(--electric-purple) 50%,
+    var(--bright-cyan) 75%,
+    var(--neon-green) 100%
   );
 
   /* Typography */
@@ -122,8 +117,8 @@ h6 {
     0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl:
     0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-cyber:
-    0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-clean:
+    0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -143,60 +138,60 @@ body {
   color: var(--dark-text);
   background: var(--dark-bg);
   background-image: 
-    /* Geometric patterns */
+    /* Clean geometric patterns */
     radial-gradient(
       circle at 25% 25%,
-      rgba(255, 27, 141, 0.15) 0%,
-      transparent 25%
+      rgba(255, 0, 55, 0.08) 0%,
+      transparent 40%
     ),
     radial-gradient(
       circle at 75% 75%,
-      rgba(0, 255, 255, 0.15) 0%,
-      transparent 25%
+      rgba(196, 255, 0, 0.06) 0%,
+      transparent 40%
     ),
     radial-gradient(
       circle at 50% 10%,
-      rgba(139, 92, 246, 0.1) 0%,
-      transparent 30%
+      rgba(71, 6, 249, 0.05) 0%,
+      transparent 35%
     ),
     radial-gradient(
       circle at 20% 80%,
-      rgba(57, 255, 20, 0.08) 0%,
-      transparent 25%
+      rgba(0, 255, 255, 0.04) 0%,
+      transparent 30%
     ),
     radial-gradient(
       circle at 80% 30%,
-      rgba(255, 255, 0, 0.06) 0%,
-      transparent 20%
+      rgba(255, 27, 141, 0.03) 0%,
+      transparent 25%
     ),
-    /* Grid overlay */
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    /* Diagonal lines */
+    /* Subtle grid */
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    /* Diagonal accents */
       repeating-linear-gradient(
         45deg,
         transparent 0px,
-        rgba(255, 27, 141, 0.03) 1px,
+        rgba(255, 0, 55, 0.02) 1px,
         transparent 2px,
-        transparent 60px
+        transparent 80px
       ),
     repeating-linear-gradient(
       -45deg,
       transparent 0px,
-      rgba(0, 255, 255, 0.03) 1px,
+      rgba(196, 255, 0, 0.015) 1px,
       transparent 2px,
-      transparent 80px
+      transparent 100px
     );
   background-size:
+    900px 900px,
+    700px 700px,
+    1100px 500px,
     800px 800px,
     600px 600px,
-    1000px 400px,
-    700px 700px,
-    500px 500px,
-    50px 50px,
-    50px 50px,
-    120px 120px,
-    160px 160px;
+    60px 60px,
+    60px 60px,
+    160px 160px,
+    200px 200px;
   background-position:
     0% 0%,
     100% 100%,
@@ -210,10 +205,10 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   min-height: 100vh;
-  animation: background-shift 60s ease-in-out infinite alternate;
+  animation: background-drift 120s ease-in-out infinite alternate;
 }
 
-@keyframes background-shift {
+@keyframes background-drift {
   0% {
     background-position:
       0% 0%,
@@ -228,15 +223,15 @@ body {
   }
   100% {
     background-position:
-      10% 10%,
-      90% 90%,
-      60% 10%,
-      10% 90%,
-      90% 10%,
-      25px 25px,
-      -25px -25px,
-      60px 60px,
-      -80px -80px;
+      15% 15%,
+      85% 85%,
+      65% 15%,
+      15% 85%,
+      85% 15%,
+      30px 30px,
+      -30px -30px,
+      80px 80px,
+      -100px -100px;
   }
 }
 
@@ -250,22 +245,22 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   border-radius: 5px;
-  animation: pulse-scroll 3s ease-in-out infinite alternate;
+  animation: scroll-shift 4s ease-in-out infinite alternate;
 }
 
-@keyframes pulse-scroll {
+@keyframes scroll-shift {
   0% {
     filter: hue-rotate(0deg);
   }
   100% {
-    filter: hue-rotate(60deg);
+    filter: hue-rotate(45deg);
   }
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-plasma);
+  background: var(--gradient-primary);
 }
 
 /* Typography */
@@ -285,29 +280,29 @@ h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: holographic-shimmer 4s ease-in-out infinite alternate;
+  animation: gradient-flow 6s ease-in-out infinite alternate;
   position: relative;
 }
 
-@keyframes holographic-shimmer {
+@keyframes gradient-flow {
   0% {
     filter: hue-rotate(0deg) brightness(1) saturate(1);
   }
   50% {
-    filter: hue-rotate(30deg) brightness(1.1) saturate(1.2);
+    filter: hue-rotate(20deg) brightness(1.1) saturate(1.1);
   }
   100% {
-    filter: hue-rotate(60deg) brightness(1.05) saturate(1.1);
+    filter: hue-rotate(40deg) brightness(1.05) saturate(1.05);
   }
 }
 
 h2 {
   font-size: 2.5rem;
-  background: var(--gradient-plasma);
+  background: var(--gradient-primary);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -322,30 +317,30 @@ h2::after {
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   border-radius: 3px;
-  animation: underline-pulse 2s ease-in-out infinite alternate;
+  animation: underline-flow 3s ease-in-out infinite alternate;
 }
 
-@keyframes underline-pulse {
+@keyframes underline-flow {
   0% {
     opacity: 0.6;
     width: 60px;
   }
   100% {
     opacity: 1;
-    width: 100px;
+    width: 120px;
   }
 }
 
 h3 {
   font-size: 1.875rem;
-  color: var(--neon-purple);
+  color: var(--electric-purple);
 }
 
 h4 {
   font-size: 1.5rem;
-  color: var(--neon-pink);
+  color: var(--electric-red);
 }
 
 p {
@@ -355,14 +350,14 @@ p {
 }
 
 a {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
   text-decoration: none;
   transition: all var(--transition-fast);
   position: relative;
 }
 
 a:hover {
-  color: var(--neon-pink);
+  color: var(--hot-pink);
 }
 
 a::after {
@@ -372,16 +367,16 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   transition: width var(--transition-normal);
 }
 
 a:hover::after {
   width: 100%;
-  animation: rainbow-flow 1s ease-in-out infinite;
+  animation: link-flow 1s ease-in-out infinite;
 }
 
-@keyframes rainbow-flow {
+@keyframes link-flow {
   0% {
     filter: hue-rotate(0deg);
   }
@@ -393,17 +388,17 @@ a:hover::after {
 code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: rgba(57, 255, 20, 0.15);
-  color: var(--matrix-green);
+  background: rgba(196, 255, 0, 0.1);
+  color: var(--neon-green);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(57, 255, 20, 0.3);
+  border: 1px solid rgba(196, 255, 0, 0.2);
 }
 
 pre {
   font-family: var(--font-mono);
   background: var(--dark-surface);
-  border: 1px solid var(--neon-cyan);
+  border: 1px solid var(--electric-red);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   overflow-x: auto;
@@ -418,11 +413,11 @@ pre::before {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--gradient-holographic);
-  animation: code-scanner 3s linear infinite;
+  background: var(--gradient-rainbow);
+  animation: code-flow 4s linear infinite;
 }
 
-@keyframes code-scanner {
+@keyframes code-flow {
   0% {
     transform: translateX(-100%);
   }
@@ -439,12 +434,12 @@ pre code {
 }
 
 blockquote {
-  border-left: 4px solid var(--neon-pink);
+  border-left: 4px solid var(--electric-red);
   padding-left: var(--space-lg);
   margin: var(--space-xl) 0;
   font-style: italic;
   color: var(--dark-text-secondary);
-  background: rgba(255, 27, 141, 0.05);
+  background: rgba(255, 0, 55, 0.05);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: var(--space-lg);
   position: relative;
@@ -457,16 +452,16 @@ blockquote::before {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: var(--gradient-holographic);
-  animation: quote-pulse 2s ease-in-out infinite alternate;
+  background: var(--gradient-primary);
+  animation: quote-flow 3s ease-in-out infinite alternate;
 }
 
-@keyframes quote-pulse {
+@keyframes quote-flow {
   0% {
     filter: hue-rotate(0deg);
   }
   100% {
-    filter: hue-rotate(120deg);
+    filter: hue-rotate(60deg);
   }
 }
 
@@ -485,13 +480,13 @@ blockquote::before {
 
 /* Header */
 .site-header {
-  background: rgba(10, 10, 15, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--dark-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-cyber);
+  box-shadow: var(--shadow-clean);
 }
 
 .site-header::after {
@@ -501,12 +496,12 @@ blockquote::before {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--gradient-holographic);
-  opacity: 0.6;
-  animation: header-scan 5s linear infinite;
+  background: var(--gradient-rainbow);
+  opacity: 0.7;
+  animation: header-flow 8s linear infinite;
 }
 
-@keyframes header-scan {
+@keyframes header-flow {
   0% {
     transform: translateX(-100%);
     opacity: 0;
@@ -530,17 +525,17 @@ blockquote::before {
 .site-logo {
   font-size: 1.75rem;
   font-weight: 800;
-  background: var(--gradient-plasma);
+  background: var(--gradient-primary);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
   letter-spacing: -0.025em;
   transition: all var(--transition-normal);
-  animation: logo-pulse 3s ease-in-out infinite alternate;
+  animation: logo-shift 4s ease-in-out infinite alternate;
 }
 
-@keyframes logo-pulse {
+@keyframes logo-shift {
   0% {
     filter: brightness(1) hue-rotate(0deg);
   }
@@ -574,9 +569,9 @@ blockquote::before {
 }
 
 .main-nav a:hover {
-  color: var(--neon-cyan);
-  background: rgba(0, 255, 255, 0.1);
-  border-color: var(--neon-cyan);
+  color: var(--bright-cyan);
+  background: rgba(0, 255, 255, 0.08);
+  border-color: var(--bright-cyan);
 }
 
 .main-nav a::after {
@@ -609,14 +604,14 @@ blockquote::before {
   position: absolute;
   inset: -2px;
   border-radius: var(--radius-lg);
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   opacity: 0;
   transition: opacity var(--transition-normal);
   z-index: -1;
-  animation: social-rotate 10s linear infinite;
+  animation: social-orbit 12s linear infinite;
 }
 
-@keyframes social-rotate {
+@keyframes social-orbit {
   0% {
     transform: rotate(0deg);
   }
@@ -626,7 +621,7 @@ blockquote::before {
 }
 
 .social-link:hover {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
   transform: translateY(-2px) scale(1.05);
   border-color: transparent;
 }
@@ -636,11 +631,11 @@ blockquote::before {
 }
 
 .social-link:nth-child(2):hover {
-  color: var(--neon-purple);
+  color: var(--electric-purple);
 }
 
 .social-link:nth-child(3):hover {
-  color: var(--neon-pink);
+  color: var(--electric-red);
 }
 
 .social-link:nth-child(4):hover {
@@ -677,30 +672,30 @@ blockquote::before {
   background:
     radial-gradient(
       ellipse at center,
-      rgba(255, 27, 141, 0.1) 0%,
+      rgba(255, 0, 55, 0.12) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse at 20% 80%,
-      rgba(0, 255, 255, 0.08) 0%,
+      rgba(196, 255, 0, 0.08) 0%,
       transparent 50%
     ),
     radial-gradient(
       ellipse at 80% 20%,
-      rgba(139, 92, 246, 0.06) 0%,
+      rgba(71, 6, 249, 0.06) 0%,
       transparent 50%
     );
-  animation: hero-pulse 8s ease-in-out infinite alternate;
+  animation: hero-breathe 12s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
-@keyframes hero-pulse {
+@keyframes hero-breathe {
   0% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scale(1);
   }
   100% {
-    opacity: 0.6;
+    opacity: 0.7;
     transform: scale(1.05);
   }
 }
@@ -742,14 +737,14 @@ blockquote::before {
   position: absolute;
   inset: -2px;
   border-radius: var(--radius-xl);
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   opacity: 0;
   transition: opacity var(--transition-normal);
   z-index: -1;
-  animation: cta-rainbow 3s linear infinite;
+  animation: cta-flow 4s linear infinite;
 }
 
-@keyframes cta-rainbow {
+@keyframes cta-flow {
   0% {
     filter: hue-rotate(0deg);
   }
@@ -790,13 +785,13 @@ blockquote::before {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   opacity: 0;
   transition: opacity var(--transition-normal);
-  animation: card-scan 4s linear infinite;
+  animation: card-flow 5s linear infinite;
 }
 
-@keyframes card-scan {
+@keyframes card-flow {
   0% {
     transform: translateX(-100%);
   }
@@ -806,7 +801,7 @@ blockquote::before {
 }
 
 .card:hover {
-  border-color: var(--neon-purple);
+  border-color: var(--electric-purple);
   box-shadow: var(--shadow-xl);
   transform: translateY(-8px) scale(1.02);
   background: var(--dark-surface-lighter);
@@ -832,7 +827,7 @@ blockquote::before {
 }
 
 .post-card h3 a:hover {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
 }
 
 .post-card h3 a::after {
@@ -856,14 +851,14 @@ blockquote::before {
 }
 
 .read-more {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .read-more:hover {
-  color: var(--neon-pink);
+  color: var(--hot-pink);
 }
 
 .read-more::after {
@@ -930,7 +925,7 @@ blockquote::before {
 }
 
 .article-content li::marker {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
 }
 
 /* Footer */
@@ -949,12 +944,12 @@ blockquote::before {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--gradient-holographic);
+  background: var(--gradient-rainbow);
   opacity: 0.6;
-  animation: footer-flow 6s linear infinite;
+  animation: footer-drift 10s linear infinite;
 }
 
-@keyframes footer-flow {
+@keyframes footer-drift {
   0% {
     transform: translateX(-100%);
   }
@@ -969,7 +964,7 @@ blockquote::before {
 }
 
 .footer-content a {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
 }
 
 /* Special effects */
@@ -988,25 +983,25 @@ blockquote::before {
   background:
     radial-gradient(
       circle at 25% 25%,
-      rgba(139, 92, 246, 0.08) 0%,
+      rgba(71, 6, 249, 0.06) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 75% 75%,
-      rgba(255, 27, 141, 0.08) 0%,
+      rgba(255, 0, 55, 0.06) 0%,
       transparent 50%
     );
   pointer-events: none;
-  animation: surface-glow 10s ease-in-out infinite alternate;
+  animation: surface-drift 15s ease-in-out infinite alternate;
 }
 
-@keyframes surface-glow {
+@keyframes surface-drift {
   0% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scale(1);
   }
   100% {
-    opacity: 0.7;
+    opacity: 0.8;
     transform: scale(1.02);
   }
 }
@@ -1075,35 +1070,35 @@ blockquote::before {
 }
 
 .text-primary {
-  color: var(--neon-cyan);
+  color: var(--bright-cyan);
 }
 
 /* Focus styles for accessibility */
 *:focus {
-  outline: 2px solid var(--neon-cyan);
+  outline: 2px solid var(--bright-cyan);
   outline-offset: 2px;
 }
 
 button:focus,
 a:focus {
-  outline: 2px solid var(--neon-cyan);
+  outline: 2px solid var(--bright-cyan);
   outline-offset: 2px;
 }
 
-/* Clean Animation Classes */
-.holographic {
-  background: var(--gradient-holographic);
+/* Clean Gradient Classes */
+.gradient-text {
+  background: var(--gradient-rainbow);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: holographic-shift 3s ease-in-out infinite alternate;
+  animation: gradient-shift 4s ease-in-out infinite alternate;
 }
 
-@keyframes holographic-shift {
+@keyframes gradient-shift {
   0% {
     filter: hue-rotate(0deg) saturate(1);
   }
   100% {
-    filter: hue-rotate(60deg) saturate(1.3);
+    filter: hue-rotate(45deg) saturate(1.2);
   }
 }
