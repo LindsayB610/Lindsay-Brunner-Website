@@ -207,12 +207,19 @@ border-radius: var(--radius-xl);
 - **Hover**: Bold + gradient text effect (matches footer links)
 - **Spacing**: Tight gaps for cohesive grouping
 
-### Navigation Pages
+### Pages & Structure
 
-- **Home**: Accessible via LB logo (no redundant nav item)
-- **About**: Left-aligned content with headshot placeholder
-- **Thoughts**: Active blog section
+- **Homepage**: Hero + What I Do + Recent Thoughts sections
+- **About**: Left-aligned content with headshot placeholder (Hugo raw HTML enabled)
+- **Thoughts**: Builder.io-inspired list page with featured post + grid layout
+- **404**: Custom error page with gradient "404" and techy error messages
 - **Contact/Blog**: Legacy redirects to home
+
+### Content Strategy
+
+- **Recent Thoughts section**: Dynamic tiles that show placeholders until 3+ posts exist
+- **No category tags**: Clean, minimal approach to content organization
+- **Hitchhiker's Guide humor**: "Life, the universe, and the meaning of everything. Or something."
 
 ## File Structure
 
