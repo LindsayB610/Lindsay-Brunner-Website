@@ -110,6 +110,7 @@ html {
   font-family: var(--font-sans);
   scroll-behavior: smooth;
   background: var(--dark-bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -119,6 +120,8 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Simple scrollbar */
@@ -266,10 +269,10 @@ pre::before {
 
 @keyframes code-flow {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(50%);
   }
 }
 
@@ -296,12 +299,16 @@ blockquote {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container-narrow {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Header - Keep the parts they liked */
@@ -329,14 +336,14 @@ blockquote {
 
 @keyframes header-flow {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     opacity: 0;
   }
   50% {
     opacity: 0.8;
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(50%);
     opacity: 0;
   }
 }
@@ -346,6 +353,9 @@ blockquote {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-lg) 0;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
 .site-logo {
@@ -380,7 +390,9 @@ blockquote {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .main-nav a {
@@ -407,6 +419,8 @@ blockquote {
 .social-links {
   display: flex;
   gap: var(--space-sm);
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .social-link {
@@ -547,10 +561,10 @@ blockquote {
 
 @keyframes card-flow {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(50%);
   }
 }
 
@@ -705,10 +719,10 @@ blockquote {
 
 @keyframes footer-flow {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(50%);
   }
 }
 
