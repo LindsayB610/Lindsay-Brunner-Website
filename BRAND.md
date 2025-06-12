@@ -150,12 +150,43 @@ Subtle shapes inspired by modern tech design:
 - Add rounded corners
 - Use bright colors for large areas
 
-## Social Icons
+## Components
 
-- Color: `var(--brand-orange)` (#ff8800)
-- Style: Clean, recognizable filled icons
-- Hover: `var(--brand-warm)` (#ff4b6b)
-- Design: Borderless, minimal
+### Buttons (CTA)
+
+```css
+background: var(--gradient-main); /* Full gradient background */
+color: var(--dark-text); /* White text */
+font-family: var(--font-accent); /* Space Grotesk */
+font-size: 1.125rem; /* Larger, readable text */
+border-radius: var(--radius-xl); /* Rounded corners */
+box-shadow: pink glow effect; /* Elegant depth */
+```
+
+**Hover**: Lift + intensified glow + brightness increase
+
+### Cards
+
+```css
+background: var(--dark-surface);
+border-radius: var(--radius-xl);
+```
+
+**Behavior**: Static (no hover states for content tiles)
+**Usage**: Three "What I Do" tiles, blog post cards
+
+### Social Icons
+
+- **Color**: `var(--brand-orange)` (#ff8800)
+- **Style**: Clean, recognizable filled icons
+- **Hover**: `var(--brand-warm)` (#ff4b6b)
+- **Design**: Rounded, minimal
+
+### Footer Links
+
+- **Style**: Bold + gradient text effect
+- **Hover**: Brightness increase
+- **Applies to**: "Hugo" and "Builder.io" links
 
 ## Navigation Structure
 
