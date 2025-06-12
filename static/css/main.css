@@ -709,6 +709,29 @@ blockquote {
   line-height: 1.8;
 }
 
+/* About page specific styling */
+.about-content {
+  text-align: left;
+  max-width: 700px;
+}
+
+.about-content h1 {
+  text-align: left;
+  margin-bottom: var(--space-xl);
+}
+
+.about-content h2,
+.about-content h3 {
+  text-align: left;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.about-content p {
+  margin-bottom: var(--space-lg);
+  line-height: 1.7;
+}
+
 .article-content h2,
 .article-content h3,
 .article-content h4 {
