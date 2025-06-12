@@ -161,11 +161,18 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-accent);
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-lg);
   color: var(--dark-text);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-accent);
   letter-spacing: -0.02em;
 }
 
