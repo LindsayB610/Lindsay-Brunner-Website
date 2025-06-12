@@ -425,7 +425,7 @@ blockquote {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--color-yellow);
+  color: var(--brand-orange);
   transition: all var(--transition-normal);
   background: transparent;
   position: relative;
