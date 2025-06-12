@@ -7,7 +7,7 @@ description: "Developer advocate, content strategist, and digital architect who 
 
 <div class="headshot-placeholder">
   <div class="headshot-frame">
-    <span>📸 Headshot placeholder</span>
+    📸 Headshot placeholder
   </div>
 </div>
 
