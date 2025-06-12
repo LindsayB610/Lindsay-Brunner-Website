@@ -397,7 +397,7 @@ blockquote {
 }
 
 .main-nav a {
-  color: var(--brand-orange);
+  color: var(--brand-primary);
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-fast);
