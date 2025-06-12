@@ -73,7 +73,20 @@
     </div>
 
     <div class="grid grid-3">
+      {{ $recent_thoughts := where .Site.RegularPages "Type" "thoughts" | first
+      3 }} {{ if $recent_thoughts }} {{ range $recent_thoughts }}
       <div class="card">
+        <div class="post-meta">
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+        </div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary }}</p>
+      </div>
+      {{ end }} {{ else }}
+      <div class="card">
+        <div class="post-meta">
+          <time>Coming Soon</time>
+        </div>
         <h3>🎯 Developer Experience Design</h3>
         <p>
           Thoughts on creating developer tools and experiences that feel
@@ -83,6 +96,9 @@
       </div>
 
       <div class="card">
+        <div class="post-meta">
+          <time>Coming Soon</time>
+        </div>
         <h3>📝 Content That Converts</h3>
         <p>
           Strategies for technical content that actually drives results. How to
@@ -92,6 +108,9 @@
       </div>
 
       <div class="card">
+        <div class="post-meta">
+          <time>Coming Soon</time>
+        </div>
         <h3>🚀 Building in Public</h3>
         <p>
           Lessons learned from leading developer-focused initiatives. The
@@ -99,6 +118,7 @@
           that developers love.
         </p>
       </div>
+      {{ end }}
     </div>
   </div>
 </section>
