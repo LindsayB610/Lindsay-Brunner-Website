@@ -393,18 +393,34 @@ blockquote {
 }
 
 .main-nav a {
-  color: var(--dark-text-secondary);
+  color: var(--dark-text);
   font-weight: 500;
   text-decoration: none;
   transition: all var(--transition-fast);
   padding: var(--space-sm) var(--space-md);
   border: 1px solid transparent;
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--brand-orange);
+  transition: width var(--transition-normal);
 }
 
 .main-nav a:hover {
-  color: var(--color-pink);
-  background: rgba(255, 27, 141, 0.08);
-  border-color: var(--color-pink);
+  color: var(--brand-orange);
+  transform: translateY(-1px);
+}
+
+.main-nav a:hover::after {
+  width: 80%;
 }
 
 .main-nav a::after {
