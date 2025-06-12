@@ -595,37 +595,15 @@ blockquote {
   transition: opacity var(--transition-normal);
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-main);
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-  animation: card-flow 6s linear infinite;
-}
-
-@keyframes card-flow {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(50%);
-  }
-}
-
 .card:hover {
-  border-color: var(--color-pink);
+  border-color: var(--brand-primary);
   box-shadow: var(--shadow-xl);
   transform: translateY(-8px);
   background: var(--dark-surface-lighter);
 }
 
-.card:hover::before {
-  opacity: 1;
+.card:hover::after {
+  opacity: 0.2;
 }
 
 .post-card {
