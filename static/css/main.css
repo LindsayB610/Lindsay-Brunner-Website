@@ -143,13 +143,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gradient-main);
+  background: var(--brand-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-main);
-  filter: brightness(1.1);
+  background: var(--brand-warm);
 }
 
 /* Typography */
