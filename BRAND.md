@@ -82,9 +82,28 @@ background-size: 80% 100%; /* REQUIRED for gradient to reach yellow at end */
 
 ```css
 --font-sans:
-  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  "Space Grotesk", "Inter", system-ui, sans-serif; /* Primary body font */
+--font-accent:
+  "Space Grotesk", "Inter", system-ui, sans-serif; /* Headers h2-h6, navigation */
 --font-mono:
   "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas", monospace;
+```
+
+### 🔒 PROTECTED Typography Elements
+
+**Critical font assignments that must NOT be changed:**
+
+- **h1 "Lindsay Brunner"**: `font-family: 'Inter'` - Required for gradient to render correctly
+- **LB Logo**: `font-family: 'Inter'` - Must match h1 for visual consistency
+
+### Font Hierarchy
+
+```css
+h1: Inter font + gradient (LOCKED - do not change)
+h2-h6: Space Grotesk accent font with tight letter spacing
+Body copy: Space Grotesk for modern character
+Navigation: Space Grotesk accent font
+Buttons: Space Grotesk for consistency
 ```
 
 ### Heading Colors
@@ -98,14 +117,14 @@ h4: var(--color-yellow) (#ffdd00)
 
 ## Design Principles
 
-### Angular & Borderless
+### Modern Rounded Design
 
-Inspired by Vercel's design language:
+Evolved from angular to sophisticated rounded aesthetic:
 
-- No border-radius (all set to 0)
-- Minimal borders
-- Clean geometric shapes
-- Borderless social icons
+- Border radius restored: sm(6px), md(8px), lg(12px), xl(16px)
+- Rounded buttons, cards, and elements
+- Clean, approachable aesthetic
+- Maintains modern tech feel without harsh edges
 
 ### Geometric Elements
 
