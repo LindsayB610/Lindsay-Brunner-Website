@@ -274,6 +274,48 @@ Techy error console styling
   - `layouts/contact/index.html` → home
   - `layouts/blog/index.html` → home (legacy)
 
+## Content Management 📝
+
+### Adding New Thought Posts
+
+Hugo is fully configured for easy content management:
+
+**1. Create a new file** in `content/thoughts/` directory:
+
+```
+content/thoughts/my-new-post.md
+```
+
+**2. Add front matter** at the top:
+
+```markdown
+---
+title: "Your Post Title"
+date: 2024-01-20T10:00:00-08:00
+description: "Brief description of your post"
+---
+
+Your post content goes here using standard Markdown...
+```
+
+**3. Hugo automatically handles everything:**
+
+- Homepage Recent Thoughts switches from placeholders to real posts (when 3+ exist)
+- Thoughts page displays posts in Builder.io-style grid layout
+- Most recent post gets featured treatment
+- Clean URLs and responsive design
+- No manual updates needed
+
+### File Structure
+
+```
+content/thoughts/
+├── _index.md          # Page configuration (set up)
+├── post-1.md         # Your posts go here
+├── post-2.md         # Standard markdown files
+└── post-3.md         # With front matter
+```
+
 ## Current Status ✅
 
 ### Working Features
@@ -282,7 +324,7 @@ Techy error console styling
 - **Navigation**: Functional left-aligned nav with gradient hover effects
 - **Color System**: Three-color gradient + solid brand colors working harmoniously
 - **Responsive Design**: All layouts work across devices
-- **Content Management**: Dynamic thoughts section ready for posts
+- **Content Management**: Fully automated - just drop in markdown files
 - **404 Handling**: Custom error page with brand styling
 
 ### Protected Elements (🔒 NEVER CHANGE)
