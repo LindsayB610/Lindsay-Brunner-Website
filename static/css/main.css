@@ -164,7 +164,12 @@ h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.025em;
-  background: var(--gradient-main);
+  background: linear-gradient(
+    135deg,
+    var(--color-red) 0%,
+    var(--color-pink) 40%,
+    var(--color-yellow) 80%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
