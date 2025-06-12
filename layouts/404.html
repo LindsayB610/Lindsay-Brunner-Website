@@ -5,16 +5,15 @@
       style="
         font-size: 8rem;
         margin-bottom: 0;
-        background: var(--gradient-rainbow);
+        background: var(--gradient-main);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: gradient-flow 4s ease-in-out infinite alternate;
       "
     >
       404
     </h1>
-    <h2 style="color: var(--bright-cyan)">Page Not Found</h2>
+    <h2 style="color: var(--brand-primary)">Page Not Found</h2>
     <p>
       The page you're looking for seems to have wandered off into the digital
       void. Maybe it was moved, deleted, or you mistyped the URL?
@@ -31,13 +30,14 @@
     >
       <a href="/" class="hero-cta">Go home</a>
       <a
-        href="/blog/"
+        href="/thoughts/"
         class="hero-cta"
         style="
-          background: rgba(255, 255, 255, 0.05);
-          border: 2px solid var(--neon-green);
+          background: var(--dark-surface);
+          border: 2px solid var(--brand-primary);
+          color: var(--brand-primary);
         "
-        >Browse posts</a
+        >Browse thoughts</a
       >
     </div>
 
@@ -48,26 +48,14 @@
         color: var(--dark-text-muted);
         background: var(--dark-surface);
         padding: 2rem;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-xl);
         border: 1px solid var(--dark-border);
         position: relative;
-        overflow: hidden;
       "
     >
-      <div
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: var(--gradient-secondary);
-          animation: error-flow 3s linear infinite;
-        "
-      ></div>
-      <p style="color: var(--neon-green)">ERROR: PAGE_NOT_FOUND</p>
-      <p style="color: var(--bright-cyan)">STATUS: DISCONNECTED</p>
-      <p style="color: var(--electric-red)">
+      <p style="color: var(--color-yellow)">ERROR: PAGE_NOT_FOUND</p>
+      <p style="color: var(--brand-primary)">STATUS: DISCONNECTED</p>
+      <p style="color: var(--color-red)">
         SUGGESTION: CHECK_URL_OR_NAVIGATE_HOME
       </p>
     </div>
