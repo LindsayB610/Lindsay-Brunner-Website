@@ -1,0 +1,16 @@
+{
+  "name": "lindsay-brunner-hugo-site",
+  "version": "1.0.0",
+  "description": "Lindsay Brunner's personal website built with Hugo",
+  "scripts": {
+    "dev": "hugo server -D --bind 0.0.0.0",
+    "build": "hugo --gc --minify",
+    "start": "hugo server -D --bind 0.0.0.0"
+  },
+  "dependencies": {
+    "hugo-bin": "^0.104.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
