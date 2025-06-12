@@ -64,11 +64,11 @@ h6 {
     var(--color-yellow) 100%
   );
 
-  /* Hero-specific gradient with more yellow */
+  /* Hero-specific gradient with maximum yellow for the 'r' */
   --gradient-hero: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-pink) 30%,
+    var(--color-pink) 20%,
     var(--color-yellow) 100%
   );
 
