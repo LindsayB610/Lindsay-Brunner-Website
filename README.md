@@ -88,38 +88,109 @@ Before you begin, ensure you have the following installed:
 
 ## ✍️ Content Management
 
-### Adding New Blog Posts
+### Adding New Thought Leadership Content
 
-1. Create a new Markdown file in the appropriate section:
+The "thoughts" section is where Lindsay shares insights on developer advocacy, content strategy, and technical leadership. Here's how to add new .md files:
+
+1. **Create a new thought piece using Hugo**:
 
    ```bash
-   # For blog posts
-   hugo new blog/your-post-title.md
+   # Navigate to your project directory
+   cd lindsay-brunner-hugo-site
 
-   # For thought leadership content
+   # Create a new thought piece (Hugo will use the archetype template)
    hugo new thoughts/your-thought-title.md
    ```
 
-2. Edit the front matter and content:
+2. **Alternative: Manual file creation**:
+
+   ```bash
+   # Create the file manually in the thoughts directory
+   touch content/thoughts/your-thought-title.md
+   ```
+
+3. **Set up the front matter** (the metadata at the top of your .md file):
 
    ```markdown
    ---
-   title: "Your Post Title"
-   date: 2024-01-01T00:00:00Z
+   title: "Your Thought Title"
+   date: 2024-01-15T10:30:00Z
    draft: false
-   description: "Brief description of your post"
+   description: "A compelling description that will appear in listings and SEO"
+   tags: ["developer-advocacy", "content-strategy", "leadership"]
+   categories: ["thoughts"]
    ---
 
-   Your content here...
+   Your thought leadership content goes here...
    ```
 
-3. Preview your changes with `npm run dev`
+4. **Front matter options for thoughts**:
 
-### Updating Pages
+   - `title`: The main title of your piece
+   - `date`: Publication date (Hugo sorts by this)
+   - `draft`: Set to `true` to hide from production, `false` to publish
+   - `description`: Used for SEO and content previews
+   - `tags`: Topic tags for categorization
+   - `categories`: Content categories (typically "thoughts" for this section)
+
+5. **Write your content** using Markdown syntax:
+
+   ```markdown
+   ## Your Section Header
+
+   Your thoughtful insights here. You can use:
+
+   - **Bold text** for emphasis
+   - _Italic text_ for subtle emphasis
+   - `code snippets` for technical terms
+   - [Links](https://example.com) to external resources
+
+   ### Subsections
+
+   Break up your thoughts into digestible sections.
+
+   > Use blockquotes for important insights or quotes
+   ```
+
+6. **Preview your work**:
+
+   ```bash
+   # Start the development server to see your changes
+   npm run dev
+
+   # Visit http://localhost:1313/thoughts/ to see your new content
+   ```
+
+7. **File naming conventions**:
+   - Use lowercase letters
+   - Use hyphens instead of spaces: `my-great-thought.md`
+   - Be descriptive but concise: `future-of-developer-experience.md`
+   - Avoid special characters or numbers at the start
+
+### Adding New Blog Posts
+
+1. Create a new Markdown file in the blog section:
+
+   ```bash
+   # For general blog posts
+   hugo new blog/your-post-title.md
+   ```
+
+2. Follow the same front matter structure as thoughts but use `categories: ["blog"]`
+
+### Updating Existing Pages
 
 - **Homepage**: Edit `content/_index.md`
 - **About**: Edit `content/about/index.md`
 - **Contact**: Edit `content/contact/_index.md`
+- **Thoughts listing page**: Edit `content/thoughts/_index.md`
+
+### Hugo Content Organization Tips
+
+- **Drafts**: Set `draft: true` to work on content without publishing
+- **Future dates**: Hugo won't show posts with future dates unless in draft mode
+- **URL structure**: Files in `thoughts/` become `/thoughts/filename/`
+- **Ordering**: Hugo sorts by date (newest first) by default
 
 ## 🎨 Styling
 
