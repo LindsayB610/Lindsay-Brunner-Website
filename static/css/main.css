@@ -399,11 +399,13 @@ blockquote {
 
 .main-nav a {
   color: var(--brand-primary);
-  font-weight: 600;
+  font-family: var(--font-accent);
+  font-weight: 500;
   text-decoration: none;
   transition: all var(--transition-fast);
   padding: var(--space-sm) var(--space-md);
   border: 1px solid transparent;
+  letter-spacing: -0.02em;
 }
 
 .main-nav a:hover {
