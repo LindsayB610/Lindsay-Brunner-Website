@@ -138,11 +138,18 @@ Subtle shapes inspired by modern tech design:
 - Hover: `var(--brand-warm)` (#ff4b6b)
 - Design: Borderless, minimal
 
+## Navigation Structure
+
+Main navigation: Home, About, Blog
+
+- Contact page: Redirects to home (removed from navigation)
+
 ## File Structure
 
 - Brand colors: `static/css/main.css` (CSS custom properties)
 - Social icons: `layouts/partials/header.html`
 - Site title: `config.toml` (set to "LB")
+- Contact redirect: `layouts/contact/index.html`
 
 ---
 
