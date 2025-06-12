@@ -5,8 +5,10 @@ theme = "ananke"
 
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
-Paginate = 9
 googleAnalytics = ""
+
+[pagination]
+pagerSize = 9
 enableRobotsTXT = true
 
 [sitemap]
@@ -39,4 +41,3 @@ enableRobotsTXT = true
   mian_content_classes = "lato bg-near-white"
 
   recent_copy = "Latest Blog Posts"
-  
