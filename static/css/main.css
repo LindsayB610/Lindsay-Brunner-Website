@@ -56,8 +56,16 @@ h6 {
   --dark-text-secondary: #cccccc;
   --dark-text-muted: #888888;
 
-  /* Red to Pink to Yellow gradient with maximum yellow prominence */
+  /* Red to Pink to Yellow gradient - header version */
   --gradient-main: linear-gradient(
+    135deg,
+    var(--color-red) 0%,
+    var(--color-pink) 50%,
+    var(--color-yellow) 100%
+  );
+
+  /* Hero-specific gradient with more yellow */
+  --gradient-hero: linear-gradient(
     135deg,
     var(--color-red) 0%,
     var(--color-pink) 30%,
@@ -156,7 +164,7 @@ h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.025em;
-  background: var(--gradient-main);
+  background: var(--gradient-hero);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
