@@ -831,7 +831,16 @@ blockquote {
 }
 
 .footer-content a {
-  color: var(--color-pink);
+  font-weight: 700;
+  background: var(--gradient-main);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all var(--transition-fast);
+}
+
+.footer-content a:hover {
+  filter: brightness(1.2);
 }
 
 /* Background sections */
