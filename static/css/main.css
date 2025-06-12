@@ -188,19 +188,6 @@ h1 {
 h2 {
   font-size: 2.5rem;
   color: var(--brand-primary);
-  position: relative;
-}
-
-h2::after {
-  content: "";
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--gradient-main);
-  border-radius: 3px;
 }
 
 h3 {
