@@ -9,10 +9,10 @@
         <time>{{ .Date.Format "January 2, 2006" }}</time>
         {{ if .Params.tags }}
         <span>•</span>
-        <span>{{ delimit .Params.tags " | " }}</span>
+        <span>{{ delimit .Params.tags ", " }}</span>
         {{ end }} {{ if .Site.Params.show_reading_time }}
         <span>•</span>
-        <span>{{ .ReadingTime }} min transmission</span>
+        <span>{{ .ReadingTime }} min read</span>
         {{ end }}
       </div>
 
@@ -44,23 +44,20 @@
         border: 1px solid var(--dark-border);
       "
     >
-      <h4 style="margin-bottom: 1rem; color: var(--neon-purple)">
-        Tagged with:
-      </h4>
+      <h4 style="margin-bottom: 1rem; color: var(--primary-blue)">Topics:</h4>
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
         {{ range .Params.tags }}
         <span
           style="
-            background: rgba(57, 255, 20, 0.1);
-            color: var(--neon-green);
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-blue);
             padding: 0.5rem 1rem;
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             font-size: 0.875rem;
-            font-family: var(--font-mono);
-            border: 1px solid rgba(57, 255, 20, 0.3);
-            text-shadow: var(--glow-green);
+            font-weight: 500;
+            border: 1px solid rgba(99, 102, 241, 0.2);
           "
-          >#{{ . }}</span
+          >{{ . }}</span
         >
         {{ end }}
       </div>
@@ -71,10 +68,10 @@
 
 <section class="section bg-surface">
   <div class="container-narrow text-center">
-    <h3>Enjoyed this transmission?</h3>
+    <h3>Found this useful?</h3>
     <p>
-      Follow me for more content on developer advocacy, technical writing, and
-      building experiences that developers actually love.
+      Follow me for more insights on developer advocacy, technical leadership,
+      and building programs that drive real business impact.
     </p>
     <div
       style="
@@ -95,9 +92,9 @@
         class="hero-cta"
         style="
           background: rgba(255, 255, 255, 0.05);
-          border: 2px solid var(--neon-purple);
+          border: 2px solid var(--primary-blue);
         "
-        >More transmissions</a
+        >More insights</a
       >
     </div>
   </div>

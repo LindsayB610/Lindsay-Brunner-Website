@@ -1,23 +1,13 @@
 {{ define "main" }}
 <section class="section">
   <div class="container-narrow text-center">
-    <h1
-      style="
-        font-size: 8rem;
-        margin-bottom: 0;
-        background: var(--gradient-holographic);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: var(--shadow-neon);
-      "
-    >
+    <h1 style="font-size: 6rem; margin-bottom: 0; color: var(--primary-blue)">
       404
     </h1>
-    <h2>Signal Lost</h2>
+    <h2>Page Not Found</h2>
     <p>
-      The page you're looking for has vanished into the digital void. Maybe it
-      got corrupted, or perhaps you mistyped the coordinates?
+      The page you're looking for doesn't exist. It may have been moved,
+      deleted, or you may have entered the URL incorrectly.
     </p>
 
     <div
@@ -29,27 +19,16 @@
         flex-wrap: wrap;
       "
     >
-      <a href="/" class="hero-cta">Return to base</a>
+      <a href="/" class="hero-cta">Go Home</a>
       <a
         href="/blog/"
         class="hero-cta"
         style="
           background: rgba(255, 255, 255, 0.05);
-          border: 2px solid var(--neon-green);
+          border: 2px solid var(--primary-blue);
         "
-        >Browse transmissions</a
+        >Browse Blog</a
       >
-    </div>
-
-    <div
-      style="
-        margin-top: 4rem;
-        font-family: var(--font-mono);
-        color: var(--dark-text-muted);
-      "
-    >
-      <p>Error code: PAGE_NOT_FOUND</p>
-      <p>Status: DISCONNECTED</p>
     </div>
   </div>
 </section>
