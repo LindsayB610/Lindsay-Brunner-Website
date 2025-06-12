@@ -1,8 +1,6 @@
 ---
 title: "Thoughts"
-description: "Insights, observations, and ideas about technology, developer experience, and building things that matter."
+description: "Life, the universe, and the meaning of everything. Or something."
 ---
 
-# Thoughts
-
-Welcome to my collection of insights, observations, and ideas about technology, developer experience, and building things that matter.
+Life, the universe, and the meaning of everything. Or something.
