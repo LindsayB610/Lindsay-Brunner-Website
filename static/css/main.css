@@ -1,4 +1,4 @@
-/* Sci-Fi Jem Holographic Theme */
+/* Clean Holographic Theme with Geometric Patterns */
 *,
 *::before,
 *::after {
@@ -40,7 +40,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* Cyberpunk Holographic Color Palette */
+/* Holographic Color Palette */
 :root {
   /* Neon Colors */
   --neon-pink: #ff0080;
@@ -51,14 +51,14 @@ h6 {
   --electric-blue: #0080ff;
   --hot-magenta: #ff006e;
 
-  /* Sci-Fi Accent Colors */
+  /* Accent Colors */
   --plasma-pink: #ff1b8d;
   --cyber-cyan: #00e5ff;
   --void-purple: #7c4dff;
   --matrix-green: #39ff14;
   --laser-red: #ff073a;
 
-  /* Dark Cyberpunk Base */
+  /* Dark Base */
   --dark-bg: #0a0a0f;
   --dark-surface: #151520;
   --dark-surface-lighter: #1e1e2e;
@@ -67,7 +67,7 @@ h6 {
   --dark-text-secondary: #b8b8cc;
   --dark-text-muted: #7a7a8a;
 
-  /* Holographic Gradients */
+  /* Clean Gradients */
   --gradient-holographic: linear-gradient(
     135deg,
     var(--neon-pink) 0%,
@@ -115,19 +115,13 @@ h6 {
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
 
-  /* Glows and Effects */
-  --glow-pink:
-    0 0 20px rgba(255, 27, 141, 0.5), 0 0 40px rgba(255, 27, 141, 0.3);
-  --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
-  --glow-purple:
-    0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
-  --glow-green:
-    0 0 20px rgba(57, 255, 20, 0.5), 0 0 40px rgba(57, 255, 20, 0.3);
-  --glow-matrix:
-    0 0 30px rgba(57, 255, 20, 0.4), 0 0 60px rgba(57, 255, 20, 0.2);
-
-  --shadow-neon:
-    0 0 30px rgba(255, 27, 141, 0.3), 0 0 60px rgba(0, 255, 255, 0.2);
+  /* Clean Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --shadow-cyber:
     0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
 
@@ -148,39 +142,102 @@ body {
   font-family: var(--font-sans);
   color: var(--dark-text);
   background: var(--dark-bg);
-  background-image:
+  background-image: 
+    /* Geometric patterns */
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 27, 141, 0.15) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(0, 255, 255, 0.15) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 30%
+    ),
     radial-gradient(
       circle at 20% 80%,
-      rgba(255, 27, 141, 0.08) 0%,
-      transparent 50%
+      rgba(57, 255, 20, 0.08) 0%,
+      transparent 25%
     ),
     radial-gradient(
-      circle at 80% 20%,
-      rgba(0, 255, 255, 0.08) 0%,
-      transparent 50%
+      circle at 80% 30%,
+      rgba(255, 255, 0, 0.06) 0%,
+      transparent 20%
     ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(139, 92, 246, 0.05) 0%,
-      transparent 50%
-    ),
+    /* Grid overlay */
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    /* Diagonal lines */
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        rgba(255, 27, 141, 0.03) 1px,
+        transparent 2px,
+        transparent 60px
+      ),
     repeating-linear-gradient(
-      90deg,
+      -45deg,
       transparent 0px,
-      rgba(255, 255, 255, 0.01) 1px,
+      rgba(0, 255, 255, 0.03) 1px,
       transparent 2px,
-      transparent 120px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      rgba(255, 255, 255, 0.01) 1px,
-      transparent 2px,
-      transparent 120px
+      transparent 80px
     );
+  background-size:
+    800px 800px,
+    600px 600px,
+    1000px 400px,
+    700px 700px,
+    500px 500px,
+    50px 50px,
+    50px 50px,
+    120px 120px,
+    160px 160px;
+  background-position:
+    0% 0%,
+    100% 100%,
+    50% 0%,
+    0% 100%,
+    100% 0%,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
   font-size: 1rem;
   line-height: 1.6;
   min-height: 100vh;
+  animation: background-shift 60s ease-in-out infinite alternate;
+}
+
+@keyframes background-shift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 100%,
+      50% 0%,
+      0% 100%,
+      100% 0%,
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      10% 10%,
+      90% 90%,
+      60% 10%,
+      10% 90%,
+      90% 10%,
+      25px 25px,
+      -25px -25px,
+      60px 60px,
+      -80px -80px;
+  }
 }
 
 /* Scrollbar styling */
@@ -233,25 +290,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: holographic-shimmer 4s ease-in-out infinite alternate;
-  text-shadow: 0 0 30px rgba(255, 27, 141, 0.3);
   position: relative;
-}
-
-h1::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--gradient-holographic);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: blur(1px);
-  opacity: 0.5;
-  z-index: -1;
-  animation: holographic-glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes holographic-shimmer {
@@ -259,28 +298,19 @@ h1::after {
     filter: hue-rotate(0deg) brightness(1) saturate(1);
   }
   50% {
-    filter: hue-rotate(30deg) brightness(1.2) saturate(1.3);
+    filter: hue-rotate(30deg) brightness(1.1) saturate(1.2);
   }
   100% {
-    filter: hue-rotate(60deg) brightness(1.1) saturate(1.1);
-  }
-}
-
-@keyframes holographic-glow {
-  0% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0.6;
-    transform: scale(1.02);
+    filter: hue-rotate(60deg) brightness(1.05) saturate(1.1);
   }
 }
 
 h2 {
   font-size: 2.5rem;
-  color: var(--neon-cyan);
-  text-shadow: var(--glow-cyan);
+  background: var(--gradient-plasma);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: relative;
 }
 
@@ -311,13 +341,11 @@ h2::after {
 h3 {
   font-size: 1.875rem;
   color: var(--neon-purple);
-  text-shadow: var(--glow-purple);
 }
 
 h4 {
   font-size: 1.5rem;
   color: var(--neon-pink);
-  text-shadow: var(--glow-pink);
 }
 
 p {
@@ -335,7 +363,6 @@ a {
 
 a:hover {
   color: var(--neon-pink);
-  text-shadow: var(--glow-pink);
 }
 
 a::after {
@@ -366,13 +393,11 @@ a:hover::after {
 code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: rgba(57, 255, 20, 0.1);
+  background: rgba(57, 255, 20, 0.15);
   color: var(--matrix-green);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(57, 255, 20, 0.3);
-  text-shadow: var(--glow-green);
-  box-shadow: var(--glow-green);
 }
 
 pre {
@@ -383,7 +408,6 @@ pre {
   padding: var(--space-lg);
   overflow-x: auto;
   margin-bottom: var(--space-lg);
-  box-shadow: var(--glow-cyan);
   position: relative;
 }
 
@@ -412,8 +436,6 @@ pre code {
   border: none;
   padding: 0;
   color: var(--dark-text);
-  text-shadow: none;
-  box-shadow: none;
 }
 
 blockquote {
@@ -425,7 +447,6 @@ blockquote {
   background: rgba(255, 27, 141, 0.05);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: var(--space-lg);
-  box-shadow: var(--glow-pink);
   position: relative;
 }
 
@@ -464,7 +485,7 @@ blockquote::before {
 
 /* Header */
 .site-header {
-  background: rgba(10, 10, 15, 0.9);
+  background: rgba(10, 10, 15, 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--dark-border);
   position: sticky;
@@ -516,7 +537,6 @@ blockquote::before {
   text-decoration: none;
   letter-spacing: -0.025em;
   transition: all var(--transition-normal);
-  text-shadow: var(--glow-cyan);
   animation: logo-pulse 3s ease-in-out infinite alternate;
 }
 
@@ -557,8 +577,6 @@ blockquote::before {
   color: var(--neon-cyan);
   background: rgba(0, 255, 255, 0.1);
   border-color: var(--neon-cyan);
-  box-shadow: var(--glow-cyan);
-  text-shadow: var(--glow-cyan);
 }
 
 .main-nav a::after {
@@ -611,7 +629,6 @@ blockquote::before {
   color: var(--neon-cyan);
   transform: translateY(-2px) scale(1.05);
   border-color: transparent;
-  box-shadow: var(--glow-cyan);
 }
 
 .social-link:hover::before {
@@ -620,17 +637,14 @@ blockquote::before {
 
 .social-link:nth-child(2):hover {
   color: var(--neon-purple);
-  box-shadow: var(--glow-purple);
 }
 
 .social-link:nth-child(3):hover {
   color: var(--neon-pink);
-  box-shadow: var(--glow-pink);
 }
 
 .social-link:nth-child(4):hover {
   color: var(--neon-green);
-  box-shadow: var(--glow-green);
 }
 
 .social-link svg {
@@ -662,13 +676,18 @@ blockquote::before {
   bottom: 0;
   background:
     radial-gradient(
-      circle at 25% 25%,
+      ellipse at center,
       rgba(255, 27, 141, 0.1) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 20% 80%,
+      rgba(0, 255, 255, 0.08) 0%,
       transparent 50%
     ),
     radial-gradient(
-      circle at 75% 75%,
-      rgba(0, 255, 255, 0.1) 0%,
+      ellipse at 80% 20%,
+      rgba(139, 92, 246, 0.06) 0%,
       transparent 50%
     );
   animation: hero-pulse 8s ease-in-out infinite alternate;
@@ -678,9 +697,11 @@ blockquote::before {
 @keyframes hero-pulse {
   0% {
     opacity: 0.3;
+    transform: scale(1);
   }
   100% {
     opacity: 0.6;
+    transform: scale(1.05);
   }
 }
 
@@ -741,7 +762,6 @@ blockquote::before {
   transform: translateY(-3px) scale(1.02);
   border-color: transparent;
   color: var(--dark-text);
-  box-shadow: var(--shadow-neon);
 }
 
 .hero-cta:hover::before {
@@ -787,7 +807,7 @@ blockquote::before {
 
 .card:hover {
   border-color: var(--neon-purple);
-  box-shadow: var(--shadow-cyber), var(--glow-purple);
+  box-shadow: var(--shadow-xl);
   transform: translateY(-8px) scale(1.02);
   background: var(--dark-surface-lighter);
 }
@@ -813,7 +833,6 @@ blockquote::before {
 
 .post-card h3 a:hover {
   color: var(--neon-cyan);
-  text-shadow: var(--glow-cyan);
 }
 
 .post-card h3 a::after {
@@ -845,7 +864,6 @@ blockquote::before {
 
 .read-more:hover {
   color: var(--neon-pink);
-  text-shadow: var(--glow-pink);
 }
 
 .read-more::after {
@@ -985,9 +1003,11 @@ blockquote::before {
 @keyframes surface-glow {
   0% {
     opacity: 0.3;
+    transform: scale(1);
   }
   100% {
     opacity: 0.7;
+    transform: scale(1.02);
   }
 }
 
@@ -1070,35 +1090,7 @@ a:focus {
   outline-offset: 2px;
 }
 
-/* Sci-Fi Animation Classes */
-.cyber-glow {
-  animation: cyber-pulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes cyber-pulse {
-  0% {
-    box-shadow: var(--glow-cyan);
-    filter: brightness(1);
-  }
-  100% {
-    box-shadow: var(--glow-pink);
-    filter: brightness(1.2);
-  }
-}
-
-.matrix-flow {
-  animation: matrix-scroll 20s linear infinite;
-}
-
-@keyframes matrix-scroll {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
-}
-
+/* Clean Animation Classes */
 .holographic {
   background: var(--gradient-holographic);
   background-clip: text;
