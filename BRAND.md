@@ -140,9 +140,10 @@ Subtle shapes inspired by modern tech design:
 
 ## Navigation Structure
 
-Main navigation: Home, About, Blog
+Main navigation: Home, About, Thoughts
 
 - Contact page: Redirects to home (removed from navigation)
+- Blog/Thoughts pages: Redirect to home until content is added
 
 ## File Structure
 
