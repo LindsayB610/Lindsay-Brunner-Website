@@ -5,6 +5,12 @@ description: "Developer advocate, content strategist, and digital architect who 
 
 # About Lindsay
 
+<div class="headshot-placeholder">
+  <div class="headshot-frame">
+    <span>📸 Headshot placeholder</span>
+  </div>
+</div>
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
 ## Experience
