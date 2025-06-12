@@ -525,8 +525,7 @@ blockquote {
 
 .hero-cta:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(255, 27, 141, 0.4);
-  filter: brightness(1.1);
+  box-shadow: 0 8px 30px rgba(255, 27, 141, 0.5);
 }
 
 .hero-cta::after {
