@@ -13,9 +13,6 @@
       <div class="featured-content">
         <div class="post-meta">
           <time>{{ $featured.Date.Format "January 2, 2006" }}</time>
-          {{ if $featured.Params.tags }}
-          <span class="post-tag">{{ index $featured.Params.tags 0 }}</span>
-          {{ end }}
         </div>
         <h2><a href="{{ $featured.Permalink }}">{{ $featured.Title }}</a></h2>
         <p class="featured-excerpt">{{ $featured.Summary }}</p>
