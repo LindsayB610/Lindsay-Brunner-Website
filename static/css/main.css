@@ -494,6 +494,7 @@ blockquote {
   text-decoration: none;
   transition: all var(--transition-normal);
   border: none;
+  border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(255, 27, 141, 0.3);
