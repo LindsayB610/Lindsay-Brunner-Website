@@ -5,14 +5,7 @@ description: "Developer advocate, content strategist, and digital architect who 
 
 # About Lindsay
 
-{{< raw >}}
-
-<div class="headshot-placeholder">
-  <div class="headshot-frame">
-    📸 Headshot placeholder
-  </div>
-</div>
-{{< /raw >}}
+{{< headshot-placeholder >}}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
