@@ -685,6 +685,38 @@ blockquote {
 /* Content sections */
 .section {
   padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+/* Decorative lines between sections */
+.section:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--brand-primary),
+    transparent
+  );
+  opacity: 0.3;
+}
+
+/* Subtle geometric accent */
+.section:nth-child(odd)::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-warm));
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  opacity: 0.04;
 }
 
 .section-title {
