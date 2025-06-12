@@ -397,8 +397,8 @@ blockquote {
 }
 
 .main-nav a {
-  color: var(--dark-text);
-  font-weight: 500;
+  color: var(--dark-text-secondary);
+  font-weight: 700;
   text-decoration: none;
   transition: all var(--transition-fast);
   padding: var(--space-sm) var(--space-md);
