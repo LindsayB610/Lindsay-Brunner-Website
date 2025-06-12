@@ -263,6 +263,7 @@ Techy error console styling
   - `layouts/index.html` (homepage with What I Do + Recent Thoughts)
   - `layouts/about/single.html` (left-aligned about page)
   - `layouts/thoughts/list.html` (Builder.io inspired blog layout)
+  - `layouts/_default/list.html` (override for theme conflicts - ensures thoughts page works)
   - `layouts/404.html` (custom error page)
 - **Content**:
   - `content/about/index.md` (about page with headshot placeholder)
