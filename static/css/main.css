@@ -378,6 +378,13 @@ blockquote {
 }
 
 .site-logo {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
   background: var(--gradient-main);
