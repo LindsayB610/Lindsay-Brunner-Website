@@ -56,12 +56,12 @@ h6 {
   --dark-text-secondary: #cccccc;
   --dark-text-muted: #888888;
 
-  /* Yellow to Pink to Red gradient */
+  /* Red to Pink to Yellow gradient - reversed */
   --gradient-main: linear-gradient(
     135deg,
-    var(--color-yellow) 0%,
+    var(--color-red) 0%,
     var(--color-pink) 50%,
-    var(--color-red) 100%
+    var(--color-yellow) 100%
   );
 
   /* Typography */
@@ -155,21 +155,12 @@ h6 {
 h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   background: var(--gradient-main);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gentle-shift 8s ease-in-out infinite alternate;
-}
-
-@keyframes gentle-shift {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(10deg);
-  }
+  animation: logo-pulse 4s ease-in-out infinite alternate;
 }
 
 h2 {
