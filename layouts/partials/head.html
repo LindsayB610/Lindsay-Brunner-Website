@@ -2,43 +2,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
 
-{{/* Primary Meta Tags */}}
-<title>{{ if .IsHome }}{{ .Site.Title }} - {{ .Site.Params.description }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-<meta name="title" content="{{ if .IsHome }}{{ .Site.Title }} - {{ .Site.Params.description }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ .Site.Params.description }}">
 <meta name="author" content="{{ .Site.Params.author }}">
-<meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
 
-{{/* Open Graph / Facebook */}}
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-<meta property="og:site_name" content="{{ .Site.Title }}">
-{{ with .Params.featured_image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
-
-{{/* Twitter */}}
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="{{ .Permalink }}">
-<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-{{ with .Params.featured_image }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
-
-{{/* Canonical URL */}}
 <link rel="canonical" href="{{ .Permalink }}">
 
-{{/* RSS Feed */}}
-{{ with .OutputFormats.Get "RSS" }}
-<link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
-{{ end }}
-
-{{/* Fonts */}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-{{/* CSS */}}
 <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
 
-{{/* Hugo Generator */}}
 {{ hugo.Generator }}
