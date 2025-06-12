@@ -567,8 +567,7 @@ blockquote {
 /* Cards */
 .card {
   background: var(--dark-surface);
-  border: 1px solid var(--dark-border);
-  border-radius: var(--radius-xl);
+  border: none;
   padding: var(--space-xl);
   transition: all var(--transition-normal);
   position: relative;
