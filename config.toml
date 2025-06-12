@@ -31,3 +31,8 @@ enableRobotsTXT = true
 
   # SEO
   keywords = "developer advocacy, content strategy, technical writing, developer experience"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
