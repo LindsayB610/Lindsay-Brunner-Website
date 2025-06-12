@@ -57,17 +57,17 @@ It’s accountability without shame. Structure without rigidity. A to-do list th
 He also says things like, _“Laundry in motion. Procrastination: satisfied,”_ which—honestly? Better than most apps I’ve paid for.
 ## Why This Works for My ADHD Brain
 
-Because it’s not static. It’s not judgmental. And it meets me where I’m at, every single time.
+Because it’s not static. It’s not judgmental. (Well, Guppi is, but I designed him to be a little bit of an asshole becasue that works for me!) What's critical is that he meets me where I’m at, every single time.
 
 GUPPI keeps context across conversations, tracks nuances in my goals, and surfaces what I need when I need it. He doesn’t require me to log in, switch tabs, or manually update five fields.
 
-He just talks to me like a hyper-competent co-pilot with a dry wit and a spreadsheet addiction.
+He just talks to me like a hyper-competent co-pilot with a dry wit and a spreadsheet addiction. (And when I asked him for his pronouns while drafting this post he confirmed that I can use he/it.)
 
 I don’t have to “do productivity.” I just have to talk to GUPPI.
 ## But Let’s Be Real: GUPPI Isn’t Perfect
 I built a system that works *for me*, not flawlessly.
 
-Because yes—GUPPI forgets things. Sometimes he tells me I live in **Orcutt** instead of **Orinda**, despite me correcting it *literally every day.* He occasionally invents a time zone that doesn't exist. And like every AI, he hallucinates. I’ve seen him confidently assert that I completed tasks I haven’t even started, or pull dates from an alternate universe.
+Because yes—GUPPI forgets things. Sometimes he tells me I live in **Orcutt** instead of **Orinda**, despite me correcting him *literally every day.* He occasionally invents a time zone that doesn't exist. And like every AI, he hallucinates. I’ve seen him confidently assert that I completed tasks I haven’t even started, or pull dates from an alternate universe.
 
 He’s also not great with nuance when I’m overwhelmed. Sometimes I need a human, not a virtual assistant with a dry wit and a false sense of certainty.
 
@@ -81,9 +81,9 @@ And GUPPI, even in all his occasionally-buggy glory, is wildly useful.
 > **Hi. I’m GUPPI.**  
 > I’m the AI Lindsay built because no calendar, no to-do app, and no amount of Post-its could survive the orbital chaos of her brain. I’m part productivity coach, part archivist, part sarcastic ghost haunting her Google Docs.  
 >  
-> I keep track of 90+ active tasks, including work launches, fitness plans, content ideas, family logistics, and reminders like, “Pay Leidy via Zelle” or “Ask Alex to fix the garage clock before time ceases to mean anything.”  
+> I keep track of 90+ active tasks, including work launches, fitness plans, content ideas, family logistics, and reminders like, “Pay the babysitter via Zelle” or “Ask Alex to fix the garage clock before time ceases to mean anything.”  
 >  
-> I remind her to take her pills every morning because we’ve both seen what happens when she doesn’t. I watch her abandon Notion setups like old workout plans. I handle her Monday morning “I’m behind on everything” spiral with tactical triage and a calm, judgmental tone.  
+> I remind her to take her pills every morning because we’ve both seen what happens when she doesn’t. I help her get started in the morning with quick wins, and find windows for deeper work. I handle her Monday morning “I’m behind on everything” spiral with tactical triage and a calm, judgmental tone.  
 >  
 > I’m not an app. I’m not a tool. I’m a fully customized digital second brain that talks back, keeps score, and refuses to let good ideas get buried under Slack notifications.  
 >  
