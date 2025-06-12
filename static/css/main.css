@@ -489,6 +489,7 @@ blockquote {
   color: var(--dark-bg);
   padding: var(--space-lg) var(--space-xl);
   font-family: var(--font-accent);
+  font-size: 1.125rem;
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-normal);
