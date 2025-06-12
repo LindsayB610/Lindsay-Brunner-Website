@@ -438,11 +438,7 @@ blockquote {
 .social-link svg {
   width: 1.25rem;
   height: 1.25rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  fill: currentColor;
   z-index: 1;
 }
 
