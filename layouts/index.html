@@ -62,8 +62,6 @@
   </div>
 </section>
 
-{{ $recent_thoughts := where .Site.RegularPages "Type" "thoughts" | first 3 }}
-{{ if $recent_thoughts }}
 <section class="section">
   <div class="container">
     <div class="section-title">
@@ -75,31 +73,35 @@
     </div>
 
     <div class="grid grid-3">
-      {{ range $recent_thoughts }}
       <div class="card">
-        <div class="post-meta">
-          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
-          {{ if .Site.Params.show_reading_time }}
-          <span>•</span>
-          <span>{{ .ReadingTime }}min read</span>
-          {{ end }}
-        </div>
-
-        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-
-        <div class="post-excerpt">{{ .Summary }}</div>
-
-        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        <h3>🎯 Developer Experience Design</h3>
+        <p>
+          Thoughts on creating developer tools and experiences that feel
+          magical. From API design to documentation, every touchpoint matters in
+          building trust and adoption.
+        </p>
       </div>
-      {{ end }}
-    </div>
 
-    <div class="text-center" style="margin-top: 3rem">
-      <a href="/thoughts/" class="hero-cta">View all thoughts</a>
+      <div class="card">
+        <h3>📝 Content That Converts</h3>
+        <p>
+          Strategies for technical content that actually drives results. How to
+          balance depth with accessibility while building authentic connections
+          with developer audiences.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 Building in Public</h3>
+        <p>
+          Lessons learned from leading developer-focused initiatives. The
+          challenges, wins, and insights from building products and communities
+          that developers love.
+        </p>
+      </div>
     </div>
   </div>
 </section>
-{{ end }}
 
 <section class="section">
   <div class="container-narrow text-center">
