@@ -1,0 +1,142 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <h1>Lindsay Brunner</h1>
+    <p>
+      Experienced content strategist, developer advocacy leader, and actually
+      kinda cool human who transforms complex technology concepts into content
+      experiences that developers and technical audiences love. I lead teams
+      that build bridges between emerging tech and people and companies who use
+      it.
+    </p>
+    <a
+      href="https://www.linkedin.com/in/lindsaybrunner/"
+      class="hero-cta"
+      target="_blank"
+      rel="noopener"
+    >
+      Explore my work
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>What I Do</h2>
+      <p>
+        I specialize in creating meaningful connections between technology and
+        the people who use it, combining strategic leadership with hands-on
+        execution.
+      </p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>🚀 Developer Advocacy</h3>
+        <p>
+          Building and scaling developer communities that drive real business
+          outcomes. I create content and experiences that feel intuitive,
+          powerful, and genuinely helpful to developers at every stage of their
+          journey.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⚡ Content Strategy</h3>
+        <p>
+          Crafting content ecosystems that combine data-driven insights with
+          human storytelling. I lead teams that create documentation, tutorials,
+          and resources that developers actually want to use.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Technical Leadership</h3>
+        <p>
+          Leading cross-functional initiatives that improve developer experience
+          from the ground up. From API design to documentation standards, I
+          translate complexity into clarity and frustration into delight.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Recent Thoughts</h2>
+      <p>Life, the universe, and the meaning of everything. Or something.</p>
+    </div>
+
+    <div class="grid grid-3">
+      {{ $recent_thoughts := where .Site.RegularPages "Type" "thoughts" | first
+      3 }} {{ if ge (len $recent_thoughts) 3 }} {{ range $recent_thoughts }}
+      <div class="card">
+        <div class="post-meta">
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+        </div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary }}</p>
+      </div>
+      {{ end }} {{ else }}
+      <div class="card">
+        <div class="post-meta">
+          <time>Coming Soon</time>
+        </div>
+        <h3>🎯 Developer Experience Design</h3>
+        <p>
+          Thoughts on creating developer tools and experiences that feel
+          magical. From API design to documentation, every touchpoint matters in
+          building trust and adoption.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="post-meta">
+          <time>Coming Soon</time>
+        </div>
+        <h3>📝 Content That Converts</h3>
+        <p>
+          Strategies for technical content that actually drives results. How to
+          balance depth with accessibility while building authentic connections
+          with developer audiences.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="post-meta">
+          <time>Coming Soon</time>
+        </div>
+        <h3>🚀 Building in Public</h3>
+        <p>
+          Lessons learned from leading developer-focused initiatives. The
+          challenges, wins, and insights from building products and communities
+          that developers love.
+        </p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow text-center">
+    <h2>Let's Connect</h2>
+    <p>
+      I'm always interested in connecting with fellow builders, creators, and
+      innovators. Whether you want to discuss the future of developer
+      experience, collaborate on ambitious projects, or explore how technology
+      can better serve humanity.
+    </p>
+    <a
+      href="https://www.linkedin.com/in/lindsaybrunner/"
+      class="hero-cta"
+      target="_blank"
+      rel="noopener"
+      >Start a conversation</a
+    >
+  </div>
+</section>
+{{ end }}

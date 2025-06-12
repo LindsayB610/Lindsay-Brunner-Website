@@ -1,66 +1,117 @@
-{{ define "header" }}
-   {{/* We can override any block in the baseof file be defining it in the template */}}
-  {{ partial "page-header.html" . }}
-{{ end }}
-
 {{ define "main" }}
-  {{ $section := .Site.GetPage "section" .Section }}
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked">
-          {{/*
-          CurrentSection allows us to use the section title instead of inferring from the folder.
-          https://gohugo.io/variables/page/#section-variables-and-methods
-          */}}
-        {{with .CurrentSection.Title }}{{. | upper }}{{end}}
-      </aside>
-      {{ partial "social-share.html" . }}
-      <h1 class="f1 {{ $.Param "post_title_classes"  | default "athelas"}} mt3 mb1">
-        {{- .Title -}}
-      </h1>
-      {{ with .Params.author }}
-      <p class="tracked">
-          By <strong>
-          {{ if reflect.IsSlice . }}
-              {{ delimit . ", " | markdownify }}
-          {{else}}
-              {{ . | markdownify }}
-          {{ end }}
-          </strong>
+<article class="section">
+  <div class="container-narrow">
+    <header style="text-align: center; margin-bottom: 3rem">
+      <div
+        class="post-meta"
+        style="justify-content: center; margin-bottom: 1.5rem"
+      >
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if .Params.tags }}
+        <span>•</span>
+        <span>{{ delimit .Params.tags " | " }}</span>
+        {{ end }} {{ if .Site.Params.show_reading_time }}
+        <span>•</span>
+        <span>{{ .ReadingTime }} min read</span>
+        {{ end }}
+      </div>
+
+      <h1>{{ .Title }}</h1>
+
+      {{ if .Params.description }}
+      <p
+        style="
+          font-size: 1.25rem;
+          color: var(--dark-text-secondary);
+          margin-top: 1.5rem;
+          font-style: italic;
+        "
+      >
+        {{ .Params.description }}
       </p>
       {{ end }}
-      {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-      <time class="f6 mv4 dib tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
-        {{- .Date.Format "January 2, 2006" -}}
-      </time>
-
-      {{/*
-          Show "reading time" and "word count" but only if one of the following are true:
-          1) A global config `params` value is set `show_reading_time = true`
-          2) A section front matter value is set `show_reading_time = true`
-          3) A page front matter value is set `show_reading_time = true`
-        */}}
-      {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
-        <span class="f6 mv4 dib tracked"> - {{ .ReadingTime}} minutes read</span>
-        <span class="f6 mv4 dib tracked"> - {{ .WordCount}} words</span>
-      {{ end }}
     </header>
-    <div class="nested-copy-line-height lh-copy {{ $.Param "post_content_classes"  | default "serif"}} f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-      {{- .Content -}}
-      {{- partial "tags.html" . -}}
-      <div class="mt6 instapaper_ignoref">
-      {{ if .Site.DisqusShortname }}
-        {{ template "_internal/disqus.html" . }}
-      {{ end }}
-      {{ if .Site.Params.commentoEnable }}
-        {{- partial "commento.html" . -}}
-      {{ end }}
+
+    <div class="article-content">{{ .Content }}</div>
+
+    {{ if .Params.tags }}
+    <footer
+      style="
+        margin-top: 4rem;
+        padding: 2rem;
+        background: var(--dark-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--dark-border);
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: var(--gradient-rainbow);
+          animation: tag-flow 4s linear infinite;
+        "
+      ></div>
+      <h4 style="margin-bottom: 1rem; color: var(--electric-purple)">
+        Topics:
+      </h4>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
+        {{ range .Params.tags }}
+        <span
+          style="
+            background: rgba(196, 255, 0, 0.1);
+            color: var(--neon-green);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.875rem;
+            font-family: var(--font-mono);
+            border: 1px solid rgba(196, 255, 0, 0.2);
+          "
+          >{{ . }}</span
+        >
+        {{ end }}
       </div>
+    </footer>
+    {{ end }}
+  </div>
+</article>
+
+<section class="section bg-surface">
+  <div class="container-narrow text-center">
+    <h3>Found this useful?</h3>
+    <p>
+      Follow me for more insights on developer advocacy, technical leadership,
+      and building experiences that developers actually want to engage with.
+    </p>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      "
+    >
+      {{ with .Site.Params.twitter }}
+      <a href="{{ . }}" target="_blank" rel="noopener" class="hero-cta"
+        >Follow for updates</a
+      >
+      {{ end }}
+      <a
+        href="/blog/"
+        class="hero-cta"
+        style="
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid var(--electric-purple);
+        "
+        >More insights</a
+      >
     </div>
-
-    <aside class="w-30-l mt6-l">
-      {{- partial "menu-contextual.html" . -}}
-    </aside>
-
-  </article>
+  </div>
+</section>
 {{ end }}

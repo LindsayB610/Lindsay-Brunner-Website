@@ -1,12 +1,13 @@
 title = "LB"
 baseURL = "https://lindsaybrunner.com"
 languageCode = "en-us"
-theme = "ananke"
 
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
-Paginate = 9
 googleAnalytics = ""
+
+[pagination]
+pagerSize = 9
 enableRobotsTXT = true
 
 [sitemap]
@@ -15,28 +16,23 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
-  favicon = "/images/avatar-color-trans-icon.png"
-  site_logo = ""
-  twitter = "https://twitter.com/GoHugoIO"
+  description = "Developer advocate, content strategist, and technical writer helping developers build better experiences."
+  author = "Lindsay Brunner"
+
+  # Social links
+  twitter = ""
   instagram = "https://www.instagram.com/lindsayb610/"
   github = "https://github.com/LindsayB610"
   linkedin = "https://www.linkedin.com/in/lindsaybrunner/"
-  rss = ""
-  # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
-  background_color_class = "bg-black"
-  featured_image = "/images/gohugo-default-sample-hero-image.jpg"
-  recent_posts_number = 2
-  custom_css=["css/custom.css"]
-  google_fonts = [
-    ["Montserrat", "200, 300, 400, 500"],
-    ["Lato", "300, 300i, 700, 700i"]
-  ]
-  heading_font = "Montserrat"
-  body_font = "Lato"
-  body_classes = "monsterrat bg-near-white"
-  post_title_classes = "monsterrat"
-  post_content_classes = "lato bg-near-white"
-  mian_content_classes = "lato bg-near-white"
 
-  recent_copy = "Latest Blog Posts"
-  
+  # Site config
+  recent_posts_number = 4
+  show_reading_time = true
+
+  # SEO
+  keywords = "developer advocacy, content strategy, technical writing, developer experience"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

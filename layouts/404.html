@@ -1,0 +1,64 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container-narrow text-center">
+    <h1
+      style="
+        font-size: 8rem;
+        margin-bottom: 0;
+        background: var(--gradient-main);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      "
+    >
+      404
+    </h1>
+    <h2 style="color: var(--brand-primary)">Page Not Found</h2>
+    <p>
+      The page you're looking for seems to have wandered off into the digital
+      void. Maybe it was moved, deleted, or you mistyped the URL?
+    </p>
+
+    <div
+      style="
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      "
+    >
+      <a href="/" class="hero-cta">Go home</a>
+      <a
+        href="/thoughts/"
+        class="hero-cta"
+        style="
+          background: var(--dark-surface);
+          border: 2px solid var(--brand-primary);
+          color: var(--brand-primary);
+        "
+        >Browse thoughts</a
+      >
+    </div>
+
+    <div
+      style="
+        margin-top: 4rem;
+        font-family: var(--font-mono);
+        color: var(--dark-text-muted);
+        background: var(--dark-surface);
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--dark-border);
+        position: relative;
+      "
+    >
+      <p style="color: var(--color-yellow)">ERROR: PAGE_NOT_FOUND</p>
+      <p style="color: var(--brand-primary)">STATUS: DISCONNECTED</p>
+      <p style="color: var(--color-red)">
+        SUGGESTION: CHECK_URL_OR_NAVIGATE_HOME
+      </p>
+    </div>
+  </div>
+</section>
+{{ end }}
