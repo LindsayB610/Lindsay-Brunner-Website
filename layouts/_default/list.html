@@ -1,0 +1,66 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h1>{{ .Title }}</h1>
+      {{ if .Content }}
+      <div class="article-content">{{ .Content }}</div>
+      {{ else }}
+      <p>
+        Thoughts on developer advocacy, content strategy, technical writing, and
+        building better developer experiences.
+      </p>
+      {{ end }}
+    </div>
+
+    {{ $paginator := .Paginate .Pages }}
+    <div class="grid grid-2">
+      {{ range $paginator.Pages }}
+      <article class="post-card card">
+        <div class="post-meta">
+          <time>{{ .Date.Format "January 2, 2006" }}</time>
+          {{ if .Params.tags }}
+          <span>•</span>
+          <span>{{ delimit .Params.tags ", " }}</span>
+          {{ end }} {{ if .Site.Params.show_reading_time }}
+          <span>•</span>
+          <span>{{ .ReadingTime }} min read</span>
+          {{ end }}
+        </div>
+
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+
+        <div class="post-excerpt">{{ .Summary }}</div>
+
+        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+      </article>
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav style="margin-top: 3rem; text-align: center">
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          align-items: center;
+        "
+      >
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="hero-cta">← Previous</a>
+        {{ end }}
+
+        <span style="color: var(--color-text-light)">
+          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+        </span>
+
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="hero-cta">Next →</a>
+        {{ end }}
+      </div>
+    </nav>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

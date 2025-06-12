@@ -1,0 +1,116 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <h1>Hey, I'm Lindsay! 👋</h1>
+    <p>
+      I'm a developer advocate, content strategist, and technical writer who
+      helps developers build better experiences. I love creating content that
+      makes complex technical concepts accessible and actionable.
+    </p>
+    <a href="/about/" class="hero-cta">
+      Learn more about me
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+        />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>What I Do</h2>
+      <p>
+        I focus on creating content and experiences that bridge the gap between
+        complex technology and the developers who use it.
+      </p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>🥑 Developer Advocacy</h3>
+        <p>
+          Building communities and creating content that helps developers
+          succeed. I believe in understanding developer pain points and creating
+          solutions that actually solve problems.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>✍️ Technical Writing</h3>
+        <p>
+          Crafting documentation, tutorials, and guides that make complex
+          concepts clear and actionable. Good documentation can make or break
+          developer experience.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📊 Content Strategy</h3>
+        <p>
+          Data-driven content planning that combines SEO best practices with
+          genuine value for developers. I believe in content that serves both
+          users and business goals.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ $recent_posts := where .Site.RegularPages "Type" "blog" | first
+.Site.Params.recent_posts_number }} {{ if $recent_posts }}
+<section class="section bg-surface">
+  <div class="container">
+    <div class="section-title">
+      <h2>Latest Posts</h2>
+      <p>
+        Thoughts on developer advocacy, content strategy, and building better
+        developer experiences.
+      </p>
+    </div>
+
+    <div class="grid grid-2">
+      {{ range $recent_posts }}
+      <article class="post-card card">
+        <div class="post-meta">
+          <time>{{ .Date.Format "January 2, 2006" }}</time>
+          {{ if .Params.tags }}
+          <span>•</span>
+          <span>{{ delimit .Params.tags ", " }}</span>
+          {{ end }} {{ if .Site.Params.show_reading_time }}
+          <span>•</span>
+          <span>{{ .ReadingTime }} min read</span>
+          {{ end }}
+        </div>
+
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+
+        <div class="post-excerpt">{{ .Summary }}</div>
+
+        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+      </article>
+      {{ end }}
+    </div>
+
+    <div class="text-center" style="margin-top: 2rem">
+      <a href="/blog/" class="hero-cta">View all posts</a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<section class="section">
+  <div class="container-narrow text-center">
+    <h2>Let's Connect</h2>
+    <p>
+      I'm always interested in connecting with fellow developers, advocates, and
+      content creators. Whether you want to chat about developer experience,
+      collaborate on content, or just say hi, feel free to reach out!
+    </p>
+    <a href="/contact/" class="hero-cta">Get in touch</a>
+  </div>
+</section>
+{{ end }}

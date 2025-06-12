@@ -1,6 +1,29 @@
-{{ define "header" }}{{ partial "page-header.html" . }}{{ end }} {{ define
-"main" }}
-<article class="center cf pv5 measure-wide-l">
-  <h1>This is not the page you were looking for</h1>
-</article>
+{{ define "main" }}
+<section class="section">
+  <div class="container-narrow text-center">
+    <h1 style="font-size: 6rem; margin-bottom: 0; color: var(--color-primary)">
+      404
+    </h1>
+    <h2>Page not found</h2>
+    <p>
+      Sorry, the page you're looking for doesn't exist. Maybe it moved, or
+      perhaps you mistyped the URL?
+    </p>
+
+    <div style="margin-top: 2rem">
+      <a href="/" class="hero-cta">Go home</a>
+      <a
+        href="/blog/"
+        class="hero-cta"
+        style="
+          background-color: transparent;
+          color: var(--color-primary);
+          border: 2px solid var(--color-primary);
+          margin-left: 1rem;
+        "
+        >Browse blog</a
+      >
+    </div>
+  </div>
+</section>
 {{ end }}

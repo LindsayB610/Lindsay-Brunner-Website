@@ -1,35 +1,96 @@
-{{ define "header" }} {{ partial "page-header.html" . }} {{ end }} {{ define
-"main" }} {{ $section := .Site.GetPage "section" .Section }}
-<article class="flex-l flex-wrap justify-between mw8 center ph3">
-  <header class="mt4 w-100">
-    <aside class="instapaper_ignoref b helvetica tracked">
-      {{with .CurrentSection.Title }}{{. | upper }}{{end}}
-    </aside>
-    {{ partial "social-share.html" . }}
-    <h1 class="f1 athelas mt3 mb1">{{- .Title -}}</h1>
-    {{ with .Params.author }}
-    <p class="tracked">By <strong>{{ . | markdownify }}</strong></p>
+{{ define "main" }}
+<article class="section">
+  <div class="container-narrow">
+    <header style="text-align: center; margin-bottom: 3rem">
+      <div
+        class="post-meta"
+        style="justify-content: center; margin-bottom: 1rem"
+      >
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if .Params.tags }}
+        <span>•</span>
+        <span>{{ delimit .Params.tags ", " }}</span>
+        {{ end }} {{ if .Site.Params.show_reading_time }}
+        <span>•</span>
+        <span>{{ .ReadingTime }} min read</span>
+        {{ end }}
+      </div>
+
+      <h1>{{ .Title }}</h1>
+
+      {{ if .Params.description }}
+      <p
+        style="
+          font-size: 1.25rem;
+          color: var(--color-text-light);
+          margin-top: 1rem;
+        "
+      >
+        {{ .Params.description }}
+      </p>
+      {{ end }}
+    </header>
+
+    <div class="article-content">{{ .Content }}</div>
+
+    {{ if .Params.tags }}
+    <footer
+      style="
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-border);
+      "
+    >
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+        {{ range .Params.tags }}
+        <span
+          style="
+            background-color: var(--color-gray-100);
+            color: var(--color-gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+          "
+          >#{{ . }}</span
+        >
+        {{ end }}
+      </div>
+    </footer>
     {{ end }}
-    <time class="f6 mv4 dib tracked">
-      {{- .Date.Format "January 2, 2006" -}}
-    </time>
-    {{ if (or (eq (.Param "show_reading_time") true) (eq
-    $section.Params.show_reading_time true) )}}
-    <span class="f6 mv4 dib tracked"> - {{ .ReadingTime}} minutes read</span>
-    <span class="f6 mv4 dib tracked"> - {{ .WordCount}} words</span>
-    {{ end }}
-  </header>
-  <div
-    class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"
-  >
-    {{- .Content -}} {{- partial "tags.html" . -}}
-    <div class="mt6 instapaper_ignoref">
-      {{ if .Site.Params.disqusShortname }} {{ template "_internal/disqus.html"
-      . }} {{ end }} {{ if .Site.Params.commentoEnable }} {{- partial
-      "commento.html" . -}} {{ end }}
+  </div>
+</article>
+
+<section class="section bg-surface">
+  <div class="container-narrow text-center">
+    <h3>Enjoyed this post?</h3>
+    <p>
+      Follow me for more content on developer advocacy, technical writing, and
+      building better developer experiences.
+    </p>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      "
+    >
+      {{ with .Site.Params.twitter }}
+      <a href="{{ . }}" target="_blank" rel="noopener" class="hero-cta"
+        >Follow on Twitter</a
+      >
+      {{ end }}
+      <a
+        href="/blog/"
+        class="hero-cta"
+        style="
+          background-color: transparent;
+          color: var(--color-primary);
+          border: 2px solid var(--color-primary);
+        "
+        >More posts</a
+      >
     </div>
   </div>
-
-  <aside class="w-30-l mt6-l">{{- partial "menu-contextual.html" . -}}</aside>
-</article>
+</section>
 {{ end }}
