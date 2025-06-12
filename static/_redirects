@@ -1,0 +1,6 @@
+# Redirect old paths to home
+/contact/   /   301
+/blog/      /   301
+
+# SPA fallback for any other routes
+/*   /index.html   200
