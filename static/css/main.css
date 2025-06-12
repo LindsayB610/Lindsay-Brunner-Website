@@ -709,25 +709,34 @@ blockquote {
   line-height: 1.8;
 }
 
-/* About page specific styling */
+/* About page specific styling - override any center alignment */
 .about-content {
-  text-align: left;
+  text-align: left !important;
   max-width: 700px;
 }
 
+.about-content * {
+  text-align: left !important;
+}
+
 .about-content h1 {
-  text-align: left;
+  text-align: left !important;
   margin-bottom: var(--space-xl);
+  background: var(--gradient-main);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .about-content h2,
 .about-content h3 {
-  text-align: left;
+  text-align: left !important;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-lg);
 }
 
 .about-content p {
+  text-align: left !important;
   margin-bottom: var(--space-lg);
   line-height: 1.7;
 }
