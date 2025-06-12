@@ -1,0 +1,6 @@
+{
+  "command": "hugo server -D",
+  "serverUrl": "http://localhost:1313/",
+  "authenticateProxy": false,
+  "commitMode": "commits"
+}

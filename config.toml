@@ -6,6 +6,10 @@ DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 googleAnalytics = ""
 
+[permalinks]
+  blog = "/blog/:slug/"
+  thoughts = "/thoughts/:year-:month-:day/:slug"
+
 [pagination]
 pagerSize = 9
 enableRobotsTXT = true
