@@ -138,17 +138,26 @@ Subtle shapes inspired by modern tech design:
 
 ### ✅ Do:
 
-- Use the main gradient sparingly for special elements
-- Apply solid brand colors for most UI elements
-- Maintain the locked hero gradient configuration
-- Keep geometric elements subtle (low opacity)
+- Use Space Grotesk as primary font except for protected h1/logo
+- Apply gradient backgrounds to buttons and key interactive elements
+- Maintain rounded corners for modern, approachable feel
+- Use solid brand colors for most UI elements
+- Keep hover effects consistent (gradient text for nav/footer)
+- Preserve the locked hero gradient configuration
 
 ### ❌ Don't:
 
-- Overuse gradients (avoid gradient scrollbars, too many gradient elements)
+- Change h1 or LB logo fonts (must stay Inter)
 - Modify the hero H1 gradient configuration
-- Add rounded corners
-- Use bright colors for large areas
+- Add hover states to content cards/tiles
+- Use angular/borderless design elements
+- Overuse gradients for backgrounds
+
+### 🔒 NEVER TOUCH:
+
+- Hero h1 gradient configuration
+- LB logo and h1 font family (Inter)
+- Gradient color values and percentages
 
 ## Components
 
