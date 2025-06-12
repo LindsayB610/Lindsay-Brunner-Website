@@ -399,7 +399,7 @@ blockquote {
 }
 
 .main-nav a {
-  color: var(--brand-yellow-light);
+  color: #f5f5f0;
   font-family: var(--font-accent);
   font-weight: 500;
   text-decoration: none;
