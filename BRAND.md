@@ -165,14 +165,15 @@ Subtle shapes inspired by modern tech design:
 
 ```css
 background: var(--gradient-main); /* Full gradient background */
-color: var(--dark-text); /* White text */
+color: var(--dark-text); /* White text - explicitly maintained on hover */
 font-family: var(--font-accent); /* Space Grotesk */
 font-size: 1.125rem; /* Larger, readable text */
 border-radius: var(--radius-xl); /* Rounded corners */
 box-shadow: pink glow effect; /* Elegant depth */
 ```
 
-**Hover**: Lift + intensified glow + brightness increase
+**Hover**: Lift + intensified glow (no brightness filter for readability)
+**Current Links**: Both "Explore my work" and "Start a conversation" → LinkedIn
 
 ### Cards
 
