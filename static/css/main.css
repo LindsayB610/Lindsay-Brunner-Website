@@ -165,12 +165,11 @@ h1 {
   font-weight: 800;
   letter-spacing: -0.025em;
   background: linear-gradient(
-    135deg,
+    90deg,
     var(--color-red) 0%,
     var(--color-pink) 50%,
     var(--color-yellow) 100%
   );
-  background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
