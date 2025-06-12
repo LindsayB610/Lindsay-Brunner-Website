@@ -51,6 +51,7 @@ h6 {
   --brand-primary: #ff1b8d; /* Pink - main brand color */
   --brand-warm: #ff4b6b; /* Warm coral between red and pink */
   --brand-accent: #ffaa00; /* Warm orange-yellow for accents */
+  --brand-orange: #ff6600; /* Warm orange from gradient spectrum */
 
   /* Dark Base */
   --dark-bg: #000000;
