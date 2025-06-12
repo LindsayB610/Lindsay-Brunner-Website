@@ -40,10 +40,11 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* Three-Color Gradient Palette */
+/* Four-Color Warm Gradient Palette */
 :root {
-  /* Three colors - pink and red primary, yellow accent */
+  /* Four warm colors - tamed red with orange, pink, yellow */
   --color-red: #ff0037;
+  --color-orange: #ff6b35;
   --color-pink: #ff1b8d;
   --color-yellow: #ffdd00;
 
@@ -56,12 +57,12 @@ h6 {
   --dark-text-secondary: #cccccc;
   --dark-text-muted: #888888;
 
-  /* Enhanced Gradient - distinct sections for each color */
+  /* Warm gradient - less red, more orange and yellow */
   --gradient-main: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-red) 35%,
-    var(--color-pink) 65%,
+    var(--color-orange) 25%,
+    var(--color-pink) 50%,
     var(--color-yellow) 100%
   );
 
@@ -193,7 +194,7 @@ h2::after {
 
 h3 {
   font-size: 1.875rem;
-  color: var(--color-pink);
+  color: var(--color-orange);
 }
 
 h4 {
