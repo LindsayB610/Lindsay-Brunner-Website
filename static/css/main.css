@@ -144,7 +144,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--brand-primary);
-  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
