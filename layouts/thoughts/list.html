@@ -31,9 +31,6 @@
         <article class="post-card card">
           <div class="post-meta">
             <time>{{ .Date.Format "Jan 02, 2006" }}</time>
-            {{ if .Params.tags }}
-            <span class="post-tag">{{ index .Params.tags 0 }}</span>
-            {{ end }}
           </div>
 
           <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
