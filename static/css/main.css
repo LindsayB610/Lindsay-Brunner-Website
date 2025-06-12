@@ -45,7 +45,7 @@ h6 {
   /* Three colors - yellow to pink to red */
   --color-red: #ff0037;
   --color-pink: #ff1b8d;
-  --color-yellow: #ffdd00;
+  --color-yellow: #ffff00;
 
   /* Dark Base */
   --dark-bg: #000000;
@@ -64,11 +64,11 @@ h6 {
     var(--color-yellow) 100%
   );
 
-  /* Hero-specific gradient with maximum yellow for the 'r' */
+  /* Hero-specific gradient with bright yellow to match header */
   --gradient-hero: linear-gradient(
     135deg,
     var(--color-red) 0%,
-    var(--color-pink) 20%,
+    var(--color-pink) 50%,
     var(--color-yellow) 100%
   );
 
