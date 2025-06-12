@@ -354,7 +354,7 @@ blockquote {
   padding: var(--space-lg) 0;
   min-width: 0;
   flex-wrap: wrap;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .social-links {
