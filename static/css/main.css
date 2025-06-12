@@ -589,7 +589,6 @@ blockquote {
 }
 
 .card:hover {
-  border-color: var(--brand-primary);
   box-shadow: var(--shadow-xl);
   transform: translateY(-8px);
   background: var(--dark-surface-lighter);
