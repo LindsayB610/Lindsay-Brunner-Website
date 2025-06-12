@@ -170,6 +170,8 @@ h1 {
     var(--color-pink) 50%,
     var(--color-yellow) 100%
   );
+  background-size: 150% 100%;
+  background-position: -20% 0;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
