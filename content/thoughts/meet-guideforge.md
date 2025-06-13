@@ -1,6 +1,7 @@
 ---
 title: "Building Docs with an Arc-Reactor (and a Bit of AI)"
 date: 2025-06-13
+subtitle: "Or: How I distilled years of tech-writing muscle memory into two reusable playbooks — and turned them into an assistant called GuideForge"
 slug: "meet-guideforge"
 description: "How I turned years of tech-writing muscle memory into two AI-powered playbooks—and a lightweight assistant named GuideForge."
 draft: false

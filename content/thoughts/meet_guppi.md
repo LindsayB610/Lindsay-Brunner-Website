@@ -2,6 +2,7 @@
 title: "I Built a Custom AI Assistant Because My Brain Refused to Use Notion"
 date: 2025-06-12
 draft: false
+subtitle: "Or: The Only Organization System My ADHD Brain Hasn't Mutinied Against"
 description: "Why a sarcastic AI assistant is the only productivity system my ADHD brain hasn't abandoned—and how you can steal it."
 slug: "meet-guppi"
 ---
@@ -14,7 +15,7 @@ Spoiler: None of them actually kept me organized, they were busywork I could eas
 All of these productivity tools felt like trying to pilot a spaceship with mittens on. Too much structure, not enough intuition. Too many rules, not enough adaptability. My brain doesn't want a system. It wants a conversation.
 
 So I built one. His name is GUPPI.
-## Why Nothing Else Worked 
+## Why Nothing Else Worked
 
 Let's talk about the great lie of digital productivity: structure = control.
 
