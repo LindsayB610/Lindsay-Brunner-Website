@@ -18,7 +18,7 @@
 
       <h1>{{ .Title }}</h1>
 
-      {{ if .Params.description }}
+      {{ if and (.Params.description) (ne .Section "thoughts") }}
       <p
         style="
           font-size: 1.25rem;
