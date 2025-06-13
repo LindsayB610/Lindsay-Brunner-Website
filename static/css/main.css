@@ -551,6 +551,14 @@ blockquote {
   color: var(--dark-text);
 }
 
+.card h3 a {
+  color: var(--dark-text);
+}
+
+.card h3 a:hover {
+  color: var(--color-red);
+}
+
 .post-card {
   margin-bottom: var(--space-xl);
 }
