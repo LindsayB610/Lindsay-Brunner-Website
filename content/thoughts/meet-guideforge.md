@@ -7,7 +7,6 @@ draft: false
 ---
 
 <!-- Start writing your post below this line --> 
-# Building Docs with an Arc-Reactor (and a Bit of AI)
 _Or: How I distilled years of tech-writing muscle memory into two reusable playbooks — and turned them into an assistant called **GuideForge**_
 
 I adore the smell of fresh Markdown in the morning, but there's a **hard limit to how many times a human can type "Step 1: obtain an API key" before questioning their life choices**. Somewhere around iteration #73 I realised I wasn't writing — just copy-pasting tribal knowledge and hoping I hadn't missed the GDPR footnote.

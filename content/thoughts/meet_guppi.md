@@ -1,10 +1,10 @@
 ---
+title: "I Built a Custom AI Assistant Because My Brain Refused to Use Notion"
 date: 2025-06-12
 draft: false
 description: "Why a sarcastic AI assistant is the only productivity system my ADHD brain hasn't abandoned—and how you can steal it."
 slug: "meet-guppi"
 ---
-# I Built a Custom AI Assistant Because My Brain Refused to Use Notion  
 _Or: The Only Organization System My ADHD Brain Hasn't Mutinied Against_
 
 Like many people with good intentions and executive dysfunction, I've been through the full spectrum of "productivity systems." I've color-coded Trello boards. I've had beautifully themed Notion pages. I've even gaslit myself into believing Asana was changing my life.
