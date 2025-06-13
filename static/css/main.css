@@ -536,10 +536,19 @@ blockquote {
 /* Cards */
 .card {
   background: var(--dark-surface);
-  border: none;
-  border-radius: var(--radius-xl);
-  padding: var(--space-xl);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--dark-border);
   position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card h3 {
+  color: var(--dark-text);
 }
 
 .post-card {
@@ -594,6 +603,12 @@ blockquote {
 
 .read-more::after {
   display: none;
+}
+
+.read-more-link {
+  margin-top: auto; /* Pushes the link to the bottom */
+  display: inline-block; /* Ensures margin-top works */
+  margin-top: 1.5rem; /* Add some space above the link */
 }
 
 /* Grid layouts */
