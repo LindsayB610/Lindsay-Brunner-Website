@@ -1,6 +1,7 @@
 ---
 title: "On Building Developer Experiences That Actually Matter"
 date: 2024-01-15T10:00:00-08:00
+subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "The Future of Technical Content Strategy"
 date: 2024-01-08T14:30:00-08:00
+subtitle: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
 description: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ---
 
