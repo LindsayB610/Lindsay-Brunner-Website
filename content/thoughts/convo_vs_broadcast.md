@@ -1,15 +1,15 @@
 ---
-title: "Good Developer Content is a Conversation—Not a Broadcast"
+title: "Good Developer Content is a Conversation, Not a Broadcast"
 date: 2025-06-14
 slug: "developer-content-conversation-not-broadcast"
 description: "Why truly great developer content talks with developers, not at them—and how to get it right."
 subtitle: "Or: Why developer content that listens is way better than content that just talks"
-draft: true
+draft: false
 ---
 
 <!-- Start writing your post below this line --> 
 
-Let’s get something straight: developers are incredibly smart—and incredibly impatient. They're quick to spot marketing fluff and even quicker to bounce if your content wastes their time. Respect that intelligence and impatience, and you'll earn their attention.
+Let's get something straight: developers are incredibly smart—and incredibly impatient. They're quick to spot marketing fluff and even quicker to bounce if your content wastes their time. Respect that intelligence and impatience, and you'll earn their attention.
 
 While this dynamic isn't unique to developers—it's true for almost any knowledge worker—my own battle scars mostly come from writing content aimed at devs. So let's stick to what I know best.
 
@@ -19,7 +19,7 @@ After years of wrangling developer-focused content at companies like Okta, ngrok
 
 Most dev content feels like yelling random JavaScript functions into the void and hoping for applause—spoiler, the void doesn't clap.
 
-Here’s why broadcasts tank:
+Here's why broadcasts tank:
 
 - **They don't read the room:** They're too busy shouting into the void to notice whether their audience is even paying attention.
 - **They're generic:** "Insert your problem here" won't resonate with devs who are knee-deep in actual, messy code.
@@ -35,8 +35,8 @@ Good developer content isn't a TED talk—it's a late-night chat, complete with 
 
 Think of the difference between:
 
-- **Broadcast:** “Feature X is revolutionary (trust us).”
-- **Conversation:** “You know that annoying thing about Y? Yeah, feature X squashes that. Here’s proof, try it out. Still confused? Let’s chat.”
+- **Broadcast:** "Feature X is revolutionary (trust us)."
+- **Conversation:** "You know that annoying thing about Y? Yeah, feature X squashes that. Here's proof, try it out. Still confused? Let's chat."
 
 One feels like spam; the other feels like empathy.
 
@@ -50,11 +50,11 @@ Here's my cheat sheet for conversations that land:
 
 Instead of guessing, dive directly into real developer forums, GitHub issues, and Stack Overflow questions to uncover genuine frustrations. Clearly translating these into your content demonstrates true empathy and understanding.
 
-**Hot take:** Stop pestering devs with surveys about their ‘pain points’—Google knows their secrets better than they do. Chat with your favorite content guru about tools like Keyword Planner, Ahrefs, or Semrush to pinpoint exactly what developers are searching for, instantly boosting your content's relevance and usefulness.
+**Hot take:** Stop pestering devs with surveys about their 'pain points'—Google knows their secrets better than they do. Chat with your favorite content guru about tools like Keyword Planner, Ahrefs, or Semrush to pinpoint exactly what developers are searching for, instantly boosting your content's relevance and usefulness.
 
 ### 2. Keep Context Alive
 
-Maintain continuity by referencing previous articles, clearly indicating what's coming next, or providing follow-up resources. Use linked series and interconnected content so developers can easily explore topics deeply or quickly catch up. (Note: I'm not advocating for dependent series—neither your readers nor Google like content that can’t stand alone. Instead, think about gentle nudges to related topics and resources.)
+Maintain continuity by referencing previous articles, clearly indicating what's coming next, or providing follow-up resources. Use linked series and interconnected content so developers can easily explore topics deeply or quickly catch up. (Note: I'm not advocating for dependent series—neither your readers nor Google like content that can't stand alone. Instead, think about gentle nudges to related topics and resources.)
 
 **Bonus tip:** interlinking content not only boosts conversationality but also strengthens SEO—your content marketer will thank you.
 
@@ -86,7 +86,7 @@ Emerging strategies—like personalized AI-driven content that adapts dynamicall
 
 Throughout the entire content planning process—from ideation and outlining through drafting and final review—I continuously ask:
 
-> “Does this immediately help someone do their job better, or is it just fancy filler?”
+> "Does this immediately help someone do their job better, or is it just fancy filler?"
 
 By repeatedly checking for genuine usefulness at every stage, you ensure the end result is focused, valuable, and genuinely beneficial to your audience. If it's filler, drop it early and refine until you hit real utility.
 
