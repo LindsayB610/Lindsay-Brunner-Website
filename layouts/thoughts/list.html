@@ -6,43 +6,28 @@
       <p>Life, the universe, and the meaning of everything. Or something.</p>
     </div>
 
-    {{ $posts := where .Pages "Type" "thoughts" }} {{ if $posts }}
-    <!-- Featured post (first/most recent) -->
-    {{ $featured := index $posts 0 }}
-    <article class="featured-post">
-      <div class="featured-content">
-        <div class="post-meta">
-          <time>{{ $featured.Date.Format "January 2, 2006" }}</time>
-        </div>
-        <h2><a href="{{ $featured.Permalink }}">{{ $featured.Title }}</a></h2>
-        <p class="featured-excerpt">{{ $featured.Summary }}</p>
-        <a href="{{ $featured.Permalink }}" class="read-more-featured"
-          >Read more</a
-        >
-      </div>
-    </article>
+    {{ $posts := where .Pages "Type" "thoughts" }}
 
-    <!-- Rest of posts in grid -->
-    {{ $remaining := after 1 $posts }} {{ if $remaining }}
-    <div class="posts-grid">
-      <h3 class="grid-title">Latest Thoughts</h3>
-      <div class="grid grid-3">
-        {{ range $remaining }}
-        <article class="post-card card">
+    {{ if $posts }}
+      {{ range $posts }}
+      <article class="featured-post" style="margin-bottom: 3rem;">
+        <div class="featured-content">
           <div class="post-meta">
-            <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+            <time>{{ .Date.Format "January 2, 2006" }}</time>
           </div>
-
-          <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-
-          <div class="post-excerpt">{{ .Summary }}</div>
-
-          <a href="{{ .Permalink }}" class="read-more">Read more →</a>
-        </article>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }} {{ else }}
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p class="featured-excerpt">
+            {{ if .Params.subtitle }}
+              {{ .Params.subtitle }}
+            {{ else }}
+              {{ .Summary }}
+            {{ end }}
+          </p>
+          <a href="{{ .RelPermalink }}" class="read-more-featured">Read more →</a>
+        </div>
+      </article>
+      {{ end }}
+    {{ else }}
     <!-- No posts yet -->
     <div class="no-posts">
       <h2>Coming Soon</h2>
