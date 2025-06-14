@@ -66,21 +66,18 @@ Before you begin, ensure you have the following installed:
 ├── archetypes/          # Content templates
 ├── content/             # Site content (Markdown files)
 │   ├── about/           # About page content
-│   ├── blog/            # Blog section
-│   ├── contact/         # Contact page
 │   ├── thoughts/        # Thought leadership content
 │   └── _index.md        # Homepage content
 ├── layouts/             # Hugo templates
 │   ├── _default/        # Default page layouts
 │   ├── partials/        # Reusable template components
 │   ├── about/           # About page specific layout
-│   ├── blog/            # Blog specific layouts
-│   ├── contact/         # Contact page layout
 │   ├── thoughts/        # Thoughts section layout
 │   ├── 404.html         # 404 error page
 │   └── index.html       # Homepage layout
 ├── static/              # Static assets
 │   ├── css/             # Stylesheets
+│   ├── favicons/        # Site favicons
 │   ├── _headers         # Netlify headers configuration
 │   └── _redirects       # Netlify redirects configuration
 ├── config.toml          # Hugo site configuration
@@ -171,22 +168,10 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    - Be descriptive but concise: `future-of-developer-experience.md`
    - Avoid special characters or numbers at the start
 
-### Adding New Blog Posts
-
-1. Create a new Markdown file in the blog section:
-
-   ```bash
-   # For general blog posts
-   hugo new blog/your-post-title.md
-   ```
-
-2. Follow the same front matter structure as thoughts but use `categories: ["blog"]`
-
 ### Updating Existing Pages
 
 - **Homepage**: Edit `content/_index.md`
 - **About**: Edit `content/about/index.md`
-- **Contact**: Edit `content/contact/_index.md`
 - **Thoughts listing page**: Edit `content/thoughts/_index.md`
 
 ### Hugo Content Organization Tips
