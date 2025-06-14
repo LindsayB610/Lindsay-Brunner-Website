@@ -1,6 +1,6 @@
 # Lindsay Brunner - Personal Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5c2c0c0c-0c0c-0c0c-0c0c-0c0c0c0c0c0c/deploy-status)](https://app.netlify.com/sites/lindsaybrunner/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/lindsaybrunner/deploy-status)](https://app.netlify.com/sites/lindsaybrunner/deploys)
 
 > Experienced content strategist, developer advocacy leader, and actually kinda cool human who transforms complex technology concepts into content experiences that developers and technical audiences love.
 
