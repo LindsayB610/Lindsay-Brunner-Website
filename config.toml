@@ -20,7 +20,7 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
-  description = "Developer advocate, content strategist, and technical writer helping developers build better experiences."
+  description = "Developer advocacy leader, content strategist, and technical writer helping developers build better experiences."
   author = "Lindsay Brunner"
 
   # Social links
