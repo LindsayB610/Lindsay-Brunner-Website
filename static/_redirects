@@ -1,6 +1,7 @@
 # Redirect old paths to home
 /contact/   /   301
 /blog/      /   301
+/thoughts/2024-01-08/the-future-of-technical-content/   /   301
 
 # SPA fallback for any other routes
 # /*   /index.html   200
