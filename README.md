@@ -1,6 +1,6 @@
 # Lindsay Brunner - Personal Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_BADGE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5c2c0c0c-0c0c-0c0c-0c0c-0c0c0c0c0c0c/deploy-status)](https://app.netlify.com/sites/lindsaybrunner/deploys)
 
 > Experienced content strategist, developer advocacy leader, and actually kinda cool human who transforms complex technology concepts into content experiences that developers and technical audiences love.
 
@@ -17,12 +17,14 @@ Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
 - **Hosting**: [Netlify](https://netlify.com) with continuous deployment
 - **Content Management**: Markdown files with Hugo's content organization
 - **Performance**: Optimized with Hugo's built-in minification and asset processing
+- **Analytics**: [Plausible Analytics](https://plausible.io/) for privacy-friendly analytics
+- **RSS Feed**: Built-in Hugo RSS feed generation
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/) v18.0.0 or higher
+- [Node.js](https://nodejs.org/) v18.0.0 or higher (specified in `.nvmrc`)
 - [npm](https://www.npmjs.com/) v8.0.0 or higher
 - [Hugo](https://gohugo.io/installation/) (automatically installed via hugo-bin)
 
@@ -117,6 +119,7 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    date: 2024-01-15T10:30:00Z
    draft: false
    description: "A compelling description that will appear in listings and SEO"
+   subtitle: "A brief subtitle or first sentence that appears on the homepage"
    tags: ["developer-advocacy", "content-strategy", "leadership"]
    categories: ["thoughts"]
    ---
@@ -130,6 +133,7 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    - `date`: Publication date (Hugo sorts by this)
    - `draft`: Set to `true` to hide from production, `false` to publish
    - `description`: Used for SEO and content previews
+   - `subtitle`: Brief subtitle or first sentence for homepage preview
    - `tags`: Topic tags for categorization
    - `categories`: Content categories (typically "thoughts" for this section)
 
@@ -208,25 +212,12 @@ Key design elements:
 
 ## 🚢 Deployment
 
-The site is automatically deployed to Netlify when changes are pushed to the main branch.
+The site is automatically deployed to Netlify when changes are pushed to the master branch. The deployment process includes:
 
-### Manual Deployment
-
-1. **Build the site**
-
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy the `public` folder** to your hosting provider
-
-### Netlify Configuration
-
-The site uses the following Netlify configuration in `netlify.toml`:
-
-- Build command: `npm run build`
-- Publish directory: `public`
-- Node.js version: 18+
+1. Building the site with Hugo
+2. Minifying assets
+3. Applying Netlify headers and redirects
+4. Deploying to the CDN
 
 ## 🔧 Configuration
 
@@ -260,7 +251,7 @@ While this is a personal website, suggestions and improvements are welcome:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is private and proprietary. All rights reserved.
 
 ## 📞 Contact
 
@@ -273,3 +264,10 @@ Lindsay Brunner
 ---
 
 ⚡ Built with [Hugo](https://gohugo.io/) • Deployed on [Netlify](https://netlify.com) • Made with ❤️ and lots of ☕
+
+## 🔍 SEO & Analytics
+
+- **Meta Tags**: Configured in `config.toml` for optimal SEO
+- **Analytics**: Privacy-friendly analytics via Plausible
+- **RSS Feed**: Available at `/index.xml` for content syndication
+- **Social Media**: Open Graph tags for better social sharing
