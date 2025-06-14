@@ -5,7 +5,7 @@ description: "Developer advocate, content strategist, and digital architect who 
 
 # About Lindsay
 
-<div class="headshot-placeholder"><div class="headshot-frame">📸 Headshot placeholder</div></div>
+<img src="/images/avatar-color-trans.png" alt="Lindsay Brunner's Headshot" class="headshot-placeholder" style="border-radius: 50%; max-width: 200px; height: auto; float: right; margin: 0 0 1.5rem 1.5rem;"/>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 
