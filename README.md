@@ -117,8 +117,6 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    draft: false
    description: "A compelling description that will appear in listings and SEO"
    subtitle: "A brief subtitle or first sentence that appears on the homepage"
-   tags: ["developer-advocacy", "content-strategy", "leadership"]
-   categories: ["thoughts"]
    ---
 
    Your thought leadership content goes here...
@@ -131,8 +129,6 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    - `draft`: Set to `true` to hide from production, `false` to publish
    - `description`: Used for SEO and content previews
    - `subtitle`: Brief subtitle or first sentence for homepage preview
-   - `tags`: Topic tags for categorization
-   - `categories`: Content categories (typically "thoughts" for this section)
 
 5. **Write your content** using Markdown syntax:
 
