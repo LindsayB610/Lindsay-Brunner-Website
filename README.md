@@ -1,6 +1,6 @@
 # Lindsay Brunner - Personal Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/lindsaybrunner/deploy-status)](https://app.netlify.com/sites/lindsaybrunner/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e566bc7d-91da-44d9-836f-389a1d193c75/deploy-status)](https://app.netlify.com/projects/angry-minsky-477f42/deploys)
 
 > Experienced content strategist, developer advocacy leader, and actually kinda cool human who transforms complex technology concepts into content experiences that developers and technical audiences love.
 
@@ -188,14 +188,14 @@ The site uses custom CSS located in `static/css/`:
 - `main.css` - Core styles and layout
 - `custom.css` - Custom styling and overrides
 
-Key design elements:
+## 🔍 SEO & Analytics
 
-- Dark theme with gradient accents
-- Space Grotesk and Inter font families
-- Mobile-first responsive design
-- Smooth animations and transitions
+- **Meta Tags**: Configured in `config.toml` for optimal SEO
+- **Analytics**: Privacy-friendly analytics via Plausible
+- **RSS Feed**: Available at `/index.xml` for content syndication
+- **Social Media**: Open Graph tags for better social sharing
 
-## 🚢 Deployment
+## 🔄 Deployment
 
 The site is automatically deployed to Netlify when changes are pushed to the master branch. The deployment process includes:
 
@@ -204,55 +204,6 @@ The site is automatically deployed to Netlify when changes are pushed to the mas
 3. Applying Netlify headers and redirects
 4. Deploying to the CDN
 
-## 🔧 Configuration
-
-### Hugo Configuration
-
-Key settings in `config.toml`:
-
-- Site title and description
-- Navigation menu items
-- Social media links
-- SEO settings
-
-### Performance Optimization
-
-The site includes several performance optimizations:
-
-- Minified CSS and HTML
-- Optimized images
-- Efficient caching headers
-- Fast loading fonts
-
-## 🤝 Contributing
-
-While this is a personal website, suggestions and improvements are welcome:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
+## 📝 License
 
 This project is private and proprietary. All rights reserved.
-
-## 📞 Contact
-
-Lindsay Brunner
-
-- Website: [lindsaybrunner.com](https://lindsaybrunner.com)
-- GitHub: [@LindsayB610](https://github.com/LindsayB610)
-- LinkedIn: [Lindsay Brunner](https://www.linkedin.com/in/lindsaybrunner/)
-
----
-
-⚡ Built with [Hugo](https://gohugo.io/) • Deployed on [Netlify](https://netlify.com) • Made with ❤️ and lots of ☕
-
-## 🔍 SEO & Analytics
-
-- **Meta Tags**: Configured in `config.toml` for optimal SEO
-- **Analytics**: Privacy-friendly analytics via Plausible
-- **RSS Feed**: Available at `/index.xml` for content syndication
-- **Social Media**: Open Graph tags for better social sharing
