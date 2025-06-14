@@ -4,3 +4,4 @@ node_modules
 .env
 /dist
 /build
+.hugo_build.lock
