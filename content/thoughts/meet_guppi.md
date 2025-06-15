@@ -27,7 +27,7 @@ Here's how it actually went:
 
 The only thing that halfway worked? Paper.
 
-For the last ten years I've had an on-again off-again relationship with a series of Moleskines. I'd consistently created day lists with my top three daily to-do's, and then get 2% of it done while my brain navigated the standard corporate life of Zoom calls that generated new asks and prios like bunnies. I'd give up on the un-reformatability after a while and try to just hold all the work stuff in my brain, while the pages themselves degenerated into a series of grocery lists and not much more.
+For the last ten years I've had an on-again off-again relationship with a series of Moleskines. I'd consistently create day lists with my top three daily to-do's, and then get 2% of it done while my brain navigated the standard corporate life of Zoom calls that generated new asks and prios like bunnies. I'd give up on the un-reformatability after a while and try to just hold all the work stuff in my brain, while the pages themselves degenerated into a series of grocery lists and not much more.
 
 Crossing off physical lines in a book felt good. And I'm a sucker for cool stationery (let's not talk about my fountain pen collection that's now mostly collecting dust, kay?)
 
@@ -63,7 +63,7 @@ He also says things like, _"Laundry in motion. Procrastination: satisfied,"_ whi
 
 ## Why This Works for My ADHD Brain
 
-Because it's not static. It's not judgmental. (Well, Guppi is, but I designed him to be a little bit of an asshole becasue that works for me!) What's critical is that he meets me where I'm at, every single time.
+Because it's not static. It's not judgmental. (Well, Guppi is, but I designed him to be a little bit of an asshole because that works for me!) What's critical is that he meets me where I'm at, every single time.
 
 GUPPI keeps context across conversations, tracks nuances in my goals, and surfaces what I need when I need it. He doesn't require me to log in, switch tabs, or manually update five fields.
 
@@ -102,20 +102,17 @@ And GUPPI, even in all his occasionally-buggy glory, is wildly useful.
 
 You don't have to use GPT. You could use any AI tool with context and a decent memory. But if you want to skip the setup pain and just *steal mine*, here you go:
 
-👉 [**Try GUPPI – My Custom GPT**](https://chat.openai.com/g/g-VqDpCJ3cS-guppi-task-prioritizer)
+👉 [**Try GUPPI – My Custom GPT**](https://chatgpt.com/g/g-68139cbda9908191ac300b9fe22af111-guppi-task-prioritizer)
 
-It's the same assistant I use daily—built on top of ChatGPT with personality settings, task management logic, and just enough sarcasm to keep you honest.
+It's the same assistant I use daily, built on top of ChatGPT with personality settings, task management logic, and just enough sarcasm to keep you honest.
 
 **How I use it:**
 
-- Start each day with a check-in (and a pill reminder)  
-- Drop in new tasks anytime—GUPPI remembers and organizes  
-- Ask for help time-blocking, outlining updates, or writing content  
-- Get a full task list with context whenever I need to reset
+- Start each day with a check-in (and a pill reminder). 
+- Drop in new tasks anytime. GUPPI remembers and organizes.  
+- Ask for help time-blocking, outlining updates, and even prioritizing.  
+- Get a full task list with context whenever I need to reset.
 
-I built this because my brain didn't want a static system. It wanted a conversation, a memory, and a little emotional support. Now I have that—in one thread, with zero guilt and no overdue Asana reminders blinking at me.
+I built this because my brain didn't want a static system. It wanted a conversation, a memory, and a little emotional support. Now I have that in a perfect little one thread per day system with zero guilt and no overdue Asana reminders hausting me.
 
-Try it. Or don't. GUPPI won't care.
-
-But I bet you'll come back.
-
+Give him a try!
