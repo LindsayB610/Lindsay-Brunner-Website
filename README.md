@@ -12,13 +12,14 @@ Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
 
 ## 🛠 Tech Stack
 
-- **Static Site Generator**: [Hugo](https://gohugo.io/) v0.147.8+
-- **Styling**: Custom CSS with modern design principles
+- **Static Site Generator**: [Hugo](https://gohugo.io/) v0.121.0+
+- **Styling**: Custom CSS with modern design principles and responsive layouts
 - **Hosting**: [Netlify](https://netlify.com) with continuous deployment
 - **Content Management**: Markdown files with Hugo's content organization
 - **Performance**: Optimized with Hugo's built-in minification and asset processing
 - **Analytics**: [Plausible Analytics](https://plausible.io/) for privacy-friendly analytics
 - **RSS Feed**: Built-in Hugo RSS feed generation
+- **Responsive Design**: Mobile-first approach with optimized layouts for all devices
 
 ## 📋 Prerequisites
 
@@ -181,8 +182,26 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
 
 The site uses custom CSS located in `static/css/`:
 
-- `main.css` - Core styles and layout
+- `main.css` - Core styles, layout, and responsive design
 - `custom.css` - Custom styling and overrides
+
+### Responsive Design Features
+
+- Mobile-first approach with breakpoints at 768px and 480px
+- Optimized header layout for mobile devices
+- Responsive typography and spacing
+- Touch-friendly navigation elements
+- Fluid layouts that adapt to different screen sizes
+
+### Favicon Implementation
+
+The site uses a comprehensive favicon setup with multiple sizes and formats:
+
+- Standard favicon.ico for legacy browsers
+- PNG favicons in multiple sizes (16x16, 32x32)
+- Apple Touch Icon for iOS devices
+- Android Chrome icons (192x192, 512x512)
+- Web manifest for PWA support
 
 ## 🔍 SEO & Analytics
 
