@@ -50,3 +50,7 @@ enableRobotsTXT = true
     baseName = "index"
     isPlainText = true
     notAlternative = true
+
+# [taxonomies]
+# tag = "tags"
+# category = "categories"
