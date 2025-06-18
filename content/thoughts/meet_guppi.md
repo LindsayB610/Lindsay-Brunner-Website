@@ -22,7 +22,8 @@ Let's talk about the great lie of digital productivity: structure = control.
 Here's how it actually went:
 
 - **Task managers:** Guilt bombs. The more tasks I added, the less I wanted to open them.  
-- **Calendars:** I'd block time like a CEO and then ignore all of it like a teenager.  
+- **Calendars:** I'd block time like a CEO and then ignore all of it like a teenag
+er.  
 - **Sticky notes:** Stress confetti. One gust of wind and I'd lose Q2 strategy and my grocery list. 
 
 The only thing that halfway worked? Paper.
@@ -116,3 +117,8 @@ It's the same assistant I use daily, built on top of ChatGPT with personality se
 I built this because my brain didn't want a static system. It wanted a conversation, a memory, and a little emotional support. Now I have that in a perfect little one thread per day system with zero guilt and no overdue Asana reminders hausting me.
 
 Give him a try!
+
+## Related Posts
+
+- [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/2025-06-13/meet-guideforge/)
+- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)

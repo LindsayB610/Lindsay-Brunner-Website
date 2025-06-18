@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LB Favicon Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        .favicon-container {
+            width: 512px;
+            height: 512px;
+            position: relative;
+            background: #000000;
+            border-radius: 20%;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 200px;
+            text-align: center;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #ff0037 0%, #ff1b8d 50%, #ffdd00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logo-pulse 4s ease-in-out infinite alternate;
+        }
+        @keyframes logo-pulse {
+            0% {
+                filter: brightness(1);
+            }
+            100% {
+                filter: brightness(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="favicon-container">
+        <div class="text">LB</div>
+    </div>
+</body>
+</html> 
