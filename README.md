@@ -207,6 +207,7 @@ The site uses a comprehensive favicon setup with multiple sizes and formats:
 
 - **Meta Tags**: Configured in `config.toml` for optimal SEO
 - **Analytics**: Privacy-friendly analytics via Plausible
+- **Ahrefs Web Analytics**: Simple, privacy-friendly traffic monitoring via a script in the site head
 - **RSS Feed**: Available at `/index.xml` for content syndication
 - **Social Media**: Open Graph tags for better social sharing
 
