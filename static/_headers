@@ -3,7 +3,7 @@
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' plausible.io analytics.ahrefs.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' plausible.io;
+  Content-Security-Policy: default-src 'self'; script-src 'self' plausible.io analytics.ahrefs.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' plausible.io analytics.ahrefs.com;
   Permissions-Policy: camera=(), microphone=(), geolocation=(), gyroscope=(), magnetometer=(), notifications=(), payment=(), usb=(), midi=(), push=(), sync-xhr=(), battery=(), vr=(), accelerometer=(), ambient-light-sensor=(), hid=(), serial=(), xr-spatial-tracking=(), wake-lock=(), screen-wake-lock=(), vertical-scroll-snap=(), horizontal-scroll-snap=(), cross-origin-isolated=(), shared-storage=(), attribution-reporting=(), interest-cohort=(), run-ad-auction=(), browsing-topics=()
 
 /*.css
