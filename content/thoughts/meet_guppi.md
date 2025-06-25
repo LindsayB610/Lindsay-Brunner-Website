@@ -56,7 +56,7 @@ It's accountability without shame. Structure without rigidity. A to-do list that
 - He lets me ramble, then turns it into a clean, professional update for my CEO  
 - He nags me *just enough*
 
-He also says things like, _"Laundry in motion. Procrastination: satisfied,"_ which—honestly? Better than most apps I've paid for.
+He also says things like, _"Laundry in motion. Procrastination: satisfied,"_ which, honestly? Better than most apps I've paid for.
 
 ---
 

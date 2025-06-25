@@ -8,12 +8,13 @@ draft: false
 ---
 
 <!-- Start writing your post below this line --> 
+_Or: Why developer content that listens is way better than content that just talks_
 
-I've been doing developer marketing for almost a decade now, and one of the very first things I learned, which still proves itself true every day, is that developers are incredibly smart—and incredibly impatient. They're quick to spot marketing fluff and even quicker to bounce if your content wastes their time. Respect that intelligence and impatience, reward their time with usefulness, and you'll earn their attention.
+I've been doing developer marketing for almost a decade now, and one of the very first things I learned, which still proves itself true every day, is that developers are incredibly smart, and incredibly impatient. They're quick to spot marketing fluff and even quicker to bounce if your content wastes their time. Respect that intelligence and impatience, reward their time with usefulness, and you'll earn their attention.
 
 While this dynamic isn't unique to developers (it's true for almost any knowledge worker) dev content is what I know best, so let's focus there.
 
-After years of wrangling developer-focused content at companies like Okta, ngrok, and Builder.io, here's what I've figured out about how to achieve usefulness, and engagement: the best developer content isn't a lecture, it's banter. It's conversational. It reads as real human-to-human connection. (As an aside, this is also why I'm not worried about AI eating my job. If there's one thing AI sucks at mimicking humanity. The uncanny valley is real.)
+After years of wrangling developer-focused content at companies like Okta, ngrok, and Builder.io, here's what I've figured out about how to achieve usefulness, and engagement: the best developer content isn't a lecture, it's banter. It's conversational. It reads as real human-to-human connection. (As an aside, this is also why I'm not worried about AI eating my job. If there's one thing AI sucks at, it's mimicking humanity. The uncanny valley is real.)
 
 ## The Broadcast Trap
 
