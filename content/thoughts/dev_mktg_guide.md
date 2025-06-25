@@ -4,7 +4,7 @@ date: 2025-06-25
 slug: "what-is-developer-marketing-guide"
 description: "Learn what developer marketing really is, why it matters, proven tactics, KPIs and org tips, from someone who has made it a career."
 subtitle: "Or: A practitioner’s guide to winning the hearts (and wallets) of developers"
-draft: true
+draft: false
 ---
 _Or: A practitioner’s guide to winning the hearts (and wallets) of developers_
 
