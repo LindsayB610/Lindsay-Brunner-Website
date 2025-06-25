@@ -8,22 +8,104 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
- font-family: $font-heading; 
+ font-family: $font-heading;
 } */
 
 .bg-black-60 {
-    background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
 .measure-wide {
-    max-width: 60em;
+  max-width: 60em;
 }
 
 .monsterrat {
-    font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .lato {
-    font-family: Lato, sans-serif;
-    font-weight: 100;
+  font-family: Lato, sans-serif;
+  font-weight: 100;
+}
+
+/* Subtle table styling that matches site design */
+.article-content table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin: 2rem 0 !important;
+  background: var(--dark-surface) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-clean) !important;
+  position: relative !important;
+}
+
+.article-content table::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background: var(--gradient-main) !important;
+  animation: table-flow 6s linear infinite !important;
+}
+
+@keyframes table-flow {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(50%);
+    opacity: 0.6;
+  }
+}
+
+.article-content thead {
+  background: var(--dark-surface-lighter) !important;
+}
+
+.article-content th {
+  padding: 1.5rem 1rem !important;
+  text-align: left !important;
+  font-family: var(--font-accent) !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  color: var(--brand-primary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: none !important;
+}
+
+.article-content td {
+  padding: 1.5rem 1rem !important;
+  border: none !important;
+  color: var(--dark-text-secondary) !important;
+  line-height: 1.6 !important;
+  font-size: 1rem !important;
+  vertical-align: top !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.article-content td:first-child {
+  font-weight: 600 !important;
+  color: var(--dark-text) !important;
+}
+
+.article-content tbody tr {
+  transition: all 0.25s ease !important;
+}
+
+.article-content tbody tr:hover {
+  background: rgba(255, 27, 141, 0.05) !important;
+  transform: translateY(-1px) !important;
+}
+
+.article-content tbody tr:last-child td {
+  border-bottom: none !important;
 }

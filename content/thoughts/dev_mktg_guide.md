@@ -6,6 +6,7 @@ description: "Learn what developer marketing really is, why it matters, proven t
 subtitle: "Or: A practitioner’s guide to winning the hearts (and wallets) of developers"
 draft: false
 ---
+
 _Or: A practitioner’s guide to winning the hearts (and wallets) of developers_
 
 > **TL;DR**: Developer marketing is the art, and frankly the street fight, of getting cynical, caffeine‑fueled engineers to notice your tool, try it, and recommend it to someone in Slack. If you think that sounds like regular marketing, kindly step away from the buzzwords and keep reading.
@@ -24,8 +25,8 @@ If you lead product, engineering, or GTM at a dev‑tool org and still treat mar
 
 Three qualifiers that matter:
 
-1. **Useful > Persuasive.** Developers reward utility. They punish hype.  
-2. **Fast path to “Hello World.”** The shorter the ramp, the higher the retention.  
+1. **Useful > Persuasive.** Developers reward utility. They punish hype.
+2. **Fast path to “Hello World.”** The shorter the ramp, the higher the retention.
 3. **Community over campaigns.** You can buy clicks. You can’t buy trust.
 
 Yes, DevRel is a flavor of developer marketing. And no, acknowledging that won’t turn you into a pumpkin. It might just fund your budget requests.
@@ -42,25 +43,29 @@ So why focus on useful content? Because I’ve watched so many great tutorials o
 
 Developers hate two things:
 
-1. Wasting time  
+1. Wasting time
 2. People who waste their time
 
-They’re allergic to corporate adjectives. They adore specifics, working code, and anything that saves them spelunking Stack Overflow. Respect that and you’re halfway to advocacy. 
+They’re allergic to corporate adjectives. They adore specifics, working code, and anything that saves them spelunking Stack Overflow. Respect that and you’re halfway to advocacy.
 
-> Tangent: This is also why AI took over so hard and fast. It actually gives developers working code.  
+> Tangent: This is also why AI took over so hard and fast. It actually gives developers working code.
 >
-> Full disclosure—I work at Builder.io now, and yes, I'm biased. But that’s the whole reason I joined. I think the best place to be is at a dev tool that’s deeply, intrinsically useful to developers.  
+> Full disclosure—I work at Builder.io now, and yes, I'm biased. But that’s the whole reason I joined. I think the best place to be is at a dev tool that’s deeply, intrinsically useful to developers.
 >
 > Wanna talk about how Builder’s Fusion engine rewrites your frontend life? HMU.
 
 ## The 4A Developer Journey
 
-| Stage          | *Dev Need*                   | Your Job                                     | One Metric That Matters                 |
-| -------------- | ---------------------------- | -------------------------------------------- | --------------------------------------- |
-| **Awareness**  | *“Why should I care?”*       | Speak their language where they hang out     | Qualified traffic (search, communities) |
-| **Activation** | *“Show me it works.”*        | Zero‑to‑running tutorial, sandbox, free tier | Time‑to‑Hello‑World                     |
-| **Adoption**   | *“Make it production‑worthy.”* | Deep docs, patterns, community answers     | Weekly Active Developers                |
-| **Advocacy**   | *“I’ll tell my team.”*       | Community highlights, swag, CFP coaching     | Net New Dev Referrals                   |
+<div class="table-wrapper">
+
+| Stage          | Dev Need                       | Your Job                                     | One Metric That Matters                 |
+| -------------- | ------------------------------ | -------------------------------------------- | --------------------------------------- |
+| **Awareness**  | _"Why should I care?"_         | Speak their language where they hang out     | Qualified traffic (search, communities) |
+| **Activation** | _"Show me it works."_          | Zero‑to‑running tutorial, sandbox, free tier | Time‑to‑Hello‑World                     |
+| **Adoption**   | _"Make it production‑worthy."_ | Deep docs, patterns, community answers       | Weekly Active Developers                |
+| **Advocacy**   | _"I'll tell my team."_         | Community highlights, swag, CFP coaching     | Net New Dev Referrals                   |
+
+</div>
 
 DevRel and marketing duties are braided through every stage. Separate them and you're trying to climb a wall with half a rope.
 
@@ -108,9 +113,9 @@ Break the loop, and you’ll ship features no one asked for, while devs Google f
 
 ## Tactics That Work in 2025
 
-- Rapid tutorial series (#JavaScript, #Python, #Rust, #LLM, #MCP)  
-- Sample repo with a `deploy with …` button  
-- Community AMAs with engineers, not execs  
+- Rapid tutorial series (#JavaScript, #Python, #Rust, #LLM, #MCP)
+- Sample repo with a `deploy with …` button
+- Community AMAs with engineers, not execs
 - Usage‑based onboarding emails tied to actual product activities
 
 Measure time‑to‑value, not open rates.
@@ -145,9 +150,9 @@ Terraform wasn’t a lead magnet, it was the product. Developers adopted it orga
 
 At Stormpath, every SDK shipped with:
 
-1. Dead-simple Hello World  
-2. Copy-paste code sample  
-3. Foolproof tutorial  
+1. Dead-simple Hello World
+2. Copy-paste code sample
+3. Foolproof tutorial
 
 Sign‑ups jumped massively (Don't ask me for the number, do you know how long ago that was? Like I still have that spreadsheet...). When we joined, folks at Okta cited organic developer adoption velocity as one of the most exciting things about Stormpath
 
@@ -159,7 +164,7 @@ Post-acquisition, we rebuilt Okta’s dev portal and started churning out excell
 
 **Lesson:** Build trust with devs and the rest of the org will follow.
 
-These companies didn’t just get lucky. They built systems where education, community, and product feedback were tightly woven. 
+These companies didn’t just get lucky. They built systems where education, community, and product feedback were tightly woven.
 
 Which brings us to the org question no one wants to ask:
 
@@ -172,42 +177,51 @@ That means someone has to own the whole system: community, content, sample repos
 We’ll talk later about how to survive that hybrid role and why it’s worth it.
 
 For now ask yourself:
-* Can they understand enough code to ask smart questions, and enough funnel to act on the answers?
-* Do they have the mandate to build developer trust across touchpoints, not just chase traffic?
-* Can they explain what’s slowing down developer activation in plain English, to people who think in spreadsheets?
+
+- Can they understand enough code to ask smart questions, and enough funnel to act on the answers?
+- Do they have the mandate to build developer trust across touchpoints, not just chase traffic?
+- Can they explain what’s slowing down developer activation in plain English, to people who think in spreadsheets?
 
 If not you don’t have a leader you have a traffic jam.
 
 ## Common Pitfalls (and Fixes)
 
-| Pitfall                            | Actual Problem                                 | Fix                                                         |
-| ---------------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
-| Gating every PDF                   | Treating devs like MQL vending machines        | Ungate. Track activations                                   |
-| “Revolutionary” feature copy       | Hype ≠ trust                                   | Lead with pain solved                                       |
-| Docs disconnected from funnel                   | Devs can't find what they need to activate                            | Build a handshake between docs, DevRel, and marketing on what gets surfaced and updated               |
-| Measuring vanity traffic           | Page views lie                                 | Define and track product activation metrics
+<div class="table-wrapper">
+
+| Pitfall                           | Actual Problem                             | Fix                                                                                     |
+| --------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------- |
+| **Gating every PDF**              | Treating devs like MQL vending machines    | Ungate. Track activations                                                               |
+| **"Revolutionary" feature copy**  | Hype ≠ trust                               | Lead with pain solved                                                                   |
+| **Docs disconnected from funnel** | Devs can't find what they need to activate | Build a handshake between docs, DevRel, and marketing on what gets surfaced and updated |
+| **Measuring vanity traffic**      | Page views lie                             | Define and track product activation metrics                                             |
+
+</div>
 
 ## 30–60–90 Starter Plan
 
-- **Days 1–30**  
+- **Days 1–30**
   Audit top search terms, social and community threads, GitHub issues. Identify friction in “Hello World” paths. Map existing content to the 4A journey.
 
-- **Days 31–60**  
+- **Days 31–60**
   Launch a dead-simple quickstart in two or more popular languages. Ship a “starter repo” with a one-click deploy. Kick off your first community AMA or livestream.
 
-- **Days 61–90**  
+- **Days 61–90**
   Wire product analytics to onboarding content. Build a reporting loop from DevRel and support into marketing. Propose one recurring artifact—a changelog digest, a usage milestone newsletter, or a monthly dev report.
 
 Outrun 80 % of Series A startups with just that.
 
 ## Developer Marketing Metrics That Don’t Make Engineers Roll Their Eyes
 
-| Stage      | KPI                                      | Reality Check                                    |
-| ---------- | ---------------------------------------- | ------------------------------------------------ |
-| Awareness  | Search impressions, community joins      | Organic > paid unless you hate money             |
-| Activation | Time‑to‑Hello‑World, sandbox completions | The shorter, the stickier (yes, literal ones)     |
-| Adoption   | Weekly Active Devs, usage per seat       | Usage-based billing loves this                   |
-| Advocacy   | Referrals, content contributions         | GitHub stars are nice. Revenue is nicer          |
+<div class="table-wrapper metrics-table">
+
+| Stage          | KPI                                          | Reality Check                                 |
+| -------------- | -------------------------------------------- | --------------------------------------------- |
+| **Awareness**  | `Search impressions`, `community joins`      | Organic > paid unless you hate money          |
+| **Activation** | `Time‑to‑Hello‑World`, `sandbox completions` | The shorter, the stickier (yes, literal ones) |
+| **Adoption**   | `Weekly Active Devs`, `usage per seat`       | Usage-based billing loves this                |
+| **Advocacy**   | `Referrals`, `content contributions`         | GitHub stars are nice. Revenue is nicer       |
+
+</div>
 
 **Bonus:** Instrument everything. Swag is the only part of your booth they’ll take home. Make it count, then show Finance the conversion rate.
 
@@ -225,16 +239,16 @@ And when your boss starts quoting your metrics in the all-hands, try not to smir
 
 ## FAQ
 
-**Q: Can an engineer run developer marketing?**  
+**Q: Can an engineer run developer marketing?**
 A: Yes, if they can think in funnels as well as functions. The best ones bring technical credibility and learn to ship campaigns, not just code. Just don’t assume that knowing the tech is the same as knowing the audience.
 
-**Q: Isn’t DevRel already doing this?**  
+**Q: Isn’t DevRel already doing this?**
 A: Sometimes. But if DevRel owns awareness and support while Marketing’s off writing gated eBooks, you’re splitting the atom with a butter knife.
 
-**Q: What if we already have DevRel—why do we need both?**  
+**Q: What if we already have DevRel—why do we need both?**
 A: Because DevRel without marketing becomes reactive support. Developer marketing sets the runway so DevRel can scale, not scramble. It’s not either/or. It’s load-balancing.
 
-**Q: Do I need a technical background to run a hybrid DevRel/DevMktg team?**  
+**Q: Do I need a technical background to run a hybrid DevRel/DevMktg team?**
 A: No, but you need taste. Can you tell the difference between useful content and polished nonsense? Can you spot a bottleneck in onboarding without installing the product? Be curious. Learn the product, at least enough to be dangerous. Be useful.
 
 ## Related Content

@@ -1017,6 +1017,255 @@ blockquote {
   margin: 0 auto;
 }
 
+/* Enhanced Table Styling */
+.table-wrapper {
+  margin: var(--space-xl) 0;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-clean);
+  background: var(--dark-surface);
+  position: relative;
+}
+
+.table-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-main);
+  animation: table-flow 6s linear infinite;
+  z-index: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  position: relative;
+}
+
+@keyframes table-flow {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(50%);
+    opacity: 0.6;
+  }
+}
+
+thead {
+  background: var(--dark-surface-lighter);
+  position: relative;
+}
+
+thead::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--brand-primary),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+th {
+  padding: var(--space-lg) var(--space-md);
+  text-align: left;
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--brand-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  position: relative;
+}
+
+th:first-child {
+  padding-left: var(--space-lg);
+}
+
+th:last-child {
+  padding-right: var(--space-lg);
+}
+
+td {
+  padding: var(--space-lg) var(--space-md);
+  border: none;
+  color: var(--dark-text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+  vertical-align: top;
+}
+
+td:first-child {
+  padding-left: var(--space-lg);
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+td:last-child {
+  padding-right: var(--space-lg);
+}
+
+tbody tr {
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tbody tr:hover {
+  background: rgba(255, 27, 141, 0.05);
+  transform: translateY(-1px);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Table cell emphasis styles */
+td strong,
+td em {
+  color: var(--color-yellow);
+  font-weight: 600;
+}
+
+td code {
+  background: rgba(255, 221, 0, 0.15);
+  color: var(--color-yellow);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85em;
+}
+
+/* Responsive table design */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.875rem;
+  }
+
+  th,
+  td {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  th:first-child,
+  td:first-child {
+    padding-left: var(--space-md);
+  }
+
+  th:last-child,
+  td:last-child {
+    padding-right: var(--space-md);
+  }
+}
+
+@media (max-width: 600px) {
+  .table-wrapper {
+    margin: var(--space-lg) 0;
+    overflow-x: visible;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .table-wrapper::before {
+    display: none;
+  }
+
+  /* Stack table cells vertically on small screens */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tbody tr {
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    padding: var(--space-md);
+    background: var(--dark-surface);
+    position: relative;
+  }
+
+  tbody tr::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-main);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  tbody tr:hover {
+    transform: none;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding: var(--space-sm) 0;
+    padding-left: 40% !important;
+    text-align: left;
+  }
+
+  td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 35%;
+    padding-right: var(--space-sm);
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--brand-primary);
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Special styling for metric tables */
+.metrics-table td:nth-child(2) {
+  font-family: var(--font-mono);
+  color: var(--color-yellow);
+  background: rgba(255, 221, 0, 0.08);
+}
+
+.metrics-table td:nth-child(3) {
+  font-style: italic;
+  color: var(--dark-text-muted);
+}
+
 /* Utility classes */
 .sr-only {
   position: absolute;
