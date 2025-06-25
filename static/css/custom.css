@@ -28,6 +28,22 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 100;
 }
 
+/* 🔒 HOMEPAGE HERO H1 GRADIENT FIX - HIGHEST PRIORITY */
+.hero h1,
+section.hero h1,
+.hero > .container > h1 {
+  background-size: 80% 100% !important;
+}
+
+/* Fix article page h1 gradients - ensure natural gradient flow */
+article.section h1,
+article.section header h1,
+article.section .container-narrow h1,
+.section article h1 {
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+}
+
 /* Subtle table styling that matches site design */
 .article-content table {
   width: 100% !important;

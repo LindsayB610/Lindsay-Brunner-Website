@@ -186,21 +186,32 @@ h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.025em;
-  /* 🔒 CRITICAL: This gradient configuration is PERFECT - DO NOT MODIFY! */
-  /* The hero text is larger than header text, so it stretches the gradient over more pixels */
-  /* background-size: 80% 100% compresses the gradient so the yellow reaches the final "r" */
-  /* Changing the percentages or removing background-size will break the gradient match */
+  /* Default h1 styling - clean gradient for other pages */
   background: linear-gradient(
     135deg,
     var(--color-red) 0%,
     var(--color-pink) 50%,
     var(--color-yellow) 100%
   );
-  background-size: 80% 100%; /* 🔒 LOCKED: Required for gradient to reach yellow at end of text */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: logo-pulse 4s ease-in-out infinite alternate;
+}
+
+/* 🔒 HOMEPAGE HERO H1 - PERFECT GRADIENT - DO NOT MODIFY! */
+.hero h1 {
+  /* 🔒 CRITICAL: This gradient configuration is PERFECT for "Lindsay Brunner" */
+  /* The hero text is larger than header text, so it stretches the gradient over more pixels */
+  /* background-size: 80% 100% compresses the gradient so the yellow reaches the final "r" */
+  background-size: 80% 100% !important; /* 🔒 LOCKED: Required for gradient to reach yellow at end of "Lindsay Brunner" */
+}
+
+/* Fix for article page h1s - ensure they don't inherit the background-size */
+article h1,
+.article-content h1,
+.section article h1 {
+  background-size: auto !important;
 }
 
 h2 {
