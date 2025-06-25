@@ -3,12 +3,14 @@
   <div class="container">
     <h1>Lindsay Brunner</h1>
     <p>
-      Experienced content strategist, developer advocacy leader, and actually
-      kinda cool human who transforms complex technology concepts into content
-      experiences that developers and technical audiences love. I lead teams
-      that build bridges between emerging tech and the people and companies who use
-      it.
+      I lead content and DevRel teams that make emerging tech make sense, for
+      the people building with it, and the companies betting&nbsp;on&nbsp;it.
     </p>
+    <p>
+      I turn complex stuff into content developers actually care about.
+      Strategy, docs, storytelling, the occasional sassy opinion.
+    </p>
+    <p>Also: pretty cool human, decent taste in stickers.</p>
     <a
       href="https://www.linkedin.com/in/lindsaybrunner/"
       class="hero-cta"
@@ -80,11 +82,8 @@
         </div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         <p>
-          {{ if .Params.subtitle }}
-            {{ .Params.subtitle }}
-          {{ else }}
-            {{ .Summary }}
-          {{ end }}
+          {{ if .Params.subtitle }} {{ .Params.subtitle }} {{ else }} {{
+          .Summary }} {{ end }}
         </p>
         <a href="{{ .RelPermalink }}" class="read-more-link">Read on →</a>
       </div>
