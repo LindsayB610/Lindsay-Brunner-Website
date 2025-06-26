@@ -156,3 +156,45 @@ td code {
   overflow-x: hidden !important;
   max-width: 100% !important;
 }
+
+/* Better mobile table styling */
+@media (max-width: 768px) {
+  .article-content table {
+    font-size: 0.9rem !important;
+  }
+
+  .article-content th,
+  .article-content td {
+    padding: 1rem 0.75rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Override the main.css mobile rules that don't work well */
+  .table-wrapper {
+    overflow-x: auto !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .table-wrapper::before {
+    display: none !important;
+  }
+
+  .article-content table {
+    min-width: 600px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .article-content th,
+  .article-content td {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  /* Ensure mobile scrolling works smoothly */
+  .table-wrapper {
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+  }
+}
