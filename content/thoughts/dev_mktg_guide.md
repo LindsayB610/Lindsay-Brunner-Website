@@ -254,6 +254,6 @@ A: No, but you need taste. Can you tell the difference between useful content an
 
 ## Related Content
 
-- [Good Developer Content is a Conversation, Not a Broadcast](https://lindsaybrunner.com/blog/good-developer-content-is-a-conversation-not-a-broadcast) — Why content that listens earns more trust than content that only talks.
-- [Building Docs with an Arc‑Reactor (and a Bit of AI)](https://lindsaybrunner.com/blog/building-docs-with-an-arc-reactor-and-a-bit-of-ai) — How I turned technical writing muscle memory into reusable playbooks and an AI assistant.
-- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](https://lindsaybrunner.com/blog/i-built-a-custom-ai-assistant-because-my-brain-refused-to-use-notion) — A look into how I built an AI system tailored to my ADHD brain and productivity needs.
+- [Good Developer Content is a Conversation, Not a Broadcast](https://lindsaybrunner.com/blog/good-developer-content-is-a-conversation-not-a-broadcast/) — Why content that listens earns more trust than content that only talks.
+- [Building Docs with an Arc‑Reactor (and a Bit of AI)](https://lindsaybrunner.com/blog/building-docs-with-an-arc-reactor-and-a-bit-of-ai/) — How I turned technical writing muscle memory into reusable playbooks and an AI assistant.
+- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](https://lindsaybrunner.com/blog/i-built-a-custom-ai-assistant-because-my-brain-refused-to-use-notion/) — A look into how I built an AI system tailored to my ADHD brain and productivity needs.
