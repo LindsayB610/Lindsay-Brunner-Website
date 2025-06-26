@@ -11,6 +11,11 @@
 
 <link rel="canonical" href="{{ .Permalink }}" />
 
+{{ if .Params.social_image }}
+  <meta property="og:image" content="{{ .Params.social_image | absURL }}" />
+  <meta name="twitter:image" content="{{ .Params.social_image | absURL }}" />
+{{ end }}
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
