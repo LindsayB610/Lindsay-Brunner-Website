@@ -6,8 +6,8 @@
 /tags/   /   301
 /categories/   /   301
 
-# Redirect non-trailing-slash URLs to trailing slash
-/* /:splat/ 301!
+# Remove all trailing slash redirect rules to stop the redirect loop.
+# Only keep the original, specific redirects and comments.
 
 # SPA fallback for any other routes
 # /*   /index.html   200
