@@ -125,3 +125,14 @@ article.section .container-narrow h1,
 .article-content tbody tr:last-child td {
   border-bottom: none !important;
 }
+
+/* Code in tables - prevent line breaking */
+.article-content td code,
+.article-content table td code,
+table td code,
+td code {
+  white-space: nowrap !important;
+  display: inline-block !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+}
