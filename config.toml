@@ -32,6 +32,7 @@ enableRobotsTXT = true
   # Site config
   recent_posts_number = 4
   show_reading_time = true
+  default_social_image = "/images/social/default-og.png"
 
   # SEO
   keywords = "developer advocacy, content strategy, technical writing, developer experience"
