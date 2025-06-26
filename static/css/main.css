@@ -269,7 +269,6 @@ code {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 221, 0, 0.2);
-  white-space: nowrap;
 }
 
 pre {
@@ -1265,18 +1264,6 @@ td code {
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
-}
-
-/* Special styling for metric tables */
-.metrics-table td:nth-child(2) {
-  font-family: var(--font-mono);
-  color: var(--color-yellow);
-  background: rgba(255, 221, 0, 0.08);
-}
-
-.metrics-table td:nth-child(3) {
-  font-style: italic;
-  color: var(--dark-text-muted);
 }
 
 /* Utility classes */
