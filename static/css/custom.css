@@ -116,9 +116,15 @@ article.section .container-narrow h1,
 .article-content td:first-child,
 .article-content table td:first-child,
 table td:first-child,
-tbody td:first-child {
+tbody td:first-child,
+.article-content tbody tr td:first-child,
+article.section .article-content table tbody tr td:first-child,
+.article-content td:first-child strong,
+.article-content table td:first-child strong,
+table td:first-child strong {
   font-weight: 700 !important;
   color: #ffffff !important;
+  background-color: transparent !important;
 }
 
 .article-content tbody tr {
