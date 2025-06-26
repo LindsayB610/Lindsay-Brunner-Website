@@ -11,3 +11,9 @@
 
 # SPA fallback for any other routes
 # /*   /index.html   200
+
+# Remove the overly broad redirect
+# Add specific trailing slash redirects
+/blog/:slug  /blog/:slug/  301!
+/thoughts/:slug  /thoughts/:slug/  301!
+/:slug  /:slug/  301!
