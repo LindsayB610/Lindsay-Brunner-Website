@@ -113,9 +113,12 @@ article.section .container-narrow h1,
   word-wrap: break-word !important;
 }
 
-.article-content td:first-child {
-  font-weight: 600 !important;
-  color: var(--dark-text) !important;
+.article-content td:first-child,
+.article-content table td:first-child,
+table td:first-child,
+tbody td:first-child {
+  font-weight: 700 !important;
+  color: #ffffff !important;
 }
 
 .article-content tbody tr {
