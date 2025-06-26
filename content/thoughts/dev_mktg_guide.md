@@ -124,7 +124,7 @@ Measure time‑to‑value, not open rates.
 
 ### Vercel: Docs as Distribution
 
-Vercel doesn’t just treat documentation as a support artifact—it’s the top of their funnel.
+Vercel doesn’t just treat documentation as a support artifact, it’s the top of their funnel.
 
 Every changelog reads like a mini-workshop. New features come with tailored examples, usage guides, and full-stack demos. Their “Next.js Learn” tutorial isn’t hidden in a menu; it’s a flagship product experience. And the SEO? Surgical. Their docs regularly outrank competitors’ homepages for framework-related searches.
 
@@ -132,7 +132,7 @@ Every changelog reads like a mini-workshop. New features come with tailored exam
 
 ### Twilio: The Copy‑Paste Gospel
 
-Early Twilio was infamous for one thing: dead-simple “curl” commands everywhere.
+Early Twilio was infamous for one thing: dead-simple `curl` commands everywhere.
 
 Their docs weren’t long, but they were lethal. Any developer could send themselves a text message in under a minute, often without reading past the second paragraph. That dopamine hit, “I made this thing work!”, hooked users before a single salesperson reached out. Twilio’s revenue followed that activation curve, not the other way around.
 
