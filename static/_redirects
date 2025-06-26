@@ -5,6 +5,7 @@
 /thoughts/2024-01-15/on-building-developer-experiences/   /   301
 /tags/   /   301
 /categories/   /   301
+/sitemap.xml  /sitemap.xml  200
 
 # Remove all trailing slash redirect rules to stop the redirect loop.
 # Only keep the original, specific redirects and comments.
