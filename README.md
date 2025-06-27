@@ -180,6 +180,20 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
 - **URL structure**: Files in `thoughts/` become `/thoughts/filename/`
 - **Ordering**: Hugo sorts by date (newest first) by default
 
+## 📣 Social Sharing Images (Open Graph)
+
+- Place all social sharing images in `static/images/social/`.
+- To set a custom image for a post, add this to the post's front matter:
+  ```yaml
+  social_image: "/images/social/your-image.png"
+  ```
+- To set a default image for all pages, update `config.toml`:
+  ```toml
+  default_social_image = "/images/social/default-og.png"
+  ```
+- The site will use the post-specific image if set, otherwise the default.
+- These images are used for Open Graph and Twitter card previews when your content is shared on social media.
+
 ## 🎨 Styling
 
 The site uses custom CSS located in `static/css/`:
@@ -225,17 +239,3 @@ The site is automatically deployed to Netlify when changes are pushed to the mas
 ## 📝 License
 
 This project is private and proprietary. All rights reserved.
-
-## 📣 Social Sharing Images (Open Graph)
-
-- Place all social sharing images in `static/images/social/`.
-- To set a custom image for a post, add this to the post's front matter:
-  ```yaml
-  social_image: "/images/social/your-image.png"
-  ```
-- To set a default image for all pages, update `config.toml`:
-  ```toml
-  default_social_image = "/images/social/default-og.png"
-  ```
-- The site will use the post-specific image if set, otherwise the default.
-- These images are used for Open Graph and Twitter card previews when your content is shared on social media.
