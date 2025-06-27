@@ -85,5 +85,6 @@ Treat developers as the smart, skeptical humans they are. Ditch the megaphone, s
 
 ## Related Posts
 
+- [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
 - [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/2025-06-13/meet-guideforge/)
 - [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/2025-06-12/meet-guppi/)

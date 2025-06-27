@@ -120,5 +120,6 @@ Give him a try!
 
 ## Related Posts
 
+- [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
 - [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/2025-06-13/meet-guideforge/)
 - [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)
