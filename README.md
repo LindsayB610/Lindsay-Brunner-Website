@@ -79,6 +79,8 @@ Before you begin, ensure you have the following installed:
 ├── static/              # Static assets
 │   ├── css/             # Stylesheets
 │   ├── favicons/        # Site favicons
+│   ├── images/          # Site images
+│   │   └── social/      # Social sharing (Open Graph) images for posts and default site image
 │   ├── _headers         # Netlify headers configuration
 │   └── _redirects       # Netlify redirects configuration
 ├── config.toml          # Hugo site configuration
@@ -223,3 +225,17 @@ The site is automatically deployed to Netlify when changes are pushed to the mas
 ## 📝 License
 
 This project is private and proprietary. All rights reserved.
+
+## 📣 Social Sharing Images (Open Graph)
+
+- Place all social sharing images in `static/images/social/`.
+- To set a custom image for a post, add this to the post's front matter:
+  ```yaml
+  social_image: "/images/social/your-image.png"
+  ```
+- To set a default image for all pages, update `config.toml`:
+  ```toml
+  default_social_image = "/images/social/default-og.png"
+  ```
+- The site will use the post-specific image if set, otherwise the default.
+- These images are used for Open Graph and Twitter card previews when your content is shared on social media.
