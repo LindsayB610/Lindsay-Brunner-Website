@@ -1,10 +1,11 @@
 ---
 title: "How to Manage Up When Your Founder Isn't a People Manager"
-date: 2025-07-01
+date: 2025-07-02
 slug: "manage-up"
 description: "No-fluff tactics to get the feedback, credit, and clarity you need from a visionary boss who's brilliant on projects—but swamped on people management."
 subtitle: "Or: Getting what you need to grow and ship when your founder's running the whole damn company"
 draft: true
+og_image: "/images/social/managing-up-og.png"
 ---
 
 Here's the thing no one says out loud: if you're reporting to a founder, you're reporting to someone who loves your work but doesn't have the bandwidth (or playbook) to actually enable you, or manage your growth. That's where you have to show up for yourself. I've been reporting to CMOs, CEOs, and founders for most of my career, so managing up was mission critical early on for me. 
