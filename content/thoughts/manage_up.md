@@ -18,7 +18,7 @@ Lately, I've been thinking a lot about how it has to be so hard to find yourself
 
 "Managing up" isn't corporate fluff; it's owning a relationship your founder never asked you to manage. Your boss didn't hire you to babysit procedures; they hired you to drive results while they're triaging late-night alerts, rewriting onboarding copy, and fielding VC intros.
 
-Research shows most executives spend under [10% of their time on direct reports](https://www.sullivancotter.com/ceo-time-allocation-study), creating a feedback vacuum you must fill. In my experience, if you report to a tech founder, you're getting way less than that.
+Research shows most executives spend under 10% of their time on direct reports, creating a feedback vacuum you must fill. In my experience, if you report to a tech founder, you're getting way less than that.
 
 Treat this dynamic like your flagship project. Map your boss's true north: what outcomes keep them up at 2a? Then be intentional with your check-ins. Plan for every interaction to operate like a roadmap checkpoint—identify the objective, show progress, and get a decision or feedback where needed. 
 
@@ -30,7 +30,7 @@ Quantify the chaos. When they give you a 30-minute slot, it's not charity; it's 
 
 Consistency is your secret weapon. (Shoutout [Brian Bell](https://www.linkedin.com/in/brian-bell-b54105/) for teaching me this lesson!) Nothing builds credibility faster than flawless follow-through: acknowledging requests fast, tracking everything, and delivering before anyone asks. These micro-wins compound.
 
-Your [say:do ratio](https://www.inc.com/lee-colan/what-your-say-do-ratio-says-about-you.html), aka, what you promise vs. what you actually deliver, is built by treating every small commitment like an SLA. If you say "feedback by 3p today," you hit it or update early. Executives hate surprises. This ritual of reliability buys you autonomy. And conversely, if your exec has to chase you for an update, you've already lost trust.
+Your say:do ratio, aka, what you promise vs. what you actually deliver, is built by treating every small commitment like an SLA. If you say "feedback by 3p today," you hit it or update early. Executives hate surprises. This ritual of reliability buys you autonomy. And conversely, if your exec has to chase you for an update, you've already lost trust.
 
 ## Speak Your Boss's Language
 
@@ -62,7 +62,7 @@ When you bring a problem, always come with (ideally) two paths forward and your 
 
 "Conversion to sign-up is at 12%. We can A) tweak CTA copy for a 5% bump (link to proven CTAs), or B) write a new tutorial to target X high-intent term and hopefully earn rank in 2 months. I recommend A. Thoughts?"
 
-This turns you into a solution architect, not a fire alarm. Leadership coaches at [First Round Review](https://review.firstround.com/managing-up-tips) call this the "problem + options" model. It lets your boss stop troubleshooting and start approving. Used consistently, it speeds up everything.
+This turns you into a solution architect, not a fire alarm. It lets your boss stop troubleshooting and start approving. Used consistently, it speeds up everything.
 
 ## Get the Mentorship You Need
 
