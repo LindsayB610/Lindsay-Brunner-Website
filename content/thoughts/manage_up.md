@@ -1,10 +1,10 @@
 ---
 title: "How to Manage Up When Your Founder Isn't a People Manager"
-date: 2025-07-02
+date: 2025-07-01
 slug: "manage-up"
 description: "No-fluff tactics to get the feedback, credit, and clarity you need from a visionary boss who's brilliant on projects—but swamped on people management."
 subtitle: "Or: Getting what you need to grow and ship when your founder's running the whole damn company"
-draft: true
+draft: false
 og_image: "/images/social/managing-up-og.png"
 ---
 
