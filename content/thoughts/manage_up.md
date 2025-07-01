@@ -9,7 +9,7 @@ draft: true
 
 Here's the thing no one says out loud: if you're reporting to a founder, you're reporting to someone who loves your work but doesn't have the bandwidth (or playbook) to actually enable you, or manage your growth. That's where you have to show up for yourself. I've been reporting to CMOs, CEOs, and founders for most of my career, so managing up was mission critical early on for me. 
 
-These aren’t vibes or high-level frameworks. These are tactics I’ve used, broken, and rebuilt across five startups.
+These aren't vibes or high-level frameworks. These are tactics I've used, broken, and rebuilt across five startups.
 
 Lately, I've been thinking a lot about how it has to be so hard to find yourself in this situation for the first time (especially in a remote environment). I've got some tips I've learned the hard way over the years on how to get the feedback, the credit, and the clarity you need, even when your boss's calendar doesn't have space for you for three more weeks.
 
@@ -79,7 +79,7 @@ Document the pattern. Explore lateral moves. Plan your exit. Founders who refuse
 
 ## So, What's Next?
 
-Managing up isn’t about playing the game. It’s about making sure you don’t get stuck waiting for someone else to play it for you.
+Managing up isn't about playing the game. It's about making sure you don't get stuck waiting for someone else to play it for you.
 
 And if you've got managing-up wins or disasters, [HMU on LinkedIn](https://www.linkedin.com/in/lindsaybrunner/). Let's learn from each other.
 
@@ -88,6 +88,5 @@ Your move.
 ## Related Posts
 
 - [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
-- [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/meet_guideforge/)
 - [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/meet_guppi/)
-- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/convo_vs_broadcast/)∑∑
+- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/convo_vs_broadcast/)
