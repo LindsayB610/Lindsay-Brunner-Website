@@ -48,8 +48,6 @@ Then, put your message where they'll see it, and be able to actually take it in.
 
 I also put the items that need his actions at the top of the agenda. I know we'll both have driven the conversation down 7 ADHD rabbit holes before we get to item 2, so I prepare for that in how I write the list.
 
-What about when I need something from Steve, but before our next 1:1? Or perhaps we're cancelled for that week, because, you know, CEO? I learned very quickly that I can get Steve's eyes on a note faster with an @-mention in #marketing, vs. a DM. So I stopped DMing him, except for that once-a-week agenda update, which he knows now to look out for.
-
 **Lead with the punchline. Add context. Bold the ask.**
 
 Study their style like an anthropologist. If they're data-first, open with stats. If they lean narrative, start with the story. When you match their input style, your signal cuts through the noise.
