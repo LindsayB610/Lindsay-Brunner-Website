@@ -254,6 +254,6 @@ A: No, but you need taste. Can you tell the difference between useful content an
 
 ## Related Content
 
-- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/convo_vs_broadcast/) — Why content that listens earns more trust than content that only talks.
+- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/) — Why content that listens earns more trust than content that only talks.
 - [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/meet_guideforge/) — How I turned technical writing muscle memory into reusable playbooks and an AI assistant.
-- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/meet_guppi/) — A look into how I built an AI system tailored to my ADHD brain and productivity needs.
+- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/2025-06-12/meet-guppi/) — A look into how I built an AI system tailored to my ADHD brain and productivity needs.

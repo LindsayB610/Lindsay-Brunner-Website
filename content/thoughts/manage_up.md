@@ -89,5 +89,5 @@ Your move.
 ## Related Posts
 
 - [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
-- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/meet_guppi/)
-- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/convo_vs_broadcast/)
+- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/2025-06-12/meet-guppi/)
+- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)
