@@ -12,7 +12,7 @@ Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
 
 ## 🛠 Tech Stack
 
-- **Static Site Generator**: [Hugo](https://gohugo.io/) v0.121.0+
+- **Static Site Generator**: [Hugo](https://gohugo.io/) v0.149.2+
 - **Styling**: Custom CSS with modern design principles and responsive layouts
 - **Hosting**: [Netlify](https://netlify.com) with continuous deployment
 - **Content Management**: Markdown files with Hugo's content organization

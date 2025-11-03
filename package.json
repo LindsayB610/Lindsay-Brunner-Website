@@ -21,10 +21,10 @@
     "pretest": "npm run build"
   },
   "dependencies": {
-    "hugo-bin": "^0.144.8"
+    "hugo-bin": "^0.149.2"
   },
   "devDependencies": {
-    "html-validate": "^8.18.0",
+    "html-validate": "^10.3.0",
     "broken-link-checker": "^0.7.8"
   },
   "engines": {
