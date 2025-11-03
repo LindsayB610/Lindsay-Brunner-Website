@@ -2,6 +2,9 @@
 publish = "public"
 command = "npm install && npx hugo --gc --minify"
 
+[build.environment]
+NETLIFY_IMAGE = "ubuntu-24.04"
+
 [context.production.environment]
 HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
