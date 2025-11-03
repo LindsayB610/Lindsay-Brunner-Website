@@ -1,9 +1,7 @@
 [build]
 publish = "public"
 command = "npm install && npx hugo --gc --minify"
-
-[build.environment]
-NETLIFY_IMAGE = "ubuntu-24.04"
+# Build image configured in Netlify dashboard: Ubuntu Noble 24.04
 
 [context.production.environment]
 HUGO_ENV = "production"
