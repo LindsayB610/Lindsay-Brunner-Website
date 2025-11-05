@@ -6,3 +6,4 @@ node_modules
 /build
 .hugo_build.lock
 .config/
+/reference_docs
