@@ -7,7 +7,32 @@
         <ul>
           <li><a href="/about/">About</a></li>
           <li><a href="/thoughts/">Thoughts</a></li>
-          <li><a href="https://yarny.lindsaybrunner.com" target="_blank" rel="noopener">Yarny</a></li>
+          <li class="nav-dropdown">
+            <button
+              class="nav-link"
+              type="button"
+              aria-haspopup="true"
+            >
+              Apps
+              <span class="dropdown-icon" aria-hidden="true">▾</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="https://yarny.lindsaybrunner.com" target="_blank" rel="noopener">Yarny</a>
+              </li>
+              <li>
+                <a
+                  href="https://quest.lindsaybrunner.com"
+                  class="is-disabled"
+                  aria-disabled="true"
+                  tabindex="-1"
+                >
+                  Pokemon Phonics Quest
+                  <span class="label-coming-soon">Coming soon</span>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
 
