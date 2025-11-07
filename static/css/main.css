@@ -433,7 +433,7 @@ blockquote {
 }
 
 .main-nav a,
-.main-nav button {
+.main-nav summary {
   color: #f5f5f0;
   font-family: var(--font-accent);
   font-weight: 500;
@@ -450,9 +450,19 @@ blockquote {
   border-radius: var(--radius-sm);
 }
 
+.main-nav summary {
+  list-style: none;
+  user-select: none;
+}
+
+.main-nav summary::marker,
+.main-nav summary::-webkit-details-marker {
+  display: none;
+}
+
 .main-nav a:hover,
-.main-nav button:hover,
-.main-nav button:focus-visible {
+.main-nav summary:hover,
+.main-nav summary:focus-visible {
   font-weight: 700;
   background: var(--gradient-main);
   background-clip: text;
@@ -465,7 +475,7 @@ blockquote {
   display: none;
 }
 
-.main-nav button:focus-visible {
+.main-nav summary:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 27, 141, 0.4);
 }
@@ -475,6 +485,10 @@ blockquote {
 }
 
 .nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown details {
   position: relative;
 }
 
@@ -492,7 +506,7 @@ blockquote {
 }
 
 .nav-dropdown .dropdown-menu {
-  display: none;
+  display: flex;
   position: absolute;
   top: calc(100% + var(--space-xs));
   left: 0;
@@ -512,6 +526,7 @@ blockquote {
   transform: translateY(-6px);
   transition: opacity var(--transition-fast), transform var(--transition-fast);
   pointer-events: none;
+  visibility: hidden;
 }
 
 .nav-dropdown .dropdown-menu li {
@@ -560,14 +575,15 @@ blockquote {
   padding: 0.15rem 0.5rem;
 }
 
-.nav-dropdown.is-open .dropdown-menu {
+.nav-dropdown details[open] .dropdown-menu {
   display: flex;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  visibility: visible;
 }
 
-.nav-dropdown.is-open > .nav-link {
+.nav-dropdown details[open] > summary.nav-link {
   font-weight: 700;
   background: var(--gradient-main);
   background-clip: text;
@@ -576,7 +592,7 @@ blockquote {
   filter: brightness(1.15);
 }
 
-.nav-dropdown.is-open .dropdown-icon {
+.nav-dropdown details[open] .dropdown-icon svg {
   transform: rotate(180deg);
 }
 
@@ -1003,10 +1019,15 @@ blockquote {
     border-top: 2px solid var(--brand-accent);
     margin-top: var(--space-xs);
     width: 100%;
-    opacity: 1;
     transform: none;
     backdrop-filter: none;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .nav-dropdown details[open] .dropdown-menu {
     pointer-events: auto;
+    visibility: visible;
   }
 
   .social-links {
@@ -1045,7 +1066,8 @@ blockquote {
     gap: var(--space-sm);
   }
 
-  .main-nav a {
+  .main-nav a,
+  .main-nav summary {
     padding: var(--space-xs) var(--space-sm);
     font-size: 0.875rem;
   }
