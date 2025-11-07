@@ -461,8 +461,7 @@ blockquote {
 }
 
 .main-nav a:hover,
-.main-nav summary:hover,
-.main-nav summary:focus-visible {
+.main-nav a:focus-visible {
   font-weight: 700;
   background: var(--gradient-main);
   background-clip: text;
@@ -471,13 +470,20 @@ blockquote {
   filter: brightness(1.2);
 }
 
+.main-nav summary:hover,
+.main-nav summary:focus-visible {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f5f0;
+  border-color: rgba(255, 27, 141, 0.35);
+  box-shadow: 0 0 0 1px rgba(255, 27, 141, 0.2);
+}
+
 .main-nav a::after {
   display: none;
 }
 
 .main-nav summary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(255, 27, 141, 0.4);
 }
 
 .main-nav ul li {
@@ -517,7 +523,7 @@ blockquote {
   box-shadow: var(--shadow-lg);
   padding: var(--space-xs) 0;
   list-style: none;
-  min-width: 12rem;
+  min-width: 18rem;
   z-index: 10;
   flex-direction: column;
   gap: 0;
@@ -584,12 +590,13 @@ blockquote {
 }
 
 .nav-dropdown details[open] > summary.nav-link {
-  font-weight: 700;
-  background: var(--gradient-main);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: brightness(1.15);
+  font-weight: 600;
+  color: #f5f5f0;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 27, 141, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(255, 27, 141, 0.2),
+    0 16px 36px rgba(0, 0, 0, 0.35);
 }
 
 .nav-dropdown details[open] .dropdown-icon svg {
