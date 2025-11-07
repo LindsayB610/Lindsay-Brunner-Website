@@ -12,11 +12,19 @@
               class="nav-link"
               type="button"
               aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="apps-dropdown-menu"
             >
               Apps
-              <span class="dropdown-icon" aria-hidden="true">▾</span>
+              <span class="dropdown-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+                  <path
+                    d="M4.47 6.97a.75.75 0 0 1 1.06 0L8 9.44l2.47-2.47a.75.75 0 1 1 1.06 1.06L8.53 11.09a1 1 0 0 1-1.42 0L4.47 8.03a.75.75 0 0 1 0-1.06Z"
+                  />
+                </svg>
+              </span>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" id="apps-dropdown-menu">
               <li>
                 <a href="https://yarny.lindsaybrunner.com" target="_blank" rel="noopener">Yarny</a>
               </li>
@@ -82,4 +90,59 @@
       </div>
     </div>
   </div>
+  <script>
+    (() => {
+      const dropdown = document.querySelector(".nav-dropdown");
+      if (!dropdown) return;
+
+      const toggleButton = dropdown.querySelector("button");
+      const menu = dropdown.querySelector(".dropdown-menu");
+      if (!toggleButton || !menu) return;
+
+      const closeMenu = () => {
+        dropdown.classList.remove("is-open");
+        toggleButton.setAttribute("aria-expanded", "false");
+      };
+
+      const openMenu = () => {
+        dropdown.classList.add("is-open");
+        toggleButton.setAttribute("aria-expanded", "true");
+      };
+
+      toggleButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (dropdown.classList.contains("is-open")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      toggleButton.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMenu();
+          toggleButton.focus();
+        }
+      });
+
+      menu.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMenu();
+          toggleButton.focus();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!dropdown.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener("focusin", (event) => {
+        if (!dropdown.contains(event.target)) {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
 </header>
