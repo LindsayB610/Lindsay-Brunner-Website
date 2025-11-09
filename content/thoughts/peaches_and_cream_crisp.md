@@ -11,7 +11,7 @@ Inspired by dinner at a friend's house this past weekend, and some jars of peach
 
 Let's be clear, I LOVE pie, but I HATE making pie crust. It's too fiddly. I'm a cook, not a baker, I'm just not great at the perfection that baked goods require. Crisp is right up my alley: most of the elements I love about pie, but way more forgiving for a lazy home cook.
 
-This crisp bakes in a deep dish pie pan, and layers a stovetop pastry cream and peach slices under a crunchy oat crumble. 
+This crisp bakes in a deep dish pie pan and layers a stovetop pastry cream and peach slices under a crunchy oat crumble. 
 
 ## Snapshot
 - **Implements:** deep-dish pie plate, 9 1/2 to 10 inches; heavy bottom pot to make pastry cream; colander to drain peaches; other standard baking gear
