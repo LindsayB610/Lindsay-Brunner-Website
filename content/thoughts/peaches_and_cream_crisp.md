@@ -1,14 +1,15 @@
 ---
-title: "Peaches-and-Cream Crisp (Deep-Dish, Recipe Test Notes)"
+title: "Peaches-and-Cream Crisp (made with love and AI)"
 date: 2025-11-09
 slug: "recipe-peaches-and-cream-crisp"
+subtitle: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble, hacked together with ChatGPT."
 description: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble, hacked together with ChatGPT."
 draft: false
 ---
 
 Inspired by dinner at a friend's house this past weekend, and some jars of peaches that were slowly expiring in the back of my pantry, I set out to build my own recipe for a peaches and cream crisp.
 
-Let's be clear, I LOVE pie, but I HATE making pie crust. It's too fiddly. I'm a cook, not a maker, I'm just not great at the perfection that baked goods require. Crisp is right up my alley: most of the elements I love about pie, but way more forgiving for a lazy home cook.
+Let's be clear, I LOVE pie, but I HATE making pie crust. It's too fiddly. I'm a cook, not a baker, I'm just not great at the perfection that baked goods require. Crisp is right up my alley: most of the elements I love about pie, but way more forgiving for a lazy home cook.
 
 This crisp bakes in a deep dish pie pan, and layers a stovetop pastry cream and peach slices under a crunchy oat crumble. 
 
