@@ -1,8 +1,8 @@
 ---
-title: "Peaches-and-Cream Crisp (made with love and AI)"
+title: "Peaches-and-Cream Crisp"
 date: 2025-11-09
 slug: "recipe-peaches-and-cream-crisp"
-subtitle: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble, hacked together with ChatGPT."
+subtitle: "Or: AI can bake, right?"
 description: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble, hacked together with ChatGPT."
 draft: false
 ---
@@ -16,62 +16,54 @@ This crisp bakes in a deep dish pie pan and layers a stovetop pastry cream and p
 ## Snapshot
 - **Implements:** deep-dish pie plate, 9 1/2 to 10 inches; heavy bottom pot to make pastry cream; colander to drain peaches; other standard baking gear
 - **Oven:** 350 F / 175 C
-- **Yield:** 8-10 servings
 
 ## Ingredients
 
+### Crumble topping
+- 1 1/2 cups old-fashioned rolled oats (150 g)
+- 1/2 cup all-purpose flour (80 g)
+- 2/3 cup packed light brown sugar (145 g)
+- 2 tsp ground cinnamon
+- 1/4 tsp kosher salt
+- 1 stick (8 Tbsp) cold butter, cut in small cubes (115 g)
+
 ### Fruit
 - 5 cups canned sliced peaches, very well drained and patted dry
-- Optional juice insurance: 2-3 tsp cornstarch (toss with peaches if the slices seem very juicy)
+- Optional juice insurance: 1-3 tsp cornstarch (toss with peaches if the slices seem very juicy)
 
-### Pastry-cream custard (about 2 cups / 480 ml)
-- 2 cups (480 ml) whole milk
+### Pastry-cream custard (about 2 cups)
+- 2 cups heavy cream (or whole milk for a lighter pastry cream)
 - 4 large egg yolks
-- 6 Tbsp (~75 g) granulated sugar
-- 4 Tbsp (~32 g) cornstarch (use 5 Tbsp / ~40 g for an extra-firm set)
-- Pinch fine salt
-- 2 tsp vanilla extract
-- 20 g (1 1/2 Tbsp) unsalted butter
+- 6 Tbsp (~80 g) granulated sugar, halved
+- 4 Tbsp (~30 g) cornstarch (use 5 Tbsp / ~40 g for an extra-firm set)
+- Pinch kosher salt
+- 2 tsp vanilla paste 
+- 1 1/2 Tbsp (22 g) unsalted butter
 - Optional flavor boosts (choose one):
   - 1 tsp finely grated lemon zest, or
   - Reduce 1/2 cup reserved peach syrup to 2-3 Tbsp and whisk in off-heat; if you do this, reduce sugar by 1-2 Tbsp (12-25 g)
-
-### Crumble topping (scaled for a 9 1/2-10 inch deep-dish)
-- 1 1/4 cups old-fashioned rolled oats (~112 g)
-- 7 Tbsp (~0.42 cup) all-purpose flour (~55-56 g)
-- 5/8 cup packed light or dark brown sugar (~125 g)
-- 1 1/4 tsp ground cinnamon
-- 1/4 tsp fine salt
-- 95 g cold butter, cut in small cubes (~6 2/3 Tbsp)
 
 ---
 
 ## Method
 
 1. **Heat the oven; prep a sheet pan.** Heat to 350 F / 175 C with a rack in the center. Set the pie plate on a rimmed sheet pan (just in case).
-2. **Mix the crumble, then pre-toast (crispiest result).** Combine oats, flour, brown sugar, cinnamon, and salt. Cut in the cold butter with fingers or a pastry blender until you have moist, clumpy crumbs. Spread on a parchment-lined sheet and pre-bake 8-10 minutes until just beginning to color. Set aside.
-3. **Make the pastry cream.**
-   - Heat the milk with half the sugar until steaming (not boiling).
-   - In a separate bowl, whisk yolks, the remaining sugar, cornstarch, and pinch of salt until smooth.
-   - Temper: slowly whisk the hot milk into the yolk mixture, then return everything to the pot.
-   - Cook over medium, whisking constantly, until thick and glossy; let it bubble for 30-60 seconds to fully activate the starch.
-   - Off heat, whisk in vanilla and butter (and zest or reduced syrup if using). Aim for classic pastry-cream thickness—it should stand in soft mounds.
-4. **Prep the peaches.** Drain in a colander for 10 minutes, then pat dry. Cut large slices into bite-size pieces. If they seem quite wet, toss with the optional 2-3 tsp cornstarch.
-5. **Combine and fill.** Fold the peaches into the hot pastry cream. Spoon into the deep-dish pie plate, leaving about 1/2 inch (1.3 cm) headspace.
-6. **Top and bake.** Cover evenly with the pre-toasted crumble. Bake at 350 F until the topping is deep golden and the custard bubbles at the edges—about 22-28 minutes (deeper pans and heavier fills trend toward the longer end).
-7. **Set and serve.** Cool on a rack for 30 minutes so the custard firms to a sliceable, spoon-able pastry cream texture. Serve warm or room temp. Vanilla ice cream or lightly sweetened whipped cream is excellent here.
+2. **Mix the crumble, then pre-toast (crispiest result).** Combine oats, flour, brown sugar, cinnamon, and salt. Cut in the cold butter with fingers or a pastry blender until you have moist, clumpy crumbs. Spread on a parchment-lined rimmed baking sheet and pre-bake 8-10 minutes until just beginning to color. Set aside.
+3. **Prep the peaches.** Drain in a colander for 10 minutes, then pat dry (You can prep your pastry cream while these drain and dry). If they seem quite juicy even after draining and patting dry, toss with the optional 1-3 tsp cornstarch.
+4. **Make the pastry cream.** 
+   * Reduce your peach syrup before beginning this step, if using.
+   - In a bowl, whisk yolks, half the sugar, cornstarch, and pinch of salt until smooth.
+   - Heat the milk with the remaining sugar until steaming (not boiling).
+   - Temper: Slowly whisk the hot milk into the yolk mixture, then return everything to the pot.
+   - Cook over medium low, whisking constantly, until thick and glossy; let it bubble for 30-60 seconds to fully activate the starch.
+   - Off heat, whisk in vanilla and butter (and zest, reduced syrup, or almond extract if using). Aim for classic pastry-cream thickness—it should stand in soft mounds.
+5. **Combine and fill.** Fold the peaches into the hot pastry cream. Spoon into the deep-dish pie plate, leaving about 1/2 inch headspace.
+6. **Top and bake.** Cover evenly with the pre-toasted crumble. Bake at 350 F until the topping is deep golden and the custard bubbles at the edges—about 22-28 minutes.
+7. **Set and serve.** Cool on a rack for at least 30 minutes so the custard firms to a sliceable, spoon-able pastry cream texture. Serve warm or room temp. Vanilla ice cream or lightly sweetened whipped cream is excellent here.
 
 ---
 
 ## Notes, swaps, and guardrails
-
-### Pan size reality check
-- This formula (about 5 cups fruit + ~2 cups custard + crumble) is calibrated for 9 1/2-10 inch deep-dish pie plates.
-- If the plate is a smaller 9 inch deep-dish (about 6 cups to the rim):
-  - Use 4-4 1/2 cups of the peaches (hold back the rest), and/or
-  - Make 1 1/2 cups custard instead of 2 cups:
-    - 1 1/2 cups milk, 3 yolks, 3 Tbsp cornstarch (3 1/2 Tbsp for firm), 4-5 Tbsp sugar (50-62 g), pinch salt, 1 1/2 tsp vanilla, 15 g butter.
-  - Use the base topping (not the 125%): 1 cup oats (90 g), 1/3 cup flour (45 g), 1/2 cup brown sugar (100 g), 1 tsp cinnamon, 1/4 tsp salt, 75 g butter.
 
 ### Sweetness tuning
 - The written sugar level is balanced for extra-light syrup. If you reduce some syrup and add it to the custard, drop the sugar by 1-2 Tbsp as noted.
@@ -92,7 +84,7 @@ This crisp bakes in a deep dish pie pan and layers a stovetop pastry cream and p
 - Refrigerate leftovers, covered, for up to 3 days. Re-crisp the top at 325 F / 165 C for 10-12 minutes; the custard will warm through without breaking.
 
 ### Flavor options
-- A whisper of almond extract (1/8-1/4 tsp) plays well with peaches.
+- A whisper of almond extract (1/2-1 tsp) plays well with peaches.
 - Add cardamom (1/8 tsp) with the cinnamon for a cozy bakery vibe.
 
 <p style="text-align: center;">Made with ❤️ and OpenAI.</p>
