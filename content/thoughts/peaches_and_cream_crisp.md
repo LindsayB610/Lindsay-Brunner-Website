@@ -95,5 +95,5 @@ This crisp bakes in a deep dish pie pan and layers a stovetop pastry cream and p
 - A whisper of almond extract (1/8-1/4 tsp) plays well with peaches.
 - Add cardamom (1/8 tsp) with the cinnamon for a cozy bakery vibe.
 
-Made with ❤️ and <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI logo" width="18" height="18" style="vertical-align: middle;">.
+<p style="text-align: center;">Made with ❤️ and <img src="/images/openai-logo.svg" alt="OpenAI logo" width="18" height="18" style="vertical-align: text-bottom;">.</p>
 
