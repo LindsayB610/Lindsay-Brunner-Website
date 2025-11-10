@@ -1,5 +1,5 @@
 ---
-title: "NOt Pie, Not Buckle, It's Peaches-and-Cream Crisp"
+title: "Not Pie, Not Buckle, It's Peaches-and-Cream Crisp"
 date: 2025-11-09
 slug: "recipe-peaches-and-cream-crisp"
 subtitle: "Or: AI can bake, right?"
