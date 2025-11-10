@@ -77,7 +77,5 @@ A 16-cup (about 4-quart) pot is happiest with roughly 3 to 3 1/2 pounds of shoul
 ### Serving ideas
 Sesame-slaw sandwiches, rice bowls with cucumbers and scallions, or lettuce wraps with sesame seeds and chili crisp. If you prefer tangier, Carolina-style vibes on another day, toss a portion with a vinegar-and-pepper sauce instead of Bachan's.
 
----
-
-Hat tip: This pressure-cooker adaptation borrows the "sauce after shredding" logic from Serious Eats' Easy Oven-Cooked Pulled Pork. Different appliance, same principle—better texture and brighter flavor.
+*Hat tip: This pressure-cooker adaptation borrows the "sauce after shredding" logic from Serious Eats' Easy Oven-Cooked Pulled Pork. Different appliance, same principle—better texture and brighter flavor.*
 
