@@ -1,5 +1,5 @@
 ---
-title: "Peaches-and-Cream Crisp"
+title: "NOt Pie, Not Buckle, It's Peaches-and-Cream Crisp"
 date: 2025-11-09
 slug: "recipe-peaches-and-cream-crisp"
 subtitle: "Or: AI can bake, right?"
@@ -84,7 +84,7 @@ This crisp bakes in a deep dish pie pan and layers a stovetop pastry cream and p
 - Refrigerate leftovers, covered, for up to 3 days. Re-crisp the top at 325 F / 165 C for 10-12 minutes; the custard will warm through without breaking.
 
 ### Flavor options
-- A whisper of almond extract (1/2-1 tsp) plays well with peaches.
+- A whisper of almond extract (1/2 tsp) plays well with peaches.
 - Add cardamom (1/8 tsp) with the cinnamon for a cozy bakery vibe.
 
 <p style="text-align: center;">Made with ❤️ and OpenAI.</p>
