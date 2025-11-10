@@ -4,7 +4,7 @@ date: 2025-11-10
 slug: "recipe-bachan-pulled-pork"
 subtitle: "Pulled pork faster, with a soy-slick finish from the pressure cooker"
 description: "Pressure-braised pork shoulder finished with Bachan's for bright, weeknight-friendly pulled pork."
-draft: true
+draft: false
 ---
 
 I've been trying to use the pressure cooker more (read: remember I own it) and the perfect use case for a pressure cooker, IMO, is pulled pork. Every Sunday we make a batch of something that can be repurposed for weeknight dinners, it's the closest I come to meal prepping, and this Sunday it was this Bachan pulled pork recipe. This was a smash up of several random internet recipes plus my own personal experience, efficiently combined with ChatGPT.
