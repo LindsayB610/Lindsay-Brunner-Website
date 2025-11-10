@@ -7,7 +7,7 @@ description: "Pressure-braised pork shoulder finished with Bachan's for bright, 
 draft: false
 ---
 
-I've been trying to use the pressure cooker more (read: remember I own it) and the perfect use case for a pressure cooker, IMO, is pulled pork. Every Sunday we make a batch of something that can be repurposed for weeknight dinners, it's the closest I come to meal prepping, and this Sunday it was this Bachan pulled pork recipe. This was a smash up of several random internet recipes plus my own personal experience, efficiently combined with ChatGPT.
+I've been trying to use the pressure cooker more (read: remember I own it) and the perfect use case for a pressure cooker, IMO, is pulled pork. Every Sunday we make a batch of something that can be repurposed for weeknight dinners, it's the closest I come to meal prepping, and last Sunday it was this Bachan pulled pork recipe. This was a smash up of several random internet recipes plus my own personal experience, efficiently combined with ChatGPT.
 
 Meet my pressure-braised pork shoulder finished with Bachan's Japanese Barbecue Sauce. The sauce is thin, soy-forward, and punchy, so the trick is to keep the braise clean and sauce after shredding. That keeps the meat juicy (not soupy) and the sauce bright—an approach I cribbed from Kenji's indoor pulled-pork method on Serious Eats.
 
