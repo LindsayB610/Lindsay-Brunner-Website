@@ -3,7 +3,8 @@
 /blog/      /   301
 /thoughts/2024-01-08/the-future-of-technical-content/   /   301
 /thoughts/2024-01-15/on-building-developer-experiences/   /   301
-/tags/   /   301
+/tags/   /thoughts/   301
+/tags/*   /thoughts/   301
 /categories/   /   301
 
 # SPA fallback for any other routes
