@@ -2,7 +2,7 @@
 title: "Fluffy BBQ-Style Sweet Potato Casserole"
 date: 2025-11-14
 slug: "recipe-sweet-potato-casserole"
-subtitle: "Or: The dessert that belongs next to brisket"
+subtitle: "Or: The not-quite-a-dessert that belongs next to brisket"
 description: "A recreation of the sweet potato casserole from Sauced BBQ: fluffy, scoopable, and perfect next to brisket."
 draft: false
 ---
