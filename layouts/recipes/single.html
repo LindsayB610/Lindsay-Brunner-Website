@@ -1,0 +1,78 @@
+{{ define "main" }}
+<article class="section">
+  <div class="container-narrow">
+    <header style="text-align: center; margin-bottom: 3rem">
+      <div
+        class="post-meta"
+        style="justify-content: center; margin-bottom: 1.5rem"
+      >
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if .Site.Params.show_reading_time }}
+        <span>•</span>
+        <span>{{ .ReadingTime }} min read</span>
+        {{ end }}
+      </div>
+
+      <h1>{{ .Title }}</h1>
+
+      {{ if .Params.subtitle }}
+      <p
+        style="
+          font-size: 1.25rem;
+          color: var(--dark-text-secondary);
+          margin-top: 1.5rem;
+          font-style: italic;
+        "
+      >
+        {{ .Params.subtitle }}
+      </p>
+      {{ end }}
+    </header>
+
+    <div class="article-content">{{ .Content }}</div>
+  </div>
+</article>
+
+<!-- Recipe JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  "name": {{ .Title | jsonify }},
+  {{- if .Params.recipe_image }}
+  "image": {{ (.Params.recipe_image | absURL) | jsonify }},
+  {{- else if .Params.social_image }}
+  "image": {{ (.Params.social_image | absURL) | jsonify }},
+  {{- else if .Site.Params.default_social_image }}
+  "image": {{ (.Site.Params.default_social_image | absURL) | jsonify }},
+  {{- end }}
+  "author": {
+    "@type": "Person",
+    "name": {{ .Site.Params.author | jsonify }}
+  },
+  "datePublished": {{ .Date.Format "2006-01-02" | jsonify }},
+  "description": {{ .Params.description | jsonify }}{{ if .Params.prepTime }},
+  "prepTime": {{ .Params.prepTime | jsonify }}{{ end }}{{ if .Params.cookTime }},
+  "cookTime": {{ .Params.cookTime | jsonify }}{{ end }}{{ if .Params.totalTime }},
+  "totalTime": {{ .Params.totalTime | jsonify }}{{ end }}{{ if .Params.recipeYield }},
+  "recipeYield": {{ .Params.recipeYield | jsonify }}{{ end }}{{ if .Params.recipeCategory }},
+  "recipeCategory": {{ .Params.recipeCategory | jsonify }}{{ end }}{{ if .Params.recipeCuisine }},
+  "recipeCuisine": {{ .Params.recipeCuisine | jsonify }}{{ end }}{{ if .Params.recipeIngredient }},
+  "recipeIngredient": [
+    {{- range $index, $ingredient := .Params.recipeIngredient }}
+      {{- if $index }},{{ end }}
+      {{ $ingredient | jsonify }}
+    {{- end }}
+  ]{{ end }}{{ if .Params.recipeInstructions }}{{ if or .Params.recipeIngredient .Params.prepTime .Params.cookTime .Params.totalTime .Params.recipeYield .Params.recipeCategory .Params.recipeCuisine }},{{ end }}
+  "recipeInstructions": [
+    {{- range $index, $instruction := .Params.recipeInstructions }}
+      {{- if $index }},{{ end }}
+      {
+        "@type": "HowToStep",
+        "text": {{ $instruction | jsonify }}
+      }
+    {{- end }}
+  ]{{ end }}
+}
+</script>
+{{ end }}

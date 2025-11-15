@@ -5,6 +5,32 @@ slug: "recipe-sweet-potato-casserole"
 subtitle: "Or: The not-quite-a-dessert that belongs next to brisket"
 description: "A recreation of the sweet potato casserole from Sauced BBQ: fluffy, scoopable, and perfect next to brisket."
 draft: false
+prepTime: "PT20M"
+cookTime: "PT25M"
+totalTime: "PT45M"
+recipeYield: "3-4 servings"
+recipeCategory: "Side Dish"
+recipeCuisine: "American"
+recipeIngredient:
+  - "1¼ pounds sweet potatoes (about 2 medium–large), peeled and cut into 1‑inch chunks"
+  - "4 tablespoons salted butter, softened"
+  - "⅓ cup packed light brown sugar"
+  - "2–4 tablespoons heavy cream or half‑and‑half"
+  - "½ teaspoon vanilla extract (optional, but nice)"
+  - "¼–½ teaspoon kosher salt (use the higher end if your butter is unsalted)"
+  - "Tiny pinch cinnamon (about ⅛ teaspoon, optional – keep it subtle)"
+  - "½ cup chopped walnuts or pecans"
+  - "⅓ cup packed light brown sugar"
+  - "3 tablespoons melted butter"
+  - "1–2 tablespoons all‑purpose flour (1 Tbsp = more nut‑forward, 2 Tbsp = more streusel‑y)"
+  - "Pinch kosher salt"
+recipeInstructions:
+  - "Cook the sweet potatoes: Add the sweet potato chunks to a pot, cover with cold water by about an inch, and salt the water. Bring to a boil, then simmer 12–15 minutes, until the potatoes are very tender. Drain well and let them sit in the warm pot for 2–3 minutes to steam off excess moisture."
+  - "Preheat and prep the pan: Heat the oven to 350°F / 175°C. Lightly butter a small 1‑quart baking dish."
+  - "Whip the base until fluffy: Transfer the hot potatoes to a mixing bowl. Add the softened butter, brown sugar, salt, vanilla, and cinnamon (if using). Use a hand mixer on medium (or a very energetic whisk) to beat the potatoes until smooth and slightly airy, 1–2 minutes. Beat in the cream 1 tablespoon at a time until the mixture is loose and fluffy like soft mashed potatoes, not runny. Taste and adjust salt or sugar. Scrape the whipped sweet potatoes into the prepared baking dish and smooth the top gently without pressing out too much air."
+  - "Make the nut topping: In a small bowl, combine the brown sugar, 1 tablespoon flour, chopped nuts, and a pinch of salt. Stir in the melted butter until everything is evenly moistened and clumpy. If you want a thicker, more crumbly layer, stir in the second tablespoon of flour."
+  - "Assemble and bake: Sprinkle the nut mixture evenly over the sweet potatoes, making sure you get a good, bumpy blanket of nuts and sugar. Bake for 20–25 minutes, until the topping is lightly browned and the edges of the casserole are bubbling."
+  - "Rest and serve scoop‑style: Let the casserole rest 10–15 minutes so it thickens slightly but stays soft and scoopable. Serve warm, using an ice‑cream scoop or large spoon to portion into bowls. Expect 3–4 generous side servings."
 ---
 
 This is my best recreation of the sweet potato casserole from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA: fluffy, buttery sweet potatoes baked in a pan, then scooped out with an ice‑cream scoop and crowned with a chunky brown‑sugar nut crumble. It eats like dessert but absolutely belongs next to brisket.

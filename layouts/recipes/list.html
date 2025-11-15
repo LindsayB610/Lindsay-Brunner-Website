@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h1>Recipes</h1>
+      <p>{{ .Description }}</p>
+    </div>
+
+    {{ $recipes := .Pages }}
+    {{ $recipes = $recipes.ByDate.Reverse }}
+
+    {{ if $recipes }}
+      {{ range $recipes }}
+      <article class="featured-post" style="margin-bottom: 3rem;">
+        <div class="featured-content">
+          <div class="post-meta">
+            <time>{{ .Date.Format "January 2, 2006" }}</time>
+          </div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p class="featured-excerpt">
+            {{ if .Params.subtitle }}
+              {{ .Params.subtitle }}
+            {{ else }}
+              {{ .Summary }}
+            {{ end }}
+          </p>
+          <a href="{{ .RelPermalink }}" class="read-more-link">Read recipe →</a>
+        </div>
+      </article>
+      {{ end }}
+    {{ else }}
+    <!-- No recipes yet -->
+    <div class="no-posts">
+      <h2>Coming Soon</h2>
+      <p>
+        Recipes are cooking! Check back soon for tested recipes and kitchen experiments.
+      </p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
