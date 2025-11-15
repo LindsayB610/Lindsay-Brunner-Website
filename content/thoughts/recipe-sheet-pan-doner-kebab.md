@@ -1,6 +1,6 @@
 ---
 title: "Sheet-Pan Döner Kebab, No Vertical Spit Required"
-date: 2025-01-15
+date: 2025-11-15
 slug: "recipe-sheet-pan-doner-kebab"
 subtitle: "Or: Home-kitchen take on the classic döner kebab"
 description: "A sheet-pan version of the classic döner kebab—specifically, the TikTok-famous 'Nefi's Kebab.' Build thin sheets of spiced lamb-and-beef mixture, roll into logs, and roast on a sheet pan."
