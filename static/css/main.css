@@ -549,8 +549,8 @@ blockquote {
 }
 
 .nav-dropdown .dropdown-menu a:hover {
-  background: var(--dark-surface);
-  color: var(--dark-text);
+  background: var(--dark-surface-lighter);
+  color: #ffffff;
 }
 
 .nav-dropdown .dropdown-menu a.is-disabled {
@@ -570,15 +570,17 @@ blockquote {
 }
 
 .nav-dropdown .dropdown-menu .label-coming-soon {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--brand-accent);
   font-weight: 600;
-  background: rgba(255, 27, 141, 0.08);
-  border: 1px solid rgba(255, 27, 141, 0.2);
+  background: rgba(255, 170, 0, 0.12);
+  border: 1px solid rgba(255, 170, 0, 0.3);
   border-radius: 999px;
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+  opacity: 0.9;
 }
 
 .nav-dropdown details[open] .dropdown-menu {
