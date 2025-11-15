@@ -1,6 +1,6 @@
 ---
 title: "Fluffy BBQ-Style Sweet Potato Casserole"
-date: 2025-01-15
+date: 2025-11-14
 slug: "recipe-sweet-potato-casserole"
 subtitle: "Fluffy, buttery sweet potatoes crowned with a chunky brown-sugar nut crumble"
 description: "A recreation of the sweet potato casserole from Sauced BBQ: fluffy, scoopable, and perfect next to brisket."
