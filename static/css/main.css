@@ -549,8 +549,9 @@ blockquote {
 }
 
 .nav-dropdown .dropdown-menu a:hover {
-  background: var(--dark-surface-lighter);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .nav-dropdown .dropdown-menu a.is-disabled {
@@ -573,14 +574,13 @@ blockquote {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--brand-accent);
+  color: #ffffff;
   font-weight: 600;
-  background: rgba(255, 170, 0, 0.12);
-  border: 1px solid rgba(255, 170, 0, 0.3);
+  background: rgba(255, 170, 0, 0.2);
+  border: 1px solid rgba(255, 170, 0, 0.4);
   border-radius: 999px;
   padding: 0.2rem 0.6rem;
   white-space: nowrap;
-  opacity: 0.9;
 }
 
 .nav-dropdown details[open] .dropdown-menu {
