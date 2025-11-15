@@ -29,9 +29,10 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 - 2 tbsp + 2 tsp ground black pepper
 - 2 tbsp + 2 tsp chilli flakes
   - *For medium heat, start with half this amount and add more after tasting.*
-- 2 tbsp + 2 tsp ground cumin
+- 1 tbsp ground cumin
 - 2 tbsp + 2 tsp dried oregano
-- 1 tbsp + 1 tsp kosher salt, plus more to taste after the test patty
+- 1 tbsp + 2 tsp kosher salt, plus more to taste after the test patty
+- 0.5 tsp celery salt
 
 ### To finish & serve
 - Juice of 1–2 lemons
@@ -49,7 +50,7 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 
 2. **Mix the meat**
 
-   In a large bowl, combine the lamb, beef, onion paste, yoghurt, olive oil, paprika, black pepper, chilli flakes, cumin, oregano, and the 1 tbsp + 1 tsp salt.
+   In a large bowl, combine the lamb, beef, onion paste, yoghurt, olive oil, paprika, black pepper, chilli flakes, cumin, oregano, the 1 tbsp + 2 tsp kosher salt, and the celery salt.
 
    Use your hands to mix and knead for a few minutes, until the mixture is sticky, cohesive, and evenly seasoned.
 
