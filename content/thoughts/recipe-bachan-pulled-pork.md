@@ -2,7 +2,7 @@
 title: "Pressure-Cooked Bachan's Pulled Pork"
 date: 2025-11-10
 slug: "recipe-bachan-pulled-pork"
-subtitle: "Pulled pork faster, with a soy-slick finish from the pressure cooker"
+subtitle: "Or: When your pressure cooker finally earns its counter space"
 description: "Pressure-braised pork shoulder finished with Bachan's for bright, weeknight-friendly pulled pork."
 draft: false
 ---
