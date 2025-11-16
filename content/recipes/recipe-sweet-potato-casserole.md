@@ -5,6 +5,7 @@ slug: "recipe-sweet-potato-casserole"
 subtitle: "Or: The not-quite-a-dessert that belongs next to brisket"
 description: "A recreation of the sweet potato casserole from Sauced BBQ: fluffy, scoopable, and perfect next to brisket."
 draft: false
+social_image: "/images/social/recipe-sweet-potato-casserole-og.png"
 prepTime: "PT20M"
 cookTime: "PT25M"
 totalTime: "PT45M"

@@ -226,6 +226,31 @@ The "recipes" section showcases tested recipes and kitchen experiments. Here's h
 
 5. **Permalink structure**: Recipes use `/recipes/:year-:month-:day/:slug` format
 
+6. **🔒 OG Image Review (Required for Published Recipes)**:
+   
+   Published recipes **must** have `social_image` explicitly set in front matter. This enforces manual review of OG images before publishing.
+   
+   **Workflow:**
+   ```bash
+   # 1. Generate OG images for all recipes
+   npm run generate:og-images
+   
+   # 2. Review the generated image(s) in static/images/social/
+   #    Look for: recipe-{slug}-og.svg
+   
+   # 3. Add the social_image field to your recipe front matter:
+   social_image: "/images/social/recipe-{slug}-og.svg"
+   
+   # 4. Set draft: false when ready to publish
+   ```
+   
+   **Why?** Tests will fail if a published recipe doesn't have `social_image` set. This ensures:
+   - OG images are visually reviewed before going live
+   - No accidental publishing with broken/missing images
+   - Consistent quality control for social sharing
+   
+   **Note:** Drafts don't require `social_image` (they're skipped in validation), but you can still generate images for preview purposes.
+
 ### Updating Existing Pages
 
 - **Homepage**: Edit `content/_index.md`

@@ -281,6 +281,17 @@ function validateRecipeFrontMatter() {
         errors.push(`${file}: recipeInstructions must be a non-empty array`);
       }
     }
+    
+    // 🔒 ENFORCE: Published recipes MUST have social_image (manual review required)
+    // This ensures OG images are reviewed before going live
+    const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+    if (!isDraft && !frontMatter.social_image && !frontMatter.og_image) {
+      errors.push(
+        `${file}: Published recipes MUST have social_image or og_image set. ` +
+        `This enforces manual review of OG images before publishing. ` +
+        `Run 'npm run generate:og-images', review the image, then add 'social_image: "/images/social/recipe-${frontMatter.slug || file.replace('.md', '')}-og.svg"' to front matter.`
+      );
+    }
   });
   
   if (errors.length > 0) {
@@ -342,7 +353,7 @@ function checkRecipeSocialImages() {
   
   const errors = [];
   const files = fs.readdirSync(recipesDir)
-    .filter(file => file.endsWith('.md') && file !== '_index.md');
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file.startsWith('recipe-'));
   
   if (files.length === 0) {
     console.log('⚠️  No recipe posts found to check.');
@@ -355,20 +366,46 @@ function checkRecipeSocialImages() {
     
     if (!frontMatter) return;
     
-    // Check both og_image and social_image
+    const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+    
+    // Skip drafts (they don't need images yet)
+    if (isDraft) {
+      console.log(`   ⏭️  ${file}: Draft (skipped - images not required for drafts)`);
+      return;
+    }
+    
+    // 🔒 ENFORCE: Published recipes MUST have social_image explicitly set
+    // This ensures manual review before publishing
     const imageField = frontMatter.og_image || frontMatter.social_image;
     
-    if (imageField) {
-      // Remove leading slash if present for path joining
-      const imagePath = imageField.startsWith('/') 
-        ? imageField.substring(1) 
-        : imageField;
-      const fullImagePath = path.join(staticDir, imagePath);
-      
-      if (!fs.existsSync(fullImagePath)) {
-        errors.push(`${file}: Social image not found: ${imageField}`);
-      } else {
-        console.log(`   ✓ ${file}: ${imageField} exists`);
+    if (!imageField) {
+      errors.push(
+        `${file}: Published recipe MUST have social_image or og_image set. ` +
+        `This enforces manual review of OG images. ` +
+        `Run 'npm run generate:og-images', review the generated image, then add it to front matter.`
+      );
+      return;
+    }
+    
+    // Verify the specified image exists
+    const imagePath = imageField.startsWith('/') 
+      ? imageField.substring(1) 
+      : imageField;
+    const fullImagePath = path.join(staticDir, imagePath);
+    
+    if (!fs.existsSync(fullImagePath)) {
+      errors.push(`${file}: Social image not found: ${imageField}`);
+    } else {
+      // Verify it's actually an image file (not empty or corrupted)
+      try {
+        const stats = fs.statSync(fullImagePath);
+        if (stats.size === 0) {
+          errors.push(`${file}: Social image is empty: ${imageField}`);
+        } else {
+          console.log(`   ✓ ${file}: Social image exists and is valid (${imageField})`);
+        }
+      } catch (err) {
+        errors.push(`${file}: Error checking social image: ${err.message}`);
       }
     }
   });
@@ -376,10 +413,15 @@ function checkRecipeSocialImages() {
   if (errors.length > 0) {
     console.error('❌ Recipe social image validation failed:');
     errors.forEach(error => console.error(`   - ${error}`));
+    console.error('\n💡 Workflow:');
+    console.error('   1. Run: npm run generate:og-images');
+    console.error('   2. Review the generated image in static/images/social/');
+    console.error('   3. Add social_image: "/images/social/recipe-{slug}-og.svg" to recipe front matter');
+    console.error('   4. Set draft: false when ready to publish');
     process.exit(1);
   }
   
-  console.log('✅ All specified social images exist for recipes.');
+  console.log('✅ All published recipes have reviewed social images.');
 }
 
 function checkStaticAssets() {

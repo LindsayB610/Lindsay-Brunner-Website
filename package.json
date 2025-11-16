@@ -10,14 +10,17 @@
   },
   "scripts": {
     "dev": "hugo server -D --bind 0.0.0.0",
-    "build": "hugo --gc --minify",
+    "build": "npm run generate:og-images && hugo --gc --minify",
+    "generate:og-images": "node scripts/generate-og-images.js",
+    "generate:png": "node scripts/generate-png-from-svg.js",
     "start": "hugo server -D --bind 0.0.0.0",
     "clean": "rm -rf public",
     "serve": "hugo server --bind 0.0.0.0",
     "test:html": "html-validate public/**/*.html",
     "test:links": "blc --recursive --exclude-external --filter-level 2 http://localhost:1313",
     "test:content": "node tests/content-checks.js",
-    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content",
+    "test:og-images": "node tests/og-image-generation.test.js",
+    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:og-images",
     "pretest": "npm run build"
   },
   "dependencies": {
@@ -25,7 +28,10 @@
   },
   "devDependencies": {
     "html-validate": "^10.3.0",
-    "broken-link-checker": "^0.7.8"
+    "broken-link-checker": "^0.7.8",
+    "@napi-rs/canvas": "^0.1.56",
+    "js-yaml": "^4.1.0",
+    "sharp": "^0.33.0"
   },
   "engines": {
     "node": ">=18.0.0",

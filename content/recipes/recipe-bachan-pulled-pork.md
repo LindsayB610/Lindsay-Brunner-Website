@@ -5,6 +5,7 @@ slug: "recipe-bachan-pulled-pork"
 subtitle: "Or: When your pressure cooker finally earns its counter space"
 description: "Pressure-braised pork shoulder finished with Bachan's for bright, weeknight-friendly pulled pork."
 draft: false
+social_image: "/images/social/recipe-bachan-pulled-pork-og.png"
 prepTime: "PT15M"
 cookTime: "PT70M"
 totalTime: "PT85M"

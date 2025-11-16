@@ -5,6 +5,7 @@ slug: "recipe-peaches-and-cream-crisp"
 subtitle: "Or: AI can bake, right?"
 description: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble, hacked together with ChatGPT."
 draft: false
+social_image: "/images/social/recipe-peaches-and-cream-crisp-og.png"
 prepTime: "PT30M"
 cookTime: "PT35M"
 totalTime: "PT95M"

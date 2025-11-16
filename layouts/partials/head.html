@@ -19,6 +19,13 @@
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 {{ if .Params.social_image }}
   <meta property="og:image" content="{{ .Params.social_image | absURL }}" />
+{{ else if and (eq .Section "recipes") .Params.slug }}
+  {{ $slug := .Params.slug }}
+  {{ if hasPrefix $slug "recipe-" }}
+    {{ $slug = substr $slug 7 }}
+  {{ end }}
+  {{ $ogImage := printf "/images/social/recipe-%s-og.png" $slug }}
+  <meta property="og:image" content="{{ $ogImage | absURL }}" />
 {{ else if .Site.Params.default_social_image }}
   <meta property="og:image" content="{{ .Site.Params.default_social_image | absURL }}" />
 {{ end }}
@@ -33,6 +40,13 @@
 <meta name="twitter:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
 {{ if .Params.social_image }}
   <meta name="twitter:image" content="{{ .Params.social_image | absURL }}" />
+{{ else if and (eq .Section "recipes") .Params.slug }}
+  {{ $slug := .Params.slug }}
+  {{ if hasPrefix $slug "recipe-" }}
+    {{ $slug = substr $slug 7 }}
+  {{ end }}
+  {{ $ogImage := printf "/images/social/recipe-%s-og.png" $slug }}
+  <meta name="twitter:image" content="{{ $ogImage | absURL }}" />
 {{ else if .Site.Params.default_social_image }}
   <meta name="twitter:image" content="{{ .Site.Params.default_social_image | absURL }}" />
 {{ end }}
