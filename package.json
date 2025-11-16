@@ -27,9 +27,9 @@
     "hugo-bin": "^0.149.2"
   },
   "devDependencies": {
-    "html-validate": "^10.3.0",
-    "broken-link-checker": "^0.7.8",
     "@napi-rs/canvas": "^0.1.56",
+    "broken-link-checker": "^0.7.8",
+    "html-validate": "^10.3.0",
     "js-yaml": "^4.1.0",
     "sharp": "^0.33.0"
   },
