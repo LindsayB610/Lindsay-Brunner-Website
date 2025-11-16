@@ -273,7 +273,8 @@ function generateOGImage(recipe) {
   });
   
   // Subtitle (if exists) - left-aligned, smaller, secondary color
-  let currentY = titleY + (titleLines.length * titleLineHeight) + 80;
+  // Reduced spacing from 80px to 20px to bring subtitle closer to headline
+  let currentY = titleY + (titleLines.length * titleLineHeight) + 20;
   const subtitleIndent = 12; // Move a few more pixels to the right
   if (recipe.subtitle && subtitleLines.length > 0) {
     ctx.font = `bold 64px "Inter", sans-serif`;
@@ -410,14 +411,26 @@ function generateSVG(recipe, layout) {
 `;
   
   // Add underline with gradient
+  // In SVG with text-anchor="end", the text ends at urlX, so underline should align with text edges
+  // Text starts at urlX - urlMetrics.width, ends at urlX
+  // With dominant-baseline="auto", urlY is the baseline. Need to add descent + spacing
+  // Text baseline is at urlY (1180), descent is ~7px for 36px font, so bottom is at urlY + 7
+  // Add 14px spacing below the text = 1180 + 7 + 14 = 1201 (more space from text)
+  const underlineY = Math.round(layout.urlY + layout.urlMetrics.actualBoundingBoxDescent + 14);
+  
+  // Underline aligns with text edges (no extension)
+  const underlineRightX = layout.urlX; // Text ends here (text-anchor="end")
+  const underlineLeftX = layout.urlX - layout.urlMetrics.width; // Text starts here
+  
   const underlineGradientId = 'underlineGradient';
+  // Use absolute coordinates for the gradient to match the line position
   svg += `  <defs>
-    <linearGradient id="${underlineGradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="${underlineGradientId}" x1="${underlineLeftX}" y1="${underlineY}" x2="${underlineRightX}" y2="${underlineY}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" style="stop-color:#ff8800;stop-opacity:1" />
       <stop offset="100%" style="stop-color:${COLORS.pink};stop-opacity:1" />
     </linearGradient>
   </defs>
-  <line x1="${layout.underlineLeftX}" y1="${layout.underlineY}" x2="${layout.underlineRightX}" y2="${layout.underlineY}" stroke="url(#${underlineGradientId})" stroke-width="3"/>
+  <line x1="${underlineLeftX}" y1="${underlineY}" x2="${underlineRightX}" y2="${underlineY}" stroke="url(#${underlineGradientId})" stroke-width="5"/>
 `;
 
   svg += `</svg>`;
