@@ -3,13 +3,24 @@ const path = require('path');
 
 const homepagePath = path.join(__dirname, '..', 'public', 'index.html');
 const thoughtsDir = path.join(__dirname, '..', 'content', 'thoughts');
+const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
 const staticDir = path.join(__dirname, '..', 'static');
 const publicDir = path.join(__dirname, '..', 'public');
 const rssFeedPath = path.join(publicDir, 'thoughts', 'index.xml');
+const sitemapPath = path.join(publicDir, 'sitemap.xml');
+const aboutPagePath = path.join(publicDir, 'about', 'index.html');
+const error404Path = path.join(publicDir, '404.html');
 
 // Required front matter fields for thoughts posts
-const REQUIRED_FIELDS = ['title', 'date', 'description', 'subtitle', 'draft'];
-const OPTIONAL_FIELDS = ['slug', 'og_image', 'social_image'];
+const REQUIRED_THOUGHTS_FIELDS = ['title', 'date', 'description', 'subtitle', 'draft'];
+const OPTIONAL_THOUGHTS_FIELDS = ['slug', 'og_image', 'social_image'];
+
+// Required front matter fields for recipes
+const REQUIRED_RECIPE_FIELDS = ['title', 'date', 'description', 'subtitle', 'draft', 'prepTime', 'cookTime', 'totalTime', 'recipeYield', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions'];
+const OPTIONAL_RECIPE_FIELDS = ['slug', 'og_image', 'social_image'];
+
+// Default social image from config
+const DEFAULT_SOCIAL_IMAGE = '/images/social/default-og.png';
 
 function checkRecentThoughtsSection() {
   try {
@@ -28,6 +39,46 @@ function checkRecentThoughtsSection() {
   }
 }
 
+function checkHomepageContent() {
+  console.log('\n🏠 Checking homepage content...');
+  
+  try {
+    const homepageContent = fs.readFileSync(homepagePath, 'utf8');
+    const errors = [];
+    
+    // Check for hero section
+    if (!homepageContent.includes('Lindsay Brunner')) {
+      errors.push('Hero section with name not found');
+    }
+    
+    // Check for "Recent Thoughts" section
+    if (!homepageContent.includes('Recent Thoughts')) {
+      errors.push('"Recent Thoughts" section not found');
+    }
+    
+    // Check for "Let's Connect" section
+    if (!homepageContent.includes("Let's Connect")) {
+      errors.push('"Let\'s Connect" section not found');
+    }
+    
+    // Check for hero CTA
+    if (!homepageContent.includes('hero-cta')) {
+      errors.push('Hero CTA button not found');
+    }
+    
+    if (errors.length > 0) {
+      console.error('❌ Homepage content validation failed:');
+      errors.forEach(error => console.error(`   - ${error}`));
+      process.exit(1);
+    }
+    
+    console.log('✅ Homepage content structure is valid.');
+  } catch (error) {
+    console.error(`❌ Error checking homepage: ${error.message}`);
+    process.exit(1);
+  }
+}
+
 function parseFrontMatter(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
@@ -41,12 +92,46 @@ function parseFrontMatter(filePath) {
     const frontMatterText = match[1];
     const frontMatter = {};
     
-    // Simple YAML parser for basic key: value pairs
-    frontMatterText.split('\n').forEach(line => {
-      const colonIndex = line.indexOf(':');
+    let currentKey = null;
+    let inArray = false;
+    let arrayValue = [];
+    
+    // Enhanced YAML parser that handles arrays
+    frontMatterText.split('\n').forEach((line, index) => {
+      const trimmedLine = line.trim();
+      
+      // Check if this is an array item (starts with -)
+      if (trimmedLine.startsWith('-')) {
+        if (currentKey) {
+          const arrayItem = trimmedLine.substring(1).trim();
+          // Remove quotes if present
+          const cleanItem = arrayItem.replace(/^["']|["']$/g, '');
+          arrayValue.push(cleanItem);
+          inArray = true;
+        }
+        return;
+      }
+      
+      // If we were in an array and hit a new key, save the array
+      if (inArray && currentKey && trimmedLine.includes(':')) {
+        frontMatter[currentKey] = arrayValue;
+        arrayValue = [];
+        inArray = false;
+        currentKey = null;
+      }
+      
+      // Check for key: value pair
+      const colonIndex = trimmedLine.indexOf(':');
       if (colonIndex > 0) {
-        const key = line.substring(0, colonIndex).trim();
-        let value = line.substring(colonIndex + 1).trim();
+        // Save previous array if we have one
+        if (inArray && currentKey) {
+          frontMatter[currentKey] = arrayValue;
+          arrayValue = [];
+          inArray = false;
+        }
+        
+        const key = trimmedLine.substring(0, colonIndex).trim();
+        let value = trimmedLine.substring(colonIndex + 1).trim();
         
         // Remove quotes if present
         if ((value.startsWith('"') && value.endsWith('"')) || 
@@ -54,9 +139,23 @@ function parseFrontMatter(filePath) {
           value = value.slice(1, -1);
         }
         
-        frontMatter[key] = value;
+        // Check if this might be the start of an array (empty value)
+        if (value === '' || value === '[]') {
+          currentKey = key;
+          inArray = true;
+          arrayValue = [];
+        } else {
+          frontMatter[key] = value;
+          currentKey = null;
+          inArray = false;
+        }
       }
     });
+    
+    // Save any remaining array
+    if (inArray && currentKey && arrayValue.length > 0) {
+      frontMatter[currentKey] = arrayValue;
+    }
     
     return frontMatter;
   } catch (error) {
@@ -66,7 +165,7 @@ function parseFrontMatter(filePath) {
 }
 
 function validateFrontMatter() {
-  console.log('\n📋 Validating front matter structure...');
+  console.log('\n📋 Validating thoughts front matter structure...');
   
   const errors = [];
   const files = fs.readdirSync(thoughtsDir)
@@ -87,7 +186,7 @@ function validateFrontMatter() {
     }
     
     // Check required fields
-    REQUIRED_FIELDS.forEach(field => {
+    REQUIRED_THOUGHTS_FIELDS.forEach(field => {
       if (!(field in frontMatter)) {
         errors.push(`${file}: Missing required field "${field}"`);
       }
@@ -115,14 +214,88 @@ function validateFrontMatter() {
     process.exit(1);
   }
   
-  console.log(`✅ Front matter validation passed for ${files.length} post(s).`);
+  console.log(`✅ Front matter validation passed for ${files.length} thought post(s).`);
+}
+
+function validateRecipeFrontMatter() {
+  console.log('\n🍳 Validating recipe front matter structure...');
+  
+  const errors = [];
+  const files = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md');
+  
+  if (files.length === 0) {
+    console.log('⚠️  No recipe posts found to validate.');
+    return;
+  }
+  
+  files.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const frontMatter = parseFrontMatter(filePath);
+    
+    if (!frontMatter) {
+      errors.push(`${file}: Missing or invalid front matter`);
+      return;
+    }
+    
+    // Check required fields
+    REQUIRED_RECIPE_FIELDS.forEach(field => {
+      if (!(field in frontMatter)) {
+        errors.push(`${file}: Missing required field "${field}"`);
+      }
+    });
+    
+    // Validate date format (should be YYYY-MM-DD)
+    if (frontMatter.date) {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dateRegex.test(frontMatter.date)) {
+        errors.push(`${file}: Invalid date format "${frontMatter.date}" (expected YYYY-MM-DD)`);
+      }
+    }
+    
+    // Validate draft is boolean
+    if (frontMatter.draft !== undefined && 
+        frontMatter.draft !== 'true' && 
+        frontMatter.draft !== 'false') {
+      errors.push(`${file}: Invalid draft value "${frontMatter.draft}" (expected true or false)`);
+    }
+    
+    // Validate time format (should be ISO 8601 duration like PT30M)
+    const timeFields = ['prepTime', 'cookTime', 'totalTime'];
+    timeFields.forEach(field => {
+      if (frontMatter[field] && !frontMatter[field].match(/^PT\d+[HM]$/)) {
+        errors.push(`${file}: Invalid ${field} format "${frontMatter[field]}" (expected ISO 8601 duration like PT30M)`);
+      }
+    });
+    
+    // Validate recipeIngredient is an array
+    if (frontMatter.recipeIngredient) {
+      if (!Array.isArray(frontMatter.recipeIngredient) || frontMatter.recipeIngredient.length === 0) {
+        errors.push(`${file}: recipeIngredient must be a non-empty array`);
+      }
+    }
+    
+    // Validate recipeInstructions is an array
+    if (frontMatter.recipeInstructions) {
+      if (!Array.isArray(frontMatter.recipeInstructions) || frontMatter.recipeInstructions.length === 0) {
+        errors.push(`${file}: recipeInstructions must be a non-empty array`);
+      }
+    }
+  });
+  
+  if (errors.length > 0) {
+    console.error('❌ Recipe front matter validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  console.log(`✅ Recipe front matter validation passed for ${files.length} recipe(s).`);
 }
 
 function checkSocialImages() {
-  console.log('\n🖼️  Checking social images...');
+  console.log('\n🖼️  Checking social images for thoughts...');
   
   const errors = [];
-  const warnings = [];
   const files = fs.readdirSync(thoughtsDir)
     .filter(file => file.endsWith('.md') && file !== '_index.md');
   
@@ -152,15 +325,8 @@ function checkSocialImages() {
       } else {
         console.log(`   ✓ ${file}: ${imageField} exists`);
       }
-    } else {
-      // Not an error, but could be a warning if you want all posts to have social images
-      // warnings.push(`${file}: No social image specified`);
     }
   });
-  
-  if (warnings.length > 0) {
-    warnings.forEach(warning => console.log(`   ⚠️  ${warning}`));
-  }
   
   if (errors.length > 0) {
     console.error('❌ Social image validation failed:');
@@ -168,7 +334,107 @@ function checkSocialImages() {
     process.exit(1);
   }
   
-  console.log('✅ All specified social images exist.');
+  console.log('✅ All specified social images exist for thoughts.');
+}
+
+function checkRecipeSocialImages() {
+  console.log('\n🖼️  Checking social images for recipes...');
+  
+  const errors = [];
+  const files = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md');
+  
+  if (files.length === 0) {
+    console.log('⚠️  No recipe posts found to check.');
+    return;
+  }
+  
+  files.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const frontMatter = parseFrontMatter(filePath);
+    
+    if (!frontMatter) return;
+    
+    // Check both og_image and social_image
+    const imageField = frontMatter.og_image || frontMatter.social_image;
+    
+    if (imageField) {
+      // Remove leading slash if present for path joining
+      const imagePath = imageField.startsWith('/') 
+        ? imageField.substring(1) 
+        : imageField;
+      const fullImagePath = path.join(staticDir, imagePath);
+      
+      if (!fs.existsSync(fullImagePath)) {
+        errors.push(`${file}: Social image not found: ${imageField}`);
+      } else {
+        console.log(`   ✓ ${file}: ${imageField} exists`);
+      }
+    }
+  });
+  
+  if (errors.length > 0) {
+    console.error('❌ Recipe social image validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  console.log('✅ All specified social images exist for recipes.');
+}
+
+function checkStaticAssets() {
+  console.log('\n📦 Checking static assets...');
+  
+  const errors = [];
+  
+  // Check CSS files
+  const cssFiles = ['css/main.css', 'css/custom.css'];
+  cssFiles.forEach(cssFile => {
+    const cssPath = path.join(staticDir, cssFile);
+    if (!fs.existsSync(cssPath)) {
+      errors.push(`CSS file not found: ${cssFile}`);
+    } else {
+      console.log(`   ✓ ${cssFile} exists`);
+    }
+  });
+  
+  // Check favicon files
+  const faviconFiles = [
+    'favicons/favicon.ico',
+    'favicons/favicon-16x16.png',
+    'favicons/favicon-32x32.png',
+    'favicons/apple-touch-icon.png',
+    'favicons/android-chrome-192x192.png',
+    'favicons/android-chrome-512x512.png',
+    'favicons/site.webmanifest'
+  ];
+  faviconFiles.forEach(faviconFile => {
+    const faviconPath = path.join(staticDir, faviconFile);
+    if (!fs.existsSync(faviconPath)) {
+      errors.push(`Favicon file not found: ${faviconFile}`);
+    } else {
+      console.log(`   ✓ ${faviconFile} exists`);
+    }
+  });
+  
+  // Check default social image
+  const defaultImagePath = DEFAULT_SOCIAL_IMAGE.startsWith('/')
+    ? DEFAULT_SOCIAL_IMAGE.substring(1)
+    : DEFAULT_SOCIAL_IMAGE;
+  const fullDefaultImagePath = path.join(staticDir, defaultImagePath);
+  if (!fs.existsSync(fullDefaultImagePath)) {
+    errors.push(`Default social image not found: ${DEFAULT_SOCIAL_IMAGE}`);
+  } else {
+    console.log(`   ✓ Default social image exists: ${DEFAULT_SOCIAL_IMAGE}`);
+  }
+  
+  if (errors.length > 0) {
+    console.error('❌ Static asset validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  console.log('✅ All required static assets exist.');
 }
 
 function validateRSSFeed() {
@@ -228,12 +494,235 @@ function validateRSSFeed() {
   }
 }
 
+function validateSitemap() {
+  console.log('\n🗺️  Validating sitemap...');
+  
+  if (!fs.existsSync(sitemapPath)) {
+    console.error(`❌ Sitemap not found at ${sitemapPath}`);
+    console.error('   Make sure to run "npm run build" before running tests.');
+    process.exit(1);
+  }
+  
+  try {
+    const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
+    
+    // Basic XML structure validation
+    if (!sitemapContent.includes('<?xml')) {
+      console.error('❌ Sitemap is not valid XML (missing XML declaration)');
+      process.exit(1);
+    }
+    
+    if (!sitemapContent.includes('<urlset')) {
+      console.error('❌ Sitemap is missing <urlset> root element');
+      process.exit(1);
+    }
+    
+    // Check for at least one URL
+    if (!sitemapContent.includes('<url>')) {
+      console.warn('⚠️  Sitemap contains no URLs (this might be expected if no content is published)');
+    }
+    
+    // Check for required URL elements
+    if (sitemapContent.includes('<url>')) {
+      if (!sitemapContent.includes('<loc>')) {
+        console.error('❌ Sitemap URLs are missing <loc> elements');
+        process.exit(1);
+      }
+    }
+    
+    console.log('✅ Sitemap structure is valid.');
+  } catch (error) {
+    console.error(`❌ Error validating sitemap: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+function validateAboutPage() {
+  console.log('\n👤 Validating about page...');
+  
+  if (!fs.existsSync(aboutPagePath)) {
+    console.error(`❌ About page not found at ${aboutPagePath}`);
+    console.error('   Make sure to run "npm run build" before running tests.');
+    process.exit(1);
+  }
+  
+  try {
+    const aboutContent = fs.readFileSync(aboutPagePath, 'utf8');
+    const errors = [];
+    
+    // Check for title
+    if (!aboutContent.includes('About') && !aboutContent.includes('Lindsay')) {
+      errors.push('About page missing title or name');
+    }
+    
+    // Check for basic content structure
+    if (aboutContent.length < 500) {
+      errors.push('About page seems too short (may be missing content)');
+    }
+    
+    // Check for image reference (headshot)
+    if (aboutContent.includes('avatar-color-trans.png')) {
+      const imagePath = path.join(staticDir, 'images', 'avatar-color-trans.png');
+      if (!fs.existsSync(imagePath)) {
+        errors.push('About page references avatar image that does not exist');
+      } else {
+        console.log('   ✓ Avatar image exists');
+      }
+    }
+    
+    if (errors.length > 0) {
+      console.error('❌ About page validation failed:');
+      errors.forEach(error => console.error(`   - ${error}`));
+      process.exit(1);
+    }
+    
+    console.log('✅ About page structure is valid.');
+  } catch (error) {
+    console.error(`❌ Error validating about page: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+function validate404Page() {
+  console.log('\n🚫 Validating 404 error page...');
+  
+  if (!fs.existsSync(error404Path)) {
+    console.error(`❌ 404 page not found at ${error404Path}`);
+    console.error('   Make sure to run "npm run build" before running tests.');
+    process.exit(1);
+  }
+  
+  try {
+    const error404Content = fs.readFileSync(error404Path, 'utf8');
+    const errors = [];
+    
+    // Check for 404 text
+    if (!error404Content.includes('404')) {
+      errors.push('404 page missing "404" text');
+    }
+    
+    // Check for error message
+    if (!error404Content.includes('Page Not Found') && !error404Content.includes('not found')) {
+      errors.push('404 page missing error message');
+    }
+    
+    // Check for navigation links (handle minified HTML)
+    const hasHomeLink = error404Content.includes('href="/"') || error404Content.includes('href=/');
+    const hasThoughtsLink = error404Content.includes('href="/thoughts/') || error404Content.includes('href=/thoughts/');
+    
+    if (!hasHomeLink && !hasThoughtsLink) {
+      errors.push('404 page missing navigation links');
+    }
+    
+    if (errors.length > 0) {
+      console.error('❌ 404 page validation failed:');
+      errors.forEach(error => console.error(`   - ${error}`));
+      process.exit(1);
+    }
+    
+    console.log('✅ 404 page structure is valid.');
+  } catch (error) {
+    console.error(`❌ Error validating 404 page: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+function validatePermalinks() {
+  console.log('\n🔗 Validating permalink structure...');
+  
+  const errors = [];
+  const warnings = [];
+  
+  // Check thoughts permalinks (should be /thoughts/YYYY-MM-DD/slug)
+  const thoughtsFiles = fs.readdirSync(thoughtsDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md');
+  
+  thoughtsFiles.forEach(file => {
+    const filePath = path.join(thoughtsDir, file);
+    const frontMatter = parseFrontMatter(filePath);
+    
+    if (!frontMatter || frontMatter.draft === 'true') return;
+    
+    if (frontMatter.date && frontMatter.slug) {
+      const dateMatch = frontMatter.date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (dateMatch) {
+        const [, year, month, day] = dateMatch;
+        const expectedPath = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, frontMatter.slug);
+        const expectedPathAlt = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, frontMatter.slug, 'index.html');
+        
+        if (!fs.existsSync(expectedPath) && !fs.existsSync(expectedPathAlt)) {
+          // Try without slug (using filename)
+          const filenameSlug = file.replace('.md', '');
+          const expectedPathFilename = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, filenameSlug);
+          const expectedPathFilenameAlt = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, filenameSlug, 'index.html');
+          
+          if (!fs.existsSync(expectedPathFilename) && !fs.existsSync(expectedPathFilenameAlt)) {
+            warnings.push(`Thought "${file}" may not have correct permalink structure`);
+          }
+        }
+      }
+    }
+  });
+  
+  // Check recipes permalinks (should be /recipes/YYYY-MM-DD/slug)
+  const recipeFiles = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md');
+  
+  recipeFiles.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const frontMatter = parseFrontMatter(filePath);
+    
+    if (!frontMatter || frontMatter.draft === 'true') return;
+    
+    if (frontMatter.date && frontMatter.slug) {
+      const dateMatch = frontMatter.date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (dateMatch) {
+        const [, year, month, day] = dateMatch;
+        const expectedPath = path.join(publicDir, 'recipes', `${year}-${month}-${day}`, frontMatter.slug);
+        const expectedPathAlt = path.join(publicDir, 'recipes', `${year}-${month}-${day}`, frontMatter.slug, 'index.html');
+        
+        if (!fs.existsSync(expectedPath) && !fs.existsSync(expectedPathAlt)) {
+          // Try without slug (using filename)
+          const filenameSlug = file.replace('.md', '').replace('recipe-', '');
+          const expectedPathFilename = path.join(publicDir, 'recipes', `${year}-${month}-${day}`, filenameSlug);
+          const expectedPathFilenameAlt = path.join(publicDir, 'recipes', `${year}-${month}-${day}`, filenameSlug, 'index.html');
+          
+          if (!fs.existsSync(expectedPathFilename) && !fs.existsSync(expectedPathFilenameAlt)) {
+            warnings.push(`Recipe "${file}" may not have correct permalink structure`);
+          }
+        }
+      }
+    }
+  });
+  
+  if (warnings.length > 0) {
+    console.warn('⚠️  Permalink warnings:');
+    warnings.forEach(warning => console.warn(`   - ${warning}`));
+  }
+  
+  if (errors.length > 0) {
+    console.error('❌ Permalink validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  console.log('✅ Permalink structure appears valid.');
+}
+
 // Run all tests
-console.log('🧪 Running content validation tests...\n');
+console.log('🧪 Running comprehensive content validation tests...\n');
 
 checkRecentThoughtsSection();
+checkHomepageContent();
 validateFrontMatter();
+validateRecipeFrontMatter();
 checkSocialImages();
+checkRecipeSocialImages();
+checkStaticAssets();
 validateRSSFeed();
+validateSitemap();
+validateAboutPage();
+validate404Page();
+validatePermalinks();
 
 console.log('\n✅ All content validation tests passed!');

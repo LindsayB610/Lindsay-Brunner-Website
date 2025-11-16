@@ -60,6 +60,10 @@ Before you begin, ensure you have the following installed:
 - `npm run start` - Alternative command to start the development server
 - `npm run serve` - Serve the site without draft content
 - `npm run clean` - Remove the generated `public` directory
+- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content)
+- `npm run test:content` - Run content validation tests only
+- `npm run test:html` - Validate generated HTML
+- `npm run test:links` - Check for broken internal links
 
 ## 📁 Project Structure
 
@@ -68,12 +72,14 @@ Before you begin, ensure you have the following installed:
 ├── content/             # Site content (Markdown files)
 │   ├── about/           # About page content
 │   ├── thoughts/        # Thought leadership content
+│   ├── recipes/         # Recipe content
 │   └── _index.md        # Homepage content
 ├── layouts/             # Hugo templates
 │   ├── _default/        # Default page layouts
 │   ├── partials/        # Reusable template components
 │   ├── about/           # About page specific layout
 │   ├── thoughts/        # Thoughts section layout
+│   ├── recipes/         # Recipes section layout
 │   ├── 404.html         # 404 error page
 │   └── index.html       # Homepage layout
 ├── static/              # Static assets
@@ -83,6 +89,10 @@ Before you begin, ensure you have the following installed:
 │   │   └── social/      # Social sharing (Open Graph) images for posts and default site image
 │   ├── _headers         # Netlify headers configuration
 │   └── _redirects       # Netlify redirects configuration
+├── tests/                # Test files
+│   └── content-checks.js # Content validation tests
+├── agents.md            # AI assistant guidelines (for Cursor, Copilot, etc.)
+├── BRAND.md             # Brand guidelines and design system
 ├── config.toml          # Hugo site configuration
 ├── netlify.toml         # Netlify deployment configuration
 └── package.json         # Node.js dependencies and scripts
@@ -167,6 +177,55 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    - Be descriptive but concise: `future-of-developer-experience.md`
    - Avoid special characters or numbers at the start
 
+### Adding New Recipe Content
+
+The "recipes" section showcases tested recipes and kitchen experiments. Here's how to add new recipe files:
+
+1. **Create a new recipe file**:
+
+   ```bash
+   # Create the file in the recipes directory with recipe- prefix
+   touch content/recipes/recipe-your-recipe-name.md
+   ```
+
+2. **Set up the front matter** with all required fields:
+
+   ```markdown
+   ---
+   title: "Your Recipe Title"
+   date: 2025-01-15
+   slug: "recipe-your-recipe-name"
+   subtitle: "Brief subtitle or description"
+   description: "A compelling description for SEO and listings"
+   draft: false
+   prepTime: "PT30M"        # ISO 8601 duration format
+   cookTime: "PT45M"         # ISO 8601 duration format
+   totalTime: "PT75M"        # ISO 8601 duration format
+   recipeYield: "6-8 servings"
+   recipeCategory: "Main Course"
+   recipeCuisine: "American"
+   recipeIngredient:
+     - "1 cup ingredient one"
+     - "2 tbsp ingredient two"
+   recipeInstructions:
+     - "Step one instructions"
+     - "Step two instructions"
+   ---
+   ```
+
+3. **Required recipe front matter fields**:
+   - `title`, `date`, `description`, `subtitle`, `draft` (same as thoughts)
+   - `prepTime`, `cookTime`, `totalTime` (ISO 8601 format: PT30M = 30 minutes)
+   - `recipeYield` (string, e.g., "6-8 servings")
+   - `recipeCategory` (string, e.g., "Main Course", "Dessert")
+   - `recipeCuisine` (string, e.g., "American", "Japanese-American")
+   - `recipeIngredient` (YAML array of strings)
+   - `recipeInstructions` (YAML array of strings)
+
+4. **File naming**: Always use `recipe-` prefix (e.g., `recipe-bachan-pulled-pork.md`)
+
+5. **Permalink structure**: Recipes use `/recipes/:year-:month-:day/:slug` format
+
 ### Updating Existing Pages
 
 - **Homepage**: Edit `content/_index.md`
@@ -218,6 +277,66 @@ The site uses a comprehensive favicon setup with multiple sizes and formats:
 - Apple Touch Icon for iOS devices
 - Android Chrome icons (192x192, 512x512)
 - Web manifest for PWA support
+
+## 🧪 Testing
+
+The project includes comprehensive test coverage to ensure content quality and site integrity.
+
+### Running Tests
+
+```bash
+# Run all tests (builds site first, then validates)
+npm test
+
+# Run only content validation tests
+npm run test:content
+
+# Run HTML validation
+npm run test:html
+
+# Check for broken links (requires dev server running)
+npm run test:links
+```
+
+### Test Coverage
+
+The test suite (`tests/content-checks.js`) validates:
+
+- **Content Structure**:
+  - Homepage sections (hero, Recent Thoughts, Let's Connect)
+  - Front matter validation for thoughts and recipes
+  - Required fields and data format validation
+  - Date format validation (YYYY-MM-DD)
+  - Recipe schema validation (times, ingredients, instructions)
+
+- **Assets**:
+  - Social image existence (thoughts and recipes)
+  - Static asset checks (CSS files, favicons, default images)
+  - About page image references
+
+- **Site Structure**:
+  - RSS feed structure and validity
+  - Sitemap structure and validity
+  - 404 error page structure
+  - Permalink structure validation
+
+- **Quality Checks**:
+  - HTML validation (via html-validate)
+  - Broken link detection (via broken-link-checker)
+
+**Note**: Always run `npm run build` before running content tests, as they validate the generated `public/` directory.
+
+## 🤖 AI Assistant Guidelines
+
+This project includes an `agents.md` file with detailed guidelines for AI coding assistants (Cursor, GitHub Copilot, etc.). It covers:
+
+- Protected elements that must not be modified
+- Content creation patterns and conventions
+- Testing requirements
+- Brand guidelines reference
+- Common tasks and workflows
+
+If you're using an AI assistant to work on this project, refer to `agents.md` for project-specific context and constraints.
 
 ## 🔍 SEO & Analytics
 

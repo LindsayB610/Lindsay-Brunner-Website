@@ -1014,11 +1014,18 @@ blockquote {
 
   .main-nav ul {
     justify-content: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    flex-wrap: nowrap;
+  }
+
+  .main-nav a,
+  .main-nav summary {
+    padding: var(--space-sm) var(--space-sm);
+    font-size: 0.9rem;
   }
 
   .nav-dropdown {
-    width: 100%;
+    width: auto;
   }
 
   .nav-dropdown .dropdown-menu {
@@ -1072,7 +1079,8 @@ blockquote {
   }
 
   .main-nav ul {
-    gap: var(--space-sm);
+    gap: var(--space-xs);
+    flex-wrap: nowrap;
   }
 
   .main-nav a,
