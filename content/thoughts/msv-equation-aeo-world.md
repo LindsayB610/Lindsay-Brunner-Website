@@ -8,55 +8,25 @@ draft: false
 og_image: "/images/social/default-og.png"
 ---
 
-I run content at Builder.io. Before that, I ran DevRel teams. I live in the overlap between "we need pipeline" and "developers hate marketing."
+If you build your content strategy around monthly search volume, you are optimizing for a world that no longer exists.
 
+MSV used to be a rough proxy for opportunity. Big keyword, decent intent, top three ranking, some predictable flow of traffic and leads. You could mostly get away with planning around that. It was not perfect, but the errors were tolerable.
 
+Now AI Overviews and answer engines sit on top of those same keywords and quietly intercept attention. People still search. The volume line looks fine. The part that breaks is the click. The largest studies we have show that when an AI summary appears, users click traditional results roughly half as often as they do without it, and informational queries with AI Overviews see organic and paid CTR fall off a cliff. The demand is still there. Your line of sight to it is not.
 
-From that seat, here is the situation.
+In parallel, the kind of queries that actually move revenue in product led, dev heavy businesses have always been low volume and specific. Integration guides. Migration notes. "How do I do this ridiculous thing in my exact stack." The stuff that drives signups and activation rarely looks impressive in a keyword tool. In a world where search is moving from "ranked links" to "generated answers," that low volume, high intent layer becomes even more important.
 
+So the old mental model breaks. "Find high MSV, filter by intent, rank, win" is not how this works any more. Treating MSV as your primary content planning signal in 2025 is like plotting a road trip with a gas gauge that only updates every few hours. You might still get where you want to go. You will not enjoy the stress.
 
+This post is about rewriting the MSV equation for an answer engine world, and about what that means if you are the person owning the content calendar and the pipeline number at the same time.
 
-The classic "find a juicy keyword, write a post, win intent" playbook still looks great in your spreadsheet and quietly falls apart in reality.
-
-
-
-Monthly search volume used to be a rough but workable proxy for opportunity. If ten thousand people typed something into Google every month and you could get onto page one, odds were decent you would see traffic, leads, some path to revenue you could wave around in a QBR.
-
-
-
-Now you are in a search environment where Google often shows an AI written summary at the top, and users simply stop clicking the links underneath. When an AI summary appears, people click a normal result only about 8 percent of the time, compared to 15 percent when there is no summary, according to Pew Research Center. For informational queries that trigger AI Overviews, organic click through rates have fallen by roughly 60 percent, and paid click through is hit even harder, based on large scale analysis from Seer Interactive that was summarized by Search Engine Land.
-
-
-
-So MSV has not really changed. The behavior sitting on top of that MSV has.
-
-
-
-If you are responsible for content marketing in a devtool or B2B product led company, that hurts more than average. The content that actually moves the needle is the unglamorous stuff: long tail searches, edge case examples, "how do I get this to work in our cursed CI pipeline" guides. Developer focused PLG folks like Draft.dev and their piece on product led growth for developer tools companies have been saying this for a while. You can feel it in your own analytics.
-
-
-
-The new twist is simple. The "high MSV, high intent, realistic to rank" overlap shrank. The math you are using to decide what to ship on your content calendar did not keep up.
-
-
-
-Time to fix the equation.
-
-
-
-How search broke, quietly
-
-
+## How search broke, quietly
 
 This did not show up as one dramatic "SEO is dead" moment. It showed up as a slow accumulation of annoying facts.
 
+First, AI summaries started appearing more often in search results. Then AI Overviews rolled out and expanded. After that, traffic reports began to show the same pattern. When an AI summary appears on the page, users click through to a traditional result roughly half as often as they do on a normal page. [Pew's browser based study](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/) puts it at 8 percent versus 15 percent.
 
-
-First, AI summaries started appearing more often in search results. Then AI Overviews rolled out and expanded. After that, traffic reports began to show the same pattern. When an AI summary appears on the page, users click through to a traditional result roughly half as often as they do on a normal page. Pew's browser based study puts it at 8 percent versus 15 percent.
-
-
-
-Seer Interactive then looked at a lot of data and saw that, on informational queries where AI Overviews show, organic click through dropped around 60 percent and paid click through was down almost 70 percent. Search Engine Land and others dug into this and landed on a blunt conclusion: AI Overviews soak up attention that used to go to links.
+[Seer Interactive](https://www.seerinteractive.com/insights/aio-impact-on-google-ctr-september-2025-update) then looked at a lot of data and saw that, on informational queries where AI Overviews show, organic click through dropped around 60 percent and paid click through was down almost 70 percent. [Search Engine Land's writeup](https://searchengineland.com/google-ai-overviews-drive-drop-organic-paid-ctr-464212) lands on a blunt conclusion: AI Overviews soak up attention that used to go to links.
 
 
 
@@ -70,23 +40,19 @@ So when your keyword tool says "this keyword has 20,000 searches," what it reall
 
 MSV stayed the same. The funnel under it got squeezed.
 
-
-
-What the old MSV equation assumed
+## What the old MSV equation assumed
 
 
 
 Here is the mental model most content and SEO teams have been running, whether we wrote it down or not:
 
-
-
-Opportunity ≈ MSV × intent × our chance to rank
+> Opportunity ≈ MSV × intent × our chance to rank
 
 
 
-MSV told you how many humans raised a hand in search.
+MSV told you how many humans raised a hand in search.  
 
-Intent told you how close that hand was to revenue.
+Intent told you how close that hand was to revenue.  
 
 "Chance to rank" was the lever you could pull with content, links, distribution, and time.
 
@@ -100,11 +66,11 @@ On one side you had head terms like "feature flags", "api gateway", "kubernetes 
 
 
 
-On the other side you had the long tail goblins.
+On the other side you had the long tail goblins.  
 
-"$YOUR_TOOL github actions example".
+"$YOUR_TOOL github actions example".  
 
-"Migrate from Jenkins to $YOUR_TOOL".
+"Migrate from Jenkins to $YOUR_TOOL".  
 
 "Fix 429 throttling in $SPECIFIC_SDK with $YOUR_TOOL".
 
@@ -114,7 +80,7 @@ This second group almost never shows up as "interesting" in a keyword tool. Ten 
 
 
 
-And yet, if you actually look at which pages led to "user did something meaningful in the product," it is always this layer. Docs, integration guides, and gnarly "how to make this work in your real life setup" content are what turn curiosity into usage in a product led motion. That is the core of Draft.dev's argument in their PLG for devtools piece and most decent devtool case studies.
+And yet, if you actually look at which pages led to "user did something meaningful in the product," it is always this layer. Docs, integration guides, and gnarly "how to make this work in your real life setup" content are what turn curiosity into usage in a product led motion. That is the core of [Draft.dev's argument](https://draft.dev/learn/product-led-growth-for-developer-tools-companies) and most decent devtool case studies, along with their piece on [developer content as the cornerstone of PLG](https://draft.dev/learn/developer-content-the-cornerstone-of-product-led-growth).
 
 
 
@@ -124,19 +90,15 @@ So even before AI summaries, the truly high intent side of the equation was alre
 
 Generative answers just made it impossible to pretend otherwise.
 
-
-
-Why high MSV plus high intent got rare
+## Why high MSV plus high intent got rare
 
 
 
 The quadrant everybody built decks around was simple.
 
+Big keyword.  
 
-
-Big keyword.
-
-Clear commercial intent.
+Clear commercial intent.  
 
 Decent odds of ranking.
 
@@ -176,9 +138,7 @@ Put those two together and the overlap between "high MSV" and "high intent" gets
 
 If you are not already one of the defaults in the model's head, building your whole content strategy around that overlap starts to look like denial.
 
-
-
-The actual problem: MSV is only measuring human search
+## The actual problem: MSV is only measuring human search
 
 
 
@@ -188,19 +148,15 @@ Here is the core mismatch for content marketers.
 
 MSV counts the number of times humans type a query into classic search engines. That is all it knows. It does not count:
 
+Questions typed into ChatGPT, Gemini, Claude, or Perplexity.  
 
+Questions routed through Google's AI Overview layer.  
 
-Questions typed into ChatGPT, Gemini, Claude, or Perplexity.
-
-Questions routed through Google's AI Overview layer.
-
-Prompts sent to Copilot inside an IDE.
+Prompts sent to Copilot inside an IDE.  
 
 Questions asked of internal AI assistants that index your docs and your changelog.
 
-
-
-Those are all search behaviors. They just do not look like the old "three keywords in a box, ten blue links" pattern your tools were built around.
+These are all search behaviors. They just do not look like the old "three keywords in a box, ten blue links" pattern your tools were built around.
 
 
 
@@ -208,7 +164,7 @@ Work on generative engine optimization treats these engines as a separate retrie
 
 
 
-The a16z piece on GEO describes this as a shift from rankings to "model relevance." The HubSpot explainer on GEO talks about optimizing to be cited and synthesized by AI systems like ChatGPT, Perplexity, and Google AI Overviews, not just to show up in the standard result set.
+The [a16z piece on GEO](https://a16z.com/geo-over-seo/) describes this as a shift from rankings to "model relevance." The [HubSpot explainer on GEO](https://blog.hubspot.com/marketing/generative-engine-optimization) talks about optimizing to be cited and synthesized by AI systems like ChatGPT, Perplexity, and Google AI Overviews, not just to show up in the standard result set.
 
 
 
@@ -226,17 +182,13 @@ So when your keyword tool reports "zero to ten searches" and tells you not to bo
 
 That blind spot is what makes the old MSV equation feel wrong in your gut.
 
-
-
-Rewriting the MSV equation
+## Rewriting the MSV equation
 
 
 
 Here is the version that actually matches the world we are in now:
 
-
-
-Content value ≈ (human demand + AI demand) × intent × model recall
+> Content value ≈ (human demand + AI demand) × intent × model recall
 
 
 
@@ -262,17 +214,13 @@ GEO tools are starting to measure this as "share of answers" across engines like
 
 In the old equation, we quietly treated model recall as a constant equal to one. We assumed the same basic discovery rules applied to everyone. In 2025, that is a nice fantasy, not a planning assumption.
 
-
-
-The two bucket content portfolio
+## The two bucket content portfolio
 
 
 
 Once you accept that equation, your content plan stops being one long backlog and starts looking more like a portfolio. You are really managing two buckets of work that behave very differently in the funnel and in AI systems.
 
-
-
-Bucket 1: high surface area, AEO friendly
+### Bucket 1: high surface area, AEO friendly
 
 
 
@@ -302,9 +250,7 @@ You want humans to actually learn something. You want other sites to link to it.
 
 This is less about landing pages. More about writing the script everyone else, including the models, will unconsciously borrow from.
 
-
-
-Bucket 2: low MSV, high intent, product adjacent
+### Bucket 2: low MSV, high intent, product adjacent
 
 
 
@@ -316,19 +262,15 @@ Docs. Integration guides. Migration notes. Deep dives that start from a realisti
 
 
 
-In devtool PLG, these assets are not support content. They are sales and success wrapped into one. The Draft.dev essay on PLG for devtools and a lot of PLG case studies basically come down to this: the faster someone can go from pain to working solution inside your product, the more likely they are to stick and expand.
-
-
+In devtool PLG, these assets are not support content. They are sales and success wrapped into one. The Draft.dev essay on [PLG for devtools](https://draft.dev/learn/product-led-growth-for-developer-tools-companies) and a lot of PLG case studies basically come down to this: the faster someone can go from pain to working solution inside your product, the more likely they are to stick and expand.
 
 Bucket two content has three important traits for a marketer.
 
+- The queries attached to it look tiny in MSV tools.  
 
+- The people who find it are often ridiculously qualified.  
 
-The queries attached to it look tiny in MSV tools.
-
-The people who find it are often ridiculously qualified.
-
-It is pure gold as training data for AI systems, both inside and outside your product.
+- It is pure gold as training data for AI systems, both inside and outside your product.
 
 
 
@@ -338,9 +280,7 @@ Your own in product assistant will index it. Copilot style tools that sit over y
 
 If bucket one defines the narrative of the category, bucket two defines what it feels like to live in your product day to day.
 
-
-
-How you actually measure any of this
+## How you actually measure any of this
 
 
 
@@ -382,9 +322,7 @@ Also, pay attention to new referrers. Some publishers are already seeing small b
 
 The point is not to build the perfect GEO reporting stack this quarter. The point is to stop pretending that "MSV times historical CTR equals opportunity," in a world where the interface absorbing that traffic is a constantly shifting answer box.
 
-
-
-Where this might be wrong
+## Where this might be wrong
 
 
 
@@ -406,9 +344,7 @@ And there is a real risk in overfitting to the AI. If you start writing like you
 
 If the senior engineer, PM, or VP you care about reads your post and rolls their eyes, the model will eventually learn to roll its eyes too.
 
-
-
-What to actually do with all of this
+## What to actually do with all of this
 
 
 
