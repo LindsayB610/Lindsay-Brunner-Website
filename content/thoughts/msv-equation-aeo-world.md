@@ -1,6 +1,6 @@
 ---
 title: "The MSV Equation in an AEO World"
-date: 2025-11-20
+date: 2025-11-15
 slug: "msv-equation-aeo-world"
 description: "Why your 'big keyword' spreadsheet is quietly lying to you in an AI-driven search world, and how to fix your content strategy equation."
 subtitle: "Or: why your 'big keyword' spreadsheet is quietly lying to you"
