@@ -8,12 +8,6 @@ draft: false
 og_image: "/images/social/default-og.png"
 ---
 
-The MSV Equation in an AEO World
-
-Or: why your "big keyword" spreadsheet is quietly lying to you
-
-
-
 I run content at Builder.io. Before that, I ran DevRel teams. I live in the overlap between "we need pipeline" and "developers hate marketing."
 
 
