@@ -5,19 +5,20 @@ slug: "category-creation-calling-shot"
 description: "Category creation isn't about manifesting your destiny—it's about calling your shot. Here's how operators actually get Gartner to redraw the map, from someone who's been in the room."
 subtitle: "Or: How operators actually get Gartner to redraw the map"
 draft: true
+social_image: "/images/social/category-creation-calling-shot-og.png"
 ---
 
 There's a particular kind of room where someone eventually leans back, folds their hands like a prophet, and announces, "We're going to be iconic. We're going to define a category."
 
-You've been in that room. Big dreams, big decks, big nouns. Circles labeled "Category King." Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
+Maybe you've been in that room. Big dreams, big decks, big adjectives. Circles labeled "Category King." Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
 
-I've spent most of my career in rooms like that: Okta, Stormpath, Split, ngrok, Builder.io. All developer-focused. All convinced they were on the cusp of "creating a category."
+In my career I've gotten to be in a few rooms like that, all at companies that were developer-focsed and convinced they were on the cusp of "creating a category."
 
 Here's the quieter truth:
 
-Being iconic is not a plan. Category creation is not "be great and hope the world notices." It is a specific, tedious, strategic kind of work aimed at one very explicit outcome.
+_Being iconic is not a plan. Category creation is not "be great and hope the world notices". It is a specific, tedious, strategic kind of work aimed at one very explicit outcome._
 
-In B2B SaaS and dev tools, creating a category means you describe how the market *should* be structured, then you grind until Gartner and Forrester eventually agree with you by publishing a diagram you have basically been handing them in slow motion for years.
+In the world I've inhabited, creating a category means you describe how the market *should* be structured, then you grind until Gartner and Forrester agree with you by publishing a diagram you have basically been handing them in slow motion for years.
 
 Everything else is warm-up.
 
