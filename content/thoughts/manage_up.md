@@ -83,9 +83,3 @@ Managing up isn't about playing the game. It's about making sure you don't get s
 And if you've got managing-up wins or disasters, [HMU on LinkedIn](https://www.linkedin.com/in/lindsaybrunner/). Let's learn from each other.
 
 Your move.
-
-## Related Posts
-
-- [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
-- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/2025-06-12/meet-guppi/)
-- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)

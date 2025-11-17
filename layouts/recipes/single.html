@@ -33,6 +33,56 @@
   </div>
 </article>
 
+{{ if .Params.related_recipes }}
+  {{ $relatedRecipes := .Params.related_recipes }}
+  {{ if $relatedRecipes }}
+  <section class="section">
+    <div class="container-narrow">
+      <h2 style="margin-bottom: 2rem; text-align: center">Make something else</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem">
+        {{ range $relatedRecipes }}
+        <div>
+          <a href="{{ .url }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
+            {{ .title }}
+          </a>
+          {{ if .subtitle }}
+          <p style="color: var(--dark-text-secondary); margin-top: 0.25rem; font-size: 0.9rem;">
+            {{ .subtitle }}
+          </p>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ else }}
+  {{ $allRecipes := where .Site.RegularPages "Type" "recipes" }}
+  {{ $otherRecipes := where $allRecipes "Permalink" "!=" .Permalink }}
+  {{ $recentRecipes := $otherRecipes.ByDate.Reverse | first 3 }}
+  {{ if $recentRecipes }}
+  <section class="section">
+    <div class="container-narrow">
+      <h2 style="margin-bottom: 2rem; text-align: center">Make something else</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem">
+        {{ range $recentRecipes }}
+        <div>
+          <a href="{{ .RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
+            {{ .Title }}
+          </a>
+          {{ if .Params.subtitle }}
+          <p style="color: var(--dark-text-secondary); margin-top: 0.25rem; font-size: 0.9rem;">
+            {{ .Params.subtitle }}
+          </p>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}
+
 <!-- Recipe JSON-LD Structured Data -->
 <script type="application/ld+json">
 {

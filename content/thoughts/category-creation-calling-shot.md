@@ -26,9 +26,13 @@ From the operator seat, here is what that really feels like.
 
 ## Theory brain vs. operator brain
 
+### Theory brain
+
 The theory version of category creation is lofty. Sweeping metaphors. "We're reinventing identity." "We're redefining communications." "Developers will build differently now." Great for dinner parties. Lovely for brand decks.
 
-I enjoy that version. But theory brain is not the one fielding sales when they ask, "What are we aiming at this year?" It is not the one rewriting the homepage for the sixth time or explaining to an analyst why your product is not a decorative feature inside someone else's platform.
+I enjoy that version. But theory brain is not the one dealing with sales when they ask, "What are we aiming at this year?" It is not the one rewriting the homepage for the sixth time or explaining to an analyst why your product is not a decorative feature inside someone else's platform.
+
+### Operator brain
 
 Operator brain wants coordinates. It sounds like:
 
@@ -38,23 +42,25 @@ Operator brain wants coordinates. It sounds like:
 
 - Where does our logo sit, and who is allowed to sit near it?
 
-The theory line is "We're building a category-defining company."  
+The theory line is "We're building a category-defining, iconic company."  
 
 The operator line is "We want Gartner publishing a Magic Quadrant using our framing, and we want to be in the Leader box."
 
-Only one of those lines helps you decide what goes above the fold on the website.
+**Only one of those lines helps you decide what goes above the fold on the website.**
 
-## Okta: when identity decided to be a platform
+## Okta: When identity decided to be a platform
 
-Okta is where this clicked for me.
+[Okta](https://www.okta.com/) is where this clicked for me.
 
-Identity was crowded but shapeless. Old-school directories, on-prem IAM, VPNs, perimeter security, and a vague cloud haze around SSO and SaaS access. Identity was usually treated like a bolt-on.
+Identity was crowded but shapeless. Old-school directories, on-prem IAM, VPNs, perimeter security, and a vague cloud haze around SSO and SaaS access. Identity was usually treated like a bolt-on that literally no one actually wanted to deal with, and everyone was scared of.
 
 Inside Okta, the bet was simple: identity should be its own cloud platform. A control plane. Not a feature. Not an accessory.
 
 That was the shot.
 
 Not "we will do login better," but "identity is a standalone category, and we will define its boundaries before anyone else does."
+
+### The map
 
 If you are in GTM or content, that kind of call infects your whole job. Suddenly you are not explaining the product, you are explaining the *world* in a way that makes the product feel inevitable.
 
@@ -66,6 +72,8 @@ The goal was "convince analysts this is the correct way to draw the space, and o
 
 You know it is working when analysts start using your vocabulary back at you. "IDaaS." "Independent cloud identity." "Access management." Your internal language becomes external language.
 
+### The result
+
 Eventually the reports drop. Magic Quadrants for Access Management. Waves for IDaaS. Workforce Identity Platforms. Zero Trust diagrams with identity as the first pillar. The boxes and labels look suspiciously familiar.
 
 And the logo is in the Leader section.
@@ -74,9 +82,9 @@ Inside Okta, that was not a trophy. It was a confirmation that the map had becom
 
 The work did not end. Microsoft still loomed. Features still had to ship. Deals still needed closing. But the hardest narrative problem, the category definition, finally had a shared answer.
 
-## Twilio: watching someone else run the same playbook
+## Twilio: Watching someone else run the same playbook
 
-While all that was happening, we watched Twilio closely.
+While all that was happening, we watched [Twilio](https://www.twilio.com/) closely.
 
 Twilio was doing its own version of the dance in a totally different corner. Programmable communications. SMS, voice, later email. APIs that made telecom feel like a friendly weekend project instead of a carrier negotiation.
 
@@ -90,21 +98,25 @@ Then the reports arrived. Magic Quadrant for CPaaS. IDC MarketScapes. Twilio squ
 
 Same spine every time:
 
-Call your shot.  
+* Call your shot.  
 
-Repeat the map.  
+* Repeat the map.  
 
-Wait for the analysts to print it.
+* Wait for the analysts to print it.
 
 ## What the work feels like inside GTM
 
-This all sounds grand. In practice, it is 90 percent repetition and unglamorous precision.
+This all sounds grand. In practice, it is 90% repetition and unglamorous precision.
 
-It starts with a real shift in the world. You cannot conjure a category out of nothing. At Okta it was SaaS, remote work, zero trust. At Twilio it was cloud and developers owning customer experience. At Stormpath it was drop-in auth before that was common. At Split it was feature flags becoming mandatory hygiene. At ngrok and Builder.io it is teams wanting to ship and preview experiences without wrestling fifteen tools.
+### Starting with a real shift
+
+It starts with a real shift in the world. You cannot conjure a category out of nothing. At Okta it was SaaS, remote work, zero trust. At Twilio it was cloud and developers owning customer experience. At Stormpath it was drop-in auth before that was common. At [Builder.io](https://www.builder.io/) it is teams wanting a better way to collaboratively build and ship experiences without wrestling fifteen tools.
 
 If you do not have a real shift, you do not have a category. You have a product.
 
-Once you have the shift, you name the space in a way people can actually say. Teams get lost chasing poetic brand expressions no one repeats. Category names are not poetry. They are tools.
+### Naming the space
+
+Once you have the shift, you name the space in a way people can actually use. Teams get lost chasing poetic brand expressions no one repeats. Category names are not poetry. They are tools.
 
 The practical checklist:
 
@@ -114,7 +126,9 @@ The practical checklist:
 
 - Flexible enough to survive your roadmap
 
-"Identity as a Service." "CPaaS." "Feature flagging." "Workforce identity." Slightly bland by design.
+"Identity as a Service." "CPaaS." "Workforce identity." "Visual IDE." Slightly bland by design.
+
+### Messaging takes over
 
 Then messaging takes over. For a long stretch, category creation is basically a messaging discipline.
 
@@ -130,6 +144,8 @@ Analyst briefings require painful consistency. You are not just demoing. You are
 
 You are not the only vendor doing this. Analysts hear conflicting maps. Consistency becomes your vote.
 
+### Looking for signals
+
 Between "we have a story" and "the report is published," you look for softer signals. Customers using your language. Competitors adopting your phrasing. Partners launching "[your category] solutions." Job descriptions mirroring your terminology.
 
 Then one day a PDF hits your inbox. The name is familiar. The diagram resembles your slide from three years ago. You are in the right quadrant. The groupings look like your internal docs.
@@ -137,6 +153,8 @@ Then one day a PDF hits your inbox. The name is familiar. The diagram resembles 
 That is the finish line for the category campaign. After that, the problem shifts from "prove the category exists" to "compete inside a category everyone agrees on."
 
 ## What category creation is not
+
+### Common misconceptions
 
 Some fantasies worth clearing out:
 
@@ -177,6 +195,8 @@ Here is the core issue.
 "Iconic" is something said after the fact. It will not tell you what to put on the homepage or what to tell analysts next quarter.
 
 Category creation gives you clarity if you treat it seriously.
+
+### The framework
 
 It sounds like:
 

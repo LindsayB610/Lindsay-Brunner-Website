@@ -117,9 +117,3 @@ It's the same assistant I use daily, built on top of ChatGPT with personality se
 I built this because my brain didn't want a static system. It wanted a conversation, a memory, and a little emotional support. Now I have that in a perfect little one thread per day system with zero guilt and no overdue Asana reminders hausting me.
 
 Give him a try!
-
-## Related Posts
-
-- [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
-- [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/2025-06-13/meet-guideforge/)
-- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)

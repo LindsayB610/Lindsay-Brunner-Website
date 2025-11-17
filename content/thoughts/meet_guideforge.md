@@ -83,10 +83,4 @@ Once you define and codify your own non-negotiables, feed them to the AI as syst
 ## What's next?
 Well, let's be clear, "finish building GuideForge" is what's next. The playbooks have been built and honed over the last decade, but I'm pretty new to actual development. I'm vibe coding my way to success here with the help of a dev husband, a bunch of dev friends who for some reason really seem to like working with me, and [Builder.io](https://www.builder.io/). When I get GuideForge working to a point that I can use it in my day-to-day, I'll share it with some select friends who are already interested, and then open up invites for real beta testing. Keep an eye on this blog (and my socials) for progress updates.
 
-## Related Posts
-
-- [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
-- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/2025-06-12/meet-guppi/)
-- [Good Developer Content is a Conversation, Not a Broadcast](/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)
-
 <!-- To add an image, place it in static/images/ and use: ![Alt text](/images/your-image.png) -->

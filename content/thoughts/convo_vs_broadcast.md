@@ -82,9 +82,3 @@ By repeatedly checking for genuine usefulness at every stage, you ensure the end
 ## Time to Ditch the Megaphone
 
 Treat developers as the smart, skeptical humans they are. Ditch the megaphone, start the conversation, and maybe they'll stop muting your brand. Remember, broadcasting is one-way information, delivery. Generic, passive, and often ignored, while conversing is two-way engagement, responsive, useful, and interactive. Aim to create content that feels conversational, earning trust, attention, and real engagement.
-
-## Related Posts
-
-- [What Is Developer Marketing? A Guide from the Trenches (2025)](/thoughts/dev_mktg_guide/)
-- [Building Docs with an Arc-Reactor (and a Bit of AI)](/thoughts/2025-06-13/meet-guideforge/)
-- [I Built a Custom AI Assistant Because My Brain Refused to Use Notion](/thoughts/2025-06-12/meet-guppi/)
