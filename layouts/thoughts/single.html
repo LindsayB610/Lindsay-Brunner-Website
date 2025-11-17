@@ -83,29 +83,29 @@
 
 <section class="section">
   <div class="container-narrow">
-    <h2 style="margin-bottom: 2rem; text-align: center">Related Posts</h2>
-    <div style="display: flex; flex-direction: column; gap: 1rem">
+    <h2 style="margin-bottom: 2rem; text-align: left">Related Posts</h2>
+    <ul style="list-style: disc; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
       {{ if .Params.related_posts }}
         {{ range .Params.related_posts }}
-        <div>
+        <li>
           <a href="{{ .url }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
             {{ .title }}
           </a>
-        </div>
+        </li>
         {{ end }}
       {{ else }}
         {{ $allThoughts := where .Site.RegularPages "Type" "thoughts" }}
         {{ $otherThoughts := where $allThoughts "Permalink" "!=" .Permalink }}
         {{ $recentThoughts := $otherThoughts.ByDate.Reverse | first 3 }}
         {{ range $recentThoughts }}
-        <div>
+        <li>
           <a href="{{ .RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
             {{ .Title }}
           </a>
-        </div>
+        </li>
         {{ end }}
       {{ end }}
-    </div>
+    </ul>
   </div>
 </section>
 
