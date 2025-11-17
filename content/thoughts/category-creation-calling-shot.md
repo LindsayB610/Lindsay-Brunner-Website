@@ -7,10 +7,6 @@ subtitle: "Or: How operators actually get Gartner to redraw the map"
 draft: true
 ---
 
-# Category Creation Is Calling Your Shot, Not Manifesting Your Destiny
-
-*Or: How operators actually get Gartner to redraw the map*
-
 There's a particular kind of room where someone eventually leans back, folds their hands like a prophet, and announces, "We're going to be iconic. We're going to define a category."
 
 You've been in that room. Big dreams, big decks, big nouns. Circles labeled "Category King." Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
