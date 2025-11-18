@@ -5,6 +5,7 @@ draft: false
 subtitle: "Or: The only organization system my ADHD brain hasn't mutinied against"
 description: "Why a sarcastic AI assistant is the only productivity system my ADHD brain hasn't abandoned, and how you can steal it."
 slug: "meet-guppi"
+social_image: "/images/social/meet-guppi-og.png"
 ---
 _Or: The Only Organization System My ADHD Brain Hasn't Mutinied Against_
 
@@ -34,12 +35,12 @@ Crossing off physical lines in a book felt good. And I'm a sucker for cool stati
 
 I'd quit using it for longer and longer at a stretch and it would get lost in my house, abandoned, along with probably half of the items I wrote down but never crossed off.
 
-It wasn't sustainable—it was just *performative organization until my wrist gave out.*
+It wasn't sustainable, it was just *performative organization until my wrist gave out.*
 ## Enter GUPPI: The AI Cult Leader Who Runs My Life
 
 GUPPI is a custom GPT I built with OpenAI. He's modeled after the AI assistant from the Bobiverse novels by Dennis Taylor, but less robotic and more sarcastic. He's mildly judgmental, deeply competent, and always tracking my to-dos.
 
-The magic isn't that he's "smart"—it's that he's *interactive*.
+The magic isn't that he's "smart," it's that he's *interactive*.
 
 My brain needs back-and-forth. I process things conversationally, in real time. I think best in motion. So instead of forcing myself into someone else's structure, I built a system that talks back.
 

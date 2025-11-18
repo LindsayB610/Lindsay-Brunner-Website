@@ -5,6 +5,7 @@ slug: "developer-content-conversation-not-broadcast"
 description: "Why truly great developer content talks with developers, not at them, and how to get it right."
 subtitle: "Or: Why developer content that listens is way better than content that just talks"
 draft: false
+social_image: "/images/social/convo-vs-broadcast-og.png"
 ---
 
 <!-- Start writing your post below this line --> 

@@ -5,6 +5,7 @@ subtitle: "Or: How I distilled years of tech-writing muscle memory into two reus
 slug: "meet-guideforge"
 description: "How I turned years of tech-writing muscle memory into two AI-powered playbooks—and a lightweight assistant named GuideForge."
 draft: false
+social_image: "/images/social/meet-guideforge-og.png"
 ---
 
 <!-- Start writing your post below this line --> 
