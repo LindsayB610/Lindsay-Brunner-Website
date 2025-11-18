@@ -5,7 +5,7 @@ slug: "msv-equation-aeo-world"
 description: "Why your 'big keyword' spreadsheet is quietly lying to you in an AI-driven search world, and how to fix your content strategy equation."
 subtitle: "Or: Why your 'big keyword' spreadsheet is quietly lying to you"
 draft: false
-og_image: "/images/social/default-og.png"
+social_image: "/images/social/msv-equation-aeo-world-og.png"
 ---
 
 If you build your content strategy around monthly search volume, you are optimizing for a world that no longer exists.
