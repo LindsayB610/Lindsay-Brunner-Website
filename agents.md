@@ -54,6 +54,24 @@ static/
   └── _redirects         # Netlify redirects
 ```
 
+## Writing Style and Voice
+
+**IMPORTANT:** When creating or editing content, always follow the guidelines in `CONTENT_STYLE_GUIDE.md`. This document defines:
+
+- Tone and voice (wry, plainspoken, pragmatic)
+- Sentence structure and rhythm
+- Style of argumentation
+- Formatting rules (no em dashes, title case H1s, sentence case other headers)
+- Content clarity principles
+- How to write in Lindsay's voice
+
+**Key rules:**
+- ❌ Absolutely no em dashes (use parentheses, commas, or break sentences)
+- Title case for H1s, sentence case for all other headers
+- Avoid corporate/LinkedIn sludge
+- Write for builders and practitioners as peers
+- Lead with lived experience, not abstractions
+
 ## Content Creation Patterns
 
 ### Thoughts Posts
@@ -192,6 +210,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 
 - **README.md**: Setup, scripts, content management guide
 - **BRAND.md**: Complete brand guidelines and protected elements
+- **CONTENT_STYLE_GUIDE.md**: Writing principles, tone, voice, and style guidelines
 - **config.toml**: Hugo configuration
 - **tests/content-checks.js**: Test validation logic
 
@@ -200,5 +219,6 @@ See `BRAND.md` for complete brand guidelines. Key points:
 1. Check existing content files for patterns
 2. Run tests to verify changes
 3. Check BRAND.md for design constraints
-4. Preserve existing conventions unless explicitly asked to change them
+4. Check CONTENT_STYLE_GUIDE.md for writing style and voice guidelines
+5. Preserve existing conventions unless explicitly asked to change them
 
