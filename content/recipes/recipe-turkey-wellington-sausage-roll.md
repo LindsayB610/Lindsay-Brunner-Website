@@ -88,7 +88,7 @@ So, let's get started!
 
 ### To serve
 - Turkey gravy, piping hot
-- CRanberry sauce (not the canned kind)
+- Cranberry sauce (not the canned kind)
 
 ---
 
