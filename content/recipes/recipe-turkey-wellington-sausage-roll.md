@@ -56,11 +56,11 @@ So, let's get started!
 ## Snapshot
 - **Implements:** mixing bowls; plastic wrap; rimmed baking sheet; parchment paper; sharp knife; instant-read thermometer
 - **Oven setting:** 400°F / 200°C (about 22–28 minutes)
-- **Batch size:** 4 hearty main-dish rolls (2 servings)
+- **Batch size:** 4 hearty main-dish rolls
 
 ## Ingredients
 
-### Thanksgiving-y turkey sausage (1 lb batch)
+### Thanksgiving-y turkey sausage
 - 1 lb (450 g) 85% lean ground turkey
 - ⅓ cup panko or fine dry breadcrumbs
 - 1 large egg
@@ -68,27 +68,27 @@ So, let's get started!
 - 1½ tsp kosher salt (reduce slightly if using fine salt)
 - 1½ tsp dried sage
 - 1 tsp dried thyme
-- (omit rosemary in this version)
 - ½ tsp black pepper
-- Small pinch ground nutmeg (≈⅛ tsp)
+- Several grates of fresh nutmeg
 - 1 large clove garlic, very finely minced or microplaned
 - 1–1½ tbsp melted butter or neutral oil (since the turkey is 85% lean, you don't need more)
 
-### Stuffing "coat" (with Stove Top; 1 egg per box)
-- 1 box Stove Top Traditional Sage
+### Stuffing "coat"
+- 1 box Stove Top Traditional Sage or Turkey flavors work best
 - 2 tbsp salted butter
 - ½ small yellow onion, very finely diced
 - 1 small rib celery, finely diced
-- 1 large egg (for the whole box; see Method)
-- Optional: 1–2 tbsp chopped fresh parsley; tiny extra pinches of sage/thyme
+- 1 large egg
+- Optional: 1–2 tbsp chopped fresh parsley
 
 ### Puff pastry wrapper
 - 1 standard sheet all-butter puff pastry (≈10×10 in / 25×25 cm), thawed but cold
 - 1 egg beaten with 1 tbsp water or milk (for egg wash)
-- Optional: flaky salt, black pepper, or sesame/poppy seeds for topping
+- Optional: flaky salt or sesame/poppy seeds for topping
 
 ### To serve
 - Turkey gravy, piping hot
+- CRanberry sauce (not the canned kind)
 
 ---
 
@@ -98,21 +98,19 @@ So, let's get started!
 
    In a bowl, combine turkey, panko, 1 egg, milk/stock, salt, sage, thyme, pepper, nutmeg, garlic, and 1–1½ tbsp melted butter/oil. Mix gently until cohesive and slightly tacky (not pasty). Cook a tiny test patty to check seasoning; adjust salt/herbs if needed. Chill while you make the stuffing.
 
-2. **Cook, cool, and set the Stove Top (1 egg per box)**
+2. **Cook, cool, and set the Stove Top**
 
    In a saucepan, melt 2 tbsp butter over medium heat. Sauté onion and celery until softened and lightly golden at the edges (5–7 minutes). Add about 75–80% of the liquid the box calls for; bring to a boil. Stir in Stove Top, cover, and take off heat to hydrate.
 
    Cool it quickly: spread the stuffing on a sheet tray and refrigerate until cool to the touch (15–20 minutes).
 
-   Bind lightly, then set: beat 1 egg and fold it through the entire batch of cooled stuffing. Spread in a thin layer (¼") on the tray and bake at 350°F / 175°C for 6–10 minutes, stirring once, just to drive off excess moisture and lightly set the egg (not to brown). Cool 5 minutes.
-
-   **Why this step:** using 1 egg for the whole box keeps the "jacket" cohesive without turning wet; setting it briefly prevents sogginess and keeps the side portion safe to eat.
+   Bind lightly, then set: beat 1 egg and fold it through the entire batch of cooled stuffing. Spread in a thin layer (¼") on the tray and bake at 350°F / 175°C for 6–10 minutes, just to drive off excess moisture and lightly set the egg (not to brown). Cool 5 minutes.
 
 3. **Form sausage cores and wrap in stuffing**
 
-   Divide the sausage into 4 equal portions. On plastic wrap or parchment, roll each into a log 4–5 inches long and ¾–1 inch thick.
+   Divide the sausage into 4 equal portions. On plastic wrap or parchment, roll each into a log 4–5 inches long and 1 inch thick.
 
-   On fresh plastic wrap, press a thin rectangle of the set stuffing (use about 1½–2 cups total for all four logs), ¼ inch thick and just longer than the sausage. Lay a sausage log on top and use the wrap to lift and close the stuffing around it like sushi, sealing into a neat cylinder. Twist ends gently to firm. Chill the four stuffing‑wrapped logs 15–20 minutes (or 8–10 minutes in the freezer) until firm.
+   On fresh plastic wrap, press a thin rectangle of the set stuffing, ¼ inch thick and just shorter than the sausage. Lay a sausage log on top and use the wrap to lift and close the stuffing around it like sushi, sealing into a neat cylinder. Twist ends gently to firm. Chill the four stuffing‑wrapped logs 15–20 minutes (or 8–10 minutes in the freezer) until firm.
 
    - If the stuffing feels loose: sprinkle in 2–4 tbsp panko (or a handful of dry Stove Top crumbs), fold, rest 5 minutes, and proceed.
 
@@ -120,7 +118,7 @@ So, let's get started!
 
    Heat oven to 400°F / 200°C. Line a baking sheet with parchment.
 
-   Roll the pastry to about 10×12 inches and cut into 4 equal rectangles. For each chilled log: place in the center, brush one long edge of pastry with egg wash, fold the other edge over, overlap to seal, then roll seam‑side down. Leave the ends open (sausage‑roll style). Cut 2–3 small diagonal vents on top; brush tops/sides with egg wash. Optional sprinkle: flaky salt or seeds.
+   Roll the pastry to about 10×12 inches and cut into 4 equal rectangles. For each chilled log: place in the center, brush one long edge of pastry with egg wash, fold the other edge over, overlap to seal, then roll seam‑side down. Leave the ends open (sausage‑roll style). Cut 2–3 small diagonal vents on top; brush tops/sides with egg wash. Optional sprinkle: flaky salt or seasme/poppy seeds.
 
 5. **Bake and rest**
 
