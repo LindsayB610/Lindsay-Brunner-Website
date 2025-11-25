@@ -48,7 +48,7 @@ Alongside the turkey Wellington Franken-rolls, I'm also making:
 * Turkey gravy
 * [Sweet potato casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole/)
 * [Duck fat roasted potatoes](https://www.poppycooks.com/recipes/goose-fat-roasties/)
-* Roasted Brussels sprouts
+* Roasted asparagus and Brussels sprouts
 * [Classic cranberry sauce](https://www.seriouseats.com/the-food-lab-thanksgiving-special-the-worlds-easiest-cranberry-sauce)
 
 So, let's get started!
@@ -61,7 +61,7 @@ So, let's get started!
 ## Ingredients
 
 ### Thanksgiving-y turkey sausage
-- 1 lb (450 g) 85% lean ground turkey
+- 1 lb (450 g) 85% or 93% lean ground turkey
 - ⅓ cup panko or fine dry breadcrumbs
 - 1 large egg
 - 3 tbsp milk, cream, or chicken/turkey stock
@@ -71,7 +71,7 @@ So, let's get started!
 - ½ tsp black pepper
 - Several grates of fresh nutmeg
 - 1 large clove garlic, very finely minced or microplaned
-- 1–1½ tbsp melted butter or neutral oil (since the turkey is 85% lean, you don't need more)
+- 1–1½ tbsp melted butter or neutral oil (use the full amount if using 93% lean turkey, less if 85%)
 
 ### Stuffing "coat"
 - 1 box Stove Top Traditional Sage or Turkey flavors work best
