@@ -9,7 +9,7 @@ social_image: "/images/social/recipe-roasted-squash-ditalini-crispy-guanciale-og
 prepTime: "PT20M"
 cookTime: "PT30M"
 totalTime: "PT50M"
-recipeYield: "5-6 servings"
+recipeYield: "6 main course servings or 8-10 as a side"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 recipeIngredient:
@@ -45,7 +45,7 @@ recipeInstructions:
 
 - **Implements:** sheet pan, large pot, skillet, mixing spoon, sharp knife, wooden spoon
 - **Oven setting:** 425°F / 220°C for roasting squash
-- **Batch size:** ~5–6 main-dish servings (4 generous servings)
+- **Batch size:** 6 main course servings or 8–10 as a side
 - **Pasta cooked separately for reliable texture**
 
 ## Ingredients
