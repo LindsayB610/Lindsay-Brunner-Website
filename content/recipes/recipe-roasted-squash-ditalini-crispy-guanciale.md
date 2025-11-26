@@ -110,10 +110,6 @@ recipeInstructions:
 
 ## Notes, swaps, and guardrails
 
-### Why separate pasta cooking
-
-Cooking pasta separately ensures reliable al dente texture. One-pot pasta methods often under- or over-cook ditalini when combined with absorbent ingredients like squash. Separating gives you precise control.
-
 ### Fresh vs frozen squash
 
 If using frozen cubed butternut squash: there's no need to thaw. Spread the frozen cubes on a sheet pan and roast at 450°F for about 18–25 minutes, tossing once halfway through. Frozen squash holds more water and browns more slowly, so the higher heat helps with caramelization. Watch for extra liquid on the pan. Roast until it evaporates and the edges begin to color. The texture will be a bit softer than fresh, which actually helps the sauce become creamy.
@@ -133,4 +129,8 @@ Because guanciale, cheese, and pasta water all contribute salt, you want to star
 ### Brighten it up
 
 A little lemon zest or a splash of lemon juice at the end cuts through the richness and brings freshness (especially nice if you lean heavy on cream and cheese).
+
+### Recipe adaptation
+
+This recipe is adapted from [Squash Ditalini Pasta with Crispy Pancetta](https://www.noregrettispaghetti.co/home/squash-ditalini-with-crispy-pancetta) by Gabriella Simonian at No Regretti Spaghetti.
 
