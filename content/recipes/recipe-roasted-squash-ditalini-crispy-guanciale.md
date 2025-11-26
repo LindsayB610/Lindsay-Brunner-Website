@@ -19,7 +19,7 @@ recipeIngredient:
   - "½ tsp kosher salt (to start)"
   - "2–3 sprigs fresh thyme (or ½ tsp dried thyme)"
   - "8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)"
-  - "~7 oz guanciale, cut into small cubes (see rendering note)"
+  - "~3.5 oz guanciale, cut into small cubes (see rendering note)"
   - "2 cloves garlic, minced or grated"
   - "1 Tbsp tomato paste (for depth and color in the sauce)"
   - "¾ cup heavy cream"
@@ -56,7 +56,7 @@ recipeInstructions:
 - ½ tsp kosher salt (to start)
 - 2–3 sprigs fresh thyme (or ½ tsp dried thyme)
 - 8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)
-- ~7 oz guanciale, cut into small cubes (see rendering note)
+- ~3.5 oz guanciale, cut into small cubes (see rendering note)
 - 2 cloves garlic, minced or grated
 - 1 Tbsp tomato paste (for depth and color in the sauce)
 - ¾ cup heavy cream
