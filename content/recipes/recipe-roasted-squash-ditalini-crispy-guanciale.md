@@ -40,8 +40,6 @@ recipeInstructions:
   - "Finish and serve: Divide pasta among bowls. Top each portion with crispy guanciale, crisped sage leaves (if fresh), and a sprinkle of remaining Parmesan. Serve immediately."
 ---
 
-Simple, comforting pasta with fall squash, fresh herbs, and rich pork-cheek crunch.
-
 ## Snapshot
 
 - **Implements:** sheet pan, large pot, skillet, mixing spoon, sharp knife, wooden spoon
