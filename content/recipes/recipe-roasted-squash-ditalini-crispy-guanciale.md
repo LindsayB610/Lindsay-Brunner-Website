@@ -1,6 +1,6 @@
 ---
 title: "Roasted Squash Ditalini with Crispy Guanciale"
-date: 2025-11-20
+date: 2025-11-26
 slug: "recipe-roasted-squash-ditalini-crispy-guanciale"
 subtitle: "Simple, comforting pasta with fall squash, fresh herbs, and rich pork-cheek crunch"
 description: "Simple, comforting pasta with fall squash, fresh herbs, and rich pork-cheek crunch. Sheet pan roasted squash, crispy guanciale, and a creamy ricotta sauce."
