@@ -38,9 +38,9 @@ recipeInstructions:
 This is my best recreation of the sweet potato casserole from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA: fluffy, buttery sweet potatoes baked in a pan, then scooped out with an ice‑cream scoop and crowned with a chunky brown‑sugar nut crumble. It eats like dessert but absolutely belongs next to brisket.
 
 ## Snapshot
-- **Implements:** medium pot; colander; mixing bowl; hand mixer (or sturdy whisk); rubber spatula; 1‑quart baking dish (8×6, 9×5, or similar; shallow pans brown better)
+- **Implements:** medium pot; colander; mixing bowl; hand mixer (or sturdy whisk); rubber spatula; loaf pan or similar
 - **Oven setting:** 350°F / 175°C on upper‑middle rack until bubbling at edges, then 400°F for 5 minutes or short broil to finish
-- **Batch size:** about 3–4 BBQ‑style side servings; doubles cleanly for a 9×13 pan
+- **Batch size:** about 3–4 BBQ‑style side servings; doubles cleanly for a 9×9 pan
 
 ## Ingredients
 
