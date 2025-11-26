@@ -130,7 +130,4 @@ Because guanciale, cheese, and pasta water all contribute salt, you want to star
 
 A little lemon zest or a splash of lemon juice at the end cuts through the richness and brings freshness (especially nice if you lean heavy on cream and cheese).
 
-### Recipe adaptation
-
-This recipe is adapted from [Squash Ditalini Pasta with Crispy Pancetta](https://www.noregrettispaghetti.co/home/squash-ditalini-with-crispy-pancetta) by Gabriella Simonian at No Regretti Spaghetti.
-
+*This recipe is adapted from [Squash Ditalini Pasta with Crispy Pancetta](https://www.noregrettispaghetti.co/home/squash-ditalini-with-crispy-pancetta) by Gabriella Simonian at No Regretti Spaghetti.*
