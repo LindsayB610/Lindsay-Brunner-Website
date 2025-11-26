@@ -17,7 +17,7 @@ recipeIngredient:
   - "~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)"
   - "2 Tbsp olive oil"
   - "½ tsp kosher salt (to start)"
-  - "4–5 sprigs fresh thyme (or ½ tsp dried thyme)"
+  - "2–3 sprigs fresh thyme (or ½ tsp dried thyme)"
   - "8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)"
   - "~7 oz guanciale, cut into small cubes (see rendering note)"
   - "2 cloves garlic, minced or grated"
@@ -53,7 +53,7 @@ recipeInstructions:
 - ~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)
 - 2 Tbsp olive oil
 - ½ tsp kosher salt (to start)
-- 4–5 sprigs fresh thyme (or ½ tsp dried thyme)
+- 2–3 sprigs fresh thyme (or ½ tsp dried thyme)
 - 8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)
 - ~7 oz guanciale, cut into small cubes (see rendering note)
 - 2 cloves garlic, minced or grated
