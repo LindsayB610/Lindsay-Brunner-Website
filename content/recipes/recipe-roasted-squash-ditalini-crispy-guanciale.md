@@ -27,6 +27,7 @@ recipeIngredient:
   - "½–¾ cup finely grated Parmesan or Pecorino Romano"
   - "Black pepper, to taste"
   - "Optional: lemon zest or a small squeeze of lemon juice (for brightness at finish)"
+  - "Optional: 1–1½ cups frozen peas"
 recipeInstructions:
   - "Roast the squash: Preheat oven to 425°F. Toss the butternut squash cubes with olive oil, thyme, and the ½ tsp salt. Spread on a sheet pan in a single layer. Roast 20–28 minutes, stirring once halfway, until the edges begin to caramelize and the centers are soft."
   - "Cook the pasta: Bring a large pot of salted water to a boil. Add the full 16 oz of ditalini and boil until al dente. Reserve 1½ cups of pasta water (you'll likely use about ½–1 cup), then drain the pasta."
@@ -36,7 +37,7 @@ recipeInstructions:
   - "Add squash and build texture: Add the roasted squash to the pan. Lightly mash a portion of the cubes so the sauce becomes partly creamy, partly chunky."
   - "Add cream, ricotta, cheese: Pour in the heavy cream, then stir in ricotta and half of the grated Parmesan (or Romano). If using dried sage, add it here so it has a chance to bloom in the warm sauce. Stir until smooth and combined."
   - "Adjust sauce consistency: Add reserved pasta water a little at a time, stirring, until the sauce becomes saucy and glossy (enough to coat pasta but not pool). Usually ½–1 cup pasta water will do."
-  - "Combine pasta and sauce: Add the cooked ditalini to the sauce and toss thoroughly. Taste now. Because guanciale, cheese, and pasta water already bring salt, you may only need a small pinch. Add black pepper generously. If the sauce tastes too rich or heavy, brighten with lemon zest or a splash of lemon juice."
+  - "Combine pasta and sauce: Add the cooked ditalini to the sauce and toss thoroughly. If using frozen peas, stir in 1–1½ cups and let them warm through for 2–3 minutes, just until bright green and tender. Taste now. Because guanciale, cheese, and pasta water already bring salt, you may only need a small pinch. Add black pepper generously. If the sauce tastes too rich or heavy, brighten with lemon zest or a splash of lemon juice."
   - "Finish and serve: Divide pasta among bowls. Top each portion with crispy guanciale, crisped sage leaves (if fresh), and a sprinkle of remaining Parmesan. Serve immediately."
 ---
 
@@ -63,6 +64,7 @@ recipeInstructions:
 - ½–¾ cup finely grated Parmesan or Pecorino Romano
 - Black pepper, to taste
 - Optional: lemon zest or a small squeeze of lemon juice (for brightness at finish)
+- Optional: 1–1½ cups frozen peas
 
 ## Method
 
@@ -102,7 +104,7 @@ recipeInstructions:
 
 9. **Combine pasta and sauce**
 
-   Add the cooked ditalini to the sauce and toss thoroughly. Taste now. Because guanciale, cheese, and pasta water already bring salt, you may only need a small pinch. Add black pepper generously. If the sauce tastes too rich or heavy, brighten with lemon zest or a splash of lemon juice.
+   Add the cooked ditalini to the sauce and toss thoroughly. If using frozen peas, stir them in now and let them warm through for 2–3 minutes, just until bright green and tender. Taste now. Because guanciale, cheese, and pasta water already bring salt, you may only need a small pinch. Add black pepper generously. If the sauce tastes too rich or heavy, brighten with lemon zest or a splash of lemon juice.
 
 10. **Finish and serve**
 
