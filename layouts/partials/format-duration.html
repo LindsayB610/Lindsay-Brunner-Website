@@ -1,0 +1,35 @@
+{{- $duration := . -}}
+{{- $duration = strings.TrimPrefix "PT" $duration -}}
+{{- $hours := 0 -}}
+{{- $minutes := 0 -}}
+{{- if strings.Contains $duration "H" -}}
+  {{- $parts := split $duration "H" -}}
+  {{- $hours = int (index $parts 0) -}}
+  {{- $minutesStr := index $parts 1 -}}
+  {{- $minutesStr = strings.TrimSuffix "M" $minutesStr -}}
+  {{- $minutes = int $minutesStr -}}
+{{- else -}}
+  {{- $minutesStr := strings.TrimSuffix "M" $duration -}}
+  {{- $minutes = int $minutesStr -}}
+{{- end -}}
+{{- if gt $hours 0 -}}
+  {{- if eq $hours 1 -}}
+    {{- printf "1 hour" -}}
+  {{- else -}}
+    {{- printf "%d hours" $hours -}}
+  {{- end -}}
+  {{- if gt $minutes 0 -}}
+    {{- if eq $minutes 1 -}}
+      {{- printf " %d minute" $minutes -}}
+    {{- else -}}
+      {{- printf " %d minutes" $minutes -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- if eq $minutes 1 -}}
+    {{- printf "1 minute" -}}
+  {{- else -}}
+    {{- printf "%d minutes" $minutes -}}
+  {{- end -}}
+{{- end -}}
+

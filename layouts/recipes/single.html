@@ -27,6 +27,32 @@
         {{ .Params.subtitle }}
       </p>
       {{ end }}
+
+      {{ if or .Params.totalTime .Params.prepTime .Params.cookTime }}
+      <p
+        style="
+          font-size: 0.9rem;
+          color: var(--dark-text-secondary);
+          margin-top: 1rem;
+          font-weight: 400;
+        "
+      >
+        {{ if .Params.totalTime }}
+          <strong>Total time:</strong> {{ partial "format-duration.html" .Params.totalTime }}
+        {{ end }}
+        {{ if and .Params.prepTime .Params.cookTime }}
+          {{ if .Params.totalTime }} • {{ end }}
+          <strong>Active:</strong> {{ partial "format-duration.html" .Params.prepTime }} • 
+          <strong>Inactive:</strong> {{ partial "format-duration.html" .Params.cookTime }}
+        {{ else if .Params.prepTime }}
+          {{ if .Params.totalTime }} • {{ end }}
+          <strong>Active:</strong> {{ partial "format-duration.html" .Params.prepTime }}
+        {{ else if .Params.cookTime }}
+          {{ if .Params.totalTime }} • {{ end }}
+          <strong>Inactive:</strong> {{ partial "format-duration.html" .Params.cookTime }}
+        {{ end }}
+      </p>
+      {{ end }}
     </header>
 
     <div class="article-content">{{ .Content }}</div>
