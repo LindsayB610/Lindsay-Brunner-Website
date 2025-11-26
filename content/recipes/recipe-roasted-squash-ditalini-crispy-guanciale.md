@@ -70,6 +70,8 @@ recipeInstructions:
 
    Preheat oven to 425°F. Toss the butternut squash cubes with olive oil, thyme, and the ½ tsp salt. Spread on a sheet pan in a single layer. Roast 20–28 minutes, stirring once halfway, until the edges begin to caramelize and the centers are soft.
 
+   **If using frozen cubed butternut squash:** Roast straight from frozen. Increase oven temp to 450°F and cook 18–25 minutes, tossing once. Frozen squash releases more water, so it browns more slowly. Roast until any liquid evaporates and the edges pick up color. Texture will be slightly softer, which actually blends beautifully into the sauce.
+
 2. **Cook the pasta**
 
    Bring a large pot of salted water to a boil. Add the full 16 oz of ditalini and boil until al dente. Reserve 1½ cups of pasta water (you'll likely use about ½–1 cup), then drain the pasta.
