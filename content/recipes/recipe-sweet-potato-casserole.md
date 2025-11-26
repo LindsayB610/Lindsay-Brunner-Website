@@ -2,100 +2,113 @@
 title: "Fluffy BBQ-Style Sweet Potato Casserole"
 date: 2025-11-14
 slug: "recipe-sweet-potato-casserole"
-subtitle: "Or: The not-quite-a-dessert that belongs next to brisket"
-description: "A recreation of the sweet potato casserole from Sauced BBQ: fluffy, scoopable, and perfect next to brisket."
+subtitle: "Savory, fluffy base; sweet toasted‑nut top"
+description: "A recreation of the sweet potato casserole from Sauced BBQ: savory buttery base with all sweetness in a chunky brown‑sugar nut topping. Fluffy, scoopable, and perfect next to brisket."
 draft: false
 social_image: "/images/social/recipe-sweet-potato-casserole-og.png"
 prepTime: "PT20M"
-cookTime: "PT25M"
-totalTime: "PT45M"
+cookTime: "PT30M"
+totalTime: "PT50M"
 recipeYield: "3-4 servings"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
 recipeIngredient:
-  - "1¼ pounds sweet potatoes (about 2 medium–large), peeled and cut into 1‑inch chunks"
+  - "1¼–1½ pounds sweet potatoes (565–680 g), peeled and cut into 1‑inch chunks"
   - "3 tablespoons salted butter, softened"
-  - "⅓ cup packed light brown sugar"
-  - "2 tablespoons heavy cream or half‑and‑half (only add more if the mash looks stiff)"
-  - "½ teaspoon vanilla extract (optional, but nice)"
-  - "¼–½ teaspoon kosher salt (use the higher end if your butter is unsalted)"
-  - "Tiny pinch cinnamon (about ⅛ teaspoon, optional – keep it subtle)"
-  - "½ cup chopped walnuts or pecans"
-  - "¼ cup (4 tablespoons) all‑purpose flour"
-  - "2 tablespoons softened (not melted) butter"
-  - "⅓ cup packed light brown sugar"
+  - "2–4 tablespoons heavy cream or half‑and‑half, to loosen"
+  - "½ teaspoon kosher salt"
+  - "1 cup chopped walnuts or pecans (115–120 g)"
+  - "⅓ cup packed light brown sugar (67 g)"
+  - "1 tablespoon all‑purpose flour (8 g; use 2 Tbsp/16 g for a more crumbly, less nut‑forward top)"
+  - "2 tablespoons softened (not melted) butter (28 g)"
   - "Pinch kosher salt"
-  - "1–2 tablespoons rolled oats or panko (optional, for extra crunch/insurance)"
 recipeInstructions:
-  - "Cook the sweet potatoes: Add the sweet potato chunks to a pot, cover with cold water by about an inch, and salt the water. Bring to a boil, then simmer 12–15 minutes, until the potatoes are very tender. Drain well and let them sit in the warm pot for 2–3 minutes to steam off excess moisture."
-  - "Preheat and prep the pan: Heat the oven to 350°F / 175°C. Lightly butter a small 1‑quart baking dish (shallow pans brown better; aim for about 1 inch deep)."
-  - "Whip the base until fluffy: Transfer the hot potatoes to a mixing bowl. Add the softened butter, brown sugar, salt, vanilla, and cinnamon (if using). Use a hand mixer on medium (or a very energetic whisk) to beat the potatoes until smooth and slightly airy, 1–2 minutes. Beat in the cream (2 tablespoons max; only add more if the mash looks stiff) until the mixture is loose and fluffy like soft mashed potatoes, not runny. Taste and adjust salt or sugar. Scrape the whipped sweet potatoes into the prepared baking dish and smooth the top gently without pressing out too much air. Let it sit 5 minutes so it's not hot enough to melt the topping instantly."
-  - "Make the nut topping: In a small bowl, toss the nuts, flour, sugar, and salt. Rub in the softened butter with your fingers or a fork until pebbly crumbs form. If using, stir in the rolled oats or panko. Chill 10 minutes so the butter firms up."
-  - "Assemble and bake: Sprinkle the chilled nut mixture evenly over the sweet potatoes. Bake on the upper‑middle rack at 350°F until bubbling at the edges. To finish, increase to 400°F for 5 minutes or give it a short broil to brown the sugars."
-  - "Rest and serve scoop‑style: Let the casserole rest 10–15 minutes so it thickens slightly but stays soft and scoopable. Serve warm, using an ice‑cream scoop or large spoon to portion into bowls. Expect 3–4 generous side servings."
+  - "Prep & toast the nuts: Heat oven to 350°F / 175°C. Spread chopped nuts on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter)."
+  - "Cook the sweet potatoes: Put chunks in a pot, cover with cold water by ~1 inch, salt the water. Bring to a boil, then simmer 12–15 minutes until very tender. Drain thoroughly and let sit in the hot pot 2–3 minutes to steam off excess moisture."
+  - "Preheat and prep the pan: Lightly butter a 1‑quart baking dish (~4‑cup volume; fills ~⅔ up the sides)."
+  - "Whip the base (precise cream‑mixing sequence): Start the whip without cream: Move the hot potatoes to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl. Add cream gradually: With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes—peaks slump slowly, not runny. (Small pan usually needs 2–4 Tbsp.) Final aeration: Bump speed to medium for 20–30 seconds to add a little air. Taste for salt. Pan & cool: Spread into your pan, smoothing gently (don't press the air out). Cool 5 minutes so the topping won't melt on contact."
+  - "Make the topping: In a bowl, combine brown sugar, flour, salt, and the cooled toasted nuts. Rub in the softened butter with fingers/fork until pebbly clumps form. Chill 10 minutes so the crumbs hold their shape."
+  - "Assemble & bake: Blanket the potatoes with the topping. Bake on the upper‑middle rack at 350°F until the edges bubble and the top looks set (1‑quart dish: 20–25 minutes)."
+  - "Finish & serve: Increase to 400°F for 3–6 minutes (or a short broil) to brown the sugars. Rest 10 minutes, then scoop with a disher into warm bowls."
 ---
 
-This is my best recreation of the sweet potato casserole from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA: fluffy, buttery sweet potatoes baked in a pan, then scooped out with an ice‑cream scoop and crowned with a chunky brown‑sugar nut crumble. It eats like dessert but absolutely belongs next to brisket.
+This version keeps the potatoes buttery and lightly salted, with all the sweetness living in a chunky brown‑sugar nut topping. It bakes in a pan and gets scooped with a disher—just like the restaurant version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA.
 
 ## Snapshot
-- **Implements:** medium pot; colander; mixing bowl; hand mixer (or sturdy whisk); rubber spatula; loaf pan or similar
-- **Oven setting:** 350°F / 175°C on upper‑middle rack until bubbling at edges, then 400°F for 5 minutes or short broil to finish
-- **Batch size:** about 3–4 BBQ‑style side servings; doubles cleanly for a 9×9 pan
+- **Implements:** medium pot; colander; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; sheet pan; 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
+- **Oven:** 350°F / 175°C for 20–30 minutes, then finish at 400°F for 3–6 minutes
+- **Batch size:** see "Choose your pan & base amounts" below
 
 ## Ingredients
 
-### Sweet potato base
-- 1¼ pounds sweet potatoes (about 2 medium–large), peeled and cut into 1‑inch chunks
-- 3 tablespoons salted butter, softened
-- ⅓ cup packed light brown sugar
-- 2 tablespoons heavy cream or half‑and‑half (only add more if the mash looks stiff)
-- ½ teaspoon vanilla extract (optional, but nice)
-- ¼–½ teaspoon kosher salt (use the higher end if your butter is unsalted)
-- Tiny pinch cinnamon (about ⅛ teaspoon, optional – keep it subtle)
+### Choose your pan & base amounts
 
-### Nut topping (v2)
-- ½ cup chopped walnuts or pecans
-- ¼ cup (4 tablespoons) all‑purpose flour
-- 2 tablespoons softened (not melted) butter
-- ⅓ cup packed light brown sugar
-- Pinch kosher salt
-- 1–2 tablespoons rolled oats or panko (optional, for extra crunch/insurance)
+**A) 9×5 loaf pan (~8‑cup volume), fills ~⅔ up the sides**
+
+(yields ~6–8 BBQ‑style side servings; ~5–5½ cups whipped base)
+
+- Sweet potatoes: 2½–2¾ lb (1.1–1.25 kg), peeled, 1‑inch chunks
+- Salted butter: 5 Tbsp (70 g), softened
+- Heavy cream or half‑and‑half: 3–6 Tbsp (45–90 ml), to loosen
+- Kosher salt: ¾ tsp (use a bit less if your butter is very salty)
+
+**B) 1‑quart baking dish (~4‑cup volume), fills ~⅔ up the sides**
+
+(yields ~3–4 side servings; ~3½–4 cups whipped base)
+
+- Sweet potatoes: 1¼–1½ lb (565–680 g), peeled, 1‑inch chunks
+- Salted butter: 3 Tbsp (42 g), softened
+- Heavy cream or half‑and‑half: 2–4 Tbsp (30–60 ml), to loosen
+- Kosher salt: ½ tsp
+
+**Base is savory. No sugar, no cinnamon, no vanilla—sweetness is only in the topping.**
+
+### Toasted nut topping (nut‑forward; browns reliably)
+
+- Chopped walnuts or pecans: 1 cup (115–120 g) — toast first
+- Light brown sugar: ⅓ cup (67 g)
+- All‑purpose flour: 1 Tbsp (8 g) (use 2 Tbsp/16 g for a more crumbly, less nut‑forward top)
+- Softened butter: 2 Tbsp (28 g) (softened, not melted)
+- Kosher salt: pinch
 
 ---
 
 ## Method
 
-1. **Cook the sweet potatoes.**
+1. **Prep & toast the nuts.**
 
-   Add the sweet potato chunks to a pot, cover with cold water by about an inch, and salt the water. Bring to a boil, then simmer 12–15 minutes, until the potatoes are very tender. Drain well and let them sit in the warm pot for 2–3 minutes to steam off excess moisture.
+   Heat oven to 350°F / 175°C. Spread chopped nuts on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter).
 
-2. **Preheat and prep the pan.**
+2. **Cook the sweet potatoes.**
 
-   Heat the oven to 350°F / 175°C. Lightly butter a small 1‑quart baking dish (shallow pans brown better; aim for about 1 inch deep).
+   Put chunks in a pot, cover with cold water by ~1 inch, salt the water. Bring to a boil, then simmer 12–15 minutes until very tender. Drain thoroughly and let sit in the hot pot 2–3 minutes to steam off excess moisture.
 
-3. **Whip the base until fluffy.**
+   **2b. Optional dry‑out (for fluffier texture):** After draining, either (a) spread the hot chunks on a sheet pan and dry in a low oven (convection 250°F 8–12 min; no convection 275°F 8–12 min) just until the surfaces look matte—no browning—or (b) return to the empty pot over low–medium heat and stir 1–3 minutes until steamy and dry to the touch. Proceed to whipping. You may need +1–2 Tbsp cream to reach soft‑peak fluff.
 
-   Transfer the hot potatoes to a mixing bowl. Add the softened butter, brown sugar, salt, vanilla, and cinnamon (if using).
+3. **Whip the base (precise cream‑mixing sequence).**
 
-   Use a hand mixer on medium (or a very energetic whisk) to beat the potatoes until smooth and slightly airy, 1–2 minutes. Beat in the cream (2 tablespoons max; only add more if the mash looks stiff) until the mixture is loose and fluffy like soft mashed potatoes, not runny. Taste and adjust salt or sugar.
+   - **3a. Start the whip without cream:** Move the hot potatoes to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl.
 
-   Scrape the whipped sweet potatoes into the prepared baking dish and smooth the top gently without pressing out too much air. Let it sit 5 minutes so it's not hot enough to melt the topping instantly.
+   - **3b. Add cream gradually:** With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes—peaks slump slowly, not runny. (Small pan usually needs 2–4 Tbsp; loaf pan 3–6 Tbsp.)
 
-4. **Make the nut topping.**
+   - **3c. Final aeration:** Bump speed to medium for 20–30 seconds to add a little air. Taste for salt.
 
-   In a small bowl, toss the nuts, flour, sugar, and salt. Rub in the softened butter with your fingers or a fork until pebbly crumbs form. If using, stir in the rolled oats or panko. Chill 10 minutes so the butter firms up.
+   - **3d. Pan & cool:** Spread into your pan, smoothing gently (don't press the air out). Cool 5 minutes so the topping won't melt on contact.
 
-   (Optional: Pre‑toast the nuts at 350°F for 5–7 minutes if you want extra color and less moisture.)
+4. **Make the topping.**
 
-5. **Assemble and bake.**
+   In a bowl, combine brown sugar, flour, salt, and the cooled toasted nuts. Rub in the softened butter with fingers/fork until pebbly clumps form. Chill 10 minutes so the crumbs hold their shape.
 
-   Sprinkle the chilled nut mixture evenly over the sweet potatoes.
+5. **Assemble & bake.**
 
-   Bake on the upper‑middle rack at 350°F until bubbling at the edges. To finish, increase to 400°F for 5 minutes or give it a short broil to brown the sugars.
+   Blanket the potatoes with the topping. Bake on the upper‑middle rack until the edges bubble and the top looks set:
 
-6. **Rest and serve scoop‑style.**
+   - 1‑quart dish: 20–25 minutes
+   - 9×5 loaf pan: 25–30 minutes
 
-   Let the casserole rest 10–15 minutes so it thickens slightly but stays soft and scoopable. Serve warm, using an ice‑cream scoop or large spoon to portion into bowls. Expect 3–4 generous side servings.
+6. **Finish & serve.**
+
+   Increase to 400°F for 3–6 minutes (or a short broil) to brown the sugars. Rest 10 minutes, then scoop with a disher into warm bowls.
 
 ---
 
@@ -114,11 +127,12 @@ Use whichever nut you like more:
 
 Either way, keep the pieces on the chunky side so the topping has texture.
 
-### Sweetness and spice tuning
+### All sweetness up top
 
-- For a more dessert‑y vibe, bump the brown sugar in the base up to a scant ½ cup.
-- For a less sweet side, drop the base sugar to ¼ cup and leave the topping as‑is.
-- Cinnamon is optional; keep it to a tiny pinch so the casserole reads as "sweet potato + brown sugar + nuts," not pumpkin pie.
+- If using dark brown sugar, add +1 tsp flour to the topping to keep crumbs distinct.
+- Extra crunch insurance: Add 1–2 Tbsp panko or rolled oats to the topping.
+- Pan height target: The weights above give ~⅔‑full in each pan before topping; that's the right visual for a generous scoop.
+- If the top looks glossy at 15–18 minutes: Lightly dust 1–2 tsp flour over shiny patches and finish on the top rack.
 
 ### Make‑ahead and reheat
 
@@ -128,15 +142,13 @@ You can assemble the casserole earlier in the day:
 - Bake straight from the fridge at 350°F, adding 5–10 extra minutes until hot and bubbling.
 - Leftovers reheat nicely in the oven (covered) or microwave; they'll be softer but still very scoopable.
 
-### Scaling up for a crowd
+### Change log (what's different from earlier drafts)
 
-For a 9×13 pan that feeds a small army:
-
-- Double everything.
-- Expect a bake time closer to 30–35 minutes, until the topping is browned and the center is hot.
-- Hold warm and scoop to order next to brisket, pulled pork, or whatever barbecue situation you've engineered.
-
-### Why this topping works
-
-Typical streusel wants a leaner butter ratio (by weight, butter ≤ sugar and flour combined). The original mix (melted butter + little flour) acted like a glaze and stayed glossy. More flour + softened butter + brief chilling = distinct crumbs that brown and crisp instead of swimming. This shifts the ratio toward dry/binder so the sugar can caramelize instead of frying in butter.
+- Base is now savory: removed added sugar, cinnamon, and vanilla.
+- Butter in the base reduced to 3 Tbsp (1‑qt) or 5 Tbsp (9×5) to avoid weeping.
+- Cream‑mixing clarified: brief whip with butter/salt first, then add cream 1 Tbsp at a time while mixing on low; finish with a short medium‑speed aeration.
+- Fill height fixed: increased potato weight for 9×5 (2½–2¾ lb) to reach ~⅔; included 1‑qt option for a smaller batch at the same depth.
+- Nut topping rebalanced: more nuts (1 cup), less flour (1 Tbsp default), softened (not melted) butter, and a 10‑minute chill so crumbs brown instead of melting.
+- Toasting required: nuts are pre‑toasted 6–8 minutes for real nuttiness and better crunch.
+- Browning finish: added a 400°F, 3–6 minute finish (or brief broil) for color.
 
