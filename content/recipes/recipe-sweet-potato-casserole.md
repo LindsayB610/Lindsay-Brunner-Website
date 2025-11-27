@@ -7,13 +7,13 @@ description: "A recreation of the sweet potato casserole from Sauced BBQ: savory
 draft: false
 social_image: "/images/social/recipe-sweet-potato-casserole-og.png"
 prepTime: "PT20M"
-cookTime: "PT30M"
-totalTime: "PT50M"
+cookTime: "PT75M"
+totalTime: "PT95M"
 recipeYield: "3-4 servings"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
 recipeIngredient:
-  - "1¼–1½ pounds sweet potatoes (565–680 g), peeled and cut into 1‑inch chunks"
+  - "1¼–1½ pounds sweet potatoes (565–680 g), whole, unpeeled"
   - "3 tablespoons salted butter, softened"
   - "2–4 tablespoons heavy cream or half‑and‑half, to loosen"
   - "½ teaspoon kosher salt"
@@ -24,9 +24,9 @@ recipeIngredient:
   - "Pinch kosher salt"
 recipeInstructions:
   - "Prep & toast the nuts: Heat oven to 350°F / 175°C. Spread chopped nuts on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter)."
-  - "Cook the sweet potatoes: Put chunks in a pot, cover with cold water by ~1 inch, salt the water. Bring to a boil, then simmer 12–15 minutes until very tender. Drain thoroughly and let sit in the hot pot 2–3 minutes to steam off excess moisture."
+  - "Roast the sweet potatoes: Heat oven to 400°F / 205°C. Scrub and poke each potato 4–6 times with a fork. Roast whole, unpeeled on a parchment‑lined sheet pan or wire rack until completely tender: 45–75 minutes depending on size, or 205–210°F internal. Cool 10 minutes, split, scoop out the flesh, and discard skins. Optional but recommended for silky, fluffy texture: press through a ricer or mash well to break up any strings."
   - "Preheat and prep the pan: Lightly butter a 1‑quart baking dish (~4‑cup volume; fills ~⅔ up the sides)."
-  - "Whip the base (precise cream‑mixing sequence): Start the whip without cream: Move the hot potatoes to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl. Add cream gradually: With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes—peaks slump slowly, not runny. (Small pan usually needs 2–4 Tbsp.) Final aeration: Bump speed to medium for 20–30 seconds to add a little air. Taste for salt. Pan & cool: Spread into your pan, smoothing gently (don't press the air out). Cool 5 minutes so the topping won't melt on contact."
+  - "Whip the base (precise cream‑mixing sequence): Start the whip without cream: Move the roasted potato flesh to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl. Add cream gradually: With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes—peaks slump slowly, not runny. (Roasted flesh is drier than boiled, so expect to use a touch more cream to reach the same soft‑mashed fluff. Small pan usually needs 2–4 Tbsp.) Final aeration: Bump speed to medium for 20–30 seconds to add a little air. Taste for salt. Pan & cool: Spread into your pan, smoothing gently (don't press the air out). Cool 5 minutes so the topping won't melt on contact."
   - "Make the topping: In a bowl, combine brown sugar, flour, salt, and the cooled toasted nuts. Rub in the softened butter with fingers/fork until pebbly clumps form. Chill 10 minutes so the crumbs hold their shape."
   - "Assemble & bake: Blanket the potatoes with the topping. Bake on the upper‑middle rack at 350°F until the edges bubble and the top looks set (1‑quart dish: 20–25 minutes)."
   - "Finish & serve: Increase to 400°F for 3–6 minutes (or a short broil) to brown the sugars. Rest 10 minutes, then scoop with a disher into warm bowls."
@@ -35,8 +35,8 @@ recipeInstructions:
 This version keeps the potatoes buttery and lightly salted, with all the sweetness living in a chunky brown‑sugar nut topping. It bakes in a pan and gets scooped with a disher—just like the restaurant version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA.
 
 ## Snapshot
-- **Implements:** medium pot; colander; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; sheet pan; 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
-- **Oven:** 350°F / 175°C for 20–30 minutes, then finish at 400°F for 3–6 minutes
+- **Implements:** sheet pan or wire rack; parchment paper; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; ricer (optional, for silky texture); 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
+- **Oven:** 400°F / 205°C for roasting potatoes (45–75 minutes), then 350°F / 175°C for baking (20–30 minutes), finish at 400°F for 3–6 minutes
 - **Batch size:** see "Choose your pan & base amounts" below
 
 ## Ingredients
@@ -47,19 +47,21 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 
 (yields ~6–8 BBQ‑style side servings; ~5–5½ cups whipped base)
 
-- Sweet potatoes: 2½–2¾ lb (1.1–1.25 kg), peeled, 1‑inch chunks
+- Sweet potatoes: 2½–2¾ lb (1.1–1.25 kg), whole, unpeeled
 - Salted butter: 5 Tbsp (70 g), softened
-- Heavy cream or half‑and‑half: 3–6 Tbsp (45–90 ml), to loosen
+- Heavy cream or half‑and‑half: 3–6 Tbsp (45–90 ml), to loosen (roasted flesh is drier, may need slightly more)
 - Kosher salt: ¾ tsp (use a bit less if your butter is very salty)
 
 **B) 1‑quart baking dish (~4‑cup volume), fills ~⅔ up the sides**
 
-(yields ~3–4 side servings; ~3½–4 cups whipped base)
+(yields ~3–4 side servings; ~2⅔–3 cups whipped base)
 
-- Sweet potatoes: 1¼–1½ lb (565–680 g), peeled, 1‑inch chunks
+- Sweet potatoes: 1¼–1½ lb (565–680 g), whole, unpeeled
 - Salted butter: 3 Tbsp (42 g), softened
-- Heavy cream or half‑and‑half: 2–4 Tbsp (30–60 ml), to loosen
+- Heavy cream or half‑and‑half: 2–4 Tbsp (30–60 ml), to loosen (roasted flesh is drier, may need slightly more)
 - Kosher salt: ½ tsp
+
+**Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp kosher salt (Diamond Crystal; use slightly less if using Morton).
 
 **Base is savory. No sugar, no cinnamon, no vanilla—sweetness is only in the topping.**
 
@@ -79,21 +81,39 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 
    Heat oven to 350°F / 175°C. Spread chopped nuts on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter).
 
-2. **Cook the sweet potatoes.**
+2. **Roast the sweet potatoes (drier, sweeter base).**
 
-   Put chunks in a pot, cover with cold water by ~1 inch, salt the water. Bring to a boil, then simmer 12–15 minutes until very tender. Drain thoroughly and let sit in the hot pot 2–3 minutes to steam off excess moisture.
+   Heat oven to 400°F / 205°C.
 
-   **2b. Optional dry‑out (for fluffier texture):** After draining, either (a) spread the hot chunks on a sheet pan and dry in a low oven (convection 250°F 8–12 min; no convection 275°F 8–12 min) just until the surfaces look matte—no browning—or (b) return to the empty pot over low–medium heat and stir 1–3 minutes until steamy and dry to the touch. Proceed to whipping. You may need +1–2 Tbsp cream to reach soft‑peak fluff.
+   Scrub and poke each potato 4–6 times with a fork. Roast whole, unpeeled on a parchment‑lined sheet pan or wire rack until completely tender: 45–75 minutes depending on size, or 205–210°F internal.
+
+   Cool 10 minutes, split, scoop out the flesh, and discard skins.
+
+   **Optional but recommended for silky, fluffy texture:** Press through a ricer or mash well to break up any strings.
+
+   Proceed to Step 3 (whipping).
+
+   **Note:** Roasted flesh is drier than boiled/steamed, so expect to use a touch more cream to reach the same "soft‑mashed" fluff.
 
 3. **Whip the base (precise cream‑mixing sequence).**
 
-   - **3a. Start the whip without cream:** Move the hot potatoes to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl.
+   Keep the mixing sequence you're using now; just follow these per‑cup ratios so you can hit the exact texture no matter your yield.
 
-   - **3b. Add cream gradually:** With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes—peaks slump slowly, not runny. (Small pan usually needs 2–4 Tbsp; loaf pan 3–6 Tbsp.)
+   **Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp kosher salt (Diamond Crystal; use slightly less if using Morton).
+
+   - **3a. Start the whip without cream:** Move the roasted potato flesh to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl.
+
+   - **3b. Add cream gradually:** With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes—peaks slump slowly, not runny. (Roasted flesh is drier, so you may need slightly more cream than with boiled potatoes. Small pan usually needs 2–4 Tbsp; loaf pan 3–6 Tbsp.)
 
    - **3c. Final aeration:** Bump speed to medium for 20–30 seconds to add a little air. Taste for salt.
 
    - **3d. Pan & cool:** Spread into your pan, smoothing gently (don't press the air out). Cool 5 minutes so the topping won't melt on contact.
+
+   **Target volumes for pan height:**
+   - 9×5 loaf pan (~8 cups) → ~5–5½ cups whipped base (⅔ up the sides)
+   - 1‑quart dish (~4 cups) → ~2⅔–3 cups whipped base (⅔ up the sides)
+
+   Roast an extra small potato as insurance; you can hold any extra mash covered in the fridge for tomorrow's breakfast win.
 
 4. **Make the topping.**
 
@@ -142,11 +162,18 @@ You can assemble the casserole earlier in the day:
 - Bake straight from the fridge at 350°F, adding 5–10 extra minutes until hot and bubbling.
 - Leftovers reheat nicely in the oven (covered) or microwave; they'll be softer but still very scoopable.
 
+### What changes (and why roasting helps)
+
+- **Drier by default:** Roasting drives off water, so the mash takes air more easily and doesn't weep into the topping.
+- **Sweeter without sugar:** Mild sugar concentration from roasting amplifies natural sweetness while keeping the base savory (no added sugar/spice).
+- **Color & flavor control:** Roasting whole, unpeeled protects the flesh from browning; you keep that bright orange and avoid roasted "char" notes in the base.
+
 ### Change log (what's different from earlier drafts)
 
+- **Method changed to roasting:** Sweet potatoes are now roasted whole and unpeeled at 400°F for 45–75 minutes instead of being boiled. This produces a drier, sweeter base that takes air more easily.
 - Base is now savory: removed added sugar, cinnamon, and vanilla.
 - Butter in the base reduced to 3 Tbsp (1‑qt) or 5 Tbsp (9×5) to avoid weeping.
-- Cream‑mixing clarified: brief whip with butter/salt first, then add cream 1 Tbsp at a time while mixing on low; finish with a short medium‑speed aeration.
+- Cream‑mixing clarified: brief whip with butter/salt first, then add cream 1 Tbsp at a time while mixing on low; finish with a short medium‑speed aeration. Added per‑cup formula for easy scaling.
 - Fill height fixed: increased potato weight for 9×5 (2½–2¾ lb) to reach ~⅔; included 1‑qt option for a smaller batch at the same depth.
 - Nut topping rebalanced: more nuts (1 cup), less flour (1 Tbsp default), softened (not melted) butter, and a 10‑minute chill so crumbs brown instead of melting.
 - Toasting required: nuts are pre‑toasted 6–8 minutes for real nuttiness and better crunch.

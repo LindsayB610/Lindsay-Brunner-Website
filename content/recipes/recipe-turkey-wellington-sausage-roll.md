@@ -29,7 +29,7 @@ recipeIngredient:
   - "½ small yellow onion, very finely diced"
   - "1 small rib celery, finely diced"
   - "1 large egg (for the whole box; see Method)"
-  - "Optional: 1–2 tbsp chopped fresh parsley; tiny extra pinches of sage/thyme"
+  - "Optional: tiny extra pinches of sage/thyme"
   - "1 standard sheet all-butter puff pastry (≈10×10 in / 25×25 cm), thawed but cold"
   - "1 egg beaten with 1 tbsp water or milk (for egg wash)"
   - "Optional: flaky salt, black pepper, or sesame/poppy seeds for topping"
@@ -79,7 +79,6 @@ So, let's get started!
 - ½ small yellow onion, very finely diced
 - 1 small rib celery, finely diced
 - 1 large egg
-- Optional: 1–2 tbsp chopped fresh parsley
 
 ### Puff pastry wrapper
 - 1 standard sheet all-butter puff pastry (≈10×10 in / 25×25 cm), thawed but cold
