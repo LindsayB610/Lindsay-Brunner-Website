@@ -17,7 +17,7 @@ recipeIngredient:
   - "⅓ cup panko or fine dry breadcrumbs"
   - "1 large egg"
   - "3 tbsp milk, cream, or chicken/turkey stock"
-  - "1½ tsp kosher salt (reduce slightly if using fine salt)"
+  - "1½ tsp Diamond Crystal kosher salt (reduce slightly if using fine salt)"
   - "1½ tsp dried sage"
   - "1 tsp dried thyme"
   - "½ tsp black pepper"
@@ -65,7 +65,7 @@ So, let's get started!
 - ⅓ cup panko or fine dry breadcrumbs
 - 1 large egg
 - 3 tbsp milk, cream, or chicken/turkey stock
-- 1½ tsp kosher salt (reduce slightly if using fine salt)
+- 1½ tsp Diamond Crystal kosher salt (reduce slightly if using fine salt)
 - 1½ tsp dried sage
 - 1 tsp dried thyme
 - ½ tsp black pepper

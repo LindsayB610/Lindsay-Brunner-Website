@@ -16,12 +16,12 @@ recipeIngredient:
   - "1¼–1½ pounds sweet potatoes (565–680 g), whole, unpeeled"
   - "3 tablespoons salted butter, softened"
   - "2–4 tablespoons heavy cream or half‑and‑half, to loosen"
-  - "½ teaspoon kosher salt"
+  - "½ teaspoon Diamond Crystal kosher salt"
   - "1 cup chopped walnuts or pecans (115–120 g)"
   - "⅓ cup packed light brown sugar (67 g)"
   - "1 tablespoon all‑purpose flour (8 g; use 2 Tbsp/16 g for a more crumbly, less nut‑forward top)"
   - "2 tablespoons softened (not melted) butter (28 g)"
-  - "Pinch kosher salt"
+  - "Pinch Diamond Crystal kosher salt"
 recipeInstructions:
   - "Prep & toast the nuts: Heat oven to 350°F / 175°C. Spread chopped nuts on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter)."
   - "Roast the sweet potatoes: Heat oven to 400°F / 205°C. Scrub and poke each potato 4–6 times with a fork. Roast whole, unpeeled on a parchment‑lined sheet pan or wire rack until completely tender: 45–75 minutes depending on size, or 205–210°F internal. Cool 10 minutes, split, scoop out the flesh, and discard skins. Optional but recommended for silky, fluffy texture: press through a ricer or mash well to break up any strings."
@@ -50,7 +50,7 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 - Sweet potatoes: 2½–2¾ lb (1.1–1.25 kg), whole, unpeeled
 - Salted butter: 5 Tbsp (70 g), softened
 - Heavy cream or half‑and‑half: 3–6 Tbsp (45–90 ml), to loosen (roasted flesh is drier, may need slightly more)
-- Kosher salt: ¾ tsp (use a bit less if your butter is very salty)
+- Diamond Crystal kosher salt: ¾ tsp (use a bit less if your butter is very salty)
 
 **B) 1‑quart baking dish (~4‑cup volume), fills ~⅔ up the sides**
 
@@ -59,9 +59,9 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 - Sweet potatoes: 1¼–1½ lb (565–680 g), whole, unpeeled
 - Salted butter: 3 Tbsp (42 g), softened
 - Heavy cream or half‑and‑half: 2–4 Tbsp (30–60 ml), to loosen (roasted flesh is drier, may need slightly more)
-- Kosher salt: ½ tsp
+- Diamond Crystal kosher salt: ½ tsp
 
-**Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp kosher salt (Diamond Crystal; use slightly less if using Morton).
+**Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp Diamond Crystal kosher salt (use slightly less if using Morton).
 
 **Base is savory. No sugar, no cinnamon, no vanilla—sweetness is only in the topping.**
 
@@ -71,7 +71,7 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 - Light brown sugar: ⅓ cup (67 g)
 - All‑purpose flour: 1 Tbsp (8 g) (use 2 Tbsp/16 g for a more crumbly, less nut‑forward top)
 - Softened butter: 2 Tbsp (28 g) (softened, not melted)
-- Kosher salt: pinch
+- Diamond Crystal kosher salt: pinch
 
 ---
 
@@ -99,7 +99,7 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 
    Keep the mixing sequence you're using now; just follow these per‑cup ratios so you can hit the exact texture no matter your yield.
 
-   **Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp kosher salt (Diamond Crystal; use slightly less if using Morton).
+   **Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp Diamond Crystal kosher salt (use slightly less if using Morton).
 
    - **3a. Start the whip without cream:** Move the roasted potato flesh to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl.
 

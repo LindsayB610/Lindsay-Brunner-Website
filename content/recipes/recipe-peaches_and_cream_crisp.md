@@ -17,7 +17,7 @@ recipeIngredient:
   - "1/2 cup all-purpose flour (80 g)"
   - "2/3 cup packed light brown sugar (145 g)"
   - "2 tsp ground cinnamon"
-  - "1/4 tsp kosher salt"
+  - "1/4 tsp Diamond Crystal kosher salt"
   - "1 stick (8 Tbsp) cold butter, cut in small cubes (115 g)"
   - "5 cups canned sliced peaches, very well drained and patted dry"
   - "Optional juice insurance: 1-3 tsp cornstarch (toss with peaches if the slices seem very juicy)"
@@ -25,7 +25,7 @@ recipeIngredient:
   - "4 large egg yolks"
   - "6 Tbsp (~80 g) granulated sugar, halved"
   - "4 Tbsp (~30 g) cornstarch (use 5 Tbsp / ~40 g for an extra-firm set)"
-  - "Pinch kosher salt"
+  - "Pinch Diamond Crystal kosher salt"
   - "2 tsp vanilla paste"
   - "1 1/2 Tbsp (22 g) unsalted butter"
 recipeInstructions:
@@ -55,7 +55,7 @@ This crisp bakes in a deep dish pie pan and layers a stovetop almond pastry crea
 - 1/2 cup all-purpose flour (80 g)
 - 2/3 cup packed light brown sugar (145 g)
 - 2 tsp ground cinnamon
-- 1/4 tsp kosher salt
+- 1/4 tsp Diamond Crystal kosher salt
 - 1 stick (8 Tbsp) cold butter, cut in small cubes (115 g)
 
 ### Fruit
@@ -67,7 +67,7 @@ This crisp bakes in a deep dish pie pan and layers a stovetop almond pastry crea
 - 4 large egg yolks
 - 6 Tbsp (~80 g) granulated sugar, halved
 - 4 Tbsp (~30 g) cornstarch (use 5 Tbsp / ~40 g for an extra-firm set)
-- Pinch kosher salt
+- Pinch Diamond Crystal kosher salt
 - 2 tsp vanilla paste 
 - 1 1/2 Tbsp (22 g) unsalted butter
 - Optional flavor boosts (choose one):

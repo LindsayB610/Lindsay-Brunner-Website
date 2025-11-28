@@ -16,7 +16,7 @@ recipeIngredient:
   - "16 oz box ditalini (or small shells / elbows)"
   - "~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)"
   - "2 Tbsp olive oil"
-  - "½ tsp kosher salt (to start)"
+  - "½ tsp Diamond Crystal kosher salt (to start)"
   - "2–3 sprigs fresh thyme (or ½ tsp dried thyme)"
   - "8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)"
   - "~7 oz guanciale, cut into small cubes (see rendering note)"
@@ -53,7 +53,7 @@ recipeInstructions:
 - 16 oz box ditalini (or small shells / elbows)
 - ~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)
 - 2 Tbsp olive oil
-- ½ tsp kosher salt (to start)
+- ½ tsp Diamond Crystal kosher salt (to start)
 - 2–3 sprigs fresh thyme (or ½ tsp dried thyme)
 - 8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)
 - ~7 oz guanciale, cut into small cubes (see rendering note)
