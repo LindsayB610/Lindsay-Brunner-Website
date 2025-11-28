@@ -69,7 +69,7 @@ Use ¼ cup heavy cream mixed with ¼ cup water to stand in for the ½ cup milk f
 
 ### Pecan crumb topping
 
-(If you ever have leftover topping from the Sweet Potato Casserole, you can use about 1½ cups of that here. Otherwise, make this fresh.)
+(If you ever have leftover topping from the [Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole), you can use about 1½ cups of that here. Otherwise, make this fresh.)
 
 - ¾ cup chopped pecans, lightly roasted
 - ½ cup packed light brown sugar
