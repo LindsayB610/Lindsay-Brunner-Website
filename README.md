@@ -64,6 +64,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links
+- `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
 
 ## 📁 Project Structure
 
@@ -264,6 +265,34 @@ The "recipes" section showcases tested recipes and kitchen experiments. Here's h
 - **URL structure**: Files in `thoughts/` become `/thoughts/filename/`
 - **Ordering**: Hugo sorts by date (newest first) by default
 
+### 📅 Scheduling Posts for Auto-Publication
+
+The site includes an automated scheduling system that publishes draft posts when their publish date arrives.
+
+**How it works:**
+1. Create your post with `draft: true` and set a future `date` in the front matter
+2. The GitHub Actions workflow runs every hour and checks for posts ready to publish
+3. When a post's date arrives (or has passed), it automatically sets `draft: false` and commits the change
+4. Netlify rebuilds the site on commit, and your post goes live
+
+**Setting up a scheduled post:**
+```yaml
+---
+title: "My Scheduled Post"
+date: 2025-12-15  # Future date
+draft: true        # Will be auto-changed to false when date arrives
+description: "This post will auto-publish on December 15, 2025"
+---
+```
+
+**Important notes:**
+- **Recipes**: Scheduled recipes must have `social_image` set in front matter before the publish date, or they will be skipped (to ensure OG images are reviewed)
+- **Timing**: Posts are checked hourly, so a post scheduled for 9:00 AM will publish between 9:00-9:59 AM
+- **Testing**: Run `npm run schedule-posts` locally to test which posts would be published
+- **Manual trigger**: You can manually trigger the workflow from the GitHub Actions tab if needed
+
+**Workflow location:** `.github/workflows/schedule-posts.yml`
+
 ## 📣 Social Sharing Images (Open Graph)
 
 - Place all social sharing images in `static/images/social/`.
@@ -325,7 +354,9 @@ npm run test:links
 
 ### Test Coverage
 
-The test suite (`tests/content-checks.js`) validates:
+The test suite includes:
+
+**Content validation** (`tests/content-checks.js`):
 
 - **Content Structure**:
   - Homepage sections (hero, Recent Thoughts, Let's Connect)

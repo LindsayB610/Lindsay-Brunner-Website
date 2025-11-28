@@ -176,6 +176,11 @@ See `BRAND.md` for complete brand guidelines. Key points:
 4. Reference image in front matter: `social_image: "/images/social/my-image.png"`
 5. Run `npm run build && npm run test:content`
 
+**To schedule for future publication:**
+- Set `draft: true` and a future `date` in front matter
+- The GitHub Actions workflow will automatically publish when the date arrives
+- Test locally with `npm run schedule-posts` to see what would be published
+
 ### Adding a New Recipe
 
 1. Create file `content/recipes/recipe-*.md`
@@ -183,6 +188,12 @@ See `BRAND.md` for complete brand guidelines. Key points:
 3. Use ISO 8601 duration format for times (PT30M = 30 minutes)
 4. Arrays for ingredients/instructions must be YAML arrays
 5. Run `npm run build && npm run test:content`
+
+**To schedule for future publication:**
+- Set `draft: true` and a future `date` in front matter
+- **Important**: Scheduled recipes must have `social_image` set before the publish date, or they will be skipped
+- The GitHub Actions workflow will automatically publish when the date arrives
+- Test locally with `npm run schedule-posts` to see what would be published
 
 ### Modifying Styles
 
@@ -205,14 +216,17 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **Raw HTML**: Allowed in content (config has `unsafe = true`)
 - **Build**: Always run `npm run build` before testing
 - **Deployment**: Automatic via Netlify on push to master
+- **Scheduled Posts**: Posts with `draft: true` and future dates will auto-publish via GitHub Actions (runs hourly). See README.md for details.
 
 ## References
 
-- **README.md**: Setup, scripts, content management guide
+- **README.md**: Setup, scripts, content management guide, scheduling posts
 - **BRAND.md**: Complete brand guidelines and protected elements
 - **CONTENT_STYLE_GUIDE.md**: Writing principles, tone, voice, and style guidelines
 - **config.toml**: Hugo configuration
 - **tests/content-checks.js**: Test validation logic
+- **scripts/schedule-posts.js**: Auto-publish scheduled posts script
+- **.github/workflows/schedule-posts.yml**: GitHub Actions workflow for scheduled publishing
 
 ## When in Doubt
 

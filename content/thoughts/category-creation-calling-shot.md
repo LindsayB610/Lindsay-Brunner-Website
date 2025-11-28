@@ -4,10 +4,9 @@ date: 2025-11-17
 slug: "category-creation-calling-shot"
 description: "Category creation isn't about manifesting your destiny—it's about calling your shot. Here's how operators actually get Gartner to redraw the map, from someone who's been in the room."
 subtitle: "Or: How operators actually get Gartner to redraw the map"
-draft: true
+draft: false
 social_image: "/images/social/category-creation-calling-shot-og.png"
 ---
-
 There's a particular kind of room where someone eventually leans back, folds their hands like a prophet, and announces, "We're going to be iconic. We're going to define a category."
 
 Maybe you've been in that room. Big dreams, big decks, big adjectives. Circles labeled "Category King." Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.

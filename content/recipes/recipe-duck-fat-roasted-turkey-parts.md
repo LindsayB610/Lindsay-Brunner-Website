@@ -4,7 +4,7 @@ date: 2025-11-29
 slug: "recipe-duck-fat-roasted-turkey-parts"
 subtitle: "Or: Crispy dark meat without the whole-bird commitment"
 description: "Bone-in turkey legs or thighs, dry-brined for deep seasoning, air-dried for paper-thin crisp skin, and finished with a duck fat gloss. All the fancy restaurant roast bird vibes without trussing anything or panic-basting every 20 minutes."
-draft: true
+draft: false
 social_image: "/images/social/recipe-duck-fat-roasted-turkey-parts-og.png"
 prepTime: "PT30M"
 cookTime: "PT60M"
@@ -45,7 +45,6 @@ recipeInstructions:
   - "Make a quick pan sauce: When the veg are done, transfer them to a serving bowl and keep warm. Carefully pour off some of the fat from the pan, leaving about 2–3 tbsp plus all the browned bits. Either set the baking sheet across two burners (medium heat, if your setup allows) or scrape everything into a saucepan. Add the wine or vermouth. Let it simmer and bubble, scraping up the browned bits with a wooden spoon, until the liquid reduces by about half. Pour in the stock and simmer again until slightly thickened and glossy, 5–8 minutes. Take the pan off the heat and whisk in the cold butter, a cube or two at a time, until the sauce is silky. Taste and adjust with lemon juice or sherry vinegar for brightness, plus salt and pepper as needed. If you're using Dijon, whisk it in now."
   - "Serve: Serve each person a whole leg/thigh or cut the meat off the bone into thick slices. Spoon the roasted veg onto plates, top with turkey, and drizzle everything with pan sauce. Finish with flaky salt and a scatter of fresh herbs."
 ---
-
 I love Thanksgiving flavors, but I do not always love managing a whole turkey the size of a small meteor. Dark meat, on the other hand? That I will absolutely engineer a recipe around.
 
 This version leans all the way into the good stuff: bone-in turkey legs or thighs, a dry brine for deep seasoning, an uncovered fridge nap for paper-thin crisp skin, and a final gloss of duck fat so the oven does most of the work. You get all the "fancy restaurant roast bird" vibes without trussing anything or panic-basting every 20 minutes.
