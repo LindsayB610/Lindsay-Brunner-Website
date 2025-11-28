@@ -73,6 +73,8 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 - Softened butter: 2 Tbsp (28 g) (softened, not melted)
 - Diamond Crystal kosher salt: pinch
 
+**Note:** This nut topping also makes an excellent coffee cake topping. See my [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf) recipe.
+
 ---
 
 ## Method
