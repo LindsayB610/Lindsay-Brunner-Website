@@ -125,13 +125,3 @@ Thicker batter + slightly longer cook time = a crisper, sturdier cookie. Slightl
 ### Extra-rich variation (family note)
 
 The handwritten card notes that 4 sticks of margarine "worked good" too. That version will be a little richer and more tender; if you try it, expect the batter to spread a touch more in the iron.
-
----
-
-## Make something else
-
-- [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf)
-- [Peaches and Cream Crisp](/recipes/2025-11-09/recipe-peaches-and-cream-crisp)
-- [Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole)
-
-Same kitchen, same oven, completely different personality on the plate.

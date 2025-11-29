@@ -230,13 +230,3 @@ The same technique works nicely for:
 - Bone-in, skin-on turkey breast (watch the final temperature)
 
 For breast meat, start checking around 150°F / 66°C and pull it from the oven by 160–165°F / 71–74°C. You can still use a brief hot finish, but don't chase 180°F on white meat unless you like it on the dry side.
-
----
-
-## Make something else
-
-- [Thanksgiving Turkey Wellington Sausage Roll](/recipes/2025-11-16/recipe-turkey-wellington-sausage-roll)
-- [Roasted Squash Ditalini with Crispy Guanciale](/recipes/2025-11-26/recipe-roasted-squash-ditalini-crispy-guanciale)
-- [Sheet-Pan Döner Kebab, No Vertical Spit Required](/recipes/2025-11-15/recipe-sheet-pan-doner-kebab)
-
-Same kitchen, same oven, completely different personality on the plate.
