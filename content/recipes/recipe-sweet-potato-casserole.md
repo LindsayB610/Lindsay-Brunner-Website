@@ -164,6 +164,20 @@ You can assemble the casserole earlier in the day:
 - Bake straight from the fridge at 350°F, adding 5–10 extra minutes until hot and bubbling.
 - Leftovers reheat nicely in the oven (covered) or microwave; they'll be softer but still very scoopable.
 
+### Reheating the whole pan (ceramic)
+
+Foil, not the lid. A ceramic lid traps steam and drips condensation back onto the nut topping. A loose foil tent sheds that moisture down the sides and keeps the crumbs from getting soggy.
+
+1. **Start safe for ceramic:** Put the cold dish on a sheet tray and into a cold oven.
+
+2. **Cover:** Tent with foil so it doesn't touch the topping; crimp the edges lightly. If you want, poke 2–3 tiny vent holes in the foil.
+
+3. **Heat:** Set to 325°F (163°C) and bake until the center is hot—aim for 165°F / 74°C. For a 2‑quart pan that's ~½–⅔ full, expect 30–40 minutes from the moment you turn the oven on.
+
+4. **Crisp:** Remove foil, move to the top rack, go 400°F for 4–8 minutes (or a brief broil) to re‑crisp the topping.
+
+5. **Rest 5–10 minutes, then scoop.**
+
 ### What changes (and why roasting helps)
 
 - **Drier by default:** Roasting drives off water, so the mash takes air more easily and doesn't weep into the topping.
