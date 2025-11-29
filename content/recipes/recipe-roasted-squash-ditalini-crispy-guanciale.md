@@ -134,4 +134,41 @@ Because guanciale, cheese, and pasta water all contribute salt, you want to star
 
 A little lemon zest or a splash of lemon juice at the end cuts through the richness and brings freshness (especially nice if you lean heavy on cream and cheese).
 
+## Reheating leftovers
+
+Leftover creamy pasta is a bit like a sleepy cat: it will cooperate again, but only if you coax it gently. The goal is to wake the sauce back up without breaking it or drying the squash.
+
+Here's the path that'll make it taste almost like day one.
+
+### The best method (skillet + splashy rescue)
+
+Slide the leftover pasta into a wide skillet over medium-low heat.
+
+Add one of the following to loosen the sauce:
+
+- A splash of milk
+- A splash of cream
+- A splash of pasta water (if you saved some)
+- A splash of plain water + a small knob of butter
+
+Start with 2–4 tablespoons, and stir gently as it melts. The sauce will relax, rediscover its creaminess, and coat the pasta again. Add more liquid only if needed.
+
+Let it warm slowly for 4–6 minutes, stirring occasionally. You don't want anything to sizzle.
+
+### Add some freshly sauteed crispy guanciale at the end
+
+Top each bowl with freshly rendered crispy guanciale so it stays shatter-crisp instead of going soggy in the pan.
+
+### Optional but lovely
+
+Brighten with:
+
+- A tiny squeeze of lemon
+- Fresh black pepper
+- A sprinkle of parmesan
+
+### What not to do
+
+Avoid the microwave unless you're absolutely starving. It overheats in patches, makes the sauce grainy, and turns the squash to mush.
+
 *This recipe is adapted from [Squash Ditalini Pasta with Crispy Pancetta](https://www.noregrettispaghetti.co/home/squash-ditalini-with-crispy-pancetta) by Gabriella Simonian at No Regretti Spaghetti.*
