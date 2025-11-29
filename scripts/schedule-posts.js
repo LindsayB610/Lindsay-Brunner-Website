@@ -90,22 +90,69 @@ function updateDraftStatus(filePath, frontMatter, content, match) {
 }
 
 /**
- * Check if date has passed
+ * Calculate the nth occurrence of a day in a month (e.g., 2nd Sunday)
+ */
+function getNthDayOfMonth(year, month, dayOfWeek, n) {
+  const firstDay = new Date(year, month, 1);
+  const firstDayOfWeek = firstDay.getDay();
+  let date = 1 + (dayOfWeek - firstDayOfWeek + 7) % 7;
+  if (date < 1) date += 7;
+  date += (n - 1) * 7;
+  return date;
+}
+
+/**
+ * Check if a date is in DST period for Pacific Time
+ * DST: 2nd Sunday in March to 1st Sunday in November
+ */
+function isPacificDST(year, month, day) {
+  // Month is 0-indexed in JavaScript Date
+  const marchSecondSunday = getNthDayOfMonth(year, 2, 0, 2); // 0 = Sunday, month 2 = March
+  const novemberFirstSunday = getNthDayOfMonth(year, 10, 0, 1); // month 10 = November
+  
+  // Before March 2nd Sunday: PST
+  if (month < 2 || (month === 2 && day < marchSecondSunday)) {
+    return false;
+  }
+  
+  // After November 1st Sunday: PST
+  if (month > 10 || (month === 10 && day > novemberFirstSunday)) {
+    return false;
+  }
+  
+  // Between March 2nd Sunday and November 1st Sunday: PDT
+  return true;
+}
+
+/**
+ * Check if date has passed and it's 6am PT or later
+ * GitHub Actions runs in UTC, so we need to check if it's 6am PT
+ * 6am PT = 14:00 UTC (PST, UTC-8) or 13:00 UTC (PDT, UTC-7)
  */
 function isDatePassed(dateString) {
   if (!dateString) return false;
   
   try {
-    // Parse date string as local date (YYYY-MM-DD format)
-    // Split to avoid timezone issues with Date constructor
-    const [year, month, day] = dateString.split('-').map(Number);
-    const postDate = new Date(year, month - 1, day);
-    postDate.setHours(0, 0, 0, 0);
+    // Parse the publish date (month is 1-indexed from string: 1-12)
+    const [year, monthStr, day] = dateString.split('-').map(Number);
+    const month = monthStr - 1; // Convert to 0-indexed for Date operations
     
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset to start of day
+    // Get current time in UTC
+    const now = new Date();
+    const nowUTC = new Date(now.toISOString());
     
-    return postDate <= today;
+    // Determine if DST is in effect for the publish date
+    // isPacificDST expects 0-indexed month (0-11)
+    const isDST = isPacificDST(year, month, day);
+    
+    // For Pacific Time:
+    // PST (UTC-8): 6am PT = 14:00 UTC
+    // PDT (UTC-7): 6am PT = 13:00 UTC
+    const utcHour = isDST ? 13 : 14;
+    const publishDateUTC = new Date(Date.UTC(year, month, day, utcHour, 0, 0, 0));
+    
+    // Check if current UTC time is at or past 6am PT on the publish date
+    return nowUTC >= publishDateUTC;
   } catch (error) {
     console.error(`Error parsing date "${dateString}":`, error.message);
     return false;
@@ -234,4 +281,9 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { processFile, isDatePassed };
+module.exports = { 
+  processFile, 
+  isDatePassed,
+  isPacificDST,
+  getNthDayOfMonth
+};
