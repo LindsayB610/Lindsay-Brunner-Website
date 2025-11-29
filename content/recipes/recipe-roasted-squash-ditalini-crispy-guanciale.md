@@ -142,22 +142,19 @@ Here's the path that'll make it taste almost like day one.
 
 ### The best method (skillet + splashy rescue)
 
-Slide the leftover pasta into a wide skillet over medium-low heat.
+Render some fresh guanciale in a deep pan over medium low heat. Low and slow again, should take 15ish minutes. When crispy, scoop the guanciale onto a paper towel lined plate. 
 
-Add one of the following to loosen the sauce:
+Slide the leftover pasta into your pan of pork fat and stir to combine. Add a splash of milk or cream to further loosen the sauce. (Max out at 2 tablespoons.)
 
-- A splash of milk
-- A splash of cream
-- A splash of pasta water (if you saved some)
-- A splash of plain water + a small knob of butter
-
-Start with 2–4 tablespoons, and stir gently as it melts. The sauce will relax, rediscover its creaminess, and coat the pasta again. Add more liquid only if needed.
+ The sauce will relax, rediscover its creaminess, and coat the pasta again. Add more liquid only if needed.
 
 Let it warm slowly for 4–6 minutes, stirring occasionally. You don't want anything to sizzle.
 
-### Add some freshly sauteed crispy guanciale at the end
+(If you don't have fresh guanciale to crisp, double the cream/milk and warm it slightly in the pan before adding the leftover pasta.)
 
-Top each bowl with freshly rendered crispy guanciale so it stays shatter-crisp instead of going soggy in the pan.
+### Add your freshly sauteed crispy guanciale at the end
+
+Top each bowl with the freshly rendered crispy guanciale so it stays shatter-crisp instead of going soggy in the pan.
 
 ### Optional but lovely
 
