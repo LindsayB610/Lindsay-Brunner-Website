@@ -32,7 +32,7 @@ recipeInstructions:
   - "Finish & serve: Increase to 400°F for 3–6 minutes (or a short broil) to brown the sugars. Rest 10 minutes, then scoop with a disher into warm bowls."
 ---
 
-This version keeps the potatoes buttery and lightly salted, with all the sweetness living in a chunky brown‑sugar nut topping. It bakes in a pan and gets scooped with a disher—just like the restaurant version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA.
+This version keeps the potatoes buttery and lightly salted, with all the sweetness living in a chunky brown‑sugar nut topping. It bakes in a pan and gets scooped with a disher, just like the restaurant version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA.
 
 ## Snapshot
 - **Implements:** sheet pan or wire rack; parchment paper; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; ricer (optional, for silky texture); 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
@@ -73,7 +73,7 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 - Softened butter: 2 Tbsp (28 g) (softened, not melted)
 - Diamond Crystal kosher salt: pinch
 
-**Note:** This nut topping also makes an excellent coffee cake topping. See my [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf) recipe.
+**Note:** This nut mixture also makes an excellent coffee cake topping. See my [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf) recipe.
 
 ---
 
@@ -161,12 +161,12 @@ Either way, keep the pieces on the chunky side so the topping has texture.
 You can assemble the casserole earlier in the day:
 
 - Assemble completely, cover, and refrigerate.
-- Bake straight from the fridge at 350°F, adding 5–10 extra minutes until hot and bubbling.
+- Bake straight from the fridge at 350°F (put your ceramic pan into a cold oven, not a preheated one, you don't want to crack it!), adding 5–10 extra minutes until hot and bubbling.
 - Leftovers reheat nicely in the oven (covered) or microwave; they'll be softer but still very scoopable.
 
-### Reheating the whole pan (ceramic)
+### Reheating the whole pan
 
-Foil, not the lid. A ceramic lid traps steam and drips condensation back onto the nut topping. A loose foil tent sheds that moisture down the sides and keeps the crumbs from getting soggy.
+Note: A ceramic lid traps steam and drips condensation back onto the nut topping. A loose foil tent sheds that moisture down the sides and keeps the crumbs from getting soggy.
 
 1. **Start safe for ceramic:** Put the cold dish on a sheet tray and into a cold oven.
 
@@ -177,21 +177,3 @@ Foil, not the lid. A ceramic lid traps steam and drips condensation back onto th
 4. **Crisp:** Remove foil, move to the top rack, go 400°F for 4–8 minutes (or a brief broil) to re‑crisp the topping.
 
 5. **Rest 5–10 minutes, then scoop.**
-
-### What changes (and why roasting helps)
-
-- **Drier by default:** Roasting drives off water, so the mash takes air more easily and doesn't weep into the topping.
-- **Sweeter without sugar:** Mild sugar concentration from roasting amplifies natural sweetness while keeping the base savory (no added sugar/spice).
-- **Color & flavor control:** Roasting whole, unpeeled protects the flesh from browning; you keep that bright orange and avoid roasted "char" notes in the base.
-
-### Change log (what's different from earlier drafts)
-
-- **Method changed to roasting:** Sweet potatoes are now roasted whole and unpeeled at 400°F for 45–75 minutes instead of being boiled. This produces a drier, sweeter base that takes air more easily.
-- Base is now savory: removed added sugar, cinnamon, and vanilla.
-- Butter in the base reduced to 3 Tbsp (1‑qt) or 5 Tbsp (9×5) to avoid weeping.
-- Cream‑mixing clarified: brief whip with butter/salt first, then add cream 1 Tbsp at a time while mixing on low; finish with a short medium‑speed aeration. Added per‑cup formula for easy scaling.
-- Fill height fixed: increased potato weight for 9×5 (2½–2¾ lb) to reach ~⅔; included 1‑qt option for a smaller batch at the same depth.
-- Nut topping rebalanced: more nuts (1 cup), less flour (1 Tbsp default), softened (not melted) butter, and a 10‑minute chill so crumbs brown instead of melting.
-- Toasting required: nuts are pre‑toasted 6–8 minutes for real nuttiness and better crunch.
-- Browning finish: added a 400°F, 3–6 minute finish (or brief broil) for color.
-
