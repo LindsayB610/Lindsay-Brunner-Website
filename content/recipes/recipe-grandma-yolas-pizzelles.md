@@ -4,7 +4,7 @@ date: 2025-12-01
 slug: "recipe-grandma-yolas-pizzelles"
 subtitle: "Or: 12‑egg holiday waffle cookies that feed the whole neighborhood"
 description: "A big, old-school 12-egg batch of Italian waffle cookies that turns into stacks of light, crisp pizzelles. The original calls for orange extract, but the same base works with almond, lemon, or anise, so you can run different flavors off the same batter."
-draft: true
+draft: false
 social_image: "/images/social/recipe-grandma-yolas-pizzelles-og.png"
 prepTime: "PT60M"
 cookTime: "PT0M"
@@ -29,7 +29,6 @@ recipeInstructions:
   - "Cook the pizzelles: Place about 1 tablespoon of batter in the center of each pattern on the hot iron (your iron may like a little more or less; adjust after the first couple). Close the iron and cook until the steam has mostly subsided and the cookies are a light golden color, usually 30–90 seconds depending on your machine and how dark you like them. Use a thin spatula or fork to lift each pizzelle onto a wire rack. They'll still feel a bit flexible when hot but crisp up as they cool."
   - "Cool and store: Let pizzelles cool completely before stacking so they stay crisp. Once cool, dust with powdered sugar if you like. Store in an airtight tin or container at room temperature; they keep well for weeks, which is part of their holiday magic."
 ---
-
 These are my Grandma Yola's pizzelles: a big, old-school 12-egg batch that turns into stacks of light, crisp Italian waffle cookies. The original card calls for orange extract, but the same base works with almond, lemon, or anise, so you can run different flavors off the same batter.
 
 ---
