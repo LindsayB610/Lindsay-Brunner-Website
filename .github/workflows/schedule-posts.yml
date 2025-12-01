@@ -53,5 +53,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add content/thoughts/*.md content/recipes/*.md
-          git commit -m "Auto-publish scheduled posts [skip ci]" || exit 0
+          git commit -m "Auto-publish scheduled posts" || exit 0
           git push
