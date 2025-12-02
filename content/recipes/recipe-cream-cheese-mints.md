@@ -4,7 +4,7 @@ date: 2025-12-02
 slug: "recipe-cream-cheese-mints"
 subtitle: "Or: The Christmas candy that finally dries out"
 description: "A forgiving recipe for the little pastel squares that show up on cookie trays and at church weddings: soft‑minty, creamy, and just firm enough to stack in a jar without merging into one mega‑mint."
-draft: true
+draft: false
 social_image: "/images/social/recipe-cream-cheese-mints-og.png"
 prepTime: "PT30M"
 cookTime: "PT0M"
@@ -29,7 +29,6 @@ recipeInstructions:
   - "Dry at room temperature or in the fridge: Leave the mints in a single layer, uncovered. In a cool, dry room: 12–24 hours, flipping once halfway through, until the surfaces feel dry and the centers are fudgey but not squishy. In a humid kitchen: slide the trays into the fridge, uncovered, for 8–12 hours. The cold air helps them dry without melting."
   - "Store: Once the mints are dry to the touch and hold their shape when gently squeezed, transfer them to airtight containers, layered with parchment if you're stacking. Room temp: up to 3–4 days in a cool, dry spot. Fridge: up to 2 weeks. Freezer: up to 1 month; thaw in the fridge, then bring to room temp before serving for the best texture."
 ---
-
 These are the little pastel squares that show up on cookie trays and at church weddings: soft‑minty, creamy, and just firm enough to stack in a jar without merging into one mega‑mint.
 
 The catch: a lot of cream cheese mint recipes are extremely sensitive to moisture. Use the wrong cream cheese, measure sugar a little light, or get heavy‑handed with extract and food coloring, and you end up with delicious peppermint Play‑Doh that never really hardens.
