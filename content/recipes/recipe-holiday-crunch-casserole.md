@@ -4,7 +4,7 @@ date: 2025-12-03
 slug: "recipe-holiday-crunch-casserole"
 subtitle: "Or: The retro pantry miracle that got us through mom's surgery"
 description: "A comforting retro casserole of ground beef, macaroni, cream soup, and crispy fried onions that's hot, salty, crunchy, and exactly what you need during hard weeks."
-draft: true
+draft: false
 social_image: "/images/social/recipe-holiday-crunch-casserole-og.png"
 prepTime: "PT20M"
 cookTime: "PT35M"
@@ -31,7 +31,6 @@ recipeInstructions:
   - "Add the crunch. Pull the dish out, scatter the remaining fried onions over the top, and return to the oven for about 5 minutes, until the onions are toasty and golden."
   - "Rest and serve. Let the casserole stand 5–10 minutes so it stops molten-lava bubbling and sets up a bit. Scoop into bowls and serve."
 ---
-
 When I was in high school, my mom had surgery, and a family friend showed up at our door with this casserole.
 
 It was not glamorous. There were no heirloom vegetables. There was a can of cream-of-something soup and a heroic amount of crispy fried onions.
