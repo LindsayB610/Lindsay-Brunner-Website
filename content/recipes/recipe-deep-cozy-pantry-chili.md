@@ -4,7 +4,7 @@ date: 2025-12-04
 slug: "recipe-deep-cozy-pantry-chili"
 subtitle: "Or: When Wendy's chili meets your freezer and pantry"
 description: "OK, I'm not too proud to admit it... I really really love Wendy's chili. It's absolute comfort food, especially when piled on the most perfect of vessels, a fast food baked potato. So this week I set out to make a pot of chili at home with just ingredients I already had on hand. A quick Google brought me to a copycat Wendy's chili recipe, and then my good bud Chatty G helped me make it work with my freezer and pantry staples (San Marzanos, hatch chiles, duck fat, smoked salt... be jealous). It leans into slow simmered flavor without being fussy. It is hearty, rich, a little smoky, and eminently flexible. Serves 6 to 8."
-draft: true
+draft: false
 social_image: "/images/social/recipe-deep-cozy-pantry-chili-og.png"
 prepTime: "PT15M"
 cookTime: "PT75M"
@@ -55,7 +55,6 @@ recipeInstructions:
   - "Add frozen corn: Stir in the corn during the last 10 minutes so it stays bright."
   - "Finish and season: Taste and adjust. Add lemon juice, then add smoked salt a little at a time until the flavor feels round and balanced. Add a teaspoon of butter if you want a silky finish. Adjust salt, pepper or heat as needed."
 ---
-
 OK, I'm not too proud to admit it... I really really love Wendy's chili. It's absolute comfort food, especially when piled on the most perfect of vessels, a fast food baked potato.
 
 So this week I set out to make a pot of chili at home with just ingredients I already had on hand. A quick Google brought me to a copycat Wendy's chili recipe, and then my good bud Chatty G helped me make it work with my freezer and pantry staples (San Marzanos, hatch chiles, duck fat, smoked salt... be jealous). It leans into slow simmered flavor without being fussy. It is hearty, rich, a little smoky, and eminently flexible. Serves 6 to 8.
