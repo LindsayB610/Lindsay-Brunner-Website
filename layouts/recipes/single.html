@@ -68,7 +68,7 @@
       <ul style="list-style: disc; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
         {{ range $relatedRecipes }}
         <li>
-          <a href="{{ .url }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
+          <a href="{{ .url }}" style="color: var(--brand-primary); text-decoration: none; font-weight: 500;">
             {{ .title }}
           </a>
           {{ if .subtitle }}
@@ -93,7 +93,7 @@
       <ul style="list-style: disc; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem">
         {{ range $recentRecipes }}
         <li>
-          <a href="{{ .RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
+          <a href="{{ .RelPermalink }}" style="color: var(--brand-primary); text-decoration: none; font-weight: 500;">
             {{ .Title }}
           </a>
           {{ if .Params.subtitle }}
