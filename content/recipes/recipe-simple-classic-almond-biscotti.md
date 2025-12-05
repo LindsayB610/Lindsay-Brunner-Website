@@ -4,7 +4,7 @@ date: 2025-12-05
 slug: "recipe-simple-classic-almond-biscotti"
 subtitle: "Or: The crunchy almond cookie that justifies an extra cup of coffee"
 description: "Inspired by a Unicorns in the Kitchen TikTok, this is the almond biscotti that accidentally turned into the star of my holiday cookie plate last year. The dough is simple, the slices are sturdy enough to ship in cookie boxes, and the double‑bake turns them into the crisp, dunkable kind of cookie that actually wants to be dropped into your mug."
-draft: true
+draft: false
 social_image: "/images/social/recipe-simple-classic-almond-biscotti-og.png"
 prepTime: "PT25M"
 cookTime: "PT40M"
@@ -30,7 +30,6 @@ recipeInstructions:
   - "First bake: Bake the log for about 30 minutes, until the surface is lightly golden and just set when you tap it. Transfer the tray to a cooling rack and let the biscotti log cool for 20–25 minutes. You want it cool enough to slice without crumbling but still a bit warm in the center."
   - "Slice and second bake: Keep the oven at 350°F / 175°C. Using a serrated knife, carefully slice the log diagonally into pieces about 1 inch thick. Lay the slices cut‑side down on the parchment‑lined sheet in a single layer. Return the tray to the oven and bake for about 10 minutes, flipping the biscotti halfway through so both sides crisp up. They should feel dry at the edges but will firm up even more as they cool. Cool completely on a rack, then try not to eat four in a row \"just to test the texture.\""
 ---
-
 Inspired by a Unicorns in the Kitchen TikTok, this is the almond biscotti that accidentally turned into the star of my holiday cookie plate last year. The dough is simple, the slices are sturdy enough to ship in cookie boxes, and the double‑bake turns them into the crisp, dunkable kind of cookie that actually wants to be dropped into your mug.
 
 The secret move from last year's notes: use both almond extract and vanilla extract. Vanilla keeps everything cozy; almond makes the whole kitchen smell like an Italian bakery.
