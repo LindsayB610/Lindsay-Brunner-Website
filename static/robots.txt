@@ -1,0 +1,9 @@
+# robots.txt for lindsaybrunner.com
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://lindsaybrunner.com/sitemap.xml
+
