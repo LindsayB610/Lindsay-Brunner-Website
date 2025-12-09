@@ -87,7 +87,7 @@ static/
 - `slug` (string)
 - `og_image` or `social_image` (path to image in `/images/social/`)
 
-**Permalink pattern:** `/thoughts/:year-:month-:day/:slug`
+**Permalink pattern:** `/thoughts/:year-:month-:day/:slug/`
 
 **Example:**
 ```yaml
@@ -114,7 +114,7 @@ social_image: "/images/social/my-image.png"
 - `recipeIngredient` (array of strings)
 - `recipeInstructions` (array of strings)
 
-**Permalink pattern:** `/recipes/:year-:month-:day/:slug`
+**Permalink pattern:** `/recipes/:year-:month-:day/:slug/`
 
 **File naming:** Use `recipe-` prefix (e.g., `recipe-bachan-pulled-pork.md`)
 
@@ -149,8 +149,8 @@ npm test           # Run all tests (HTML, links, content)
 - Recent posts number: 4
 
 **Permalink patterns:**
-- Thoughts: `/thoughts/:year-:month-:day/:slug`
-- Recipes: `/recipes/:year-:month-:day/:slug`
+- Thoughts: `/thoughts/:year-:month-:day/:slug/`
+- Recipes: `/recipes/:year-:month-:day/:slug/`
 
 ## Brand Guidelines
 

@@ -225,7 +225,7 @@ The "recipes" section showcases tested recipes and kitchen experiments. Here's h
 
 4. **File naming**: Always use `recipe-` prefix (e.g., `recipe-bachan-pulled-pork.md`)
 
-5. **Permalink structure**: Recipes use `/recipes/:year-:month-:day/:slug` format
+5. **Permalink structure**: Recipes use `/recipes/:year-:month-:day/:slug/` format (with trailing slash)
 
 6. **🔒 OG Image Review (Required for Published Recipes)**:
    
