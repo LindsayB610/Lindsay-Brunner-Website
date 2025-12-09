@@ -8,8 +8,8 @@ googleAnalytics = ""
 
 [permalinks]
   blog = "/blog/:slug/"
-  thoughts = "/thoughts/:year-:month-:day/:slug"
-  recipes = "/recipes/:year-:month-:day/:slug"
+  thoughts = "/thoughts/:year-:month-:day/:slug/"
+  recipes = "/recipes/:year-:month-:day/:slug/"
 
 [pagination]
 pagerSize = 9

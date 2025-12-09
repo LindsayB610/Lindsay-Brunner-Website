@@ -31,3 +31,9 @@
 # Redirect malformed URLs with /Q suffix (crawler errors)
 /thoughts/s/Q   /thoughts/   301
 /recipes/2025-11-09/recipe-peaches-and-cream-crisp/Q   /recipes/2025-11-09/recipe-peaches-and-cream-crisp/   301
+
+# Ensure trailing slashes for thoughts and recipes (fix 502 errors)
+/about   /about/   301
+/thoughts/2025-07-01/manage-up   /thoughts/2025-07-01/manage-up/   301
+/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf   /recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf/   301
+/recipes/2025-11-16/recipe-turkey-wellington-sausage-roll   /recipes/2025-11-16/recipe-turkey-wellington-sausage-roll/   301
