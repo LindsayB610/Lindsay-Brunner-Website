@@ -3,7 +3,7 @@ title: "Cream Cheese Mints That Actually Set"
 date: 2025-12-02
 slug: "recipe-cream-cheese-mints"
 subtitle: "Or: The Christmas candy that finally dries out"
-description: "A forgiving recipe for the little pastel squares that show up on cookie trays and at church weddings: soft‑minty, creamy, and just firm enough to stack in a jar without merging into one mega‑mint."
+description: "Forgiving recipe for pastel mint squares: soft, creamy, and firm enough to stack without merging. Perfect for cookie trays and holiday boxes."
 draft: false
 social_image: "/images/social/recipe-cream-cheese-mints-og.png"
 prepTime: "PT30M"

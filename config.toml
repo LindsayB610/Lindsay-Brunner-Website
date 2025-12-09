@@ -53,6 +53,5 @@ enableRobotsTXT = true
     isPlainText = true
     notAlternative = true
 
-# [taxonomies]
-# tag = "tags"
-# category = "categories"
+# Disable taxonomies completely - prevent Hugo from generating /categories/ and /tags/ pages
+disableKinds = ["taxonomy", "taxonomyTerm"]

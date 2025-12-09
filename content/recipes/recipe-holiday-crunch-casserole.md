@@ -3,7 +3,7 @@ title: "Holiday Crunch Casserole"
 date: 2025-12-03
 slug: "recipe-holiday-crunch-casserole"
 subtitle: "Or: The retro pantry miracle that got us through mom's surgery"
-description: "A comforting retro casserole of ground beef, macaroni, cream soup, and crispy fried onions that's hot, salty, crunchy, and exactly what you need during hard weeks."
+description: "Comforting retro casserole: ground beef, macaroni, cream soup, and crispy fried onions. Hot, salty, crunchy comfort food."
 draft: false
 social_image: "/images/social/recipe-holiday-crunch-casserole-og.png"
 prepTime: "PT20M"

@@ -3,7 +3,7 @@ title: "Duck Fat Roasted Turkey Legs and Thighs"
 date: 2025-11-29
 slug: "recipe-duck-fat-roasted-turkey-parts"
 subtitle: "Or: Crispy dark meat without the whole-bird commitment"
-description: "Bone-in turkey legs or thighs, dry-brined for deep seasoning, air-dried for paper-thin crisp skin, and finished with a duck fat gloss. All the fancy restaurant roast bird vibes without trussing anything or panic-basting every 20 minutes."
+description: "Bone-in turkey legs or thighs, dry-brined and air-dried for crisp skin, finished with duck fat. Restaurant-quality roast bird without the fuss."
 draft: false
 social_image: "/images/social/recipe-duck-fat-roasted-turkey-parts-og.png"
 prepTime: "PT30M"

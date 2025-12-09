@@ -3,7 +3,7 @@ title: "Simple, Classic Almond Biscotti"
 date: 2025-12-05
 slug: "recipe-simple-classic-almond-biscotti"
 subtitle: "Or: The crunchy almond cookie that justifies an extra cup of coffee"
-description: "Inspired by a Unicorns in the Kitchen TikTok, this is the almond biscotti that accidentally turned into the star of my holiday cookie plate last year. The dough is simple, the slices are sturdy enough to ship in cookie boxes, and the double‑bake turns them into the crisp, dunkable kind of cookie that actually wants to be dropped into your mug."
+description: "Simple almond biscotti with a double-bake for maximum crispness. Sturdy enough to ship, perfect for dunking in coffee."
 draft: false
 social_image: "/images/social/recipe-simple-classic-almond-biscotti-og.png"
 prepTime: "PT25M"

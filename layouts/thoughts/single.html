@@ -34,6 +34,38 @@
 
     <div class="article-content">{{ .Content }}</div>
 
+    {{/* Previous/Next Post Navigation - sorted newest first */}}
+    {{ $allThoughts := where .Site.RegularPages "Type" "thoughts" }}
+    {{ $sortedThoughts := $allThoughts.ByDate.Reverse }}
+    {{ $currentIndex := 0 }}
+    {{ range $index, $post := $sortedThoughts }}
+      {{ if eq $post.Permalink $.Permalink }}
+        {{ $currentIndex = $index }}
+      {{ end }}
+    {{ end }}
+    {{ $olderPost := index $sortedThoughts (add $currentIndex 1) }}
+    {{ $newerPost := index $sortedThoughts (sub $currentIndex 1) }}
+    {{ if or $olderPost $newerPost }}
+    <nav style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dark-border); display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+      {{ if $newerPost }}
+      <div style="flex: 1; min-width: 200px;">
+        <div style="font-size: 0.875rem; color: var(--dark-text-secondary); margin-bottom: 0.5rem;">Newer Post</div>
+        <a href="{{ $newerPost.RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500; display: block;">
+          ← {{ $newerPost.Title }}
+        </a>
+      </div>
+      {{ end }}
+      {{ if $olderPost }}
+      <div style="flex: 1; min-width: 200px; text-align: {{ if $newerPost }}right{{ else }}left{{ end }};">
+        <div style="font-size: 0.875rem; color: var(--dark-text-secondary); margin-bottom: 0.5rem;">Older Post</div>
+        <a href="{{ $olderPost.RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500; display: block;">
+          {{ $olderPost.Title }} →
+        </a>
+      </div>
+      {{ end }}
+    </nav>
+    {{ end }}
+
     {{ if .Params.tags }}
     <footer
       style="
@@ -96,7 +128,7 @@
       {{ else }}
         {{ $allThoughts := where .Site.RegularPages "Type" "thoughts" }}
         {{ $otherThoughts := where $allThoughts "Permalink" "!=" .Permalink }}
-        {{ $recentThoughts := $otherThoughts.ByDate.Reverse | first 3 }}
+        {{ $recentThoughts := $otherThoughts.ByDate.Reverse | first 5 }}
         {{ range $recentThoughts }}
         <li>
           <a href="{{ .RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">

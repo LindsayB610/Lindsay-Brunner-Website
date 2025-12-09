@@ -75,7 +75,7 @@
 
     <div class="grid grid-3">
       {{ $recent_thoughts := where .Site.RegularPages "Type" "thoughts" | first
-      3 }} {{ if ge (len $recent_thoughts) 3 }} {{ range $recent_thoughts }}
+      6 }} {{ if ge (len $recent_thoughts) 3 }} {{ range $recent_thoughts }}
       <div class="card">
         <div class="post-meta">
           <time>{{ .Date.Format "Jan 02, 2006" }}</time>

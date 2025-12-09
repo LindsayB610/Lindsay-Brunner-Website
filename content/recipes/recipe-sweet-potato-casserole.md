@@ -3,7 +3,7 @@ title: "Fluffy BBQ-Style Sweet Potato Casserole"
 date: 2025-11-14
 slug: "recipe-sweet-potato-casserole"
 subtitle: "Savory, fluffy base; sweet toasted‑nut top"
-description: "A recreation of the sweet potato casserole from Sauced BBQ: savory buttery base with all sweetness in a chunky brown‑sugar nut topping. Fluffy, scoopable, and perfect next to brisket."
+description: "Recreation of Sauced BBQ's sweet potato casserole: savory buttery base with a chunky brown-sugar nut topping. Fluffy and scoopable."
 draft: false
 social_image: "/images/social/recipe-sweet-potato-casserole-og.png"
 prepTime: "PT20M"
@@ -73,7 +73,7 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 - Softened butter: 2 Tbsp (28 g) (softened, not melted)
 - Diamond Crystal kosher salt: pinch
 
-**Note:** This nut mixture also makes an excellent coffee cake topping. See my [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf) recipe.
+**Note:** This nut mixture also makes an excellent coffee cake topping. See my [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf/) recipe.
 
 ---
 

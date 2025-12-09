@@ -3,7 +3,7 @@ title: "Grandma Yola's Pizzelles"
 date: 2025-12-01
 slug: "recipe-grandma-yolas-pizzelles"
 subtitle: "Or: 12‑egg holiday waffle cookies that feed the whole neighborhood"
-description: "A big, old-school 12-egg batch of Italian waffle cookies that turns into stacks of light, crisp pizzelles. The original calls for orange extract, but the same base works with almond, lemon, or anise, so you can run different flavors off the same batter."
+description: "A big 12-egg batch of Italian waffle cookies that makes stacks of light, crisp pizzelles. Works with orange, almond, lemon, or anise extract."
 draft: false
 social_image: "/images/social/recipe-grandma-yolas-pizzelles-og.png"
 prepTime: "PT60M"

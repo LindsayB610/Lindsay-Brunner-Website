@@ -27,3 +27,7 @@
 /thoughts/2025-11-09/recipe-peaches-and-cream-crisp/   /recipes/2025-11-09/recipe-peaches-and-cream-crisp/   301
 /thoughts/2025-11-10/recipe-bachan-pulled-pork/   /recipes/2025-11-10/recipe-bachan-pulled-pork/   301
 /thoughts/2025-11-15/recipe-sheet-pan-doner-kebab/   /recipes/2025-11-15/recipe-sheet-pan-doner-kebab/   301
+
+# Redirect malformed URLs with /Q suffix (crawler errors)
+/thoughts/s/Q   /thoughts/   301
+/recipes/2025-11-09/recipe-peaches-and-cream-crisp/Q   /recipes/2025-11-09/recipe-peaches-and-cream-crisp/   301

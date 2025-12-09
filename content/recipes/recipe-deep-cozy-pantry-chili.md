@@ -3,7 +3,7 @@ title: "Deep and Cozy Pantry Chili"
 date: 2025-12-04
 slug: "recipe-deep-cozy-pantry-chili"
 subtitle: "Or: When Wendy's chili meets your freezer and pantry"
-description: "OK, I'm not too proud to admit it... I really really love Wendy's chili. It's absolute comfort food, especially when piled on the most perfect of vessels, a fast food baked potato. So this week I set out to make a pot of chili at home with just ingredients I already had on hand. A quick Google brought me to a copycat Wendy's chili recipe, and then my good bud Chatty G helped me make it work with my freezer and pantry staples (San Marzanos, hatch chiles, duck fat, smoked salt... be jealous). It leans into slow simmered flavor without being fussy. It is hearty, rich, a little smoky, and eminently flexible. Serves 6 to 8."
+description: "A Wendy's-inspired chili made with pantry staples: San Marzanos, hatch chiles, duck fat, and smoked salt. Hearty, rich, smoky, and flexible."
 draft: false
 social_image: "/images/social/recipe-deep-cozy-pantry-chili-og.png"
 prepTime: "PT15M"

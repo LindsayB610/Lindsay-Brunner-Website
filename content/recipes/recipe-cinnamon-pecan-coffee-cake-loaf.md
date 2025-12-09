@@ -3,7 +3,7 @@ title: "Cinnamon Pecan Coffee Cake Loaf"
 date: 2025-11-28
 slug: "recipe-cinnamon-pecan-coffee-cake-loaf"
 subtitle: "Or: Pecan crumb topping, now with cake attached"
-description: "A tender cinnamon loaf cake baked in a standard loaf pan and finished with a chunky pecan crumb topping. Uses heavy cream instead of milk for a richer crumb, with a tiny lift from fresh nutmeg and a whisper of almond extract."
+description: "A tender cinnamon loaf cake with a chunky pecan crumb topping. Uses heavy cream for a richer crumb, with fresh nutmeg and almond extract."
 draft: false
 social_image: "/images/social/recipe-cinnamon-pecan-coffee-cake-loaf-og.png"
 prepTime: "PT20M"
@@ -39,7 +39,7 @@ recipeInstructions:
   - "Cool and slice: Let the loaf cool in the pan for about 15 minutes so the crumb can set. Use the parchment to lift it out to a rack and let it cool until just warm or room temperature. Slice into thick pieces and serve as breakfast, snack, or coffee companion."
 ---
 
-This is a tender cinnamon loaf cake baked in a standard loaf pan and finished with a chunky pecan crumb topping. It borrows the nut topping DNA from my [Fluffy BBQ‑Style Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole) and uses heavy cream instead of milk for a richer crumb, with a tiny lift from fresh nutmeg and a whisper of almond extract.
+This is a tender cinnamon loaf cake baked in a standard loaf pan and finished with a chunky pecan crumb topping. It borrows the nut topping DNA from my [Fluffy BBQ‑Style Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole/) and uses heavy cream instead of milk for a richer crumb, with a tiny lift from fresh nutmeg and a whisper of almond extract.
 
 ## Snapshot
 
@@ -69,7 +69,7 @@ Use ¼ cup heavy cream mixed with ¼ cup water to stand in for the ½ cup milk f
 
 ### Pecan crumb topping
 
-(If you ever have leftover topping from the [Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole), you can use about 1½ cups of that here. Otherwise, make this fresh.)
+(If you ever have leftover topping from the [Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole/), you can use about 1½ cups of that here. Otherwise, make this fresh.)
 
 - ¾ cup chopped pecans, lightly toasted
 - ½ cup packed light brown sugar
