@@ -1,7 +1,21 @@
 [build]
 publish = "public"
-command = "npm install && npx hugo --gc --minify"
+command = "npm install && npm run build"
 # Build image configured in Netlify dashboard: Ubuntu Noble 24.04
+
+[build.processing]
+skip_processing = false
+
+[build.processing.css]
+bundle = false
+minify = false
+
+[build.processing.js]
+bundle = false
+minify = false
+
+[build.processing.html]
+pretty_urls = true
 
 [context.production.environment]
 HUGO_ENV = "production"
@@ -9,20 +23,20 @@ HUGO_ENABLEGITINFO = "true"
 NODE_VERSION = "20"
 
 [context.split1]
-command = "npm install && npx hugo --gc --minify --enableGitInfo"
+command = "npm install && npm run build"
 
 [context.split1.environment]
 HUGO_ENV = "production"
 NODE_VERSION = "20"
 
 [context.deploy-preview]
-command = "npm install && npx hugo --gc --minify --buildFuture --baseURL $DEPLOY_PRIME_URL"
+command = "npm install && npm run build"
 
 [context.deploy-preview.environment]
 NODE_VERSION = "20"
 
 [context.branch-deploy]
-command = "npm install && npx hugo --gc --minify --baseURL $DEPLOY_PRIME_URL"
+command = "npm install && npm run build"
 
 [context.branch-deploy.environment]
 NODE_VERSION = "20"
