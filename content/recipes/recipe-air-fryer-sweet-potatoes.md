@@ -4,7 +4,7 @@ date: 2025-12-16
 slug: "recipe-air-fryer-sweet-potatoes"
 subtitle: "Or: The quietly excellent method that makes you forget other ways exist"
 description: "Courtney Cook's air fryer sweet potato method: whole, wrapped in foil, cooked slow, then rested in the turned-off air fryer. The result is fluffy, creamy, almost custardy texture that's hard to go back from."
-draft: true
+draft: false
 social_image: "/images/social/recipe-air-fryer-sweet-potatoes-og.png"
 prepTime: "PT5M"
 cookTime: "PT40M"
