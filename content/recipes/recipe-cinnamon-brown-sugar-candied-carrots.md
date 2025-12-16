@@ -33,7 +33,7 @@ recipeInstructions:
 
 These are the carrots that show up glossy and smug in a restaurant: tender all the way through, lacquered with butter + brown sugar, and mysteriously gone before the entrée hits the table.
 
-The trick is two-stage cooking: par-cook the carrots first (fast + controlled), then glaze hard and fast in a skillet so the sugar doesn't have time to burn while the carrots figure out how to be tender. Cinnamon goes in, rosemary stays out, and honey is not invited.
+The trick is two-stage cooking: par-cook the carrots first (fast + controlled), then glaze hard and fast in a skillet so the sugar doesn't have time to burn while the carrots figure out how to be tender. 
 
 ## Snapshot
 
