@@ -4,9 +4,8 @@ date: 2025-12-15
 slug: "content-marketing-authorship-ai-first-world"
 description: "What happens when the value moves upstream, away from the words. On ghostwriting, AI, and the difference between words and judgment."
 subtitle: "Or: What happens when the value moves upstream, away from the words"
-draft: true
+draft: false
 ---
-
 I've ghostwritten for most of my career.
 
 Product launches, explainers, positioning docs, the kind of content that lives on a company site and not in a portfolio. Sometimes my name was attached. Often it wasn't. That never bothered me. I understood the trade, I knew what I was signing up for, and I was fine with the arrangement. Ghostwriting, when it's explicit, is a choice I'm generally very ok with.
