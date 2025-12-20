@@ -74,7 +74,7 @@
     </div>
 
     <div class="grid grid-3">
-      {{ $recent_thoughts := where .Site.RegularPages "Type" "thoughts" | first
+      {{ $recent_thoughts := where (where .Site.RegularPages "Type" "thoughts") "Draft" false | first
       3 }} {{ if ge (len $recent_thoughts) 3 }} {{ range $recent_thoughts }}
       <div class="card">
         <div class="post-meta">

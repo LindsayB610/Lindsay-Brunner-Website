@@ -35,7 +35,7 @@
     <div class="article-content">{{ .Content }}</div>
 
     {{/* Previous/Next Post Navigation - sorted newest first */}}
-    {{ $allThoughts := where .Site.RegularPages "Type" "thoughts" }}
+    {{ $allThoughts := where (where .Site.RegularPages "Type" "thoughts") "Draft" false }}
     {{ $sortedThoughts := $allThoughts.ByDate.Reverse }}
     {{ $currentIndex := 0 }}
     {{ range $index, $post := $sortedThoughts }}
@@ -126,7 +126,7 @@
         </li>
         {{ end }}
       {{ else }}
-        {{ $allThoughts := where .Site.RegularPages "Type" "thoughts" }}
+        {{ $allThoughts := where (where .Site.RegularPages "Type" "thoughts") "Draft" false }}
         {{ $otherThoughts := where $allThoughts "Permalink" "!=" .Permalink }}
         {{ $recentThoughts := $otherThoughts.ByDate.Reverse | first 5 }}
         {{ range $recentThoughts }}
