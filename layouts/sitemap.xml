@@ -2,6 +2,10 @@
 {{- $sitemap := .Sitemap }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   {{- range .Data.Pages }}
+    {{- /* Exclude drafts */ -}}
+    {{- if .Draft }}
+      {{- continue }}
+    {{- end }}
     {{- /* Exclude taxonomy pages that redirect (tags, categories) */ -}}
     {{- if or (hasPrefix .RelPermalink "/tags/") (hasPrefix .RelPermalink "/categories/") }}
       {{- continue }}
