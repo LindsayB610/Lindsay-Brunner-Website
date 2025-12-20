@@ -4,9 +4,8 @@ date: 2025-12-20
 slug: "alices-restaurant-family-ritual"
 description: "On letting a counterculture folk monologue become a family ritual, and trusting that meaning will arrive when the listener is ready."
 subtitle: "Or: How you pass on the idea that the world is allowed to be questioned"
-draft: true
+draft: false
 ---
-
 There's something deeply right about a child wandering around singing a counterculture, anti-authoritarian folk monologue as a seasonal ritual.
 
 I didn't plan it this way. I didn't sit down and decide that Alice's Restaurant would become part of our family calendar, slotted neatly between pumpkin pie and leftovers. It just happened. Every year, after Thanksgiving, the song comes on. Every year, my now six-year-old absorbs it the way kids absorb things that feel important without yet knowing why. And for weeks afterward, he sings it. Not because he understands the politics, or the satire, or the historical context. He sings it because it's a story, and because it belongs to that time of year, and because it feels like ours.
