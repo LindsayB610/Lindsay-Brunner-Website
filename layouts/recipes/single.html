@@ -83,7 +83,7 @@
   </section>
   {{ end }}
 {{ else }}
-  {{ $allRecipes := where .Site.RegularPages "Type" "recipes" }}
+  {{ $allRecipes := where (where .Site.RegularPages "Type" "recipes") "Draft" false }}
   {{ $otherRecipes := where $allRecipes "Permalink" "!=" .Permalink }}
   {{ $recentRecipes := $otherRecipes.ByDate.Reverse | first 3 }}
   {{ if $recentRecipes }}

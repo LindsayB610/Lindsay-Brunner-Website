@@ -6,7 +6,7 @@
       <p>{{ .Description }}</p>
     </div>
 
-    {{ $posts := .Pages }} {{ if $posts }}
+    {{ $posts := where .Pages "Draft" false }} {{ if $posts }}
     <!-- Featured post (first/most recent) -->
     {{ $featured := index $posts 0 }}
     <article class="featured-post">

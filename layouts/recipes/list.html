@@ -7,6 +7,7 @@
     </div>
 
     {{ $recipes := .Pages }}
+    {{ $recipes = where $recipes "Draft" false }}
     {{ $recipes = $recipes.ByDate.Reverse }}
 
     {{ if $recipes }}
