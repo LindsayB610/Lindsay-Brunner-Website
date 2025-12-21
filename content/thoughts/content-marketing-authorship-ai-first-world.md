@@ -4,7 +4,7 @@ date: 2025-12-15
 slug: "content-marketing-authorship-ai-first-world"
 description: "What happens when the value moves upstream, away from the words. On ghostwriting, AI, and the difference between words and judgment."
 subtitle: "Or: What happens when the value moves upstream, away from the words"
-draft: true
+draft: false
 ---
 I've ghostwritten for most of my career.
 
