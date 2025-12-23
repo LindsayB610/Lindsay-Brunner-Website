@@ -12,12 +12,14 @@ const aboutPagePath = path.join(publicDir, 'about', 'index.html');
 const error404Path = path.join(publicDir, '404.html');
 
 // Required front matter fields for thoughts posts
-const REQUIRED_THOUGHTS_FIELDS = ['title', 'date', 'description', 'subtitle', 'draft'];
-const OPTIONAL_THOUGHTS_FIELDS = ['slug', 'og_image', 'social_image'];
+// Note: 'date' is optional for drafts, but required when draft: false
+const REQUIRED_THOUGHTS_FIELDS = ['title', 'description', 'subtitle', 'draft'];
+const OPTIONAL_THOUGHTS_FIELDS = ['slug', 'date', 'og_image', 'social_image'];
 
 // Required front matter fields for recipes
-const REQUIRED_RECIPE_FIELDS = ['title', 'date', 'description', 'subtitle', 'draft', 'prepTime', 'cookTime', 'totalTime', 'recipeYield', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions'];
-const OPTIONAL_RECIPE_FIELDS = ['slug', 'og_image', 'social_image'];
+// Note: 'date' is optional for drafts, but required when draft: false
+const REQUIRED_RECIPE_FIELDS = ['title', 'description', 'subtitle', 'draft', 'prepTime', 'cookTime', 'totalTime', 'recipeYield', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions'];
+const OPTIONAL_RECIPE_FIELDS = ['slug', 'date', 'og_image', 'social_image'];
 
 // Default social image from config
 const DEFAULT_SOCIAL_IMAGE = '/images/social/default-og.png';
@@ -192,6 +194,12 @@ function validateFrontMatter() {
       }
     });
     
+    // Date is required when draft: false, optional for drafts
+    const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+    if (!isDraft && !frontMatter.date) {
+      errors.push(`${file}: Missing required field "date" (required when draft: false)`);
+    }
+    
     // Validate date format (should be YYYY-MM-DD)
     if (frontMatter.date) {
       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
@@ -245,6 +253,12 @@ function validateRecipeFrontMatter() {
       }
     });
     
+    // Date is required when draft: false, optional for drafts
+    const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+    if (!isDraft && !frontMatter.date) {
+      errors.push(`${file}: Missing required field "date" (required when draft: false)`);
+    }
+    
     // Validate date format (should be YYYY-MM-DD)
     if (frontMatter.date) {
       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
@@ -284,7 +298,7 @@ function validateRecipeFrontMatter() {
     
     // 🔒 ENFORCE: Published recipes MUST have social_image (manual review required)
     // This ensures OG images are reviewed before going live
-    const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+    // (isDraft already declared above)
     if (!isDraft && !frontMatter.social_image && !frontMatter.og_image) {
       errors.push(
         `${file}: Published recipes MUST have social_image or og_image set. ` +
