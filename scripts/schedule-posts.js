@@ -188,6 +188,11 @@ function processFile(filePath, type) {
     return { published: false, skipped: true, reason: 'Not a draft' };
   }
   
+  // Skip posts that are explicitly marked to not be auto-published
+  if (frontMatter.skip_scheduling === true) {
+    return { published: false, skipped: true, reason: 'Scheduling skipped (skip_scheduling: true)' };
+  }
+  
   // Check if date has passed
   if (!isDatePassed(frontMatter.date)) {
     return { published: false, skipped: true, reason: 'Date not yet reached' };

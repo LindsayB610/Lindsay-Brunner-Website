@@ -5,6 +5,7 @@ slug: "alices-restaurant-family-ritual"
 description: "On letting a counterculture folk monologue become a family ritual, and trusting that meaning will arrive when the listener is ready."
 subtitle: "Or: How you pass on the idea that the world is allowed to be questioned"
 draft: true
+skip_scheduling: true
 ---
 There's something deeply right about a child wandering around singing a counterculture, anti-authoritarian folk monologue as a seasonal ritual.
 
