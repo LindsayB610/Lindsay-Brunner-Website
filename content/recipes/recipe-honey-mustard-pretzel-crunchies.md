@@ -79,7 +79,7 @@ Pairs especially well with:
 
 Use basil Dijon mustard in place of standard Dijon.
 
-Basil reads sweeter once toasted, so keep the honey restrained, you can lower it to 1 and 1/2 Tbsp. If you want to ground the herbal note, a tiny pinch of black pepper works well.
+Basil reads sweeter once toasted, so keep the honey restrained, you can lower it to 1½ Tbsp. If you want to ground the herbal note, a tiny pinch of black pepper works well.
 
 Pairs especially well with:
 - Creamy cheeses
