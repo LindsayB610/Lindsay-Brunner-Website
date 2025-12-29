@@ -30,23 +30,23 @@ recipeInstructions:
   - "Remove from oven and let cool completely on the pan. They will continue to crisp as they cool."
 ---
 
-These pretzels started as a TikTok save and turned into one of those quietly essential party snacks (crunchy, savory-forward, lightly sweet, and designed to sit happily next to cheese rather than overpower it).
+These pretzels started as a TikTok save and turned into one of those quietly essential party snacks (crunchy, savory-forward, lightly sweet, and designed to sit happily next to your cheese board rather than overpower it).
 
 The original inspiration came from an Instagram post by [Sally's Baking Addiction](https://www.instagram.com/sallysbakeblog/), whose honey mustard pretzel recipe is genuinely dangerous in the best way. This version is adapted for cheese boards and grazing: a little less sweet, a little less oily, and split into two mustard paths so you get contrast without complication.
 
 ---
 
-## Ingredients (base recipe)
+## Ingredients
 
-This recipe is written to be split into two half-batches so you can make both variations at once. If you want just one version, use the full amount of your chosen mustard.
+I tend to split this recipe and make two half-batches (regular Dijon for half and basil Dijon for the other). If you'd like to follow that path, divide each ingredient. If you want just one version, use the full amount of one chosen mustard.
 
 - 12–16 oz hard sourdough pretzels
-- 6 Tbsp neutral oil (vegetable or olive), divided
+- 6 Tbsp neutral oil (vegetable or olive)
 - 2 Tbsp honey, divided
-- 2 Tbsp Dijon mustard, divided
-- 2 Tsp ground mustard, divided
-- 1½ Tsp onion powder, divided
-- ½ Tsp fine salt, divided
+- 2 Tbsp Dijon mustard
+- 2 Tsp ground mustard
+- 1½ Tsp onion powder
+- ½ Tsp fine salt
 
 ---
 
@@ -79,7 +79,7 @@ Pairs especially well with:
 
 Use basil Dijon mustard in place of standard Dijon.
 
-Basil reads sweeter once toasted, so keep the honey restrained. If you want to ground the herbal note, a tiny pinch of black pepper works well.
+Basil reads sweeter once toasted, so keep the honey restrained, you can lower it to 1 and 1/2 Tbsp. If you want to ground the herbal note, a tiny pinch of black pepper works well.
 
 Pairs especially well with:
 - Creamy cheeses
