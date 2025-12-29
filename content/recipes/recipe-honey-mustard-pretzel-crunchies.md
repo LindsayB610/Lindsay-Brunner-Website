@@ -32,7 +32,7 @@ recipeInstructions:
 
 These pretzels started as a TikTok save and turned into one of those quietly essential party snacks (crunchy, savory-forward, lightly sweet, and designed to sit happily next to cheese rather than overpower it).
 
-The original inspiration came from Sally's Baking Addiction, whose honey mustard pretzel recipe is genuinely dangerous in the best way. This version is adapted for cheese boards and grazing: a little less sweet, a little less oily, and split into two mustard paths so you get contrast without complication.
+The original inspiration came from an Instagram post by [Sally's Baking Addiction](https://www.instagram.com/sallysbakeblog/), whose honey mustard pretzel recipe is genuinely dangerous in the best way. This version is adapted for cheese boards and grazing: a little less sweet, a little less oily, and split into two mustard paths so you get contrast without complication.
 
 ---
 
@@ -99,5 +99,5 @@ Pairs especially well with:
 
 ## Credit where it's due
 
-This recipe is adapted from a honey mustard pretzel recipe by Sally's Baking Addiction, which originally crossed my feed via TikTok and immediately earned a permanent save. If you're looking for the full snack-forward version, hers is absolutely worth making too.
+This recipe is adapted from a [honey mustard pretzel recipe by Sally's Baking Addiction](https://www.instagram.com/reel/DSutYXEjrYP/?igsh=MzRlODBiNWFlZA==), which originally crossed my feed via Instagram and immediately earned a permanent save. If you're looking for the full snack-forward version, hers is absolutely worth making too.
 
