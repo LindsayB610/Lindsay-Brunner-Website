@@ -186,3 +186,15 @@ td code {
     scroll-behavior: smooth !important;
   }
 }
+
+/* Style for coming soon items in dropdown menu */
+.nav-dropdown .dropdown-menu li span {
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--dark-text-muted);
+  font-weight: 500;
+  cursor: default;
+}
