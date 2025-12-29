@@ -51,7 +51,7 @@ This version is built to be a bit more forgiving. The ingredient list looks fami
 - Small pinch fine salt (optional, but nice for balance)
 - Gel food coloring, assorted colors (gel strongly preferred over liquid)
 
-⸻
+---
 
 ## Method
 
@@ -108,7 +108,7 @@ This version is built to be a bit more forgiving. The ingredient list looks fami
    - Fridge: up to 2 weeks
    - Freezer: up to 1 month; thaw in the fridge, then bring to room temp before serving for the best texture
 
-⸻
+---
 
 ## Notes, swaps, and guardrails
 
@@ -126,7 +126,7 @@ This version is built to be a bit more forgiving. The ingredient list looks fami
 
 - The trade‑off: more sugar = firmer, sweeter mints. If you prefer less sweet, get as close as you can to non‑sticky with the least extra sugar that still dries out well.
 
-### Peppermint & flavor options
+### Peppermint and flavor options
 
 - 1/2 tsp peppermint extract gives a gentle mint. For a stronger hit, edge up toward 3/4 tsp, tasting as you go.
 
@@ -140,7 +140,7 @@ This version is built to be a bit more forgiving. The ingredient list looks fami
 
 - For that pastel "wedding mint" look, stop as soon as the color is uniform and soft. These go from "barely tinted" to "neon" fast.
 
-### Drying & texture expectations
+### Drying and texture expectations
 
 - These are meant to be firm on the outside and creamy inside, not rock‑hard like a candy cane. After drying, you should be able to bite through one without effort, but it shouldn't smear if you stack them.
 

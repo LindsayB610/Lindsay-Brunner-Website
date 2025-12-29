@@ -14,24 +14,24 @@ recipeCategory: "Dessert"
 recipeCuisine: "American"
 recipeIngredient:
   - "1 stick (8 Tbsp) unsalted butter, softened"
-  - "1 cup granulated sugar"
+  - "1 Cup granulated sugar"
   - "2 large eggs"
-  - "2 cups all‑purpose flour"
+  - "2 Cups all‑purpose flour"
   - "2 teaspoons baking powder"
   - "1 teaspoon ground cinnamon"
   - "⅛ teaspoon freshly grated nutmeg"
   - "½ teaspoon Diamond Crystal kosher salt"
-  - "¼ cup heavy cream"
-  - "¼ cup water"
+  - "¼ Cup heavy cream"
+  - "¼ Cup water"
   - "2 teaspoons vanilla extract"
   - "⅛ teaspoon almond extract"
-  - "¾ cup chopped pecans, lightly roasted"
-  - "½ cup packed light brown sugar"
+  - "¾ Cup chopped pecans, lightly roasted"
+  - "½ Cup packed light brown sugar"
   - "4 tablespoons unsalted butter, melted"
   - "2–3 tablespoons all‑purpose flour (2 Tbsp = more nut‑forward, 3 Tbsp = more streusel‑y)"
   - "Pinch Diamond Crystal kosher salt"
 recipeInstructions:
-  - "Preheat and prep the pan: Heat the oven to 350°F / 175°C. Grease a 9×5 loaf pan and line it with a strip of parchment so it overhangs the long sides for easy lifting later."
+  - "Preheat and prep the pan: Heat the oven to 350°F (175°C). Grease a 9×5 loaf pan and line it with a strip of parchment so it overhangs the long sides for easy lifting later."
   - "Make the pecan crumb topping: If you haven't already, lightly roast the chopped pecans until fragrant and let them cool. Stir together the brown sugar, 2 tablespoons flour, pecans, and a pinch of salt. Add the melted butter and mix until the topping forms clumps when squeezed. If it looks a bit too loose, stir in the extra tablespoon of flour. Pop the bowl in the fridge while you make the batter so the topping firms up and doesn't sink into the cake."
   - "Mix the cake batter: In a medium mixing bowl, cream the softened butter and granulated sugar together with a hand mixer (or vigorous whisk) until light and fluffy, 2–3 minutes. Beat in the eggs one at a time, mixing until smooth after each addition. In a separate bowl, whisk together the flour, baking powder, cinnamon, nutmeg, and salt. In a measuring cup, combine the heavy cream and water. Add about half of the dry mixture to the butter–sugar–egg mixture and mix on low just until the flour disappears. Pour in the cream‑and‑water mixture and mix again briefly. Add the remaining dry ingredients and mix just until combined. Stir in the vanilla and almond extract by hand with a spatula, scraping down the sides and bottom of the bowl."
   - "Assemble the loaf: Scrape the batter into the prepared loaf pan and smooth the top gently. Break up the chilled pecan crumb topping with your fingers and scatter it evenly over the batter in a thick, bumpy layer. Press very lightly so it adheres without compacting or sinking."
@@ -44,7 +44,7 @@ This is a tender cinnamon loaf cake baked in a standard loaf pan and finished wi
 ## Snapshot
 
 - **Implements:** medium mixing bowl; small bowl; hand mixer (or sturdy whisk); rubber spatula; 9×5 loaf pan; parchment
-- **Oven setting:** 350°F / 175°C for 45–55 minutes
+- **Oven setting:** 350°F (175°C) for 45–55 minutes
 - **Batch size:** one 9×5 loaf (about 8–10 slices)
 
 ## Ingredients
@@ -52,14 +52,14 @@ This is a tender cinnamon loaf cake baked in a standard loaf pan and finished wi
 ### Cake
 
 - 1 stick (8 Tbsp) unsalted butter, softened
-- 1 cup granulated sugar
+- 1 Cup granulated sugar
 - 2 large eggs
-- 2 cups all‑purpose flour
+- 2 Cups all‑purpose flour
 - 2 teaspoons baking powder
 - 1 teaspoon ground cinnamon
 - ⅛ teaspoon freshly grated nutmeg
 - ½ teaspoon Diamond Crystal kosher salt
-- ½ cup liquid (see note)
+- ½ Cup liquid (see note)
 - 2 teaspoons vanilla extract
 - ⅛ teaspoon almond extract
 
@@ -71,8 +71,8 @@ Use ¼ cup heavy cream mixed with ¼ cup water to stand in for the ½ cup milk f
 
 (If you ever have leftover topping from the [Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole/), you can use about 1½ cups of that here. Otherwise, make this fresh.)
 
-- ¾ cup chopped pecans, lightly toasted
-- ½ cup packed light brown sugar
+- ¾ Cup chopped pecans, lightly toasted
+- ½ Cup packed light brown sugar
 - 4 tablespoons unsalted butter, melted
 - 2–3 tablespoons all‑purpose flour (2 Tbsp = more nut‑forward, 3 Tbsp = more streusel‑y)
 - Pinch Diamond Crystal kosher salt
@@ -85,11 +85,11 @@ Lightly roast the pecans in a dry skillet or a 350°F oven until fragrant, then 
 
 1. **Preheat and prep the pan.**
 
-   Heat the oven to 350°F / 175°C. Grease a 9×5 loaf pan and line it with a strip of parchment so it overhangs the long sides for easy lifting later.
+   Heat the oven to 350°F (175°C). Grease a 9×5 loaf pan and line it with a strip of parchment so it overhangs the long sides for easy lifting later.
 
 2. **Make the pecan crumb topping.**
 
-   Toast the pecans: Heat oven to 350°F / 175°C. Spread chopped pecans on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter).
+   Toast the pecans: Heat oven to 350°F (175°C). Spread chopped pecans on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter).
 
    Stir together the brown sugar, 2 tablespoons flour, cooled toasted pecans, and a pinch of salt. Add the melted butter and mix until the topping forms clumps when squeezed. If it looks a bit too loose, stir in the extra tablespoon of flour. Pop the bowl in the fridge while you make the batter so the topping firms up and doesn't sink into the cake.
 

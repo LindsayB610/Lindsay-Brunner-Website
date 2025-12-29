@@ -19,9 +19,9 @@ recipeIngredient:
 recipeInstructions:
   - "Rack + foil setup: Line a rimmed sheet pan with foil. Set your wire rack on top. If you want extra smoke insurance, pour about ¼ cup water into the pan (under the rack)."
   - "Lay out the bacon: Arrange bacon slices on the rack in a single layer. A little touching is fine. Overlapping is not."
-  - "Cold-start bake at 350°F: Put the pan in a cold oven (middle rack is best), then set the oven to 350°F / 175°C. Start checking at 20 minutes."
+  - "Cold-start bake at 350°F: Put the pan in a cold oven (middle rack is best), then set the oven to 350°F (175°C). Start checking at 20 minutes."
   - "Rotate (and keep going): At ~20–25 minutes, rotate the pan for even browning. Keep baking until the fat is mostly rendered and the bacon is as crisp as you want. For thick-cut bacon, total bake time is usually 30–45 minutes."
-  - "Optional crisp finish: If the bacon looks rendered but you want a bit more edge-crunch, bump the oven to 400°F / 205°C for 2–5 minutes. Watch closely here—home cures sometimes have sugar, and sugar is chaotic."
+  - "Optional crisp finish: If the bacon looks rendered but you want a bit more edge-crunch, bump the oven to 400°F (205°C) for 2–5 minutes. Watch closely here (home cures sometimes have sugar, and sugar is chaotic)."
   - "Rest (don't skip): Lift the rack to let excess fat drip, then transfer bacon to paper towels (or just blot lightly). Let it rest 3–5 minutes. It crisps a little more as it cools."
   - "Save the bacon fat: Carefully pour the drippings into a heatproof jar/bowl. Do not pour it down your sink unless you enjoy plumbing-based side quests."
 ---
@@ -33,7 +33,7 @@ This method is tuned specifically for **very thick, hand‑cut, home‑cured bac
 ## Snapshot
 
   * Implements: rimmed sheet pan; wire rack; foil (for sanity); tongs; paper towels; heatproof jar/bowl for bacon fat (optional but highly encouraged)
-  * Oven setting: Cold start, then 350°F / 175°C (optional hot finish at 400°F / 205°C)
+  * Oven setting: Cold start, then 350°F (175°C) (optional hot finish at 400°F (205°C))
   * Batch size: 1 lb thick-cut bacon per sheet pan (don't crowd; use two pans if you need to)
 
 ## Ingredients
@@ -67,7 +67,7 @@ Arrange bacon slices on the rack in a single layer. A little touching is fine. O
 
   3. Cold-start bake at 350°F.
 
-Put the pan in a **cold oven** (middle rack is best), then set the oven to **350°F / 175°C**.
+Put the pan in a **cold oven** (middle rack is best), then set the oven to **350°F (175°C)**.
 
 Start checking at **20 minutes**.
 
@@ -79,7 +79,7 @@ For thick-cut bacon, total bake time is usually **30–45 minutes**.
 
   5. Optional crisp finish.
 
-If the bacon looks rendered but you want a bit more edge-crunch, bump the oven to **400°F / 205°C for 2–5 minutes**. Watch closely here—home cures sometimes have sugar, and sugar is chaotic.
+If the bacon looks rendered but you want a bit more edge-crunch, bump the oven to **400°F (205°C) for 2–5 minutes**. Watch closely here (home cures sometimes have sugar, and sugar is chaotic).
 
   6. Rest (don't skip).
 

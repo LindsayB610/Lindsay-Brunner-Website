@@ -14,35 +14,35 @@ recipeCategory: "Main Course"
 recipeCuisine: "American"
 recipeIngredient:
   - "3–4 lb (1.4–1.8 kg) bone-in, skin-on turkey legs and/or thighs"
-  - "4 tsp (1 tbsp + 1 tsp) Diamond Crystal kosher salt"
-  - "1½ tsp freshly ground black pepper"
-  - "1½ tsp garlic powder"
-  - "1 tsp onion powder"
-  - "1 tsp dried thyme"
-  - "1 tsp dried sage"
-  - "1 tsp sweet or smoked paprika"
-  - "1 tsp aluminum-free baking powder (optional, for extra crackly skin)"
+  - "4 Tsp (1 Tbsp + 1 Tsp) Diamond Crystal kosher salt"
+  - "1½ Tsp freshly ground black pepper"
+  - "1½ Tsp garlic powder"
+  - "1 Tsp onion powder"
+  - "1 Tsp dried thyme"
+  - "1 Tsp dried sage"
+  - "1 Tsp sweet or smoked paprika"
+  - "1 Tsp aluminum-free baking powder (optional, for extra crackly skin)"
   - "1½ lb (about 700 g) small potatoes, halved or cut into 1½-inch chunks"
   - "3 medium carrots or parsnips, peeled and cut into 1–2 inch pieces"
   - "1 large yellow or red onion, cut into thick wedges"
-  - "4–6 tbsp duck fat, melted (2–3 tbsp for veg, 2–3 tbsp for turkey gloss)"
-  - "1–1½ tsp Diamond Crystal kosher salt (for veg)"
+  - "4–6 Tbsp duck fat, melted (2–3 Tbsp for veg, 2–3 Tbsp for turkey gloss)"
+  - "1–1½ Tsp Diamond Crystal kosher salt (for veg)"
   - "Freshly ground black pepper (for veg)"
-  - "½ cup (120 ml) dry white wine, dry vermouth, or extra stock"
-  - "1 cup (240 ml) low-sodium chicken or turkey stock"
-  - "1–2 tsp lemon juice or sherry vinegar, to taste"
-  - "2 tbsp cold unsalted butter, cut into small cubes"
-  - "1 tsp Dijon mustard (optional)"
+  - "½ Cup (120 ml) dry white wine, dry vermouth, or extra stock"
+  - "1 Cup (240 ml) low-sodium chicken or turkey stock"
+  - "1–2 Tsp lemon juice or sherry vinegar, to taste"
+  - "2 Tbsp cold unsalted butter, cut into small cubes"
+  - "1 Tsp Dijon mustard (optional)"
   - "Flaky salt, for serving"
   - "Extra chopped fresh herbs (parsley, thyme, or sage), for serving"
 recipeInstructions:
   - "Mix the dry brine and season the turkey: In a small bowl, combine the salt, pepper, garlic powder, onion powder, thyme, sage, paprika, and baking powder (if using). Pat the turkey legs or thighs very dry with paper towels. Gently loosen a bit of skin on each piece with your fingers without tearing it. Sprinkle the spice mixture evenly over all sides of the turkey, including a little directly on the meat under the skin. You want a thin, even coat, not a thick crust. Set a wire rack over a rimmed baking sheet. Arrange the seasoned turkey pieces on the rack, skin side up, making sure they're not touching."
   - "Dry-brine and air-dry: Slide the tray into the fridge, uncovered, for at least 4 hours and up to 24 hours. At the short end (around 4 hours), you'll get good seasoning and noticeably better skin. At the long end (overnight), the salt fully diffuses and the skin dries out more, which is excellent news for future crispiness."
-  - "Prep the veg and bring the turkey closer to room temp: About 45 minutes before you want to start roasting, take the turkey out of the fridge so the chill comes off a bit while you deal with the veg. If you're making the roasted veg: in a large bowl, toss the potatoes, carrots/parsnips, and onion with 2–3 tbsp melted duck fat, the salt, and plenty of pepper until everything is coated. Spread the vegetables in an even layer on the same rimmed baking sheet under the rack (or on a second sheet if your rack doesn't fit over the veg). You want some space between pieces so they roast instead of steam."
-  - "Duck-fat gloss and the main roast: Heat the oven to 350°F / 175°C. Melt the duck fat for glossing if it's not already liquid. Using a brush or spoon, lightly coat the turkey skin with duck fat. Aim for a thin, even sheen (not drips or puddles). Roast on the middle rack for 35–45 minutes, rotating the tray once halfway through, until the veg are starting to brown at the edges and soften, and the thickest part of the largest piece of turkey reads around 160–165°F (71–74°C). Actual time will depend on how big your legs/thighs are; some sets will take closer to 50–60 minutes before the finish."
-  - "Hit it with a hot finish for crisp skin: Once the turkey is near 160–165°F, crank the oven to 425°F / 220°C (or 400°F / 200°C on convection) and continue roasting for 10–15 minutes, until the skin is deep golden and crisp, and the thickest part of each piece reads 175–180°F (79–82°C). For ultra-shattery skin, you can switch to the broiler for the last 2–4 minutes. Keep the door cracked and watch closely; 'perfectly bronzed' can become 'campfire' quickly under a broiler."
+  - "Prep the veg and bring the turkey closer to room temp: About 45 minutes before you want to start roasting, take the turkey out of the fridge so the chill comes off a bit while you deal with the veg. If you're making the roasted veg: in a large bowl, toss the potatoes, carrots/parsnips, and onion with 2–3 Tbsp melted duck fat, the salt, and plenty of pepper until everything is coated. Spread the vegetables in an even layer on the same rimmed baking sheet under the rack (or on a second sheet if your rack doesn't fit over the veg). You want some space between pieces so they roast instead of steam."
+  - "Duck-fat gloss and the main roast: Heat the oven to 350°F (175°C). Melt the duck fat for glossing if it's not already liquid. Using a brush or spoon, lightly coat the turkey skin with duck fat. Aim for a thin, even sheen (not drips or puddles). Roast on the middle rack for 35–45 minutes, rotating the tray once halfway through, until the veg are starting to brown at the edges and soften, and the thickest part of the largest piece of turkey reads around 160–165°F (71–74°C). Actual time will depend on how big your legs/thighs are; some sets will take closer to 50–60 minutes before the finish."
+  - "Hit it with a hot finish for crisp skin: Once the turkey is near 160–165°F, crank the oven to 425°F (220°C) (or 400°F (200°C) on convection) and continue roasting for 10–15 minutes, until the skin is deep golden and crisp, and the thickest part of each piece reads 175–180°F (79–82°C). For ultra-shattery skin, you can switch to the broiler for the last 2–4 minutes. Keep the door cracked and watch closely; 'perfectly bronzed' can become 'campfire' quickly under a broiler."
   - "Rest the turkey and finish the veg: Transfer the turkey pieces to a plate or board, tent very loosely with foil, and let them rest 10–15 minutes. If the vegetables need a bit more color, leave them in the hot oven for a few extra minutes while the turkey rests, stirring once, until the edges are caramelized and the centers are tender."
-  - "Make a quick pan sauce: When the veg are done, transfer them to a serving bowl and keep warm. Carefully pour off some of the fat from the pan, leaving about 2–3 tbsp plus all the browned bits. Either set the baking sheet across two burners (medium heat, if your setup allows) or scrape everything into a saucepan. Add the wine or vermouth. Let it simmer and bubble, scraping up the browned bits with a wooden spoon, until the liquid reduces by about half. Pour in the stock and simmer again until slightly thickened and glossy, 5–8 minutes. Take the pan off the heat and whisk in the cold butter, a cube or two at a time, until the sauce is silky. Taste and adjust with lemon juice or sherry vinegar for brightness, plus salt and pepper as needed. If you're using Dijon, whisk it in now."
+  - "Make a quick pan sauce: When the veg are done, transfer them to a serving bowl and keep warm. Carefully pour off some of the fat from the pan, leaving about 2–3 Tbsp plus all the browned bits. Either set the baking sheet across two burners (medium heat, if your setup allows) or scrape everything into a saucepan. Add the wine or vermouth. Let it simmer and bubble, scraping up the browned bits with a wooden spoon, until the liquid reduces by about half. Pour in the stock and simmer again until slightly thickened and glossy, 5–8 minutes. Take the pan off the heat and whisk in the cold butter, a cube or two at a time, until the sauce is silky. Taste and adjust with lemon juice or sherry vinegar for brightness, plus salt and pepper as needed. If you're using Dijon, whisk it in now."
   - "Serve: Serve each person a whole leg/thigh or cut the meat off the bone into thick slices. Spoon the roasted veg onto plates, top with turkey, and drizzle everything with pan sauce. Finish with flaky salt and a scatter of fresh herbs."
 ---
 I love Thanksgiving flavors, but I do not always love managing a whole turkey the size of a small meteor. Dark meat, on the other hand? That I will absolutely engineer a recipe around.
@@ -62,25 +62,25 @@ So, let's get started.
 ## Snapshot
 
 - **Implements:** mixing bowl; small bowl or jar for the rub; wire rack; rimmed baking sheet; parchment paper (optional); instant-read thermometer; small saucepan or the baking sheet over a burner for pan sauce; tongs
-- **Oven setting:** 350°F / 175°C to roast, then 425°F / 220°C or broiler for a hot finish (about 45–60 minutes of oven time, depending on piece size)
+- **Oven setting:** 350°F (175°C) to roast, then 425°F (220°C) or broiler for a hot finish (about 45–60 minutes of oven time, depending on piece size)
 - **Batch size:** 3–4 lb (1.4–1.8 kg) bone-in, skin-on turkey legs and/or thighs (4–6 pieces), generously serving 4 with veg
 
 ---
 
 ## Ingredients
 
-### Turkey & dry brine
+### Turkey and dry brine
 
 - 3–4 lb (1.4–1.8 kg) bone-in, skin-on turkey legs and/or thighs
-- 4 tsp (1 tbsp + 1 tsp) Diamond Crystal kosher salt
-  - If using Morton kosher or fine sea salt, start with 2½–3 tsp
-- 1½ tsp freshly ground black pepper
-- 1½ tsp garlic powder
-- 1 tsp onion powder
-- 1 tsp dried thyme
-- 1 tsp dried sage
-- 1 tsp sweet or smoked paprika
-- 1 tsp aluminum-free baking powder (optional, for extra crackly skin)
+- 4 Tsp (1 Tbsp + 1 Tsp) Diamond Crystal kosher salt
+  - If using Morton kosher or fine sea salt, start with 2½–3 Tsp
+- 1½ Tsp freshly ground black pepper
+- 1½ Tsp garlic powder
+- 1 Tsp onion powder
+- 1 Tsp dried thyme
+- 1 Tsp dried sage
+- 1 Tsp sweet or smoked paprika
+- 1 Tsp aluminum-free baking powder (optional, for extra crackly skin)
 
 ### Duck-fat roasted veg (optional but highly recommended)
 
@@ -91,14 +91,14 @@ So, let's get started.
 - 1–1½ tsp Diamond Crystal kosher salt (less if using fine salt)
 - Freshly ground black pepper
 
-### Duck-fat gloss & pan sauce
+### Duck-fat gloss and pan sauce
 
-- 2–3 tbsp duck fat, melted (separate from what you used for the veg)
+- 2–3 Tbsp duck fat, melted (separate from what you used for the veg)
 - ½ cup (120 ml) dry white wine, dry vermouth, or extra stock
-- 1 cup (240 ml) low-sodium chicken or turkey stock
-- 1–2 tsp lemon juice or sherry vinegar, to taste
-- 2 tbsp cold unsalted butter, cut into small cubes
-- Optional: 1 tsp Dijon mustard
+- 1 Cup (240 ml) low-sodium chicken or turkey stock
+- 1–2 Tsp lemon juice or sherry vinegar, to taste
+- 2 Tbsp cold unsalted butter, cut into small cubes
+- Optional: 1 Tsp Dijon mustard
 
 ### To serve
 
@@ -136,7 +136,7 @@ So, let's get started.
 
 4. **Duck-fat gloss and the main roast.**
 
-   Heat the oven to 350°F / 175°C.
+   Heat the oven to 350°F (175°C).
 
    Melt the duck fat for glossing if it's not already liquid. Using a brush or spoon, lightly coat the turkey skin with duck fat. Aim for a thin, even sheen (not drips or puddles).
 
@@ -149,7 +149,7 @@ So, let's get started.
 
 5. **Hit it with a hot finish for crisp skin.**
 
-   Once the turkey is near 160–165°F, crank the oven to 425°F / 220°C (or 400°F / 200°C on convection) and continue roasting for 10–15 minutes, until:
+   Once the turkey is near 160–165°F, crank the oven to 425°F (220°C) (or 400°F (200°C) on convection) and continue roasting for 10–15 minutes, until:
 
    - The skin is deep golden and crisp
    - The thickest part of each piece reads 175–180°F (79–82°C)
@@ -229,4 +229,4 @@ The same technique works nicely for:
 - Bone-in, skin-on chicken thighs or drumsticks (shorter cook time)
 - Bone-in, skin-on turkey breast (watch the final temperature)
 
-For breast meat, start checking around 150°F / 66°C and pull it from the oven by 160–165°F / 71–74°C. You can still use a brief hot finish, but don't chase 180°F on white meat unless you like it on the dry side.
+For breast meat, start checking around 150°F (66°C) and pull it from the oven by 160–165°F (71–74°C). You can still use a brief hot finish, but don't chase 180°F on white meat unless you like it on the dry side.

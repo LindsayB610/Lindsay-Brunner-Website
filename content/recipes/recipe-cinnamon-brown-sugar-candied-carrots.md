@@ -63,7 +63,7 @@ The trick is two-stage cooking: par-cook the carrots first (fast + controlled), 
 - ½ tsp lemon juice or apple cider vinegar (adds "this tastes like a real dish" energy)
 - Optional: a little orange zest (cinnamon + orange = instant holiday brain)
 
-⸻
+---
 
 ## Method
 
@@ -97,7 +97,7 @@ The trick is two-stage cooking: par-cook the carrots first (fast + controlled), 
 
    Serve immediately while the glaze is at peak shine. These hold OK for a bit, but they're best right off the pan.
 
-⸻
+---
 
 ## Notes, swaps, and guardrails
 

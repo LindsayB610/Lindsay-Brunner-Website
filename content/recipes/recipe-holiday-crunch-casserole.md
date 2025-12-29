@@ -22,7 +22,7 @@ recipeIngredient:
   - "3/4 teaspoon seasoned salt"
   - "1 (3 oz) can French fried onion rings (Durkee or similar), divided"
 recipeInstructions:
-  - "Heat the oven; prep the dish. Heat oven to 350 F / 175 C. Spray a 2-quart casserole dish with nonstick spray."
+  - "Heat the oven; prep the dish. Heat oven to 350°F (175°C). Spray a 2-quart casserole dish with nonstick spray."
   - "Cook the macaroni. Boil the elbow macaroni in well-salted water until just shy of al dente (you want a little bite left; it'll keep cooking in the oven). Drain well."
   - "Brown the beef. While the pasta cooks, brown the ground beef in a skillet over medium-high heat, breaking it up as you go. When no pink remains, drain off excess fat."
   - "Mix the filling. In a large bowl, combine the drained macaroni, browned beef, cream of celery soup, whole tomatoes with their juice (crush the tomatoes with your hands or a spoon), shredded cheddar, diced green pepper, and seasoned salt. Stir until everything is coated in the saucy mixture."
@@ -42,7 +42,7 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 ## Snapshot
 
 - **Implements:** 2-quart casserole dish (or 8x8 or 9x9 baking dish); 10–12 inch skillet; medium pot for pasta; colander
-- **Oven:** 350 F / 175 C
+- **Oven:** 350°F (175°C)
 
 ## Ingredients
 
@@ -60,13 +60,13 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 
 - 1 (3 oz) can French fried onion rings (Durkee or similar), divided
 
-⸻
+---
 
 ## Method
 
 1. **Heat the oven; prep the dish.**
 
-   Heat oven to 350 F / 175 C. Spray a 2-quart casserole dish with nonstick spray.
+   Heat oven to 350°F (175°C). Spray a 2-quart casserole dish with nonstick spray.
 
 2. **Cook the macaroni.**
 
@@ -96,7 +96,7 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 
    Let the casserole stand 5–10 minutes so it stops molten-lava bubbling and sets up a bit. Scoop into bowls and serve.
 
-⸻
+---
 
 ## Notes, swaps, and guardrails
 
@@ -105,7 +105,7 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 - Cream of celery is classic here, but cream of mushroom or cream of chicken also work.
 - Whole tomatoes are nice because you can crush them into chunky pieces, but diced tomatoes in juice are fine if that's what's in your pantry.
 
-### Meat & veg options
+### Meat and veg options
 
 - Ground turkey or chicken can sub for the beef; just don't use super-lean meat or it'll dry out.
 - Want more veg? Add another 1/4–1/2 cup diced bell pepper or toss in a handful of frozen peas or corn with the filling.
@@ -115,9 +115,9 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 - The onions go in twice on purpose: a hidden middle layer that softens into almost-onion-soup vibes, and a top layer that stays shatter-crisp.
 - If you're making this ahead, hold back the top layer of onions and add them right before the final 5 minutes of baking.
 
-### Make-ahead & leftovers
+### Make-ahead and leftovers
 
 - Assemble the casserole up through step 5, cover, and refrigerate up to 24 hours. Bake straight from the fridge, adding 5–10 extra minutes before you add the final onion layer.
-- Leftovers reheat well in a 325 F / 165 C oven, covered with foil for 10–15 minutes. Add a fresh sprinkle of fried onions at the end if you want to relive the full crunch glory.
+- Leftovers reheat well in a 325°F (165°C) oven, covered with foil for 10–15 minutes. Add a fresh sprinkle of fried onions at the end if you want to relive the full crunch glory.
 
 This is not health food. It is exactly the kind of nostalgic, crunchy, creamy casserole that quietly makes hard weeks a little softer.

@@ -36,10 +36,10 @@ recipeIngredient:
   - "Turkey gravy, piping hot, for serving"
 recipeInstructions:
   - "Make the turkey sausage: In a bowl, combine turkey, panko, 1 egg, milk/stock, salt, sage, thyme, pepper, nutmeg, garlic, and 1–1½ tbsp melted butter/oil. Mix gently until cohesive and slightly tacky (not pasty). Cook a tiny test patty to check seasoning; adjust salt/herbs if needed. Chill while you make the stuffing."
-  - "Cook, cool, and set the Stove Top (1 egg per box): In a saucepan, melt 2 tbsp butter over medium heat. Sauté onion and celery until softened and lightly golden at the edges (5–7 minutes). Add about 75–80% of the liquid the box calls for; bring to a boil. Stir in Stove Top, cover, and take off heat to hydrate. Cool it quickly: spread the stuffing on a sheet tray and refrigerate until cool to the touch (15–20 minutes). Bind lightly, then set: beat 1 egg and fold it through the entire batch of cooled stuffing. Spread in a thin layer (¼\") on the tray and bake at 350°F / 175°C for 6–10 minutes, stirring once, just to drive off excess moisture and lightly set the egg (not to brown). Cool 5 minutes. Why this step: using 1 egg for the whole box keeps the \"jacket\" cohesive without turning wet; setting it briefly prevents sogginess and keeps the side portion safe to eat."
+  - "Cook, cool, and set the Stove Top (1 egg per box): In a saucepan, melt 2 Tbsp butter over medium heat. Sauté onion and celery until softened and lightly golden at the edges (5–7 minutes). Add about 75–80% of the liquid the box calls for; bring to a boil. Stir in Stove Top, cover, and take off heat to hydrate. Cool it quickly: spread the stuffing on a sheet tray and refrigerate until cool to the touch (15–20 minutes). Bind lightly, then set: beat 1 egg and fold it through the entire batch of cooled stuffing. Spread in a thin layer (¼\") on the tray and bake at 350°F (175°C) for 6–10 minutes, stirring once, just to drive off excess moisture and lightly set the egg (not to brown). Cool 5 minutes. Why this step: using 1 egg for the whole box keeps the \"jacket\" cohesive without turning wet; setting it briefly prevents sogginess and keeps the side portion safe to eat."
   - "Form sausage cores and wrap in stuffing: Divide the sausage into 4 equal portions. On plastic wrap or parchment, roll each into a log 4–5 inches long and ¾–1 inch thick. On fresh plastic wrap, press a thin rectangle of the set stuffing (use about 1½–2 cups total for all four logs), ¼ inch thick and just longer than the sausage. Lay a sausage log on top and use the wrap to lift and close the stuffing around it like sushi, sealing into a neat cylinder. Twist ends gently to firm. Chill the four stuffing‑wrapped logs 15–20 minutes (or 8–10 minutes in the freezer) until firm. If the stuffing feels loose: sprinkle in 2–4 tbsp panko (or a handful of dry Stove Top crumbs), fold, rest 5 minutes, and proceed."
-  - "Wrap in puff pastry: Heat oven to 400°F / 200°C. Line a baking sheet with parchment. Roll the pastry to about 10×12 inches and cut into 4 equal rectangles. For each chilled log: place in the center, brush one long edge of pastry with egg wash, fold the other edge over, overlap to seal, then roll seam‑side down. Leave the ends open (sausage‑roll style). Cut 2–3 small diagonal vents on top; brush tops/sides with egg wash. Optional sprinkle: flaky salt or seeds."
-  - "Bake and rest: Bake 22–28 minutes, rotating the tray halfway, until pastry is deeply golden and the sausage center reads 165°F / 74°C on an instant‑read thermometer. If tops brown too fast while the center lags, loosely tent with foil for the final minutes. Rest 5–10 minutes before serving. Dunk in hot turkey gravy."
+  - "Wrap in puff pastry: Heat oven to 400°F (200°C). Line a baking sheet with parchment. Roll the pastry to about 10×12 inches and cut into 4 equal rectangles. For each chilled log: place in the center, brush one long edge of pastry with egg wash, fold the other edge over, overlap to seal, then roll seam‑side down. Leave the ends open (sausage‑roll style). Cut 2–3 small diagonal vents on top; brush tops/sides with egg wash. Optional sprinkle: flaky salt or seeds."
+  - "Bake and rest: Bake 22–28 minutes, rotating the tray halfway, until pastry is deeply golden and the sausage center reads 165°F (74°C) on an instant‑read thermometer. If tops brown too fast while the center lags, loosely tent with foil for the final minutes. Rest 5–10 minutes before serving. Dunk in hot turkey gravy."
 ---
 
 I'm starting to prep for Thanksgiving 2025, but I literally cannot be convinced to roast a turkey this year. So instead I'm doing a mashed up hybrid of classic British sausage rolls, holiday turkey flavors, and the architecture of a Wellington that can be dunked into a vat of gravy. Because of course.
@@ -55,7 +55,7 @@ So, let's get started!
 
 ## Snapshot
 - **Implements:** mixing bowls; plastic wrap; rimmed baking sheet; parchment paper; sharp knife; instant-read thermometer
-- **Oven setting:** 400°F / 200°C (about 22–28 minutes)
+- **Oven setting:** 400°F (200°C) (about 22–28 minutes)
 - **Batch size:** 4 hearty main-dish rolls (a reasonable amount for weeknight dinner testing at my house, which I'll double for the day-of)
 
 ## Ingredients
@@ -103,7 +103,7 @@ So, let's get started!
 
    Cool it quickly: spread the stuffing on a sheet tray and refrigerate until cool to the touch (15–20 minutes).
 
-   Bind lightly, then set: beat 1 egg and fold it through the entire batch of cooled stuffing. Spread in a thin layer (¼") on the tray and bake at 350°F / 175°C for 6–10 minutes, just to drive off excess moisture and lightly set the egg (not to brown). Cool 5 minutes.
+   Bind lightly, then set: beat 1 egg and fold it through the entire batch of cooled stuffing. Spread in a thin layer (¼") on the tray and bake at 350°F (175°C) for 6–10 minutes, just to drive off excess moisture and lightly set the egg (not to brown). Cool 5 minutes.
 
 3. **Form sausage cores and wrap in stuffing**
 
@@ -115,13 +115,13 @@ So, let's get started!
 
 4. **Wrap in puff pastry**
 
-   Heat oven to 400°F / 200°C. Line a baking sheet with parchment.
+   Heat oven to 400°F (200°C). Line a baking sheet with parchment.
 
    Roll the pastry to about 10×12 inches and cut into 4 equal rectangles. For each chilled log: place in the center, brush one long edge of pastry with egg wash, fold the other edge over, overlap to seal, then roll seam‑side down. Leave the ends open (sausage‑roll style). Cut 2–3 small diagonal vents on top; brush tops/sides with egg wash. Optional sprinkle: flaky salt or seasme/poppy seeds.
 
 5. **Bake and rest**
 
-   Bake 22–28 minutes, rotating the tray halfway, until pastry is deeply golden and the sausage center reads 165°F / 74°C on an instant‑read thermometer. If tops brown too fast while the center lags, loosely tent with foil for the final minutes. Rest 5–10 minutes before serving. Dunk in hot turkey gravy.
+   Bake 22–28 minutes, rotating the tray halfway, until pastry is deeply golden and the sausage center reads 165°F (74°C) on an instant‑read thermometer. If tops brown too fast while the center lags, loosely tent with foil for the final minutes. Rest 5–10 minutes before serving. Dunk in hot turkey gravy.
 
 ---
 
@@ -149,7 +149,7 @@ Once the base works, you can stack flavor:
 - **Supercharged gravy:** Whisk a spoonful of soy sauce or Worcestershire into your turkey gravy for extra depth, or simmer it briefly with a few dried mushrooms, then strain.
 
 ### Make-ahead notes
-Sausage rolls in general freeze incredibly well—many recipes assemble, then freeze the unbaked rolls and bake straight from frozen or after a brief thaw.
+Sausage rolls in general freeze incredibly well (many recipes assemble, then freeze the unbaked rolls and bake straight from frozen or after a brief thaw).
 
 For this version:
 - You can fully assemble up through wrapping in pastry and cutting, then freeze on a tray until solid and transfer to a bag.

@@ -67,7 +67,7 @@ Cook time: 60 to 90 minutes
 
 Equipment: Dutch oven or heavy pot, knife, cutting board, wooden spoon
 
-⸻
+---
 
 ## Ingredients
 
@@ -115,7 +115,7 @@ Equipment: Dutch oven or heavy pot, knife, cutting board, wooden spoon
 - 1 quarter teaspoon smoked salt to start
 - optional 1 teaspoon European butter for a silky finish
 
-⸻
+---
 
 ## Instructions
 
@@ -163,7 +163,7 @@ Stir in the corn during the last 10 minutes so it stays bright.
 
 Taste and adjust. Add lemon juice, then add smoked salt a little at a time until the flavor feels round and balanced. Add a teaspoon of butter if you want a silky finish. Adjust salt, pepper or heat as needed.
 
-⸻
+---
 
 ## Notes, swaps and guardrails
 

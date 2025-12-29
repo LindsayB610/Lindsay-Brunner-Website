@@ -18,7 +18,7 @@ recipeIngredient:
   - "3 medium yellow onions, peeled and roughly chopped"
   - "1/3 cup plain yoghurt (about 80 g)"
   - "2 tbsp olive oil (use up to 3 tbsp if your meat is leaner)"
-  - "1 egg (optional, for a more 'bouncy' hackspieß texture—eggs are explicitly allowed in German döner labeling rules)"
+  - "1 egg (optional, for a more 'bouncy' hackspieß texture; eggs are explicitly allowed in German döner labeling rules)"
   - "4 tbsp sweet paprika"
   - "1 tsp smoked paprika (optional, more = smokier, less = cleaner)"
   - "1–1.5 tsp pul biber or Aleppo pepper (or 1 tsp regular chili flakes for 'normal,' 1.5 tsp for spicier)"
@@ -37,11 +37,11 @@ recipeIngredient:
   - "Sauces: garlic sauce (Knoblauchsoße), herb sauce (Kräutersoße), and scharf sauce (see notes for recipes)"
 recipeInstructions:
   - "Make the onion paste: Add the chopped onions to a food processor and blend until they're paste‑like. If you don't have a processor, grate them on the fine side of a box grater, catching all the juice."
-  - "Mix the meat: In a large bowl (or the bowl of a stand mixer), combine the lamb, beef, onion paste, yoghurt, olive oil, egg (if using), sweet paprika, smoked paprika (if using), pul biber or Aleppo pepper (or chili flakes), black pepper, garlic powder, onion powder, oregano, basil, marjoram or thyme, sugar, and the 2 tbsp Diamond Crystal kosher salt (or 1 tbsp + 3/4 tsp Morton kosher salt). For best results—a smooth, homogeneous texture rather than grainy hamburger—use a stand mixer with the paddle attachment on low to medium speed for 3–5 minutes, or pulse in a food processor in batches until the mixture is very smooth and paste‑like. If mixing by hand, knead vigorously for 5–7 minutes until the mixture is sticky, cohesive, and no longer feels grainy."
+  - "Mix the meat: In a large bowl (or the bowl of a stand mixer), combine the lamb, beef, onion paste, yoghurt, olive oil, egg (if using), sweet paprika, smoked paprika (if using), pul biber or Aleppo pepper (or chili flakes), black pepper, garlic powder, onion powder, oregano, basil, marjoram or thyme, sugar, and the 2 tbsp Diamond Crystal kosher salt (or 1 tbsp + 3/4 tsp Morton kosher salt). For best results (a smooth, homogeneous texture rather than grainy hamburger), use a stand mixer with the paddle attachment on low to medium speed for 3–5 minutes, or pulse in a food processor in batches until the mixture is very smooth and paste‑like. If mixing by hand, knead vigorously for 5–7 minutes until the mixture is sticky, cohesive, and no longer feels grainy."
   - "Cook a test patty and adjust seasoning: Pinch off 1–2 tablespoons of the mixture and flatten it into a small patty. Pan‑fry in a lightly oiled skillet over medium to medium‑high heat until cooked through and browned on both sides. Let it cool slightly, then taste. If it tastes flat, add a bit more salt. If you want more heat or spice, bump up the pul biber/Aleppo pepper or chili flakes. Mix any adjustments thoroughly back into the raw meat. If you change things a lot, cook one more mini patty to confirm."
   - "Chill the mixture (optional but helpful): Cover the bowl and refrigerate for 30–60 minutes. This firms the mix up and makes it easier to spread thinly, while the flavours settle in."
-  - "Preheat the oven: Heat the oven to 400°F / 200°C with a rack in the middle. Line a rimmed sheet pan with parchment for easier cleanup."
-  - "Spread the meat thinly on parchment: Cut several squares or rectangles of parchment, about 10–12 inches across. Working with one sheet at a time, spread a very thin, even layer of meat over the parchment—just a few millimetres thick—leaving a small clean border at the edges so it doesn't squeeze out when you roll."
+  - "Preheat the oven: Heat the oven to 400°F (200°C) with a rack in the middle. Line a rimmed sheet pan with parchment for easier cleanup."
+  - "Spread the meat thinly on parchment: Cut several squares or rectangles of parchment, about 10–12 inches across. Working with one sheet at a time, spread a very thin, even layer of meat over the parchment (just a few millimetres thick), leaving a small clean border at the edges so it doesn't squeeze out when you roll."
   - "Roll into tight logs: Starting from one edge, roll the parchment up tightly so the meat forms a compact log inside, like a jelly roll. Twist or fold the ends of the parchment to seal. Repeat with the remaining meat to make 2–4 logs, depending on size. Arrange the logs on the prepared rimmed sheet pan."
   - "First bake: cook through: Roast the logs at 400°F for 20 minutes. They'll firm up and release a good amount of fat."
   - "Drain, second bake, then unwrap and crisp: Carefully remove the pan from the oven and pour off the rendered fat and liquid into a heat‑safe container. Return the pan to the oven and bake for another 15 minutes, until the parchment is turning a deeper brown and the logs feel quite firm when pressed. Take the pan out and carefully unwrap the logs (watch for hot steam). Squeeze the lemon juice over the exposed meat. For extra crispy edges, return the unwrapped logs to the oven for 5–10 more minutes, until the surface is lightly browned in spots."
@@ -56,7 +56,7 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 
 ## Snapshot
 - **Implements:** food processor or box grater, stand mixer with paddle attachment or food processor (for meat mixing), large mixing bowl, parchment paper, rimmed sheet pan, small skillet for test patty
-- **Oven:** 400°F / 200°C
+- **Oven:** 400°F (200°C)
 
 ## Ingredients
 
@@ -66,7 +66,7 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 - 3 medium yellow onions, peeled and roughly chopped
 - 1/3 cup plain yoghurt (about 80 g)
 - 2 tbsp olive oil (use up to 3 tbsp if your meat is leaner)
-- 1 egg (optional, for a more "bouncy" hackspieß texture—eggs are explicitly allowed in German döner labeling rules)
+- 1 egg (optional, for a more "bouncy" hackspieß texture; eggs are explicitly allowed in German döner labeling rules)
 - 4 tbsp sweet paprika
 - 1 tsp smoked paprika (optional, more = smokier, less = cleaner)
 - 1–1.5 tsp pul biber or Aleppo pepper (or 1 tsp regular chili flakes for "normal," 1.5 tsp for spicier)
@@ -79,7 +79,7 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 - 1 tsp sugar
 - 2 tbsp Diamond Crystal kosher salt (or 1 tbsp + 3/4 tsp Morton kosher salt), plus more to taste after the test patty
 
-### To finish & serve
+### To finish and serve
 - Juice of 1–2 lemons
 - Warm pita or flatbreads
 
@@ -105,7 +105,7 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 
    In a large bowl (or the bowl of a stand mixer), combine the lamb, beef, onion paste, yoghurt, olive oil, egg (if using), sweet paprika, smoked paprika (if using), pul biber or Aleppo pepper (or chili flakes), black pepper, garlic powder, onion powder, oregano, basil, marjoram or thyme, sugar, and the 2 tbsp Diamond Crystal kosher salt (or 1 tbsp + 3/4 tsp Morton kosher salt).
 
-   **For best texture:** Use a stand mixer with the paddle attachment on low to medium speed for 3–5 minutes, or pulse in a food processor in batches until the mixture is very smooth and paste‑like. The goal is a homogeneous, smooth texture—not grainy like hamburger. If mixing by hand, knead vigorously for 5–7 minutes until the mixture is sticky, cohesive, and no longer feels grainy.
+   **For best texture:** Use a stand mixer with the paddle attachment on low to medium speed for 3–5 minutes, or pulse in a food processor in batches until the mixture is very smooth and paste‑like. The goal is a homogeneous, smooth texture (not grainy like hamburger). If mixing by hand, knead vigorously for 5–7 minutes until the mixture is sticky, cohesive, and no longer feels grainy.
 
 3. **Cook a test patty and adjust seasoning**
 
@@ -120,12 +120,12 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 
 5. **Preheat the oven**
 
-   Heat the oven to 400°F / 200°C with a rack in the middle. Line a rimmed sheet pan with parchment for easier cleanup.
+   Heat the oven to 400°F (200°C) with a rack in the middle. Line a rimmed sheet pan with parchment for easier cleanup.
 
 6. **Spread the meat thinly on parchment**
 
    - Cut several squares or rectangles of parchment, about 10–12 inches across.
-   - Working with one sheet at a time, spread a very thin, even layer of meat over the parchment—just a few millimetres thick—leaving a small clean border at the edges so it doesn't squeeze out when you roll.
+   - Working with one sheet at a time, spread a very thin, even layer of meat over the parchment (just a few millimetres thick), leaving a small clean border at the edges so it doesn't squeeze out when you roll.
 
 7. **Roll into tight logs**
 
@@ -163,9 +163,9 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 ### Heat and spice tuning
 - This is a Berlin/Bremen‑ish spice blend (cumin‑free). The sugar echoes the mild sweetness found in many German spice mixes and sauces.
 - For heat: Use 1 tsp pul biber or Aleppo pepper (or regular chili flakes) for "normal" heat, or 1.5 tsp for spicier. Pul biber and Aleppo pepper give a more complex, fruity heat than regular chili flakes.
-- Smoked paprika is optional—use more for a smokier profile, less (or none) for a cleaner taste. Adjust to taste after the test patty.
+- Smoked paprika is optional (use more for a smokier profile, less or none for a cleaner taste). Adjust to taste after the test patty.
 
-### Berlin/Bremen toppings & sauces
+### Berlin/Bremen toppings and sauces
 The meat can be 95% right and still "not taste like Berlin" if the sauces and salads are off. The "herb + garlic + scharf trinity" is very specifically Berlin, and Bremen slots right in culturally but with more willingness to throw cocktail/tzatziki into the mix.
 
 **Salad bar:**
@@ -182,7 +182,7 @@ These are simplified but hit the right lane for classic Berlin döner.
 
 ### Texture and mixing
 - **Mechanical mixing is key:** Using a stand mixer or food processor to mix the meat creates a smooth, homogeneous texture that's essential for authentic döner kebab. Hand mixing can leave the texture grainy and hamburger‑like. If you must mix by hand, knead very vigorously for at least 5–7 minutes until the mixture feels smooth and paste‑like.
-- **Optional egg binder:** Adding 1 egg creates a more "bouncy" hackspieß texture—eggs are explicitly allowed as part of döner mixtures in German labeling rules.
+- **Optional egg binder:** Adding 1 egg creates a more "bouncy" hackspieß texture (eggs are explicitly allowed as part of döner mixtures in German labeling rules).
 - The thinner you spread the meat before rolling, the more distinct the layers and the easier it is to slice into nice ribbons. Thick sheets will feel more like a meatloaf.
 
 ### Make‑ahead
@@ -191,6 +191,6 @@ These are simplified but hit the right lane for classic Berlin döner.
 
 ### Storage and reheat
 - Store leftover sliced meat in an airtight container in the fridge for up to 3 days.
-- Reheat in a hot nonstick skillet to re‑crisp the edges, or spread on a sheet pan and warm at 375°F / 190°C until sizzling.
+- Reheat in a hot nonstick skillet to re‑crisp the edges, or spread on a sheet pan and warm at 375°F (190°C) until sizzling.
 - The leftovers are excellent in rice bowls, salads, quesadillas, or on top of fries if you're living your best late‑night life.
 

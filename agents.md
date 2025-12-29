@@ -118,6 +118,32 @@ social_image: "/images/social/my-image.png"
 
 **File naming:** Use `recipe-` prefix (e.g., `recipe-bachan-pulled-pork.md`)
 
+**Section separators:** Use `---` (three dashes) as horizontal rules to separate major sections within recipe content. Do not use `⸻` (triple em dash) or other separator characters.
+
+**Temperature formatting:**
+- Always use degree symbols: `°F` and `°C`
+- Standard format: `200°F (93°C)` (Fahrenheit first, Celsius in parentheses)
+- For ranges: `160–165°F (71–74°C)`
+- Do not use slash format (`350°F / 175°C`) — use parentheses instead
+
+**Volume and measurement formatting:**
+- **Always capitalize abbreviations:** `Tbsp`, `Tsp`, `Cup`, `Cups` (not `tbsp`, `tsp`, `cup`, `cups`)
+- **Acceptable abbreviations:**
+  - `Tbsp` / `Tbsp` (tablespoon) — always abbreviate
+  - `Tsp` / `Tsp` (teaspoon) — always abbreviate
+  - `cup` / `cups` — can abbreviate in lists, spell out in narrative text
+  - `oz` (ounce) — always abbreviate
+  - `lb` (pound) — always abbreviate
+  - `g` (gram) — always abbreviate
+  - `ml` (milliliter) — always abbreviate
+  - `in` (inch) — can abbreviate in measurements like `1½-inch chunks`
+- **Always spell out:**
+  - `minutes` / `minute` (not `min`)
+  - `hours` / `hour` (not `hr`)
+  - `seconds` / `second` (not `sec`)
+- **Metric conversions:** Optional but helpful. Include when it adds clarity: `1 cup (240 ml)`, `2 Tbsp (30 g)`
+- **Fractions:** Use Unicode fractions when available: `½`, `⅓`, `¼`, `¾`; otherwise use `1/2`, `1/3`, etc.
+
 ## Testing
 
 **Always run tests after making changes:**
