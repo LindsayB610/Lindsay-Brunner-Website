@@ -146,4 +146,29 @@
     >
   </div>
 </section>
+
+<!-- Person JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ .Site.Params.author | jsonify }},
+  "url": {{ .Site.BaseURL | jsonify }},
+  "description": {{ .Site.Params.description | jsonify }},
+  "sameAs": [
+    {{- if .Site.Params.linkedin }}{{ .Site.Params.linkedin | jsonify }}{{ end }}
+    {{- if and .Site.Params.linkedin .Site.Params.twitter }},{{ end }}
+    {{- if .Site.Params.twitter }}{{ .Site.Params.twitter | jsonify }}{{ end }}
+    {{- if and .Site.Params.github (or .Site.Params.linkedin .Site.Params.twitter) }},{{ end }}
+    {{- if .Site.Params.github }}{{ .Site.Params.github | jsonify }}{{ end }}
+  ],
+  "jobTitle": "Content & Developer Relations Leader",
+  "knowsAbout": [
+    "Developer Advocacy",
+    "Content Strategy",
+    "Technical Writing",
+    "Developer Experience"
+  ]
+}
+</script>
 {{ end }}

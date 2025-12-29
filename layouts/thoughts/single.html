@@ -167,5 +167,71 @@
     </div>
   </div>
 </section>
+
+<!-- Article JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ .Title | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "datePublished": {{ (.Date.UTC.Format "2006-01-02T15:04:05Z") | jsonify }},
+  {{- if not .Lastmod.IsZero }}
+  "dateModified": {{ (.Lastmod.UTC.Format "2006-01-02T15:04:05Z") | jsonify }},
+  {{- else }}
+  "dateModified": {{ (.Date.UTC.Format "2006-01-02T15:04:05Z") | jsonify }},
+  {{- end }}
+  "description": {{ .Params.description | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ .Site.Params.author | jsonify }},
+    "url": {{ .Site.Params.linkedin | jsonify }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ .Site.Params.author | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }}
+  },
+  {{- if .Params.social_image }}
+  "image": {{ (.Params.social_image | absURL) | jsonify }},
+  {{- else if .Site.Params.default_social_image }}
+  "image": {{ (.Site.Params.default_social_image | absURL) | jsonify }},
+  {{- end }}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  }{{ if .Params.tags }},
+  "keywords": {{ .Params.tags | jsonify }}{{ end }}{{ if .Site.Params.show_reading_time }},
+  "timeRequired": {{ printf "PT%dM" .ReadingTime | jsonify }}{{ end }}
+}
+</script>
+
+<!-- Breadcrumbs JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {{ .Site.BaseURL | jsonify }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Thoughts",
+      "item": {{ (printf "%s/thoughts/" .Site.BaseURL) | jsonify }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ .Title | jsonify }},
+      "item": {{ .Permalink | jsonify }}
+    }
+  ]
+}
+</script>
 {{ end }}
 
