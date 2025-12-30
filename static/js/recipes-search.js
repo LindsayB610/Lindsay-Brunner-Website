@@ -132,15 +132,32 @@
     const results = fuse.search(query.trim());
     const matchedRecipes = results.map(result => result.item);
     const matchedPermalinks = new Set(matchedRecipes.map(r => r.permalink));
-
-    // Show/hide recipe elements
-    let visibleCount = 0;
+    
+    // Create a map of permalink to DOM element for quick lookup
+    const elementMap = new Map();
     allRecipeElements.forEach(({ element, href }) => {
-      if (href && matchedPermalinks.has(href)) {
+      if (href) {
+        elementMap.set(href, element);
+      }
+    });
+
+    // Reorder and show/hide recipe elements based on Fuse.js relevance order
+    let visibleCount = 0;
+    const recipesListContainer = recipesList;
+    
+    // First, hide all elements
+    allRecipeElements.forEach(({ element }) => {
+      element.style.display = 'none';
+    });
+    
+    // Then, show and reorder matched elements in relevance order
+    matchedRecipes.forEach(recipe => {
+      const element = elementMap.get(recipe.permalink);
+      if (element) {
         element.style.display = '';
+        // Move element to maintain relevance order (appendChild moves it if already in DOM)
+        recipesListContainer.appendChild(element);
         visibleCount++;
-      } else {
-        element.style.display = 'none';
       }
     });
 
