@@ -28,10 +28,7 @@
         {{- if $i }},{{ end }}
         {{ $ingredient | jsonify }}
       {{- end }}
-    ],
-    {{- end }}
-    {{- if $recipe.Params.recipeInstructions }}
-    "recipeInstructions": {{ delimit $recipe.Params.recipeInstructions " " | plainify | jsonify }},
+    ]{{ if $recipe.Params.social_image }},{{ end }}
     {{- end }}
     "permalink": {{ $recipe.RelPermalink | jsonify }}{{ if $recipe.Params.social_image }},
     "social_image": {{ $recipe.Params.social_image | jsonify }}{{ end }}

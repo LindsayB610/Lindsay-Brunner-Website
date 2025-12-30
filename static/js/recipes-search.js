@@ -17,8 +17,7 @@
       { name: 'subtitle', weight: 2 },
       { name: 'recipeCategory', weight: 1.5 },
       { name: 'recipeCuisine', weight: 1.5 },
-      { name: 'recipeIngredient', weight: 1 },
-      { name: 'recipeInstructions', weight: 0.5 }
+      { name: 'recipeIngredient', weight: 1 }
     ]
   };
 
