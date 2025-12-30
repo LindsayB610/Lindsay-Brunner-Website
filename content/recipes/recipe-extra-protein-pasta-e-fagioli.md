@@ -59,13 +59,16 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 ## Ingredients
 
-### Soup
+### Sausage and aromatics
 
 - 1 lb Italian sausage (½ lb sweet + ½ lb hot)
 - Olive oil
 - 1 medium onion, finely diced
 - 1 leek, thinly sliced and washed
 - 5 to 6 cloves garlic, minced
+
+### Spices and tomato base
+
 - 2 Tsp dried basil
 - 1 Tsp dried oregano
 - 1 Tsp dried thyme
@@ -74,12 +77,18 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 - Black pepper
 - 3 to 4 Tbsp tomato paste
 - 1 (24 oz) can crushed or ground tomatoes
-- 1 (15 oz) can cannellini beans, drained and rinsed
-- 1 cup dry ditalini pasta
+
+### Broth and beans
+
 - 6 to 7 cups water
 - 1 Knorr Rich Beef Stock Pot
 - 1 Tsp Better Than Bouillon chicken
 - ½ Tsp Better Than Bouillon vegetable
+- 1 (15 oz) can cannellini beans, drained and rinsed
+
+### Pasta and greens
+
+- 1 cup dry ditalini pasta
 - 1 cup spinach or kale (fresh or frozen)
 
 ### Finishing
@@ -92,17 +101,29 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 ## Method
 
-1. Brown the sausage. Warm a large heavy pot over medium heat with a small drizzle of olive oil. Add the sausage, break it up, and let it brown thoroughly. Transfer the browned sausage to a bowl with a slotted spoon.
+1. **Brown the sausage**
 
-2. Cook the aromatics. Add the onion and leek to the pot and cook until softened, stirring and scraping up browned bits. Add garlic and cook just until fragrant.
+   Warm a large heavy pot over medium heat with a small drizzle of olive oil. Add the sausage, break it up, and let it brown thoroughly. Transfer the browned sausage to a bowl with a slotted spoon.
 
-3. Build the base. Stir in the basil, oregano, thyme, rosemary, paprika, and black pepper. Add tomato paste and cook until it deepens to brick red.
+2. **Cook the aromatics**
 
-4. Simmer the soup. Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes.
+   Add the onion and leek to the pot and cook until softened, stirring and scraping up browned bits. Add garlic and cook just until fragrant.
 
-5. Cook the pasta. Add the ditalini and simmer until tender, stirring occasionally so it does not stick.
+3. **Build the base**
 
-6. Finish. Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice and a pinch of Vegeta if needed. Serve with the remaining Parmesan.
+   Stir in the basil, oregano, thyme, rosemary, paprika, and black pepper. Add tomato paste and cook until it deepens to brick red.
+
+4. **Simmer the soup**
+
+   Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes.
+
+5. **Cook the pasta**
+
+   Add the ditalini and simmer until tender, stirring occasionally so it does not stick.
+
+6. **Finish**
+
+   Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice and a pinch of Vegeta if needed. Serve with the remaining Parmesan.
 
 ---
 
