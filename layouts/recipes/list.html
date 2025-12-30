@@ -6,6 +6,33 @@
       <p>{{ .Description }}</p>
     </div>
 
+    <div class="recipe-search">
+      <label for="recipe-search-input" class="sr-only">Search recipes</label>
+      <div class="recipe-search-wrapper">
+        <input
+          type="text"
+          id="recipe-search-input"
+          class="recipe-search-input"
+          placeholder="Search recipes by title, ingredients, or category..."
+          aria-label="Search recipes"
+        />
+        <button
+          type="button"
+          id="recipe-search-clear"
+          class="recipe-search-clear"
+          aria-label="Clear search"
+          style="display: none;"
+        >
+          Clear
+        </button>
+      </div>
+      <div id="recipe-search-results-count" class="recipe-search-results-count" aria-live="polite" aria-atomic="true"></div>
+      <div id="recipe-search-empty" class="recipe-search-empty" style="display: none;">
+        <p>No recipes found. Try a different search term.</p>
+      </div>
+    </div>
+
+    <div id="recipes-list">
     {{ $recipes := .Pages }}
     {{ $recipes = where $recipes "Draft" false }}
     {{ $recipes = $recipes.ByDate.Reverse }}
@@ -38,7 +65,11 @@
       </p>
     </div>
     {{ end }}
+    </div>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha256-6jaqCoF6F4T3XyKN1x8nLjOBa5pLj4X1rfq6x1g5zGI=" crossorigin="anonymous"></script>
+<script src="/js/recipes-search.js"></script>
 {{ end }}
 

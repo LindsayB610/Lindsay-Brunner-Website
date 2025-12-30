@@ -198,3 +198,96 @@ td code {
   font-weight: 500;
   cursor: default;
 }
+
+/* Recipe search styles */
+.recipe-search {
+  margin-bottom: var(--space-xl);
+}
+
+.recipe-search-wrapper {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.recipe-search-input {
+  flex: 1;
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  color: var(--dark-text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.recipe-search-input:focus {
+  outline: none;
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 3px rgba(255, 27, 141, 0.1);
+}
+
+.recipe-search-input::placeholder {
+  color: var(--dark-text-muted);
+}
+
+.recipe-search-clear {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  color: var(--dark-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.recipe-search-clear:hover {
+  background: var(--dark-surface-lighter);
+  border-color: var(--color-pink);
+  color: var(--dark-text);
+}
+
+.recipe-search-clear:focus {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 2px;
+}
+
+.recipe-search-results-count {
+  color: var(--dark-text-secondary);
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  margin-bottom: var(--space-md);
+  min-height: 1.5rem;
+}
+
+.recipe-search-empty {
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--dark-text-muted);
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.recipe-search-empty p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+  .recipe-search-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .recipe-search-clear {
+    width: 100%;
+  }
+}
