@@ -8,7 +8,7 @@
 
   // Fuse.js configuration
   const FUSE_OPTIONS = {
-    threshold: 0.4,
+    threshold: 0.3, // Lower threshold = stricter matching (0.0 = exact, 1.0 = match anything)
     ignoreLocation: true,
     minMatchCharLength: 2,
     keys: [
