@@ -43,6 +43,7 @@
   let fuse = null;
   let allRecipes = [];
   let allRecipeElements = [];
+  let debounceTimer = null;
 
   // Initialize: cache recipe elements
   function initRecipeElements() {
@@ -105,15 +106,21 @@
 
   // Initialize search
   async function initSearch() {
-    initRecipeElements();
-    allRecipes = await loadIndex();
+    try {
+      initRecipeElements();
+      allRecipes = await loadIndex();
 
-    if (allRecipes.length === 0) {
-      return;
+      if (allRecipes.length === 0) {
+        console.warn('No recipes found in search index');
+        return;
+      }
+
+      // Initialize Fuse.js
+      fuse = new Fuse(allRecipes, FUSE_OPTIONS);
+      console.log(`Recipe search initialized with ${allRecipes.length} recipes`);
+    } catch (error) {
+      console.error('Error initializing recipe search:', error);
     }
-
-    // Initialize Fuse.js
-    fuse = new Fuse(allRecipes, FUSE_OPTIONS);
   }
 
   // Perform search
@@ -158,38 +165,57 @@
     resultsCount.textContent = '';
   }
 
-  // Debounce function
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
   // Event handlers
-  const debouncedSearch = debounce((query) => {
-    performSearch(query);
-  }, DEBOUNCE_DELAY);
-
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value;
+  function handleSearchInput(query) {
     if (query.trim()) {
       clearButton.style.display = '';
-      debouncedSearch(query);
+      // Clear any pending debounce
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+      // Debounce the search
+      debounceTimer = setTimeout(() => {
+        performSearch(query);
+      }, DEBOUNCE_DELAY);
     } else {
       clearButton.style.display = 'none';
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
       showAllRecipes();
+    }
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    handleSearchInput(e.target.value);
+  });
+
+  // Handle Enter key to search immediately (prevent any form submission)
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const query = e.target.value;
+      // Cancel any pending debounced search
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+        debounceTimer = null;
+      }
+      // Search immediately
+      if (query.trim()) {
+        performSearch(query);
+      } else {
+        showAllRecipes();
+      }
     }
   });
 
   clearButton.addEventListener('click', () => {
     searchInput.value = '';
     clearButton.style.display = 'none';
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+      debounceTimer = null;
+    }
     showAllRecipes();
     searchInput.focus();
   });
@@ -201,4 +227,3 @@
     initSearch();
   }
 })();
-
