@@ -38,7 +38,7 @@ recipeInstructions:
   - "Brown the sausage. Warm a large heavy pot over medium heat with a small drizzle of olive oil. Add the sausage, break it up, and let it brown thoroughly. Transfer the browned sausage to a bowl with a slotted spoon."
   - "Cook the aromatics. Add the onion and leek to the pot and cook until softened, stirring and scraping up browned bits. Add garlic and cook just until fragrant."
   - "Build the base. Stir in the Italian seasoning blend, rosemary, paprika (if using), and black pepper. Add tomato paste and cook until it deepens to brick red."
-  - "Simmer the soup. Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes. (If you're boiling your pasta seperately, add the pasta cooking time to this simmer step, something like an additional 10 minutes.) If you're usong a Parm rind, throw it in here."
+  - "Simmer the soup. Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes. (If you're boiling your pasta separately, add the pasta cooking time to this simmer step, something like an additional 10 minutes.) If you're using a Parm rind, throw it in here."
   - "Cook the pasta. Add the ditalini and simmer until tender, stirring occasionally so it does not stick. (Or boil separately, see Notes section.)"
   - "Finish. Stir in the greens until wilted. Fish out the Parm rind, if you added one. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan."
 ---
@@ -111,9 +111,9 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 4. **Simmer the soup**
 
-   Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes. (If you're boiling your pasta seperately, add the pasta cooking time to this simmer step, something like an additional 10 minutes.)
+   Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes. (If you're boiling your pasta separately, add the pasta cooking time to this simmer step, something like an additional 10 minutes.)
 
-   If you're usong a Parm rind, throw it in here.
+   If you're using a Parm rind, throw it in here.
 
 5. **Cook the pasta**
 
