@@ -31,7 +31,7 @@ We're all eating sweet potatoes right now, with cheese stuffed into the center, 
 
 Color me influenced... I have a sweet potato in the air fryer right now and a block of havarti in the fridge. (Dratted Safeway didn't have butterkase!) 
 
-I'm following the recipe of [Courtney Cook](https://www.tiktok.com/@courtneylcook), whose general approach to cooking tends to look  low effort until you realize it produces consistently better results than most optimized techniques. The key to this sweet poatato is the air fryer, yes, but more importantly, the refusal to rush the ending.
+I'm following the recipe of [Courtney Cook](https://www.tiktok.com/@courtneylcook), whose general approach to cooking tends to look  low effort until you realize it produces consistently better results than most optimized techniques. The key to this sweet potato is the air fryer, yes, but more importantly, the refusal to rush the ending.
 
 Courtney's sweet potato technique has made the rounds for good reason, including a [recent feature in People](https://people.com/courtney-cook-bales-shares-a-viral-cheese-stuffed-sweet-potato-11869400) that focused on her cheese-stuffed version and the unexpectedly perfect texture she gets from a hands-off approach. The base method is simple and flexible, which is exactly why it works.
 

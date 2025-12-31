@@ -11,7 +11,7 @@ There's a particular kind of room where someone eventually leans back, folds the
 
 Maybe you've been in that room. Big dreams, big decks, big adjectives. Circles labeled "Category King." Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
 
-In my career I've gotten to be in a few rooms like that, all at companies that were developer-focsed and convinced they were on the cusp of "creating a category."
+In my career I've gotten to be in a few rooms like that, all at companies that were developer-focused and convinced they were on the cusp of "creating a category."
 
 Here's the quieter truth:
 

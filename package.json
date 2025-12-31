@@ -19,10 +19,12 @@
     "test:html": "html-validate public/**/*.html",
     "test:links": "blc --recursive --exclude-external --filter-level 2 http://localhost:1313",
     "test:content": "node tests/content-checks.js",
+    "test:spell": "node tests/spell-check.js",
+    "test:spell:all": "node tests/spell-check.js --all",
     "test:og-images": "node tests/og-image-generation.test.js",
     "test:schedule": "node tests/schedule-posts.test.js",
     "test:search-json": "node tests/recipe-search-json.test.js",
-    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:og-images && npm run test:schedule && npm run test:search-json",
+    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json",
     "pretest": "npm run build",
     "schedule-posts": "node scripts/schedule-posts.js"
   },
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.56",
     "broken-link-checker": "^0.7.8",
+    "cspell": "^9.4.0",
     "html-validate": "^10.3.0",
     "js-yaml": "^4.1.0",
     "sharp": "^0.33.0"
