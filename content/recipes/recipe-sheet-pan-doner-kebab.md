@@ -95,8 +95,6 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 
 **Sauces:** Garlic sauce (Knoblauchsoße), herb sauce (Kräutersoße), and scharf sauce (see notes for recipes)
 
----
-
 ## Method
 
 1. **Make the onion paste**

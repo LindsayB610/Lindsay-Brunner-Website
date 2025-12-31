@@ -57,15 +57,11 @@ Alongside these duck-fat turkey pieces, I like serving:
 
 So, let's get started.
 
----
-
 ## Snapshot
 
 - **Implements:** mixing bowl; small bowl or jar for the rub; wire rack; rimmed baking sheet; parchment paper (optional); instant-read thermometer; small saucepan or the baking sheet over a burner for pan sauce; tongs
 - **Oven setting:** 350°F (175°C) to roast, then 425°F (220°C) or broiler for a hot finish (about 45–60 minutes of oven time, depending on piece size)
 - **Batch size:** 3–4 lb (1.4–1.8 kg) bone-in, skin-on turkey legs and/or thighs (4–6 pieces), generously serving 4 with veg
-
----
 
 ## Ingredients
 
@@ -104,8 +100,6 @@ So, let's get started.
 
 - Flaky salt
 - Extra chopped fresh herbs (parsley, thyme, or sage all work)
-
----
 
 ## Method
 
@@ -203,8 +197,6 @@ Elevating the turkey lets hot air circulate all around, including under the skin
 ### Use a thermometer, not the clock
 
 Ovens run hot or cool, and turkey legs come in wildly different sizes. Treat the timing as a guideline and the internal temperature as the truth.
-
----
 
 ## Why the dry brine + uncovered fridge time?
 

@@ -79,8 +79,6 @@ Use ¼ cup heavy cream mixed with ¼ cup water to stand in for the ½ cup milk f
 
 Lightly roast the pecans in a dry skillet or a 350°F oven until fragrant, then let them cool. In a small bowl, combine the brown sugar, 2 tablespoons flour, pecans, and a pinch of salt. Stir in the melted butter until everything is evenly moistened and clumpy. If you want a thicker, more crumbly blanket, stir in the third tablespoon of flour.
 
----
-
 ## Method
 
 1. **Preheat and prep the pan.**

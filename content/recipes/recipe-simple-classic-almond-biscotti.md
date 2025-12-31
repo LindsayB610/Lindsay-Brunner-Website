@@ -56,8 +56,6 @@ So, let's get started!
 - 2 large eggs, at room temperature
 - ¾ cup (about 90 g) unsalted roasted almonds, roughly chopped
 
----
-
 ## Method
 
 1. **Prep the oven and pan**

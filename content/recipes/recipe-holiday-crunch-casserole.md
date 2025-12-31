@@ -61,8 +61,6 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 
 - 1 (3 oz) can French fried onion rings (Durkee or similar), divided
 
----
-
 ## Method
 
 1. **Heat the oven; prep the dish.**

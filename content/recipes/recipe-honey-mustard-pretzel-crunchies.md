@@ -34,15 +34,11 @@ These pretzels started as a saved Insta reel and turned into one of those quietl
 
 The original inspiration came from an Instagram post by [Sally's Baking Addiction](https://www.instagram.com/sallysbakeblog/), whose honey mustard pretzel recipe is genuinely dangerous in the best way. This version is adapted for cheese boards and grazing: a little less sweet, a little less oily, and split into two mustard paths so you get contrast without complication.
 
----
-
 ## Snapshot
 
 - **Implements:** large bowl(s); small bowl or measuring cup; whisk; large baking sheet(s); parchment paper
 - **Oven setting:** 200°F (93°C) for 50–60 minutes, stirring every 15 minutes
 - **Batch size:** 12–16 oz pretzels (12–16 servings as a snack)
-
----
 
 ## Ingredients
 
@@ -55,8 +51,6 @@ I tend to split this recipe and make two half-batches (regular Dijon for half an
 - 2 Tsp ground mustard
 - 1½ Tsp onion powder
 - ½ Tsp fine salt
-
----
 
 ## Instructions
 
@@ -102,8 +96,6 @@ Pairs especially well with:
 - Cool completely before tasting or adjusting salt. Sugar lies when hot.
 - Store uncovered or loosely covered at room temperature for up to 2 days. Best the day they're made.
 - If they soften, refresh in a 300°F oven for 5 minutes, then cool again.
-
----
 
 ## Credit where it's due
 

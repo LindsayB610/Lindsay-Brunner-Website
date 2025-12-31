@@ -77,6 +77,8 @@ This recipe is about method, not seasoning.
 
    When ready to eat, split open, add butter, salt, and optionally a wodge of cheese, and serve.
 
+---
+
 ## Notes and guardrails
 
 ### Keep them whole

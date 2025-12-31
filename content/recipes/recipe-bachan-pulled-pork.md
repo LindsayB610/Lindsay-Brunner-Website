@@ -73,8 +73,6 @@ Meet my pressure-braised pork shoulder finished with Bachan's Japanese Barbecue 
 - Steamed rice plus cucumbers, scallions, nori strips, and a dab of Kewpie
 - Lettuce cups plus sesame seeds and chili crisp
 
----
-
 ## Method
 1. **Season (and optionally sear).** Pat pork dry; toss with the dry rub. For extra depth, set the cooker to Sauté, add oil, and quickly brown pork in two batches. Transfer pork out.
 2. **Build the base.** If using onion, sauté 2 to 3 minutes. Add water or stock, 1 to 2 tablespoons Bachan's, and rice vinegar; scrape up browned bits.

@@ -65,8 +65,6 @@ So this week I set out to make a pot of chili at home with just ingredients I al
 - **Stove setting:** medium-low to low heat for simmering (60 to 90 minutes)
 - **Batch size:** 6 to 8 servings
 
----
-
 ## Ingredients
 
 ### Meat and aromatics
@@ -112,8 +110,6 @@ So this week I set out to make a pot of chili at home with just ingredients I al
 - 1 teaspoon lemon juice
 - 1 quarter teaspoon smoked salt to start
 - optional 1 teaspoon European butter for a silky finish
-
----
 
 ## Instructions
 

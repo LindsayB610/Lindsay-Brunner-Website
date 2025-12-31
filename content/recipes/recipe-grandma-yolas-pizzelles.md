@@ -31,15 +31,11 @@ recipeInstructions:
 ---
 These are my Grandma Yola's pizzelles: a big, old-school 12-egg batch that turns into stacks of light, crisp Italian waffle cookies. The original card calls for orange extract, but the same base works with almond, lemon, or anise, so you can run different flavors off the same batter.
 
----
-
 ## Snapshot
 
 - **Implements:** large mixing bowl; hand or stand mixer; rubber spatula; measuring cups and spoons; pizzelle iron; wire racks
 - **Heat setting:** preheated pizzelle iron (medium or "cookie" setting, per your model)
 - **Batch size:** about 7–8 dozen pizzelles, depending on iron size
-
----
 
 ## Ingredients
 
@@ -66,8 +62,6 @@ or mix and match (for example: mostly orange with a little vanilla, or half almo
 ### Optional for serving
 
 - Powdered sugar for dusting
-
----
 
 ## Method
 

@@ -45,15 +45,11 @@ recipeInstructions:
 
 Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built from pantry staples and concentrated broth so it feels like a meal. It is savory without being spicy, rich without being heavy, and it gets even better as leftovers.
 
----
-
 ## Snapshot
 
 - **Implements:** large heavy pot; wooden spoon or spatula; ladle
 - **Stove setting:** medium heat for browning and simmering (about 60 minutes total)
 - **Batch size:** about 6 generous bowls
-
----
 
 ## Ingredients
 
@@ -93,8 +89,6 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 - ¾ cup finely grated Parmesan, divided
 - Lemon juice, to taste (optional)
-
----
 
 ## Method
 

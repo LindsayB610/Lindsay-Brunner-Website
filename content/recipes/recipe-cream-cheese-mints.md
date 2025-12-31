@@ -51,8 +51,6 @@ This version is built to be a bit more forgiving. The ingredient list looks fami
 - Small pinch fine salt (optional, but nice for balance)
 - Gel food coloring, assorted colors (gel strongly preferred over liquid)
 
----
-
 ## Method
 
 1. **Prep your trays.**

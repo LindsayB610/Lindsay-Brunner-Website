@@ -76,8 +76,6 @@ This crisp bakes in a deep dish pie pan and layers a stovetop almond pastry crea
   - 1 tsp finely grated lemon zest, or
   - Reduce 1/2 cup reserved peach syrup to 2-3 Tbsp and whisk in off-heat; if you do this, reduce sugar by 1-2 Tbsp (12-25 g)
 
----
-
 ## Method
 
 1. **Heat the oven; prep a sheet pan.** Heat to 350°F (175°C) with a rack in the center. Set the pie plate on a rimmed sheet pan (just in case).

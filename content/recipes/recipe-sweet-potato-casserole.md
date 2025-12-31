@@ -76,8 +76,6 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 
 **Note:** This nut mixture also makes an excellent coffee cake topping. See my [Cinnamon Pecan Coffee Cake Loaf](/recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf/) recipe.
 
----
-
 ## Method
 
 1. **Prep & toast the nuts.**

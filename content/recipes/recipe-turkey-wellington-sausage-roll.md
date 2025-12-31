@@ -90,8 +90,6 @@ So, let's get started!
 - Turkey gravy, piping hot
 - Cranberry sauce (not the canned kind)
 
----
-
 ## Method
 
 1. **Make the turkey sausage**

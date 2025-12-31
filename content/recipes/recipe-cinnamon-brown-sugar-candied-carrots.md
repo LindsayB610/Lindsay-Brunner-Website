@@ -63,8 +63,6 @@ The trick is two-stage cooking: par-cook the carrots first (fast + controlled), 
 - ½ tsp lemon juice or apple cider vinegar (adds "this tastes like a real dish" energy)
 - Optional: a little orange zest (cinnamon + orange = instant holiday brain)
 
----
-
 ## Method
 
 1. **Par-cook the carrots (the restaurant move)**

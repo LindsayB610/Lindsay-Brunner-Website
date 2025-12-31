@@ -123,19 +123,13 @@ After the front matter, recipes follow this structure:
 
 [Opening description paragraph - repeats or expands on description field]
 
----
-
 ## Snapshot
 
 [See recipe-snapshot-template.md for complete snapshot format]
 
----
-
 ## Ingredients
 
 [Organized ingredient lists, optionally grouped by category]
-
----
 
 ## Method
 
@@ -147,12 +141,16 @@ After the front matter, recipes follow this structure:
 
 [Optional section with tips, substitutions, variations, etc.]
 
----
-
 ## Credit where it's due
 
 [Optional attribution section]
 ```
+
+**Important:** Use horizontal lines (`---`) only:
+1. After front matter (separates YAML from content)
+2. Before Notes section (if present)
+
+Do NOT use horizontal lines between Snapshot, Ingredients, and Method sections - headers provide sufficient separation.
 
 ## Content Section Guidelines
 
@@ -161,7 +159,8 @@ After the front matter, recipes follow this structure:
 - First paragraph after front matter
 - Repeats or expands on the `description` field
 - Provides context, inspiration, or key characteristics
-- Separated from front matter by `---`
+- Separated from front matter by `---` (horizontal line)
+- No horizontal line needed between opening description and Snapshot section
 
 ### Snapshot Section
 
@@ -207,8 +206,12 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 
 ### Section Separators
 
-- Use `---` (three dashes) as horizontal rules between major sections
+- Use `---` (three dashes) as horizontal rules only:
+  1. After front matter (separates YAML from content)
+  2. Before Notes section (if present)
+- Do NOT use horizontal lines between Snapshot, Ingredients, and Method sections
 - Do NOT use `⸻` (triple em dash) or other separator characters
+- Headers (##) provide sufficient visual separation between main sections
 
 ### Temperature Formatting
 
@@ -329,15 +332,11 @@ recipeInstructions:
 
 Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built from pantry staples and concentrated broth so it feels like a meal. It is savory without being spicy, rich without being heavy, and it gets even better as leftovers.
 
----
-
 ## Snapshot
 
 - **Implements:** large heavy pot; wooden spoon or spatula; ladle
 - **Stove setting:** medium heat for browning and simmering (about 60 minutes total)
 - **Batch size:** about 6 generous bowls
-
----
 
 ## Ingredients
 
@@ -347,8 +346,6 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 - Olive oil
 - 1 medium onion, finely diced
 - 5 to 6 cloves garlic, minced
-
----
 
 ## Method
 
@@ -367,8 +364,6 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 ### Broth base choices
 
 Blending concentrated stocks from what you have on hand keeps this pantry-forward. The Knorr Rich Beef Stock Pot brings savory depth that pairs beautifully with sausage.
-
----
 
 ## Credit where it's due
 
