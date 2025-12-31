@@ -76,9 +76,9 @@ For as long as I can remember, pasta e fagioli has been my mom's favorite soup. 
 - 1 Knorr Rich Beef Stock Pot*
 - 1 Tsp Better Than Bouillon chicken*
 - ½ Tsp Better Than Bouillon vegetable*
+*Use what you have, don't fret about having the exact same mix. This is a forgiving soup.
 - 2 (15 oz) cans cannellini beans, drained and rinsed
 - Parm rind (optional)
-*Use what you have, don't fret about having the exact same mix. This is a forgiving soup.
 
 ### Pasta and greens
 
@@ -144,6 +144,6 @@ Half hot sausage in this amount of broth reads as warm, not spicy. If you are se
 
 Spinach wilts very quickly and adds color and freshness. If you prefer kale, toss it in a few minutes earlier so it softens.
 
-I've also used this soup as a change to use up leftover veg, I've thrown in a cup or two of sauteed peas and sugar snaps, or the same amount of sauteed zucchini.
+I've also used this soup as a chance to use up leftover veg, I've thrown in a cup or two of sauteed peas and sugar snaps, or the same amount of sauteed zucchini.
 
 *This recipe is adapted from a pasta e fagioli shared by [@thedishonhealthy](https://www.instagram.com/thedishonhealthy/) on Instagram, which inspired the original structure and flavor direction. This version reflects ingredient swaps, added protein, and pantry adjustments based on how I cook at home.*
