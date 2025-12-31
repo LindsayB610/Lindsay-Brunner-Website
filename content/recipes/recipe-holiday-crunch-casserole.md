@@ -43,6 +43,7 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 
 - **Implements:** 2-quart casserole dish (or 8x8 or 9x9 baking dish); 10–12 inch skillet; medium pot for pasta; colander
 - **Oven:** 350°F (175°C)
+- **Batch size:** 6–8 servings
 
 ## Ingredients
 

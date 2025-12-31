@@ -25,7 +25,7 @@ recipeIngredient:
   - "1 Tsp regular paprika"
   - "Black pepper"
   - "3 to 4 Tbsp tomato paste"
-  - "1 (24 oz) can crushed or ground tomatoes"
+  - "1 (28 oz) can crushed tomatoes (or whole that you crush yourself)"
   - "1 (15 oz) can cannellini beans, drained and rinsed"
   - "1 cup dry ditalini pasta"
   - "6 to 7 cups water"
@@ -35,14 +35,13 @@ recipeIngredient:
   - "1 cup spinach or kale (fresh or frozen)"
   - "¾ cup finely grated Parmesan, divided"
   - "Lemon juice, to taste (optional)"
-  - "Vegeta, to taste (optional)"
 recipeInstructions:
   - "Brown the sausage. Warm a large heavy pot over medium heat with a small drizzle of olive oil. Add the sausage, break it up, and let it brown thoroughly. Transfer the browned sausage to a bowl with a slotted spoon."
   - "Cook the aromatics. Add the onion and leek to the pot and cook until softened, stirring and scraping up browned bits. Add garlic and cook just until fragrant."
   - "Build the base. Stir in the basil, oregano, thyme, rosemary, paprika, and black pepper. Add tomato paste and cook until it deepens to brick red."
   - "Simmer the soup. Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes."
-  - "Cook the pasta. Add the ditalini and simmer until tender, stirring occasionally so it does not stick."
-  - "Finish. Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice and a pinch of Vegeta if needed. Serve with the remaining Parmesan."
+  - "Cook the pasta. Add the ditalini and simmer until tender, stirring occasionally so it does not stick. (Or boil separately, see Notes section.)"
+  - "Finish. Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan."
 ---
 
 Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built from pantry staples and concentrated broth so it feels like a meal. It is savory without being spicy, rich without being heavy, and it gets even better as leftovers.
@@ -51,9 +50,9 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 ## Snapshot
 
-- Implements: large heavy pot; wooden spoon or spatula; ladle
-- Batch size: about 6 generous bowls
-- Total time: about 1 hour
+- **Implements:** large heavy pot; wooden spoon or spatula; ladle
+- **Stove setting:** medium heat for browning and simmering (about 60 minutes total)
+- **Batch size:** about 6 generous bowls
 
 ---
 
@@ -76,7 +75,7 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 - 1 Tsp regular paprika
 - Black pepper
 - 3 to 4 Tbsp tomato paste
-- 1 (24 oz) can crushed or ground tomatoes
+- 1 (28 oz) can crushed tomatoes (or whole that you crush yourself)
 
 ### Broth and beans
 
@@ -95,7 +94,6 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 - ¾ cup finely grated Parmesan, divided
 - Lemon juice, to taste (optional)
-- Vegeta, to taste (optional)
 
 ---
 
@@ -119,11 +117,11 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 5. **Cook the pasta**
 
-   Add the ditalini and simmer until tender, stirring occasionally so it does not stick.
+   Add the ditalini and simmer until tender, stirring occasionally so it does not stick. (Or boil separately, see Notes section.)
 
 6. **Finish**
 
-   Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice and a pinch of Vegeta if needed. Serve with the remaining Parmesan.
+   Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan.
 
 ---
 
@@ -136,6 +134,8 @@ Blending concentrated stocks from what you have on hand keeps this pantry-forwar
 ### Pasta and thickness
 
 The soup will thicken as it sits because the pasta continues to absorb liquid. When reheating, add a splash of water or broth and stir until you reach your preferred consistency.
+
+You can also boil the pasta separately, drain it, and add it to the bottom of each bowl at serving time. This keeps the pasta from getting mushy if you have leftovers, and gives you more control over the soup-to-pasta ratio.
 
 ### Cheese and texture
 

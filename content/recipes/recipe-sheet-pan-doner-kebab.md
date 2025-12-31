@@ -55,8 +55,10 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 *Thanks to [@MezeMike on TikTok](https://www.tiktok.com/@mezemike) for the technique inspiration. The spice blend here is my own take, based on Berlin döner.*
 
 ## Snapshot
+
 - **Implements:** food processor or box grater, stand mixer with paddle attachment or food processor (for meat mixing), large mixing bowl, parchment paper, rimmed sheet pan, small skillet for test patty
 - **Oven:** 400°F (200°C)
+- **Batch size:** 6–8 servings
 
 ## Ingredients
 

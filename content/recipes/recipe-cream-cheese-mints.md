@@ -39,7 +39,7 @@ This version is built to be a bit more forgiving. The ingredient list looks fami
 
 - **Implements:** stand mixer or sturdy hand mixer; rubber spatula; parchment‑lined sheet pans; fork or small mint molds
 - **Heat:** no oven; room‑temperature or fridge drying
-- **Yield:** ~100–140 bite‑size mints, depending on how small you portion
+- **Batch size:** ~100–140 bite‑size mints, depending on how small you portion
 
 ## Ingredients
 

@@ -36,6 +36,14 @@ The original inspiration came from an Instagram post by [Sally's Baking Addictio
 
 ---
 
+## Snapshot
+
+- **Implements:** large bowl(s); small bowl or measuring cup; whisk; large baking sheet(s); parchment paper
+- **Oven setting:** 200°F (93°C) for 50–60 minutes, stirring every 15 minutes
+- **Batch size:** 12–16 oz pretzels (12–16 servings as a snack)
+
+---
+
 ## Ingredients
 
 I tend to split this recipe and make two half-batches (regular Dijon for half and basil Dijon for the other). If you'd like to follow that path, divide each ingredient. If you want just one version, use the full amount of one chosen mustard.

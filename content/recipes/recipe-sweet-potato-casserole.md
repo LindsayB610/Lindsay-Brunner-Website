@@ -35,6 +35,7 @@ recipeInstructions:
 This version keeps the potatoes buttery and lightly salted, with all the sweetness living in a chunky brown‑sugar nut topping. It bakes in a pan and gets scooped with a disher, just like the restaurant version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA.
 
 ## Snapshot
+
 - **Implements:** sheet pan or wire rack; parchment paper; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; ricer (optional, for silky texture); 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
 - **Oven:** 400°F (205°C) for roasting potatoes (45–75 minutes), then 350°F (175°C) for baking (20–30 minutes), finish at 400°F for 3–6 minutes
 - **Batch size:** see "Choose your pan & base amounts" below

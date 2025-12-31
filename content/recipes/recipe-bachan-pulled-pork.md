@@ -42,6 +42,7 @@ I've been trying to use the pressure cooker more (read: remember I own it) and t
 Meet my pressure-braised pork shoulder finished with Bachan's Japanese Barbecue Sauce. The sauce is thin, soy-forward, and punchy, so the trick is to keep the braise clean and sauce after shredding. That keeps the meat juicy (not soupy) and the sauce bright (an approach I cribbed from Kenji's indoor pulled-pork method on [Serious Eats](https://www.seriouseats.com/easy-oven-baked-pulled-pork-sandwiches)).
 
 ## Snapshot
+
 - **Implements:** 16-cup (about 4-quart) electric pressure cooker; large bowl; tongs; cutting board; forks for shredding; sheet pan (for optional broil)
 - **Cooker setting:** High Pressure 55 minutes, then 15-minute natural release
 - **Batch size (safety):** About 3 to 3 1/2 pounds pork shoulder in a 4-quart cooker. Manufacturer guidance: keep total food plus liquid at or below 60% of the pot's capacity and use at least 1/2 cup liquid (I use 1 cup).

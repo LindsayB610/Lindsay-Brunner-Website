@@ -46,7 +46,7 @@ recipeInstructions:
 - **Implements:** sheet pan, large pot, skillet, mixing spoon, sharp knife, wooden spoon
 - **Oven setting:** 425°F (220°C) for roasting squash
 - **Batch size:** 6 main course servings or 8–10 as a side
-- **Pasta cooked separately for reliable texture**
+- **Notes:** Pasta cooked separately for reliable texture
 
 ## Ingredients
 

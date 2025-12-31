@@ -61,11 +61,9 @@ So this week I set out to make a pot of chili at home with just ingredients I al
 
 ## Snapshot
 
-Prep time: about 15 minutes
-
-Cook time: 60 to 90 minutes
-
-Equipment: Dutch oven or heavy pot, knife, cutting board, wooden spoon
+- **Implements:** Dutch oven or heavy pot; knife; cutting board; wooden spoon
+- **Stove setting:** medium-low to low heat for simmering (60 to 90 minutes)
+- **Batch size:** 6 to 8 servings
 
 ---
 

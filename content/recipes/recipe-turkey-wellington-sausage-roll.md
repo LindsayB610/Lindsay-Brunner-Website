@@ -54,6 +54,7 @@ Alongside the turkey Wellington Franken-rolls, I'm also making:
 So, let's get started!
 
 ## Snapshot
+
 - **Implements:** mixing bowls; plastic wrap; rimmed baking sheet; parchment paper; sharp knife; instant-read thermometer
 - **Oven setting:** 400°F (200°C) (about 22–28 minutes)
 - **Batch size:** 4 hearty main-dish rolls (a reasonable amount for weeknight dinner testing at my house, which I'll double for the day-of)

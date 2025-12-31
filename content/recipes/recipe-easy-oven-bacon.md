@@ -32,9 +32,9 @@ This method is tuned specifically for **very thick, hand‑cut, home‑cured bac
 
 ## Snapshot
 
-  * Implements: rimmed sheet pan; wire rack; foil (for sanity); tongs; paper towels; heatproof jar/bowl for bacon fat (optional but highly encouraged)
-  * Oven setting: Cold start, then 350°F (175°C) (optional hot finish at 400°F (205°C))
-  * Batch size: 1 lb thick-cut bacon per sheet pan (don't crowd; use two pans if you need to)
+- **Implements:** rimmed sheet pan; wire rack; foil (for sanity); tongs; paper towels; heatproof jar/bowl for bacon fat (optional but highly encouraged)
+- **Oven setting:** Cold start, then 350°F (175°C) (optional hot finish at 400°F (205°C))
+- **Batch size:** 1 lb thick-cut bacon per sheet pan (don't crowd; use two pans if you need to)
 
 ## Ingredients
 

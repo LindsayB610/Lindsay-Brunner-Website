@@ -45,8 +45,10 @@ Let's be clear, I LOVE pie, but I HATE making pie crust. It's too fiddly. I'm a 
 This crisp bakes in a deep dish pie pan and layers a stovetop almond pastry cream and canned peach slices under a crunchy oat crumble. 
 
 ## Snapshot
+
 - **Implements:** deep-dish pie plate, 9 1/2 to 10 inches; heavy bottom pot to make pastry cream; colander to drain peaches; other standard baking gear
 - **Oven:** 350°F (175°C)
+- **Batch size:** 8 servings
 
 ## Ingredients
 
