@@ -77,11 +77,12 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 ### Broth and beans
 
 - 6 to 7 cups water
-- 1 Knorr Rich Beef Stock Pot
-- 1 Tsp Better Than Bouillon chicken
-- ½ Tsp Better Than Bouillon vegetable
+- 1 Knorr Rich Beef Stock Pot*
+- 1 Tsp Better Than Bouillon chicken*
+- ½ Tsp Better Than Bouillon vegetable*
 - 1 (15 oz) can cannellini beans, drained and rinsed
 - Parm rind (optional)
+*Use what you have, don't fret about having the exact same mix. This is a forgiving soup.
 
 ### Pasta and greens
 
