@@ -103,15 +103,15 @@ These slice cleanly, freeze well, and taste even better on day two. The espresso
 
 ### The structural base
 
-The blondie batter is adapted from the standard brown-butter blondie ratio that shows up everywhere (NYT Cooking style): about 8–12 Tbsp butter, 1 cup brown sugar, 2 whole eggs, and about 1 cup flour. That ratio is deliberately high fat + high sugar + low flour, which is what allows you to add heavy swirls without the center collapsing or baking up gummy.
+The blondie batter is adapted from the standard brown-butter blondie ratios that show up everywhere (NYT Cooking style): about 8–12 Tbsp butter, 1 cup brown sugar, 2 whole eggs, and about 1 cup flour. That ratio is deliberately high fat + high sugar + low flour, which is what allows you to add heavy swirls without the center collapsing or baking up gummy.
 
-I deliberately stayed at 1 cup flour instead of 1¼ cups because your spreads add additional fat and sugar. More flour would tighten the crumb and reduce the room for those swirls to integrate without the bars getting cakey.
+I deliberately stayed at 1 cup flour instead of 1¼ cups because my spreads add additional fat and sugar. More flour would tighten the crumb and reduce the room for those swirls to integrate without the bars getting cakey.
 
 ### The swirl volume logic
 
 The ½ cup + ½ cup total swirl is not arbitrary. This comes from cream cheese brownie swirl recipes (Alice Medrich lineage), dulce de leche brownie and blondie recipes, and Nutella swirl blondies. Across those, the reliable upper bound is: swirl = 40–60% of batter volume for an 8×8 pan.
 
-Your batter is roughly 2¼ to 2½ cups total volume once mixed. So 1 cup total swirl is aggressive but safe. I split it evenly to avoid one spread dominating the texture.
+This batter is roughly 2¼ to 2½ cups total volume once mixed. So 1 cup total swirl is aggressive but safe. I split it evenly to avoid one spread dominating the texture.
 
 Because both spreads are smooth and fat-based, they behave more like Nutella than jam. Jam would require less because of water content throwing off the balance.
 
