@@ -103,6 +103,18 @@ social_image: "/images/social/my-image.png"
 
 ### Recipe Posts
 
+**📋 For complete recipe guidelines, see [`docs/recipe-template.md`](./docs/recipe-template.md)**
+
+The template includes:
+- Complete front matter template with all required and optional fields
+- Content structure guidelines (snapshot, ingredients, method, notes)
+- Formatting rules (temperatures, measurements, section separators)
+- OG image workflow
+- Scheduling instructions
+- Complete examples
+
+**Quick reference:**
+
 **Required front matter fields:**
 - `title`, `date`, `description`, `subtitle`, `draft` (same as thoughts)
 - `prepTime` (ISO 8601 duration, e.g., "PT30M")
@@ -210,10 +222,11 @@ See `BRAND.md` for complete brand guidelines. Key points:
 ### Adding a New Recipe
 
 1. Create file `content/recipes/recipe-*.md`
-2. Add all required front matter fields (see above)
-3. Use ISO 8601 duration format for times (PT30M = 30 minutes)
-4. Arrays for ingredients/instructions must be YAML arrays
-5. Run `npm run build && npm run test:content`
+2. Use the complete template from `docs/recipe-template.md`
+3. Follow the content structure (description, snapshot, ingredients, method, notes)
+4. Generate and review OG image: `npm run generate:og-images`
+5. Add `social_image` to front matter
+6. Run `npm run build && npm run test:content`
 
 **To schedule for future publication:**
 - Set `draft: true` and a future `date` in front matter
@@ -247,6 +260,8 @@ See `BRAND.md` for complete brand guidelines. Key points:
 ## References
 
 - **README.md**: Setup, scripts, content management guide, scheduling posts
+- **docs/recipe-template.md**: Complete recipe template with front matter, structure, and formatting guidelines
+- **docs/recipe-snapshot-template.md**: Snapshot section format and field definitions
 - **BRAND.md**: Complete brand guidelines and protected elements
 - **CONTENT_STYLE_GUIDE.md**: Writing principles, tone, voice, and style guidelines
 - **config.toml**: Hugo configuration

@@ -180,77 +180,32 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
 
 ### Adding New Recipe Content
 
-The "recipes" section showcases tested recipes and kitchen experiments. Here's how to add new recipe files:
+The "recipes" section showcases tested recipes and kitchen experiments.
+
+**📋 For complete recipe guidelines, see [`docs/recipe-template.md`](./docs/recipe-template.md)**
+
+The template includes:
+- Complete front matter template with all required and optional fields
+- Content structure guidelines (snapshot, ingredients, method, notes)
+- Formatting rules (temperatures, measurements, section separators)
+- OG image workflow
+- Scheduling instructions
+- Complete examples
+
+**Quick start:**
 
 1. **Create a new recipe file**:
-
    ```bash
-   # Create the file in the recipes directory with recipe- prefix
    touch content/recipes/recipe-your-recipe-name.md
    ```
 
-2. **Set up the front matter** with all required fields:
+2. **Use the template**: Copy the front matter template from `docs/recipe-template.md` and fill in your recipe details
 
-   ```markdown
-   ---
-   title: "Your Recipe Title"
-   date: 2025-01-15
-   slug: "recipe-your-recipe-name"
-   subtitle: "Brief subtitle or description"
-   description: "A compelling description for SEO and listings"
-   draft: false
-   prepTime: "PT30M"        # ISO 8601 duration format
-   cookTime: "PT45M"         # ISO 8601 duration format
-   totalTime: "PT75M"        # ISO 8601 duration format
-   recipeYield: "6-8 servings"
-   recipeCategory: "Main Course"
-   recipeCuisine: "American"
-   recipeIngredient:
-     - "1 cup ingredient one"
-     - "2 tbsp ingredient two"
-   recipeInstructions:
-     - "Step one instructions"
-     - "Step two instructions"
-   ---
-   ```
+3. **Follow the structure**: See the template for the standard content structure (description, snapshot, ingredients, method, notes)
 
-3. **Required recipe front matter fields**:
-   - `title`, `date`, `description`, `subtitle`, `draft` (same as thoughts)
-   - `prepTime`, `cookTime`, `totalTime` (ISO 8601 format: PT30M = 30 minutes)
-   - `recipeYield` (string, e.g., "6-8 servings")
-   - `recipeCategory` (string, e.g., "Main Course", "Dessert")
-   - `recipeCuisine` (string, e.g., "American", "Japanese-American")
-   - `recipeIngredient` (YAML array of strings)
-   - `recipeInstructions` (YAML array of strings)
+4. **Generate OG image**: Run `npm run generate:og-images`, review the image, then add `social_image` to front matter
 
-4. **File naming**: Always use `recipe-` prefix (e.g., `recipe-bachan-pulled-pork.md`)
-
-5. **Permalink structure**: Recipes use `/recipes/:year-:month-:day/:slug/` format (with trailing slash)
-
-6. **🔒 OG Image Review (Required for Published Recipes)**:
-   
-   Published recipes **must** have `social_image` explicitly set in front matter. This enforces manual review of OG images before publishing.
-   
-   **Workflow:**
-   ```bash
-   # 1. Generate OG images for all recipes
-   npm run generate:og-images
-   
-   # 2. Review the generated image(s) in static/images/social/
-   #    Look for: recipe-{slug}-og.svg
-   
-   # 3. Add the social_image field to your recipe front matter:
-   social_image: "/images/social/recipe-{slug}-og.svg"
-   
-   # 4. Set draft: false when ready to publish
-   ```
-   
-   **Why?** Tests will fail if a published recipe doesn't have `social_image` set. This ensures:
-   - OG images are visually reviewed before going live
-   - No accidental publishing with broken/missing images
-   - Consistent quality control for social sharing
-   
-   **Note:** Drafts don't require `social_image` (they're skipped in validation), but you can still generate images for preview purposes.
+5. **Test**: Run `npm run build && npm run test:content` to validate
 
 ### Updating Existing Pages
 
