@@ -37,7 +37,7 @@ recipeInstructions:
   - "Immediately sprinkle with flaky salt. Cool completely in the pan on a wire rack before cutting into squares."
 ---
 
-I'm lucky in life to have well-travelled foodie friends, one of whom brought me two gorgesous sweet spreads from Bremen, Germany: one caramel with espresso, one chocolate with lebkuchen spices. Both were too good to waste on toast, and both wanted to be the star. So I built a blondie recipe that gives them both a proper stage.
+I'm lucky in life to have well-travelled foodie friends, one of whom brought me two gorgeous sweet spreads from Bremen, Germany: one caramel with espresso, one chocolate with lebkuchen spices. Both were too good to waste on toast, and both wanted to be the star. So I built a blondie recipe that gives them both a proper stage.
 
 <img src="/images/PXL_20251230_202603628.jpg" alt="Two jars of sweet spreads: caramel with espresso and chocolate with lebkuchen spices" style="width: 100%; max-width: 600px; margin: 2rem 0; border-radius: 8px;" />
 
