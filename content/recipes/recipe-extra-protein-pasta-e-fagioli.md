@@ -18,11 +18,9 @@ recipeIngredient:
   - "1 medium onion, finely diced"
   - "1 leek, thinly sliced and washed"
   - "5 to 6 cloves garlic, minced"
-  - "2 Tsp dried basil"
-  - "1 Tsp dried oregano"
-  - "1 Tsp dried thyme"
+  - "2½ to 3 Tsp Italian seasoning blend"
   - "1 Tsp dried rosemary"
-  - "1 Tsp regular paprika"
+  - "1 Tsp paprika (unless it's already represented in your Italian seasoning)"
   - "Black pepper"
   - "3 to 4 Tbsp tomato paste"
   - "1 (28 oz) can crushed tomatoes (or whole that you crush yourself)"
@@ -32,16 +30,17 @@ recipeIngredient:
   - "1 Knorr Rich Beef Stock Pot"
   - "1 Tsp Better Than Bouillon chicken"
   - "½ Tsp Better Than Bouillon vegetable"
+  - "Parm rind (optional)"
   - "1 cup spinach or kale (fresh or frozen)"
   - "¾ cup finely grated Parmesan, divided"
   - "Lemon juice, to taste (optional)"
 recipeInstructions:
   - "Brown the sausage. Warm a large heavy pot over medium heat with a small drizzle of olive oil. Add the sausage, break it up, and let it brown thoroughly. Transfer the browned sausage to a bowl with a slotted spoon."
   - "Cook the aromatics. Add the onion and leek to the pot and cook until softened, stirring and scraping up browned bits. Add garlic and cook just until fragrant."
-  - "Build the base. Stir in the basil, oregano, thyme, rosemary, paprika, and black pepper. Add tomato paste and cook until it deepens to brick red."
-  - "Simmer the soup. Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes."
+  - "Build the base. Stir in the Italian seasoning blend, rosemary, paprika (if using), and black pepper. Add tomato paste and cook until it deepens to brick red."
+  - "Simmer the soup. Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes. (If you're boiling your pasta seperately, add the pasta cooking time to this simmer step, something like an additional 10 minutes.) If you're usong a Parm rind, throw it in here."
   - "Cook the pasta. Add the ditalini and simmer until tender, stirring occasionally so it does not stick. (Or boil separately, see Notes section.)"
-  - "Finish. Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan."
+  - "Finish. Stir in the greens until wilted. Fish out the Parm rind, if you added one. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan."
 ---
 
 Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built from pantry staples and concentrated broth so it feels like a meal. It is savory without being spicy, rich without being heavy, and it gets even better as leftovers.
@@ -68,11 +67,9 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 ### Spices and tomato base
 
-- 2 Tsp dried basil
-- 1 Tsp dried oregano
-- 1 Tsp dried thyme
+- 2½ to 3 Tsp Italian seasoning blend
 - 1 Tsp dried rosemary
-- 1 Tsp regular paprika
+- 1 Tsp paprika (unless it's already represented in your Italian seasoning)
 - Black pepper
 - 3 to 4 Tbsp tomato paste
 - 1 (28 oz) can crushed tomatoes (or whole that you crush yourself)
@@ -84,6 +81,7 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 - 1 Tsp Better Than Bouillon chicken
 - ½ Tsp Better Than Bouillon vegetable
 - 1 (15 oz) can cannellini beans, drained and rinsed
+- Parm rind (optional)
 
 ### Pasta and greens
 
@@ -109,11 +107,13 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 3. **Build the base**
 
-   Stir in the basil, oregano, thyme, rosemary, paprika, and black pepper. Add tomato paste and cook until it deepens to brick red.
+   Stir in the Italian seasoning blend, rosemary, paprika (if using), and black pepper. Add tomato paste and cook until it deepens to brick red.
 
 4. **Simmer the soup**
 
-   Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes.
+   Return the sausage to the pot. Add tomatoes, beans, and 6 cups water. Stir in the stock pot and both bouillon pastes. Bring to a gentle simmer and cook 10 to 15 minutes. (If you're boiling your pasta seperately, add the pasta cooking time to this simmer step, something like an additional 10 minutes.)
+
+   If you're usong a Parm rind, throw it in here.
 
 5. **Cook the pasta**
 
@@ -121,7 +121,7 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 
 6. **Finish**
 
-   Stir in the greens until wilted. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan.
+   Stir in the greens until wilted. Fish out the Parm rind, if you added one. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan.
 
 ---
 
