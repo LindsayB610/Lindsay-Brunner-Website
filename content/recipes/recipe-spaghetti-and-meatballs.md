@@ -15,27 +15,28 @@ recipeIngredient:
   - "2 lb ground beef (75/25)"
   - "½ lb sweet Italian sausage, casings removed"
   - "½ lb hot Italian sausage, casings removed"
-  - "1¼ cups white bread, crusts removed, torn small (or ¾ cup white bread plus ½ cup Italian panko breadcrumbs)"
+  - "1¼ cups white bread, crusts removed, torn small (or ¾ cup white bread plus ½ cup plain panko breadcrumbs)"
   - "¾ cup whole milk (or 2%)"
   - "2 large eggs"
-  - "½ cup finely grated Parmigiano-Reggiano"
-  - "½ cup finely chopped parsley"
-  - "4 cloves garlic, finely grated or mashed to a paste"
-  - "½ small onion or 1 large shallot, grated and squeezed dry"
+  - "½ cup finely grated Parmigiano-Reggiano (green can is totally fine!)"
+  - "½ cup finely chopped parsley (or 2-3 Tbsp of dried parsley)"
+  - "1½ to 2 Tsp garlic powder"
+  - "2½ to 3 Tsp onion powder"
   - "¾ Tsp freshly ground black pepper"
   - "⅛ to ¼ Tsp freshly grated nutmeg (optional, but great with sausage)"
-  - "¼ Tsp kosher salt to start (you will adjust after a test patty)"
+  - "salt"
   - "Olive oil or nonstick spray, for the rack"
   - "2 to 3 Tbsp olive oil"
-  - "1 large yellow onion, finely chopped (or grated for a smoother sauce)"
-  - "1 to 2 garlic cloves, smashed or finely minced (optional, keep it gentle)"
-  - "1 whole carrot, peeled (for sweetness, removed later)"
+  - "2 large yellow onions, finely chopped (or grated for a smoother sauce)"
+  - "4 to 5 garlic cloves, smashed or finely minced (measure with your heart)"
+  - "1 (6 oz) can tomato paste"
+  - "1 to 2 whole carrots, peeled (for sweetness, removed later)"
   - "2 (28 oz) cans tomato sauce"
   - "2 (28 oz) cans whole San Marzano tomatoes"
   - "2 (14.5 oz) cans diced tomatoes (fire roasted is great; Italian-seasoned is fine but reduce added herbs)"
   - "1 to 3 additional large (28 oz) cans of tomato sauce or whole/crushed tomatoes (added only if needed for volume)"
   - "1 Parm rind (optional but highly recommended)"
-  - "1 bay leaf (optional, but classic)"
+  - "2 to 3 bay leaves (optional, but classic)"
   - "1 to 2 Tsp dried basil (or to taste)"
   - "Dried oregano, a pinch (seriously)"
   - "Kosher salt, added gradually"
@@ -47,20 +48,20 @@ recipeIngredient:
   - "Parmigiano-Reggiano, for serving"
   - "Parsley, chopped, for serving (optional)"
 recipeInstructions:
-  - "Start the sauce first. Heat olive oil in a large pot over medium heat. Add the onion and cook until very soft and translucent, 8 to 12 minutes. You want sweet and mellow, not browned. If using garlic, add it for the last 30 to 60 seconds until fragrant."
-  - "Add one of the cans of tomato sauce first (or a portion if you're doing both at once). Stir and let it cook in the oil and onion for 3 to 5 minutes. This is the step that knocks down that raw, tinny edge."
-  - "Add the second can of tomato sauce, the whole tomatoes (crush by hand as you add), and the diced tomatoes. Add the whole carrot, Parm rind, and bay leaf if using. Bring to a gentle simmer, then reduce heat to low."
-  - "Add a small pinch of salt now, but keep it under-salted at this stage. Sausage and meatballs will add salt later. Simmer partially covered, stirring occasionally, for at least 30 minutes while you make meatballs. Longer is better. 60 to 90 minutes is excellent. If you want it smoother, use an immersion blender for 2 to 3 quick pulses, not a full puree."
-  - "Make the panade. Combine bread and milk and let sit 5 minutes. Mash into a thick paste. If it's soupy, squeeze gently. If it's dry, add a splash more milk. If using the bread plus panko option, stir panko in after the bread becomes a paste."
-  - "Mix the flavor base. In a large bowl, mix thoroughly: panade, eggs, Parm, parsley, garlic, grated onion/shallot (squeezed dry), pepper, nutmeg, and ¼ Tsp salt."
-  - "Add meat and fold gently. Add the beef and both sausages. Fold gently until just combined. Stop early."
+  - "Start the sauce first. Heat olive oil in a large pot over medium heat. Add the onions and cook, stirring frequently, until very soft and translucent, 8 to 12 minutes. You want sweet and mellow, not browned. Add 1 to 2 Tsp salt here to begin building flavor. Add the garlic for the last 30 to 60 seconds until fragrant."
+  - "Add the tomato paste and cook, stirring frequently, for several minutes until it deepens to brick red but not burnt. This builds a deeper flavor base."
+  - "Add your other tomatoes: 2 (28 oz) cans of tomato sauce, 2 (28 oz) cans of whole tomatoes (crush by hand as you add), and 2 (14.5 oz) cans of diced tomatoes. Rinse your 2 cans of sauce with about half a can's worth of water (you can splash back and forth to rinse) then add this sauce water to the pot. Add the whole peeled carrot(s), Parm rind, and bay leaves if using. Bring to a gentle simmer, then reduce heat to low."
+  - "Simmer partially covered, stirring occasionally. While it simmers, make the meatballs (step 2). The sauce wants at least 30 minutes total, longer is better. 60 to 90 minutes is excellent."
+  - "Pre-heat oven to 425°F (218°C). Make the panade. Combine bread and milk and let sit 5 minutes. Mash into a thick paste. If it's soupy, squeeze gently. If it's dry, add a splash more milk. If using the bread plus panko option, stir panko in after the bread becomes a paste."
+  - "Mix the flavor base. In a large bowl, mix thoroughly: panade, eggs, Parm, parsley, garlic powder, onion powder, pepper, nutmeg, and salt."
+  - "Add meat and mix. Add the beef and both sausages. Mix until combined. Don't be afraid to get your hands dirty."
   - "Test patty. Cook a small patty and taste. Adjust salt if needed. With sausage, this is non-negotiable."
   - "Shape. Roll into 2-inch meatballs. Lightly packed, not compressed."
-  - "Par-bake on a rack. Heat oven to 425°F (218°C). Line sheet pans with foil. Place wire racks on top. Lightly oil the racks. Arrange meatballs with a little space between. Bake 12 to 15 minutes, until they are set and lightly browned but not fully cooked through. Optional nerd target: 120 to 130°F (49 to 54°C) internal. You will see a lot of fat on the pan. That's correct."
+  - "Par-bake on a rack. Line sheet pans with foil. Place wire racks on top. Lightly oil the racks. Arrange meatballs with a little space between. Bake 12 to 15 minutes, until they are set and lightly browned but not fully cooked through. Optional nerd target: 120 to 130°F (49 to 54°C) internal. You will see a lot of fat on the pan. That's correct."
   - "Make sure the sauce volume matches the batch. Before adding meatballs, look at your pot and ask: If I add all meatballs, will they be mostly submerged without stacking too tightly? If yes, proceed. If it looks tight, open one additional 28 oz can (sauce or whole) and simmer 10 minutes. If it looks crowded or stacked, open two additional 28 oz cans, one at a time, simmering briefly between. No half cans. No measuring cups. Just the pot telling the truth. Also, if your pot can't comfortably hold everything, split sauce into two pots now."
   - "Finish meatballs in the simmering sauce. Bring sauce back to a gentle simmer. Add meatballs in batches if needed so you don't break them. Simmer gently 25 to 40 minutes, partially covered, stirring from the bottom occasionally. Avoid boiling hard."
   - "Optional beef base. After the meatballs have simmered 15 to 20 minutes, taste the sauce. Only if it tastes hollow, dissolve and add ½ Tsp BTB or ½ Knorr pot, taste, then decide if it needs more. Stop before it becomes stew-like."
-  - "End adjustments. Remove carrot, Parm rind, bay leaf. Taste and adjust: salt, a small pinch of sugar only if needed (½ Tsp at a time), and if it tastes heavy, add 1 Tsp red wine vinegar or lemon juice."
+  - "End adjustments. Remove carrot(s), Parm rind, bay leaves. Taste and adjust: salt, a small pinch of sugar only if needed (½ Tsp at a time), and if it tastes heavy, add 1 Tsp red wine vinegar or lemon juice."
   - "Cook spaghetti and combine. Bring a large pot of salted water to a boil. Cook spaghetti until just shy of al dente. Reserve 2 cups pasta water, then drain. In a large pan or pot, toss pasta with a few ladles of sauce and a splash of pasta water until glossy and well-coated. Serve meatballs on top. Spoon extra sauce over everything. Finish with Parm and parsley."
 ---
 
@@ -79,50 +80,16 @@ This is not a precious recipe. It is designed to be adjusted by the size of your
 
 ## Ingredients
 
-### Part 1: The meatballs
-
-#### Meat
-
-- 2 lb ground beef (75/25)
-- ½ lb sweet Italian sausage, casings removed
-- ½ lb hot Italian sausage, casings removed
-
-#### Panade (choose one)
-
-**Option A (classic, plush):**
-
-- 1¼ cups white bread, crusts removed, torn small
-- ¾ cup whole milk (or 2%)
-
-**Option B (plush with a little extra structure):**
-
-- ¾ cup white bread, crusts removed, torn
-- ½ cup Italian panko breadcrumbs
-- ¾ cup whole milk
-
-#### Flavor and binders
-
-- 2 large eggs
-- ½ cup finely grated Parmigiano-Reggiano
-- ½ cup finely chopped parsley
-- 4 cloves garlic, finely grated or mashed to a paste
-- ½ small onion or 1 large shallot, grated and squeezed dry
-- ¾ Tsp freshly ground black pepper
-- ⅛ to ¼ Tsp freshly grated nutmeg (optional, but great with sausage)
-- ¼ Tsp kosher salt to start (you will adjust after a test patty)
-
-#### For par-baking
-
-- Olive oil or nonstick spray (for the rack)
-
-### Part 2: The sauce (big enough to simmer everything)
+### Part 1: The sauce (big enough to simmer everything)
 
 #### Aromatics
 
 - 2 to 3 Tbsp olive oil
-- 1 large yellow onion, finely chopped (or grated for a smoother sauce)
-- 1 to 2 garlic cloves, smashed or finely minced (optional, keep it gentle)
-- 1 whole carrot, peeled (for sweetness, removed later)
+- 2 large yellow onions, finely chopped (or grated for a smoother sauce)
+- 4 to 5 garlic cloves, smashed or finely minced (measure with your heart)
+- 1 (6 oz) can tomato paste
+- 1 to 2 whole carrots, peeled (for sweetness, removed later)
+- Salt to taste
 
 #### Tomatoes (start with 6 cans, then adjust with full cans only)
 
@@ -139,7 +106,7 @@ This is not a precious recipe. It is designed to be adjusted by the size of your
 #### Seasoning and depth
 
 - 1 Parm rind (optional but highly recommended)
-- 1 bay leaf (optional, but classic)
+- 2 to 3 bay leaves (optional, but classic)
 - Dried basil, 1 to 2 Tsp (or to taste)
 - Dried oregano, a pinch (seriously)
 - Kosher salt, added gradually
@@ -159,6 +126,42 @@ or
 
 - Red wine vinegar or lemon juice, 1 Tsp at the end if it tastes heavy (optional)
 
+### Part 2: The meatballs
+
+#### Meat
+
+- 2 lb ground beef (75/25)
+- ½ lb sweet Italian sausage, casings removed
+- ½ lb hot Italian sausage, casings removed
+
+#### Panade (choose one)
+
+**Option A (classic):**
+
+- 1¼ cups white bread, crusts removed, torn small
+- ¾ cup whole milk (or 2%)
+
+**Option B (plush with a little extra structure):**
+
+- ¾ cup white bread, crusts removed, torn small
+- ½ cup plain panko breadcrumbs
+- ¾ cup whole milk
+
+#### Flavor and binders
+
+- 2 large eggs
+- ½ cup finely grated Parmigiano-Reggiano (green can is totally fine!)
+- ½ cup finely chopped parsley (or 2-3 Tbsp of dried parsley)
+- 1½ to 2 Tsp garlic powder
+- 2½ to 3 Tsp onion powder
+- ¾ Tsp freshly ground black pepper
+- ⅛ to ¼ Tsp freshly grated nutmeg (optional, but great with sausage)
+- salt
+
+#### For par-baking
+
+- Olive oil or nonstick spray (for the rack)
+
 ### Part 3: Pasta and serving
 
 - Spaghetti, 1.5 to 2 lb depending on crowd
@@ -167,42 +170,42 @@ or
 
 ## Method
 
-1. **Start the sauce first (it wants time)**
+1. **Start the sauce and get it simmering**
 
-   **Sweat the onion**
+   **Sweat the onions**
 
-   Heat olive oil in a large pot over medium heat. Add the onion and cook until very soft and translucent, 8 to 12 minutes. You want sweet and mellow, not browned.
+   Heat olive oil in a large pot over medium heat. Add the onions and cook, stirring frequently, until very soft and translucent, 8 to 12 minutes. You want sweet and mellow, not browned.
 
-   If using garlic, add it for the last 30 to 60 seconds until fragrant.
+   Add 1 to 2 Tsp salt here to begin building flavor.
 
-   **Add the first tomato layer and cook off the iron**
+   Add the garlic for the last 30 to 60 seconds until fragrant.
 
-   Add one of the cans of tomato sauce first (or a portion if you're doing both at once). Stir and let it cook in the oil and onion for 3 to 5 minutes. This is the step that knocks down that raw, tinny edge.
+   **Add tomato paste and cook until brick red**
 
-   **Add remaining tomatoes (start with the 6-can base)**
+   Add the tomato paste and cook, stirring frequently, for several minutes until it deepens to brick red. This builds a deeper flavor base.
 
-   Add:
-   - the second can of tomato sauce
-   - the whole tomatoes (crush by hand as you add)
-   - the diced tomatoes
+   **Add your other tomatoes**
 
-   Add the whole carrot, Parm rind, and bay leaf if using.
+   Add 
+   - 2 (28 oz) cans of tomato sauce
+   - 2 (28 oz) cans of whole tomatoes (crush by hand as you add)
+   - 2 (14.5 oz) cans of diced tomatoes
+
+   Rinse your 2 cans of sauce with about half a can's worth of water (you can splash back and forth to rinse) then add this sauce water to the pot.
+
+   Add the whole peeled carrot(s), Parm rind, and bay leaves if using.
 
    Bring to a gentle simmer, then reduce heat to low.
 
-   **Season lightly and simmer**
+   **Let it simmer**
 
-   Add a small pinch of salt now, but keep it under-salted at this stage. Sausage and meatballs will add salt later.
+   Simmer partially covered, stirring occasionally. While it simmers, make the meatballs (step 2). The sauce wants at least 30 minutes total, longer is better. 60 to 90 minutes is excellent.
 
-   Simmer partially covered, stirring occasionally, for at least 30 minutes while you make meatballs. Longer is better. 60 to 90 minutes is excellent.
-
-   **Sauce texture choice:**
-
-   If you want it smoother, use an immersion blender for 2 to 3 quick pulses, not a full puree.
-
-2. **Make the meatballs**
+2. **Make the meatballs (while the sauce simmers)**
 
    **Make the panade**
+  
+   Pre-heat oven to 425°F (218°C).
 
    Combine bread and milk and let sit 5 minutes. Mash into a thick paste. If it's soupy, squeeze gently. If it's dry, add a splash more milk.
 
@@ -215,27 +218,25 @@ or
    - eggs
    - Parm
    - parsley
-   - garlic
-   - grated onion/shallot (squeezed dry)
+   - garlic powder
+   - onion powder
    - pepper
    - nutmeg
-   - ¼ Tsp salt
+   - salt
 
-   **Add meat and fold gently**
+   **Add meat and mix**
 
-   Add the beef and both sausages. Fold gently until just combined. Stop early.
+   Add the beef and both sausages. Mix until combined. Don't be afraid to get your hands dirty.
 
    **Test patty**
 
-   Cook a small patty and taste. Adjust salt if needed. With sausage, this is non-negotiable.
+   Cook a small patty and taste. Adjust salt, pepper, and other seasoning to your taste.
 
    **Shape**
 
    Roll into 2-inch meatballs. Lightly packed, not compressed.
 
 3. **Par-bake on a rack (your grease-control step)**
-
-   Heat oven to 425°F (218°C).
 
    Line sheet pans with foil. Place wire racks on top. Lightly oil the racks.
 
@@ -245,20 +246,24 @@ or
 
    You will see a lot of fat on the pan. That's correct.
 
-4. **Make sure the sauce volume matches the batch (whole cans only)**
+4. **Check the sauce and adjust volume if needed**
+
+   **Sauce texture choice:**
+
+   If you want it smoother, use an immersion blender in quick pulses. Stop before you get to a full puree.
+
+   **Make sure the sauce volume matches the batch**
 
    This is where we keep it sane.
 
    Before adding meatballs, look at your pot and ask:
 
-   "If I add all meatballs, will they be mostly submerged without stacking too tightly?"
+   "If I add all my meatballs, will they be mostly submerged without stacking too tightly?"
    - If yes: proceed.
    - If it looks tight: open one additional 28 oz can (sauce or whole) and simmer 10 minutes.
    - If it looks crowded or stacked: open two additional 28 oz cans, one at a time, simmering briefly between.
 
-   No half cans. No measuring cups. Just the pot telling the truth.
-
-   Also: if your pot can't comfortably hold everything, split sauce into two pots now.
+   Also: if your pot can't comfortably hold everything, split sauce into two pots now. (And put a bigger pot on your shopping list for next time.)
 
 5. **Finish meatballs in the simmering sauce**
 
@@ -284,11 +289,11 @@ or
 
    **End adjustments**
 
-   Remove carrot, Parm rind, bay leaf.
+   Remove carrot(s), Parm rind, bay leaves.
 
-   Taste and adjust:
+   Taste and add, if needed:
    - salt
-   - a small pinch of sugar only if needed (½ Tsp at a time)
+   - a small pinch of sugar (½ Tsp at a time)
    - if it tastes heavy, add 1 Tsp red wine vinegar or lemon juice
 
 6. **Cook spaghetti and combine intelligently**
@@ -333,7 +338,7 @@ Usually overmixing or overpacking. Fold gently, roll lightly.
 
 ### Meatballs falling apart?
 
-Usually too-wet panade or onion not squeezed dry. Also, make sure they par-bake long enough to set before saucing.
+Usually too-wet panade. Also, make sure they par-bake long enough to set before saucing.
 
 ### Storage and freezer plan
 
