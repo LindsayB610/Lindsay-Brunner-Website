@@ -3,7 +3,7 @@ title: "Extra Protein-y Pasta e Fagioli"
 date: 2025-12-30
 slug: "recipe-extra-protein-pasta-e-fagioli"
 subtitle: "Or: Sausage and white bean soup that eats like dinner"
-description: "Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built from pantry staples and concentrated broth so it feels like a meal. It is savory without being spicy, rich without being heavy, and it gets even better as leftovers."
+description: "Hearty pasta e fagioli with Italian sausage and cannellini beans, built from pantry staples. Savory without being spicy, rich without being heavy."
 draft: false
 social_image: "/images/social/recipe-extra-protein-pasta-e-fagioli-og.png"
 prepTime: "PT15M"

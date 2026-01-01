@@ -3,7 +3,7 @@ title: "Cinnamon Brown Sugar Candied Carrots (Restaurant-Style)"
 date: 2025-12-15
 slug: "recipe-cinnamon-brown-sugar-candied-carrots"
 subtitle: "Or: the only way I willingly eat carrots"
-description: "Restaurant-style candied carrots: tender, lacquered with butter and brown sugar, finished with cinnamon. Two-stage cooking method ensures perfect texture without burned sugar."
+description: "Restaurant-style candied carrots: tender, lacquered with butter and brown sugar, finished with cinnamon. Two-stage cooking ensures perfect texture."
 draft: false
 social_image: "/images/social/recipe-cinnamon-brown-sugar-candied-carrots-og.png"
 prepTime: "PT0M"

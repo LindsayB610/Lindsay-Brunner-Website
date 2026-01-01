@@ -2,7 +2,7 @@
 title: "Category Creation Is Calling Your Shot, Not Manifesting Your Destiny"
 date: 2025-11-17
 slug: "category-creation-calling-shot"
-description: "Category creation isn't about manifesting your destiny—it's about calling your shot. Here's how operators actually get Gartner to redraw the map, from someone who's been in the room."
+description: "Category creation isn't about manifesting your destiny—it's about calling your shot. Here's how operators get Gartner to redraw the map."
 subtitle: "Or: How operators actually get Gartner to redraw the map"
 draft: false
 social_image: "/images/social/category-creation-calling-shot-og.png"
