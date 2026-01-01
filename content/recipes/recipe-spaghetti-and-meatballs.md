@@ -8,7 +8,7 @@ social_image: "/images/social/recipe-spaghetti-and-meatballs-og.png"
 prepTime: "PT50M"
 cookTime: "PT90M"
 totalTime: "PT150M"
-recipeYield: "About 42 to 50 meatballs (2-inch size), enough sauce to simmer the batch and serve with spaghetti"
+recipeYield: "Approximately 40 meatballs (2-inch size), enough sauce to simmer the batch and serve with spaghetti"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 recipeIngredient:
@@ -76,7 +76,7 @@ This is not a precious recipe. It is designed to be adjusted by the size of your
 - **Implements:** large mixing bowl; wire rack plus 2 sheet pans; foil for lining pans; very large Dutch oven or stock pot (or two pots); tongs or a slotted spoon; optional instant-read thermometer
 - **Oven setting:** 425°F (218°C) for par-baking meatballs
 - **Stove setting:** medium heat for sauce aromatics, low for simmering
-- **Batch size:** about 42 to 50 meatballs (2-inch size), enough sauce to simmer the batch and serve with spaghetti (extra meatballs and sauce likely, freeze and feel victorious)
+- **Batch size:** approximately 40 meatballs (2-inch size), enough sauce to simmer the batch and serve with spaghetti (extra meatballs and sauce likely, freeze and feel victorious)
 
 ## Ingredients
 
