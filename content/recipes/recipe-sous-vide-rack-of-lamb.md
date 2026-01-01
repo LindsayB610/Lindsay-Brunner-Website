@@ -69,15 +69,15 @@ This recipe is written for two frenched racks of lamb, each with eight bones, an
 
 1. **Season and bag.**
 
-   Pat the lamb racks completely dry.
+   Remove any silverskin from the concave side of the racks, but do not trim the fat. Pat the lamb racks dry.
 
-   Season generously on all sides with kosher salt. Lamb benefits from assertive salting. Add black pepper if you like, but keep it restrained.
+   Season on all sides with kosher salt. Lamb benefits from assertive salting. Add black pepper if you like, but keep it restrained.
 
-   Place each rack in its own vacuum bag. Add to each bag:
+   Place each rack in its own vacuum bag. Add to each bag on the meat side (not the fat cap):
    - 1 smashed garlic clove
    - 1 small sprig lemon thyme
 
-   Do not add butter, oil, or duck fat to the bag. In a sealed sous vide environment, fats pull flavor out of the meat instead of basting it.
+   Do not add butter, oil, or other fat to the bag. In a sealed sous vide environment, fats pull flavor out of the meat instead of basting it.
 
    Vacuum seal snugly so the aromatics stay in contact with the lamb.
 
@@ -139,6 +139,10 @@ Do not add butter, oil, or duck fat to the bag. In a sealed sous vide environmen
 ### Lemon thyme and garlic notes
 
 Lemon thyme provides gentle brightness without overpowering the lamb. Do not pair it with lemon peel in the bag. Garlic should be smashed, not minced, to avoid harsh sulfur flavors.
+
+If you do not have lemon thyme, you can substitute (place on the meat side, not the fat cap):
+- ¼ Tsp freeze-dried thyme, lightly crushed
+- One thin strip of lemon zest, about 1 × ½ inch. Yellow only, no white pith
 
 ### One rack per bag
 
