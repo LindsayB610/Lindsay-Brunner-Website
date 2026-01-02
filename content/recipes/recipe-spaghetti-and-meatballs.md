@@ -1,9 +1,10 @@
 ---
 title: "Italian American Spaghetti and Meatballs"
+date: 2026-01-02
 slug: "recipe-spaghetti-and-meatballs"
 subtitle: "Or: When your meatballs need a rack, not a lecture about fat content"
 description: "Rich meatballs made with 75/25 beef and Italian sausage, par-baked on a rack to control fat, then finished in a flexible family-style tomato sauce. This is the two sheet pans plus some version, designed to keep meatballs tender without turning your sauce into an oil slick."
-draft: true
+draft: false
 social_image: "/images/social/recipe-spaghetti-and-meatballs-og.png"
 prepTime: "PT50M"
 cookTime: "PT90M"
