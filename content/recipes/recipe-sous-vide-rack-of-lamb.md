@@ -24,7 +24,7 @@ recipeIngredient:
   - "1 fresh sprig lemon thyme (optional, for finishing baste)"
 recipeInstructions:
   - "Season and bag: Pat the lamb racks completely dry. Season generously on all sides with kosher salt. Add black pepper if you like, but keep it restrained. Place each rack in its own vacuum bag with 1 smashed garlic clove and 1 small sprig lemon thyme. Do not add butter, oil, or duck fat to the bag. Vacuum seal snugly."
-  - "Sous vide: Preheat the water bath to 130°F (54.5°C) for medium rare. Submerge the bags fully. Cook for 2.5 to 3 hours if thawed, or 3.5 to 4 hours if frozen. The lamb can safely hold at temperature for up to 4 to 5 hours total, which makes this ideal for entertaining."
+  - "Sous vide: Preheat the water bath to 140°F (60°C). Submerge the bags fully. Cook for 2.5 to 3 hours if thawed, or 3.5 to 4 hours if frozen. The lamb can safely hold at temperature for up to 4 to 5 hours total, which makes this ideal for entertaining."
   - "Remove and dry: Remove the racks from the bags and discard the aromatics. Pat the lamb extremely dry with paper towels. For best results, let the racks rest uncovered in the refrigerator for 10 to 20 minutes to further dry the surface before searing."
   - "Sear: Heat a heavy skillet over high heat until very hot. Add a thin film of neutral oil or duck fat. Place the rack fat-side down first and press gently so the fat cap makes full contact with the pan. Sear for 45 to 60 seconds until deeply browned. Sear the remaining sides briefly, about 20 to 30 seconds per side. Optional butter baste: Lower heat slightly, add butter, garlic, and lemon thyme, baste for 20 to 30 seconds, then remove promptly to avoid over-browning."
   - "Rest and slice: Let the racks rest for 5 minutes. Slice cleanly between the bones and serve immediately."
@@ -39,7 +39,7 @@ This recipe is written for two frenched racks of lamb, each with eight bones, an
 ## Snapshot
 
 - **Implements:** sous vide circulator; large container for water bath; ping pong balls or lid to reduce evaporation; vacuum sealer and bags; heavy skillet (preferably cast iron); paper towels
-- **Cooker setting:** 130°F (54.5°C) for 2.5 to 3 hours (thawed) or 3.5 to 4 hours (frozen)
+- **Cooker setting:** 140°F (60°C) for 2.5 to 3 hours (thawed) or 3.5 to 4 hours (frozen)
 - **Batch size:** 2 frenched racks of lamb, about 1.5 to 1.7 lb each, serving 4
 
 ## Ingredients
@@ -83,7 +83,7 @@ This recipe is written for two frenched racks of lamb, each with eight bones, an
 
 2. **Sous vide cooking.**
 
-   Preheat the water bath to 130°F (54.5°C) for medium rare.
+   Preheat the water bath to 140°F (60°C). This is my preferred doneness, and anything down to about 130°F (54.5°C) is totally acceptable.
 
    Cooking time depends on starting temperature:
    - Fully thawed: 2.5 to 3 hours
@@ -152,7 +152,7 @@ One rack per vacuum bag ensures even cooking and easy handling. This method scal
 
 Sous vide cooking time depends less on weight and more on starting temperature. A rack of lamb that is fully thawed heats up faster than one that is partially or fully frozen, even if they weigh the same.
 
-Use these timing guidelines at 130°F (54.5°C):
+Use these timing guidelines at 140°F (60°C):
 - Fully thawed: 2.5 to 3 hours
 - Partially thawed (cold center, firm): 3 to 3.5 hours
 - Fully frozen: 3.5 to 4 hours
@@ -167,7 +167,7 @@ Patting the lamb extremely dry after removing it from the bag is critical. Moist
 
 ### Make-ahead friendly
 
-You can sous vide the lamb up to a day ahead, chill the sealed bags in an ice bath, and refrigerate. Rewarm in a 130°F (54.5°C) bath for 30 to 45 minutes, then sear just before serving.
+You can sous vide the lamb up to a day ahead, chill the sealed bags in an ice bath, and refrigerate. Rewarm in a 140°F (60°C) bath for 30 to 45 minutes, then sear just before serving.
 
 ### What to expect
 
