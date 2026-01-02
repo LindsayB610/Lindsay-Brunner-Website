@@ -3,7 +3,7 @@ title: "Italian American Spaghetti and Meatballs"
 date: 2026-01-02
 slug: "recipe-spaghetti-and-meatballs"
 subtitle: "Or: When your meatballs need a rack, not a lecture about fat content"
-description: "Rich meatballs made with 75/25 beef and Italian sausage, par-baked on a rack to control fat, then finished in a flexible family-style tomato sauce. This is the two sheet pans plus some version, designed to keep meatballs tender without turning your sauce into an oil slick."
+description: "Rich meatballs with 75/25 beef and ground pork or veal, par-baked on a rack to control fat, finished in a flexible family-style tomato sauce."
 draft: false
 social_image: "/images/social/recipe-spaghetti-and-meatballs-og.png"
 prepTime: "PT50M"
@@ -14,18 +14,18 @@ recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 recipeIngredient:
   - "2 lb ground beef (75/25)"
-  - "½ lb sweet Italian sausage, casings removed"
-  - "½ lb hot Italian sausage, casings removed"
+  - "1 lb ground pork OR veal"
   - "1¼ cups white bread, crusts removed, torn small (or ¾ cup white bread plus ½ cup plain panko breadcrumbs)"
   - "¾ cup whole milk (or 2%)"
   - "2 large eggs"
   - "½ cup finely grated Parmigiano-Reggiano (green can is totally fine!)"
-  - "½ cup finely chopped parsley (or 2-3 Tbsp of dried parsley)"
-  - "1½ to 2 Tsp garlic powder"
-  - "2½ to 3 Tsp onion powder"
-  - "¾ Tsp freshly ground black pepper"
-  - "⅛ to ¼ Tsp freshly grated nutmeg (optional, but great with sausage)"
-  - "salt"
+  - "2 to 3 Tbsp freeze-dried parsley"
+  - "2 to 2½ Tsp garlic powder"
+  - "3 Tsp onion powder"
+  - "1¼ to 1½ Tsp freshly ground black pepper"
+  - "1 Tsp fennel seed (optional)"
+  - "⅛ to ¼ Tsp freshly grated nutmeg (optional)"
+  - "1½ Tsp kosher salt to start (adjust after test patty, likely 1½ to 2 Tsp total)"
   - "Olive oil or nonstick spray, for the rack"
   - "2 to 3 Tbsp olive oil"
   - "2 large yellow onions, finely chopped (or grated for a smoother sauce)"
@@ -54,9 +54,9 @@ recipeInstructions:
   - "Add your other tomatoes: 2 (28 oz) cans of tomato sauce, 2 (28 oz) cans of whole tomatoes (crush by hand as you add), and 2 (14.5 oz) cans of diced tomatoes. Rinse your 2 cans of sauce with about half a can's worth of water (you can splash back and forth to rinse) then add this sauce water to the pot. Add the whole peeled carrot(s), Parm rind, and bay leaves if using. Bring to a gentle simmer, then reduce heat to low."
   - "Simmer partially covered, stirring occasionally. While it simmers, make the meatballs (step 2). The sauce wants at least 30 minutes total, longer is better. 60 to 90 minutes is excellent."
   - "Pre-heat oven to 425°F (218°C). Make the panade. Combine bread and milk and let sit 5 minutes. Mash into a thick paste. If it's soupy, squeeze gently. If it's dry, add a splash more milk. If using the bread plus panko option, stir panko in after the bread becomes a paste."
-  - "Mix the flavor base. In a large bowl, mix thoroughly: panade, eggs, Parm, parsley, garlic powder, onion powder, pepper, nutmeg, and salt."
-  - "Add meat and mix. Add the beef and both sausages. Mix until combined. Don't be afraid to get your hands dirty."
-  - "Test patty. Cook a small patty and taste. Adjust salt if needed. With sausage, this is non-negotiable."
+  - "Mix the flavor base. In a large bowl, mix thoroughly: panade, eggs, Parm, freeze-dried parsley, garlic powder, onion powder, black pepper, fennel seed (if using), nutmeg (if using), and 1½ Tsp kosher salt."
+  - "Add meat and mix. Add the beef and pork (or veal). Mix until combined. Don't be afraid to get your hands dirty."
+  - "Test patty. Cook a small patty and taste. Adjust salt, pepper, and other seasoning to your taste."
   - "Shape. Roll into 2-inch meatballs. Lightly packed, not compressed."
   - "Par-bake on a rack. Line sheet pans with foil. Place wire racks on top. Lightly oil the racks. Arrange meatballs with a little space between. Bake 12 to 15 minutes, until they are set and lightly browned but not fully cooked through. Optional nerd target: 120 to 130°F (49 to 54°C) internal. You will see a lot of fat on the pan. That's correct."
   - "Make sure the sauce volume matches the batch. Before adding meatballs, look at your pot and ask: If I add all meatballs, will they be mostly submerged without stacking too tightly? If yes, proceed. If it looks tight, open one additional 28 oz can (sauce or whole) and simmer 10 minutes. If it looks crowded or stacked, open two additional 28 oz cans, one at a time, simmering briefly between. No half cans. No measuring cups. Just the pot telling the truth. Also, if your pot can't comfortably hold everything, split sauce into two pots now."
@@ -66,7 +66,7 @@ recipeInstructions:
   - "Cook spaghetti and combine. Bring a large pot of salted water to a boil. Cook spaghetti until just shy of al dente. Reserve 2 cups pasta water, then drain. In a large pan or pot, toss pasta with a few ladles of sauce and a splash of pasta water until glossy and well-coated. Serve meatballs on top. Spoon extra sauce over everything. Finish with Parm and parsley."
 ---
 
-This is my big-batch, two–sheet-pan version of classic spaghetti and meatballs, built for feeding people without stress. The meatballs are intentionally rich, a mix of 75/25 beef and Italian sausage, so the method is designed to keep them tender and flavorful without turning your sauce into an oil slick. The sauce itself is flexible and family-style, a layered tomato base with just enough natural sweetness to feel balanced, not sugary.
+This is my big-batch, two–sheet-pan version of classic spaghetti and meatballs, built for feeding people without stress. The meatballs are intentionally rich, a mix of 75/25 beef and ground pork or veal, so the method is designed to keep them tender and flavorful without turning your sauce into an oil slick. The sauce itself is flexible and family-style, a layered tomato base with just enough natural sweetness to feel balanced, not sugary.
 
 The key move here is separating structure from flavor. The meatballs are par-baked on racks first to set their shape and shed excess fat, then finished gently in the sauce so everything comes together without heaviness. It is a practical, forgiving approach that scales well, freezes well, and tastes like you worked harder than you actually did.
 
@@ -132,8 +132,7 @@ or
 #### Meat
 
 - 2 lb ground beef (75/25)
-- ½ lb sweet Italian sausage, casings removed
-- ½ lb hot Italian sausage, casings removed
+- 1 lb ground pork OR veal
 
 #### Panade (choose one)
 
@@ -152,12 +151,13 @@ or
 
 - 2 large eggs
 - ½ cup finely grated Parmigiano-Reggiano (green can is totally fine!)
-- ½ cup finely chopped parsley (or 2-3 Tbsp of dried parsley)
-- 1½ to 2 Tsp garlic powder
-- 2½ to 3 Tsp onion powder
-- ¾ Tsp freshly ground black pepper
-- ⅛ to ¼ Tsp freshly grated nutmeg (optional, but great with sausage)
-- salt
+- 2 to 3 Tbsp freeze-dried parsley
+- 2 to 2½ Tsp garlic powder
+- 3 Tsp onion powder
+- 1¼ to 1½ Tsp freshly ground black pepper
+- 1 Tsp fennel seed (optional)
+- ⅛ to ¼ Tsp freshly grated nutmeg (optional)
+- 1½ Tsp kosher salt to start (adjust after test patty, likely 1½ to 2 Tsp total)
 
 #### For par-baking
 
@@ -218,16 +218,17 @@ or
    - panade
    - eggs
    - Parm
-   - parsley
+   - freeze-dried parsley
    - garlic powder
    - onion powder
-   - pepper
-   - nutmeg
-   - salt
+   - black pepper
+   - fennel seed (if using)
+   - nutmeg (if using)
+   - 1½ Tsp kosher salt
 
    **Add meat and mix**
 
-   Add the beef and both sausages. Mix until combined. Don't be afraid to get your hands dirty.
+   Add the beef and pork (or veal). Mix until combined. Don't be afraid to get your hands dirty.
 
    **Test patty**
 
@@ -317,9 +318,17 @@ or
 
 ## Notes, swaps, and guardrails
 
-### Why this method works for 75/25 beef plus sausage
+### Why this method works for 75/25 beef plus pork or veal
 
 High-fat meat stays juicy, but can turn greasy. Par-baking on a rack renders excess fat early. Finishing in sauce prevents drying and adds cohesion.
+
+### Variation: Using Italian sausage
+
+If you prefer to use 1 lb Italian sausage (sweet, hot, or a mix) instead of ground pork or veal:
+
+- Reduce salt significantly. Start with ½ to ¾ Tsp and finalize after a test patty. Sausage is already heavily seasoned and salted.
+- Garlic and fennel may be reduced or omitted entirely, depending on your sausage brand and desired flavor profile.
+- Seasoning becomes more brand-dependent. Taste your sausage first, then adjust the additional seasonings accordingly. Some sausages are already very garlicky, while others are milder.
 
 ### Oregano rule
 
