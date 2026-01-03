@@ -29,12 +29,11 @@ recipeInstructions:
   - "Sear: Heat a heavy skillet over high heat until very hot. Add a thin film of neutral oil or duck fat. Place the rack fat-side down first and press gently so the fat cap makes full contact with the pan. Sear for 45 to 60 seconds until deeply browned. Sear the remaining sides briefly, about 20 to 30 seconds per side. Optional butter baste: Lower heat slightly, add butter, garlic, and lemon thyme, baste for 20 to 30 seconds, then remove promptly to avoid over-browning."
   - "Rest and slice: Let the racks rest for 5 minutes. Slice cleanly between the bones and serve immediately."
 ---
+Rack of lamb is one of those cuts that’s expensive enough to make you nervous and lean enough to punish mistakes. Traditional roasting works, but the margin for error is narrow, and it’s very easy to end up with the classic bullseye situation: nicely pink in the middle, increasingly gray toward the edges. Sous vide takes that stress off the table. Credit also goes to Costco here, whose pricing is the only reason rack of lamb became something I was willing to experiment with at home instead of reserving it for restaurants and special occasions.
 
-Rack of lamb is expensive, lean, and not particularly forgiving. Traditional roasting gives you a very small margin for error and often results in the classic bullseye: rare in the center, gray and overcooked by the edges. Sous vide removes that risk almost entirely.
+Cooking the lamb in a temperature-controlled water bath means you decide the doneness once and get it consistently from edge to center. Timing becomes flexible instead of something you hover over, the meat stays juicy, and the final sear is about flavor and texture rather than trying to rescue the interior. It’s especially useful when you’re cooking for guests, because the work splits cleanly into two parts: calm, hands-off cooking earlier, then a quick, high-heat finish right before serving.
 
-Cooking the lamb in a temperature-controlled water bath lets you decide the final doneness up front and achieve that doneness evenly from edge to center. Timing becomes flexible instead of stressful, moisture stays locked in, and the final sear is about flavor and texture, not damage control. It is an especially good approach when cooking for guests, because the work is cleanly split into two phases: precise, hands-off cooking ahead of time, followed by a fast, dramatic finish right before serving.
-
-This recipe is written for two frenched racks of lamb, each with eight bones, and comfortably serves four people. Plan on three to four rib chops per person, which is a generous main-course portion when served with sides.
+This recipe is written for two frenched racks of lamb, each with eight bones, and comfortably serves four people. Plan on three to four rib chops per person, which is a generous main-course portion when you’ve got sides on the table.
 
 ## Snapshot
 

@@ -45,14 +45,13 @@ recipeInstructions:
   - "Make a quick pan sauce: When the veg are done, transfer them to a serving bowl and keep warm. Carefully pour off some of the fat from the pan, leaving about 2–3 Tbsp plus all the browned bits. Either set the baking sheet across two burners (medium heat, if your setup allows) or scrape everything into a saucepan. Add the wine or vermouth. Let it simmer and bubble, scraping up the browned bits with a wooden spoon, until the liquid reduces by about half. Pour in the stock and simmer again until slightly thickened and glossy, 5–8 minutes. Take the pan off the heat and whisk in the cold butter, a cube or two at a time, until the sauce is silky. Taste and adjust with lemon juice or sherry vinegar for brightness, plus salt and pepper as needed. If you're using Dijon, whisk it in now."
   - "Serve: Serve each person a whole leg/thigh or cut the meat off the bone into thick slices. Spoon the roasted veg onto plates, top with turkey, and drizzle everything with pan sauce. Finish with flaky salt and a scatter of fresh herbs."
 ---
-I love Thanksgiving flavors, but I do not always love managing a whole turkey the size of a small meteor. Dark meat, on the other hand? That I will absolutely engineer a recipe around.
+I love Thanksgiving flavors, but I do not always love managing a whole turkey the size of a small meteor. Thawing it for a dang month. Splashing raw poultry liquids all over my kitchen. Locating and cleaning that one roasting pan buried in the depths of my garage. Too much work to then end up with dry, tasteless leftovers. 
 
-This version leans all the way into the good stuff: bone-in turkey legs or thighs, a dry brine for deep seasoning, an uncovered fridge nap for paper-thin crisp skin, and a final gloss of duck fat so the oven does most of the work. You get all the "fancy restaurant roast bird" vibes without trussing anything or panic-basting every 20 minutes.
+Here's the thing... dark meat never sucks as leftovers. So why not just make that? I grabbed some turkey legs and thighs from my butcher and dry brined for deep seasoning. After an uncovered fridge nap for paper-thin crisp skin, and a final gloss of duck fat, the oven did most of the work. I ended up with the Thanksgiving vibes I wanted, without trussing anything or panic-basting every 20 minutes.
 
-Alongside these duck-fat turkey pieces, I like serving:
+This recipe also nets you:
 
 - Duck-fat roasted potatoes and root veg (baked right under the turkey here)
-- Something bright and crunchy, like shaved Brussels sprouts or a sharp green salad
 - Proper gravy or pan jus for people who want to drown their plate (me, always)
 
 So, let's get started.

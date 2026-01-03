@@ -40,6 +40,11 @@ recipeInstructions:
   - "Combine pasta and sauce: Add the cooked ditalini to the sauce and toss thoroughly. If using frozen peas, stir in 1–1½ cups and let them warm through for 2–3 minutes, just until bright green and tender. Taste now. Because guanciale, cheese, and pasta water already bring salt, you may only need a small pinch. Add black pepper generously. If the sauce tastes too rich or heavy, brighten with lemon zest or a splash of lemon juice."
   - "Finish and serve: Divide pasta among bowls. Top each portion with crispy guanciale, crisped sage leaves (if fresh), and a sprinkle of remaining Parmesan. Serve immediately."
 ---
+This is one of those recipes that started as a “use what I have” situation and very quickly turned into a repeat request. The first time I made it, I was trying to solve two problems at once: a container of butternut squash that didn't have room to save in the freezer, and a chunk of guanciale I impulse-bought without a plan. Pasta felt inevitable. Ditalini was chosen by my six-year-old.
+
+What makes this work is the balance. The squash gets roasted hard enough to caramelize and soften, then partially mashed into the sauce so it’s creamy without being sweet or baby-food smooth. The guanciale is rendered slowly until crisp and glassy, then used in two ways: its fat builds the sauce, and the pork itself stays crisp until the very end. Ricotta and cream round everything out, tomato paste adds depth, and fresh herbs keep it from tipping into heavy winter food territory. It’s rich, but controlled.
+
+We’ve made this several times now, including once for people who don’t usually get excited about squash and once on a weeknight when everyone was tired and cranky. It held up in both situations. If you like pasta that feels comforting but still a little intentional, this one earns a spot in the rotation.
 
 ## Snapshot
 

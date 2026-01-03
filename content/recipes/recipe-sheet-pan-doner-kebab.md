@@ -48,7 +48,7 @@ recipeInstructions:
   - "Rest, slice, and serve: Let the logs rest for about 5 minutes to relax the juices. Using a sharp knife, slice across the logs into thin strips, döner‑style. Pile the meat into warm pita or flatbreads, add salad and sauces, and serve right away."
 ---
 
-This is my home‑kitchen take on the classic döner kebab, specifically, the TikTok‑famous "Nefi's Kebab." Instead of a giant rotating cone of meat, you build thin sheets of spiced lamb‑and‑beef mixture on parchment, roll them into logs, and roast them on a sheet pan.
+OK, I had to try it, the TikTok‑famous "Nefi's Kebab." One of my besties is a German native who came of age eating Berlin döner, and has missed it every day since he moved to the US. With this recipe to attempted to recreate something close enough to his beloved college staple. Instead of a giant rotating cone of meat, you build thin sheets of spiced lamb‑and‑beef mixture on parchment, roll them into logs, and roast them on a sheet pan.
 
 The result: deeply seasoned, juicy strips of kebab you can tuck into pita with salad and sauces, no special equipment required. There's even a tiny "test patty" step so you can lock in the seasoning before you commit three pounds of meat.
 

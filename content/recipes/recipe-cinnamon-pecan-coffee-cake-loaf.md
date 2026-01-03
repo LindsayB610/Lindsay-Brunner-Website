@@ -39,7 +39,13 @@ recipeInstructions:
   - "Cool and slice: Let the loaf cool in the pan for about 15 minutes so the crumb can set. Use the parchment to lift it out to a rack and let it cool until just warm or room temperature. Slice into thick pieces and serve as breakfast, snack, or coffee companion."
 ---
 
-This is a tender cinnamon loaf cake baked in a standard loaf pan and finished with a chunky pecan crumb topping. It borrows the nut topping DNA from my [Fluffy BBQ‑Style Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole/) and uses heavy cream instead of milk for a richer crumb, with a tiny lift from fresh nutmeg and a whisper of almond extract.
+So, I was testing a new recipe last weekend, for [Fluffy BBQ‑Style Sweet Potato Casserole](/recipes/2025-11-14/recipe-sweet-potato-casserole/), and turns out I planned for WAY more pecan topping than I needed. Like, double what I needed. This is what happens when midwestern mom and maximalist combine. Or, maybe those were already synonyms?
+
+Anyway.
+
+Now I had the problem of what to do with all this extra pecan topping, and of course the obvious choice was to bake a coffee cake. And why use just one recipe as a base when I could hack together several and then rewrite parts of each to be exactly the coffee cake I want to eat.
+
+This version is super tender, cinnamon-forward, and exactly walks the line of "breakfast cake, not cake for breakfast."
 
 ## Snapshot
 

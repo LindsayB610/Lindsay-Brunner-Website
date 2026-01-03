@@ -29,11 +29,11 @@ recipeInstructions:
   - "Dry at room temperature or in the fridge: Leave the mints in a single layer, uncovered. In a cool, dry room: 12–24 hours, flipping once halfway through, until the surfaces feel dry and the centers are fudgey but not squishy. In a humid kitchen: slide the trays into the fridge, uncovered, for 8–12 hours. The cold air helps them dry without melting."
   - "Store: Once the mints are dry to the touch and hold their shape when gently squeezed, transfer them to airtight containers, layered with parchment if you're stacking. Room temp: up to 3–4 days in a cool, dry spot. Fridge: up to 2 weeks. Freezer: up to 1 month; thaw in the fridge, then bring to room temp before serving for the best texture."
 ---
-These are the little pastel squares that show up on cookie trays and at church weddings: soft‑minty, creamy, and just firm enough to stack in a jar without merging into one mega‑mint.
+I tried to make these dang mints almost exactly one year ago for Christmas and they LITERALLY. NEVER. SET. UP. I had no idea that was possible, and let me tell you, it ticked me off. These silly little pastel squares that show up on cookie trays and at church weddings are one of my absolute faves: soft‑minty, creamy, and just firm enough to stack in a jar without merging into one mega‑mint. Or, that's what they're supposed to be.
 
-The catch: a lot of cream cheese mint recipes are extremely sensitive to moisture. Use the wrong cream cheese, measure sugar a little light, or get heavy‑handed with extract and food coloring, and you end up with delicious peppermint Play‑Doh that never really hardens.
+This year was my redemption. I'd done some research after my previous failure and learned (somewhat obviously in hindsight) they these guys are extremely sensitive to moisture. Use the wrong cream cheese, measure sugar a little light, or get heavy‑handed with extract and food coloring, and you end up with exactly what I did 12 months before: delicious peppermint Play‑Doh that never really hardens.
 
-This version is built to be a bit more forgiving. The ingredient list looks familiar (cream cheese, powdered sugar, peppermint), but the guardrails are spelled out. The short version: brick cream cheese only, and the powdered sugar amount is a floor, not a ceiling.
+This version is built to be more forgiving. The ingredient list looks familiar (cream cheese, powdered sugar, peppermint), but the guardrails are spelled out. The short version: brick cream cheese only, and the powdered sugar amount is a floor, not a ceiling. This is a recipe that you can trust to set up, regardless of the dampness of your personal holiday kitchen.
 
 ## Snapshot
 

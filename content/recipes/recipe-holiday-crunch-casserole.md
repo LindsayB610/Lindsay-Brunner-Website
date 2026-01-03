@@ -31,11 +31,9 @@ recipeInstructions:
   - "Add the crunch. Pull the dish out, scatter the remaining fried onions over the top, and return to the oven for about 5 minutes, until the onions are toasty and golden."
   - "Rest and serve. Let the casserole stand 5–10 minutes so it stops molten-lava bubbling and sets up a bit. Scoop into bowls and serve."
 ---
-When I was in high school, my mom had surgery, and a family friend showed up at our door with this casserole.
+When I was in high school my mom had pretty major surgery and as midwesterners do, immediately after a family friend showed up at our door with this casserole. It was not glamorous. There were no heirloom vegetables. There *was* a can of cream-of-something soup and a heroic amount of crispy fried onions.
 
-It was not glamorous. There were no heirloom vegetables. There was a can of cream-of-something soup and a heroic amount of crispy fried onions.
-
-We LOVED it. In the middle of a weird, scary time, this was hot, salty, crunchy, and comforting in a way that made the whole house feel less like a hospital waiting room. It's been in the family rotation ever since, and it still tastes like being taken care of.
+We LOVED it. In the middle of a weird, scary time, this was hot, salty, crunchy, and comforting. It's been in the family rotation ever since, and it still tastes like being taken care of.
 
 This is very much a "holiday church potluck meets 90s pantry" situation: ground beef, macaroni, cream soup, canned tomatoes, cheddar, and a crown of fried onions that stay crunchy for approximately twelve seconds before everyone eats it.
 

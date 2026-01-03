@@ -37,9 +37,9 @@ recipeInstructions:
   - "Optional bark: Spread sauced pork on a sheet pan and broil 5 to 8 minutes, stirring once, for crispy edges."
 ---
 
-I've been trying to use the pressure cooker more (read: remember I own it) and the perfect use case for a pressure cooker, IMO, is pulled pork. Every Sunday we make a batch of something that can be repurposed for weeknight dinners, it's the closest I come to meal prepping, and last Sunday it was this Bachan pulled pork recipe. This was a smash up of several random internet recipes plus my own personal experience, efficiently combined with ChatGPT.
+I've been trying to use the pressure cooker more, which mostly means trying to remember that I own one. Pulled pork is one of the few things where it's genuinely the right tool. On Sundays we usually make one batch-cook thing that can turn into several weeknight dinners, and last week it was this Bachan-style pulled pork.
 
-Meet my pressure-braised pork shoulder finished with Bachan's Japanese Barbecue Sauce. The sauce is thin, soy-forward, and punchy, so the trick is to keep the braise clean and sauce after shredding. That keeps the meat juicy (not soupy) and the sauce bright (an approach I cribbed from Kenji's indoor pulled-pork method on [Serious Eats](https://www.seriouseats.com/easy-oven-baked-pulled-pork-sandwiches)).
+This started as a mash-up of a few TikTok recipes, plus what's worked for me before, and then got tightened up with some help from ChatGPT. In this version, the sauce is thin, soy-forward, and interesting. Per standard, I sauced the pork after shredding, and very lightly, reserving most of the sauce to be applied when served. That keeps the meat juicy without getting soupy. 
 
 ## Snapshot
 

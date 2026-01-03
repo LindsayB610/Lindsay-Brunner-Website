@@ -31,9 +31,9 @@ recipeInstructions:
   - "Serve: Serve immediately while the glaze is at peak shine. These hold OK for a bit, but they're best right off the pan."
 ---
 
-These are the carrots that show up glossy and smug in a restaurant: tender all the way through, lacquered with butter + brown sugar, and mysteriously gone before the entrée hits the table.
+Who wants to eat healthy carrots anyway? These are the carrots you feed a kid who says they hate carrots. (Not my kid, of course, who loves raw carrots straight from the ground but spat these out in 10 seconds, but like, probably other kids...) They're modeled on the carrots that show up all glossy and smug in a restaurant: tender all the way through, lacquered with butter + brown sugar, and gone in seconds even when everyone swore they weren't really hungry.
 
-The trick is two-stage cooking: par-cook the carrots first (fast + controlled), then glaze hard and fast in a skillet so the sugar doesn't have time to burn while the carrots figure out how to be tender. 
+The trick is two-stage cooking: par-cook the carrots first (fast + controlled), then glaze hard and fast in a skillet so the sugar doesn't have time to burn.
 
 ## Snapshot
 

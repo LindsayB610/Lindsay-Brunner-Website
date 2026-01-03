@@ -29,7 +29,13 @@ recipeInstructions:
   - "Cook the pizzelles: Place about 1 tablespoon of batter in the center of each pattern on the hot iron (your iron may like a little more or less; adjust after the first couple). Close the iron and cook until the steam has mostly subsided and the cookies are a light golden color, usually 30–90 seconds depending on your machine and how dark you like them. Use a thin spatula or fork to lift each pizzelle onto a wire rack. They'll still feel a bit flexible when hot but crisp up as they cool."
   - "Cool and store: Let pizzelles cool completely before stacking so they stay crisp. Once cool, dust with powdered sugar if you like. Store in an airtight tin or container at room temperature; they keep well for weeks, which is part of their holiday magic."
 ---
-These are my Grandma Yola's pizzelles: a big, old-school 12-egg batch that turns into stacks of light, crisp Italian waffle cookies. The original card calls for orange extract, but the same base works with almond, lemon, or anise, so you can run different flavors off the same batter.
+If you didn't grow up in an Italian American family, I'm sorry. And also, you probably don't have context on how seriously my people take our cookies. For as long as I can remember, my Grandma Yola's pizzelles (at least 12 dozen of them) have been a holiday staple. An electric pizzelle iron from the Italian store is a coming of age gift in my culture. I treasure my grandma's antique irons, the manual kind meant to be held over a gas burner, though I don't have the first clue how to use them without starting a fire.
+
+In my family, we eschew the traditional anise and lean into orange, lemon, or basic vanilla flavors (I went rogue once and made a batch with almond extract... Turned out excellent!). 
+
+One recipe uses a full dozen eggs, and one dare not suggest halving or quartering said recipe. Doubling is acceptable. If you still have a giant Tupperware salad bowl from 1979, that is the best and most appropriate vessel for this project. 
+
+When you've secured yourself a pizzelle iron, head bake here and let's bake a batch together!
 
 ## Snapshot
 

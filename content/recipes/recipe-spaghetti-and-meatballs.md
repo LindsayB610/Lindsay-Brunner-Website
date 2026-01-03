@@ -66,11 +66,13 @@ recipeInstructions:
   - "Cook spaghetti and combine. Bring a large pot of salted water to a boil. Cook spaghetti until just shy of al dente. Reserve 2 cups pasta water, then drain. In a large pan or pot, toss pasta with a few ladles of sauce and a splash of pasta water until glossy and well-coated. Serve meatballs on top. Spoon extra sauce over everything. Finish with Parm and parsley."
 ---
 
-This is my big-batch, two–sheet-pan version of classic spaghetti and meatballs, built for feeding people without stress. The meatballs are intentionally rich, a mix of 75/25 beef and ground pork or veal, so the method is designed to keep them tender and flavorful without turning your sauce into an oil slick. The sauce itself is flexible and family-style, a layered tomato base with just enough natural sweetness to feel balanced, not sugary.
+This is my big-batch, two–sheet-pan version of classic spaghetti and meatballs, built for feeding people without stress. The meatballs are a mix of 75/25 beef and ground pork or veal, so the method is designed to keep them tender and flavorful without turning your sauce into an oil slick. You can certainly use leaner beef, I often do, this is just what happened to be in my freezer this week. 
+
+The sauce here is also flexible and family-style, a layered tomato base with just enough natural sweetness to feel balanced, not sugary.
 
 The key move here is separating structure from flavor. The meatballs are par-baked on racks first to set their shape and shed excess fat, then finished gently in the sauce so everything comes together without heaviness. It is a practical, forgiving approach that scales well, freezes well, and tastes like you worked harder than you actually did.
 
-This is not a precious recipe. It is designed to be adjusted by the size of your pot, the appetite of your table, and the truth of what your sauce looks like in the moment. The guardrails are here so you can relax and cook with confidence, not second-guess every step.
+This is not a precious recipe. It is designed to be adjusted by the size of your pot, the appetite of your table, and the truth of what your sauce looks like in the moment. The guardrails are here so you can relax and cook with confidence, not second-guess every step. This recipe makes about 6 quarts of sauce + meatballs for me, plenty to feed my family and my freezer.
 
 ## Snapshot
 

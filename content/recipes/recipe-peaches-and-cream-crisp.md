@@ -38,9 +38,9 @@ recipeInstructions:
   - "Set and serve: Cool on a rack for at least 30 minutes so the custard firms to a sliceable, spoon-able pastry cream texture. Serve warm or room temp. Vanilla ice cream or lightly sweetened whipped cream is excellent here."
 ---
 
-Inspired by dinner at a friend's house this past weekend, and some jars of peaches that were slowly expiring in the back of my pantry, I set out to build my own recipe for a peaches and cream crisp.
+Inspired by dinner at a friend's house this past weekend, and some jars of peaches that were edging toward expiration in the back of my pantry, I set out to build my own recipe for a peaches and cream crisp.
 
-Let's be clear, I LOVE pie, but I HATE making pie crust. It's too fiddly. I'm a cook, not a baker, I'm just not great at the perfection that baked goods require. Crisp is right up my alley: most of the elements I love about pie, but way more forgiving for a lazy home cook.
+I'm gonna be honest: I LOVE pie, but I HATE making pie crust. It's too fiddly. I'm a cook, not a baker, I'm just not great at the perfection that baked goods require. Buckle, cobbler, crisp, these are the pastry-adjacent desserts that are right up my alley: most of the elements I love about pie, but way more forgiving for a lazy home cook.
 
 This crisp bakes in a deep dish pie pan and layers a stovetop almond pastry cream and canned peach slices under a crunchy oat crumble. 
 

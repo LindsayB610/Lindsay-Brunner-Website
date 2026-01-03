@@ -26,9 +26,11 @@ recipeInstructions:
   - "Save the bacon fat: Carefully pour the drippings into a heatproof jar/bowl. Do not pour it down your sink unless you enjoy plumbing-based side quests."
 ---
 
-I love stovetop bacon in theory. In practice, it's a tiny grease-based weather event that coats your entire kitchen in "breakfast essence." Oven bacon is the calm, grown‑up solution: hands‑off, even rendering, and you get to keep your shirt.
+I love stovetop bacon in theory for its speed, and perceived simplicity. In practice, I find that it's a tiny grease-based weather event that coats your entire kitchen in "breakfast essence." If you regularly make your bacon on the stovetop, I encourage you to join me in oven bacon land. (And I also encourage you to try Dawn PowerShot on your vent hood, because you know it needs it...)
 
-This method is tuned specifically for **very thick, hand‑cut, home‑cured bacon** in a **basic American (non‑convection) oven**, using **wire racks on sheet pans**. The key move: a **cold‑oven start at 350°F** so the fat has time to render before the lean goes from "meaty" to "sad and dry."
+Oven bacon is the calm, grown‑up solution: hands‑off, even rendering, and you don't end up having to Google how to get bacon grease stains out of a t-shirt.
+
+This method is tuned specifically for what I usually have, which is **very thick, hand‑cut, home‑cured bacon** in a **basic American (non‑convection) oven**, using **wire racks on sheet pans**. The key move: a **cold‑oven start at 350°F** so the fat has time to render before the lean goes from "meaty" to "sad and dry." If you're using thinner bacon, just watch the timing, keep the temp the same.
 
 ## Snapshot
 
@@ -40,18 +42,18 @@ This method is tuned specifically for **very thick, hand‑cut, home‑cured bac
 
 ### The basics
 
-  * 1 lb very thick sliced bacon (home-cured is perfect here)
+  * 1 lb very thick sliced bacon 
 
-### Optional (but useful) guardrails
+### Optional (but useful)
 
   * ~¼ cup water, poured into the sheet pan *under* the rack (helps reduce smoking if your drippings run hot)
-  * Fresh black pepper, to taste (only if your cure isn't already peppery)
 
 ### To serve (choose your lane)
 
   * Breakfast plate with eggs
   * BLT or breakfast sandwich
   * Crumbled over salad, baked potatoes, mac and cheese, or "I'm an adult" roasted Brussels sprouts
+  * Apply directly to your face while standing over the hot sheet pan
 
 * * *
 

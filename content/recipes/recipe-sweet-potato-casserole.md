@@ -24,7 +24,7 @@ recipeIngredient:
   - "Pinch Diamond Crystal kosher salt"
 recipeInstructions:
   - "Prep & toast the nuts: Heat oven to 350°F (175°C). Spread chopped nuts on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter)."
-  - "Roast the sweet potatoes: Heat oven to 400°F (205°C). Scrub and poke each potato 4–6 times with a fork. Roast whole, unpeeled on a parchment‑lined sheet pan or wire rack until completely tender: 45–75 minutes depending on size, or 205–210°F internal. Cool 10 minutes, split, scoop out the flesh, and discard skins. Optional but recommended for silky, fluffy texture: press through a ricer or mash well to break up any strings."
+  - "Roast the sweet potatoes: Heat oven to 400°F (205°C). Scrub and poke each potato 4–6 times with a fork. Roast whole, unpeeled on a parchment‑lined sheet pan or wire rack until completely tender: 45–75 minutes depending on size, or 205–210°F internal. Cool 10 minutes, split, scoop out the flesh, and discard skins. Optional but recommended for silky, fluffy texture: mash well to break up any strings."
   - "Preheat and prep the pan: Lightly butter a 1‑quart baking dish (~4‑cup volume; fills ~⅔ up the sides)."
   - "Whip the base (precise cream‑mixing sequence): Start the whip without cream: Move the roasted potato flesh to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl. Add cream gradually: With the mixer on low, add cream 1 Tbsp at a time, beating 10–15 seconds after each addition. Stop when the texture is like soft mashed potatoes (peaks slump slowly, not runny). (Roasted flesh is drier than boiled, so expect to use a touch more cream to reach the same soft‑mashed fluff. Small pan usually needs 2–4 Tbsp.) Final aeration: Bump speed to medium for 20–30 seconds to add a little air. Taste for salt. Pan & cool: Spread into your pan, smoothing gently (don't press the air out). Cool 5 minutes so the topping won't melt on contact."
   - "Make the topping: In a bowl, combine brown sugar, flour, salt, and the cooled toasted nuts. Rub in the softened butter with fingers/fork until pebbly clumps form. Chill 10 minutes so the crumbs hold their shape."
@@ -32,13 +32,17 @@ recipeInstructions:
   - "Finish & serve: Increase to 400°F for 3–6 minutes (or a short broil) to brown the sugars. Rest 10 minutes, then scoop with a disher into warm bowls."
 ---
 
-This version keeps the potatoes buttery and lightly salted, with all the sweetness living in a chunky brown‑sugar nut topping. It bakes in a pan and gets scooped with a disher, just like the restaurant version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, CA.
+I am extremely picky about sweet potato casserole. Most versions are either dessert pretending to be a side dish or a dense, gluey situation that nobody actually wants seconds of. This one is neither. It's modeled after the version from [Sauced BBQ](https://www.saucedbbqandspirits.com) in Lafayette, which gets the balance exactly right: a savory, buttery, lightly salted sweet potato base that stays fluffy and scoopable, with all the sweetness and crunch living up top where it belongs.
+
+The base here is whipped, not baked with eggs, which keeps it light even after a long oven stint. Roasting the potatoes whole concentrates their flavor without waterlogging them, and a careful mixing sequence makes the texture soft and airy instead of mashed-potato heavy. The topping is intentionally chunky and nut-forward, more brown-sugar crumble than marshmallow cap, and it bakes up crisp without sinking or melting away.
+
+This is the version we actually make when we want sweet potato casserole on the table, not a nostalgia prop. It works as a side for barbecue or roast chicken, holds well for make-ahead meals, and gets scooped out of the pan instead of sliced into polite little squares. Which is exactly how it should be.
 
 ## Snapshot
 
-- **Implements:** sheet pan or wire rack; parchment paper; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; ricer (optional, for silky texture); 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
+- **Implements:** sheet pan or wire rack; parchment paper; mixing bowl; hand mixer (or very sturdy whisk); rubber spatula; 9×5 loaf pan (hotel‑pan vibe) or 1‑quart baking dish
 - **Oven:** 400°F (205°C) for roasting potatoes (45–75 minutes), then 350°F (175°C) for baking (20–30 minutes), finish at 400°F for 3–6 minutes
-- **Batch size:** see "Choose your pan & base amounts" below
+- **Batch size:** see "Choose your pan and base amounts" below
 
 ## Ingredients
 
@@ -90,7 +94,7 @@ This version keeps the potatoes buttery and lightly salted, with all the sweetne
 
    Cool 10 minutes, split, scoop out the flesh, and discard skins.
 
-   **Optional but recommended for silky, fluffy texture:** Press through a ricer or mash well to break up any strings.
+   **Optional but recommended for silky, fluffy texture:** Mash well to break up any strings.
 
    Proceed to Step 3 (whipping).
 

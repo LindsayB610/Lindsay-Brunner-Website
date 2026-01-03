@@ -43,7 +43,9 @@ recipeInstructions:
   - "Finish. Stir in the greens until wilted. Fish out the Parm rind, if you added one. Turn off the heat and stir in about ¼ to ⅓ cup Parmesan until melted. Taste and adjust with lemon juice if needed. Serve with the remaining Parmesan."
 ---
 
-For as long as I can remember, pasta e fagioli has been my mom's favorite soup. When I was little it grossed me out, but as an adult it's one of my faves too. This version ups the protein with added Italian sausage, because I, like everyone, am chasing that daily protein intake. The recipe is built from my pantry staples to feel like a meal, but still comes together simply. It's savory without being spicy, rich without being heavy, and it gets even better as leftovers.
+For as long as I can remember, pasta e fagioli has been my mom's favorite soup. When I was little it grossed me out, but as an adult it's one of my faves too. This version ups the protein with added Italian sausage, because I, like everyone, am chasing that daily protein intake. 
+
+The recipe is built from my pantry staples to feel like a meal, but still comes together simply. And OMG, it's so freaking good the next day...
 
 ## Snapshot
 
