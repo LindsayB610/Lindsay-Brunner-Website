@@ -18,7 +18,7 @@
     </linearGradient>
   </defs>
   <text x="120" y="675.5" font-family="Inter, sans-serif" font-size="160" font-weight="bold" fill="url(#titleGradient1)">Onion Bits</text>
-  <text x="132" y="923.7" font-family="Inter, sans-serif" font-size="64" font-weight="bold" fill="#cccccc">Or: dinner that understands heat transfer</text>
+  <text x="132" y="923.7" font-family="Inter, sans-serif" font-size="64" font-weight="bold" fill="#cccccc">Or: Dinner that understands heat transfer</text>
   <defs>
     <linearGradient id="urlGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#ffdd00;stop-opacity:1" />

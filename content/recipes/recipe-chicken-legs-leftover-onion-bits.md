@@ -2,7 +2,7 @@
 title: "Chicken Legs with Leftover Onion Bits"
 date: 2026-01-05
 slug: "recipe-chicken-legs-leftover-onion-bits"
-subtitle: "Or: dinner that understands heat transfer"
+subtitle: "Or: Dinner that understands heat transfer"
 description: "A forgiving, physics-based method for chicken legs that works with whatever onion fragment and fat situation your fridge is currently offering."
 draft: false
 social_image: "/images/social/recipe-chicken-legs-leftover-onion-bits-og.png"
@@ -94,7 +94,7 @@ Chicken legs like to be cooked past 165°F (74°C). The connective tissue relaxe
    - Butter + higher smoke point fat: Best of both worlds. The higher smoke point fat handles heat, butter brings flavor.
    - All oil or animal fat: Works well for browning. The pan juices will be slightly leaner in flavor but still good.
 
-   If you are nervous, put some fat under the chicken and some on top. The system is robust.
+   If you're nervous, put some fat under the chicken and some on top. The system is robust.
 
 6. **Cover and cook for 45 minutes.**
 
@@ -127,7 +127,7 @@ Chicken legs like to be cooked past 165°F (74°C). The connective tissue relaxe
 
 ### Seasoning paths
 
-Chicken legs can take real seasoning. This is dark meat, not a spa protein. Here are four seasoning paths that work especially well with the covered-then-uncovered method. All are designed to bloom in steam first, then concentrate when uncovered. Pick one and commit.
+Chicken legs can take real seasoning. This is dark meat, not a spa protein. Here are four seasoning paths that work especially well with the covered-then-uncovered method. All are designed to bloom in steam first, then concentrate when uncovered. 
 
 **Option 1: Classic Savory Roast Chicken (bulletproof, cozy)**
 
