@@ -139,7 +139,9 @@ After the front matter, recipes follow this structure:
 
 ## Notes, swaps, and guardrails
 
-[Optional section with tips, substitutions, variations, etc.]
+[Optional section with tips, substitutions, variations, guardrails, etc.]
+
+Use H3 subsections (###) to organize content. Guardrails are included in the section header — do not create a separate "### Guardrails" subsection. See "Notes Section" guidelines below for details.
 
 ## Credit where it's due
 
@@ -190,11 +192,50 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 
 ### Notes Section (Optional)
 
+**Section header:** Always use `## Notes, swaps, and guardrails` (or `## Notes and guardrails`)
+
+**Structure:**
+- Use H3 subsections (`###`) to organize content by topic
+- Examples: `### Texture and flavor check`, `### Storage and reheat`, `### Why this method works`
+- Guardrails are already included in the section header — **DO NOT** create a `### Guardrails` subsection
+- Guardrails content can be:
+  - Direct bullet points under the main section (after other subsections)
+  - Part of a descriptive subsection (e.g., `### Do not skip the resting step`)
+  - Mixed with other notes content
+
+**Content types:**
 - Tips, substitutions, variations
 - Storage instructions
 - Troubleshooting guidance
 - Ingredient explanations
 - Technique notes
+- Guardrails (what not to do, critical warnings, don't-change-this warnings)
+
+**Example structure:**
+
+```markdown
+---
+
+## Notes, swaps, and guardrails
+
+### Texture and flavor check
+
+- **Rice:** fluffy, separate grains, lightly buttery
+- **Sausage:** fully cooked, lightly crisped
+
+### Storage and reheat
+
+- Store in an airtight container for up to 3 days
+- Reheat in a hot skillet to re-crisp edges
+
+- Do not stir.
+- Do not swap in broth unless you want a different dish.
+```
+
+**Common mistakes to avoid:**
+- ❌ Creating `### Guardrails` subsection (redundant with header)
+- ❌ Using `## Guardrails` as a separate H2 section (should be part of Notes)
+- ❌ Creating non-standard section headers like `## Texture and flavor check` (should be H3 under Notes)
 
 ### Credit Section (Optional)
 
@@ -372,6 +413,9 @@ Hearty pasta e fagioli with Italian sausage and creamy cannellini beans, built f
 ### Broth base choices
 
 Blending concentrated stocks from what you have on hand keeps this pantry-forward. The Knorr Rich Beef Stock Pot brings savory depth that pairs beautifully with sausage.
+
+- Do not use low-sodium broth without adjusting seasoning.
+- If the sauce is too thick, add water in small increments.
 
 ## Credit where it's due
 
