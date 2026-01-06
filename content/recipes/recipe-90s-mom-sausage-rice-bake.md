@@ -4,7 +4,7 @@ date: 2025-01-20
 slug: "recipe-90s-mom-sausage-rice-bake"
 subtitle: "Or: Buttery, hands-off, and not trying to impress you."
 description: "Neutral, buttery rice with sweet Italian sausage. The sausage does the talking."
-draft: true
+draft: false
 social_image: "/images/social/recipe-90s-mom-sausage-rice-bake-og.png"
 prepTime: "PT15M"
 cookTime: "PT60M"
@@ -32,7 +32,6 @@ recipeInstructions:
   - "Bake 55 to 60 minutes, until the rice is tender and the liquid absorbed."
   - "Rest, covered, for 5 minutes. Uncover and serve."
 ---
-
 This is the kind of recipe that shows up in church cookbooks and gets passed around on index cards. It's not trying to be clever. It's trying to be dinner. Hands-off oven rice with sweet Italian sausage, where the rice stays neutral and buttery, and the sausage does all the talking.
 
 ## Snapshot
