@@ -52,17 +52,33 @@ I tend to split this recipe and make two half-batches (regular Dijon for half an
 - 1½ Tsp onion powder
 - ½ Tsp fine salt
 
-## Instructions
+## Method
 
-1. Preheat oven to 200°F (93°C). Line one or two large baking sheets with parchment.
-2. Break pretzels into bite-size pieces. Transfer to a very large bowl and divide evenly between two bowls.
-3. In a small bowl or measuring cup, whisk together half of the oil, honey, Dijon mustard, ground mustard, onion powder, and salt until fully emulsified. Pour over the first bowl of pretzels and toss thoroughly.
-4. Repeat with the remaining ingredients for the second bowl, following the variation guidance below.
-5. Spread pretzels in a single layer on the prepared baking sheet(s). Avoid crowding. Use two sheets if needed.
-6. Bake for 50–60 minutes, stirring well every 15 minutes and scraping the pan so nothing scorches.
-7. Remove from oven and let cool completely on the pan. They will continue to crisp as they cool.
+1. **Preheat and prepare**
 
----
+   Preheat oven to 200°F (93°C). Line one or two large baking sheets with parchment.
+
+2. **Break and divide pretzels**
+
+   Break pretzels into bite-size pieces. Transfer to a very large bowl and divide evenly between two bowls.
+
+3. **Mix first batch**
+
+   In a small bowl or measuring cup, whisk together half of the oil, honey, Dijon mustard, ground mustard, onion powder, and salt until fully emulsified. Pour over the first bowl of pretzels and toss thoroughly.
+
+4. **Mix second batch**
+
+   Repeat with the remaining ingredients for the second bowl, following the variation guidance below.
+
+5. **Bake**
+
+   Spread pretzels in a single layer on the prepared baking sheet(s). Avoid crowding. Use two sheets if needed.
+
+   Bake for 50–60 minutes, stirring well every 15 minutes and scraping the pan so nothing scorches.
+
+6. **Cool**
+
+   Remove from oven and let cool completely on the pan. They will continue to crisp as they cool.
 
 ## Variations
 

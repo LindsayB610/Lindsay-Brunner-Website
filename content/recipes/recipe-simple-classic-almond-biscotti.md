@@ -15,11 +15,11 @@ recipeCuisine: "Italian-American"
 recipeIngredient:
   - "2 cups (240 g) all-purpose flour"
   - "¾ cup (150 g) granulated sugar"
-  - "1½ tsp baking powder"
-  - "¼ tsp fine salt"
-  - "4 tbsp (½ stick / 56 g) unsalted butter, melted and cooled"
-  - "1 tsp vanilla extract"
-  - "½–1 tsp almond extract (see notes; I like ¾ tsp)"
+  - "1½ Tsp baking powder"
+  - "¼ Tsp fine salt"
+  - "4 Tbsp (½ stick / 56 g) unsalted butter, melted and cooled"
+  - "1 Tsp vanilla extract"
+  - "½–1 Tsp almond extract (see notes; I like ¾ Tsp)"
   - "2 large eggs, at room temperature"
   - "¾ cup (about 90 g) unsalted roasted almonds, roughly chopped"
 recipeInstructions:
@@ -48,11 +48,11 @@ So, let's get started!
 
 - 2 cups (240 g) all-purpose flour
 - ¾ cup (150 g) granulated sugar
-- 1½ tsp baking powder
-- ¼ tsp fine salt
-- 4 tbsp (½ stick / 56 g) unsalted butter, melted and cooled
-- 1 tsp vanilla extract
-- ½–1 tsp almond extract (see notes; I like ¾ tsp)
+- 1½ Tsp baking powder
+- ¼ Tsp fine salt
+- 4 Tbsp (½ stick / 56 g) unsalted butter, melted and cooled
+- 1 Tsp vanilla extract
+- ½–1 Tsp almond extract (see notes; I like ¾ Tsp)
 - 2 large eggs, at room temperature
 - ¾ cup (about 90 g) unsalted roasted almonds, roughly chopped
 
@@ -100,7 +100,7 @@ So, let's get started!
 
 ### Vanilla + almond extract = the move
 
-The original base recipe used just vanilla, but the best batch I made used both vanilla and almond extract. Almond extract is strong, so ½ tsp gives a gentler flavor; ¾–1 tsp is for people who want that big, marzipan‑adjacent vibe.
+The original base recipe used just vanilla, but the best batch I made used both vanilla and almond extract. Almond extract is strong, so ½ Tsp gives a gentler flavor; ¾–1 Tsp is for people who want that big, marzipan‑adjacent vibe.
 
 ### Roasting the almonds
 

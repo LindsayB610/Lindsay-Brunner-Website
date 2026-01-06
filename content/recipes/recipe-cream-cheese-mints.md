@@ -15,7 +15,7 @@ recipeCuisine: "American"
 recipeIngredient:
   - "4 oz (113 g) full‑fat brick‑style cream cheese, at cool room temperature"
   - "4 cups (about 480 g) powdered sugar, plus up to 1 extra cup (120 g) for adjusting texture and dusting"
-  - "1/2 tsp peppermint extract or peppermint emulsion"
+  - "½ Tsp peppermint extract or peppermint emulsion"
   - "Small pinch fine salt (optional, but nice for balance)"
   - "Gel food coloring, assorted colors (gel strongly preferred over liquid)"
 recipeInstructions:
@@ -25,7 +25,7 @@ recipeInstructions:
   - "Flavor: Add the peppermint extract and the pinch of salt. Beat just until evenly combined, then scrape down the bowl again."
   - "Check the texture and adjust: Pinch off a small piece of dough and roll it between your fingers. You're aiming for smooth and pliable, like play‑dough, not sticky or glossy; it shouldn't cling to your fingers or slump on the tray. If it's at all tacky, knead in more powdered sugar by hand, 2–4 Tbsp at a time, until the dough is firm and matte. Depending on brand of cream cheese, humidity, and how packed your cups of sugar were, you might use up to the full extra cup."
   - "Divide and color: Turn the dough out onto a sugar‑dusted surface. Divide into as many color batches as you like and place each in its own small bowl. Using gel food coloring, add the tiniest dab to each portion and knead it in with gloved or bare hands until evenly tinted. If the color adds a little stickiness, dust with a bit more powdered sugar and knead again."
-  - "Shape the mints: For simple squares, roll each color into ropes about 1/2 inch thick, slice into small pillows, and place them on the lined trays. For classic pressed mints, pinch off 1‑teaspoon portions, roll into balls, and set on the trays. Dip a fork in powdered sugar, then gently press each ball to flatten and leave a pattern. For molds, dust the mold lightly with powdered sugar, press in a small piece of dough, then pop it out and line up on the trays."
+  - "Shape the mints: For simple squares, roll each color into ropes about ½ inch thick, slice into small pillows, and place them on the lined trays. For classic pressed mints, pinch off 1‑teaspoon portions, roll into balls, and set on the trays. Dip a fork in powdered sugar, then gently press each ball to flatten and leave a pattern. For molds, dust the mold lightly with powdered sugar, press in a small piece of dough, then pop it out and line up on the trays."
   - "Dry at room temperature or in the fridge: Leave the mints in a single layer, uncovered. In a cool, dry room: 12–24 hours, flipping once halfway through, until the surfaces feel dry and the centers are fudgey but not squishy. In a humid kitchen: slide the trays into the fridge, uncovered, for 8–12 hours. The cold air helps them dry without melting."
   - "Store: Once the mints are dry to the touch and hold their shape when gently squeezed, transfer them to airtight containers, layered with parchment if you're stacking. Room temp: up to 3–4 days in a cool, dry spot. Fridge: up to 2 weeks. Freezer: up to 1 month; thaw in the fridge, then bring to room temp before serving for the best texture."
 ---
@@ -47,7 +47,7 @@ This version is built to be more forgiving. The ingredient list looks familiar (
 
 - 4 oz (113 g) full‑fat brick‑style cream cheese, at cool room temperature
 - 4 cups (about 480 g) powdered sugar, plus up to 1 extra cup (120 g) for adjusting texture and dusting
-- 1/2 tsp peppermint extract or peppermint emulsion
+- ½ Tsp peppermint extract or peppermint emulsion
 - Small pinch fine salt (optional, but nice for balance)
 - Gel food coloring, assorted colors (gel strongly preferred over liquid)
 
@@ -84,7 +84,7 @@ This version is built to be more forgiving. The ingredient list looks familiar (
 
 7. **Shape the mints.**
 
-   - For simple squares: roll each color into ropes about 1/2 inch thick, slice into small pillows, and place them on the lined trays.
+   - For simple squares: roll each color into ropes about ½ inch thick, slice into small pillows, and place them on the lined trays.
 
    - For classic "pressed" mints: pinch off 1‑teaspoon portions, roll into balls, and set on the trays. Dip a fork in powdered sugar, then gently press each ball to flatten and leave a pattern.
 
@@ -126,9 +126,9 @@ This version is built to be more forgiving. The ingredient list looks familiar (
 
 ### Peppermint and flavor options
 
-- 1/2 tsp peppermint extract gives a gentle mint. For a stronger hit, edge up toward 3/4 tsp, tasting as you go.
+- ½ Tsp peppermint extract gives a gentle mint. For a stronger hit, edge up toward ¾ Tsp, tasting as you go.
 
-- For kids or mint‑sensitive people, you can blend peppermint with vanilla (say 1/4 tsp peppermint + 1/2 tsp vanilla).
+- For kids or mint‑sensitive people, you can blend peppermint with vanilla (say ¼ Tsp peppermint + ½ Tsp vanilla).
 
 - Other fun directions: lemon extract with yellow mints, or almond extract with pale pink mints.
 

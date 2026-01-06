@@ -24,7 +24,8 @@
     "test:og-images": "node tests/og-image-generation.test.js",
     "test:schedule": "node tests/schedule-posts.test.js",
     "test:search-json": "node tests/recipe-search-json.test.js",
-    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json",
+    "test:recipe-template": "node tests/recipe-template.test.js",
+    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json && npm run test:recipe-template",
     "pretest": "npm run build",
     "schedule-posts": "node scripts/schedule-posts.js"
   },

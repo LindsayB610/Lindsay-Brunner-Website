@@ -18,8 +18,8 @@ recipeIngredient:
   - "1 (10-10.5 oz) can condensed cream of celery soup"
   - "1 (14 oz) can whole tomatoes, with their juices"
   - "1 cup shredded cheddar cheese"
-  - "1/4 cup diced green bell pepper"
-  - "3/4 teaspoon seasoned salt"
+  - "¼ cup diced green bell pepper"
+  - "¾ teaspoon seasoned salt"
   - "1 (3 oz) can French fried onion rings (Durkee or similar), divided"
 recipeInstructions:
   - "Heat the oven; prep the dish. Heat oven to 350°F (175°C). Spray a 2-quart casserole dish with nonstick spray."
@@ -52,8 +52,8 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 - 1 (10–10.5 oz) can condensed cream of celery soup
 - 1 (14 oz) can whole tomatoes, with their juices
 - 1 cup shredded cheddar cheese
-- 1/4 cup diced green bell pepper
-- 3/4 teaspoon seasoned salt
+- ¼ cup diced green bell pepper
+- ¾ teaspoon seasoned salt
 
 ### Crunchy topping
 
@@ -105,7 +105,7 @@ This is very much a "holiday church potluck meets 90s pantry" situation: ground 
 ### Meat and veg options
 
 - Ground turkey or chicken can sub for the beef; just don't use super-lean meat or it'll dry out.
-- Want more veg? Add another 1/4–1/2 cup diced bell pepper or toss in a handful of frozen peas or corn with the filling.
+- Want more veg? Add another ¼–½ cup diced bell pepper or toss in a handful of frozen peas or corn with the filling.
 
 ### Crunch strategy
 

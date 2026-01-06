@@ -220,6 +220,12 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 - For ranges: `160–165°F (71–74°C)`
 - Do NOT use slash format (`350°F / 175°C`) — use parentheses instead
 
+### Percent Formatting
+
+- Always use no space before the percent sign: `85%`, `20–25%`, `80–90%`
+- Do NOT use space before percent: `85 %` (incorrect)
+- Standard format: `85% lean`, `60% of capacity`, `40–60% of batter`
+
 ### Measurement Formatting
 
 **Always capitalize abbreviations:**
@@ -243,8 +249,10 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 - Include when it adds clarity
 
 **Fractions:**
-- Use Unicode fractions when available: `½`, `⅓`, `¼`, `¾`
-- Otherwise use: `1/2`, `1/3`, etc.
+- **Always use Unicode fractions:** `½`, `⅓`, `¼`, `¾`, `⅔`, `⅛`, `⅜`, `⅝`, `⅞`
+- **Do NOT use regular fractions:** `1/2`, `1/3`, `1/4`, `3/4`, etc. (incorrect)
+- **For mixed numbers:** Use `1½` (not `1 1/2` or `1 ½`)
+- **Exception:** Ratios like `75/25` (fat ratio) are acceptable as they're not standard fractions
 
 ### Header Formatting
 

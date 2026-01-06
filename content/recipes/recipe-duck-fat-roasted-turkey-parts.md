@@ -82,8 +82,8 @@ So, let's get started.
 - 1½ lb (about 700 g) small potatoes, halved or cut into 1½-inch chunks
 - 3 medium carrots or parsnips, peeled and cut into 1–2 inch pieces
 - 1 large yellow or red onion, cut into thick wedges
-- 2–3 tbsp duck fat, melted
-- 1–1½ tsp Diamond Crystal kosher salt (less if using fine salt)
+- 2–3 Tbsp duck fat, melted
+- 1–1½ Tsp Diamond Crystal kosher salt (less if using fine salt)
 - Freshly ground black pepper
 
 ### Duck-fat gloss and pan sauce
@@ -123,7 +123,7 @@ So, let's get started.
 
    About 45 minutes before you want to start roasting, take the turkey out of the fridge so the chill comes off a bit while you deal with the veg.
 
-   If you're making the roasted veg: in a large bowl, toss the potatoes, carrots/parsnips, and onion with 2–3 tbsp melted duck fat, the salt, and plenty of pepper until everything is coated.
+   If you're making the roasted veg: in a large bowl, toss the potatoes, carrots/parsnips, and onion with 2–3 Tbsp melted duck fat, the salt, and plenty of pepper until everything is coated.
 
    Spread the vegetables in an even layer on the same rimmed baking sheet under the rack (or on a second sheet if your rack doesn't fit over the veg). You want some space between pieces so they roast instead of steam.
 
@@ -159,7 +159,7 @@ So, let's get started.
 
    When the veg are done, transfer them to a serving bowl and keep warm.
 
-   Carefully pour off some of the fat from the pan, leaving about 2–3 tbsp plus all the browned bits. Either set the baking sheet across two burners (medium heat, if your setup allows) or scrape everything into a saucepan.
+   Carefully pour off some of the fat from the pan, leaving about 2–3 Tbsp plus all the browned bits. Either set the baking sheet across two burners (medium heat, if your setup allows) or scrape everything into a saucepan.
 
    Add the wine or vermouth. Let it simmer and bubble, scraping up the browned bits with a wooden spoon, until the liquid reduces by about half.
 

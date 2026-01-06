@@ -91,7 +91,7 @@ Lift the rack to let excess fat drip, then transfer bacon to paper towels (or ju
 
 Carefully pour the drippings into a heatproof jar/bowl. Do not pour it down your sink unless you enjoy plumbing-based side quests.
 
-* * *
+---
 
 ## Notes, swaps, and guardrails
 

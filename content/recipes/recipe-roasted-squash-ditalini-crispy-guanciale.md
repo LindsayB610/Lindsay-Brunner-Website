@@ -16,9 +16,9 @@ recipeIngredient:
   - "16 oz box ditalini (or small shells / elbows)"
   - "~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)"
   - "2 Tbsp olive oil"
-  - "½ tsp Diamond Crystal kosher salt (to start)"
-  - "2–3 sprigs fresh thyme (or ½ tsp dried thyme)"
-  - "8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)"
+  - "½ Tsp Diamond Crystal kosher salt (to start)"
+  - "2–3 sprigs fresh thyme (or ½ Tsp dried thyme)"
+  - "8–12 fresh sage leaves or ½ Tsp dried ground sage (if using dried, skip frying step below)"
   - "~7 oz guanciale, cut into small cubes (see rendering note)"
   - "2 cloves garlic, minced or grated"
   - "1 Tbsp tomato paste (for depth and color in the sauce)"
@@ -29,7 +29,7 @@ recipeIngredient:
   - "Optional: lemon zest or a small squeeze of lemon juice (for brightness at finish)"
   - "Optional: 1–1½ cups frozen peas"
 recipeInstructions:
-  - "Roast the squash: Preheat oven to 425°F. Toss the butternut squash cubes with olive oil, thyme, and the ½ tsp salt. Spread on a sheet pan in a single layer. Roast 20–28 minutes, stirring once halfway, until the edges begin to caramelize and the centers are soft."
+  - "Roast the squash: Preheat oven to 425°F. Toss the butternut squash cubes with olive oil, thyme, and the ½ Tsp salt. Spread on a sheet pan in a single layer. Roast 20–28 minutes, stirring once halfway, until the edges begin to caramelize and the centers are soft."
   - "Cook the pasta: Bring a large pot of salted water to a boil. Add the full 16 oz of ditalini and boil until al dente. Reserve 1½ cups of pasta water (you'll likely use about ½–1 cup), then drain the pasta."
   - "Render the guanciale: Place the cubed guanciale in a cold skillet and turn heat to low. Let it slowly render for 10–15 minutes until the fat melts out and the guanciale pieces are crisp. Pour off some of the rendered fat (reserve about 2–3 tablespoons in the pan for the sauce). Use a slotted spoon to transfer the crispy guanciale to a paper-towel lined plate and set aside for serving. Slow rendering gives the best texture and flavor (don't rush it)."
   - "Fry the sage (if using fresh): Add the fresh sage leaves to the hot guanciale fat. Fry for 30–60 seconds until crisp, then remove and set aside. If using dried sage instead, skip this frying step and add the dried sage later with the sauce."
@@ -58,9 +58,9 @@ We’ve made this several times now, including once for people who don’t usual
 - 16 oz box ditalini (or small shells / elbows)
 - ~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)
 - 2 Tbsp olive oil
-- ½ tsp Diamond Crystal kosher salt (to start)
-- 2–3 sprigs fresh thyme (or ½ tsp dried thyme)
-- 8–12 fresh sage leaves or ½ tsp dried ground sage (if using dried, skip frying step below)
+- ½ Tsp Diamond Crystal kosher salt (to start)
+- 2–3 sprigs fresh thyme (or ½ Tsp dried thyme)
+- 8–12 fresh sage leaves or ½ Tsp dried ground sage (if using dried, skip frying step below)
 - ~7 oz guanciale, cut into small cubes (see rendering note)
 - 2 cloves garlic, minced or grated
 - 1 Tbsp tomato paste (for depth and color in the sauce)
@@ -75,7 +75,7 @@ We’ve made this several times now, including once for people who don’t usual
 
 1. **Roast the squash**
 
-   Preheat oven to 425°F. Toss the butternut squash cubes with olive oil, thyme, and the ½ tsp salt. Spread on a sheet pan in a single layer. Roast 20–28 minutes, stirring once halfway, until the edges begin to caramelize and the centers are soft.
+   Preheat oven to 425°F. Toss the butternut squash cubes with olive oil, thyme, and the ½ Tsp salt. Spread on a sheet pan in a single layer. Roast 20–28 minutes, stirring once halfway, until the edges begin to caramelize and the centers are soft.
 
    **If using frozen cubed butternut squash:** Roast straight from frozen. Increase oven temp to 450°F and cook 18–25 minutes, tossing once. Frozen squash releases more water, so it browns more slowly. Roast until any liquid evaporates and the edges pick up color. Texture will be slightly softer, which actually blends beautifully into the sauce.
 

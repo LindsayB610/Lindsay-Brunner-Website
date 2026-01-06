@@ -2,7 +2,7 @@
 title: "Fluffy BBQ-Style Sweet Potato Casserole"
 date: 2025-11-14
 slug: "recipe-sweet-potato-casserole"
-subtitle: "Savory, fluffy base; sweet toasted‑nut top"
+subtitle: "Or: Savory, fluffy base; sweet toasted‑nut top"
 description: "Recreation of Sauced BBQ's sweet potato casserole: savory buttery base with a chunky brown-sugar nut topping. Fluffy and scoopable."
 draft: false
 social_image: "/images/social/recipe-sweet-potato-casserole-og.png"
@@ -55,7 +55,7 @@ This is the version we actually make when we want sweet potato casserole on the 
 - Sweet potatoes: 2½–2¾ lb (1.1–1.25 kg), whole, unpeeled
 - Salted butter: 5 Tbsp (70 g), softened
 - Heavy cream or half‑and‑half: 3–6 Tbsp (45–90 ml), to loosen (roasted flesh is drier, may need slightly more)
-- Diamond Crystal kosher salt: ¾ tsp (use a bit less if your butter is very salty)
+- Diamond Crystal kosher salt: ¾ Tsp (use a bit less if your butter is very salty)
 
 **B) 1‑quart baking dish (~4‑cup volume), fills ~⅔ up the sides**
 
@@ -64,9 +64,9 @@ This is the version we actually make when we want sweet potato casserole on the 
 - Sweet potatoes: 1¼–1½ lb (565–680 g), whole, unpeeled
 - Salted butter: 3 Tbsp (42 g), softened
 - Heavy cream or half‑and‑half: 2–4 Tbsp (30–60 ml), to loosen (roasted flesh is drier, may need slightly more)
-- Diamond Crystal kosher salt: ½ tsp
+- Diamond Crystal kosher salt: ½ Tsp
 
-**Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp Diamond Crystal kosher salt (use slightly less if using Morton).
+**Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ Tsp Diamond Crystal kosher salt (use slightly less if using Morton).
 
 **Base is savory. No sugar, no cinnamon, no vanilla (sweetness is only in the topping).**
 
@@ -104,7 +104,7 @@ This is the version we actually make when we want sweet potato casserole on the 
 
    Keep the mixing sequence you're using now; just follow these per‑cup ratios so you can hit the exact texture no matter your yield.
 
-   **Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ tsp Diamond Crystal kosher salt (use slightly less if using Morton).
+   **Per‑cup base formula (easy scaling):** For every 1 cup (230–240 g) mashed roasted sweet potato: 1 Tbsp (14 g) salted butter, 1–1½ Tbsp (15–22 ml) heavy cream or half‑and‑half, ⅛ Tsp Diamond Crystal kosher salt (use slightly less if using Morton).
 
    - **3a. Start the whip without cream:** Move the roasted potato flesh to a mixing bowl. Add softened butter and salt. Beat on low–medium for 30–60 seconds until mostly smooth and beginning to look fluffy. Scrape the bowl.
 
@@ -154,10 +154,10 @@ Either way, keep the pieces on the chunky side so the topping has texture.
 
 ### All sweetness up top
 
-- If using dark brown sugar, add +1 tsp flour to the topping to keep crumbs distinct.
+- If using dark brown sugar, add +1 Tsp flour to the topping to keep crumbs distinct.
 - Extra crunch insurance: Add 1–2 Tbsp panko or rolled oats to the topping.
 - Pan height target: The weights above give ~⅔‑full in each pan before topping; that's the right visual for a generous scoop.
-- If the top looks glossy at 15–18 minutes: Lightly dust 1–2 tsp flour over shiny patches and finish on the top rack.
+- If the top looks glossy at 15–18 minutes: Lightly dust 1–2 Tsp flour over shiny patches and finish on the top rack.
 
 ### Make‑ahead and reheat
 

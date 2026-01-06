@@ -43,6 +43,12 @@ Cooking the sweet potato whole traps moisture inside the skin. Wrapping it in fo
 
 The air fryer, turned off and unopened, acts like a dry thermos. Nothing dramatic happens. Things just get better.
 
+## Snapshot
+
+- **Implements:** air fryer; foil; fork
+- **Cooker setting:** 375 to 400°F (190 to 205°C) for 35 to 45 minutes, then rest 30 minutes to a few hours
+- **Batch size:** Varies by number of sweet potatoes
+
 ## Ingredients
 
 - Whole sweet potatoes, any size

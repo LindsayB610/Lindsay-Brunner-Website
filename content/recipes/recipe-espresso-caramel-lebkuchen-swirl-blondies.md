@@ -129,7 +129,7 @@ You'll notice I did not reduce the brown sugar. That is intentional. The caramel
 
 ### Optional cinnamon justification
 
-The optional ¼ tsp cinnamon is pulled from lebkuchen spice balancing rules. It reinforces what is already there without competing. I kept it optional because some people are sensitive to doubled spice notes. If your lebkuchen spread already packs a strong spice punch, you can skip it.
+The optional ¼ Tsp cinnamon is pulled from lebkuchen spice balancing rules. It reinforces what is already there without competing. I kept it optional because some people are sensitive to doubled spice notes. If your lebkuchen spread already packs a strong spice punch, you can skip it.
 
 ### Make-ahead and storage
 

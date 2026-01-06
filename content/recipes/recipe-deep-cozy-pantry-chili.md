@@ -111,7 +111,7 @@ This week I set out to make a pot of chili at home with Wendy's vibes and just i
 - 1 quarter teaspoon smoked salt to start
 - optional 1 teaspoon European butter for a silky finish
 
-## Instructions
+## Method
 
 1. **Brown the beef**
 
