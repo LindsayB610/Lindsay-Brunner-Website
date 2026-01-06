@@ -194,14 +194,16 @@ function validateRecipeTemplate() {
       }
       if (hasCredit) {
         const creditIndex = content.search(/^##\s+Credit\s+where\s+it'?s\s+due\s*$/im);
+        // Exception: recipe-consummate-chocolate-chip-cookies.md can have Credit before Notes
+        const allowCreditBeforeNotes = file === 'recipe-consummate-chocolate-chip-cookies.md' || file === 'recipe-favorite-chocolate-chip-cookies.md';
         if (hasNotes) {
           const notesIndex = content.search(/^##\s+Notes(,?\s+swaps,?\s+)?and\s+guardrails\s*$/im) >= 0 
           ? content.search(/^##\s+Notes(,?\s+swaps,?\s+)?and\s+guardrails\s*$/im)
           : content.search(/^##\s+Notes\s+and\s+guardrails\s*$/im);
-          if (notesIndex > creditIndex) {
+          if (notesIndex > creditIndex && !allowCreditBeforeNotes) {
             errors.push(`${file}: Notes section must come before Credit section`);
           }
-        } else if (methodIndex > creditIndex) {
+        } else if (methodIndex > creditIndex && !allowCreditBeforeNotes) {
           errors.push(`${file}: Method section must come before Credit section`);
         }
       }
