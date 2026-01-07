@@ -68,12 +68,18 @@
           </svg>
         </a>
         {{ end }}
+        {{- $rssLink := "/thoughts/index.xml" -}}
+        {{- $rssLabel := "Thoughts RSS Feed" -}}
+        {{- if eq .Section "recipes" -}}
+          {{- $rssLink = "/recipes/index.xml" -}}
+          {{- $rssLabel = "Recipes RSS Feed" -}}
+        {{- end -}}
         <a
-          href="/thoughts/index.xml"
+          href="{{ $rssLink }}"
           class="social-link"
           target="_blank"
           rel="noopener"
-          aria-label="RSS Feed"
+          aria-label="{{ $rssLabel }}"
         >
           <svg viewBox="0 0 24 24">
             <path
