@@ -88,7 +88,7 @@ recipeInstructions:
   - Examples: `"6-8 servings"`, `"about 6 generous bowls"`, `"one 9×5 loaf"`
 
 - **`recipeCategory`** (string): Recipe category
-  - Examples: `"Main Course"`, `"Dessert"`, `"Snack"`, `"Side Dish"`, `"Appetizer"`
+  - Examples: `"Main Course"`, `"Weeknight Dinner"`, `"Dessert"`, `"Snack"`, `"Side Dish"`, `"Appetizer"`
 
 - **`recipeCuisine`** (string): Cuisine type
   - Examples: `"Italian-American"`, `"Japanese-American"`, `"American"`, `"Italian"`
