@@ -7,6 +7,7 @@ const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
 const staticDir = path.join(__dirname, '..', 'static');
 const publicDir = path.join(__dirname, '..', 'public');
 const rssFeedPath = path.join(publicDir, 'thoughts', 'index.xml');
+const recipesRssFeedPath = path.join(publicDir, 'recipes', 'index.xml');
 const sitemapPath = path.join(publicDir, 'sitemap.xml');
 const aboutPagePath = path.join(publicDir, 'about', 'index.html');
 const error404Path = path.join(publicDir, '404.html');
@@ -494,7 +495,7 @@ function checkStaticAssets() {
 }
 
 function validateRSSFeed() {
-  console.log('\n📡 Validating RSS feed...');
+  console.log('\n📡 Validating thoughts RSS feed...');
   
   if (!fs.existsSync(rssFeedPath)) {
     console.error(`❌ RSS feed not found at ${rssFeedPath}`);
@@ -530,6 +531,11 @@ function validateRSSFeed() {
       }
     });
     
+    // Check for custom description (from custom template)
+    if (!rssContent.includes('Recent thoughts from')) {
+      console.warn('⚠️  RSS feed may not be using custom template (expected "Recent thoughts from" in description)');
+    }
+    
     // Check for at least one item
     if (!rssContent.includes('<item>')) {
       console.warn('⚠️  RSS feed contains no items (this might be expected if no posts are published)');
@@ -543,9 +549,71 @@ function validateRSSFeed() {
       console.warn('⚠️  RSS feed may have mismatched XML tags (this is a basic check)');
     }
     
-    console.log('✅ RSS feed structure is valid.');
+    console.log('✅ Thoughts RSS feed structure is valid.');
   } catch (error) {
     console.error(`❌ Error validating RSS feed: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+function validateRecipesRSSFeed() {
+  console.log('\n📡 Validating recipes RSS feed...');
+  
+  if (!fs.existsSync(recipesRssFeedPath)) {
+    console.error(`❌ Recipes RSS feed not found at ${recipesRssFeedPath}`);
+    console.error('   Make sure to run "npm run build" before running tests.');
+    process.exit(1);
+  }
+  
+  try {
+    const rssContent = fs.readFileSync(recipesRssFeedPath, 'utf8');
+    
+    // Basic XML structure validation
+    if (!rssContent.includes('<?xml')) {
+      console.error('❌ Recipes RSS feed is not valid XML (missing XML declaration)');
+      process.exit(1);
+    }
+    
+    if (!rssContent.includes('<rss')) {
+      console.error('❌ Recipes RSS feed is missing <rss> root element');
+      process.exit(1);
+    }
+    
+    if (!rssContent.includes('<channel>')) {
+      console.error('❌ Recipes RSS feed is missing <channel> element');
+      process.exit(1);
+    }
+    
+    // Check for required channel elements
+    const requiredChannelElements = ['<title>', '<link>', '<description>'];
+    requiredChannelElements.forEach(element => {
+      if (!rssContent.includes(element)) {
+        console.error(`❌ Recipes RSS feed is missing required channel element: ${element}`);
+        process.exit(1);
+      }
+    });
+    
+    // Check for custom description (from custom template)
+    if (!rssContent.includes('Recent recipes from')) {
+      console.warn('⚠️  Recipes RSS feed may not be using custom template (expected "Recent recipes from" in description)');
+    }
+    
+    // Check for at least one item
+    if (!rssContent.includes('<item>')) {
+      console.warn('⚠️  Recipes RSS feed contains no items (this might be expected if no recipes are published)');
+    }
+    
+    // Basic well-formed XML check (opening and closing tags match)
+    const openTags = (rssContent.match(/<[^/!?][^>]*>/g) || []).length;
+    const closeTags = (rssContent.match(/<\/[^>]+>/g) || []).length;
+    
+    if (Math.abs(openTags - closeTags) > 2) { // Allow some variance for self-closing tags
+      console.warn('⚠️  Recipes RSS feed may have mismatched XML tags (this is a basic check)');
+    }
+    
+    console.log('✅ Recipes RSS feed structure is valid.');
+  } catch (error) {
+    console.error(`❌ Error validating recipes RSS feed: ${error.message}`);
     process.exit(1);
   }
 }
@@ -776,6 +844,7 @@ checkSocialImages();
 checkRecipeSocialImages();
 checkStaticAssets();
 validateRSSFeed();
+validateRecipesRSSFeed();
 validateSitemap();
 validateAboutPage();
 validate404Page();
