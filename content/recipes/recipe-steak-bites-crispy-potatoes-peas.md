@@ -19,14 +19,14 @@ recipeIngredient:
   - "Neutral oil (avocado or canola)"
   - "Kosher salt"
   - "Freshly ground black pepper"
-  - "1 to 2 Tbsp butter"
+  - "2 to 3 Tbsp butter"
   - "1 smashed garlic clove (optional)"
   - "1 to 2 sprigs thyme or 1 small sprig rosemary"
   - "Lemon (optional, for peas)"
   - "Worcestershire sauce (optional, a few drops)"
   - "Fresh parsley (optional, for finishing)"
 recipeInstructions:
-  - "Roast the potatoes. Heat oven to 425°F (220°C). Spread frozen Ore-Ida Potatoes O'Brien on a sheet pan. Drizzle with oil and season generously with salt. Roast until deeply browned and crisp, stirring once halfway. Leave in the warm oven (turned off) while you finish the steak."
+  - "Roast the potatoes. Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan. Roast until fully browned (don't rush). Add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp. Leave in the warm oven (turned off) while you finish the steak."
   - "Prep the steak. Cut sirloin into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking."
   - "Sear the steak bites. Heat a heavy skillet over high heat until properly hot. Add a thin layer of oil. Add steak in a single layer (work in batches if needed). Do not touch for 60 to 90 seconds. Flip once and brown the second side."
   - "Butter and herb baste. Lower heat to medium. Add butter, garlic (if using), and herbs. When butter foams, tilt the pan slightly. Spoon butter over steak for 15 to 30 seconds only. Kill heat and remove steak from the pan. Optional: a few drops of Worcestershire right at the end. Let steak rest briefly."
@@ -56,7 +56,7 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 - Freshly ground black pepper
 
 ### Butter and herb baste
-- 1 to 2 Tbsp butter
+- 2 to 3 Tbsp butter
 - 1 smashed garlic clove (optional)
 - 1 to 2 sprigs thyme or 1 small sprig rosemary
 
@@ -69,9 +69,11 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 
 1. **Roast the potatoes**
 
-   Heat oven to 425°F (220°C). Spread frozen Ore-Ida Potatoes O'Brien on a sheet pan. Drizzle with oil and season generously with salt. Roast until deeply browned and crisp, stirring once halfway.
+   Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan. Roast until fully browned (don't rush).
 
-   Pale potatoes are undercooked lies. Color is flavor.
+   Let them get fully browned first. Pale potatoes are undercooked lies. Color is flavor.
+
+   Then add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp.
 
    Leave in the warm oven (turned off) while you finish the steak.
 
