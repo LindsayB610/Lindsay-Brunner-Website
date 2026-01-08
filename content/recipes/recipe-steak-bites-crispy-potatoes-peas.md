@@ -19,18 +19,18 @@ recipeIngredient:
   - "Neutral oil (avocado or canola)"
   - "Kosher salt"
   - "Freshly ground black pepper"
-  - "2 to 3 Tbsp butter"
+  - "3 to 5 Tbsp butter (2–3 Tbsp for potatoes, 1–2 Tbsp for steak)"
   - "1 smashed garlic clove (optional)"
   - "1 to 2 sprigs thyme or 1 small sprig rosemary"
   - "Lemon (optional, for peas)"
   - "Worcestershire sauce (optional, a few drops)"
   - "Fresh parsley (optional, for finishing)"
 recipeInstructions:
-  - "Roast the potatoes. Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan. Roast until fully browned (don't rush). Add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp. Leave in the warm oven (turned off) while you finish the steak."
-  - "Prep the steak. Cut sirloin into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking."
-  - "Sear the steak bites. Heat a heavy skillet over high heat until properly hot. Add a thin layer of oil. Add steak in a single layer (work in batches if needed). Do not touch for 60 to 90 seconds. Flip once and brown the second side."
-  - "Butter and herb baste. Lower heat to medium. Add butter, garlic (if using), and herbs. When butter foams, tilt the pan slightly. Spoon butter over steak for 15 to 30 seconds only. Kill heat and remove steak from the pan. Optional: a few drops of Worcestershire right at the end. Let steak rest briefly."
-  - "Cook the peas. Cook frozen peas quickly (microwave or stovetop). Finish with butter and salt. Optional squeeze of lemon. Elite move: spoon a little of the steak butter over the peas."
+  - "Roast the potatoes. Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan and roast 25–30 minutes until fully browned (don't rush)."
+  - "Prep and brown the steak bites. Cut sirloin into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking. Heat a cast iron skillet (or heavy skillet) over high heat until properly hot. Add a thin layer of oil. Brown the steak bites in 2–3 batches, adding steak in a single layer for each batch. Do not touch for 60 to 90 seconds per batch. Flip once and brown the second side. Set aside all browned steak bites."
+  - "Finish the potatoes. When potatoes are fully browned, add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp."
+  - "Warm the steak bites. Put all the steak bites back in the pan and add 1–2 Tbsp butter plus herbs (and garlic, if using). Warm on medium heat, tossing with the butter and herbs until everything is heated through. Optional: a few drops of Worcestershire right at the end."
+  - "Cook the peas. Add about an inch of water to a pan. Add 1–2 cups frozen peas. Blanch with lid on until hot. Drain off water. Season as desired with butter and salt. Optional squeeze of lemon."
   - "Serve. Gently toss steak bites with potatoes off heat, or plate separately. Add peas. Finish with black pepper and optional parsley."
 ---
 
@@ -42,7 +42,7 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 
 - **Implements:** sheet pan; heavy skillet (cast iron preferred); oven and stovetop
 - **Oven setting:** 425°F (220°C) for roasting potatoes
-- **Stove setting:** high heat for searing, then medium for butter baste
+- **Stove setting:** high heat for browning steak in batches, then medium for warming with butter and herbs
 - **Batch size:** 3–4 servings
 
 ## Ingredients
@@ -56,7 +56,7 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 - Freshly ground black pepper
 
 ### Butter and herb baste
-- 2 to 3 Tbsp butter
+- 3 to 5 Tbsp butter total (2–3 Tbsp for potatoes, 1–2 Tbsp for steak)
 - 1 smashed garlic clove (optional)
 - 1 to 2 sprigs thyme or 1 small sprig rosemary
 
@@ -69,43 +69,45 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 
 1. **Roast the potatoes**
 
-   Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan. Roast until fully browned (don't rush).
+   Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan and roast 25–30 minutes until fully browned (don't rush).
 
    Let them get fully browned first. Pale potatoes are undercooked lies. Color is flavor.
 
-   Then add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp.
+2. **Prep and brown the steak bites**
 
-   Leave in the warm oven (turned off) while you finish the steak.
-
-2. **Prep the steak**
+   Do this while the potatoes are roasting.
 
    Cut sirloin into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking.
 
    Moisture is the enemy of browning. This step is not optional.
 
-3. **Sear the steak bites**
+   Heat a cast iron skillet (or heavy skillet) over high heat until properly hot. Add a thin layer of oil. Brown the steak bites in 2–3 batches, adding steak in a single layer for each batch. Do not touch for 60 to 90 seconds per batch. Flip once and brown the second side.
 
-   Heat a heavy skillet over high heat until properly hot. Add a thin layer of oil. Add steak in a single layer (work in batches if needed). Do not touch for 60 to 90 seconds. Flip once and brown the second side.
+   At this point, the steak should be mostly cooked and well-crusted. Set aside all browned steak bites.
 
-   At this point, the steak should be mostly cooked and well-crusted.
+3. **Finish the potatoes**
 
-4. **Butter and herb baste**
+   When potatoes are fully browned, add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp.
 
-   Lower heat to medium. Add butter, garlic (if using), and herbs. When butter foams, tilt the pan slightly. Spoon butter over steak for 15 to 30 seconds only. Kill heat and remove steak from the pan.
+4. **Warm the steak bites**
 
-   This is a flash baste, not a long soak. Flavor without losing crust is the goal.
+   Do this at the same time as finishing the potatoes (step 3).
+
+   Put all the steak bites back in the pan and add 1–2 Tbsp butter plus herbs (and garlic, if using). Warm on medium heat, tossing with the butter and herbs until everything is heated through.
+
+   This is a gentle warm-up, not a sear. Flavor and warmth without overcooking is the goal.
 
    Optional: a few drops of Worcestershire right at the end.
 
-   Let steak rest briefly.
-
 5. **Cook the peas**
 
-   Cook frozen peas quickly (microwave or stovetop). Finish with butter and salt. Optional squeeze of lemon.
+   Start this at the same time as finishing the potatoes (step 3) and warming the steak (step 4).
 
-   Elite move: spoon a little of the steak butter over the peas.
+   Add about an inch of water to a pan. Add 1–2 cups frozen peas. Blanch with lid on until hot. Drain off water. Season as desired with butter and salt.
 
-6. **Bring it together**
+   Optional squeeze of lemon.
+
+6. **Serve**
 
    Gently toss steak bites with potatoes off heat, or plate separately. Add peas. Finish with black pepper and optional parsley.
 
@@ -116,9 +118,11 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 ### Why this works (nerd corner, earnest but brief)
 
 - **Maillard reaction (steak):** requires dry surface plus high heat plus minimal movement
-- **Crisp starch (potatoes):** requires space plus oven time
-- **Butter baste:** aromatic enrichment after browning, not before
-- **Peas:** sweetness plus color plus mercy
+- **Batch browning:** ensures proper crust without steaming; set aside and warm gently at the end
+- **Crisp starch (potatoes):** requires space plus oven time; two-stage butter addition for crisp exterior
+- **Timing alignment:** browning steak while potatoes roast maximizes efficiency
+- **Gentle warm-up:** finishing steak with butter and herbs at medium heat avoids overcooking
+- **Peas:** sweetness plus color plus mercy; blanching from frozen preserves texture
 
 Trying to cook all of this in one pan is how good intentions get steamed. We don't do that here.
 
