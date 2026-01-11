@@ -13,7 +13,7 @@ recipeYield: "3-4 servings"
 recipeCategory: "Weeknight Dinner"
 recipeCuisine: "American"
 recipeIngredient:
-  - "1 to 1¼ lb top sirloin, thawed"
+  - "1 to 1¼ lb steak (ribeye, New York strip, or chuck eye), thawed"
   - "1 bag Ore-Ida Potatoes O'Brien (frozen)"
   - "1 to 1½ cups frozen peas"
   - "Neutral oil (avocado or canola)"
@@ -27,7 +27,7 @@ recipeIngredient:
   - "Fresh parsley (optional, for finishing)"
 recipeInstructions:
   - "Roast the potatoes. Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan and roast 25–30 minutes until fully browned (don't rush)."
-  - "Prep and brown the steak bites. Cut sirloin into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking. Heat a cast iron skillet (or heavy skillet) over high heat until properly hot. Add a thin layer of oil. Brown the steak bites in 2–3 batches, adding steak in a single layer for each batch. Do not touch for 60 to 90 seconds per batch. Flip once and brown the second side. Set aside all browned steak bites."
+  - "Prep and brown the steak bites. Cut steak into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking. Heat a cast iron skillet (or heavy skillet) over high heat until properly hot. Add a thin layer of oil. Brown the steak bites in 2–3 batches, adding steak in a single layer for each batch. Do not touch for 60 to 90 seconds per batch. Flip once and brown the second side. Set aside all browned steak bites."
   - "Finish the potatoes. When potatoes are fully browned, add small pats of butter (2–3 Tbsp) and allow to melt, about 2 minutes. Toss once, then return to oven for 3–5 minutes to brown and crisp."
   - "Warm the steak bites. Put all the steak bites back in the pan and add 1–2 Tbsp butter plus herbs (and garlic, if using). Warm on medium heat, tossing with the butter and herbs until everything is heated through. Optional: a few drops of Worcestershire right at the end."
   - "Cook the peas. Add about an inch of water to a pan. Add 1–2 cups frozen peas. Blanch with lid on until hot. Drain off water. Season as desired with butter and salt. Optional squeeze of lemon."
@@ -48,7 +48,7 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 ## Ingredients
 
 ### Main components
-- 1 to 1¼ lb top sirloin, thawed
+- 1 to 1¼ lb steak (ribeye, New York strip, or chuck eye), thawed
 - 1 bag Ore-Ida Potatoes O'Brien (frozen)
 - 1 to 1½ cups frozen peas
 - Neutral oil (avocado or canola)
@@ -77,7 +77,7 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 
    Do this while the potatoes are roasting.
 
-   Cut sirloin into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking.
+   Cut steak into even, bite-size chunks. Pat very dry with paper towels. Salt right before cooking.
 
    Moisture is the enemy of browning. This step is not optional.
 
@@ -114,6 +114,11 @@ On those nights, steak bites, frozen potatoes, and peas get the job done. Cuttin
 ---
 
 ## Notes, swaps, and guardrails
+
+### Steak selection
+- **Ribeye** (best): marbling + tenderness
+- **New York strip** (good balance): structure + fat
+- **Chuck eye** (great value): very steak-bite friendly
 
 ### Why this works (nerd corner, earnest but brief)
 
