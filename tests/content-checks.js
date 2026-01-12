@@ -275,11 +275,11 @@ function validateRecipeFrontMatter() {
       errors.push(`${file}: Invalid draft value "${frontMatter.draft}" (expected true or false)`);
     }
     
-    // Validate time format (should be ISO 8601 duration like PT30M)
+    // Validate time format (should be ISO 8601 duration like PT30M or PT1H30M)
     const timeFields = ['prepTime', 'cookTime', 'totalTime'];
     timeFields.forEach(field => {
-      if (frontMatter[field] && !frontMatter[field].match(/^PT\d+[HM]$/)) {
-        errors.push(`${file}: Invalid ${field} format "${frontMatter[field]}" (expected ISO 8601 duration like PT30M)`);
+      if (frontMatter[field] && !frontMatter[field].match(/^PT((\d+H(\d+M)?)|(\d+M))$/)) {
+        errors.push(`${file}: Invalid ${field} format "${frontMatter[field]}" (expected ISO 8601 duration like PT30M or PT1H30M)`);
       }
     });
     

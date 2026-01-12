@@ -1,0 +1,177 @@
+---
+title: "Marinated Bavette Steak with Chimichurri, Crispy Yukon Golds, and Hard-Roasted Asparagus"
+date: 2026-01-12
+slug: "recipe-marinated-bavette-steak-chimichurri"
+subtitle: "Or: Steakhouse dinner with a short, smart marinade and sides that do their jobs"
+description: "Marinated bavette steak cooked hot and fast, sliced thin against the grain, and served with classic cilantro-free chimichurri, crispy roasted tiny Yukon Gold potatoes, and deeply roasted asparagus."
+draft: false
+social_image: "/images/social/recipe-marinated-bavette-steak-chimichurri-og.png" 
+prepTime: "PT25M"
+cookTime: "PT55M"
+totalTime: "PT2H20M"
+recipeYield: "2 to 3 servings"
+recipeCategory: "Main Course"
+recipeCuisine: "Argentine-inspired"
+recipeIngredient:
+  - "1 to 1¼ lb bavette steak, fully thawed"
+  - "Kosher salt and black pepper"
+  - "2 Tbsp soy sauce"
+  - "2 Tbsp red wine vinegar"
+  - "3 Tbsp olive oil (for marinade)"
+  - "1 Tbsp Worcestershire sauce"
+  - "2 cloves garlic, smashed (for marinade)"
+  - "1 cup flat-leaf parsley, very finely chopped"
+  - "2 to 3 cloves garlic, minced or pasted (for chimichurri)"
+  - "1 to 2 Tsp dried oregano"
+  - "¼ to ½ Tsp red pepper flakes"
+  - "2 to 3 Tbsp red wine vinegar (for chimichurri)"
+  - "6 Tbsp extra virgin olive oil (for chimichurri)"
+  - "1 to 1½ lb tiny Yukon Gold potatoes"
+  - "2 to 3 Tbsp olive oil or duck fat (for potatoes)"
+  - "1 bunch thick asparagus"
+  - "1 to 2 Tbsp olive oil (for asparagus)"
+  - "½ lemon, for finishing"
+recipeInstructions:
+  - "Make the chimichurri and let it rest while you cook."
+  - "Parboil tiny Yukon Golds, then roast at 425°F (218°C) until deeply crisp."
+  - "Marinate thawed bavette 1 to 2 hours, then cook hot and fast and rest before slicing thinly against the grain."
+  - "Hard-roast asparagus at 450°F (232°C) until blistered, then finish with lemon."
+---
+
+This is the "restaurant steak dinner" version of home cooking: a short, intentional marinade for bavette, a classic chimichurri with zero cilantro, potatoes engineered for crisp edges, and asparagus roasted hard enough to get real char. Everything is built to be served together, on time, while the steak is still smug.
+
+## Snapshot
+
+- **Implements:** cutting board; chef's knife; mixing bowl; measuring spoons; large pot; colander; rimmed sheet pan (2 if you want easy timing); grill or cast iron skillet; tongs; instant-read thermometer (optional but helpful)
+- **Oven setting:** 425°F (218°C) for potatoes; 450°F (232°C) for asparagus
+- **Heat setting:** high heat for steak (grill or cast iron)
+- **Batch size:** 2 to 3 servings
+
+## Ingredients
+
+### Steak and marinade
+
+- 1 to 1¼ lb bavette steak, fully thawed
+- Kosher salt and black pepper
+- 2 Tbsp soy sauce
+- 2 Tbsp red wine vinegar
+- 3 Tbsp olive oil
+- 1 Tbsp Worcestershire sauce
+- 2 cloves garlic, smashed
+
+### Chimichurri (cilantro-free)
+
+- 1 cup flat-leaf parsley, very finely chopped
+- 2 to 3 cloves garlic, minced or pasted
+- 1 to 2 Tsp dried oregano
+- ¼ to ½ Tsp red pepper flakes
+- 2 to 3 Tbsp red wine vinegar
+- 6 Tbsp extra virgin olive oil
+- Kosher salt and black pepper
+- Optional: 1 to 2 Tbsp very finely minced shallot
+- Optional: small squeeze of lemon juice
+
+### Crispy tiny Yukon Golds
+
+- 1 to 1½ lb tiny Yukon Gold potatoes
+- 2 to 3 Tbsp olive oil or duck fat
+- Kosher salt
+
+### Hard-roasted asparagus
+
+- 1 bunch thick asparagus
+- 1 to 2 Tbsp olive oil
+- Kosher salt
+- ½ lemon
+- Black pepper
+
+## Method
+
+1. **Make the chimichurri (first, so it can rest)**
+
+   In a bowl, combine parsley, garlic, oregano, red pepper flakes, red wine vinegar, and olive oil. Season with salt and black pepper. Add shallot if using.
+
+   Let it sit at least 30 minutes at room temperature. (You can make it earlier in the day and refrigerate it. Bring it back to room temp before serving.)
+
+2. **Marinate the steak (short and intentional)**
+
+   Pat the thawed bavette dry. Season both sides lightly with salt and pepper.
+
+   In a shallow dish or zip-top bag, combine soy sauce, red wine vinegar, olive oil, Worcestershire, and smashed garlic. Add the steak and coat.
+
+   Refrigerate for **1 to 2 hours**. Do not exceed **4 hours**.
+
+   About 20 to 30 minutes before cooking, pull the steak from the fridge. Scrape off excess marinade so it sears instead of steaming.
+
+3. **Parboil the potatoes**
+
+   Heat oven to **425°F (218°C)**.
+
+   Bring a pot of well-salted water to a boil. Add tiny Yukon Golds and cook until just tender, about **10 minutes**. A knife should slide in with slight resistance.
+
+   Drain and let them steam dry in the colander for 2 to 3 minutes.
+
+4. **Roast the potatoes until properly crisp**
+
+   Toss potatoes with olive oil or duck fat and a good pinch of salt. Spread on a rimmed sheet pan with space between pieces.
+
+   Roast for **35 to 45 minutes**, flipping once, until deeply golden and crisp.
+
+5. **Hard-roast the asparagus (near the end)**
+
+   Increase oven to **450°F (232°C)** when the potatoes are close to done, or roast asparagus on a separate rack if your oven runs hot.
+
+   Trim woody ends. Dry thoroughly. Toss with olive oil and salt. Spread in a single layer.
+
+   Roast **12 to 15 minutes**, flipping once, until blistered, browned in spots, and crisp at the tips.
+
+   Finish with lemon and black pepper after roasting.
+
+6. **Cook the steak hot and fast**
+
+   Preheat grill to high, or heat a cast iron skillet over high heat until very hot.
+
+   Cook the bavette about **3 to 4 minutes per side**, depending on thickness, aiming for medium rare. If using a thermometer, target **125°F to 130°F (52°C to 54°C)** before resting.
+
+   Rest the steak **5 to 10 minutes**.
+
+7. **Slice and serve**
+
+   Bavette has a visible grain. Slice **thinly and aggressively against the grain**.
+
+   Spoon chimichurri over the sliced steak. Serve with crispy potatoes and roasted asparagus. Put extra chimichurri on the table for dipping and dragging.
+
+---
+
+## Notes, swaps, and guardrails
+
+### Why the steak marinates for 1 to 2 hours
+
+Marinades mostly affect the outer few millimeters of meat. In the first hour, salt starts diffusing inward and seasons the steak, while vinegar lightly denatures surface proteins and helps tenderness. Keep going too long and the acid keeps working until the exterior gets soft, mealy, or oddly cured. Bavette is thin enough that you hit diminishing returns quickly.
+
+- **Sweet spot:** 1 to 2 hours
+- **Absolute max:** 4 hours
+- **Not recommended:** overnight
+
+### Why parboiling makes crispier potatoes
+
+Parboiling gelatinizes the outer starch layer. After draining, that starchy surface dries and turns tacky, which is exactly what you want. In the oven it dehydrates, browns, and becomes a crisp shell while the inside stays creamy. Tiny Yukon Golds are ideal because they have enough starch to crisp and enough waxiness to stay buttery.
+
+### Why asparagus wants high heat
+
+Asparagus carries a lot of water. High heat drives off moisture fast so browning can happen before it goes limp. Lower heat tends to steam it into sadness. Finish with lemon after roasting so the acidity stays bright instead of turning the pan into a steamer.
+
+### Texture and flavor checks
+
+- **Chimichurri:** sharp, herbal, loose, and properly salted
+- **Potatoes:** crisp exterior, creamy center, not heavily seasoned (they are chimichurri sponges)
+- **Steak:** deeply browned, rested, sliced thin against the grain
+- **Asparagus:** blistered and browned, with crisp tips
+
+- Do not blend the chimichurri (it gets pasty and dull).
+- Do not marinate overnight (texture will suffer).
+- Do not skip the rest and the against-the-grain slicing (this is where bavette becomes tender).
+
+## Credit where it's due
+
+Steak marinade structure inspired by common bavette "soy + vinegar + Worcestershire" grilling approaches. Chimichurri structure is classic Argentine-style, made cilantro-free on purpose.
