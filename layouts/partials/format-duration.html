@@ -12,6 +12,11 @@
   {{- $minutesStr := strings.TrimSuffix "M" $duration -}}
   {{- $minutes = int $minutesStr -}}
 {{- end -}}
+{{- /* Convert minutes >= 60 to hours and minutes */ -}}
+{{- if ge $minutes 60 -}}
+  {{- $hours = add $hours (div $minutes 60) -}}
+  {{- $minutes = mod $minutes 60 -}}
+{{- end -}}
 {{- if gt $hours 0 -}}
   {{- if eq $hours 1 -}}
     {{- printf "1 hour" -}}

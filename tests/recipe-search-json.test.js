@@ -165,6 +165,7 @@ if (require.main === module) {
         passed++;
       } else {
         console.error(`   ❌ Draft exclusion mismatch: Expected ${publishedCount} published recipes, found ${recipes.length} in index`);
+        console.error(`   💡 Tip: Run "npm run build" to regenerate the JSON index, or run "npm test" which builds automatically.`);
         failed++;
         errors.push(`Draft exclusion: Expected ${publishedCount} published, found ${recipes.length}`);
       }
