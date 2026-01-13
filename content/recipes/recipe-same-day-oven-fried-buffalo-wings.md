@@ -128,6 +128,22 @@ Classic Buffalo sauce can feel sharp and aggressive. A little dairy rounds the v
 
 Honey adds sweetness and viscosity, helping the sauce cling lightly instead of soaking in.
 
+### Wing Sauce Swap (bottled and turbo methods)
+
+Buffalo sauce exists on a flavor spectrum from mild to fear-inducing. A store-bought wing sauce such as Frank's Buffalo Wing Sauce can be used instead of building the sauce from scratch. Using a bottled wing sauce means you're trading some control for convenience (it's already emulsified and seasoned). When using bottled sauce, warm it gently before tossing so it clings to the wings instead of cooling them down and making the skin soggy.
+
+**Microwave heating notes**
+
+If you don't want to use a saucepan for sauce, you can microwave both mild Buffalo sauce and hot versions (for the Reaper enthusiast) safely. Place your sauce components in a microwave-safe bowl, cover loosely with a dry paper towel to catch splatter, and heat in short bursts (about 15–20 seconds), stirring between each until smooth and just warm. This prevents hot spots and keeps dairy or butter from separating. Steaming capsicum vapors are real (keep your face and hands clear when stirring).
+
+**For the brave**
+
+For a higher heat variant (like with a Carolina Reaper hot sauce base), use the same microwave method but start with a smaller amount of hot sauce and balance with butter and a touch of sweetener so the heat integrates instead of shocking the palate. Sauce the brave set of wings separately so the mild crowd still gets friendly wings.
+
+**Why this matters (guardrails)**
+
+Keeping sauces off heat until after the wings are fully crisp preserves texture. Bottled sauces are often thinner than homemade emulsions, so warming helps them cling without turning crispy skin mushy. Also, heating in short bursts with a paper towel shield minimizes splatter and airborne spice.
+
 ## Credit where it's due
 
 This recipe is adapted from the Serious Eats method for crispy oven-baked wings, with adjustments for same-day cooking and a milder, Frank's-forward sauce approach.

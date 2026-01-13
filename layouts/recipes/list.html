@@ -4,6 +4,11 @@
     <div class="section-title">
       <h1>Recipes</h1>
       <p>{{ .Description }}</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">
+        <a href="/recipes/index/" style="color: var(--color-pink); text-decoration: none; font-weight: 500;">
+          Browse all recipes by category →
+        </a>
+      </p>
     </div>
 
     <div class="recipe-search">
@@ -35,6 +40,7 @@
     <div id="recipes-list">
     {{ $recipes := .Pages }}
     {{ $recipes = where $recipes "Draft" false }}
+    {{ $recipes = where $recipes "Type" "!=" "page" }}
     {{ $recipes = $recipes.ByDate.Reverse }}
 
     {{ if $recipes }}
