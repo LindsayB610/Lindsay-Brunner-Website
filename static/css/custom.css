@@ -296,7 +296,7 @@ td code {
 .recipe-index-categories-grid {
   column-count: 2;
   column-gap: 2rem;
-  column-fill: balance;
+  column-fill: auto;
 }
 
 .recipe-index-category {
