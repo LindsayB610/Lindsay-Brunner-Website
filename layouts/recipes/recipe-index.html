@@ -9,6 +9,8 @@
     {{/* Get all published recipes from the recipes section */}}
     {{ $allRecipes := where .Site.RegularPages "Section" "recipes" }}
     {{ $allRecipes = where $allRecipes "Draft" false }}
+    {{/* Exclude the recipe-index page from the list */}}
+    {{ $allRecipes = where $allRecipes "RelPermalink" "!=" "/recipes/all/" }}
     {{ $allRecipes = $allRecipes.ByDate.Reverse }}
 
     {{ if $allRecipes }}
