@@ -24,12 +24,15 @@
       {{/* Reorder to put Side Dish first for better column balance */}}
       {{ $orderedCategories := slice }}
       {{ $sideDish := "Side Dish" }}
-      {{ if in $uniqueCategories $sideDish }}
-        {{ $orderedCategories = $orderedCategories | append $sideDish }}
-        {{ $uniqueCategories = where $uniqueCategories "!=" $sideDish }}
+      {{ $otherCategories := slice }}
+      {{ range $uniqueCategories }}
+        {{ if eq . $sideDish }}
+          {{ $orderedCategories = $orderedCategories | append . }}
+        {{ else }}
+          {{ $otherCategories = $otherCategories | append . }}
+        {{ end }}
       {{ end }}
-      {{ $orderedCategories = $orderedCategories | append ($uniqueCategories | sort) }}
-      {{ $uniqueCategories = $orderedCategories }}
+      {{ $uniqueCategories = $orderedCategories | append $otherCategories }}
 
       {{/* Display recipes grouped by category in two columns */}}
       <div class="recipe-index-categories-grid">
