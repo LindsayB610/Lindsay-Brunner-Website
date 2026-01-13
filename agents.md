@@ -163,8 +163,20 @@ The template includes:
 ```bash
 npm run build      # Build the site first
 npm run test:content  # Run content validation tests
-npm test           # Run all tests (HTML, links, content)
+npm test           # Run all tests (HTML, links, content, spell check, OG images, scheduling, search JSON, recipe template)
 ```
+
+**Available test commands:**
+- `npm run test:content` - Content validation tests
+- `npm run test:html` - HTML validation
+- `npm run test:links` - Broken link detection (requires dev server)
+- `npm run test:spell` - Spell check modified content files (git diff)
+- `npm run test:spell:all` - Spell check all content files
+- `npm run test:og-images` - OG image generation validation
+- `npm run test:schedule` - Scheduled posts workflow validation
+- `npm run test:search-json` - Recipe search JSON index validation
+- `npm run test:recipe-template` - Recipe template structure validation
+- `npm test` - Run all tests (includes pretest build step)
 
 **Test coverage includes:**
 - Front matter validation (thoughts & recipes)
@@ -176,6 +188,11 @@ npm test           # Run all tests (HTML, links, content)
 - About page validation
 - 404 page validation
 - Permalink structure
+- Spell checking (content files)
+- OG image generation and structure
+- Scheduled posts workflow
+- Recipe search JSON index structure and validity
+- Recipe template compliance
 
 ## Configuration Details
 
@@ -189,6 +206,11 @@ npm test           # Run all tests (HTML, links, content)
 **Permalink patterns:**
 - Thoughts: `/thoughts/:year-:month-:day/:slug/`
 - Recipes: `/recipes/:year-:month-:day/:slug/`
+
+**Output formats:**
+- HTML (default)
+- RSS feed (`/index.xml`)
+- RecipeSearch JSON (`/recipes/index.json`) - JSON index for recipe search functionality
 
 ## Brand Guidelines
 
@@ -225,7 +247,10 @@ See `BRAND.md` for complete brand guidelines. Key points:
 2. Use the complete template from `docs/recipe-template.md`
 3. Follow the content structure (description, snapshot, ingredients, method, notes)
 4. Generate and review OG image: `npm run generate:og-images`
-5. Add `social_image` to front matter
+   - This generates SVG files in `static/images/social/working-files/` for editing
+   - After editing the SVG, convert to PNG: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`
+   - The PNG will be saved in `static/images/social/` for use as the OG image
+5. Add `social_image` to front matter: `social_image: "/images/social/recipe-xxx-og.png"`
 6. Run `npm run build && npm run test:content`
 
 **To schedule for future publication:**
@@ -255,7 +280,9 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **Raw HTML**: Allowed in content (config has `unsafe = true`)
 - **Build**: Always run `npm run build` before testing
 - **Deployment**: Automatic via Netlify on push to master
-- **Scheduled Posts**: Posts with `draft: true` and future dates will auto-publish via GitHub Actions (runs hourly). See README.md for details.
+- **Scheduled Posts**: Posts with `draft: true` and future dates will auto-publish via GitHub Actions (runs twice daily at 13:00 and 14:00 UTC to cover both PDT and PST). See README.md for details.
+- **Recipe Search JSON**: A JSON index is automatically generated at `/recipes/index.json` for client-side recipe search functionality. The index includes recipe metadata and is validated by tests.
+- **Spell Checking**: Use `npm run test:spell` to check modified content files, or `npm run test:spell:all` to check all content files. Add valid words to `cspell.json` if needed.
 
 ## References
 
@@ -266,8 +293,16 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **CONTENT_STYLE_GUIDE.md**: Writing principles, tone, voice, and style guidelines
 - **config.toml**: Hugo configuration
 - **tests/content-checks.js**: Test validation logic
+- **tests/spell-check.js**: Spell checking script for content files
+- **tests/og-image-generation.test.js**: OG image generation validation
+- **tests/schedule-posts.test.js**: Scheduled posts workflow validation
+- **tests/recipe-search-json.test.js**: Recipe search JSON index validation
+- **tests/recipe-template.test.js**: Recipe template structure validation
 - **scripts/schedule-posts.js**: Auto-publish scheduled posts script
+- **scripts/generate-og-images.js**: Generate OG images for recipes
+- **scripts/generate-png-from-svg.js**: Convert SVG to PNG for social media compatibility
 - **.github/workflows/schedule-posts.yml**: GitHub Actions workflow for scheduled publishing
+- **layouts/recipes/list.json**: Template for recipe search JSON index
 
 ## When in Doubt
 

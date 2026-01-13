@@ -23,7 +23,8 @@
       {{ end }}
       {{ $uniqueCategories := $categories | uniq | sort }}
 
-      {{/* Display recipes grouped by category */}}
+      {{/* Display recipes grouped by category in two columns */}}
+      <div class="recipe-index-categories-grid">
       {{ range $uniqueCategories }}
         {{ $category := . }}
         {{ $categoryRecipes := where $allRecipes "Params.recipeCategory" $category }}
@@ -55,11 +56,12 @@
           </ul>
         </div>
       {{ end }}
+      </div>
 
-      {{/* Show recipes without a category at the end */}}
+      {{/* Show recipes without a category at the end (full width) */}}
       {{ $uncategorizedRecipes := where $allRecipes "Params.recipeCategory" "eq" nil }}
       {{ if $uncategorizedRecipes }}
-        <div class="recipe-index-category">
+        <div class="recipe-index-category recipe-index-category-full-width">
           <h2 class="recipe-index-category-title">
             Other<span class="recipe-index-category-count">{{ len $uncategorizedRecipes }}</span>
           </h2>

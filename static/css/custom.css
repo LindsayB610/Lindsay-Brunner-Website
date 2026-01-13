@@ -293,8 +293,20 @@ td code {
 }
 
 /* Recipe index page styles */
+.recipe-index-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
 .recipe-index-category {
-  margin-bottom: 3rem;
+  margin-bottom: 0;
+}
+
+.recipe-index-category-full-width {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
 }
 
 .recipe-index-category-title {
@@ -375,8 +387,13 @@ td code {
 }
 
 @media (max-width: 768px) {
+  .recipe-index-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
   .recipe-index-category {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0;
   }
 
   .recipe-index-category-title {
