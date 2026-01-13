@@ -21,18 +21,18 @@
         {{ end }}
       {{ end }}
       {{ $uniqueCategories := $categories | uniq | sort }}
-      {{/* Reorder to put Side Dish first for better column balance */}}
+      {{/* Reorder to put Side Dish at the end for better column balance */}}
       {{ $orderedCategories := slice }}
       {{ $sideDish := "Side Dish" }}
       {{ $otherCategories := slice }}
       {{ range $uniqueCategories }}
         {{ if eq . $sideDish }}
-          {{ $orderedCategories = $orderedCategories | append . }}
+          {{/* Skip Side Dish for now, will add at end */}}
         {{ else }}
           {{ $otherCategories = $otherCategories | append . }}
         {{ end }}
       {{ end }}
-      {{ $uniqueCategories = $orderedCategories | append $otherCategories }}
+      {{ $uniqueCategories = $otherCategories | append $sideDish }}
 
       {{/* Display recipes grouped by category in two columns */}}
       <div class="recipe-index-categories-grid">
