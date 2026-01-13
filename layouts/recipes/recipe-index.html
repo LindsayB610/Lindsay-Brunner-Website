@@ -39,6 +39,7 @@
       {{ range $uniqueCategories }}
         {{ $category := . }}
         {{ $categoryRecipes := where $allRecipes "Params.recipeCategory" $category }}
+        {{ $categoryRecipes = $categoryRecipes.ByTitle }}
         
         <div class="recipe-index-category">
           <h2 class="recipe-index-category-title">
@@ -72,6 +73,7 @@
       {{/* Show recipes without a category at the end (full width) */}}
       {{ $uncategorizedRecipes := where $allRecipes "Params.recipeCategory" "eq" nil }}
       {{ if $uncategorizedRecipes }}
+        {{ $uncategorizedRecipes = $uncategorizedRecipes.ByTitle }}
         <div class="recipe-index-category recipe-index-category-full-width">
           <h2 class="recipe-index-category-title">
             Other<span class="recipe-index-category-count">{{ len $uncategorizedRecipes }}</span>
