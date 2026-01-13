@@ -13,13 +13,13 @@ recipeYield: "3 to 4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Argentine-inspired"
 recipeIngredient:
-  - "1 lb 12 oz bavette steak, fully thawed"
+  - "1½ to 2 lb bavette steak, fully thawed"
   - "Kosher salt and black pepper"
   - "3 Tbsp soy sauce"
   - "3 Tbsp red wine vinegar"
   - "4½ Tbsp olive oil (for marinade)"
   - "1½ Tbsp Worcestershire sauce"
-  - "3 cloves garlic, smashed (for marinade)"
+  - "½ to ¾ Tsp garlic powder (for marinade)"
   - "1 cup flat-leaf parsley, very finely chopped"
   - "3 to 4 cloves garlic, minced or pasted (for chimichurri)"
   - "1½ to 2 Tsp dried oregano"
@@ -51,13 +51,13 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 
 ### Steak and marinade
 
-- 1 lb 12 oz bavette steak, fully thawed
+- 1½ to 2 lb bavette steak, fully thawed
 - Kosher salt and black pepper
 - 3 Tbsp soy sauce
 - 3 Tbsp red wine vinegar
 - 4½ Tbsp olive oil
 - 1½ Tbsp Worcestershire sauce
-- 3 cloves garlic, smashed
+- ½ to ¾ Tsp garlic powder
 
 ### Chimichurri (cilantro-free)
 
@@ -103,7 +103,7 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 
    Season the steak lightly with salt and pepper.
 
-   In a shallow dish or zip-top bag, combine soy sauce, red wine vinegar, olive oil, Worcestershire, and smashed garlic. Add the steak and coat.
+   In a shallow dish or zip-top bag, combine soy sauce, red wine vinegar, olive oil, Worcestershire, and garlic powder. Add the steak and coat.
 
    Refrigerate for **1 to 2 hours**, no longer than **4 hours**.
 
