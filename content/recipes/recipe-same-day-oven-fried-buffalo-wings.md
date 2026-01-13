@@ -98,51 +98,49 @@ Crispy, oven-baked wings inspired by Serious Eats, adapted for same-day cooking 
 
 ## Notes, swaps, and guardrails
 
-### Why this works
-
-**Baking powder, not baking soda**
+### Baking powder, not baking soda
 
 Baking powder raises the pH of the skin, which improves browning through the Maillard reaction. Baking soda would overshoot the pH and make the wings taste metallic and weird.
 
-**Salt timing matters**
+### Salt timing matters
 
 Salting early helps the meat season through, but more importantly it draws moisture to the surface. During the fridge rest and early baking, that moisture evaporates instead of steaming the skin.
 
-**The fridge is a dehydrator in disguise**
+### The fridge is a dehydrator in disguise
 
 Cold air plus low humidity equals evaporation. Overnight is ideal, but 60 to 90 minutes still removes enough surface water to dramatically improve crispness.
 
-**Why no oil**
+### Why no oil
 
 Chicken wings have plenty of fat. Adding oil traps moisture and interferes with rendering. Let the skin fry in its own fat.
 
-**Why the long first bake**
+### Why the long first bake
 
 That initial unflipped bake is all about rendering fat before browning. Crisp skin is mostly the absence of water, not the presence of heat.
 
-**Cream in the sauce**
+### Cream in the sauce
 
 Classic Buffalo sauce can feel sharp and aggressive. A little dairy rounds the vinegar bite and softens the heat without muting the Frank's flavor.
 
-**Honey over sugar**
+### Honey over sugar
 
 Honey adds sweetness and viscosity, helping the sauce cling lightly instead of soaking in.
 
-### Wing Sauce Swap (bottled and turbo methods)
+### Wing sauce swap
 
 Buffalo sauce exists on a flavor spectrum from mild to fear-inducing. A store-bought wing sauce such as Frank's Buffalo Wing Sauce can be used instead of building the sauce from scratch. Using a bottled wing sauce means you're trading some control for convenience (it's already emulsified and seasoned). When using bottled sauce, warm it gently before tossing so it clings to the wings instead of cooling them down and making the skin soggy.
 
-**Microwave heating notes**
+### Microwave heating notes
 
 If you don't want to use a saucepan for sauce, you can microwave both mild Buffalo sauce and hot versions (for the Reaper enthusiast) safely. Place your sauce components in a microwave-safe bowl, cover loosely with a dry paper towel to catch splatter, and heat in short bursts (about 15–20 seconds), stirring between each until smooth and just warm. This prevents hot spots and keeps dairy or butter from separating. Steaming capsicum vapors are real (keep your face and hands clear when stirring).
 
-**For the brave**
+### For the brave
 
-For a higher heat variant (like with a Carolina Reaper hot sauce base), use the same microwave method but start with a smaller amount of hot sauce and balance with butter and a touch of sweetener so the heat integrates instead of shocking the palate. Sauce the brave set of wings separately so the mild crowd still gets friendly wings.
+For a higher heat variant (like with a Carolina Reaper hot sauce base), heat your sauce components in a microwave-safe bowl using short bursts (about 15–20 seconds), stirring between each until smooth and just warm. Start with a smaller amount of hot sauce and balance with butter and a touch of sweetener so the heat integrates instead of shocking the palate. Sauce the brave set of wings separately so the mild crowd still gets friendly wings.
 
-**Why this matters (guardrails)**
+### Why this matters (guardrails)
 
-Keeping sauces off heat until after the wings are fully crisp preserves texture. Bottled sauces are often thinner than homemade emulsions, so warming helps them cling without turning crispy skin mushy. Also, heating in short bursts with a paper towel shield minimizes splatter and airborne spice.
+Keeping sauces off heat until after the wings are fully crisp preserves texture. Bottled sauces are often thinner than homemade emulsions, so warming helps them cling without turning crispy skin mushy. When using a microwave, heat in short bursts (15–20 seconds) with a paper towel covering the bowl to minimize splatter and airborne spice vapors.
 
 ## Credit where it's due
 
