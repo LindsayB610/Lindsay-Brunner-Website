@@ -22,6 +22,15 @@
         {{ end }}
       {{ end }}
       {{ $uniqueCategories := $categories | uniq | sort }}
+      {{/* Reorder to put Side Dish first for better column balance */}}
+      {{ $orderedCategories := slice }}
+      {{ $sideDish := "Side Dish" }}
+      {{ if in $uniqueCategories $sideDish }}
+        {{ $orderedCategories = $orderedCategories | append $sideDish }}
+        {{ $uniqueCategories = where $uniqueCategories "!=" $sideDish }}
+      {{ end }}
+      {{ $orderedCategories = $orderedCategories | append ($uniqueCategories | sort) }}
+      {{ $uniqueCategories = $orderedCategories }}
 
       {{/* Display recipes grouped by category in two columns */}}
       <div class="recipe-index-categories-grid">
