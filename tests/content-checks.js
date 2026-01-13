@@ -12,9 +12,10 @@ const sitemapPath = path.join(publicDir, 'sitemap.xml');
 const aboutPagePath = path.join(publicDir, 'about', 'index.html');
 const error404Path = path.join(publicDir, '404.html');
 // Recipe index page could be at various paths depending on permalink configuration
-const recipeIndexPath1 = path.join(publicDir, 'recipes', 'index', 'index.html');
-const recipeIndexPath2 = path.join(publicDir, 'recipes', 'index.html');
-const recipeIndexPath3 = path.join(publicDir, 'recipes', '1-01-01', 'recipe-index', 'index.html');
+const recipeIndexPath1 = path.join(publicDir, 'recipes', 'all', 'index.html');
+const recipeIndexPath2 = path.join(publicDir, 'recipes', 'index', 'index.html');
+const recipeIndexPath3 = path.join(publicDir, 'recipes', 'index.html');
+const recipeIndexPath4 = path.join(publicDir, 'recipes', '1-01-01', 'recipe-index', 'index.html');
 
 // Required front matter fields for thoughts posts
 // Note: 'date' is optional for drafts, but required when draft: false
@@ -848,6 +849,8 @@ function validateRecipeIndexPage() {
     recipeIndexPath = recipeIndexPath2;
   } else if (fs.existsSync(recipeIndexPath3)) {
     recipeIndexPath = recipeIndexPath3;
+  } else if (fs.existsSync(recipeIndexPath4)) {
+    recipeIndexPath = recipeIndexPath4;
   }
   
   if (!recipeIndexPath) {
@@ -855,6 +858,7 @@ function validateRecipeIndexPage() {
     console.error(`   - ${recipeIndexPath1}`);
     console.error(`   - ${recipeIndexPath2}`);
     console.error(`   - ${recipeIndexPath3}`);
+    console.error(`   - ${recipeIndexPath4}`);
     console.error('   Make sure to run "npm run build" before running tests.');
     process.exit(1);
   }
