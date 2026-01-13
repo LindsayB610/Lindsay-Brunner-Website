@@ -4,7 +4,8 @@ date: 2026-01-13
 slug: "recipe-sous-vide-pulled-pork-arbys-bbq"
 subtitle: "Or: Pulled pork for people who like control (and fast food nostalgia)"
 description: "Juicy, shreddable sous vide pulled pork finished under the broiler for browned edges, plus a tangy-sweet BBQ sauce that leans toward Arby's sauce."
-draft: true
+draft: false
+social_image: "/images/social/recipe-sous-vide-pulled-pork-arbys-bbq-og.png"
 prepTime: "PT25M"
 cookTime: "PT20H15M"
 totalTime: "PT20H45M"
