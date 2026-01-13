@@ -10,7 +10,7 @@ prepTime: "PT15M"
 cookTime: "PT60M"
 totalTime: "PT75M"
 recipeYield: "12-16 servings"
-recipeCategory: "Snack"
+recipeCategory: "Appetizer"
 recipeCuisine: "American"
 recipeIngredient:
   - "12–16 oz hard sourdough pretzels"
