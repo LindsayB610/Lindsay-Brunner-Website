@@ -6,26 +6,26 @@ subtitle: "Or: Steakhouse dinner with a short, smart marinade and sides that do 
 description: "Marinated bavette steak cooked hot and fast, sliced thin against the grain, and served with classic cilantro-free chimichurri, crispy roasted tiny Yukon Gold potatoes, and deeply roasted asparagus."
 draft: false
 social_image: "/images/social/recipe-marinated-bavette-steak-chimichurri-og.png" 
-prepTime: "PT25M"
-cookTime: "PT55M"
-totalTime: "PT2H20M"
-recipeYield: "2 to 3 servings"
+prepTime: "PT30M"
+cookTime: "PT60M"
+totalTime: "PT2H30M"
+recipeYield: "3 to 4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Argentine-inspired"
 recipeIngredient:
-  - "1 to 1¼ lb bavette steak, fully thawed"
+  - "1 lb 12 oz bavette steak, fully thawed"
   - "Kosher salt and black pepper"
-  - "2 Tbsp soy sauce"
-  - "2 Tbsp red wine vinegar"
-  - "3 Tbsp olive oil (for marinade)"
-  - "1 Tbsp Worcestershire sauce"
-  - "2 cloves garlic, smashed (for marinade)"
+  - "3 Tbsp soy sauce"
+  - "3 Tbsp red wine vinegar"
+  - "4½ Tbsp olive oil (for marinade)"
+  - "1½ Tbsp Worcestershire sauce"
+  - "3 cloves garlic, smashed (for marinade)"
   - "1 cup flat-leaf parsley, very finely chopped"
-  - "2 to 3 cloves garlic, minced or pasted (for chimichurri)"
-  - "1 to 2 Tsp dried oregano"
-  - "¼ to ½ Tsp red pepper flakes"
-  - "2 to 3 Tbsp red wine vinegar (for chimichurri)"
-  - "6 Tbsp extra virgin olive oil (for chimichurri)"
+  - "3 to 4 cloves garlic, minced or pasted (for chimichurri)"
+  - "1½ to 2 Tsp dried oregano"
+  - "½ Tsp red pepper flakes (or less to taste)"
+  - "3 to 4 Tbsp red wine vinegar (for chimichurri)"
+  - "9 Tbsp extra virgin olive oil (for chimichurri)"
   - "1 to 1½ lb tiny Yukon Gold potatoes"
   - "2 to 3 Tbsp olive oil or duck fat (for potatoes)"
   - "1 bunch thick asparagus"
@@ -45,30 +45,30 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 - **Implements:** cutting board; chef's knife; mixing bowl; measuring spoons; large pot; colander; rimmed sheet pan (2 if you want easy timing); grill or cast iron skillet; tongs; instant-read thermometer (optional but helpful)
 - **Oven setting:** 425°F (218°C) for potatoes; 450°F (232°C) for asparagus
 - **Heat setting:** high heat for steak (grill or cast iron)
-- **Batch size:** 2 to 3 servings
+- **Batch size:** 3 to 4 servings
 
 ## Ingredients
 
 ### Steak and marinade
 
-- 1 to 1¼ lb bavette steak, fully thawed
+- 1 lb 12 oz bavette steak, fully thawed
 - Kosher salt and black pepper
-- 2 Tbsp soy sauce
-- 2 Tbsp red wine vinegar
-- 3 Tbsp olive oil
-- 1 Tbsp Worcestershire sauce
-- 2 cloves garlic, smashed
+- 3 Tbsp soy sauce
+- 3 Tbsp red wine vinegar
+- 4½ Tbsp olive oil
+- 1½ Tbsp Worcestershire sauce
+- 3 cloves garlic, smashed
 
 ### Chimichurri (cilantro-free)
 
 - 1 cup flat-leaf parsley, very finely chopped
-- 2 to 3 cloves garlic, minced or pasted
-- 1 to 2 Tsp dried oregano
-- ¼ to ½ Tsp red pepper flakes
-- 2 to 3 Tbsp red wine vinegar
-- 6 Tbsp extra virgin olive oil
+- 3 to 4 cloves garlic, minced or pasted
+- 1½ to 2 Tsp dried oregano
+- ½ Tsp red pepper flakes (or less to taste)
+- 3 to 4 Tbsp red wine vinegar
+- 9 Tbsp extra virgin olive oil
 - Kosher salt and black pepper
-- Optional: 1 to 2 Tbsp very finely minced shallot
+- Optional: 2 to 3 Tbsp very finely minced shallot
 - Optional: small squeeze of lemon juice
 
 ### Crispy tiny Yukon Golds
@@ -93,17 +93,23 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 
    Let it sit at least 30 minutes at room temperature. (You can make it earlier in the day and refrigerate it. Bring it back to room temp before serving.)
 
-2. **Marinate the steak (short and intentional)**
+2. **Thaw the steak (plan ahead)**
 
-   Pat the thawed bavette dry. Season both sides lightly with salt and pepper.
+   Thaw the bavette fully in the refrigerator overnight. If you need it faster, seal it in a zip-top bag and thaw in cold water, changing the water every 30 minutes, until pliable and mostly thawed.
+
+   Pat dry before marinating.
+
+3. **Marinate the steak (short and intentional)**
+
+   Season the steak lightly with salt and pepper.
 
    In a shallow dish or zip-top bag, combine soy sauce, red wine vinegar, olive oil, Worcestershire, and smashed garlic. Add the steak and coat.
 
-   Refrigerate for **1 to 2 hours**. Do not exceed **4 hours**.
+   Refrigerate for **1 to 2 hours**, no longer than **4 hours**.
 
    About 20 to 30 minutes before cooking, pull the steak from the fridge. Scrape off excess marinade so it sears instead of steaming.
 
-3. **Parboil the potatoes**
+4. **Parboil the potatoes**
 
    Heat oven to **425°F (218°C)**.
 
@@ -111,13 +117,13 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 
    Drain and let them steam dry in the colander for 2 to 3 minutes.
 
-4. **Roast the potatoes until properly crisp**
+5. **Roast the potatoes until properly crisp**
 
    Toss potatoes with olive oil or duck fat and a good pinch of salt. Spread on a rimmed sheet pan with space between pieces.
 
    Roast for **35 to 45 minutes**, flipping once, until deeply golden and crisp.
 
-5. **Hard-roast the asparagus (near the end)**
+6. **Hard-roast the asparagus (near the end)**
 
    Increase oven to **450°F (232°C)** when the potatoes are close to done, or roast asparagus on a separate rack if your oven runs hot.
 
@@ -127,7 +133,7 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 
    Finish with lemon and black pepper after roasting.
 
-6. **Cook the steak hot and fast**
+7. **Cook the steak hot and fast**
 
    Preheat grill to high, or heat a cast iron skillet over high heat until very hot.
 
@@ -135,7 +141,7 @@ This is the "restaurant steak dinner" version of home cooking: a short, intentio
 
    Rest the steak **5 to 10 minutes**.
 
-7. **Slice and serve**
+8. **Slice and serve**
 
    Bavette has a visible grain. Slice **thinly and aggressively against the grain**.
 
