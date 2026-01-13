@@ -56,14 +56,22 @@ Before you begin, ensure you have the following installed:
 ## 📝 Available Scripts
 
 - `npm run dev` - Start the Hugo development server with drafts enabled
-- `npm run build` - Build the site for production with minification
+- `npm run build` - Build the site for production with minification (includes OG image generation)
+- `npm run generate:og-images` - Generate OG images for recipes (creates SVG files for editing)
+- `npm run generate:png` - Convert SVG to PNG for social media compatibility (usage: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`)
 - `npm run start` - Alternative command to start the development server
 - `npm run serve` - Serve the site without draft content
 - `npm run clean` - Remove the generated `public` directory
-- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content)
+- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template)
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
-- `npm run test:links` - Check for broken internal links
+- `npm run test:links` - Check for broken internal links (requires dev server running)
+- `npm run test:spell` - Spell check modified content files (git diff)
+- `npm run test:spell:all` - Spell check all content files
+- `npm run test:og-images` - OG image generation validation
+- `npm run test:schedule` - Scheduled posts workflow validation
+- `npm run test:search-json` - Recipe search JSON index validation
+- `npm run test:recipe-template` - Recipe template structure validation
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
 
 ## 📁 Project Structure
@@ -81,6 +89,7 @@ Before you begin, ensure you have the following installed:
 │   ├── about/           # About page specific layout
 │   ├── thoughts/        # Thoughts section layout
 │   ├── recipes/         # Recipes section layout
+│   │   └── list.json    # Recipe search JSON index template
 │   ├── 404.html         # 404 error page
 │   └── index.html       # Homepage layout
 ├── static/              # Static assets
@@ -88,10 +97,20 @@ Before you begin, ensure you have the following installed:
 │   ├── favicons/        # Site favicons
 │   ├── images/          # Site images
 │   │   └── social/      # Social sharing (Open Graph) images for posts and default site image
+│   │       └── working-files/  # Editable SVG files for OG images (before PNG conversion)
 │   ├── _headers         # Netlify headers configuration
 │   └── _redirects       # Netlify redirects configuration
 ├── tests/                # Test files
-│   └── content-checks.js # Content validation tests
+│   ├── content-checks.js # Content validation tests
+│   ├── spell-check.js    # Spell checking script
+│   ├── og-image-generation.test.js # OG image generation validation
+│   ├── schedule-posts.test.js # Scheduled posts workflow validation
+│   ├── recipe-search-json.test.js # Recipe search JSON index validation
+│   └── recipe-template.test.js # Recipe template structure validation
+├── scripts/              # Build and automation scripts
+│   ├── generate-og-images.js # Generate OG images for recipes
+│   ├── generate-png-from-svg.js # Convert SVG to PNG for social media
+│   └── schedule-posts.js # Auto-publish scheduled posts script
 ├── agents.md            # AI assistant guidelines (for Cursor, Copilot, etc.)
 ├── BRAND.md             # Brand guidelines and design system
 ├── config.toml          # Hugo site configuration
@@ -203,7 +222,12 @@ The template includes:
 
 3. **Follow the structure**: See the template for the standard content structure (description, snapshot, ingredients, method, notes)
 
-4. **Generate OG image**: Run `npm run generate:og-images`, review the image, then add `social_image` to front matter
+4. **Generate OG image**: 
+   - Run `npm run generate:og-images` to generate SVG files in `static/images/social/working-files/`
+   - Edit the SVG file if needed
+   - Convert to PNG: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`
+   - The PNG will be saved in `static/images/social/` for use as the OG image
+   - Add `social_image: "/images/social/recipe-xxx-og.png"` to front matter
 
 5. **Test**: Run `npm run build && npm run test:content` to validate
 
@@ -226,7 +250,7 @@ The site includes an automated scheduling system that publishes draft posts when
 
 **How it works:**
 1. Create your post with `draft: true` and set a future `date` in the front matter
-2. The GitHub Actions workflow runs every hour and checks for posts ready to publish
+2. The GitHub Actions workflow runs twice daily (at 13:00 and 14:00 UTC) to cover both PDT and PST timezones, and checks for posts ready to publish
 3. When a post's date arrives (or has passed), it automatically sets `draft: false` and commits the change
 4. Netlify rebuilds the site on commit, and your post goes live
 
@@ -242,7 +266,7 @@ description: "This post will auto-publish on December 15, 2025"
 
 **Important notes:**
 - **Recipes**: Scheduled recipes must have `social_image` set in front matter before the publish date, or they will be skipped (to ensure OG images are reviewed)
-- **Timing**: Posts are checked hourly, so a post scheduled for 9:00 AM will publish between 9:00-9:59 AM
+- **Timing**: Posts are checked twice daily (13:00 and 14:00 UTC), so a post scheduled for a specific date will publish on that date during one of the two check times
 - **Testing**: Run `npm run schedule-posts` locally to test which posts would be published
 - **Manual trigger**: You can manually trigger the workflow from the GitHub Actions tab if needed
 
@@ -261,6 +285,24 @@ description: "This post will auto-publish on December 15, 2025"
   ```
 - The site will use the post-specific image if set, otherwise the default.
 - These images are used for Open Graph and Twitter card previews when your content is shared on social media.
+
+### Generating OG Images for Recipes
+
+The site includes automated OG image generation for recipes:
+
+1. **Generate SVG files**: Run `npm run generate:og-images`
+   - Creates editable SVG files in `static/images/social/working-files/`
+   - Skips recipes that already have a `social_image` set
+
+2. **Edit if needed**: Open the SVG file in your editor to make adjustments
+
+3. **Convert to PNG**: Run `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`
+   - Converts the SVG to PNG format (required for social media platforms)
+   - Saves the PNG in `static/images/social/`
+
+4. **Add to front matter**: Add `social_image: "/images/social/recipe-xxx-og.png"` to your recipe's front matter
+
+**Note**: Social media platforms (Twitter, Facebook, LinkedIn) don't support SVG for OG images, so PNG conversion is required.
 
 ## 🎨 Styling
 
@@ -335,6 +377,33 @@ The test suite includes:
   - HTML validation (via html-validate)
   - Broken link detection (via broken-link-checker)
 
+**Additional test suites**:
+
+- **Spell checking** (`tests/spell-check.js`):
+  - Checks spelling in markdown content files
+  - By default, only checks modified files (git diff)
+  - Use `--all` flag to check all files
+  - Add valid words to `cspell.json` for false positives
+
+- **OG image generation** (`tests/og-image-generation.test.js`):
+  - Validates OG image generation script
+  - Ensures images are generated correctly for recipes
+
+- **Scheduled posts** (`tests/schedule-posts.test.js`):
+  - Validates scheduled posts workflow
+  - Ensures posts are published at the correct time
+
+- **Recipe search JSON** (`tests/recipe-search-json.test.js`):
+  - Validates recipe search JSON index structure
+  - Ensures all required fields are present
+  - Verifies drafts are excluded
+  - Validates date format (ISO 8601)
+  - Tests edge cases (0 recipes, 1 recipe, multiple recipes)
+
+- **Recipe template** (`tests/recipe-template.test.js`):
+  - Validates recipe template structure compliance
+  - Ensures recipes follow the template guidelines
+
 **Note**: Always run `npm run build` before running content tests, as they validate the generated `public/` directory.
 
 ## 🤖 AI Assistant Guidelines
@@ -356,6 +425,7 @@ If you're using an AI assistant to work on this project, refer to `agents.md` fo
 - **Ahrefs Web Analytics**: Simple, privacy-friendly traffic monitoring via a script in the site head
 - **RSS Feed**: Available at `/index.xml` for content syndication
 - **Social Media**: Open Graph tags for better social sharing
+- **Recipe Search**: JSON index available at `/recipes/index.json` for client-side recipe search functionality
 
 ## 🔄 Deployment
 
