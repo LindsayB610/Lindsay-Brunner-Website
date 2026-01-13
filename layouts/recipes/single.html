@@ -12,6 +12,12 @@
         <span>{{ .ReadingTime }} min read</span>
         {{ end }}
       </div>
+      
+      <div style="margin-bottom: 1.5rem; text-align: center;">
+        <a href="/recipes/all/" style="color: var(--color-pink); text-decoration: none; font-weight: 500; font-size: 0.9rem;">
+          Browse all recipes by category →
+        </a>
+      </div>
 
       <h1>{{ .Title }}</h1>
 
@@ -56,12 +62,6 @@
     </header>
 
     <div class="article-content">{{ .Content }}</div>
-    
-    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--dark-border); text-align: center;">
-      <a href="/recipes/all/" style="color: var(--color-pink); text-decoration: none; font-weight: 500; font-size: 0.9rem;">
-        Browse all recipes by category →
-      </a>
-    </div>
   </div>
 </article>
 
