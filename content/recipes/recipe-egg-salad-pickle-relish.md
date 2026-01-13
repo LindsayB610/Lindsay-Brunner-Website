@@ -10,7 +10,7 @@ prepTime: "PT10M"
 cookTime: "PT10M"
 totalTime: "PT23M"
 recipeYield: "about 4 servings"
-recipeCategory: "Lunch"
+recipeCategory: "Side Dish"
 recipeCuisine: "American"
 recipeIngredient:
   - "6 large eggs"
