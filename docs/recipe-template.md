@@ -13,7 +13,6 @@ This document provides a complete template and guidelines for creating recipe co
   - Be descriptive but concise
 
 ## Front Matter Template
-
 ```yaml
 ---
 title: "Recipe Title"
