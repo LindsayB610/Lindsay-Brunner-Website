@@ -21,16 +21,6 @@
         {{ end }}
       {{ end }}
       {{ $uniqueCategories := $categories | uniq | sort }}
-      {{/* Reorder to put Side Dish at bottom of left column */}}
-      {{ $sideDish := "Side Dish" }}
-      {{ $otherCategories := slice }}
-      {{ range $uniqueCategories }}
-        {{ if ne . $sideDish }}
-          {{ $otherCategories = $otherCategories | append . }}
-        {{ end }}
-      {{ end }}
-      {{/* Put Side Dish last - with odd total count, it should end in left column */}}
-      {{ $uniqueCategories = $otherCategories | append $sideDish }}
 
       {{/* Display recipes grouped by category in two columns */}}
       <div class="recipe-index-categories-grid">
