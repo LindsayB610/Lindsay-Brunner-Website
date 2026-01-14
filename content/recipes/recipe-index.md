@@ -5,4 +5,5 @@ date: "2024-01-01"
 url: "/recipes/all/"
 layout: "recipe-index"
 draft: false
+social_image: "/images/social/recipe-index-og.png"
 ---
