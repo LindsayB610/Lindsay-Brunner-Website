@@ -22,40 +22,92 @@
       {{ end }}
       {{ $uniqueCategories := $categories | uniq | sort }}
 
+      {{/* Split categories: Appetizer through Dessert in left column, rest in right */}}
+      {{ $leftCategories := slice }}
+      {{ $rightCategories := slice }}
+      {{ $foundDessert := false }}
+      {{ range $uniqueCategories }}
+        {{ if or (eq . "Dessert") (not $foundDessert) }}
+          {{ $leftCategories = $leftCategories | append . }}
+          {{ if eq . "Dessert" }}
+            {{ $foundDessert = true }}
+          {{ end }}
+        {{ else }}
+          {{ $rightCategories = $rightCategories | append . }}
+        {{ end }}
+      {{ end }}
+
       {{/* Display recipes grouped by category in two columns */}}
       <div class="recipe-index-categories-grid">
-      {{ range $uniqueCategories }}
-        {{ $category := . }}
-        {{ $categoryRecipes := where $allRecipes "Params.recipeCategory" $category }}
-        {{ $categoryRecipes = $categoryRecipes.ByTitle }}
-        
-        <div class="recipe-index-category">
-          <h2 class="recipe-index-category-title">
-            {{ $category }}<span class="recipe-index-category-count">{{ len $categoryRecipes }}</span>
-          </h2>
-          
-          <ul class="recipe-index-list">
-            {{ range $categoryRecipes }}
-            <li class="recipe-index-item">
-              <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                <span class="recipe-index-title">{{ .Title }}</span>
-                {{ if or .Params.totalTime .Params.recipeYield }}
-                <span class="recipe-index-meta">
-                  {{ if .Params.totalTime }}
-                    <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                  {{ end }}
-                  {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                  {{ if .Params.recipeYield }}
-                    <span>{{ .Params.recipeYield }}</span>
-                  {{ end }}
-                </span>
+        <div class="recipe-index-column">
+          {{ range $leftCategories }}
+            {{ $category := . }}
+            {{ $categoryRecipes := where $allRecipes "Params.recipeCategory" $category }}
+            {{ $categoryRecipes = $categoryRecipes.ByTitle }}
+            
+            <div class="recipe-index-category">
+              <h2 class="recipe-index-category-title">
+                {{ $category }}<span class="recipe-index-category-count">{{ len $categoryRecipes }}</span>
+              </h2>
+              
+              <ul class="recipe-index-list">
+                {{ range $categoryRecipes }}
+                <li class="recipe-index-item">
+                  <a href="{{ .RelPermalink }}" class="recipe-index-link">
+                    <span class="recipe-index-title">{{ .Title }}</span>
+                    {{ if or .Params.totalTime .Params.recipeYield }}
+                    <span class="recipe-index-meta">
+                      {{ if .Params.totalTime }}
+                        <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                      {{ end }}
+                      {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                      {{ if .Params.recipeYield }}
+                        <span>{{ .Params.recipeYield }}</span>
+                      {{ end }}
+                    </span>
+                    {{ end }}
+                  </a>
+                </li>
                 {{ end }}
-              </a>
-            </li>
-            {{ end }}
-          </ul>
+              </ul>
+            </div>
+          {{ end }}
         </div>
-      {{ end }}
+
+        <div class="recipe-index-column">
+          {{ range $rightCategories }}
+            {{ $category := . }}
+            {{ $categoryRecipes := where $allRecipes "Params.recipeCategory" $category }}
+            {{ $categoryRecipes = $categoryRecipes.ByTitle }}
+            
+            <div class="recipe-index-category">
+              <h2 class="recipe-index-category-title">
+                {{ $category }}<span class="recipe-index-category-count">{{ len $categoryRecipes }}</span>
+              </h2>
+              
+              <ul class="recipe-index-list">
+                {{ range $categoryRecipes }}
+                <li class="recipe-index-item">
+                  <a href="{{ .RelPermalink }}" class="recipe-index-link">
+                    <span class="recipe-index-title">{{ .Title }}</span>
+                    {{ if or .Params.totalTime .Params.recipeYield }}
+                    <span class="recipe-index-meta">
+                      {{ if .Params.totalTime }}
+                        <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                      {{ end }}
+                      {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                      {{ if .Params.recipeYield }}
+                        <span>{{ .Params.recipeYield }}</span>
+                      {{ end }}
+                    </span>
+                    {{ end }}
+                  </a>
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+          {{ end }}
+        </div>
       </div>
 
       {{/* Show recipes without a category at the end (full width) */}}

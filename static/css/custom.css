@@ -300,6 +300,11 @@ td code {
   align-items: start;
 }
 
+.recipe-index-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .recipe-index-category {
   margin-bottom: 2.5rem;
 }
