@@ -1,6 +1,6 @@
 ---
 title: "Sous Vide Pulled Pork With Arby's-Leaning BBQ Sauce"
-date: 2026-01-13
+date: 2026-01-14
 slug: "recipe-sous-vide-pulled-pork-arbys-bbq"
 subtitle: "Or: Pulled pork for people who like control (and fast food nostalgia)"
 description: "Juicy, shreddable sous vide pulled pork finished under the broiler for browned edges, plus a tangy-sweet BBQ sauce that leans toward Arby's sauce."
