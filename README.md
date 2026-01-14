@@ -353,7 +353,7 @@ npm run test:links
 
 The test suite includes:
 
-**Content validation** (`tests/content-checks.js`):
+**Content validation** (`tests/content-checks.js` - modular structure in `tests/content-checks/`):
 
 - **Content Structure**:
   - Homepage sections (hero, Recent Thoughts, Let's Connect)
@@ -365,13 +365,16 @@ The test suite includes:
 - **Assets**:
   - Social image existence (thoughts and recipes)
   - Static asset checks (CSS files, favicons, default images)
-  - About page image references
-
-- **Site Structure**:
   - RSS feed structure and validity
   - Sitemap structure and validity
+
+- **Site Structure**:
+  - About page validation
   - 404 error page structure
   - Permalink structure validation
+  - Recipe index page validation
+  - Context-aware RSS link validation
+  - OG image validation on all pages
 
 - **Quality Checks**:
   - HTML validation (via html-validate)

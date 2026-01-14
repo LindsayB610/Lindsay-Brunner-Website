@@ -292,7 +292,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **BRAND.md**: Complete brand guidelines and protected elements
 - **CONTENT_STYLE_GUIDE.md**: Writing principles, tone, voice, and style guidelines
 - **config.toml**: Hugo configuration
-- **tests/content-checks.js**: Test validation logic
+- **tests/content-checks.js**: Main test orchestrator (modular structure in `tests/content-checks/` directory)
 - **tests/spell-check.js**: Spell checking script for content files
 - **tests/og-image-generation.test.js**: OG image generation validation
 - **tests/schedule-posts.test.js**: Scheduled posts workflow validation
