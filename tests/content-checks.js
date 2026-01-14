@@ -1191,7 +1191,70 @@ function validateAllPagesHaveOGImages() {
     process.exit(1);
   }
   
-  console.log(`✅ All checked pages have valid OG images (${keyPages.length + samplePages.length} pages checked).`);
+  // Now check ALL pages in the public directory
+  console.log('\n   Scanning all pages in public directory...');
+  const allHtmlFiles = [];
+  
+  function findHtmlFiles(dir) {
+    const files = fs.readdirSync(dir);
+    files.forEach(file => {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+      if (stat.isDirectory()) {
+        findHtmlFiles(filePath);
+      } else if (file === 'index.html') {
+        allHtmlFiles.push(filePath);
+      }
+    });
+  }
+  
+  if (fs.existsSync(publicDir)) {
+    findHtmlFiles(publicDir);
+  }
+  
+  const pagesWithoutOG = [];
+  const pagesWithOG = [];
+  
+  allHtmlFiles.forEach(filePath => {
+    try {
+      const content = fs.readFileSync(filePath, 'utf8');
+      const hasOGImage = /property=["']og:image["']/i.test(content);
+      
+      // Get a readable path (relative to public)
+      const relativePath = path.relative(publicDir, filePath);
+      
+      if (hasOGImage) {
+        pagesWithOG.push(relativePath);
+      } else {
+        pagesWithoutOG.push(relativePath);
+      }
+    } catch (err) {
+      warnings.push(`Error reading ${filePath}: ${err.message}`);
+    }
+  });
+  
+  if (pagesWithoutOG.length > 0) {
+    console.error(`\n❌ Found ${pagesWithoutOG.length} page(s) without OG images:`);
+    pagesWithoutOG.forEach(page => {
+      console.error(`   - ${page}`);
+      errors.push(`${page}: Missing og:image meta tag`);
+    });
+  } else {
+    console.log(`   ✅ All ${allHtmlFiles.length} pages have OG images`);
+  }
+  
+  if (warnings.length > 0) {
+    console.warn('\n⚠️  OG image validation warnings:');
+    warnings.forEach(warning => console.warn(`   - ${warning}`));
+  }
+  
+  if (errors.length > 0) {
+    console.error('\n❌ OG image validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  console.log(`\n✅ All ${allHtmlFiles.length} pages have valid OG images.`);
 }
 
 // Run all tests
