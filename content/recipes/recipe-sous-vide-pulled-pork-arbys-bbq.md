@@ -41,7 +41,9 @@ recipeInstructions:
   - "Simmer the sauce. Combine sauce ingredients and simmer 15–20 minutes until glossy and pourable."
 ---
 
-Juicy, shreddable sous vide pulled pork finished under the broiler for browned edges, plus a tangy-sweet BBQ sauce that leans toward Arby's sauce. This is pulled pork for people who want repeatable results, minimal babysitting, and a sandwich that tastes like it has a secret (it does, and the secret is temperature control).
+I used to own a smoker. I wanted to love it, the ritual, the smoke, the promise of perfect pulled pork, but in practice it meant babysitting temperatures for hours and canceling cooks when a Spare the Air day rolled in and ruined the plan. Sous vide fits my life better. This method that I've tested a few times now gives you a tender, shreddable pulled pork without hovering, without smoke, and without reworking your schedule around weather or air-quality alerts.
+
+A long, controlled water bath does the heavy lifting, then a quick broil adds texture and flavor, finished with a tangy-sweet BBQ sauce that leans just a little nostalgic. It's pulled pork for people who want consistency, flexibility, and excellent results, not another thing to monitor all day.
 
 ## Snapshot
 

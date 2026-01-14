@@ -38,7 +38,9 @@ recipeInstructions:
   - "Hard-roast asparagus at 450°F (232°C) until blistered, then finish with lemon."
 ---
 
-This is the "restaurant steak dinner" version of home cooking: a short, intentional marinade for bavette, a classic chimichurri with zero cilantro, potatoes engineered for crisp edges, and asparagus roasted hard enough to get real char. Everything is built to be served together, on time, while the steak is still smug.
+I'm always trying to take recipes I find online more in the direction of what a restaurant chef would do. There are often simple tricks or ingredients that will materially uplevel whatever a home cook suggests (read: butter). In this case, a bavette steak gets a short, intentional marinade that builds flavor without demanding all day, and the chimichurri, intentionally cilantro-free, brings bright, herbal freshness that pairs beautifully with juicy beef. If you make any part of this recipe, try the chimichurri. It's the best I've ever made.
+
+I paired the steak with my fave tiny yellow potatoes from Safeway, and asparagus (because my 6-year-old will actually eat it). And then I spooned chimichurri over literally every bite.
 
 ## Snapshot
 

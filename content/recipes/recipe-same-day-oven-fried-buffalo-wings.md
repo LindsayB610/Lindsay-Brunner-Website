@@ -30,7 +30,9 @@ recipeInstructions:
   - "Sauce and serve. Transfer wings to a large bowl, pour sauce over, and toss quickly to coat. Serve immediately."
 ---
 
-Crispy, oven-baked wings inspired by Serious Eats, adapted for same-day cooking with all the food science spelled out so you know why each step exists. This sauce lands firmly in "gentle tangy warmth" territory, not pain.
+I make wings a lot, they're one of my faves, but most oven-baked versions I've tried either come out soggy or demand an overnight dry-out. There has never been a day that I've been that organized about my personal life. So this recipe has become my same-day method for crispy, blistered Buffalo wings that hit the sweet spot between crunch, juice, and sauce without needing a deep fryer or hours of prep.
+
+It's inspired by Serious Eats (thanks, Kenji!) but tuned to a gentler, honey-sweet, Frank's-forward sauce with just a bit of warmth, not pain (I'm a wuss!).
 
 ## Snapshot
 
