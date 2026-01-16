@@ -37,7 +37,8 @@ recipeInstructions:
   - "Season the pork. Mix the rub and coat the pork shoulder evenly."
   - "Sous vide. Bag and cook at 165°F (74°C) for 18–24 hours."
   - "Broil to finish. Pat dry, broil 5–10 minutes, rest 10–15 minutes."
-  - "Shred and sauce. Shred the pork, add a little reserved juice, then toss with BBQ sauce to taste."
+  - "Reduce the juices. Pour reserved juices into a saucepan, skim fat, and simmer 5–10 minutes until reduced and concentrated."
+  - "Shred and sauce. Shred the pork, add reduced juices, then toss with BBQ sauce to taste."
   - "Simmer the sauce. Combine sauce ingredients and simmer 15–20 minutes until glossy and pourable."
 ---
 
@@ -123,9 +124,13 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 
    <p class="image-caption">My last pork shoulder surprised me by being in two pieces when I opened it up, but happily this recipe already handles that well. I just kept the sous vide time to 20 hours and then broiled as normal. Honestly, more surface area is probably a win!</p>
 
-7. **Shred and sauce**
+7. **Reduce the juices**
 
-   Shred the pork with two forks (or your hands once it is cool enough). Add a few tablespoons of the reserved juices back into the meat until it tastes richer and more porky.
+   Pour the reserved sous vide juices into a small saucepan, let any fat rise and skim it off, then bring to a gentle simmer over medium heat. Cook for about **5–10 minutes** until the liquid is slightly reduced and more concentrated in flavor.
+
+8. **Shred and sauce**
+
+   Shred the pork with two forks (or your hands once it is cool enough). Add a few tablespoons of the reduced juices back into the meat until it tastes richer and more porky.
 
    Toss with BBQ sauce to taste. Start light, then add more. Pulled pork should taste like pork first and sauce second.
 
