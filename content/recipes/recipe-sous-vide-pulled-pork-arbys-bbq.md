@@ -25,7 +25,7 @@ recipeIngredient:
   - "1 cup ketchup"
   - "½ cup water"
   - "⅓ cup apple cider vinegar"
-  - "⅓ cup brown sugar"
+  - "⅓ cup packed brown sugar"
   - "2 Tbsp Worcestershire sauce"
   - "1 Tbsp yellow mustard"
   - "1 Tsp onion powder (for sauce)"
@@ -71,7 +71,7 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 - 1 cup ketchup
 - ½ cup water
 - ⅓ cup apple cider vinegar
-- ⅓ cup brown sugar
+- ⅓ cup packed brown sugar
 - 2 Tbsp Worcestershire sauce
 - 1 Tbsp yellow mustard
 - 1 Tsp onion powder
