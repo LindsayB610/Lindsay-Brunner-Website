@@ -255,19 +255,95 @@ The site includes an automated scheduling system that publishes draft posts when
 4. Netlify rebuilds the site on commit, and your post goes live
 
 **Setting up a scheduled post:**
+
+**Required front matter:**
 ```yaml
 ---
-title: "My Scheduled Post"
-date: 2025-12-15  # Future date
-draft: true        # Will be auto-changed to false when date arrives
-description: "This post will auto-publish on December 15, 2025"
+title: "Your Post Title"
+date: 2025-12-15  # The date you want it to publish (YYYY-MM-DD format)
+draft: true        # MUST be true for scheduling to work
+description: "Your description"
+subtitle: "Your subtitle"
 ---
 ```
 
-**Important notes:**
+**How it works:**
+1. The GitHub Actions workflow runs twice daily at:
+   - 13:00 UTC (covers PDT, when 6am PT = 13:00 UTC)
+   - 14:00 UTC (covers PST, when 6am PT = 14:00 UTC)
+
+2. The script checks if:
+   - The post has `draft: true`
+   - The `date` has passed and it's 6am PT or later on that date
+   - The post is not marked with `skip_scheduling: true`
+
+3. When conditions are met:
+   - The script sets `draft: false`
+   - The change is committed and pushed
+   - Netlify rebuilds the site
+   - The post goes live
+
+**Important timing details:**
+- **Publication time**: Posts publish at **6am Pacific Time** on the scheduled date
+- If you schedule for December 15, 2025, it will publish on December 15, 2025 at 6am PT (or later, depending on when the workflow runs)
+- The workflow runs twice daily, so it will publish during one of those two check times
+
+**Drafts without dates:**
+A draft without a `date` field will **never** auto-publish. This is useful for:
+- Work-in-progress posts
+- Ideas you're not ready to schedule
+- Posts you want to manually publish later
+
+Example:
+```yaml
+---
+title: "My Work in Progress"
+draft: true
+# No date field - will never auto-publish
+description: "Still working on this"
+---
+```
+
+**Preventing auto-publishing:**
+If you want a draft to never auto-publish (even with a date set), add:
+```yaml
+---
+draft: true
+skip_scheduling: true  # Prevents auto-publishing
+date: 2025-12-15
+---
+```
+
+**Testing before scheduling:**
+Test locally to see what would be published:
+```bash
+npm run schedule-posts
+```
+This shows which posts would be published without making any changes.
+
+**Example: Scheduling a post for December 20, 2025**
+```yaml
+---
+title: "My Scheduled Thought"
+date: 2025-12-20
+draft: true
+description: "This will publish on December 20, 2025 at 6am PT"
+subtitle: "A scheduled post"
+---
+```
+This will:
+- Stay as a draft until December 20, 2025
+- Publish on December 20, 2025 at 6am PT (or later during the workflow run)
+- Not publish before that date/time
+
+**Summary checklist:**
+- ✅ `draft: true` in front matter
+- ✅ Future `date` in YYYY-MM-DD format
+- ✅ No `skip_scheduling: true` (unless you want to prevent auto-publishing)
+- ✅ Commit and push the file to the repository
+
+**Additional notes:**
 - **Recipes**: Scheduled recipes must have `social_image` set in front matter before the publish date, or they will be skipped (to ensure OG images are reviewed)
-- **Timing**: Posts are checked twice daily (13:00 and 14:00 UTC), so a post scheduled for a specific date will publish on that date during one of the two check times
-- **Testing**: Run `npm run schedule-posts` locally to test which posts would be published
 - **Manual trigger**: You can manually trigger the workflow from the GitHub Actions tab if needed
 
 **Workflow location:** `.github/workflows/schedule-posts.yml`
