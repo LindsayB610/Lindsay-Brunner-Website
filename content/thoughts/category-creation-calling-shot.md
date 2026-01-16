@@ -2,20 +2,20 @@
 title: "Category Creation Is Calling Your Shot, Not Manifesting Your Destiny"
 date: 2025-11-17
 slug: "category-creation-calling-shot"
-description: "Category creation isn't about manifesting your destiny—it's about calling your shot. Here's how operators get Gartner to redraw the map."
+description: "Category creation isn't about manifesting your destiny, it's about calling your shot. Here's how operators get Gartner to redraw the map."
 subtitle: "Or: How operators actually get Gartner to redraw the map"
 draft: false
 social_image: "/images/social/category-creation-calling-shot-og.png"
 ---
-There's a particular kind of room where someone eventually leans back, folds their hands like a prophet, and announces, "We're going to be iconic. We're going to define a category."
+There's a particular kind of room, especially in Silicon Valley, where someone eventually leans back, folds their hands like a prophet, and announces, "We're going to be iconic. We're going to define a category."
 
-Maybe you've been in that room. Big dreams, big decks, big adjectives. Circles labeled "Category King." Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
+Maybe you've been in that room. Big dreams, big decks, big adjectives. Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
 
 In my career I've gotten to be in a few rooms like that, all at companies that were developer-focused and convinced they were on the cusp of "creating a category."
 
 Here's the quieter truth:
 
-_Being iconic is not a plan. Category creation is not "be great and hope the world notices". It is a specific, tedious, strategic kind of work aimed at one very explicit outcome._
+_Being iconic is not a plan. Category creation is not "build it and they will come". It is a specific, tedious, strategic kind of work aimed at one very explicit outcome._
 
 In the world I've inhabited, creating a category means you describe how the market *should* be structured, then you grind until Gartner and Forrester agree with you by publishing a diagram you have basically been handing them in slow motion for years.
 
@@ -69,7 +69,7 @@ The goal was not "convince analysts we are good."
 
 The goal was "convince analysts this is the correct way to draw the space, and once you draw it like this, Okta belongs in the top-right."
 
-You know it is working when analysts start using your vocabulary back at you. "IDaaS." "Independent cloud identity." "Access management." Your internal language becomes external language.
+You know it's working when analysts start using your vocabulary back at you. "IDaaS." "Independent cloud identity." "Access management." 
 
 ### The result
 
@@ -89,11 +89,7 @@ Twilio was doing its own version of the dance in a totally different corner. Pro
 
 They pushed "Communications Platform as a Service" long before analysts put ink to it.
 
-Twilio did not just market Twilio. They talked about CPaaS like it already existed and the rest of the world just had not caught up.
-
-For years there was no Magic Quadrant, no Wave. Just Twilio insisting the category was real.
-
-Then the reports arrived. Magic Quadrant for CPaaS. IDC MarketScapes. Twilio squarely in the Leader section.
+Twilio did not just market Twilio. They talked about CPaaS like it already existed and the rest of the world just had not caught up. For years there was no Magic Quadrant, no Wave. Just Twilio insisting the category was real. Then the reports arrived. Magic Quadrant for CPaaS. IDC MarketScapes. Twilio squarely in the Leader section.
 
 Same spine every time:
 
@@ -107,13 +103,13 @@ Same spine every time:
 
 This all sounds grand. In practice, it is 90% repetition and unglamorous precision.
 
-### Starting with a real shift
+### Start with a real shift
 
 It starts with a real shift in the world. You cannot conjure a category out of nothing. At Okta it was SaaS, remote work, zero trust. At Twilio it was cloud and developers owning customer experience. At Stormpath it was drop-in auth before that was common. At [Builder.io](https://www.builder.io/) it is teams wanting a better way to collaboratively build and ship experiences without wrestling fifteen tools.
 
-If you do not have a real shift, you do not have a category. You have a product.
+If you do not have a real shift, you do not have a category. You have a product. (And hey, don't fall for the lie that you have to be a category to be wildly successful!)
 
-### Naming the space
+### Name the space
 
 Once you have the shift, you name the space in a way people can actually use. Teams get lost chasing poetic brand expressions no one repeats. Category names are not poetry. They are tools.
 
@@ -129,15 +125,9 @@ The practical checklist:
 
 ### Messaging takes over
 
-Then messaging takes over. For a long stretch, category creation is basically a messaging discipline.
+Then messaging takes over. For a long stretch, category creation is basically messaging discipline.
 
-The website becomes a guided terrain lesson.  
-
-The blog becomes a steady beat of "old world vs. new world."  
-
-Sales decks begin with "here is the landscape."
-
-Content teams become narrative version control. When product wanders, you feel it. When sales invents lore for quarterly goals, you feel that too. Your job is to keep dragging everyone back to the same map.
+The website becomes a guided terrain lesson. The blog becomes a steady beat of "old world vs. new world." Sales decks begin with "here is the landscape." Content teams become narrative version control. When product wanders, you feel it. When sales invents lore for quarterly goals, you feel that too. Your job is to keep dragging everyone back to the same map.
 
 Analyst briefings require painful consistency. You are not just demoing. You are helping redraw the market. Segments, evolution paths, who is a platform vs. who is a feature in costume. You propose evaluation criteria that reflect both your strengths and what excellence truly looks like.
 
@@ -189,11 +179,7 @@ The trouble starts when the slideware declares "iconic category leadership" and 
 
 ## Calling your shot on purpose
 
-Here is the core issue.
-
-"Iconic" is something said after the fact. It will not tell you what to put on the homepage or what to tell analysts next quarter.
-
-Category creation gives you clarity if you treat it seriously.
+Here is the core issue: "Iconic" will not tell you what to put on the homepage or what to tell analysts next quarter. Category creation gives you clarity if you treat it seriously.
 
 ### The framework
 
