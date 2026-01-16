@@ -169,7 +169,97 @@ function checkRecipeSocialImages() {
   console.log('✅ All published recipes have reviewed social images.');
 }
 
+function checkRecipeInlineImages() {
+  console.log('\n🖼️  Checking inline images in recipe content...');
+  
+  const errors = [];
+  const warnings = [];
+  const files = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md' && file.startsWith('recipe-'));
+  
+  if (files.length === 0) {
+    console.log('⚠️  No recipe posts found to check.');
+    return;
+  }
+  
+  files.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const content = fs.readFileSync(filePath, 'utf8');
+    
+    // Find all img tags in the content
+    const imgRegex = /<img[^>]+src=["']([^"']+)["'][^>]*>/g;
+    const matches = [...content.matchAll(imgRegex)];
+    
+    if (matches.length === 0) {
+      // No images in this recipe, skip
+      return;
+    }
+    
+    matches.forEach((match, index) => {
+      const imageSrc = match[1];
+      
+      // Skip external URLs
+      if (imageSrc.startsWith('http://') || imageSrc.startsWith('https://')) {
+        console.log(`   ⏭️  ${file}: Image ${index + 1} is external URL (skipped)`);
+        return;
+      }
+      
+      // Validate image path
+      const imagePath = imageSrc.startsWith('/') 
+        ? imageSrc.substring(1) 
+        : imageSrc;
+      const fullImagePath = path.join(staticDir, imagePath);
+      
+      if (!fs.existsSync(fullImagePath)) {
+        errors.push(`${file}: Inline image not found: ${imageSrc} (checked: ${fullImagePath})`);
+      } else {
+        // Verify it's actually an image file (not empty or corrupted)
+        try {
+          const stats = fs.statSync(fullImagePath);
+          if (stats.size === 0) {
+            errors.push(`${file}: Inline image is empty: ${imageSrc}`);
+          } else {
+            console.log(`   ✓ ${file}: Image ${index + 1} exists and is valid (${imageSrc})`);
+          }
+        } catch (err) {
+          errors.push(`${file}: Error checking inline image: ${err.message}`);
+        }
+      }
+    });
+    
+    // Check for captions - if there's an img tag, check if following content has caption class
+    // Look for patterns like: <img ... /> followed by <p class="image-caption">
+    const captionRegex = /<img[^>]+>[\s\n]*<p[^>]*class=["'][^"']*image-caption[^"']*["']/;
+    const hasCaption = captionRegex.test(content);
+    
+    // Also check for standalone image-caption class usage
+    const hasImageCaptionClass = /class=["'][^"']*image-caption[^"']*["']/.test(content);
+    
+    if (matches.length > 0 && !hasImageCaptionClass) {
+      warnings.push(`${file}: Has ${matches.length} image(s) but no image-caption class found. Consider adding captions with class="image-caption"`);
+    }
+  });
+  
+  if (warnings.length > 0) {
+    console.warn('⚠️  Recipe image caption warnings:');
+    warnings.forEach(warning => console.warn(`   - ${warning}`));
+  }
+  
+  if (errors.length > 0) {
+    console.error('❌ Recipe inline image validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  if (warnings.length === 0 && errors.length === 0) {
+    console.log('✅ All inline images in recipes are valid.');
+  } else if (errors.length === 0) {
+    console.log('✅ All inline images in recipes are valid (some captions may need attention).');
+  }
+}
+
 module.exports = {
   validateRecipeFrontMatter,
-  checkRecipeSocialImages
+  checkRecipeSocialImages,
+  checkRecipeInlineImages
 };

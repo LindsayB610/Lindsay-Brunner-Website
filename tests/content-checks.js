@@ -13,7 +13,8 @@ const {
 
 const {
   validateRecipeFrontMatter,
-  checkRecipeSocialImages
+  checkRecipeSocialImages,
+  checkRecipeInlineImages
 } = require('./content-checks/recipes');
 
 const {
@@ -47,6 +48,7 @@ validateFrontMatter();
 validateRecipeFrontMatter();
 checkSocialImages();
 checkRecipeSocialImages();
+checkRecipeInlineImages();
 checkStaticAssets();
 validateRSSFeed();
 validateRecipesRSSFeed();
