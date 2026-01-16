@@ -197,11 +197,38 @@ function checkRecipeInlineImages() {
     
     matches.forEach((match, index) => {
       const imageSrc = match[1];
+      const fullMatch = match[0];
       
       // Skip external URLs
       if (imageSrc.startsWith('http://') || imageSrc.startsWith('https://')) {
         console.log(`   ⏭️  ${file}: Image ${index + 1} is external URL (skipped)`);
         return;
+      }
+      
+      // Extract alt text from img tag
+      const altMatch = fullMatch.match(/alt=["']([^"']*)["']/);
+      const altText = altMatch ? altMatch[1] : '';
+      
+      // Validate alt text exists and is descriptive
+      if (!altText || altText.trim() === '') {
+        errors.push(`${file}: Image ${index + 1} (${imageSrc}) is missing alt text. All recipe images must have descriptive alt text.`);
+      } else {
+        // Check if alt text is descriptive (not generic or too short)
+        const genericWords = ['image', 'photo', 'picture', 'img', 'photo of', 'image of', 'picture of'];
+        const isGeneric = genericWords.some(word => 
+          altText.toLowerCase().trim() === word || 
+          altText.toLowerCase().trim().startsWith(word + ' ') ||
+          altText.toLowerCase().trim() === word + 's'
+        );
+        
+        // Alt text should be at least 10 characters and not be generic
+        if (altText.trim().length < 10) {
+          errors.push(`${file}: Image ${index + 1} (${imageSrc}) has alt text that is too short: "${altText}". Alt text should be descriptive (at least 10 characters).`);
+        } else if (isGeneric) {
+          errors.push(`${file}: Image ${index + 1} (${imageSrc}) has generic alt text: "${altText}". Alt text should be descriptive and specific to the image content.`);
+        } else {
+          console.log(`   ✓ ${file}: Image ${index + 1} has descriptive alt text: "${altText.substring(0, 50)}${altText.length > 50 ? '...' : ''}"`);
+        }
       }
       
       // Validate image path
@@ -218,8 +245,6 @@ function checkRecipeInlineImages() {
           const stats = fs.statSync(fullImagePath);
           if (stats.size === 0) {
             errors.push(`${file}: Inline image is empty: ${imageSrc}`);
-          } else {
-            console.log(`   ✓ ${file}: Image ${index + 1} exists and is valid (${imageSrc})`);
           }
         } catch (err) {
           errors.push(`${file}: Error checking inline image: ${err.message}`);

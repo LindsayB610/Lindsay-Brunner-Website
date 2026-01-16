@@ -52,7 +52,7 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 - **Oven setting:** broil on high (5–10 minutes total)
 - **Batch size:** 6–8 servings (more if you are making smaller sandwiches)
 
-<img src="/images/pork-shoulder-broiled.jpg" alt="Broiled pork shoulder ready to be shredded" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
+<img src="/images/pork-shoulder-broiled.jpg" alt="Broiled pork shoulder with browned, crispy edges on a foil-lined sheet pan, ready to be shredded for pulled pork" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
 ## Ingredients
 
@@ -119,7 +119,7 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 
    Rest 10–15 minutes.
 
-   <img src="/images/pork-shoulder-two-pieces-new.jpg" alt="Two pieces of pork shoulder ready to be broiled" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
+   <img src="/images/pork-shoulder-two-pieces-new.jpg" alt="Two separate pieces of pork shoulder from a boneless roast, arranged on a sheet pan ready for broiling to create browned edges" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
    <p class="image-caption">My last pork shoulder surprised me by being in two pieces when I opened it up, but happily this recipe already handles that well. I just kept the sous vide time to 20 hours and then broiled as normal. Honestly, more surface area is probably a win!</p>
 
