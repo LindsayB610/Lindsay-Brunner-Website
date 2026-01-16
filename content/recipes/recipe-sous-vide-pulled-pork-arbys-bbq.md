@@ -25,7 +25,7 @@ recipeIngredient:
   - "1 cup ketchup"
   - "½ cup water"
   - "⅓ cup apple cider vinegar"
-  - "⅓ cup packed brown sugar"
+  - "¼ cup packed brown sugar"
   - "2 Tbsp Worcestershire sauce"
   - "1 Tbsp yellow mustard"
   - "1 Tsp onion powder (for sauce)"
@@ -52,6 +52,8 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 - **Oven setting:** broil on high (5–10 minutes total)
 - **Batch size:** 6–8 servings (more if you are making smaller sandwiches)
 
+<img src="/images/pork-shoulder-broiled.jpg" alt="Broiled pork shoulder ready to be shredded" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
+
 ## Ingredients
 
 ### Pork and rub
@@ -71,7 +73,7 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 - 1 cup ketchup
 - ½ cup water
 - ⅓ cup apple cider vinegar
-- ⅓ cup packed brown sugar
+- ¼ cup packed brown sugar
 - 2 Tbsp Worcestershire sauce
 - 1 Tbsp yellow mustard
 - 1 Tsp onion powder
@@ -117,6 +119,10 @@ A long, controlled water bath does the heavy lifting, then a quick broil adds te
 
    Rest 10–15 minutes.
 
+   <img src="/images/pork-shoulder-two-pieces-new.jpg" alt="Two pieces of pork shoulder ready to be broiled" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
+
+   <p class="image-caption">My last pork shoulder surprised me by being in two pieces when I opened it up, but happily this recipe already handles that well. I just kept the sous vide time to 20 hours and then broiled as normal. Honestly, more surface area is probably a win!</p>
+
 7. **Shred and sauce**
 
    Shred the pork with two forks (or your hands once it is cool enough). Add a few tablespoons of the reserved juices back into the meat until it tastes richer and more porky.
@@ -140,6 +146,10 @@ This sauce is intentionally not smoky. It is tangy, sweet, and onion-forward. Th
 - For a little more bite: add 1 Tsp prepared horseradish (optional, but very on-theme for roast beef sandwiches)
 - For a little more warmth: add ¼ Tsp cayenne or a pinch of white pepper
 - For a thicker sauce: simmer 5–10 minutes longer
+
+### If your sauce tastes a bit too sweet after simmering
+
+Balance it by adding a small splash of apple cider vinegar (start with about ½–1 teaspoon), simmer briefly, and taste again. You can also deepen savory balance with a small extra splash of Worcestershire sauce or a pinch of salt to help offset sweetness. Adjust in tiny increments until you reach the flavor you like.
 
 ### Storage and reheat
 

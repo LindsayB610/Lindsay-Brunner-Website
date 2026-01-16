@@ -292,6 +292,20 @@ td code {
   }
 }
 
+/* Image caption styling */
+.article-content .image-caption,
+.image-caption {
+  display: block;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--dark-text-muted);
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+}
+
 /* Recipe index page styles */
 .recipe-index-categories-grid {
   display: grid;
