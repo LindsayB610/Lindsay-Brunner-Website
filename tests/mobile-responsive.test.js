@@ -30,6 +30,7 @@ function testViewportMetaTag() {
   try {
     const headContent = fs.readFileSync(headPartialPath, 'utf8');
     const errors = [];
+    const warnings = [];
     
     // Check for viewport meta tag
     const hasViewport = headContent.includes('viewport') && 
@@ -46,10 +47,23 @@ function testViewportMetaTag() {
       errors.push('Viewport meta tag missing initial-scale');
     }
     
+    // Check for viewport-fit=cover (Safari/iPhone notched device support)
+    const hasViewportFit = headContent.includes('viewport-fit=cover');
+    if (!hasViewportFit) {
+      warnings.push('Missing viewport-fit=cover (recommended for notched devices)');
+    } else {
+      console.log('   ✓ viewport-fit=cover found (Safari/iPhone notched device support)');
+    }
+    
     if (errors.length > 0) {
       console.error('❌ Viewport meta tag validation failed:');
       errors.forEach(error => console.error(`   - ${error}`));
       process.exit(1);
+    }
+    
+    if (warnings.length > 0) {
+      console.warn('⚠️  Viewport warnings:');
+      warnings.forEach(warning => console.warn(`   - ${warning}`));
     }
     
     console.log('   ✓ Viewport meta tag is present and configured correctly');
@@ -352,6 +366,124 @@ function test404MobileFix() {
   }
 }
 
+function testSafariIPhoneFixes() {
+  console.log('\n🍎 Testing Safari/iPhone-specific fixes...');
+  
+  const errors = [];
+  const warnings = [];
+  
+  if (!fs.existsSync(cssMainPath)) {
+    console.error(`❌ Main CSS not found at ${cssMainPath}`);
+    process.exit(1);
+  }
+  
+  try {
+    const mainCss = fs.readFileSync(cssMainPath, 'utf8');
+    const customCss = fs.existsSync(cssCustomPath) ? fs.readFileSync(cssCustomPath, 'utf8') : '';
+    const allCss = mainCss + customCss;
+    
+    // Check for -webkit- prefixes on transforms
+    const hasWebkitTransform = allCss.includes('-webkit-transform');
+    if (hasWebkitTransform) {
+      console.log('   ✓ -webkit-transform prefixes found');
+    } else {
+      warnings.push('Missing -webkit-transform prefixes (may cause Safari rendering issues)');
+    }
+    
+    // Check for -webkit-backdrop-filter
+    const hasWebkitBackdropFilter = allCss.includes('-webkit-backdrop-filter');
+    if (hasWebkitBackdropFilter) {
+      console.log('   ✓ -webkit-backdrop-filter prefixes found');
+    } else {
+      warnings.push('Missing -webkit-backdrop-filter prefixes (backdrop blur may not work on Safari)');
+    }
+    
+    // Check for safe area insets
+    const hasSafeAreaInsets = allCss.includes('env(safe-area-inset') || 
+                            allCss.includes('safe-area-inset');
+    if (hasSafeAreaInsets) {
+      console.log('   ✓ Safe area insets found (notched device support)');
+    } else {
+      warnings.push('Missing safe area insets (content may be cut off on notched devices)');
+    }
+    
+    // Check for -webkit-tap-highlight-color
+    const hasTapHighlight = allCss.includes('-webkit-tap-highlight-color');
+    if (hasTapHighlight) {
+      console.log('   ✓ -webkit-tap-highlight-color found');
+    } else {
+      warnings.push('Missing -webkit-tap-highlight-color (may show unwanted tap highlights on iOS)');
+    }
+    
+    // Check for -webkit-overflow-scrolling
+    const hasOverflowScrolling = allCss.includes('-webkit-overflow-scrolling');
+    if (hasOverflowScrolling) {
+      console.log('   ✓ -webkit-overflow-scrolling found');
+    } else {
+      warnings.push('Missing -webkit-overflow-scrolling (scrolling may not be smooth on iOS)');
+    }
+    
+    // Check for -webkit-font-smoothing
+    const hasFontSmoothing = allCss.includes('-webkit-font-smoothing');
+    if (hasFontSmoothing) {
+      console.log('   ✓ -webkit-font-smoothing found');
+    } else {
+      warnings.push('Missing -webkit-font-smoothing (text may render differently on Safari)');
+    }
+    
+    // Check for -webkit-fill-available (100vh fix)
+    const hasFillAvailable = allCss.includes('-webkit-fill-available');
+    if (hasFillAvailable) {
+      console.log('   ✓ -webkit-fill-available found (100vh fix for Safari)');
+    } else {
+      warnings.push('Missing -webkit-fill-available (100vh may not work correctly on Safari)');
+    }
+    
+    // Check for -webkit-sticky
+    const hasWebkitSticky = allCss.includes('-webkit-sticky') || 
+                           allCss.includes('position: -webkit-sticky');
+    if (hasWebkitSticky) {
+      console.log('   ✓ -webkit-sticky found');
+    } else {
+      warnings.push('Missing -webkit-sticky (sticky positioning may not work on older Safari)');
+    }
+    
+    // Check for Safari-specific @supports query
+    const hasSafariSupports = allCss.includes('@supports (-webkit-touch-callout: none)') ||
+                             allCss.includes('@supports(-webkit-touch-callout:none)');
+    if (hasSafariSupports) {
+      console.log('   ✓ Safari-specific @supports query found');
+    } else {
+      warnings.push('Missing Safari-specific @supports query (may miss Safari-only fixes)');
+    }
+    
+    // Check for -webkit-text-size-adjust
+    const hasTextSizeAdjust = allCss.includes('-webkit-text-size-adjust');
+    if (hasTextSizeAdjust) {
+      console.log('   ✓ -webkit-text-size-adjust found');
+    } else {
+      warnings.push('Missing -webkit-text-size-adjust (text may auto-scale on iOS)');
+    }
+    
+  } catch (error) {
+    console.error(`❌ Error checking Safari/iPhone fixes: ${error.message}`);
+    process.exit(1);
+  }
+  
+  if (warnings.length > 0) {
+    console.warn('⚠️  Safari/iPhone fix warnings:');
+    warnings.forEach(warning => console.warn(`   - ${warning}`));
+  }
+  
+  if (errors.length > 0) {
+    console.error('❌ Safari/iPhone fix validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  console.log('   ✓ Safari/iPhone compatibility fixes validated');
+}
+
 // Run all tests
 console.log('🧪 Running mobile and responsive design tests...\n');
 
@@ -361,7 +493,9 @@ testMobileSpecificStyles();
 testResponsiveImages();
 testNoFixedWidths();
 test404MobileFix();
+testSafariIPhoneFixes();
 
 console.log('\n✅ All mobile and responsive design tests passed!');
 console.log('\n💡 Note: These tests validate CSS structure and patterns.');
 console.log('   For visual testing, use browser DevTools to test at 768px and 480px widths.');
+console.log('   Test on actual Safari/iPhone devices to verify rendering consistency.');
