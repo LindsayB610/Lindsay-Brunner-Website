@@ -122,6 +122,7 @@ table td:first-child strong {
 .article-content tbody tr:hover {
   background: rgba(255, 27, 141, 0.05) !important;
   transform: translateY(-1px) !important;
+  -webkit-transform: translateY(-1px) !important;
 }
 
 .article-content tbody tr:last-child td {
@@ -373,11 +374,12 @@ td code {
   position: relative;
 }
 
-.recipe-index-link:hover {
-  background: var(--dark-surface-lighter);
-  border-color: var(--color-pink);
-  transform: translateX(4px);
-}
+  .recipe-index-link:hover {
+    background: var(--dark-surface-lighter);
+    border-color: var(--color-pink);
+    transform: translateX(4px);
+    -webkit-transform: translateX(4px);
+  }
 
 .recipe-index-link:focus {
   outline: 2px solid var(--color-pink);
@@ -494,6 +496,61 @@ td code {
       margin: 0 !important;
       padding: 0 !important;
     }
+  }
+}
+
+/* Comprehensive Safari/iPhone fixes for consistent rendering */
+@supports (-webkit-touch-callout: none) {
+  /* Fix container padding for safe areas on notched devices */
+  .container,
+  .container-narrow {
+    padding-left: max(var(--space-lg), env(safe-area-inset-left));
+    padding-right: max(var(--space-lg), env(safe-area-inset-right));
+  }
+
+  @media (max-width: 480px) {
+    .container,
+    .container-narrow {
+      padding-left: max(var(--space-md), env(safe-area-inset-left));
+      padding-right: max(var(--space-md), env(safe-area-inset-right));
+    }
+  }
+
+  /* Ensure transforms work smoothly on Safari */
+  .featured-post,
+  .recipe-index-link,
+  .hero-cta,
+  .read-more-link,
+  .read-more-featured {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Fix flexbox gap issues on older Safari */
+  .header-content,
+  .main-nav ul,
+  .social-links,
+  .recipe-index-categories-grid {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  /* Ensure smooth scrolling on Safari */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix font rendering on Safari */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Fix sticky positioning on Safari */
+  .site-header {
+    position: -webkit-sticky;
+    position: sticky;
   }
 }
 

@@ -122,6 +122,11 @@ html {
   scroll-behavior: smooth;
   background: var(--dark-bg);
   overflow-x: hidden;
+  /* Safari/iPhone fixes */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* Support for safe area insets on notched devices */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 body {
@@ -131,8 +136,16 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   min-height: 100vh;
+  /* Safari/iPhone fix: Use -webkit-fill-available for better viewport handling */
+  min-height: -webkit-fill-available;
   overflow-x: hidden;
   max-width: 100vw;
+  /* Prevent text size adjustment on iOS */
+  -webkit-text-size-adjust: 100%;
+  /* Better touch scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Remove tap highlight */
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Scrollbar - Keep the gradient you like */
@@ -341,11 +354,16 @@ blockquote {
 .site-header {
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--dark-border);
   position: sticky;
+  -webkit-position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: var(--shadow-clean);
+  /* Safari/iPhone: Support safe area insets */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .site-header::after {
@@ -420,6 +438,7 @@ blockquote {
 .site-logo:hover {
   filter: brightness(1.3);
   transform: scale(1.05);
+  -webkit-transform: scale(1.05);
 }
 
 .main-nav ul {
@@ -528,9 +547,12 @@ blockquote {
   flex-direction: column;
   gap: 0;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   transform: translateY(-6px);
+  -webkit-transform: translateY(-6px);
   transition: opacity var(--transition-fast), transform var(--transition-fast);
+  -webkit-transition: opacity var(--transition-fast), -webkit-transform var(--transition-fast);
   pointer-events: none;
   visibility: hidden;
 }
@@ -587,6 +609,7 @@ blockquote {
   display: flex;
   opacity: 1;
   transform: translateY(0);
+  -webkit-transform: translateY(0);
   pointer-events: auto;
   visibility: visible;
 }
@@ -603,6 +626,7 @@ blockquote {
 
 .nav-dropdown details[open] .dropdown-icon svg {
   transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
 }
 
 /* Social links */
@@ -628,6 +652,7 @@ blockquote {
 .social-link:hover {
   color: var(--brand-warm);
   transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
 }
 
 .social-link svg {
@@ -686,6 +711,7 @@ blockquote {
 .hero-cta:hover {
   color: var(--dark-text);
   transform: translateY(-4px);
+  -webkit-transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(255, 27, 141, 0.5);
 }
 
@@ -1036,7 +1062,9 @@ blockquote {
     margin-top: var(--space-xs);
     width: 100%;
     transform: none;
+    -webkit-transform: none;
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     pointer-events: none;
     visibility: hidden;
   }
@@ -1194,6 +1222,7 @@ blockquote {
 .read-more-featured:hover {
   color: var(--brand-warm);
   transform: translateX(4px);
+  -webkit-transform: translateX(4px);
 }
 
 .read-more-featured::after {
@@ -1361,6 +1390,7 @@ tbody tr {
 tbody tr:hover {
   background: rgba(255, 27, 141, 0.05);
   transform: translateY(-1px);
+  -webkit-transform: translateY(-1px);
 }
 
 tbody tr:last-child {
