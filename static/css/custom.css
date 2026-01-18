@@ -420,8 +420,16 @@ td code {
   }
 
   /* Hide category count on mobile for cleaner look */
-  .recipe-index-category-title .recipe-index-category-count {
-    display: none;
+  /* Safari/iPhone fix: Use !important and multiple selectors */
+  .recipe-index-category-title .recipe-index-category-count,
+  .recipe-index-category-title span.recipe-index-category-count {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
   }
 
   .recipe-index-link {
@@ -443,6 +451,18 @@ td code {
     margin-bottom: 0.875rem;
   }
 
+  /* Ensure category count is hidden on small screens (Safari fix) */
+  .recipe-index-category-title .recipe-index-category-count,
+  .recipe-index-category-title span.recipe-index-category-count {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+  }
+
   .recipe-index-link {
     padding: 0.625rem 0.75rem;
   }
@@ -453,6 +473,27 @@ td code {
 
   .recipe-index-meta {
     font-size: 0.75rem;
+  }
+}
+
+/* Safari/iPhone specific fixes for recipe index */
+@supports (-webkit-touch-callout: none) {
+  /* This targets Safari specifically */
+  @media (max-width: 768px) {
+    .recipe-index-category-title .recipe-index-category-count,
+    .recipe-index-category-title span.recipe-index-category-count {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      position: absolute !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
   }
 }
 
