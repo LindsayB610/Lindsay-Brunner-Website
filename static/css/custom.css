@@ -419,12 +419,107 @@ td code {
     font-size: 1.25rem;
   }
 
+  /* Hide category count on mobile for cleaner look */
+  .recipe-index-category-title .recipe-index-category-count {
+    display: none;
+  }
+
   .recipe-index-link {
     padding: 0.625rem 0.875rem;
   }
 
   .recipe-index-title {
     font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-index-category {
+    margin-bottom: 2rem;
+  }
+
+  .recipe-index-category-title {
+    font-size: 1.125rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .recipe-index-link {
+    padding: 0.625rem 0.75rem;
+  }
+
+  .recipe-index-title {
+    font-size: 0.875rem;
+  }
+
+  .recipe-index-meta {
+    font-size: 0.75rem;
+  }
+}
+
+/* 404 page mobile fixes */
+@media (max-width: 768px) {
+  section h1[style*="font-size: 8rem"] {
+    font-size: 4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  section h1[style*="font-size: 8rem"] {
+    font-size: 3rem !important;
+  }
+}
+
+/* Article description/subtitle mobile adjustments */
+@media (max-width: 768px) {
+  article header p[style*="font-size: 1.25rem"] {
+    font-size: 1.125rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  article header p[style*="font-size: 1.25rem"] {
+    font-size: 1rem !important;
+  }
+}
+
+/* Previous/Next navigation mobile fixes */
+@media (max-width: 480px) {
+  nav[style*="min-width: 200px"] {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  nav[style*="min-width: 200px"] > div {
+    min-width: auto !important;
+    text-align: left !important;
+  }
+}
+
+/* Tags footer mobile spacing */
+@media (max-width: 768px) {
+  footer[style*="padding: 2rem"] {
+    padding: 1.5rem !important;
+    margin-top: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  footer[style*="padding: 2rem"] {
+    padding: 1rem !important;
+    margin-top: 2rem !important;
+  }
+}
+
+/* Override inline margin-bottom on featured posts in lists */
+@media (max-width: 768px) {
+  .featured-post[style*="margin-bottom: 3rem"] {
+    margin-bottom: var(--space-2xl) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-post[style*="margin-bottom: 3rem"] {
+    margin-bottom: var(--space-xl) !important;
   }
 }
 

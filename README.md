@@ -62,7 +62,7 @@ Before you begin, ensure you have the following installed:
 - `npm run start` - Alternative command to start the development server
 - `npm run serve` - Serve the site without draft content
 - `npm run clean` - Remove the generated `public` directory
-- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template)
+- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, mobile responsive)
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (requires dev server running)
@@ -72,6 +72,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:schedule` - Scheduled posts workflow validation
 - `npm run test:search-json` - Recipe search JSON index validation
 - `npm run test:recipe-template` - Recipe template structure validation
+- `npm run test:mobile` - Mobile and responsive design validation
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
 
 ## 📁 Project Structure
@@ -428,6 +429,13 @@ npm run test:links
 ### Test Coverage
 
 The test suite includes:
+
+**Mobile & Responsive Design** (`tests/mobile-responsive.test.js`):
+- Viewport meta tag validation
+- CSS media query breakpoints (768px, 480px)
+- Mobile-specific style patterns
+- Responsive image handling
+- Mobile layout fixes (404 page, featured posts, etc.)
 
 **Content validation** (`tests/content-checks.js` - modular structure in `tests/content-checks/`):
 
