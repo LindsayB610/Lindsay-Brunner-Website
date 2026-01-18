@@ -4,7 +4,7 @@ date: 2026-01-18
 slug: "recipe-bacon-mac-and-cheese-broiled-cheese-cap"
 subtitle: "Or: Creamy pub-style mac with Velveeta insurance"
 description: "Creamy bacon mac and cheese built on a smooth Velveeta-stabilized sauce, finished under the broiler for a browned cheese cap without drying out the interior."
-draft: true
+draft: false
 social_image: "/images/social/recipe-bacon-mac-and-cheese-broiled-cheese-cap-og.png" 
 prepTime: "PT15M"
 cookTime: "PT25M"
