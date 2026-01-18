@@ -11,6 +11,8 @@ const {
   thoughtsDir,
   recipesDir,
   staticDir,
+  sitemapPath,
+  rssFeedPath,
   parseFrontMatter
 } = require('./utils');
 
@@ -261,9 +263,143 @@ function validateRecipeIndexPage() {
   }
 }
 
+function validateNoDraftInThoughtsUrls() {
+  console.log('\n🚫 Validating that "draft" never appears in thoughts URLs...');
+  
+  if (!fs.existsSync(publicDir)) {
+    console.error(`❌ Public directory not found at ${publicDir}`);
+    console.error('   Make sure to run "npm run build" before running tests.');
+    process.exit(1);
+  }
+  
+  const errors = [];
+  
+  try {
+    // Check all file paths in the thoughts directory
+    const thoughtsPublicDir = path.join(publicDir, 'thoughts');
+    if (fs.existsSync(thoughtsPublicDir)) {
+      const checkDirectory = (dir) => {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        
+        for (const entry of entries) {
+          const fullPath = path.join(dir, entry.name);
+          
+          // Check if the path contains "draft" (case-insensitive)
+          if (entry.name.toLowerCase().includes('draft')) {
+            errors.push(`Found "draft" in file/directory path: ${path.relative(publicDir, fullPath)}`);
+          }
+          
+          // Recursively check subdirectories
+          if (entry.isDirectory()) {
+            checkDirectory(fullPath);
+          }
+        }
+      };
+      
+      checkDirectory(thoughtsPublicDir);
+    }
+    
+    // Check all HTML files in thoughts for URLs containing "draft"
+    const checkHtmlFiles = (dir) => {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        
+        if (entry.isDirectory()) {
+          checkHtmlFiles(fullPath);
+        } else if (entry.name.endsWith('.html')) {
+          const content = fs.readFileSync(fullPath, 'utf8');
+          
+          // Check for URLs in href attributes
+          const hrefMatches = content.match(/href=["']([^"']*draft[^"']*)["']/gi);
+          if (hrefMatches) {
+            hrefMatches.forEach(match => {
+              const url = match.match(/href=["']([^"']*)["']/i)[1];
+              if (url.includes('/thoughts/')) {
+                errors.push(`Found "draft" in href URL: ${url} (in ${path.relative(publicDir, fullPath)})`);
+              }
+            });
+          }
+          
+          // Check for canonical URLs
+          const canonicalMatches = content.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']*draft[^"']*)["']/gi);
+          if (canonicalMatches) {
+            canonicalMatches.forEach(match => {
+              const url = match.match(/href=["']([^"']*)["']/i)[1];
+              if (url.includes('/thoughts/')) {
+                errors.push(`Found "draft" in canonical URL: ${url} (in ${path.relative(publicDir, fullPath)})`);
+              }
+            });
+          }
+          
+          // Check for Open Graph URLs
+          const ogUrlMatches = content.match(/<meta[^>]*property=["']og:url["'][^>]*content=["']([^"']*draft[^"']*)["']/gi);
+          if (ogUrlMatches) {
+            ogUrlMatches.forEach(match => {
+              const url = match.match(/content=["']([^"']*)["']/i)[1];
+              if (url.includes('/thoughts/')) {
+                errors.push(`Found "draft" in og:url: ${url} (in ${path.relative(publicDir, fullPath)})`);
+              }
+            });
+          }
+        }
+      }
+    };
+    
+    if (fs.existsSync(thoughtsPublicDir)) {
+      checkHtmlFiles(thoughtsPublicDir);
+    }
+    
+    // Check sitemap for thoughts URLs containing "draft"
+    if (fs.existsSync(sitemapPath)) {
+      const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
+      const urlMatches = sitemapContent.match(/<loc>([^<]*\/thoughts\/[^<]*draft[^<]*)<\/loc>/gi);
+      if (urlMatches) {
+        urlMatches.forEach(match => {
+          const url = match.match(/<loc>([^<]*)<\/loc>/i)[1];
+          errors.push(`Found "draft" in sitemap URL: ${url}`);
+        });
+      }
+    }
+    
+    // Check RSS feed for thoughts URLs containing "draft"
+    if (fs.existsSync(rssFeedPath)) {
+      const rssContent = fs.readFileSync(rssFeedPath, 'utf8');
+      const linkMatches = rssContent.match(/<link>([^<]*\/thoughts\/[^<]*draft[^<]*)<\/link>/gi);
+      if (linkMatches) {
+        linkMatches.forEach(match => {
+          const url = match.match(/<link>([^<]*)<\/link>/i)[1];
+          errors.push(`Found "draft" in RSS feed URL: ${url}`);
+        });
+      }
+      
+      const guidMatches = rssContent.match(/<guid[^>]*>([^<]*\/thoughts\/[^<]*draft[^<]*)<\/guid>/gi);
+      if (guidMatches) {
+        guidMatches.forEach(match => {
+          const url = match.match(/<guid[^>]*>([^<]*)<\/guid>/i)[1];
+          errors.push(`Found "draft" in RSS feed GUID: ${url}`);
+        });
+      }
+    }
+    
+    if (errors.length > 0) {
+      console.error('❌ Found "draft" in thoughts URLs:');
+      errors.forEach(error => console.error(`   - ${error}`));
+      process.exit(1);
+    }
+    
+    console.log('✅ No "draft" found in thoughts URLs.');
+  } catch (error) {
+    console.error(`❌ Error validating thoughts URLs: ${error.message}`);
+    process.exit(1);
+  }
+}
+
 module.exports = {
   validateAboutPage,
   validate404Page,
   validatePermalinks,
-  validateRecipeIndexPage
+  validateRecipeIndexPage,
+  validateNoDraftInThoughtsUrls
 };

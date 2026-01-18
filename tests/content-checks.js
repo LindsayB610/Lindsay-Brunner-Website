@@ -28,7 +28,8 @@ const {
   validateAboutPage,
   validate404Page,
   validatePermalinks,
-  validateRecipeIndexPage
+  validateRecipeIndexPage,
+  validateNoDraftInThoughtsUrls
 } = require('./content-checks/pages');
 
 const {
@@ -58,6 +59,7 @@ validateAboutPage();
 validate404Page();
 validatePermalinks();
 validateRecipeIndexPage();
+validateNoDraftInThoughtsUrls();
 validateAllPagesHaveOGImages();
 
 console.log('\n✅ All content validation tests passed!');

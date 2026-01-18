@@ -89,6 +89,11 @@ static/
 
 **Permalink pattern:** `/thoughts/:year-:month-:day/:slug/`
 
+**File naming for drafts:**
+- Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`)
+- The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs
+- This naming convention only applies to thoughts posts, not recipes
+
 **Example:**
 ```yaml
 ---
@@ -97,6 +102,7 @@ date: 2025-01-15
 description: "A compelling description"
 subtitle: "Brief subtitle for homepage"
 draft: false
+slug: "my-thought-title"  # This determines the URL, not the filename
 social_image: "/images/social/my-image.png"
 ---
 ```
@@ -231,6 +237,8 @@ See `BRAND.md` for complete brand guidelines. Key points:
 ### Adding a New Thought Post
 
 1. Create file in `content/thoughts/` (lowercase, hyphens)
+   - For drafts, use `draft-` prefix: `draft-my-post.md` (helps with organization)
+   - The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs
 2. Add required front matter (see above)
 3. Optionally add social image to `static/images/social/`
 4. Reference image in front matter: `social_image: "/images/social/my-image.png"`
@@ -275,6 +283,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 ## Important Notes
 
 - **Drafts**: Set `draft: true` to hide from production
+- **Draft file naming (thoughts only)**: Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
 - **Dates**: Use YYYY-MM-DD format (Hugo sorts by date)
 - **Social Images**: Place in `static/images/social/`, reference with leading slash
 - **Raw HTML**: Allowed in content (config has `unsafe = true`)

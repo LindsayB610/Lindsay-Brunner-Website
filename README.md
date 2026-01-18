@@ -140,6 +140,9 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    ```bash
    # Create the file manually in the thoughts directory
    touch content/thoughts/your-thought-title.md
+   
+   # For drafts, use the draft- prefix for easy identification:
+   touch content/thoughts/draft-your-thought-title.md
    ```
 
 3. **Set up the front matter** (the metadata at the top of your .md file):
@@ -197,6 +200,7 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    - Use hyphens instead of spaces: `my-great-thought.md`
    - Be descriptive but concise: `future-of-developer-experience.md`
    - Avoid special characters or numbers at the start
+   - For drafts, use `draft-` prefix: `draft-my-great-thought.md` (helps with organization; the `slug` field determines the URL)
 
 ### Adding New Recipe Content
 
@@ -241,8 +245,9 @@ The template includes:
 ### Hugo Content Organization Tips
 
 - **Drafts**: Set `draft: true` to work on content without publishing
+- **Draft file naming (thoughts only)**: Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
 - **Future dates**: Hugo won't show posts with future dates unless in draft mode
-- **URL structure**: Files in `thoughts/` become `/thoughts/filename/`
+- **URL structure**: Files in `thoughts/` become `/thoughts/filename/` (or use the `slug` field in front matter)
 - **Ordering**: Hugo sorts by date (newest first) by default
 
 ### 📅 Scheduling Posts for Auto-Publication
@@ -459,6 +464,7 @@ The test suite includes:
   - Recipe index page validation
   - Context-aware RSS link validation
   - OG image validation on all pages
+  - Draft URL validation (ensures "draft" never appears in thoughts URLs)
 
 - **Quality Checks**:
   - HTML validation (via html-validate)
