@@ -59,37 +59,37 @@ This method is tuned specifically for what I usually have, which is **very thick
 
 ## Method
 
-  1. Rack + foil setup.
+1. **Rack + foil setup.**
 
-Line a rimmed sheet pan with foil. Set your wire rack on top. If you want extra smoke insurance, pour about ¼ cup water into the pan (under the rack).
+   Line a rimmed sheet pan with foil. Set your wire rack on top. If you want extra smoke insurance, pour about ¼ cup water into the pan (under the rack).
 
-  2. Lay out the bacon.
+2. **Lay out the bacon.**
 
-Arrange bacon slices on the rack in a single layer. A little touching is fine. Overlapping is not.
+   Arrange bacon slices on the rack in a single layer. A little touching is fine. Overlapping is not.
 
-  3. Cold-start bake at 350°F.
+3. **Cold-start bake at 350°F.**
 
-Put the pan in a **cold oven** (middle rack is best), then set the oven to **350°F (175°C)**.
+   Put the pan in a **cold oven** (middle rack is best), then set the oven to **350°F (175°C)**.
 
-Start checking at **20 minutes**.
+   Start checking at **20 minutes**.
 
-  4. Rotate (and keep going).
+4. **Rotate (and keep going).**
 
-At ~20–25 minutes, rotate the pan for even browning. Keep baking until the fat is mostly rendered and the bacon is as crisp as you want.
+   At ~20–25 minutes, rotate the pan for even browning. Keep baking until the fat is mostly rendered and the bacon is as crisp as you want.
 
-For thick-cut bacon, total bake time is usually **30–45 minutes**.
+   For thick-cut bacon, total bake time is usually **30–45 minutes**.
 
-  5. Optional crisp finish.
+5. **Optional crisp finish.**
 
-If the bacon looks rendered but you want a bit more edge-crunch, bump the oven to **400°F (205°C) for 2–5 minutes**. Watch closely here (home cures sometimes have sugar, and sugar is chaotic).
+   If the bacon looks rendered but you want a bit more edge-crunch, bump the oven to **400°F (205°C) for 2–5 minutes**. Watch closely here (home cures sometimes have sugar, and sugar is chaotic).
 
-  6. Rest (don't skip).
+6. **Rest (don't skip).**
 
-Lift the rack to let excess fat drip, then transfer bacon to paper towels (or just blot lightly). Let it rest **3–5 minutes**. It crisps a little more as it cools.
+   Lift the rack to let excess fat drip, then transfer bacon to paper towels (or just blot lightly). Let it rest **3–5 minutes**. It crisps a little more as it cools.
 
-  7. Save the bacon fat.
+7. **Save the bacon fat.**
 
-Carefully pour the drippings into a heatproof jar/bowl. Do not pour it down your sink unless you enjoy plumbing-based side quests.
+   Carefully pour the drippings into a heatproof jar/bowl. Do not pour it down your sink unless you enjoy plumbing-based side quests.
 
 ---
 

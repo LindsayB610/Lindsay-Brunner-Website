@@ -21,7 +21,7 @@ recipeInstructions:
   - "Scrub the sweet potatoes well and dry them. Pierce each one a few times with a fork so steam can escape during cooking."
   - "If you want slightly richer skin, rub lightly with oil. This is optional. Courtney often skips it."
   - "Wrap each sweet potato loosely in foil. Do not wrap tightly. You want room for steam to circulate."
-  - "Place the wrapped sweet potatoes in the air fryer basket. Cook at 375 to 400 degrees until a knife slides in easily, usually 35 to 45 minutes depending on size. Flip once halfway through if you remember. If you do not, it will still work."
+  - "Place the wrapped sweet potatoes in the air fryer basket. Cook at 375–400°F (190–205°C) until a knife slides in easily, usually 35 to 45 minutes depending on size. Flip once halfway through if you remember. If you do not, it will still work."
   - "For drier skin, unwrap the sweet potatoes for the last 5 to 10 minutes of cooking and return them to the air fryer unwrapped."
   - "When the sweet potatoes are fully cooked, turn the air fryer off. Do not open it. Leave the sweet potatoes inside to cool gradually for at least 30 minutes, and up to a few hours. This resting step is essential to the final texture."
   - "When ready to eat, split open, add butter and salt, and serve."
@@ -46,7 +46,7 @@ The air fryer, turned off and unopened, acts like a dry thermos. Nothing dramati
 ## Snapshot
 
 - **Implements:** air fryer; foil; fork
-- **Cooker setting:** 375 to 400°F (190 to 205°C) for 35 to 45 minutes, then rest 30 minutes to a few hours
+- **Cooker setting:** 375–400°F (190–205°C) for 35 to 45 minutes, then rest 30 minutes to a few hours
 - **Batch size:** Varies by number of sweet potatoes
 
 ## Ingredients
@@ -71,7 +71,7 @@ This recipe is about method, not seasoning.
 
    Wrap each sweet potato loosely in foil. Do not wrap tightly. You want room for steam to circulate.
 
-   Place the wrapped sweet potatoes in the air fryer basket. Cook at 375 to 400 degrees until a knife slides in easily, usually 35 to 45 minutes depending on size. Flip once halfway through if you remember. If you do not, it will still work.
+   Place the wrapped sweet potatoes in the air fryer basket. Cook at 375–400°F (190–205°C) until a knife slides in easily, usually 35 to 45 minutes depending on size. Flip once halfway through if you remember. If you do not, it will still work.
 
    For drier skin, unwrap the sweet potatoes for the last 5 to 10 minutes of cooking and return them to the air fryer unwrapped.
 
