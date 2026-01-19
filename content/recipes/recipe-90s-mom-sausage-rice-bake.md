@@ -13,8 +13,8 @@ recipeYield: "4-6 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
 recipeIngredient:
-  - "2 Cups long-grain white rice"
-  - "3½ to 4 Cups water"
+  - "2 cups long-grain white rice"
+  - "3½ to 4 cups water"
   - "2 Tbsp salted butter"
   - "1 lb sweet Italian sausage, sliced into thick coins"
   - "1 green bell pepper, sliced into strips"
@@ -42,8 +42,8 @@ This is the kind of recipe that shows up in church cookbooks and gets passed aro
 
 ## Ingredients
 
-- 2 Cups long-grain white rice
-- 3½ to 4 Cups water
+- 2 cups long-grain white rice
+- 3½ to 4 cups water
 - 2 Tbsp salted butter
 - 1 lb sweet Italian sausage, sliced into thick coins
 - 1 green bell pepper, sliced into strips
@@ -96,4 +96,4 @@ This is the kind of recipe that shows up in church cookbooks and gets passed aro
 
 - Do not stir.
 - Do not swap in broth unless you want a different dish.
-- If using very juicy sausage, stick closer to 3½ Cups water.
+- If using very juicy sausage, stick closer to 3½ cups water.

@@ -270,7 +270,6 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 
 **Always capitalize abbreviations:**
 - `Tbsp`, `Tsp` (not `tbsp`, `tsp`)
-- `Cup`, `Cups` (can abbreviate in lists)
 - `oz` (ounce), `lb` (pound), `g` (gram), `ml` (milliliter), `in` (inch)
 
 **Always spell out:**
@@ -280,7 +279,7 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 
 **Acceptable abbreviations:**
 - `Tbsp` / `Tsp` (tablespoon/teaspoon) — always abbreviate
-- `cup` / `cups` — can abbreviate in lists, spell out in narrative text
+- `cup` / `cups` — lowercase (not a proper noun), can abbreviate in lists, spell out in narrative text. Only capitalize if it's the first word in a sentence.
 - `oz`, `lb`, `g`, `ml`, `in` — always abbreviate
 
 **Metric conversions:**

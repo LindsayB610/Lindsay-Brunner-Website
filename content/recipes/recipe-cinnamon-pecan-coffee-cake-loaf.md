@@ -14,20 +14,20 @@ recipeCategory: "Dessert"
 recipeCuisine: "American"
 recipeIngredient:
   - "1 stick (8 Tbsp) unsalted butter, softened"
-  - "1 Cup granulated sugar"
+  - "1 cup granulated sugar"
   - "2 large eggs"
-  - "2 Cups all-purpose flour"
+  - "2 cups all-purpose flour"
   - "2 Tsp baking powder"
   - "1 Tsp ground cinnamon"
   - "⅛ Tsp freshly grated nutmeg"
   - "½ Tsp Diamond Crystal kosher salt"
-  - "¼ Cup heavy cream"
-  - "¼ Cup water"
+  - "¼ cup heavy cream"
+  - "¼ cup water"
   - "2 Tbsp full-fat Greek yogurt"
   - "2 Tsp vanilla extract"
   - "⅛ Tsp almond extract"
-  - "1½ Cups chopped pecans, lightly toasted"
-  - "1 Cup packed light brown sugar"
+  - "1½ cups chopped pecans, lightly toasted"
+  - "1 cup packed light brown sugar"
   - "6 Tbsp unsalted butter, softened"
   - "4–5 Tbsp all-purpose flour"
   - "Pinch Diamond Crystal kosher salt"
@@ -59,25 +59,25 @@ This lands squarely in "breakfast cake, not cake for breakfast" territory.
 ### Cake
 
 - 1 stick (8 Tbsp) unsalted butter, softened
-- 1 Cup granulated sugar
+- 1 cup granulated sugar
 - 2 large eggs
-- 2 Cups all-purpose flour
+- 2 cups all-purpose flour
 - 2 Tsp baking powder
 - 1 Tsp ground cinnamon
 - ⅛ Tsp freshly grated nutmeg
 - ½ Tsp Diamond Crystal kosher salt
-- ¼ Cup heavy cream
-- ¼ Cup water
+- ¼ cup heavy cream
+- ¼ cup water
 - 2 Tbsp full-fat Greek yogurt
 - 2 Tsp vanilla extract
 - ⅛ Tsp almond extract
 
 ### Pecan crumb topping
 
-This makes about 3 Cups total streusel, enough for a middle ripple and a thick top layer.
+This makes about 3 cups total streusel, enough for a middle ripple and a thick top layer.
 
-- 1½ Cups chopped pecans, lightly toasted
-- 1 Cup packed light brown sugar
+- 1½ cups chopped pecans, lightly toasted
+- 1 cup packed light brown sugar
 - 6 Tbsp unsalted butter, softened
 - 4–5 Tbsp all-purpose flour
 - Pinch Diamond Crystal kosher salt
@@ -136,7 +136,7 @@ This makes about 3 Cups total streusel, enough for a middle ripple and a thick t
 
 ### Streusel yield and layering
 
-This recipe makes about 3 Cups total streusel. Use roughly 1 Cup for the middle ripple and 2 Cups on top. Keep the middle layer thin and even. You want a ripple, not a slab.
+This recipe makes about 3 cups total streusel. Use roughly 1 cup for the middle ripple and 2 cups on top. Keep the middle layer thin and even. You want a ripple, not a slab.
 
 ### Greek yogurt
 

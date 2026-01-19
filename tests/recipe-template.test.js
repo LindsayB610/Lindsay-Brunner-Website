@@ -104,7 +104,7 @@ function validateRecipeTemplate() {
   const errors = [];
   const warnings = [];
   const files = fs.readdirSync(recipesDir)
-    .filter(file => file.endsWith('.md') && file !== '_index.md');
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md');
   
   if (files.length === 0) {
     console.log('⚠️  No recipe posts found to validate.');
@@ -354,8 +354,8 @@ function validateRecipeTemplate() {
     }
     
     // 7. Measurement formatting validation
-    // Should capitalize: Tbsp, Tsp, Cup, Cups
-    // Should NOT use: tbsp, tsp, cup, cups (lowercase)
+    // Should capitalize: Tbsp, Tsp
+    // Should NOT use: tbsp, tsp (lowercase)
     // Case-sensitive check - only flag actual lowercase instances
     const lowercaseTbsp = content.match(/\btbsp\b/g);
     if (lowercaseTbsp && lowercaseTbsp.length > 0) {
@@ -365,6 +365,62 @@ function validateRecipeTemplate() {
     const lowercaseTsp = content.match(/\btsp\b/g);
     if (lowercaseTsp && lowercaseTsp.length > 0) {
       errors.push(`${file}: Measurement abbreviations must be capitalized. Found: "tsp". Use "Tsp"`);
+    }
+    
+    // "cup" / "cups" should be lowercase (not a proper noun), unless it's the first word in a sentence
+    // Check for capitalized "Cup" or "Cups" - flag any that are NOT clearly at sentence start
+    // In recipe contexts, "cup" should almost always be lowercase
+    const capitalizedCup = content.match(/\bCup\b/g);
+    const capitalizedCups = content.match(/\bCups\b/g);
+    
+    if (capitalizedCup) {
+      // Check each occurrence to see if it's at sentence start
+      const cupMatches = [...content.matchAll(/\bCup\b/g)];
+      let foundInvalid = false;
+      
+      for (const match of cupMatches) {
+        const index = match.index;
+        // Allow if at very start of content
+        if (index === 0) continue;
+        
+        // Get context before "Cup" (up to 10 chars to catch sentence endings)
+        const beforeContext = content.substring(Math.max(0, index - 10), index);
+        
+        // Allow if it's clearly at sentence start: after . ! ? followed by space/newline
+        if (/[.!?]\s+$/.test(beforeContext) || /^\n/.test(beforeContext)) {
+          continue;
+        }
+        
+        // Otherwise, flag it (most recipe contexts should use lowercase)
+        foundInvalid = true;
+        break;
+      }
+      
+      if (foundInvalid) {
+        errors.push(`${file}: "cup" should be lowercase (not a proper noun). Found: "Cup". Use "cup" unless it's the first word in a sentence.`);
+      }
+    }
+    
+    if (capitalizedCups) {
+      const cupsMatches = [...content.matchAll(/\bCups\b/g)];
+      let foundInvalid = false;
+      
+      for (const match of cupsMatches) {
+        const index = match.index;
+        if (index === 0) continue;
+        
+        const beforeContext = content.substring(Math.max(0, index - 10), index);
+        if (/[.!?]\s+$/.test(beforeContext) || /^\n/.test(beforeContext)) {
+          continue;
+        }
+        
+        foundInvalid = true;
+        break;
+      }
+      
+      if (foundInvalid) {
+        errors.push(`${file}: "cups" should be lowercase (not a proper noun). Found: "Cups". Use "cups" unless it's the first word in a sentence.`);
+      }
     }
     
     // Should spell out: minutes, hours, seconds (not min, hr, sec)

@@ -14,15 +14,15 @@ recipeCategory: "Dessert"
 recipeCuisine: "American"
 recipeIngredient:
   - "8 Tbsp unsalted butter, melted and cooled slightly"
-  - "1 Cup packed brown sugar"
+  - "1 cup packed brown sugar"
   - "2 large eggs"
   - "1½ Tsp vanilla extract"
-  - "1 Cup all-purpose flour"
+  - "1 cup all-purpose flour"
   - "½ Tsp kosher salt"
   - "½ Tsp baking powder"
   - "¼ Tsp ground cinnamon (optional)"
-  - "½ Cup caramel with espresso"
-  - "½ Cup chocolate lebkuchen spread"
+  - "½ cup caramel with espresso"
+  - "½ cup chocolate lebkuchen spread"
   - "Flaky salt, for finishing"
 recipeInstructions:
   - "Heat the oven to 350°F (175°C). Line an 8×8 baking pan with parchment paper, leaving overhang on two sides for easy lifting."
@@ -56,18 +56,18 @@ These slice cleanly, freeze well, and taste even better on day two. The espresso
 ### Blondie base
 
 - 8 Tbsp unsalted butter, melted and cooled slightly
-- 1 Cup packed brown sugar
+- 1 cup packed brown sugar
 - 2 large eggs
 - 1½ Tsp vanilla extract
-- 1 Cup all-purpose flour
+- 1 cup all-purpose flour
 - ½ Tsp kosher salt
 - ½ Tsp baking powder
 - ¼ Tsp ground cinnamon (optional)
 
 ### Swirls
 
-- ½ Cup caramel with espresso
-- ½ Cup chocolate lebkuchen spread
+- ½ cup caramel with espresso
+- ½ cup chocolate lebkuchen spread
 
 ### Finishing
 

@@ -13,15 +13,15 @@ recipeYield: "18 large (5-inch) cookies"
 recipeCategory: "Dessert"
 recipeCuisine: "American"
 recipeIngredient:
-  - "2½ sticks (1¼ Cups / 280 g) butter, at room temperature"
-  - "1¼ Cups (240 g) light brown sugar"
-  - "1 Cup plus 2 Tbsp (225 g) granulated sugar"
+  - "2½ sticks (1¼ cups / 280 g) butter, at room temperature"
+  - "1¼ cups (240 g) light brown sugar"
+  - "1 cup plus 2 Tbsp (225 g) granulated sugar"
   - "2 large eggs"
   - "2 Tsp vanilla extract"
   - "1¼ Tsp baking soda"
   - "1½ Tsp baking powder"
   - "¾ Tsp coarse or kosher salt"
-  - "3½ Cups plus 2 Tsp (445 g) all-purpose flour"
+  - "3½ cups plus 2 Tsp (445 g) all-purpose flour"
   - "1¼ lb (565 g) chocolate chips, at least 60% cacao (I use a mix of semisweet and 70% dark from Guittard)"
 recipeInstructions:
   - "Cream the butter and sugars. With a hand or stand mixer, cream the butter and sugars together until light, fluffy, and then some, about 3 to 4 minutes."
@@ -55,15 +55,15 @@ This recipe is adapted from [The Consummate Chocolate Chip Cookie, Revisited](ht
 
 ## Ingredients
 
-- 2½ sticks (1¼ Cups / 280 g) butter, at room temperature
-- 1¼ Cups (240 g) light brown sugar
-- 1 Cup plus 2 Tbsp (225 g) granulated sugar
+- 2½ sticks (1¼ cups / 280 g) butter, at room temperature
+- 1¼ cups (240 g) light brown sugar
+- 1 cup plus 2 Tbsp (225 g) granulated sugar
 - 2 large eggs
 - 2 Tsp vanilla extract
 - 1¼ Tsp baking soda
 - 1½ Tsp baking powder
 - ¾ Tsp coarse or kosher salt
-- 3½ Cups plus 2 Tsp (445 g) all-purpose flour
+- 3½ cups plus 2 Tsp (445 g) all-purpose flour
 - 1¼ lb (565 g) chocolate chips, at least 60% cacao. I do a mix of semisweet and 70% dark from Guittard.
 
 ## Method
@@ -122,7 +122,7 @@ I like to mix different types of chocolate (bittersweet, semisweet, maybe a tiny
 
 ### Flour note
 
-The recipe calls for 3½ Cups plus 2 Tsp of flour. Yes, really. That extra 2 Tsp is intentional. If you're measuring by weight (445 g), you're covered. If you're measuring by volume, don't skip those 2 Tsp.
+The recipe calls for 3½ cups plus 2 Tsp of flour. Yes, really. That extra 2 Tsp is intentional. If you're measuring by weight (445 g), you're covered. If you're measuring by volume, don't skip those 2 Tsp.
 
 ### Finish with sea salt
 

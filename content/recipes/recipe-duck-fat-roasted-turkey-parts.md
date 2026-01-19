@@ -28,8 +28,8 @@ recipeIngredient:
   - "4–6 Tbsp duck fat, melted (2–3 Tbsp for veg, 2–3 Tbsp for turkey gloss)"
   - "1–1½ Tsp Diamond Crystal kosher salt (for veg)"
   - "Freshly ground black pepper (for veg)"
-  - "½ Cup (120 ml) dry white wine, dry vermouth, or extra stock"
-  - "1 Cup (240 ml) low-sodium chicken or turkey stock"
+  - "½ cup (120 ml) dry white wine, dry vermouth, or extra stock"
+  - "1 cup (240 ml) low-sodium chicken or turkey stock"
   - "1–2 Tsp lemon juice or sherry vinegar, to taste"
   - "2 Tbsp cold unsalted butter, cut into small cubes"
   - "1 Tsp Dijon mustard (optional)"
@@ -90,7 +90,7 @@ So, let's get started.
 
 - 2–3 Tbsp duck fat, melted (separate from what you used for the veg)
 - ½ cup (120 ml) dry white wine, dry vermouth, or extra stock
-- 1 Cup (240 ml) low-sodium chicken or turkey stock
+- 1 cup (240 ml) low-sodium chicken or turkey stock
 - 1–2 Tsp lemon juice or sherry vinegar, to taste
 - 2 Tbsp cold unsalted butter, cut into small cubes
 - Optional: 1 Tsp Dijon mustard
