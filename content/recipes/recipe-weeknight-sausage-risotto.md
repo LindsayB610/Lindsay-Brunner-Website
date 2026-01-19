@@ -4,7 +4,7 @@ date: 2026-01-19
 slug: "recipe-weeknight-sausage-risotto"
 subtitle: "Or: Sausage and saffron rice without babysitting"
 description: "A fast, sausage-forward risotto-style rice built with a one-pot method. Rich, savory, and forgiving, this is the version you make on a weeknight when you want comfort without standing at the stove."
-draft: true
+draft: false
 social_image: "/images/social/recipe-weeknight-sausage-risotto-og.png"
 prepTime: "PT10M"
 cookTime: "PT25M"
@@ -31,7 +31,6 @@ recipeInstructions:
   - "Simmer the rice. Add 3 cups broth and the saffron. Bring to a boil, then reduce heat to medium-low and simmer, stirring occasionally, until the rice is tender but still has a little bite and the mixture is loose and creamy, about 18 to 22 minutes. Add additional broth a splash at a time only if the pan looks dry before the rice is done."
   - "Finish and serve. Remove from heat and stir in the Parmesan and parsley. Taste first, then add salt only if needed and plenty of black pepper. Serve with additional Parmesan at the table."
 ---
-
 This is risotto in spirit, not doctrine. You add the broth all at once, stir occasionally, and let the sausage fat and rice starch do the work. The result is rich, savory, and comforting without requiring constant attention.
 
 ## Snapshot
