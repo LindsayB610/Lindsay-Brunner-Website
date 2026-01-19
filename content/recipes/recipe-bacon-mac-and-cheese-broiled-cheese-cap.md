@@ -19,9 +19,9 @@ recipeIngredient:
   - "1 Tbsp reserved bacon fat"
   - "1½ Tbsp all-purpose flour"
   - "1½ cups whole milk"
-  - "⅓ cup heavy cream"
-  - "4 oz Velveeta or American-style processed cheese, cut into small cubes"
-  - "12 to 13 oz melting cheese, shredded (see notes)"
+  - "⅓ cup + 2 Tbsp heavy cream"
+  - "6 oz Velveeta or American-style processed cheese, cut into small cubes"
+  - "4 to 6 oz melting cheese, shredded (see notes)"
   - "½ Tsp kosher salt, plus more for the pasta water"
   - "½ Tsp black pepper"
   - "¼ Tsp garlic powder (optional)"
@@ -59,9 +59,9 @@ The Velveeta is doing exactly what you hired it to do: keeping the sauce glossy,
 - 1 Tbsp reserved bacon fat (from cooking the bacon)
 - 1½ Tbsp all-purpose flour
 - 1½ cups whole milk
-- ⅓ cup heavy cream
-- 4 oz Velveeta or American-style processed cheese, cut into small cubes
-- 12 to 13 oz melting cheese, shredded (see Notes)
+- ⅓ cup + 2 Tbsp heavy cream
+- 6 oz Velveeta or American-style processed cheese, cut into small cubes
+- 4 to 6 oz melting cheese, shredded (see Notes)
 - ½ Tsp kosher salt, plus more for the pasta water
 - ½ Tsp black pepper
 - ¼ Tsp garlic powder (optional)
@@ -100,7 +100,7 @@ The Velveeta is doing exactly what you hired it to do: keeping the sauce glossy,
 
 5. **Melt the cheeses**
 
-   Turn the heat to low and remove the pan from the heat.
+   Turn off the heat entirely. Only turn it back on to low if you can't achieve melting, and only for a minute or so at a time.
 
    Add the cubed Velveeta and stir until fully melted and glossy.
 
@@ -118,7 +118,7 @@ The Velveeta is doing exactly what you hired it to do: keeping the sauce glossy,
 
    Heat the broiler and position a rack 6 to 8 inches from the element.
 
-   Transfer the mac to a broiler-safe baking dish (an 8×8-inch dish works well) and spread evenly.
+   Transfer the mac to a broiler-safe baking/casserole dish sprayed with non-stick spray or oil and spread evenly.
 
    Top with the reserved shredded cheese and Parmesan, if using.
 
@@ -132,10 +132,10 @@ The Velveeta is doing exactly what you hired it to do: keeping the sauce glossy,
 
 ### Cheese flexibility (read this before shopping)
 
-This recipe assumes **14 oz total cheese** for 1 lb pasta.
+This recipe assumes **12 to 15 oz total cheese** for 1 lb pasta.
 
-- **4 oz** must be Velveeta or American-style processed cheese. This is non-negotiable for texture.
-- **10 oz** goes into the sauce as shredded melting cheese.
+- **6 oz** must be Velveeta or American-style processed cheese. This is non-negotiable for texture.
+- **4 to 6 oz** goes into the sauce as shredded melting cheese.
 - **2 to 3 oz** of that same cheese is reserved for topping before broiling.
 
 Use any combination of good melting cheeses you like: cheddar, Monterey Jack, fontina, low-moisture mozzarella, Gruyère. Mixing odds and ends is fine.
