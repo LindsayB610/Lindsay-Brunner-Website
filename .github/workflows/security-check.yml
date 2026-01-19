@@ -27,177 +27,261 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      
       - name: Check Hugo version
         id: hugo-check
         run: |
-          npm run check:hugo -- --json > hugo-status.json || true
+          # Run the script and capture only the JSON output (last line should be JSON)
+          npm run check:hugo -- --json 2>&1 | tail -1 > hugo-status.json || echo '{"error": "Script failed"}' > hugo-status.json
+          # Validate it's JSON
+          if ! jq empty hugo-status.json 2>/dev/null; then
+            echo "Warning: Hugo check output is not valid JSON"
+            cat hugo-status.json
+            echo '{"error": "Invalid JSON output"}' > hugo-status.json
+          fi
           cat hugo-status.json
         continue-on-error: true
       
       - name: Check dependencies
         id: deps-check
         run: |
-          npm run check:dependencies -- --json > deps-status.json || true
+          # Run the script and capture only the JSON output (last line should be JSON)
+          npm run check:dependencies -- --json 2>&1 | tail -1 > deps-status.json || echo '{"error": "Script failed"}' > deps-status.json
+          # Validate it's JSON
+          if ! jq empty deps-status.json 2>/dev/null; then
+            echo "Warning: Dependencies check output is not valid JSON"
+            cat deps-status.json
+            echo '{"error": "Invalid JSON output"}' > deps-status.json
+          fi
           cat deps-status.json
         continue-on-error: true
-      
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
       
       - name: Parse Hugo status
         id: parse-hugo
         run: |
-          if [ -f hugo-status.json ]; then
-            SECURITY_ISSUES=$(cat hugo-status.json | jq -r '.hasSecurityIssues // false')
-            UPDATE_AVAILABLE=$(cat hugo-status.json | jq -r '.updateAvailable // false')
-            CURRENT_VERSION=$(cat hugo-status.json | jq -r '.currentVersion // "unknown"')
-            LATEST_VERSION=$(cat hugo-status.json | jq -r '.latestVersion // "unknown"')
-            
-            echo "security_issues=$SECURITY_ISSUES" >> $GITHUB_OUTPUT
-            echo "update_available=$UPDATE_AVAILABLE" >> $GITHUB_OUTPUT
-            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-            echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          if [ -f hugo-status.json ] && [ -s hugo-status.json ]; then
+            # Check if JSON is valid
+            if jq empty hugo-status.json 2>/dev/null; then
+              SECURITY_ISSUES=$(cat hugo-status.json | jq -r '.hasSecurityIssues // false')
+              UPDATE_AVAILABLE=$(cat hugo-status.json | jq -r '.updateAvailable // false')
+              CURRENT_VERSION=$(cat hugo-status.json | jq -r '.currentVersion // "unknown"')
+              LATEST_VERSION=$(cat hugo-status.json | jq -r '.latestVersion // "unknown"')
+            else
+              echo "Invalid JSON in hugo-status.json"
+              SECURITY_ISSUES="false"
+              UPDATE_AVAILABLE="false"
+              CURRENT_VERSION="unknown"
+              LATEST_VERSION="unknown"
+            fi
           else
-            echo "security_issues=false" >> $GITHUB_OUTPUT
-            echo "update_available=false" >> $GITHUB_OUTPUT
-            echo "current_version=unknown" >> $GITHUB_OUTPUT
-            echo "latest_version=unknown" >> $GITHUB_OUTPUT
+            echo "hugo-status.json not found or empty"
+            SECURITY_ISSUES="false"
+            UPDATE_AVAILABLE="false"
+            CURRENT_VERSION="unknown"
+            LATEST_VERSION="unknown"
           fi
+          
+          echo "security_issues=$SECURITY_ISSUES" >> $GITHUB_OUTPUT
+          echo "update_available=$UPDATE_AVAILABLE" >> $GITHUB_OUTPUT
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
       
       - name: Parse dependencies status
         id: parse-deps
         run: |
-          if [ -f deps-status.json ]; then
-            HAS_SECURITY=$(cat deps-status.json | jq -r '.summary.hasSecurityIssues // false')
-            HAS_UPDATES=$(cat deps-status.json | jq -r '.summary.hasUpdates // false')
-            CRITICAL=$(cat deps-status.json | jq -r '.summary.criticalIssues // 0')
-            HIGH=$(cat deps-status.json | jq -r '.summary.highIssues // 0')
-            MODERATE=$(cat deps-status.json | jq -r '.summary.moderateIssues // 0')
-            OUTDATED_COUNT=$(cat deps-status.json | jq -r '.summary.outdatedCount // 0')
-            NODE_UPDATE=$(cat deps-status.json | jq -r '.node.updateAvailable // false')
-            NODE_CURRENT=$(cat deps-status.json | jq -r '.node.current // "unknown"')
-            NODE_LATEST=$(cat deps-status.json | jq -r '.node.latest // "unknown"')
-            
-            echo "has_security=$HAS_SECURITY" >> $GITHUB_OUTPUT
-            echo "has_updates=$HAS_UPDATES" >> $GITHUB_OUTPUT
-            echo "critical=$CRITICAL" >> $GITHUB_OUTPUT
-            echo "high=$HIGH" >> $GITHUB_OUTPUT
-            echo "moderate=$MODERATE" >> $GITHUB_OUTPUT
-            echo "outdated_count=$OUTDATED_COUNT" >> $GITHUB_OUTPUT
-            echo "node_update=$NODE_UPDATE" >> $GITHUB_OUTPUT
-            echo "node_current=$NODE_CURRENT" >> $GITHUB_OUTPUT
-            echo "node_latest=$NODE_LATEST" >> $GITHUB_OUTPUT
+          if [ -f deps-status.json ] && [ -s deps-status.json ]; then
+            # Check if JSON is valid
+            if jq empty deps-status.json 2>/dev/null; then
+              HAS_SECURITY=$(cat deps-status.json | jq -r '.summary.hasSecurityIssues // false')
+              HAS_UPDATES=$(cat deps-status.json | jq -r '.summary.hasUpdates // false')
+              CRITICAL=$(cat deps-status.json | jq -r '.summary.criticalIssues // 0')
+              HIGH=$(cat deps-status.json | jq -r '.summary.highIssues // 0')
+              MODERATE=$(cat deps-status.json | jq -r '.summary.moderateIssues // 0')
+              OUTDATED_COUNT=$(cat deps-status.json | jq -r '.summary.outdatedCount // 0')
+              NODE_UPDATE=$(cat deps-status.json | jq -r '.node.updateAvailable // false')
+              NODE_CURRENT=$(cat deps-status.json | jq -r '.node.current // "unknown"')
+              NODE_LATEST=$(cat deps-status.json | jq -r '.node.latest // "unknown"')
+            else
+              echo "Invalid JSON in deps-status.json"
+              HAS_SECURITY="false"
+              HAS_UPDATES="false"
+              CRITICAL="0"
+              HIGH="0"
+              MODERATE="0"
+              OUTDATED_COUNT="0"
+              NODE_UPDATE="false"
+              NODE_CURRENT="unknown"
+              NODE_LATEST="unknown"
+            fi
           else
-            echo "has_security=false" >> $GITHUB_OUTPUT
-            echo "has_updates=false" >> $GITHUB_OUTPUT
-            echo "critical=0" >> $GITHUB_OUTPUT
-            echo "high=0" >> $GITHUB_OUTPUT
-            echo "moderate=0" >> $GITHUB_OUTPUT
-            echo "outdated_count=0" >> $GITHUB_OUTPUT
-            echo "node_update=false" >> $GITHUB_OUTPUT
-            echo "node_current=unknown" >> $GITHUB_OUTPUT
-            echo "node_latest=unknown" >> $GITHUB_OUTPUT
+            echo "deps-status.json not found or empty"
+            HAS_SECURITY="false"
+            HAS_UPDATES="false"
+            CRITICAL="0"
+            HIGH="0"
+            MODERATE="0"
+            OUTDATED_COUNT="0"
+            NODE_UPDATE="false"
+            NODE_CURRENT="unknown"
+            NODE_LATEST="unknown"
           fi
+          
+          echo "has_security=$HAS_SECURITY" >> $GITHUB_OUTPUT
+          echo "has_updates=$HAS_UPDATES" >> $GITHUB_OUTPUT
+          echo "critical=$CRITICAL" >> $GITHUB_OUTPUT
+          echo "high=$HIGH" >> $GITHUB_OUTPUT
+          echo "moderate=$MODERATE" >> $GITHUB_OUTPUT
+          echo "outdated_count=$OUTDATED_COUNT" >> $GITHUB_OUTPUT
+          echo "node_update=$NODE_UPDATE" >> $GITHUB_OUTPUT
+          echo "node_current=$NODE_CURRENT" >> $GITHUB_OUTPUT
+          echo "node_latest=$NODE_LATEST" >> $GITHUB_OUTPUT
       
       - name: Generate report
         id: report
         run: |
-          REPORT="## Monthly Security & Dependency Check Report\n\n"
+          REPORT="## 🔒 Monthly Security & Dependency Check Report\n\n"
           REPORT+="**Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')\n\n"
           
-          # Hugo section
-          REPORT+="### 🔧 Hugo Version\n\n"
-          REPORT+="**Current:** ${{ steps.parse-hugo.outputs.current_version }}\n"
-          REPORT+="**Latest:** ${{ steps.parse-hugo.outputs.latest_version }}\n\n"
+          # Summary table at the top
+          REPORT+="### 📊 Quick Summary\n\n"
+          REPORT+="| Component | Current | Latest | Status |\n"
+          REPORT+="|-----------|---------|--------|--------|\n"
+          
+          # Hugo row
+          if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
+            REPORT+="| **Hugo** | \`${{ steps.parse-hugo.outputs.current_version }}\` | \`${{ steps.parse-hugo.outputs.latest_version }}\` | 🚨 **VULNERABLE** |\n"
+          elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
+            REPORT+="| **Hugo** | \`${{ steps.parse-hugo.outputs.current_version }}\` | \`${{ steps.parse-hugo.outputs.latest_version }}\` | 💡 **Update Available** |\n"
+          else
+            REPORT+="| **Hugo** | \`${{ steps.parse-hugo.outputs.current_version }}\` | \`${{ steps.parse-hugo.outputs.latest_version }}\` | ✅ **Up to Date** |\n"
+          fi
+          
+          # npm Dependencies row
+          if [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ]; then
+            VULN_COUNT="${{ steps.parse-deps.outputs.critical }}+${{ steps.parse-deps.outputs.high }}+${{ steps.parse-deps.outputs.moderate }}"
+            REPORT+="| **npm Packages** | - | - | 🚨 **$VULN_COUNT vulnerabilities** |\n"
+          elif [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
+            REPORT+="| **npm Packages** | - | - | 💡 **${{ steps.parse-deps.outputs.outdated_count }} outdated** |\n"
+          else
+            REPORT+="| **npm Packages** | - | - | ✅ **All up to date** |\n"
+          fi
+          
+          # Node.js row
+          if [ "${{ steps.parse-deps.outputs.node_update }}" == "true" ]; then
+            REPORT+="| **Node.js** | \`${{ steps.parse-deps.outputs.node_current }}\` | \`${{ steps.parse-deps.outputs.node_latest }}\` | 💡 **Update Available** |\n"
+          else
+            REPORT+="| **Node.js** | \`${{ steps.parse-deps.outputs.node_current }}\` | \`${{ steps.parse-deps.outputs.node_latest }}\` | ✅ **Up to Date** |\n"
+          fi
+          
+          REPORT+="\n---\n\n"
+          
+          # Detailed sections
+          REPORT+="### 🔧 Hugo Version Details\n\n"
+          REPORT+="**Current:** \`${{ steps.parse-hugo.outputs.current_version }}\` | **Latest:** \`${{ steps.parse-hugo.outputs.latest_version }}\`\n\n"
           
           if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
-            REPORT+="🚨 **SECURITY ISSUES DETECTED** - Update Hugo immediately!\n\n"
+            REPORT+="🚨 **SECURITY ISSUES DETECTED** - Your Hugo version has known security vulnerabilities and must be updated immediately.\n\n"
           elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
-            REPORT+="💡 Update available\n\n"
+            REPORT+="💡 **Update Available** - A newer version is available. Consider updating when convenient.\n\n"
           else
-            REPORT+="✅ Up to date\n\n"
+            REPORT+="✅ **Up to Date** - Your Hugo version is current.\n\n"
           fi
           
           # Dependencies section
-          REPORT+="### 📦 npm Dependencies\n\n"
+          REPORT+="### 📦 npm Dependencies Details\n\n"
           
           if [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ]; then
             REPORT+="🚨 **SECURITY VULNERABILITIES FOUND:**\n"
             if [ "${{ steps.parse-deps.outputs.critical }}" != "0" ]; then
-              REPORT+="- 🚨 Critical: ${{ steps.parse-deps.outputs.critical }}\n"
+              REPORT+="- 🚨 **Critical:** ${{ steps.parse-deps.outputs.critical }}\n"
             fi
             if [ "${{ steps.parse-deps.outputs.high }}" != "0" ]; then
-              REPORT+="- ⚠️  High: ${{ steps.parse-deps.outputs.high }}\n"
+              REPORT+="- ⚠️  **High:** ${{ steps.parse-deps.outputs.high }}\n"
             fi
             if [ "${{ steps.parse-deps.outputs.moderate }}" != "0" ]; then
-              REPORT+="- ⚠️  Moderate: ${{ steps.parse-deps.outputs.moderate }}\n"
+              REPORT+="- ⚠️  **Moderate:** ${{ steps.parse-deps.outputs.moderate }}\n"
             fi
             REPORT+="\n**Action Required:** Run \`npm audit fix\` and review changes.\n\n"
           else
-            REPORT+="✅ No known security vulnerabilities\n\n"
+            REPORT+="✅ **No known security vulnerabilities**\n\n"
           fi
           
           if [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
-            REPORT+="💡 **Updates Available:** ${{ steps.parse-deps.outputs.outdated_count }} package(s) outdated\n"
+            REPORT+="💡 **Updates Available:** ${{ steps.parse-deps.outputs.outdated_count }} package(s) are outdated.\n"
             REPORT+="Run \`npm outdated\` to see details, then update selectively.\n\n"
           else
-            REPORT+="✅ All packages up to date\n\n"
+            REPORT+="✅ **All packages up to date**\n\n"
           fi
           
           # Node.js section
-          REPORT+="### 🟢 Node.js Version\n\n"
-          REPORT+="**Current:** ${{ steps.parse-deps.outputs.node_current }}\n"
-          REPORT+="**Latest LTS:** ${{ steps.parse-deps.outputs.node_latest }}\n\n"
+          REPORT+="### 🟢 Node.js Version Details\n\n"
+          REPORT+="**Current:** \`${{ steps.parse-deps.outputs.node_current }}\` | **Latest LTS:** \`${{ steps.parse-deps.outputs.node_latest }}\`\n\n"
           
           if [ "${{ steps.parse-deps.outputs.node_update }}" == "true" ]; then
-            REPORT+="💡 Node.js update available\n"
-            REPORT+="Update \`netlify.toml\` and \`.nvmrc\` if upgrading.\n\n"
+            REPORT+="💡 **Update Available** - A newer Node.js LTS version is available.\n"
+            REPORT+="If upgrading, update \`netlify.toml\` and \`.nvmrc\` files.\n\n"
           else
-            REPORT+="✅ Node.js version is current\n\n"
+            REPORT+="✅ **Node.js version is current**\n\n"
           fi
           
           REPORT+="---\n\n"
-          REPORT+="### 📋 Action Items\n\n"
+          REPORT+="### ✅ Action Items\n\n"
           
           ACTION_NEEDED=false
+          ACTION_NUM=1
           
           if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
-            REPORT+="1. **URGENT:** Update Hugo (security issues detected)\n"
+            REPORT+="$ACTION_NUM. **🚨 URGENT:** Update Hugo (security issues detected)\n"
             REPORT+="   \`\`\`bash\n"
             REPORT+="   npm install hugo-bin@latest\n"
             REPORT+="   npm run build && npm test\n"
             REPORT+="   \`\`\`\n\n"
             ACTION_NEEDED=true
+            ACTION_NUM=$((ACTION_NUM + 1))
           elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
-            REPORT+="1. Consider updating Hugo\n"
+            REPORT+="$ACTION_NUM. **💡 Recommended:** Update Hugo\n"
             REPORT+="   \`\`\`bash\n"
             REPORT+="   npm install hugo-bin@latest\n"
             REPORT+="   npm run build && npm test\n"
             REPORT+="   \`\`\`\n\n"
             ACTION_NEEDED=true
+            ACTION_NUM=$((ACTION_NUM + 1))
           fi
           
           if [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ]; then
-            REPORT+="2. **URGENT:** Fix npm security vulnerabilities\n"
+            REPORT+="$ACTION_NUM. **🚨 URGENT:** Fix npm security vulnerabilities\n"
             REPORT+="   \`\`\`bash\n"
             REPORT+="   npm audit fix\n"
             REPORT+="   npm test\n"
             REPORT+="   \`\`\`\n\n"
+            REPORT+="   *Review the changes before committing. Some fixes may require manual intervention.*\n\n"
             ACTION_NEEDED=true
+            ACTION_NUM=$((ACTION_NUM + 1))
           fi
           
           if [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
-            REPORT+="3. Review and update outdated packages\n"
+            REPORT+="$ACTION_NUM. **💡 Recommended:** Review and update outdated packages\n"
             REPORT+="   \`\`\`bash\n"
             REPORT+="   npm outdated\n"
             REPORT+="   npm install package@latest  # Update selectively\n"
             REPORT+="   npm test\n"
             REPORT+="   \`\`\`\n\n"
             ACTION_NEEDED=true
+            ACTION_NUM=$((ACTION_NUM + 1))
+          fi
+          
+          if [ "${{ steps.parse-deps.outputs.node_update }}" == "true" ]; then
+            REPORT+="$ACTION_NUM. **💡 Optional:** Update Node.js version\n"
+            REPORT+="   - Update \`netlify.toml\` NODE_VERSION\n"
+            REPORT+="   - Update \`.nvmrc\` if present\n"
+            REPORT+="   - Test thoroughly after upgrade\n\n"
+            ACTION_NEEDED=true
           fi
           
           if [ "$ACTION_NEEDED" == "false" ]; then
-            REPORT+="✅ No action needed - everything is up to date!\n\n"
+            REPORT+="✅ **No action needed** - Everything is up to date and secure!\n\n"
           fi
           
           REPORT+="---\n\n"
