@@ -27,38 +27,56 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      
       - name: Check Hugo version
         id: hugo-check
         run: |
-          npm run check:hugo -- --json > hugo-status.json || true
+          # Run the script and capture only the JSON output (last line should be JSON)
+          npm run check:hugo -- --json 2>&1 | tail -1 > hugo-status.json || echo '{"error": "Script failed"}' > hugo-status.json
+          # Validate it's JSON
+          if ! jq empty hugo-status.json 2>/dev/null; then
+            echo "Warning: Output is not valid JSON"
+            cat hugo-status.json
+            echo '{"error": "Invalid JSON output"}' > hugo-status.json
+          fi
           cat hugo-status.json
         continue-on-error: true
-      
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
       
       - name: Parse Hugo status
         id: parse-status
         run: |
-          if [ -f hugo-status.json ]; then
-            SECURITY_ISSUES=$(cat hugo-status.json | jq -r '.hasSecurityIssues // false')
-            UPDATE_AVAILABLE=$(cat hugo-status.json | jq -r '.updateAvailable // false')
-            CURRENT_VERSION=$(cat hugo-status.json | jq -r '.currentVersion // "unknown"')
-            LATEST_VERSION=$(cat hugo-status.json | jq -r '.latestVersion // "unknown"')
-            VERSION_BEHIND=$(cat hugo-status.json | jq -r '.versionBehind // null')
-            
-            echo "security_issues=$SECURITY_ISSUES" >> $GITHUB_OUTPUT
-            echo "update_available=$UPDATE_AVAILABLE" >> $GITHUB_OUTPUT
-            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-            echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
-            echo "version_behind=$VERSION_BEHIND" >> $GITHUB_OUTPUT
+          if [ -f hugo-status.json ] && [ -s hugo-status.json ]; then
+            # Check if JSON is valid
+            if jq empty hugo-status.json 2>/dev/null; then
+              SECURITY_ISSUES=$(cat hugo-status.json | jq -r '.hasSecurityIssues // false')
+              UPDATE_AVAILABLE=$(cat hugo-status.json | jq -r '.updateAvailable // false')
+              CURRENT_VERSION=$(cat hugo-status.json | jq -r '.currentVersion // "unknown"')
+              LATEST_VERSION=$(cat hugo-status.json | jq -r '.latestVersion // "unknown"')
+              VERSION_BEHIND=$(cat hugo-status.json | jq -r '.versionBehind // null')
+            else
+              echo "Invalid JSON in hugo-status.json"
+              SECURITY_ISSUES="false"
+              UPDATE_AVAILABLE="false"
+              CURRENT_VERSION="unknown"
+              LATEST_VERSION="unknown"
+              VERSION_BEHIND="null"
+            fi
           else
-            echo "security_issues=false" >> $GITHUB_OUTPUT
-            echo "update_available=false" >> $GITHUB_OUTPUT
-            echo "current_version=unknown" >> $GITHUB_OUTPUT
-            echo "latest_version=unknown" >> $GITHUB_OUTPUT
-            echo "version_behind=null" >> $GITHUB_OUTPUT
+            echo "hugo-status.json not found or empty"
+            SECURITY_ISSUES="false"
+            UPDATE_AVAILABLE="false"
+            CURRENT_VERSION="unknown"
+            LATEST_VERSION="unknown"
+            VERSION_BEHIND="null"
           fi
+          
+          echo "security_issues=$SECURITY_ISSUES" >> $GITHUB_OUTPUT
+          echo "update_available=$UPDATE_AVAILABLE" >> $GITHUB_OUTPUT
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          echo "version_behind=$VERSION_BEHIND" >> $GITHUB_OUTPUT
       
       - name: Generate report
         id: report

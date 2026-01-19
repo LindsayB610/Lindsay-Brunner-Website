@@ -116,14 +116,28 @@ async function main() {
   
   try {
     // Get current version
-    const hugoVersionOutput = execSync('npx hugo version', { encoding: 'utf-8' });
+    let hugoVersionOutput;
+    try {
+      hugoVersionOutput = execSync('npx hugo version', { encoding: 'utf-8', stdio: 'pipe' });
+    } catch (err) {
+      // npx hugo might not be available or might fail
+      const errorMsg = err.message || 'Could not run npx hugo version';
+      if (jsonOutput) {
+        console.log(JSON.stringify({ error: errorMsg, details: err.stdout || err.stderr }, null, 2));
+      } else {
+        console.error(`❌ Error running Hugo: ${errorMsg}`);
+      }
+      process.exit(1);
+    }
+    
     const currentVersion = parseHugoVersion(hugoVersionOutput.trim());
     
     if (!currentVersion) {
       if (jsonOutput) {
-        console.log(JSON.stringify({ error: 'Could not parse Hugo version' }, null, 2));
+        console.log(JSON.stringify({ error: 'Could not parse Hugo version', output: hugoVersionOutput }, null, 2));
       } else {
         console.error('❌ Could not parse Hugo version');
+        console.error(`Raw output: ${hugoVersionOutput}`);
       }
       process.exit(1);
     }
@@ -219,13 +233,18 @@ async function main() {
     // Check hugo-bin package version
     let hugoBinVersion = null;
     try {
-      const packageJson = require('../package.json');
-      hugoBinVersion = packageJson.dependencies['hugo-bin'];
-      if (!jsonOutput) {
-        console.log(`\n📦 hugo-bin package: ${hugoBinVersion}`);
+      const path = require('path');
+      const fs = require('fs');
+      const packageJsonPath = path.join(__dirname, '..', 'package.json');
+      if (fs.existsSync(packageJsonPath)) {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+        hugoBinVersion = packageJson.dependencies && packageJson.dependencies['hugo-bin'];
+        if (!jsonOutput && hugoBinVersion) {
+          console.log(`\n📦 hugo-bin package: ${hugoBinVersion}`);
+        }
       }
     } catch (err) {
-      // Ignore
+      // Ignore - not critical
     }
     
     if (!jsonOutput) {
@@ -248,10 +267,8 @@ async function main() {
       console.log(JSON.stringify(result, null, 2));
     }
     
-    // Exit with error code if security issues found
-    if (securityIssues.length > 0) {
-      process.exit(1);
-    }
+    // Don't exit with error code - let the workflow handle it
+    // Security issues are reported in the JSON output
     
   } catch (error) {
     if (jsonOutput) {
