@@ -1,0 +1,170 @@
+name: Check Hugo Version
+
+on:
+  schedule:
+    # Run on the 1st of every month at 9am UTC (1am PT / 2am PT depending on DST)
+    - cron: '0 9 1 * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  check-hugo-version:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      issues: write # Required to create issues
+      contents: read # Required to read repository
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check Hugo version
+        id: hugo-check
+        run: |
+          npm run check:hugo -- --json > hugo-status.json || true
+          cat hugo-status.json
+        continue-on-error: true
+      
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      
+      - name: Parse Hugo status
+        id: parse-status
+        run: |
+          if [ -f hugo-status.json ]; then
+            SECURITY_ISSUES=$(cat hugo-status.json | jq -r '.hasSecurityIssues // false')
+            UPDATE_AVAILABLE=$(cat hugo-status.json | jq -r '.updateAvailable // false')
+            CURRENT_VERSION=$(cat hugo-status.json | jq -r '.currentVersion // "unknown"')
+            LATEST_VERSION=$(cat hugo-status.json | jq -r '.latestVersion // "unknown"')
+            VERSION_BEHIND=$(cat hugo-status.json | jq -r '.versionBehind // null')
+            
+            echo "security_issues=$SECURITY_ISSUES" >> $GITHUB_OUTPUT
+            echo "update_available=$UPDATE_AVAILABLE" >> $GITHUB_OUTPUT
+            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+            echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+            echo "version_behind=$VERSION_BEHIND" >> $GITHUB_OUTPUT
+          else
+            echo "security_issues=false" >> $GITHUB_OUTPUT
+            echo "update_available=false" >> $GITHUB_OUTPUT
+            echo "current_version=unknown" >> $GITHUB_OUTPUT
+            echo "latest_version=unknown" >> $GITHUB_OUTPUT
+            echo "version_behind=null" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Generate report
+        id: report
+        run: |
+          REPORT="## Hugo Version Check Report\n\n"
+          REPORT+="**Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')\n\n"
+          REPORT+="**Current Version:** ${{ steps.parse-status.outputs.current_version }}\n"
+          REPORT+="**Latest Version:** ${{ steps.parse-status.outputs.latest_version }}\n\n"
+          
+          if [ "${{ steps.parse-status.outputs.security_issues }}" == "true" ]; then
+            REPORT+="### 🚨 SECURITY ISSUES DETECTED\n\n"
+            REPORT+="**ACTION REQUIRED:** Your Hugo version has known security vulnerabilities.\n\n"
+            REPORT+="Please update Hugo immediately by running:\n"
+            REPORT+="\`\`\`bash\n"
+            REPORT+="npm install hugo-bin@latest\n"
+            REPORT+="npm run build && npm test\n"
+            REPORT+="\`\`\`\n\n"
+            REPORT+="See the full report below for details.\n\n"
+          elif [ "${{ steps.parse-status.outputs.update_available }}" == "true" ]; then
+            REPORT+="### 💡 Update Available\n\n"
+            REPORT+="A newer version of Hugo is available. Consider updating when convenient.\n\n"
+            REPORT+="To update:\n"
+            REPORT+="\`\`\`bash\n"
+            REPORT+="npm install hugo-bin@latest\n"
+            REPORT+="npm run build && npm test\n"
+            REPORT+="\`\`\`\n\n"
+          else
+            REPORT+="### ✅ Status: Up to Date\n\n"
+            REPORT+="Your Hugo version is current. No action needed.\n\n"
+          fi
+          
+          REPORT+="---\n\n"
+          REPORT+="### Full Report\n\n"
+          REPORT+="\`\`\`\n"
+          REPORT+="$(cat hugo-status.json 2>/dev/null || echo 'Unable to generate full report')\n"
+          REPORT+="\`\`\`\n\n"
+          REPORT+="---\n\n"
+          REPORT+="*This is an automated monthly check. To run manually, use: \`npm run check:hugo\`*\n"
+          
+          echo "$REPORT" > report.md
+          echo "report<<EOF" >> $GITHUB_OUTPUT
+          echo "$REPORT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Create or update issue
+        if: steps.parse-status.outputs.security_issues == 'true' || steps.parse-status.outputs.update_available == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const report = `${{ steps.report.outputs.report }}`;
+            const title = `${{ steps.parse-status.outputs.security_issues == 'true' && '🚨 Hugo Security Update Required' || '💡 Hugo Update Available' }} - ${{ steps.parse-status.outputs.current_version }} → ${{ steps.parse-status.outputs.latest_version }}`;
+            
+            // Check if an open issue with this title already exists
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'hugo-version-check'
+            });
+            
+            const existingIssue = issues.find(issue => 
+              issue.title.includes('Hugo') && 
+              (issue.title.includes('Security') || issue.title.includes('Update Available'))
+            );
+            
+            if (existingIssue) {
+              // Update existing issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssue.number,
+                body: report
+              });
+              
+              // Update title if version changed
+              if (!existingIssue.title.includes('${{ steps.parse-status.outputs.latest_version }}')) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existingIssue.number,
+                  title: title
+                });
+              }
+            } else {
+              // Create new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: report,
+                labels: ['hugo-version-check', '${{ steps.parse-status.outputs.security_issues == 'true' && 'security' || 'maintenance' }}']
+              });
+            }
+      
+      - name: Summary
+        run: |
+          echo "## Hugo Version Check Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Current Version:** ${{ steps.parse-status.outputs.current_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Latest Version:** ${{ steps.parse-status.outputs.latest_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.parse-status.outputs.security_issues }}" == "true" ]; then
+            echo "🚨 **Security issues detected!** An issue has been created." >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.parse-status.outputs.update_available }}" == "true" ]; then
+            echo "💡 **Update available.** An issue has been created." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **Status: Up to date**" >> $GITHUB_STEP_SUMMARY
+          fi

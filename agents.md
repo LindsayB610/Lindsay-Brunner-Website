@@ -292,6 +292,8 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **Scheduled Posts**: Posts with `draft: true` and future dates will auto-publish via GitHub Actions (runs twice daily at 13:00 and 14:00 UTC to cover both PDT and PST). See README.md for details.
 - **Recipe Search JSON**: A JSON index is automatically generated at `/recipes/index.json` for client-side recipe search functionality. The index includes recipe metadata and is validated by tests.
 - **Spell Checking**: Use `npm run test:spell` to check modified content files, or `npm run test:spell:all` to check all content files. Add valid words to `cspell.json` if needed.
+- **Hugo Version Checking**: Periodically check Hugo version and security status with `npm run check:hugo`. This checks for known CVEs and available updates. Recommended: check monthly or when security advisories are published.
+- **Dependency Security Checking**: Run `npm run check:dependencies` to check all npm packages, Node.js version, and GitHub Actions for security vulnerabilities and updates. This runs automatically via GitHub Actions monthly and creates issues if problems are found.
 
 ## References
 
@@ -310,6 +312,9 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **scripts/schedule-posts.js**: Auto-publish scheduled posts script
 - **scripts/generate-og-images.js**: Generate OG images for recipes
 - **scripts/generate-png-from-svg.js**: Convert SVG to PNG for social media compatibility
+- **scripts/check-hugo-version.js**: Check Hugo version, security status, and available updates
+- **scripts/check-dependencies.js**: Check all dependencies (npm packages, Node.js, GitHub Actions) for security issues and updates
+- **.github/workflows/security-check.yml**: Monthly automated security and dependency check workflow
 - **.github/workflows/schedule-posts.yml**: GitHub Actions workflow for scheduled publishing
 - **layouts/recipes/list.json**: Template for recipe search JSON index
 

@@ -1,0 +1,337 @@
+name: Monthly Security & Dependency Check
+
+on:
+  schedule:
+    # Run on the 1st of every month at 9am UTC (1am PT / 2am PT depending on DST)
+    - cron: '0 9 1 * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      issues: write # Required to create issues
+      contents: read # Required to read repository
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check Hugo version
+        id: hugo-check
+        run: |
+          npm run check:hugo -- --json > hugo-status.json || true
+          cat hugo-status.json
+        continue-on-error: true
+      
+      - name: Check dependencies
+        id: deps-check
+        run: |
+          npm run check:dependencies -- --json > deps-status.json || true
+          cat deps-status.json
+        continue-on-error: true
+      
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      
+      - name: Parse Hugo status
+        id: parse-hugo
+        run: |
+          if [ -f hugo-status.json ]; then
+            SECURITY_ISSUES=$(cat hugo-status.json | jq -r '.hasSecurityIssues // false')
+            UPDATE_AVAILABLE=$(cat hugo-status.json | jq -r '.updateAvailable // false')
+            CURRENT_VERSION=$(cat hugo-status.json | jq -r '.currentVersion // "unknown"')
+            LATEST_VERSION=$(cat hugo-status.json | jq -r '.latestVersion // "unknown"')
+            
+            echo "security_issues=$SECURITY_ISSUES" >> $GITHUB_OUTPUT
+            echo "update_available=$UPDATE_AVAILABLE" >> $GITHUB_OUTPUT
+            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+            echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "security_issues=false" >> $GITHUB_OUTPUT
+            echo "update_available=false" >> $GITHUB_OUTPUT
+            echo "current_version=unknown" >> $GITHUB_OUTPUT
+            echo "latest_version=unknown" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Parse dependencies status
+        id: parse-deps
+        run: |
+          if [ -f deps-status.json ]; then
+            HAS_SECURITY=$(cat deps-status.json | jq -r '.summary.hasSecurityIssues // false')
+            HAS_UPDATES=$(cat deps-status.json | jq -r '.summary.hasUpdates // false')
+            CRITICAL=$(cat deps-status.json | jq -r '.summary.criticalIssues // 0')
+            HIGH=$(cat deps-status.json | jq -r '.summary.highIssues // 0')
+            MODERATE=$(cat deps-status.json | jq -r '.summary.moderateIssues // 0')
+            OUTDATED_COUNT=$(cat deps-status.json | jq -r '.summary.outdatedCount // 0')
+            NODE_UPDATE=$(cat deps-status.json | jq -r '.node.updateAvailable // false')
+            NODE_CURRENT=$(cat deps-status.json | jq -r '.node.current // "unknown"')
+            NODE_LATEST=$(cat deps-status.json | jq -r '.node.latest // "unknown"')
+            
+            echo "has_security=$HAS_SECURITY" >> $GITHUB_OUTPUT
+            echo "has_updates=$HAS_UPDATES" >> $GITHUB_OUTPUT
+            echo "critical=$CRITICAL" >> $GITHUB_OUTPUT
+            echo "high=$HIGH" >> $GITHUB_OUTPUT
+            echo "moderate=$MODERATE" >> $GITHUB_OUTPUT
+            echo "outdated_count=$OUTDATED_COUNT" >> $GITHUB_OUTPUT
+            echo "node_update=$NODE_UPDATE" >> $GITHUB_OUTPUT
+            echo "node_current=$NODE_CURRENT" >> $GITHUB_OUTPUT
+            echo "node_latest=$NODE_LATEST" >> $GITHUB_OUTPUT
+          else
+            echo "has_security=false" >> $GITHUB_OUTPUT
+            echo "has_updates=false" >> $GITHUB_OUTPUT
+            echo "critical=0" >> $GITHUB_OUTPUT
+            echo "high=0" >> $GITHUB_OUTPUT
+            echo "moderate=0" >> $GITHUB_OUTPUT
+            echo "outdated_count=0" >> $GITHUB_OUTPUT
+            echo "node_update=false" >> $GITHUB_OUTPUT
+            echo "node_current=unknown" >> $GITHUB_OUTPUT
+            echo "node_latest=unknown" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Generate report
+        id: report
+        run: |
+          REPORT="## Monthly Security & Dependency Check Report\n\n"
+          REPORT+="**Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')\n\n"
+          
+          # Hugo section
+          REPORT+="### 🔧 Hugo Version\n\n"
+          REPORT+="**Current:** ${{ steps.parse-hugo.outputs.current_version }}\n"
+          REPORT+="**Latest:** ${{ steps.parse-hugo.outputs.latest_version }}\n\n"
+          
+          if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
+            REPORT+="🚨 **SECURITY ISSUES DETECTED** - Update Hugo immediately!\n\n"
+          elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
+            REPORT+="💡 Update available\n\n"
+          else
+            REPORT+="✅ Up to date\n\n"
+          fi
+          
+          # Dependencies section
+          REPORT+="### 📦 npm Dependencies\n\n"
+          
+          if [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ]; then
+            REPORT+="🚨 **SECURITY VULNERABILITIES FOUND:**\n"
+            if [ "${{ steps.parse-deps.outputs.critical }}" != "0" ]; then
+              REPORT+="- 🚨 Critical: ${{ steps.parse-deps.outputs.critical }}\n"
+            fi
+            if [ "${{ steps.parse-deps.outputs.high }}" != "0" ]; then
+              REPORT+="- ⚠️  High: ${{ steps.parse-deps.outputs.high }}\n"
+            fi
+            if [ "${{ steps.parse-deps.outputs.moderate }}" != "0" ]; then
+              REPORT+="- ⚠️  Moderate: ${{ steps.parse-deps.outputs.moderate }}\n"
+            fi
+            REPORT+="\n**Action Required:** Run \`npm audit fix\` and review changes.\n\n"
+          else
+            REPORT+="✅ No known security vulnerabilities\n\n"
+          fi
+          
+          if [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
+            REPORT+="💡 **Updates Available:** ${{ steps.parse-deps.outputs.outdated_count }} package(s) outdated\n"
+            REPORT+="Run \`npm outdated\` to see details, then update selectively.\n\n"
+          else
+            REPORT+="✅ All packages up to date\n\n"
+          fi
+          
+          # Node.js section
+          REPORT+="### 🟢 Node.js Version\n\n"
+          REPORT+="**Current:** ${{ steps.parse-deps.outputs.node_current }}\n"
+          REPORT+="**Latest LTS:** ${{ steps.parse-deps.outputs.node_latest }}\n\n"
+          
+          if [ "${{ steps.parse-deps.outputs.node_update }}" == "true" ]; then
+            REPORT+="💡 Node.js update available\n"
+            REPORT+="Update \`netlify.toml\` and \`.nvmrc\` if upgrading.\n\n"
+          else
+            REPORT+="✅ Node.js version is current\n\n"
+          fi
+          
+          REPORT+="---\n\n"
+          REPORT+="### 📋 Action Items\n\n"
+          
+          ACTION_NEEDED=false
+          
+          if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
+            REPORT+="1. **URGENT:** Update Hugo (security issues detected)\n"
+            REPORT+="   \`\`\`bash\n"
+            REPORT+="   npm install hugo-bin@latest\n"
+            REPORT+="   npm run build && npm test\n"
+            REPORT+="   \`\`\`\n\n"
+            ACTION_NEEDED=true
+          elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
+            REPORT+="1. Consider updating Hugo\n"
+            REPORT+="   \`\`\`bash\n"
+            REPORT+="   npm install hugo-bin@latest\n"
+            REPORT+="   npm run build && npm test\n"
+            REPORT+="   \`\`\`\n\n"
+            ACTION_NEEDED=true
+          fi
+          
+          if [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ]; then
+            REPORT+="2. **URGENT:** Fix npm security vulnerabilities\n"
+            REPORT+="   \`\`\`bash\n"
+            REPORT+="   npm audit fix\n"
+            REPORT+="   npm test\n"
+            REPORT+="   \`\`\`\n\n"
+            ACTION_NEEDED=true
+          fi
+          
+          if [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
+            REPORT+="3. Review and update outdated packages\n"
+            REPORT+="   \`\`\`bash\n"
+            REPORT+="   npm outdated\n"
+            REPORT+="   npm install package@latest  # Update selectively\n"
+            REPORT+="   npm test\n"
+            REPORT+="   \`\`\`\n\n"
+            ACTION_NEEDED=true
+          fi
+          
+          if [ "$ACTION_NEEDED" == "false" ]; then
+            REPORT+="✅ No action needed - everything is up to date!\n\n"
+          fi
+          
+          REPORT+="---\n\n"
+          REPORT+="### 📊 Full Reports\n\n"
+          REPORT+="<details>\n<summary>Hugo Version Check</summary>\n\n"
+          REPORT+="\`\`\`json\n"
+          REPORT+="$(cat hugo-status.json 2>/dev/null || echo 'Unable to generate report')\n"
+          REPORT+="\`\`\`\n\n"
+          REPORT+="</details>\n\n"
+          REPORT+="<details>\n<summary>Dependencies Check</summary>\n\n"
+          REPORT+="\`\`\`json\n"
+          REPORT+="$(cat deps-status.json 2>/dev/null || echo 'Unable to generate report')\n"
+          REPORT+="\`\`\`\n\n"
+          REPORT+="</details>\n\n"
+          REPORT+="---\n\n"
+          REPORT+="*This is an automated monthly check. To run manually:*\n"
+          REPORT+="- \`npm run check:hugo\` - Check Hugo version\n"
+          REPORT+="- \`npm run check:dependencies\` - Check all dependencies\n"
+          
+          echo "$REPORT" > report.md
+          echo "report<<EOF" >> $GITHUB_OUTPUT
+          echo "$REPORT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Determine if issue needed
+        id: needs-issue
+        run: |
+          NEEDS_ISSUE=false
+          
+          if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
+            NEEDS_ISSUE=true
+          elif [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ] && [ "${{ steps.parse-deps.outputs.critical }}" != "0" ] || [ "${{ steps.parse-deps.outputs.high }}" != "0" ]; then
+            NEEDS_ISSUE=true
+          elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ] || [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
+            NEEDS_ISSUE=true
+          fi
+          
+          echo "needs_issue=$NEEDS_ISSUE" >> $GITHUB_OUTPUT
+      
+      - name: Create or update issue
+        if: steps.needs-issue.outputs.needs_issue == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const report = `${{ steps.report.outputs.report }}`;
+            
+            // Determine title and labels
+            let title = 'Monthly Security & Dependency Check';
+            const labels = ['security-check'];
+            
+            if ('${{ steps.parse-hugo.outputs.security_issues }}' === 'true' || 
+                ('${{ steps.parse-deps.outputs.has_security }}' === 'true' && 
+                 ('${{ steps.parse-deps.outputs.critical }}' !== '0' || '${{ steps.parse-deps.outputs.high }}' !== '0'))) {
+              title = '🚨 Security Issues Detected - Action Required';
+              labels.push('security');
+            } else {
+              labels.push('maintenance');
+            }
+            
+            // Check if an open issue with this label already exists
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'security-check'
+            });
+            
+            const existingIssue = issues.find(issue => 
+              issue.title.includes('Security') || issue.title.includes('Dependency Check')
+            );
+            
+            if (existingIssue) {
+              // Update existing issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssue.number,
+                body: report
+              });
+              
+              // Update title if severity changed
+              if (title !== existingIssue.title) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existingIssue.number,
+                  title: title,
+                  labels: labels
+                });
+              }
+            } else {
+              // Create new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: report,
+                labels: labels
+              });
+            }
+      
+      - name: Summary
+        run: |
+          echo "## Monthly Security & Dependency Check Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### Hugo" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version:** ${{ steps.parse-hugo.outputs.current_version }} → ${{ steps.parse-hugo.outputs.latest_version }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
+            echo "🚨 **Security issues detected!**" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
+            echo "💡 **Update available**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **Up to date**" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### npm Dependencies" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.parse-deps.outputs.has_security }}" == "true" ]; then
+            echo "🚨 **Vulnerabilities:** ${{ steps.parse-deps.outputs.critical }} critical, ${{ steps.parse-deps.outputs.high }} high" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **No security issues**" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "${{ steps.parse-deps.outputs.has_updates }}" == "true" ]; then
+            echo "💡 **Updates available:** ${{ steps.parse-deps.outputs.outdated_count }} package(s)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **All packages up to date**" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### Node.js" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version:** ${{ steps.parse-deps.outputs.node_current }} → ${{ steps.parse-deps.outputs.node_latest }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.parse-deps.outputs.node_update }}" == "true" ]; then
+            echo "💡 **Update available**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **Up to date**" >> $GITHUB_STEP_SUMMARY
+          fi

@@ -74,6 +74,8 @@ Before you begin, ensure you have the following installed:
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:mobile` - Mobile and responsive design validation
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
+- `npm run check:hugo` - Check Hugo version, security status, and available updates
+- `npm run check:dependencies` - Check all dependencies (npm packages, Node.js, GitHub Actions) for security issues and updates
 
 ## 📁 Project Structure
 
@@ -111,7 +113,9 @@ Before you begin, ensure you have the following installed:
 ├── scripts/              # Build and automation scripts
 │   ├── generate-og-images.js # Generate OG images for recipes
 │   ├── generate-png-from-svg.js # Convert SVG to PNG for social media
-│   └── schedule-posts.js # Auto-publish scheduled posts script
+│   ├── schedule-posts.js # Auto-publish scheduled posts script
+│   ├── check-hugo-version.js # Check Hugo version and security status
+│   └── check-dependencies.js # Check all dependencies for security and updates
 ├── agents.md            # AI assistant guidelines (for Cursor, Copilot, etc.)
 ├── BRAND.md             # Brand guidelines and design system
 ├── config.toml          # Hugo site configuration
@@ -353,6 +357,45 @@ This will:
 - **Manual trigger**: You can manually trigger the workflow from the GitHub Actions tab if needed
 
 **Workflow location:** `.github/workflows/schedule-posts.yml`
+
+### 🔒 Security & Dependency Monitoring
+
+The site includes automated security and dependency checking to ensure you're running secure, up-to-date versions of all tools and packages.
+
+**How it works:**
+1. A GitHub Actions workflow runs monthly (on the 1st of each month at 9am UTC)
+2. Checks Hugo version, npm dependencies, Node.js version, and GitHub Actions
+3. Runs `npm audit` to detect security vulnerabilities
+4. Checks for outdated packages
+5. Creates a GitHub Issue if security issues or updates are found
+6. You'll receive email notifications from GitHub if you have issue notifications enabled
+
+**Manual checks:**
+```bash
+npm run check:hugo          # Check Hugo version only
+npm run check:dependencies # Check all dependencies (npm, Node.js, GitHub Actions)
+```
+
+**What gets checked:**
+- **Hugo version**: Current version vs latest, known CVEs
+- **npm packages**: Security vulnerabilities (`npm audit`), outdated packages
+- **Node.js version**: Current vs latest LTS
+- **GitHub Actions**: Versions used in workflows
+
+**Email notifications:**
+- GitHub will automatically send email notifications when issues are created
+- Make sure you have GitHub email notifications enabled for your repository
+- Go to GitHub Settings → Notifications → Issues to configure
+
+**What triggers an issue:**
+- **Security issues**: Hugo CVEs or npm vulnerabilities (critical/high severity)
+- **Updates available**: Newer versions of Hugo, Node.js, or npm packages
+- **Up to date**: No issue is created if everything is current
+
+**Workflow location:** `.github/workflows/security-check.yml`
+
+**Individual check workflows:**
+- `.github/workflows/check-hugo-version.yml` - Hugo-only check (legacy, use security-check.yml instead)
 
 ## 📣 Social Sharing Images (Open Graph)
 

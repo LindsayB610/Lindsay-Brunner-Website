@@ -29,7 +29,9 @@
     "test:mobile": "node tests/mobile-responsive.test.js",
     "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json && npm run test:recipe-template && npm run test:mobile",
     "pretest": "npm run build",
-    "schedule-posts": "node scripts/schedule-posts.js"
+    "schedule-posts": "node scripts/schedule-posts.js",
+    "check:hugo": "node scripts/check-hugo-version.js",
+    "check:dependencies": "node scripts/check-dependencies.js"
   },
   "dependencies": {
     "hugo-bin": "^0.149.2"
