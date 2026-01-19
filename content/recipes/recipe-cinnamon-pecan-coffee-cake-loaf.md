@@ -27,12 +27,12 @@ recipeIngredient:
   - "⅛ teaspoon almond extract"
   - "¾ Cup chopped pecans, lightly roasted"
   - "½ Cup packed light brown sugar"
-  - "4 tablespoons unsalted butter, melted"
+  - "4 tablespoons unsalted butter, softened"
   - "2–3 tablespoons all‑purpose flour (2 Tbsp = more nut‑forward, 3 Tbsp = more streusel‑y)"
   - "Pinch Diamond Crystal kosher salt"
 recipeInstructions:
   - "Preheat and prep the pan: Heat the oven to 350°F (175°C). Grease a 9×5 loaf pan and line it with a strip of parchment so it overhangs the long sides for easy lifting later."
-  - "Make the pecan crumb topping: If you haven't already, lightly roast the chopped pecans until fragrant and let them cool. Stir together the brown sugar, 2 tablespoons flour, pecans, and a pinch of salt. Add the melted butter and mix until the topping forms clumps when squeezed. If it looks a bit too loose, stir in the extra tablespoon of flour. Pop the bowl in the fridge while you make the batter so the topping firms up and doesn't sink into the cake."
+  - "Make the pecan crumb topping: If you haven't already, lightly roast the chopped pecans until fragrant and let them cool. Stir together the brown sugar, 2 tablespoons flour, pecans, and a pinch of salt. Add the softened butter and mix until the topping forms clumps when squeezed. If it looks a bit too loose, stir in the extra tablespoon of flour. Pop the bowl in the fridge while you make the batter so the topping firms up and doesn't sink into the cake."
   - "Mix the cake batter: In a medium mixing bowl, cream the softened butter and granulated sugar together with a hand mixer (or vigorous whisk) until light and fluffy, 2–3 minutes. Beat in the eggs one at a time, mixing until smooth after each addition. In a separate bowl, whisk together the flour, baking powder, cinnamon, nutmeg, and salt. In a measuring cup, combine the heavy cream and water. Add about half of the dry mixture to the butter–sugar–egg mixture and mix on low just until the flour disappears. Pour in the cream‑and‑water mixture and mix again briefly. Add the remaining dry ingredients and mix just until combined. Stir in the vanilla and almond extract by hand with a spatula, scraping down the sides and bottom of the bowl."
   - "Assemble the loaf: Scrape the batter into the prepared loaf pan and smooth the top gently. Break up the chilled pecan crumb topping with your fingers and scatter it evenly over the batter in a thick, bumpy layer. Press very lightly so it adheres without compacting or sinking."
   - "Bake: Bake at 350°F for 45–55 minutes. Start checking around 40–45 minutes: a tester inserted in the center should come out with a few moist crumbs but no wet batter. If the topping is browning faster than the middle is baking, tent the loaf loosely with foil for the last 10–15 minutes."
@@ -79,11 +79,11 @@ Use ¼ cup heavy cream mixed with ¼ cup water to stand in for the ½ cup milk f
 
 - ¾ Cup chopped pecans, lightly toasted
 - ½ Cup packed light brown sugar
-- 4 tablespoons unsalted butter, melted
+- 4 tablespoons unsalted butter, softened
 - 2–3 tablespoons all‑purpose flour (2 Tbsp = more nut‑forward, 3 Tbsp = more streusel‑y)
 - Pinch Diamond Crystal kosher salt
 
-Lightly roast the pecans in a dry skillet or a 350°F oven until fragrant, then let them cool. In a small bowl, combine the brown sugar, 2 tablespoons flour, pecans, and a pinch of salt. Stir in the melted butter until everything is evenly moistened and clumpy. If you want a thicker, more crumbly blanket, stir in the third tablespoon of flour.
+Lightly roast the pecans in a dry skillet or a 350°F oven until fragrant, then let them cool. In a small bowl, combine the brown sugar, 2 tablespoons flour, pecans, and a pinch of salt. Stir in the softened butter until everything is evenly moistened and clumpy. If you want a thicker, more crumbly blanket, stir in the third tablespoon of flour.
 
 ## Method
 
@@ -95,7 +95,7 @@ Lightly roast the pecans in a dry skillet or a 350°F oven until fragrant, then 
 
    Toast the pecans: Heat oven to 350°F (175°C). Spread chopped pecans on a sheet pan and toast 6–8 minutes until just fragrant and a shade deeper. Cool completely (warm nuts will melt the streusel butter).
 
-   Stir together the brown sugar, 2 tablespoons flour, cooled toasted pecans, and a pinch of salt. Add the melted butter and mix until the topping forms clumps when squeezed. If it looks a bit too loose, stir in the extra tablespoon of flour. Pop the bowl in the fridge while you make the batter so the topping firms up and doesn't sink into the cake.
+   Stir together the brown sugar, 2 tablespoons flour, cooled toasted pecans, and a pinch of salt. Add the softened butter and mix until the topping forms clumps when squeezed. If it looks a bit too loose, stir in the extra tablespoon of flour. Pop the bowl in the fridge while you make the batter so the topping firms up and doesn't sink into the cake.
 
 3. **Mix the cake batter.**
 
