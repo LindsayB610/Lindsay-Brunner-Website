@@ -14,7 +14,7 @@ recipeCategory: "Main Course"
 recipeCuisine: "American"
 recipeIngredient:
   - "1 lb medium shells"
-  - "1 package thick-cut bacon (10 to 12 oz)"
+  - "1 package thick-cut bacon (10 to 12 oz), cooked to crispy and chopped"
   - "1½ Tbsp salted butter"
   - "1 Tbsp reserved bacon fat"
   - "1½ Tbsp all-purpose flour"
@@ -51,7 +51,7 @@ The Velveeta is doing exactly what you hired it to do: keeping the sauce glossy,
 ### Pasta and bacon
 
 - 1 lb medium shells
-- 1 package thick-cut bacon (10 to 12 oz)
+- 1 package thick-cut bacon (10 to 12 oz), cooked to crispy and chopped
 
 ### Cheese sauce (mix and match encouraged)
 
