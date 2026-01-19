@@ -81,40 +81,67 @@ jobs:
       - name: Generate report
         id: report
         run: |
-          REPORT="## Hugo Version Check Report\n\n"
+          REPORT="## 🔍 Hugo Version Check Report\n\n"
           REPORT+="**Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')\n\n"
-          REPORT+="**Current Version:** ${{ steps.parse-status.outputs.current_version }}\n"
-          REPORT+="**Latest Version:** ${{ steps.parse-status.outputs.latest_version }}\n\n"
+          
+          # Parse version behind info
+          VERSION_BEHIND_TYPE=$(echo '${{ steps.parse-status.outputs.version_behind }}' | jq -r '.type // "none"' 2>/dev/null || echo "none")
+          VERSION_BEHIND_COUNT=$(echo '${{ steps.parse-status.outputs.version_behind }}' | jq -r '.count // 0' 2>/dev/null || echo "0")
+          
+          # Summary section at the top
+          REPORT+="### 📊 Quick Summary\n\n"
+          REPORT+="| Item | Status |\n"
+          REPORT+="|------|--------|\n"
+          REPORT+="| **Current Hugo Version** | \`${{ steps.parse-status.outputs.current_version }}\` |\n"
+          REPORT+="| **Latest Hugo Version** | \`${{ steps.parse-status.outputs.latest_version }}\` |\n"
           
           if [ "${{ steps.parse-status.outputs.security_issues }}" == "true" ]; then
-            REPORT+="### 🚨 SECURITY ISSUES DETECTED\n\n"
-            REPORT+="**ACTION REQUIRED:** Your Hugo version has known security vulnerabilities.\n\n"
-            REPORT+="Please update Hugo immediately by running:\n"
-            REPORT+="\`\`\`bash\n"
-            REPORT+="npm install hugo-bin@latest\n"
-            REPORT+="npm run build && npm test\n"
-            REPORT+="\`\`\`\n\n"
-            REPORT+="See the full report below for details.\n\n"
+            REPORT+="| **Security Status** | 🚨 **VULNERABLE** - Action Required |\n"
+            REPORT+="| **Update Status** | ⚠️  **OUTDATED** |\n\n"
+            REPORT+="### 🚨 ACTION REQUIRED: Security Issues Detected\n\n"
+            REPORT+="**Your Hugo version has known security vulnerabilities and must be updated immediately.**\n\n"
+            REPORT+="**What to do:**\n"
+            REPORT+="1. Update Hugo: \`npm install hugo-bin@latest\`\n"
+            REPORT+="2. Test your site: \`npm run build && npm test\`\n"
+            REPORT+="3. Commit and push the changes\n\n"
           elif [ "${{ steps.parse-status.outputs.update_available }}" == "true" ]; then
+            if [ "$VERSION_BEHIND_TYPE" != "none" ] && [ "$VERSION_BEHIND_COUNT" != "0" ]; then
+              REPORT+="| **Security Status** | ✅ **SECURE** |\n"
+              if [ "$VERSION_BEHIND_TYPE" == "major" ]; then
+                REPORT+="| **Update Status** | ⚠️  **$VERSION_BEHIND_COUNT major version(s) behind** |\n\n"
+              elif [ "$VERSION_BEHIND_TYPE" == "minor" ]; then
+                REPORT+="| **Update Status** | 💡 **$VERSION_BEHIND_COUNT minor version(s) behind** |\n\n"
+              else
+                REPORT+="| **Update Status** | 💡 **$VERSION_BEHIND_COUNT patch version(s) behind** |\n\n"
+              fi
+            else
+              REPORT+="| **Security Status** | ✅ **SECURE** |\n"
+              REPORT+="| **Update Status** | 💡 **Update Available** |\n\n"
+            fi
             REPORT+="### 💡 Update Available\n\n"
-            REPORT+="A newer version of Hugo is available. Consider updating when convenient.\n\n"
-            REPORT+="To update:\n"
-            REPORT+="\`\`\`bash\n"
-            REPORT+="npm install hugo-bin@latest\n"
-            REPORT+="npm run build && npm test\n"
-            REPORT+="\`\`\`\n\n"
+            REPORT+="A newer version of Hugo is available. You're currently on \`${{ steps.parse-status.outputs.current_version }}\` and the latest is \`${{ steps.parse-status.outputs.latest_version }}\`.\n\n"
+            REPORT+="**Recommended action:**\n"
+            REPORT+="1. Update Hugo: \`npm install hugo-bin@latest\`\n"
+            REPORT+="2. Test your site: \`npm run build && npm test\`\n"
+            REPORT+="3. Commit and push the changes\n\n"
+            REPORT+="*Note: This is not urgent, but keeping dependencies up to date is recommended.*\n\n"
           else
-            REPORT+="### ✅ Status: Up to Date\n\n"
-            REPORT+="Your Hugo version is current. No action needed.\n\n"
+            REPORT+="| **Security Status** | ✅ **SECURE** |\n"
+            REPORT+="| **Update Status** | ✅ **UP TO DATE** |\n\n"
+            REPORT+="### ✅ All Good!\n\n"
+            REPORT+="Your Hugo version (\`${{ steps.parse-status.outputs.current_version }}\`) is current. No action needed.\n\n"
           fi
           
           REPORT+="---\n\n"
-          REPORT+="### Full Report\n\n"
-          REPORT+="\`\`\`\n"
+          REPORT+="### 📋 Detailed Information\n\n"
+          REPORT+="<details>\n<summary>Click to view full JSON report</summary>\n\n"
+          REPORT+="\`\`\`json\n"
           REPORT+="$(cat hugo-status.json 2>/dev/null || echo 'Unable to generate full report')\n"
           REPORT+="\`\`\`\n\n"
+          REPORT+="</details>\n\n"
           REPORT+="---\n\n"
-          REPORT+="*This is an automated monthly check. To run manually, use: \`npm run check:hugo\`*\n"
+          REPORT+="**💡 Tip:** Run \`npm run check:hugo\` locally anytime to check your Hugo version.\n\n"
+          REPORT+="*This is an automated monthly check. Issues are created when updates are available or security issues are detected.*\n"
           
           echo "$REPORT" > report.md
           echo "report<<EOF" >> $GITHUB_OUTPUT
