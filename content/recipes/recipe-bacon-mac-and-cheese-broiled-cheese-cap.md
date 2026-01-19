@@ -4,7 +4,7 @@ date: 2026-01-17
 slug: "recipe-bacon-mac-and-cheese-broiled-cheese-cap"
 subtitle: "Or: Creamy pub-style mac with Velveeta insurance"
 description: "Creamy bacon mac and cheese built on a Velveeta-stabilized sauce, finished under the broiler for a browned cheese cap without drying out the interior."
-draft: true
+draft: false
 social_image: "/images/social/recipe-bacon-mac-and-cheese-broiled-cheese-cap-og.png" 
 prepTime: "PT15M"
 cookTime: "PT25M"
@@ -34,7 +34,6 @@ recipeInstructions:
   - "Fold in pasta and bacon, loosening with pasta water if needed."
   - "Transfer to a broiler-safe dish, top with reserved cheese, broil until browned, then portion and serve."
 ---
-
 Creamy bacon mac and cheese, built like a restaurant bowl but designed for real kitchens. The sauce is made on the stovetop, folded with crisp bacon and pasta, then briefly broiled to create a browned cheese cap without drying out the inside.
 
 The Velveeta is doing exactly what you hired it to do: keeping the sauce glossy, smooth, and stable. Everything else in the cheese department is flexible. Use exactly what's listed, or use odds and ends you already have. The only non-negotiable is the Velveeta or American-style processed cheese.
