@@ -20,7 +20,8 @@ recipeIngredient:
   - "1½ Tsp garlic powder"
   - "1¼ Tsp freshly ground black pepper"
   - "1¼–1½ Tsp kosher salt"
-  - "Optional finish: lemon juice or red wine vinegar"
+  - "Lemon juice (optional)"
+  - "Flaky salt (optional)"
   - "2 small sprigs fresh rosemary, needles only"
   - "½ cup fresh oregano, loosely packed"
   - "¾ cup fresh parsley"
@@ -37,7 +38,7 @@ recipeInstructions:
   - "Add chicken and adjust oven. Wipe down the chicken thighs, leaving a thin coat of marinade. Lower oven to 425°F (218°C). Arrange chicken skin-side up on a separate sheet pan and add to the oven."
   - "Roast until done. Continue roasting potatoes and chicken until potatoes are browned and tender (35–45 minutes total) and chicken skin is deeply golden with an internal temperature around 175°F (79°C)."
   - "Optional broil. If needed, broil chicken for 2–3 minutes for extra crisp skin. Watch closely."
-  - "Rest and finish. Rest chicken 5–10 minutes. Finish potatoes with a small splash of lemon juice or vinegar if desired."
+  - "Rest and finish. Rest chicken 5–10 minutes. Finish chicken and potatoes with a small splash of lemon juice and flaky salt."
 ---
 This is a flexible, repeatable weeknight dinner built around chicken thighs that want to be roasted hard, plus potatoes that behave themselves in the same oven. The herb marinade does real flavor work without requiring advance planning, and the timing is designed so nothing waits on anything else.
 
@@ -74,7 +75,10 @@ This is a flexible, repeatable weeknight dinner built around chicken thighs that
 - 1½ Tsp garlic powder
 - 1¼ Tsp freshly ground black pepper
 - 1¼–1½ Tsp kosher salt
-- Optional finish: lemon juice or red wine vinegar
+
+### Finishing (Optional)
+- Lemon juice 
+- Flaky salt
 
 ## Method
 
@@ -100,7 +104,7 @@ This is a flexible, repeatable weeknight dinner built around chicken thighs that
 
 6. **Rest and finish**
 
-   Rest chicken 5–10 minutes. Finish potatoes with a small splash of lemon juice or vinegar if using.
+   Rest chicken 5–10 minutes. Finish chicken and potatoes with a small splash of lemon juice and flaky salt.
 
 ---
 
