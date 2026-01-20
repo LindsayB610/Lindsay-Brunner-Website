@@ -4,7 +4,7 @@ date: 2026-01-20
 slug: "recipe-herb-roasted-chicken-garlic-pepper-potatoes"
 subtitle: "Or: One-pan-adjacent chicken thighs with a very cooperative oven schedule"
 description: "Bone-in, skin-on chicken thighs roasted with a bright green herb marinade, paired with crispy garlic-pepper potatoes. Built for weeknights, flexible on timing, and designed to finish together in one oven."
-draft: true
+draft: false
 social_image: "/images/social/recipe-herb-roasted-chicken-garlic-pepper-potatoes-og.png"
 prepTime: "PT20M"
 cookTime: "PT50M"
@@ -39,7 +39,6 @@ recipeInstructions:
   - "Optional broil. If needed, broil chicken for 2–3 minutes for extra crisp skin. Watch closely."
   - "Rest and finish. Rest chicken 5–10 minutes. Finish potatoes with a small splash of lemon juice or vinegar if desired."
 ---
-
 This is a flexible, repeatable weeknight dinner built around chicken thighs that want to be roasted hard, plus potatoes that behave themselves in the same oven. The herb marinade does real flavor work without requiring advance planning, and the timing is designed so nothing waits on anything else.
 
 ## Snapshot
