@@ -331,15 +331,54 @@ jobs:
             // Determine title and labels
             let title = 'Monthly Security & Dependency Check';
             const labels = ['security-check'];
+            const hasUrgentSecurity = '${{ steps.parse-hugo.outputs.security_issues }}' === 'true' || 
+                                      ('${{ steps.parse-deps.outputs.has_security }}' === 'true' && 
+                                       ('${{ steps.parse-deps.outputs.critical }}' !== '0' || '${{ steps.parse-deps.outputs.high }}' !== '0'));
             
-            if ('${{ steps.parse-hugo.outputs.security_issues }}' === 'true' || 
-                ('${{ steps.parse-deps.outputs.has_security }}' === 'true' && 
-                 ('${{ steps.parse-deps.outputs.critical }}' !== '0' || '${{ steps.parse-deps.outputs.high }}' !== '0'))) {
+            if (hasUrgentSecurity) {
               title = '🚨 Security Issues Detected - Action Required';
               labels.push('security');
             } else {
               labels.push('maintenance');
             }
+            
+            // Create email-friendly summary at the very top
+            let emailSummary = `**QUICK SUMMARY FOR EMAIL:**\n\n`;
+            
+            if (hasUrgentSecurity) {
+              emailSummary += `🚨 **URGENT ACTION REQUIRED**\n\n`;
+              if ('${{ steps.parse-hugo.outputs.security_issues }}' === 'true') {
+                emailSummary += `- Hugo: Security vulnerabilities detected (v${{ steps.parse-hugo.outputs.current_version }})\n`;
+              }
+              if ('${{ steps.parse-deps.outputs.has_security }}' === 'true') {
+                emailSummary += `- npm: ${{ steps.parse-deps.outputs.critical }} critical, ${{ steps.parse-deps.outputs.high }} high vulnerabilities\n`;
+              }
+            } else {
+              emailSummary += `💡 **Updates Available**\n\n`;
+              if ('${{ steps.parse-hugo.outputs.update_available }}' === 'true') {
+                emailSummary += `- Hugo: v${{ steps.parse-hugo.outputs.current_version }} → v${{ steps.parse-hugo.outputs.latest_version }}\n`;
+              }
+              if ('${{ steps.parse-deps.outputs.has_updates }}' === 'true') {
+                emailSummary += `- npm: ${{ steps.parse-deps.outputs.outdated_count }} package(s) outdated\n`;
+              }
+              if ('${{ steps.parse-deps.outputs.node_update }}' === 'true') {
+                emailSummary += `- Node.js: v${{ steps.parse-deps.outputs.node_current }} → v${{ steps.parse-deps.outputs.node_latest }}\n`;
+              }
+            }
+            
+            emailSummary += `\n**Quick Actions:**\n`;
+            if ('${{ steps.parse-hugo.outputs.security_issues }}' === 'true' || '${{ steps.parse-hugo.outputs.update_available }}' === 'true') {
+              emailSummary += `- Hugo: \`npm install hugo-bin@latest && npm test\`\n`;
+            }
+            if ('${{ steps.parse-deps.outputs.has_security }}' === 'true') {
+              emailSummary += `- npm: \`npm audit fix && npm test\`\n`;
+            }
+            if ('${{ steps.parse-deps.outputs.has_updates }}' === 'true') {
+              emailSummary += `- packages: \`npm outdated\` then update selectively\n`;
+            }
+            emailSummary += `\n---\n\n`;
+            
+            const fullBody = emailSummary + report;
             
             // Check if an open issue with this label already exists
             const { data: issues } = await github.rest.issues.listForRepo({
@@ -359,7 +398,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: existingIssue.number,
-                body: report
+                body: fullBody
               });
               
               // Update title if severity changed
@@ -378,7 +417,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 title: title,
-                body: report,
+                body: fullBody,
                 labels: labels
               });
             }

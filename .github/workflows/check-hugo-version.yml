@@ -156,6 +156,13 @@ jobs:
             const report = `${{ steps.report.outputs.report }}`;
             const title = `${{ steps.parse-status.outputs.security_issues == 'true' && '🚨 Hugo Security Update Required' || '💡 Hugo Update Available' }} - ${{ steps.parse-status.outputs.current_version }} → ${{ steps.parse-status.outputs.latest_version }}`;
             
+            // Create email-friendly summary at the very top
+            const emailSummary = `**QUICK SUMMARY FOR EMAIL:**\n\n`;
+            const emailSummaryContent = `${{ steps.parse-status.outputs.security_issues == 'true' && '🚨 URGENT: Hugo has security vulnerabilities. Update immediately.' || '💡 Hugo update available. Consider updating when convenient.' }}\n\n`;
+            const emailSummaryDetails = `Current: \`${{ steps.parse-status.outputs.current_version }}\` → Latest: \`${{ steps.parse-status.outputs.latest_version }}\`\n\n`;
+            const emailSummaryAction = `**Action:** Run \`npm install hugo-bin@latest && npm run build && npm test\`\n\n---\n\n`;
+            const fullBody = emailSummary + emailSummaryContent + emailSummaryDetails + emailSummaryAction + report;
+            
             // Check if an open issue with this title already exists
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
@@ -175,7 +182,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: existingIssue.number,
-                body: report
+                body: fullBody
               });
               
               // Update title if version changed
@@ -193,7 +200,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 title: title,
-                body: report,
+                body: fullBody,
                 labels: ['hugo-version-check', '${{ steps.parse-status.outputs.security_issues == 'true' && 'security' || 'maintenance' }}']
               });
             }
