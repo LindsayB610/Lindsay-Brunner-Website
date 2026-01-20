@@ -32,11 +32,9 @@ recipeIngredient:
   - "1½ Tsp kosher salt"
   - "1 Tsp black pepper"
 recipeInstructions:
-  - "Blend the herb marinade. Add all marinade ingredients to a blender or wide-mouth pint jar. Blend until smooth and pourable, like a thin green dressing."
-  - "Heat the oven and prep the potatoes. Heat oven to 450°F (232°C). Toss potatoes with olive oil or duck fat, garlic powder, black pepper, and salt. Spread in a single layer on a sheet pan."
-  - "Start roasting the potatoes. Roast for 10 minutes."
-  - "Prep the chicken. While potatoes start cooking, pat chicken thighs very dry. Toss with ½–⅔ cup marinade until lightly coated."
-  - "Add chicken and adjust oven. Lower oven to 425°F (218°C). Arrange chicken skin-side up on a separate sheet pan and add to the oven."
+  - "Blend the herb marinade. Add all marinade ingredients to a blender or wide-mouth pint jar. Blend until smooth and pourable, like a thin green dressing. Coat chicken in marinade in a bowl or bag and allow to rest at room temp while you prep the potatoes."
+  - "Heat the oven and prep the potatoes. Heat oven to 450°F (232°C). Toss potatoes with olive oil or duck fat, garlic powder, black pepper, and salt. Spread in a single layer on a sheet pan and roast for 10 minutes."
+  - "Add chicken and adjust oven. Wipe down the chicken thighs, leaving a thin coat of marinade. Lower oven to 425°F (218°C). Arrange chicken skin-side up on a separate sheet pan and add to the oven."
   - "Roast until done. Continue roasting potatoes and chicken until potatoes are browned and tender (35–45 minutes total) and chicken skin is deeply golden with an internal temperature around 175°F (79°C)."
   - "Optional broil. If needed, broil chicken for 2–3 minutes for extra crisp skin. Watch closely."
   - "Rest and finish. Rest chicken 5–10 minutes. Finish potatoes with a small splash of lemon juice or vinegar if desired."
@@ -83,29 +81,25 @@ This is a flexible, repeatable weeknight dinner built around chicken thighs that
 
 1. **Blend the marinade**
 
-   Add all marinade ingredients to a blender or wide-mouth pint jar. Blend until smooth and pourable. Texture should resemble a thin green dressing.
+   Add all marinade ingredients to a blender or wide-mouth pint jar. Blend until smooth and pourable. Texture should resemble a thin green dressing. Coat chicken in marinade in a bowl or bag and allow to rest at room temp while you prep the potatoes.
 
 2. **Start the potatoes**
 
    Heat oven to 450°F (232°C). Toss potatoes with olive oil or duck fat, garlic powder, black pepper, and salt. Spread in a single layer on a sheet pan and roast for 10 minutes.
 
-3. **Prep the chicken**
+3. **Add chicken and adjust heat**
 
-   Pat chicken thighs very dry. Toss with ½–⅔ cup marinade until lightly coated. Do not drown.
+   Wipe down the chicken thighs, leaving a thin coat of marinade. Lower oven to 425°F (218°C). Arrange chicken skin-side up on a separate sheet pan and add to the oven.
 
-4. **Add chicken and adjust heat**
-
-   Lower oven to 425°F (218°C). Arrange chicken skin-side up on a separate sheet pan and add to the oven.
-
-5. **Roast until done**
+4. **Roast until done**
 
    Roast until potatoes are browned and tender (35–45 minutes total) and chicken skin is deeply golden with an internal temperature around 175°F (79°C).
 
-6. **Optional broil**
+5. **Optional broil**
 
    For extra crisp skin, broil chicken for 2–3 minutes at the end. Watch closely.
 
-7. **Rest and finish**
+6. **Rest and finish**
 
    Rest chicken 5–10 minutes. Finish potatoes with a small splash of lemon juice or vinegar if using.
 
