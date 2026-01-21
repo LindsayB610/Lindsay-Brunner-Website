@@ -36,7 +36,7 @@ On the surface, it's a long, rambling monologue about a minor, absurd crime, lit
 
 That repetition isn't accidental. The joke only works because it refuses to end. By the time it finally does, the systems being mocked have exposed themselves simply by insisting on being taken seriously for far too long.
 
-It's the *Revisited* version, a version that adds 4 minutes of storytelling and fast forwards 20 years into the future, that really brings the joke home. This is the version where the repetition stops being funny and starts being the point. 
+It's the *Revisited* version, a version that adds 4 minutes of storytelling and fast forwards 30 years into the future, that really brings the joke home. This is the version where the repetition stops being funny and starts being the point. 
 
 Right now, none of that is what the song is to Lucas. To him, it's our Thanksgiving song. A familiar rhythm. The sound of adults laughing in the kitchen. A thing that belongs to that morning, which means it belongs to us.
 
