@@ -76,6 +76,18 @@ static/
 
 ### Thoughts Posts
 
+**📋 For complete thoughts guidelines, see [`docs/thoughts-template.md`](./docs/thoughts-template.md)**
+
+The template includes:
+- Complete front matter template with all required and optional fields
+- Content structure guidelines (flexible, unlike recipes)
+- Formatting rules (headers, links, emphasis, etc.)
+- OG image workflow (manual creation)
+- Scheduling instructions
+- Complete examples
+
+**Quick reference:**
+
 **Required front matter fields:**
 - `title` (string)
 - `date` (YYYY-MM-DD format)
@@ -239,10 +251,11 @@ See `BRAND.md` for complete brand guidelines. Key points:
 1. Create file in `content/thoughts/` (lowercase, hyphens)
    - For drafts, use `draft-` prefix: `draft-my-post.md` (helps with organization)
    - The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs
-2. Add required front matter (see above)
-3. Optionally add social image to `static/images/social/`
-4. Reference image in front matter: `social_image: "/images/social/my-image.png"`
-5. Run `npm run build && npm run test:content`
+2. Use the complete template from `docs/thoughts-template.md`
+3. Add required front matter (see template for complete details)
+4. Optionally create and add social image to `static/images/social/` (manual creation, unlike recipes)
+5. Reference image in front matter: `social_image: "/images/social/my-image.png"`
+6. Run `npm run build && npm run test:content`
 
 **To schedule for future publication:**
 - Set `draft: true` and a future `date` in front matter
@@ -298,6 +311,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 ## References
 
 - **README.md**: Setup, scripts, content management guide, scheduling posts
+- **docs/thoughts-template.md**: Complete thoughts template with front matter, structure, and formatting guidelines
 - **docs/recipe-template.md**: Complete recipe template with front matter, structure, and formatting guidelines
 - **docs/recipe-snapshot-template.md**: Snapshot section format and field definitions
 - **BRAND.md**: Complete brand guidelines and protected elements

@@ -127,7 +127,19 @@ Before you begin, ensure you have the following installed:
 
 ### Adding New Thought Leadership Content
 
-The "thoughts" section is where Lindsay shares insights on developer advocacy, content strategy, and technical leadership. Here's how to add new .md files:
+The "thoughts" section is where Lindsay shares insights on developer advocacy, content strategy, and technical leadership.
+
+**📋 For complete thoughts guidelines, see [`docs/thoughts-template.md`](./docs/thoughts-template.md)**
+
+The template includes:
+- Complete front matter template with all required and optional fields
+- Content structure guidelines (flexible, unlike recipes)
+- Formatting rules (headers, links, emphasis, etc.)
+- OG image workflow (manual creation)
+- Scheduling instructions
+- Complete examples
+
+**Quick start:**
 
 1. **Create a new thought piece using Hugo**:
 
@@ -149,62 +161,31 @@ The "thoughts" section is where Lindsay shares insights on developer advocacy, c
    touch content/thoughts/draft-your-thought-title.md
    ```
 
-3. **Set up the front matter** (the metadata at the top of your .md file):
+3. **Use the template**: Copy the front matter template from `docs/thoughts-template.md` and fill in your details
+
+4. **Set up the front matter** (the metadata at the top of your .md file):
 
    ```markdown
    ---
    title: "Your Thought Title"
-   date: 2024-01-15T10:30:00Z
-   draft: false
+   date: 2024-01-15
+   slug: "your-thought-slug"
    description: "A compelling description that will appear in listings and SEO"
-   subtitle: "A brief subtitle or first sentence that appears on the homepage"
+   subtitle: "Or: A brief subtitle or alternative description"
+   draft: false
    ---
-
-   Your thought leadership content goes here...
    ```
 
-4. **Front matter options for thoughts**:
+5. **Write your content** using Markdown syntax (see template for formatting guidelines)
 
-   - `title`: The main title of your piece
-   - `date`: Publication date (Hugo sorts by this)
-   - `draft`: Set to `true` to hide from production, `false` to publish
-   - `description`: Used for SEO and content previews
-   - `subtitle`: Brief subtitle or first sentence for homepage preview
+6. **Optionally create OG image**: Manually create and add to `static/images/social/`, then reference in front matter
 
-5. **Write your content** using Markdown syntax:
+7. **Test**: Run `npm run build && npm run test:content` to validate
 
-   ```markdown
-   ## Your Section Header
-
-   Your thoughtful insights here. You can use:
-
-   - **Bold text** for emphasis
-   - _Italic text_ for subtle emphasis
-   - `code snippets` for technical terms
-   - [Links](https://example.com) to external resources
-
-   ### Subsections
-
-   Break up your thoughts into digestible sections.
-
-   > Use blockquotes for important insights or quotes
-   ```
-
-6. **Preview your work**:
-
-   ```bash
-   # Start the development server to see your changes
-   npm run dev
-
-   # Visit http://localhost:1313/thoughts/ to see your new content
-   ```
-
-7. **File naming conventions**:
-   - Use lowercase letters
-   - Use hyphens instead of spaces: `my-great-thought.md`
-   - Be descriptive but concise: `future-of-developer-experience.md`
-   - Avoid special characters or numbers at the start
-   - For drafts, use `draft-` prefix: `draft-my-great-thought.md` (helps with organization; the `slug` field determines the URL)
+**File naming conventions:**
+- Use lowercase letters, hyphens, or underscores
+- Be descriptive but concise
+- For drafts, use `draft-` prefix: `draft-my-great-thought.md` (helps with organization; the `slug` field determines the URL)
 
 ### Adding New Recipe Content
 
