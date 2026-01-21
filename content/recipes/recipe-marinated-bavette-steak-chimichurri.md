@@ -3,7 +3,7 @@ title: "Marinated Bavette Steak with Chimichurri, Crispy Yukon Golds, and Hard-R
 date: 2026-01-13
 slug: "recipe-marinated-bavette-steak-chimichurri"
 subtitle: "Or: Steakhouse dinner with a short, smart marinade and sides that do their jobs"
-description: "Marinated bavette steak cooked hot and fast, sliced thin against the grain, and served with classic cilantro-free chimichurri, crispy roasted tiny Yukon Gold potatoes, and deeply roasted asparagus."
+description: "Marinated bavette steak cooked hot and fast, sliced thin, served with cilantro-free chimichurri, crispy Yukon Gold potatoes, and deeply roasted asparagus."
 draft: false
 social_image: "/images/social/recipe-marinated-bavette-steak-chimichurri-og.png" 
 prepTime: "PT30M"

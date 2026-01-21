@@ -40,6 +40,10 @@ const {
   validateAllPagesHaveOGImages
 } = require('./content-checks/og-images');
 
+const {
+  validateMetaDescriptionLength
+} = require('./content-checks/seo');
+
 // Run all tests
 console.log('🧪 Running comprehensive content validation tests...\n');
 
@@ -61,5 +65,6 @@ validatePermalinks();
 validateRecipeIndexPage();
 validateNoDraftInThoughtsUrls();
 validateAllPagesHaveOGImages();
+validateMetaDescriptionLength();
 
 console.log('\n✅ All content validation tests passed!');

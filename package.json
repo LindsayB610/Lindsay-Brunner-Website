@@ -31,7 +31,8 @@
     "pretest": "npm run build",
     "schedule-posts": "node scripts/schedule-posts.js",
     "check:hugo": "node scripts/check-hugo-version.js",
-    "check:dependencies": "node scripts/check-dependencies.js"
+    "check:dependencies": "node scripts/check-dependencies.js",
+    "optimize:images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "hugo-bin": "^0.149.2"

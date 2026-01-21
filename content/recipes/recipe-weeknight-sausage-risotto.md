@@ -3,7 +3,7 @@ title: "Weeknight Sausage \"Risotto\""
 date: 2026-01-19
 slug: "recipe-weeknight-sausage-risotto"
 subtitle: "Or: Sausage and saffron rice without babysitting"
-description: "A fast, sausage-forward risotto-style rice built with a one-pot method. Rich, savory, and forgiving, this is the version you make on a weeknight when you want comfort without standing at the stove."
+description: "A fast, sausage-forward risotto-style rice built with a one-pot method. Rich, savory, and forgiving weeknight comfort without standing at the stove."
 draft: false
 social_image: "/images/social/recipe-weeknight-sausage-risotto-og.png"
 prepTime: "PT10M"

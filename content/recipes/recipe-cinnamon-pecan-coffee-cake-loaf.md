@@ -3,7 +3,7 @@ title: "Cinnamon Pecan Coffee Cake Loaf"
 date: 2025-11-28
 slug: "recipe-cinnamon-pecan-coffee-cake-loaf"
 subtitle: "Or: Pecan crumb topping, now with cake attached"
-description: "A tender cinnamon loaf cake with a double layer of pecan crumb topping. Uses heavy cream and Greek yogurt for a plush crumb, with fresh nutmeg and almond extract."
+description: "Tender cinnamon loaf cake with a double layer of pecan crumb topping. Heavy cream and Greek yogurt create a plush crumb, with fresh nutmeg and almond extract."
 draft: false
 social_image: "/images/social/recipe-cinnamon-pecan-coffee-cake-loaf-og.png"
 prepTime: "PT25M"

@@ -3,7 +3,7 @@ title: "Herb Roasted Chicken with Garlic-Pepper Potatoes"
 date: 2026-01-20
 slug: "recipe-herb-roasted-chicken-garlic-pepper-potatoes"
 subtitle: "Or: One-pan-adjacent chicken thighs with a very cooperative oven schedule"
-description: "Bone-in, skin-on chicken thighs roasted with a bright green herb marinade, paired with crispy garlic-pepper potatoes. Built for weeknights, flexible on timing, and designed to finish together in one oven."
+description: "Bone-in, skin-on chicken thighs roasted with a bright green herb marinade, paired with crispy garlic-pepper potatoes. Weeknight-friendly, one-oven finish."
 draft: false
 social_image: "/images/social/recipe-herb-roasted-chicken-garlic-pepper-potatoes-og.png"
 prepTime: "PT20M"
@@ -47,6 +47,8 @@ This is a flexible, repeatable weeknight dinner built around chicken thighs that
 - **Implements:** two sheet pans; blender or immersion blender; mixing bowls
 - **Oven setting:** start at 450°F (232°C), then reduce to 425°F (218°C)
 - **Batch size:** serves about 3 people
+
+<img src="/images/herb-roasted-chicken-garlic-pepper-potatoes.jpg" alt="Herb roasted chicken thigh with crispy skin and green herb specks, served with crispy garlic-pepper roasted potatoes and bright green beans on a light pink plate" style="width: 100%; max-width: 600px; margin: 2rem 0; border-radius: 8px;" />
 
 ## Ingredients
 

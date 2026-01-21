@@ -3,7 +3,7 @@ title: "My Favorite Chocolate Chip Cookies, Ever"
 date: 2026-01-06
 slug: "recipe-favorite-chocolate-chip-cookies"
 subtitle: "Or: The only chocolate chip cookie recipe you'll ever need"
-description: "Large, face-sized chocolate chip cookies with three distinct textures: crunchy edges, chewy centers, and pools of bittersweet chocolate. Requires a 24-hour rest for maximum flavor."
+description: "Large, face-sized chocolate chip cookies with three distinct textures: crunchy edges, chewy centers, and pools of bittersweet chocolate. Requires 24-hour rest."
 draft: false
 social_image: "/images/social/recipe-favorite-chocolate-chip-cookies-og.png"
 prepTime: "PT15M"
