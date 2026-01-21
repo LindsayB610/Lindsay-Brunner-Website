@@ -14,7 +14,8 @@ const {
 const {
   validateRecipeFrontMatter,
   checkRecipeSocialImages,
-  checkRecipeInlineImages
+  checkRecipeInlineImages,
+  validateRecipeImageStyling
 } = require('./content-checks/recipes');
 
 const {
@@ -45,26 +46,34 @@ const {
 } = require('./content-checks/seo');
 
 // Run all tests
-console.log('🧪 Running comprehensive content validation tests...\n');
+async function runAllTests() {
+  console.log('🧪 Running comprehensive content validation tests...\n');
 
-checkRecentThoughtsSection();
-checkHomepageContent();
-validateFrontMatter();
-validateRecipeFrontMatter();
-checkSocialImages();
-checkRecipeSocialImages();
-checkRecipeInlineImages();
-checkStaticAssets();
-validateRSSFeed();
-validateRecipesRSSFeed();
-validateContextAwareRSSLinks();
-validateSitemap();
-validateAboutPage();
-validate404Page();
-validatePermalinks();
-validateRecipeIndexPage();
-validateNoDraftInThoughtsUrls();
-validateAllPagesHaveOGImages();
-validateMetaDescriptionLength();
+  checkRecentThoughtsSection();
+  checkHomepageContent();
+  validateFrontMatter();
+  validateRecipeFrontMatter();
+  checkSocialImages();
+  checkRecipeSocialImages();
+  checkRecipeInlineImages();
+  await validateRecipeImageStyling();
+  checkStaticAssets();
+  validateRSSFeed();
+  validateRecipesRSSFeed();
+  validateContextAwareRSSLinks();
+  validateSitemap();
+  validateAboutPage();
+  validate404Page();
+  validatePermalinks();
+  validateRecipeIndexPage();
+  validateNoDraftInThoughtsUrls();
+  validateAllPagesHaveOGImages();
+  validateMetaDescriptionLength();
 
-console.log('\n✅ All content validation tests passed!');
+  console.log('\n✅ All content validation tests passed!');
+}
+
+runAllTests().catch(error => {
+  console.error('❌ Fatal error running tests:', error);
+  process.exit(1);
+});

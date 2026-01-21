@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const sharp = require('sharp');
 const { recipesDir, REQUIRED_RECIPE_FIELDS, parseFrontMatter, staticDir } = require('./utils');
 
 function validateRecipeFrontMatter() {
@@ -283,8 +284,143 @@ function checkRecipeInlineImages() {
   }
 }
 
+async function validateRecipeImageStyling() {
+  console.log('\n📐 Validating recipe image styling and aspect ratios...');
+  
+  const errors = [];
+  const files = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md' && file.startsWith('recipe-'));
+  
+  if (files.length === 0) {
+    console.log('⚠️  No recipe posts found to check.');
+    return;
+  }
+  
+  const imageData = []; // Store all images with their aspect ratios
+  
+  files.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const content = fs.readFileSync(filePath, 'utf8');
+    
+    // Find all img tags in the content
+    const imgRegex = /<img[^>]+src=["']([^"']+)["'][^>]*>/g;
+    const matches = [...content.matchAll(imgRegex)];
+    
+    if (matches.length === 0) {
+      // No images in this recipe, skip
+      return;
+    }
+    
+    matches.forEach((match, index) => {
+      const imageSrc = match[1];
+      const fullMatch = match[0];
+      
+      // Skip external URLs
+      if (imageSrc.startsWith('http://') || imageSrc.startsWith('https://')) {
+        return;
+      }
+      
+      // Extract style attribute
+      const styleMatch = fullMatch.match(/style=["']([^"']*)["']/);
+      const style = styleMatch ? styleMatch[1] : '';
+      
+      // Check for width: 100%
+      if (!style.includes('width: 100%')) {
+        errors.push(`${file}: Image ${index + 1} (${imageSrc}) must have width: 100% in style attribute. Current style: "${style}"`);
+      }
+      
+      // Check for max-width (should not be present)
+      if (style.includes('max-width')) {
+        errors.push(`${file}: Image ${index + 1} (${imageSrc}) must not have max-width in style attribute. All recipe images should be full width. Current style: "${style}"`);
+      }
+      
+      // Get image path for aspect ratio check
+      const imagePath = imageSrc.startsWith('/') 
+        ? imageSrc.substring(1) 
+        : imageSrc;
+      const fullImagePath = path.join(staticDir, imagePath);
+      
+      if (fs.existsSync(fullImagePath)) {
+        imageData.push({
+          file,
+          imageIndex: index + 1,
+          imageSrc,
+          fullImagePath
+        });
+      }
+    });
+  });
+  
+  // Check aspect ratios if we have images
+  if (imageData.length > 0) {
+    const aspectRatios = [];
+    
+    for (const img of imageData) {
+      try {
+        const metadata = await sharp(img.fullImagePath).metadata();
+        const { width, height } = metadata;
+        
+        if (width && height) {
+          const aspectRatio = width / height;
+          aspectRatios.push({
+            file: img.file,
+            imageIndex: img.imageIndex,
+            imageSrc: img.imageSrc,
+            aspectRatio,
+            width,
+            height
+          });
+        }
+      } catch (err) {
+        errors.push(`${img.file}: Image ${img.imageIndex} (${img.imageSrc}) - Error reading image dimensions: ${err.message}`);
+      }
+    }
+    
+    // Check if all aspect ratios are the same (within tolerance)
+    if (aspectRatios.length > 1) {
+      const firstAspectRatio = aspectRatios[0].aspectRatio;
+      const tolerance = 0.01; // 1% tolerance for floating point comparison
+      
+      aspectRatios.forEach(img => {
+        const diff = Math.abs(img.aspectRatio - firstAspectRatio);
+        if (diff > tolerance) {
+          errors.push(
+            `${img.file}: Image ${img.imageIndex} (${img.imageSrc}) has aspect ratio ${img.aspectRatio.toFixed(3)} ` +
+            `(${img.width}x${img.height}), but expected ${firstAspectRatio.toFixed(3)} ` +
+            `(from ${aspectRatios[0].file}). All recipe images must have the same aspect ratio.`
+          );
+        }
+      });
+      
+      if (errors.length === 0) {
+        console.log(`   ✓ All ${aspectRatios.length} recipe images have consistent aspect ratio: ${firstAspectRatio.toFixed(3)}`);
+      }
+    } else if (aspectRatios.length === 1) {
+      const img = aspectRatios[0];
+      console.log(`   ✓ ${img.file}: Image has aspect ratio ${img.aspectRatio.toFixed(3)} (${img.width}x${img.height})`);
+    }
+  }
+  
+  if (errors.length > 0) {
+    console.error('❌ Recipe image styling validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    console.error('\n💡 Requirements:');
+    console.error('   - All recipe images must have width: 100% in style attribute');
+    console.error('   - All recipe images must NOT have max-width in style attribute');
+    console.error('   - All recipe images must have the same aspect ratio');
+    process.exit(1);
+  }
+  
+  if (imageData.length > 0) {
+    console.log('✅ All recipe images have correct styling and consistent aspect ratios.');
+  } else {
+    console.log('✅ No recipe images found to validate.');
+  }
+}
+
 module.exports = {
   validateRecipeFrontMatter,
   checkRecipeSocialImages,
-  checkRecipeInlineImages
+  checkRecipeInlineImages,
+  validateRecipeImageStyling
 };

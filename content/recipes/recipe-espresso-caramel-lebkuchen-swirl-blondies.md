@@ -39,7 +39,7 @@ recipeInstructions:
 
 I'm lucky in life to have well-travelled foodie friends, one of whom brought me two gorgeous sweet spreads from Bremen, Germany: one caramel with espresso, one chocolate with lebkuchen (gingerbread) spices. Both were too good to waste on toast, and both wanted to be the star. So I built a blondie recipe that gives them a proper stage.
 
-<img src="/images/PXL_20251230_202603628.jpg" alt="Two jars of sweet spreads: caramel with espresso and chocolate with lebkuchen spices" style="width: 100%; max-width: 600px; margin: 2rem 0; border-radius: 8px;" />
+<img src="/images/PXL_20251230_202603628.jpg" alt="Two jars of sweet spreads: caramel with espresso and chocolate with lebkuchen spices" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
 Blondies work better here than brownies because they let the espresso caramel and spiced chocolate stand out instead of getting lost against cocoa. The high fat, high sugar, low flour ratio means these can handle generous swirls without collapsing or turning gummy in the middle. You'll use about half of each jar in one go, which is exactly the kind of commitment level I'm here for.
 

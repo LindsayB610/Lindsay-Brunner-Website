@@ -48,7 +48,7 @@ This recipe started the way a lot of weeknight dinners do: chicken thighs in the
 - **Oven setting:** start at 450°F (232°C), then reduce to 425°F (218°C)
 - **Batch size:** serves about 3 people
 
-<img src="/images/herb-roasted-chicken-garlic-pepper-potatoes.jpg" alt="Herb roasted chicken thigh with crispy skin and green herb specks, served with crispy garlic-pepper roasted potatoes and bright green beans on a light pink plate" style="width: 100%; max-width: 600px; margin: 2rem 0; border-radius: 8px;" />
+<img src="/images/herb-roasted-chicken-garlic-pepper-potatoes.jpg" alt="Herb roasted chicken thigh with crispy skin and green herb specks, served with crispy garlic-pepper roasted potatoes and bright green beans on a light pink plate" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
 ## Ingredients
 
