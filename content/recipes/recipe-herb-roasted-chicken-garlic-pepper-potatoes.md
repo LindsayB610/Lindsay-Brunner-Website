@@ -40,7 +40,7 @@ recipeInstructions:
   - "Optional broil. If needed, broil chicken for 2–3 minutes for extra crisp skin. Watch closely."
   - "Rest and finish. Rest chicken 5–10 minutes. Finish chicken and potatoes with a small splash of lemon juice and flaky salt."
 ---
-This is a flexible, repeatable weeknight dinner built around chicken thighs that want to be roasted hard, plus potatoes that behave themselves in the same oven. The herb marinade does real flavor work without requiring advance planning, and the timing is designed so nothing waits on anything else.
+This recipe started the way a lot of weeknight dinners do: chicken thighs in the freezer, potatoes on the counter, and the need to feed people without turning it into a whole thing. What I ended up with was a fast, bright herb marinade and some crowd-pleasing simple af garlic potatoes. Fresh herbs can make the marinade greener and louder, but dried work just fine when that's what you have. 
 
 ## Snapshot
 
