@@ -488,7 +488,6 @@ td code {
   justify-content: center;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--dark-border);
 }
 
 .recipe-action-button {
