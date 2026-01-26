@@ -620,7 +620,7 @@ td code {
   }
 
   body {
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
     font-size: 12pt !important;
     line-height: 1.6 !important;
     color: black !important;
@@ -654,7 +654,7 @@ td code {
   }
 
   article.section header h1 {
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
     font-size: 24pt !important;
     font-weight: 700 !important;
     color: black !important;
@@ -704,7 +704,7 @@ td code {
   .article-content h2,
   .article-content h3,
   .article-content h4 {
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
     color: black !important;
     font-weight: 700 !important;
     margin-top: 1.5rem !important;
@@ -774,13 +774,9 @@ td code {
     display: none !important;
   }
 
-  /* Images - optional, can be hidden to save ink */
+  /* Images - hidden in print to save ink and focus on content */
   .article-content img {
-    max-width: 100% !important;
-    height: auto !important;
-    page-break-inside: avoid;
-    /* Uncomment to hide images in print: */
-    /* display: none !important; */
+    display: none !important;
   }
 
   /* Code blocks */
