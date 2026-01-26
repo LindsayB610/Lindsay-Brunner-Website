@@ -15,7 +15,8 @@ const {
   validateRecipeFrontMatter,
   checkRecipeSocialImages,
   checkRecipeInlineImages,
-  validateRecipeImageStyling
+  validateRecipeImageStyling,
+  validateRecipePrintFunctionality
 } = require('./content-checks/recipes');
 
 const {
@@ -57,6 +58,7 @@ async function runAllTests() {
   checkRecipeSocialImages();
   checkRecipeInlineImages();
   await validateRecipeImageStyling();
+  validateRecipePrintFunctionality();
   checkStaticAssets();
   validateRSSFeed();
   validateRecipesRSSFeed();

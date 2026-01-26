@@ -221,6 +221,36 @@ The template includes:
 
 5. **Test**: Run `npm run build && npm run test:content` to validate
 
+### Recipe Print Functionality
+
+Recipe pages include optimized print functionality:
+
+**Features:**
+- **Print icon button** at the top-right of the recipe header for quick access
+- **Print and Email buttons** at the bottom of the recipe content (before "Make something else" section)
+- **Optimized print stylesheet** that:
+  - Hides navigation, headers, footers, and non-essential content
+  - Uses serif fonts (Georgia) for better readability on paper
+  - Displays black text on white background
+  - Shows link URLs in parentheses (since links don't work on paper)
+  - Includes recipe URL at the bottom for reference
+  - Controls page breaks to avoid awkward splits
+
+**Analytics tracking:**
+- Print button clicks are tracked in Plausible Analytics as "Print Recipe" events
+- Email button clicks are tracked as "Email Recipe" events
+- Both include custom properties (recipe title and URL) for detailed analytics
+
+**How it works:**
+- Users can click the print icon at the top or the "Print" button at the bottom
+- Both trigger the browser's native print dialog
+- The print stylesheet automatically optimizes the layout for printing
+- Email button opens the user's default email client with pre-filled subject and body
+
+**Testing:**
+- Print functionality is validated by `npm run test:content`
+- Tests verify print buttons exist, print stylesheet is present, and email links are properly formatted
+
 ### Updating Existing Pages
 
 - **Homepage**: Edit `content/_index.md`
@@ -521,6 +551,12 @@ The test suite includes:
   - Validates recipe template structure compliance
   - Ensures recipes follow the template guidelines
 
+- **Recipe print functionality** (`tests/content-checks/recipes.js`):
+  - Validates print buttons exist on recipe pages
+  - Checks print stylesheet has required @media print rules
+  - Verifies email link format and parameters
+  - Ensures print-only URL footer exists
+
 **Note**: Always run `npm run build` before running content tests, as they validate the generated `public/` directory.
 
 ## 🤖 AI Assistant Guidelines
@@ -539,6 +575,8 @@ If you're using an AI assistant to work on this project, refer to `agents.md` fo
 
 - **Meta Tags**: Configured in `config.toml` for optimal SEO
 - **Analytics**: Privacy-friendly analytics via Plausible
+  - **Outbound link tracking**: Automatically tracks clicks on external links
+  - **Custom events**: Print and Email recipe buttons are tracked with custom properties
 - **Ahrefs Web Analytics**: Simple, privacy-friendly traffic monitoring via a script in the site head
 - **RSS Feed**: Available at `/index.xml` for content syndication
 - **Social Media**: Open Graph tags for better social sharing

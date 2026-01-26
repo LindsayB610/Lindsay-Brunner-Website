@@ -418,9 +418,165 @@ async function validateRecipeImageStyling() {
   }
 }
 
+function validateRecipePrintFunctionality() {
+  console.log('\n🖨️  Validating recipe print functionality...');
+  
+  const errors = [];
+  const warnings = [];
+  const { publicDir } = require('./utils');
+  
+  // Check that print stylesheet exists and has @media print rules
+  const customCssPath = path.join(staticDir, 'css', 'custom.css');
+  if (!fs.existsSync(customCssPath)) {
+    errors.push('Print stylesheet (custom.css) not found');
+  } else {
+    const cssContent = fs.readFileSync(customCssPath, 'utf8');
+    
+    // Check for @media print
+    if (!cssContent.includes('@media print')) {
+      errors.push('Print stylesheet missing @media print rules');
+    } else {
+      // Check for key print styles
+      const requiredPrintStyles = [
+        '.print-button',
+        '.recipe-action-button',
+        '.recipe-actions',
+        '.print-url'
+      ];
+      
+      requiredPrintStyles.forEach(selector => {
+        if (!cssContent.includes(selector)) {
+          warnings.push(`Print stylesheet may be missing styles for ${selector}`);
+        }
+      });
+      
+      console.log('   ✓ Print stylesheet exists with @media print rules');
+    }
+  }
+  
+  // Check recipe HTML pages for print buttons
+  const recipeFiles = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md' && file.startsWith('recipe-'));
+  
+  if (recipeFiles.length === 0) {
+    console.log('⚠️  No recipe posts found to check.');
+    return;
+  }
+  
+  let checkedCount = 0;
+  let passedCount = 0;
+  
+  recipeFiles.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const frontMatter = parseFrontMatter(filePath);
+    
+    if (!frontMatter) return;
+    
+    const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+    
+    // Skip drafts (they may not be built)
+    if (isDraft) {
+      return;
+    }
+    
+    // Find the built HTML file
+    let recipeHtmlPath = null;
+    if (frontMatter.date && frontMatter.slug) {
+      const dateMatch = frontMatter.date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (dateMatch) {
+        const [, year, month, day] = dateMatch;
+        const slug = frontMatter.slug;
+        const possiblePaths = [
+          path.join(publicDir, 'recipes', `${year}-${month}-${day}`, slug, 'index.html'),
+          path.join(publicDir, 'recipes', `${year}-${month}-${day}`, slug + '.html')
+        ];
+        
+        for (const possiblePath of possiblePaths) {
+          if (fs.existsSync(possiblePath)) {
+            recipeHtmlPath = possiblePath;
+            break;
+          }
+        }
+      }
+    }
+    
+    if (!recipeHtmlPath || !fs.existsSync(recipeHtmlPath)) {
+      // Recipe not built yet, skip
+      return;
+    }
+    
+    checkedCount++;
+    
+    try {
+      const htmlContent = fs.readFileSync(recipeHtmlPath, 'utf8');
+      const fileErrors = [];
+      
+      // Check for print icon button at top (class="print-icon-button")
+      if (!htmlContent.includes('print-icon-button') && !htmlContent.includes('print-button')) {
+        fileErrors.push(`Missing print icon button (expected class="print-icon-button" or "print-button")`);
+      }
+      
+      // Check for recipe action buttons at bottom
+      if (!htmlContent.includes('recipe-actions')) {
+        fileErrors.push(`Missing recipe action buttons container (expected class="recipe-actions")`);
+      }
+      
+      // Check for print button in action buttons
+      if (!htmlContent.includes('recipe-action-button') || !htmlContent.includes('Print')) {
+        fileErrors.push(`Missing print button in recipe actions (expected class="recipe-action-button" with "Print" text)`);
+      }
+      
+      // Check for email button
+      if (!htmlContent.includes('mailto:') || !htmlContent.includes('Email')) {
+        fileErrors.push(`Missing email button in recipe actions (expected mailto: link with "Email" text)`);
+      }
+      
+      // Check for print-only URL footer
+      if (!htmlContent.includes('print-url') && !htmlContent.includes('Recipe from:')) {
+        warnings.push(`${file}: Print-only URL footer may be missing (expected class="print-url" or "Recipe from:" text)`);
+      }
+      
+      // Check that email link has proper format (subject and body)
+      const emailLinkMatch = htmlContent.match(/href=["']mailto:[^"']*["']/);
+      if (emailLinkMatch) {
+        const emailLink = emailLinkMatch[0];
+        if (!emailLink.includes('subject=') || !emailLink.includes('body=')) {
+          fileErrors.push(`Email link missing subject or body parameters`);
+        }
+      }
+      
+      if (fileErrors.length > 0) {
+        errors.push(`${file}: ${fileErrors.join('; ')}`);
+      } else {
+        passedCount++;
+      }
+    } catch (err) {
+      errors.push(`${file}: Error reading HTML file - ${err.message}`);
+    }
+  });
+  
+  if (warnings.length > 0) {
+    console.warn('⚠️  Print functionality warnings:');
+    warnings.forEach(warning => console.warn(`   - ${warning}`));
+  }
+  
+  if (errors.length > 0) {
+    console.error('❌ Recipe print functionality validation failed:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+  
+  if (checkedCount > 0) {
+    console.log(`✅ Recipe print functionality validated for ${passedCount}/${checkedCount} published recipe(s).`);
+  } else {
+    console.log('⚠️  No published recipes found to validate (may need to run "npm run build").');
+  }
+}
+
 module.exports = {
   validateRecipeFrontMatter,
   checkRecipeSocialImages,
   checkRecipeInlineImages,
-  validateRecipeImageStyling
+  validateRecipeImageStyling,
+  validateRecipePrintFunctionality
 };

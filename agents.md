@@ -211,6 +211,7 @@ npm test           # Run all tests (HTML, links, content, spell check, OG images
 - Scheduled posts workflow
 - Recipe search JSON index structure and validity
 - Recipe template compliance
+- Recipe print functionality (print buttons, stylesheet, email links)
 
 ## Configuration Details
 
@@ -274,6 +275,12 @@ See `BRAND.md` for complete brand guidelines. Key points:
 5. Add `social_image` to front matter: `social_image: "/images/social/recipe-xxx-og.png"`
 6. Run `npm run build && npm run test:content`
 
+**Print functionality:**
+- Recipe pages automatically include print icon button (top-right) and print/email buttons (bottom)
+- Print stylesheet is automatically applied via `@media print` rules in `static/css/custom.css`
+- Print and email actions are tracked in Plausible Analytics
+- No additional configuration needed - works out of the box for all recipes
+
 **To schedule for future publication:**
 - Set `draft: true` and a future `date` in front matter
 - **Important**: Scheduled recipes must have `social_image` set before the publish date, or they will be skipped
@@ -284,6 +291,8 @@ See `BRAND.md` for complete brand guidelines. Key points:
 
 - Main styles: `static/css/main.css`
 - Custom overrides: `static/css/custom.css`
+  - Includes print stylesheet (`@media print`) for recipe pages
+  - Print styles hide navigation, use serif fonts, optimize for paper
 - Use CSS custom properties from brand system
 - Test responsive breakpoints: 768px, 480px
 
@@ -304,6 +313,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **Deployment**: Automatic via Netlify on push to master
 - **Scheduled Posts**: Posts with `draft: true` and future dates will auto-publish via GitHub Actions (runs twice daily at 13:00 and 14:00 UTC to cover both PDT and PST). See README.md for details.
 - **Recipe Search JSON**: A JSON index is automatically generated at `/recipes/index.json` for client-side recipe search functionality. The index includes recipe metadata and is validated by tests.
+- **Recipe Print Functionality**: Recipe pages include print icon button (top-right) and print/email buttons (bottom). Print stylesheet automatically optimizes layout for printing. Print and email actions are tracked in Plausible Analytics. See README.md for details.
 - **Spell Checking**: Use `npm run test:spell` to check modified content files, or `npm run test:spell:all` to check all content files. Add valid words to `cspell.json` if needed.
 - **Hugo Version Checking**: Periodically check Hugo version and security status with `npm run check:hugo`. This checks for known CVEs and available updates. Recommended: check monthly or when security advisories are published.
 - **Dependency Security Checking**: Run `npm run check:dependencies` to check all npm packages, Node.js version, and GitHub Actions for security vulnerabilities and updates. This runs automatically via GitHub Actions monthly and creates issues if problems are found.
@@ -331,6 +341,8 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **.github/workflows/security-check.yml**: Monthly automated security and dependency check workflow
 - **.github/workflows/schedule-posts.yml**: GitHub Actions workflow for scheduled publishing
 - **layouts/recipes/list.json**: Template for recipe search JSON index
+- **layouts/recipes/single.html**: Recipe page template with print functionality (print icon, print/email buttons)
+- **static/css/custom.css**: Print stylesheet (`@media print`) for optimized recipe printing
 
 ## When in Doubt
 

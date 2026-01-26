@@ -478,6 +478,426 @@ td code {
   }
 }
 
+/* ============================================
+   RECIPE ACTION BUTTONS (PRINT & EMAIL)
+   ============================================ */
+
+.recipe-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--dark-border);
+}
+
+.recipe-action-button {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  color: var(--dark-text);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.recipe-action-button::after {
+  display: none !important;
+}
+
+.recipe-action-button:hover {
+  background: var(--dark-surface-lighter);
+  border-color: var(--color-pink);
+  color: var(--dark-text);
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+}
+
+.recipe-action-button:focus {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 2px;
+}
+
+.recipe-action-button svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: currentColor;
+}
+
+.print-icon-button {
+  background: transparent;
+  border: none;
+  padding: var(--space-sm);
+  color: var(--dark-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.print-icon-button:hover {
+  color: var(--color-pink);
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+}
+
+.print-icon-button:focus {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 2px;
+}
+
+.print-icon-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+@media (max-width: 480px) {
+  .recipe-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .recipe-action-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   PRINT STYLESHEET FOR RECIPE PAGES
+   ============================================ */
+
+@media print {
+  /* Reset page margins and set up clean print layout */
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+
+  /* Hide all non-essential elements */
+  .site-header,
+  .site-footer,
+  .main-nav,
+  .social-links,
+  .hero,
+  nav,
+  script,
+  .recipe-search,
+  .recipe-index-categories-grid,
+  /* Hide "Make something else" section */
+  .no-print,
+  section.no-print,
+  /* Hide decorative elements */
+  .section::before,
+  .section::after,
+  .site-header::after,
+  .site-footer::before,
+  .table-wrapper::before,
+  /* Hide JSON-LD structured data (not visible anyway) */
+  script[type="application/ld+json"],
+  /* Hide header link to browse recipes */
+  header a[href*="/recipes/all/"] {
+    display: none !important;
+  }
+
+  /* Base print styles - clean, readable typography */
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+    color: black !important;
+    background: white !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Container adjustments for print */
+  .container,
+  .container-narrow {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .section {
+    padding: 0 !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Recipe header styling */
+  article.section header {
+    text-align: left !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 2px solid black !important;
+  }
+
+  article.section header h1 {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 24pt !important;
+    font-weight: 700 !important;
+    color: black !important;
+    background: none !important;
+    -webkit-text-fill-color: black !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    margin-bottom: 0.5rem !important;
+    page-break-after: avoid;
+  }
+
+  article.section header p {
+    font-size: 11pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+    font-style: italic;
+  }
+
+  article.section header .post-meta {
+    font-size: 9pt !important;
+    color: #666 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  article.section header a {
+    display: none !important;
+  }
+
+  /* Ensure only the recipe article content prints */
+  body > main > article.section {
+    display: block !important;
+  }
+
+  body > main > section.section {
+    display: none !important;
+  }
+
+  /* Article content styling */
+  .article-content {
+    font-size: 11pt !important;
+    line-height: 1.7 !important;
+    color: black !important;
+    max-width: 100% !important;
+  }
+
+  /* Headings */
+  .article-content h2,
+  .article-content h3,
+  .article-content h4 {
+    font-family: Georgia, "Times New Roman", serif !important;
+    color: black !important;
+    font-weight: 700 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    page-break-after: avoid;
+  }
+
+  .article-content h2 {
+    font-size: 18pt !important;
+    border-bottom: 1px solid #333 !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .article-content h3 {
+    font-size: 14pt !important;
+  }
+
+  .article-content h4 {
+    font-size: 12pt !important;
+  }
+
+  /* Paragraphs and text */
+  .article-content p {
+    font-size: 11pt !important;
+    color: black !important;
+    margin-bottom: 0.75rem !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Lists - ingredients and instructions */
+  .article-content ul,
+  .article-content ol {
+    margin-bottom: 1rem !important;
+    padding-left: 1.5rem !important;
+    page-break-inside: avoid;
+  }
+
+  .article-content li {
+    font-size: 11pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .article-content li::marker {
+    color: black !important;
+  }
+
+  /* Links - show URLs in print */
+  .article-content a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  .article-content a[href^="http"]:after,
+  .article-content a[href^="/"]:after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+    font-style: italic;
+    word-break: break-all;
+  }
+
+  /* Hide decorative link underlines */
+  .article-content a::after {
+    display: none !important;
+  }
+
+  /* Images - optional, can be hidden to save ink */
+  .article-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    /* Uncomment to hide images in print: */
+    /* display: none !important; */
+  }
+
+  /* Code blocks */
+  .article-content code {
+    font-family: "Courier New", Courier, monospace !important;
+    font-size: 10pt !important;
+    background: #f5f5f5 !important;
+    color: black !important;
+    border: 1px solid #ddd !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+
+  .article-content pre {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    padding: 0.75rem !important;
+    page-break-inside: avoid;
+  }
+
+  .article-content pre::before {
+    display: none !important;
+  }
+
+  /* Tables */
+  .article-content table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1rem 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .article-content table::before {
+    display: none !important;
+  }
+
+  .article-content th,
+  .article-content td {
+    border: 1px solid #333 !important;
+    padding: 0.5rem !important;
+    color: black !important;
+    background: white !important;
+  }
+
+  .article-content th {
+    background: #f5f5f5 !important;
+    font-weight: 700 !important;
+  }
+
+  .article-content thead {
+    background: #f5f5f5 !important;
+  }
+
+  .article-content thead::after {
+    display: none !important;
+  }
+
+  .article-content tbody tr {
+    background: white !important;
+  }
+
+  .article-content tbody tr:hover {
+    background: white !important;
+    transform: none !important;
+  }
+
+  /* Horizontal rules */
+  .article-content hr,
+  .article-content --- {
+    border: none !important;
+    border-top: 1px solid #333 !important;
+    margin: 1.5rem 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Blockquotes */
+  .article-content blockquote {
+    border-left: 3px solid #333 !important;
+    padding-left: 1rem !important;
+    margin: 1rem 0 !important;
+    background: white !important;
+    color: black !important;
+    font-style: italic;
+  }
+
+  /* Print URL at bottom of recipe */
+  .print-url {
+    display: block !important;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+    font-size: 9pt;
+    color: #666;
+    font-style: italic;
+    page-break-inside: avoid;
+  }
+
+  /* Page break controls */
+  .article-content h2,
+  .article-content h3 {
+    page-break-after: avoid;
+  }
+
+  .article-content p,
+  .article-content li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Hide print and email buttons in print view */
+  .print-button,
+  .recipe-action-button,
+  .recipe-actions,
+  .print-icon-button {
+    display: none !important;
+  }
+}
+
 /* Safari/iPhone specific fixes for recipe index */
 @supports (-webkit-touch-callout: none) {
   /* This targets Safari specifically */
