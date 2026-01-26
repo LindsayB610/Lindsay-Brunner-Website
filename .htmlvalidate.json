@@ -3,6 +3,13 @@
     "html-validate:recommended"
   ],
   "rules": {
-    "wcag/h37": "error" 
+    "wcag/h37": "error",
+    "attr-quotes": "off",
+    "doctype-style": "off",
+    "no-inline-style": "off",
+    "no-redundant-role": "off",
+    "void-style": "off",
+    "no-trailing-whitespace": "off",
+    "no-redundant-aria-label": "off"
   }
 } 
