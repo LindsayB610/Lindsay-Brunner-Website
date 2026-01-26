@@ -49,6 +49,34 @@ function getCompressionRatio(originalSize, newSize) {
 }
 
 /**
+ * Clean up backup files for optimized images
+ */
+function cleanupBackups(imagePaths) {
+  const cleaned = [];
+  for (const imagePath of imagePaths) {
+    const resolvedPath = path.isAbsolute(imagePath)
+      ? imagePath
+      : path.join(process.cwd(), imagePath);
+    const backupPath = resolvedPath + '.backup';
+    
+    if (fs.existsSync(backupPath)) {
+      // Only delete if the original optimized file exists and is newer
+      if (fs.existsSync(resolvedPath)) {
+        const backupStats = fs.statSync(backupPath);
+        const originalStats = fs.statSync(resolvedPath);
+        
+        // Delete backup if original exists and is newer (optimization was successful)
+        if (originalStats.mtime > backupStats.mtime) {
+          fs.unlinkSync(backupPath);
+          cleaned.push(path.basename(backupPath));
+        }
+      }
+    }
+  }
+  return cleaned;
+}
+
+/**
  * Optimize a single image
  */
 async function optimizeImage(imagePath, options = {}) {
@@ -56,7 +84,8 @@ async function optimizeImage(imagePath, options = {}) {
     quality = JPEG_QUALITY,
     maxWidth = MAX_WIDTH,
     maxHeight = MAX_HEIGHT,
-    backup = true
+    backup = true,
+    autoCleanup = false
   } = options;
 
   // Resolve absolute path
@@ -136,6 +165,12 @@ async function optimizeImage(imagePath, options = {}) {
   console.log(`   New size: ${formatFileSize(newSize)}`);
   console.log(`   Reduction: ${formatFileSize(reduction)} (${percent}%)`);
 
+  // Auto-cleanup backup if requested and optimization was successful
+  if (autoCleanup && backupPath && fs.existsSync(backupPath)) {
+    fs.unlinkSync(backupPath);
+    console.log(`   ✓ Backup cleaned up: ${path.basename(backupPath)}`);
+  }
+
   return {
     path: resolvedPath,
     originalSize,
@@ -150,12 +185,17 @@ async function optimizeImage(imagePath, options = {}) {
  * Main function
  */
 async function main() {
-  const imagePaths = process.argv.slice(2);
+  const args = process.argv.slice(2);
+  
+  // Check for --cleanup-backups flag
+  const autoCleanup = args.includes('--cleanup-backups');
+  const imagePaths = args.filter(arg => !arg.startsWith('--'));
 
   if (imagePaths.length === 0) {
     console.error('❌ Error: Please provide at least one image file path');
     console.error('   Usage: npm run optimize:images -- static/images/image1.jpg [image2.jpg ...]');
     console.error('   Example: npm run optimize:images -- static/images/pork-shoulder-broiled.jpg');
+    console.error('   Add --cleanup-backups to automatically delete backups after optimization');
     process.exit(1);
   }
 
@@ -190,7 +230,8 @@ async function main() {
     try {
       const result = await optimizeImage(imagePath, {
         quality: JPEG_QUALITY,
-        backup: true
+        backup: true,
+        autoCleanup: autoCleanup
       });
       results.push(result);
       totalOriginalSize += result.originalSize;
@@ -210,14 +251,91 @@ async function main() {
     console.log(`   Total original size: ${formatFileSize(totalOriginalSize)}`);
     console.log(`   Total new size: ${formatFileSize(totalNewSize)}`);
     console.log(`   Total reduction: ${formatFileSize(totalReduction)} (${totalPercent}%)`);
-    console.log(`\n💾 Backups created with .backup extension`);
-    console.log(`   You can delete backups after verifying the optimized images look good.`);
+    
+    if (autoCleanup) {
+      console.log(`\n🧹 Backups automatically cleaned up`);
+    } else {
+      console.log(`\n💾 Backups created with .backup extension`);
+      console.log(`   You can delete backups after verifying the optimized images look good.`);
+      console.log(`   Or use --cleanup-backups flag to auto-delete backups after optimization.`);
+    }
   }
 }
 
+/**
+ * Cleanup existing backup files
+ */
+function cleanupExistingBackups() {
+  const imagesDir = path.join(process.cwd(), 'static', 'images');
+  if (!fs.existsSync(imagesDir)) {
+    console.log('❌ static/images directory not found');
+    return;
+  }
+
+  console.log('🧹 Cleaning up backup files...\n');
+  
+  const backupFiles = [];
+  function findBackups(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+      
+      if (stat.isDirectory()) {
+        findBackups(filePath);
+      } else if (file.endsWith('.backup')) {
+        backupFiles.push(filePath);
+      }
+    }
+  }
+  
+  findBackups(imagesDir);
+  
+  if (backupFiles.length === 0) {
+    console.log('✅ No backup files found');
+    return;
+  }
+  
+  let cleaned = 0;
+  for (const backupPath of backupFiles) {
+    const originalPath = backupPath.replace('.backup', '');
+    
+    if (fs.existsSync(originalPath)) {
+      const backupStats = fs.statSync(backupPath);
+      const originalStats = fs.statSync(originalPath);
+      
+      // Only delete if original exists and is newer (optimization was successful)
+      if (originalStats.mtime > backupStats.mtime) {
+        fs.unlinkSync(backupPath);
+        console.log(`   ✓ Deleted: ${path.relative(process.cwd(), backupPath)}`);
+        cleaned++;
+      } else {
+        console.log(`   ⚠️  Skipped: ${path.relative(process.cwd(), backupPath)} (original is older, may need review)`);
+      }
+    } else {
+      // Original doesn't exist, delete orphaned backup
+      fs.unlinkSync(backupPath);
+      console.log(`   ✓ Deleted orphaned backup: ${path.relative(process.cwd(), backupPath)}`);
+      cleaned++;
+    }
+  }
+  
+  console.log(`\n✨ Cleanup complete! Deleted ${cleaned} backup file(s)`);
+}
+
 if (require.main === module) {
-  main().catch(error => {
-    console.error('❌ Fatal error:', error.message);
-    process.exit(1);
-  });
+  // Check if --cleanup-only flag is present
+  if (process.argv.includes('--cleanup-only')) {
+    try {
+      cleanupExistingBackups();
+    } catch (error) {
+      console.error('❌ Fatal error:', error.message);
+      process.exit(1);
+    }
+  } else {
+    main().catch(error => {
+      console.error('❌ Fatal error:', error.message);
+      process.exit(1);
+    });
+  }
 }

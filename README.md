@@ -76,6 +76,9 @@ Before you begin, ensure you have the following installed:
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
 - `npm run check:hugo` - Check Hugo version, security status, and available updates
 - `npm run check:dependencies` - Check all dependencies (npm packages, Node.js, GitHub Actions) for security issues and updates
+- `npm run optimize:images` - Optimize image file sizes (usage: `npm run optimize:images -- static/images/file.jpg`)
+- `npm run optimize:images -- --cleanup-backups` - Optimize images and automatically delete backup files after successful optimization
+- `npm run cleanup:backups` - Clean up existing backup files created by image optimization
 
 ## 📁 Project Structure
 
@@ -113,6 +116,7 @@ Before you begin, ensure you have the following installed:
 ├── scripts/              # Build and automation scripts
 │   ├── generate-og-images.js # Generate OG images for recipes
 │   ├── generate-png-from-svg.js # Convert SVG to PNG for social media
+│   ├── optimize-images.js # Optimize image file sizes with automatic backup cleanup
 │   ├── schedule-posts.js # Auto-publish scheduled posts script
 │   ├── check-hugo-version.js # Check Hugo version and security status
 │   └── check-dependencies.js # Check all dependencies for security and updates
@@ -439,6 +443,38 @@ The site includes automated OG image generation for recipes:
 4. **Add to front matter**: Add `social_image: "/images/social/recipe-xxx-og.png"` to your recipe's front matter
 
 **Note**: Social media platforms (Twitter, Facebook, LinkedIn) don't support SVG for OG images, so PNG conversion is required.
+
+### Optimizing Images
+
+The site includes a script to optimize image file sizes while maintaining visual quality:
+
+**Basic usage:**
+```bash
+npm run optimize:images -- static/images/file.jpg
+npm run optimize:images -- static/images/*.jpg  # Multiple files
+```
+
+**With automatic backup cleanup:**
+```bash
+npm run optimize:images -- --cleanup-backups static/images/file.jpg
+```
+
+**Manual backup cleanup:**
+```bash
+npm run cleanup:backups
+```
+
+**How it works:**
+- Creates `.backup` files before optimizing (safety feature)
+- Compresses images using Sharp with quality settings optimized for web
+- Resizes images larger than 2400px (max width/height)
+- Shows compression statistics (original size, new size, reduction percentage)
+
+**Backup files:**
+- Backup files (`.backup` extension) are automatically ignored by git
+- Use `--cleanup-backups` flag to automatically delete backups after successful optimization
+- Or run `npm run cleanup:backups` to manually clean up existing backups
+- The cleanup script only deletes backups where the optimized file exists and is newer (indicating successful optimization)
 
 ## 🎨 Styling
 

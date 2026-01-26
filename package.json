@@ -32,7 +32,8 @@
     "schedule-posts": "node scripts/schedule-posts.js",
     "check:hugo": "node scripts/check-hugo-version.js",
     "check:dependencies": "node scripts/check-dependencies.js",
-    "optimize:images": "node scripts/optimize-images.js"
+    "optimize:images": "node scripts/optimize-images.js",
+    "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {
     "hugo-bin": "^0.149.2"
