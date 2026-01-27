@@ -23,7 +23,7 @@ recipeIngredient:
   - "Black pepper, to taste"
   - "½ Tsp red pepper flakes (only if using all sweet sausage)"
   - "1 (10 oz) can Rotel diced tomatoes, with juices"
-  - "1–2 Tbsp unsalted butter"
+  - "1–2 Tbsp butter"
   - "Cooked white rice, for serving"
 recipeInstructions:
   - "Start the rice in a rice cooker so it is ready when the sausage finishes. Keep warm."
@@ -65,7 +65,7 @@ This isn't impressive food. It's reliable food. The kind you make on a weeknight
 - Black pepper, to taste
 - ½ Tsp red pepper flakes (only if using all sweet sausage)
 - 1 (10 oz) can Rotel diced tomatoes, with juices
-- 1–2 Tbsp unsalted butter
+- 1–2 Tbsp butter
 
 ### To serve
 
@@ -107,7 +107,7 @@ This isn't impressive food. It's reliable food. The kind you make on a weeknight
 
 9. **Serve**
 
-   Taste and adjust seasoning as needed. Serve hot over rice.
+   Taste and adjust seasoning as needed. The butter adds a small amount of salt, so you may need less additional salt than expected. Serve hot over rice.
 
 ---
 
