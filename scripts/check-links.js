@@ -9,7 +9,7 @@
  * Run with: npm run test:links
  */
 
-const { spawn, spawnSync } = require('child_process');
+const { spawn, spawnSync, execSync } = require('child_process');
 const http = require('http');
 const path = require('path');
 
@@ -17,6 +17,22 @@ const PORT = 1313;
 const BASE_URL = `http://localhost:${PORT}`;
 const READY_TIMEOUT_MS = 30_000;
 const POLL_INTERVAL_MS = 300;
+
+function clearPort() {
+  try {
+    // Try to find and kill any process using the port
+    const pid = execSync(`lsof -ti:${PORT}`, { encoding: 'utf8', stdio: 'pipe' }).trim();
+    if (pid) {
+      console.log(`Found process ${pid} on port ${PORT}, killing it...`);
+      execSync(`kill -9 ${pid}`, { stdio: 'pipe' });
+      // Give it a moment to fully release the port
+      return new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  } catch (err) {
+    // No process found on port, or lsof/kill failed - that's okay
+  }
+  return Promise.resolve();
+}
 
 function waitForServer() {
   return new Promise((resolve, reject) => {
@@ -56,45 +72,58 @@ function waitForServer() {
   });
 }
 
-function main() {
-  const projectRoot = path.join(__dirname, '..');
-  const hugo = spawn('hugo', ['server', '--port', String(PORT)], {
+let currentHugo = null;
+let cleaned = false;
+
+const cleanup = () => {
+  if (cleaned) return;
+  cleaned = true;
+  if (currentHugo && currentHugo.kill) {
+    currentHugo.kill('SIGTERM');
+  }
+};
+
+// Set up cleanup handlers once
+process.on('exit', cleanup);
+process.on('SIGINT', () => {
+  cleanup();
+  process.exit(130);
+});
+process.on('SIGTERM', () => {
+  cleanup();
+  process.exit(143);
+});
+
+function startServerAndCheck(projectRoot, retry = false) {
+  currentHugo = spawn('hugo', ['server', '--port', String(PORT)], {
     cwd: projectRoot,
     stdio: 'pipe',
     shell: true,
   });
 
-  hugo.on('error', (err) => {
+  currentHugo.on('error', async (err) => {
     console.error('Failed to start Hugo server:', err.message);
-    process.exit(1);
+    if (!retry) {
+      console.log('Attempting to clear port and retry...');
+      await clearPort();
+      startServerAndCheck(projectRoot, true);
+    } else {
+      process.exit(1);
+    }
   });
 
   let resolved = false;
-  hugo.stderr?.on('data', (chunk) => {
+  currentHugo.stderr?.on('data', (chunk) => {
     if (!resolved) return;
     process.stderr.write(chunk);
   });
 
-  let cleaned = false;
-  const cleanup = () => {
-    if (cleaned) return;
-    cleaned = true;
-    if (hugo.kill) {
-      hugo.kill('SIGTERM');
-    }
-  };
+  if (retry) {
+    console.log('Retrying: Starting Hugo server on', BASE_URL, '...');
+  } else {
+    console.log('Starting Hugo server on', BASE_URL, '...');
+  }
 
-  process.on('exit', cleanup);
-  process.on('SIGINT', () => {
-    cleanup();
-    process.exit(130);
-  });
-  process.on('SIGTERM', () => {
-    cleanup();
-    process.exit(143);
-  });
-
-  console.log('Starting Hugo server on', BASE_URL, '...');
   waitForServer()
     .then(() => {
       resolved = true;
@@ -107,11 +136,25 @@ function main() {
       cleanup();
       process.exit(blc.status ?? 1);
     })
-    .catch((err) => {
-      console.error('Error:', err.message);
-      cleanup();
-      process.exit(1);
+    .catch(async (err) => {
+      if (currentHugo && currentHugo.kill) {
+        currentHugo.kill('SIGTERM');
+      }
+      if (!retry && err.message.includes('did not become ready')) {
+        console.error('Error:', err.message);
+        console.log('Attempting to clear port and retry...');
+        await clearPort();
+        startServerAndCheck(projectRoot, true);
+      } else {
+        console.error('Error:', err.message);
+        process.exit(1);
+      }
     });
+}
+
+function main() {
+  const projectRoot = path.join(__dirname, '..');
+  startServerAndCheck(projectRoot);
 }
 
 main();
