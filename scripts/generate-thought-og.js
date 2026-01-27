@@ -179,25 +179,35 @@ async function generatePNGFromSVG(svgPath, pngPath) {
  * Main function
  */
 async function main() {
-  const text = process.argv[2] || "Rules are allowed to be ridiculous, and truth is rarely found in the loudest message you hear.";
-  const slug = process.argv[3] || "alices-restaurant-family-ritual";
+  const args = process.argv.slice(2);
+  const forceFlag = args.includes('--force');
+  const text = args.find(arg => !arg.startsWith('--') && args.indexOf(arg) === 0) || "Rules are allowed to be ridiculous, and truth is rarely found in the loudest message you hear.";
+  const slug = args.find(arg => !arg.startsWith('--') && args.indexOf(arg) === 1) || "alices-restaurant-family-ritual";
   
   console.log('🎨 Generating OG image for thoughts post...\n');
   console.log(`Text: "${text}"`);
   console.log(`Slug: ${slug}\n`);
+  
+  // Check if PNG already exists
+  const pngPath = path.join(outputDir, `${slug}-og.png`);
+  if (fs.existsSync(pngPath) && !forceFlag) {
+    console.log(`⚠️  OG image already exists: ${pngPath}`);
+    console.log(`   To regenerate, use --force flag: node scripts/generate-thought-og.js "${text}" ${slug} --force`);
+    console.log(`\n✨ Skipping generation (image is locked in).`);
+    return;
+  }
   
   // Generate SVG
   const svgPath = generateThoughtOGImage(text, slug);
   console.log(`✅ Generated SVG: ${svgPath}`);
   
   // Generate PNG
-  const pngPath = path.join(outputDir, `${slug}-og.png`);
   await generatePNGFromSVG(svgPath, pngPath);
   
   console.log(`\n✨ Done!`);
   console.log(`\n📝 Next steps:`);
   console.log(`   1. Review the SVG: ${svgPath}`);
-  console.log(`   2. Edit if needed, then regenerate PNG`);
+  console.log(`   2. Edit if needed, then regenerate PNG with --force flag`);
   console.log(`   3. Add to front matter: social_image: "/images/social/${slug}-og.png"`);
 }
 

@@ -79,6 +79,7 @@ Before you begin, ensure you have the following installed:
 - `npm run optimize:images` - Optimize image file sizes (usage: `npm run optimize:images -- static/images/file.jpg`)
 - `npm run optimize:images -- --cleanup-backups` - Optimize images and automatically delete backup files after successful optimization
 - `npm run cleanup:backups` - Clean up existing backup files created by image optimization
+- `node scripts/fix-diagram-backgrounds.js` - Fix diagram image background colors to match site black (#000000). Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: Currently only relevant for diagrams placed in thoughts posts, not other types of images or other page types.
 
 ## 📁 Project Structure
 
@@ -116,6 +117,7 @@ Before you begin, ensure you have the following installed:
 ├── scripts/              # Build and automation scripts
 │   ├── generate-og-images.js # Generate OG images for recipes
 │   ├── generate-png-from-svg.js # Convert SVG to PNG for social media
+│   ├── fix-diagram-backgrounds.js # Fix diagram image backgrounds to match site black (#000000)
 │   ├── optimize-images.js # Optimize image file sizes with automatic backup cleanup
 │   ├── schedule-posts.js # Auto-publish scheduled posts script
 │   ├── check-hugo-version.js # Check Hugo version and security status
@@ -184,7 +186,9 @@ The template includes:
 
 6. **Optionally create OG image**: Manually create and add to `static/images/social/`, then reference in front matter
 
-7. **Test**: Run `npm run build && npm run test:content` to validate
+7. **For diagram images in thoughts posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to thoughts post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Add the filename to the `diagramFiles` array in `scripts/fix-diagram-backgrounds.js`, then run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. **Note**: This script is specifically for diagrams in thoughts posts, not for other types of images or other page types.
+
+8. **Test**: Run `npm run build && npm run test:content` to validate
 
 **File naming conventions:**
 - Use lowercase letters, hyphens, or underscores

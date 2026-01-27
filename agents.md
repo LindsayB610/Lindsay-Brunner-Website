@@ -256,7 +256,8 @@ See `BRAND.md` for complete brand guidelines. Key points:
 3. Add required front matter (see template for complete details)
 4. Optionally create and add social image to `static/images/social/` (manual creation, unlike recipes)
 5. Reference image in front matter: `social_image: "/images/social/my-image.png"`
-6. Run `npm run build && npm run test:content`
+6. **For diagram images in thoughts posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to thoughts post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: This script is specifically for diagrams in thoughts posts, not for other types of images or other page types.
+7. Run `npm run build && npm run test:content`
 
 **To schedule for future publication:**
 - Set `draft: true` and a future `date` in front matter
@@ -336,6 +337,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **scripts/schedule-posts.js**: Auto-publish scheduled posts script
 - **scripts/generate-og-images.js**: Generate OG images for recipes
 - **scripts/generate-png-from-svg.js**: Convert SVG to PNG for social media compatibility
+- **scripts/fix-diagram-backgrounds.js**: Fix diagram image background colors to match site black (#000000). Processes PNG files listed in the `diagramFiles` array, replacing dark pixels with pure black to ensure seamless integration with the dark theme. **Note**: Currently only relevant for diagrams placed in thoughts posts, not other types of images or other page types.
 - **scripts/check-hugo-version.js**: Check Hugo version, security status, and available updates
 - **scripts/check-dependencies.js**: Check all dependencies (npm packages, Node.js, GitHub Actions) for security issues and updates
 - **.github/workflows/security-check.yml**: Monthly automated security and dependency check workflow

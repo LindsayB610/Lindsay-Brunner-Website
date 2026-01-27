@@ -13,7 +13,9 @@ const targetColor = { r: 0, g: 0, b: 0 }; // #000000
 
 const diagramFiles = [
   'technical-storytelling-engineering-narrative-breakdown.png',
-  'technical-storytelling-structure-diagram.png'
+  'technical-storytelling-structure-diagram.png',
+  'content-system-structure.png',
+  'content-system-feedback-loop.png'
 ];
 
 async function fixBackground(imagePath) {
