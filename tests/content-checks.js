@@ -31,7 +31,8 @@ const {
   validate404Page,
   validatePermalinks,
   validateRecipeIndexPage,
-  validateNoDraftInThoughtsUrls
+  validateNoDraftInThoughtsUrls,
+  validateNoDraftPrefixInPublishedThoughts
 } = require('./content-checks/pages');
 
 const {
@@ -69,6 +70,7 @@ async function runAllTests() {
   validatePermalinks();
   validateRecipeIndexPage();
   validateNoDraftInThoughtsUrls();
+  validateNoDraftPrefixInPublishedThoughts();
   validateAllPagesHaveOGImages();
   validateMetaDescriptionLength();
 

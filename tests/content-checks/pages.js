@@ -396,10 +396,50 @@ function validateNoDraftInThoughtsUrls() {
   }
 }
 
+function validateNoDraftPrefixInPublishedThoughts() {
+  console.log('\n📝 Validating that published thoughts posts don\'t have "draft-" prefix in filename...');
+  
+  const errors = [];
+  
+  try {
+    const thoughtsFiles = fs.readdirSync(thoughtsDir)
+      .filter(file => file.endsWith('.md') && file !== '_index.md');
+    
+    thoughtsFiles.forEach(file => {
+      // Check if filename starts with "draft-"
+      if (file.startsWith('draft-')) {
+        const filePath = path.join(thoughtsDir, file);
+        const frontMatter = parseFrontMatter(filePath);
+        
+        if (frontMatter) {
+          // Check if draft is explicitly false or not set (defaults to false)
+          const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
+          
+          if (!isDraft) {
+            errors.push(`Published thoughts post "${file}" still has "draft-" prefix in filename. Remove the prefix since draft: false.`);
+          }
+        }
+      }
+    });
+    
+    if (errors.length > 0) {
+      console.error('❌ Published thoughts posts with "draft-" prefix found:');
+      errors.forEach(error => console.error(`   - ${error}`));
+      process.exit(1);
+    }
+    
+    console.log('✅ No published thoughts posts have "draft-" prefix in filename.');
+  } catch (error) {
+    console.error(`❌ Error validating thoughts filenames: ${error.message}`);
+    process.exit(1);
+  }
+}
+
 module.exports = {
   validateAboutPage,
   validate404Page,
   validatePermalinks,
   validateRecipeIndexPage,
-  validateNoDraftInThoughtsUrls
+  validateNoDraftInThoughtsUrls,
+  validateNoDraftPrefixInPublishedThoughts
 };
