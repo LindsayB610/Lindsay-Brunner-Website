@@ -15,7 +15,9 @@ const diagramFiles = [
   'technical-storytelling-engineering-narrative-breakdown.png',
   'technical-storytelling-structure-diagram.png',
   'content-system-structure.png',
-  'content-system-feedback-loop.png'
+  'content-system-feedback-loop.png',
+  'leadership-communication-feedback-loop.png',
+  'leadership-communication-audience-translation.png'
 ];
 
 async function fixBackground(imagePath) {
