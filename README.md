@@ -65,7 +65,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, mobile responsive)
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
-- `npm run test:links` - Check for broken internal links (requires dev server running)
+- `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
 - `npm run test:spell` - Spell check modified content files (git diff)
 - `npm run test:spell:all` - Spell check all content files
 - `npm run test:og-images` - OG image generation validation
@@ -517,7 +517,7 @@ npm run test:content
 # Run HTML validation
 npm run test:html
 
-# Check for broken links (requires dev server running)
+# Check for broken links (starts server, runs check, stops server)
 npm run test:links
 ```
 

@@ -187,7 +187,7 @@ npm test           # Run all tests (HTML, links, content, spell check, OG images
 **Available test commands:**
 - `npm run test:content` - Content validation tests
 - `npm run test:html` - HTML validation
-- `npm run test:links` - Broken link detection (requires dev server)
+- `npm run test:links` - Broken link detection (starts dev server, waits for ready, runs check, stops server)
 - `npm run test:spell` - Spell check modified content files (git diff)
 - `npm run test:spell:all` - Spell check all content files
 - `npm run test:og-images` - OG image generation validation

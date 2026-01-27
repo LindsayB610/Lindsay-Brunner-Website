@@ -18,7 +18,7 @@
     "clean": "rm -rf public",
     "serve": "hugo server --bind 0.0.0.0",
     "test:html": "html-validate public/**/*.html",
-    "test:links": "blc --recursive --exclude-external --filter-level 2 http://localhost:1313",
+    "test:links": "node scripts/check-links.js",
     "test:content": "node tests/content-checks.js",
     "test:spell": "node tests/spell-check.js",
     "test:spell:all": "node tests/spell-check.js --all",
