@@ -14,7 +14,7 @@ recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 recipeIngredient:
   - "2 Tbsp olive oil"
-  - "4 Italian sausage links (sweet, hot, or a mix)"
+  - "5 Italian sausage links (sweet, hot, or a mix)"
   - "1 large yellow onion, sliced into ¼-inch half-moons"
   - "3 bell peppers, sliced into strips"
   - "4 garlic cloves, sliced or minced"
@@ -55,7 +55,7 @@ This isn't impressive food. It's reliable food. The kind you make on a weeknight
 ### Sausage and vegetables
 
 - 2 Tbsp olive oil
-- 4 Italian sausage links (sweet, hot, or a mix)
+- 5 Italian sausage links (sweet, hot, or a mix)
 - 1 large yellow onion, sliced into ¼-inch half-moons
 - 3 bell peppers, sliced into strips
 - 4 garlic cloves, sliced or minced
