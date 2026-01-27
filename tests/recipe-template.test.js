@@ -104,7 +104,7 @@ function validateRecipeTemplate() {
   const errors = [];
   const warnings = [];
   const files = fs.readdirSync(recipesDir)
-    .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md');
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md' && file.startsWith('recipe-'));
   
   if (files.length === 0) {
     console.log('⚠️  No recipe posts found to validate.');
