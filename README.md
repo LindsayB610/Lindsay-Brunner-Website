@@ -4,7 +4,7 @@
 
 > Experienced content strategist, developer advocacy leader, and actually kinda cool human who transforms complex technology concepts into content experiences that developers and technical audiences love.
 
-This is the source code for Lindsay Brunner's personal website, built with Hugo and Builder.io and deployed on Netlify. The site showcases expertise in developer advocacy, content strategy, and technical leadership.
+This is the source code for Lindsay Brunner's personal website, built with Hugo and deployed on Netlify. The site showcases expertise in developer advocacy, content strategy, and technical leadership.
 
 ## 🚀 Live Site
 
