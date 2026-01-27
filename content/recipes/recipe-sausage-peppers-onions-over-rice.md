@@ -22,6 +22,7 @@ recipeIngredient:
   - "Salt, to taste"
   - "Black pepper, to taste"
   - "½ Tsp red pepper flakes (only if using all sweet sausage)"
+  - "¼ cup water or red wine"
   - "1 (10 oz) can Rotel diced tomatoes, with juices"
   - "1–2 Tbsp butter"
   - "Cooked white rice, for serving"
@@ -30,9 +31,10 @@ recipeInstructions:
   - "Brown the sausage in olive oil over medium heat until well colored on all sides. Remove to a plate; it does not need to be cooked through."
   - "Increase heat to medium-high and cook onions and peppers in the same pan until softened and beginning to brown, scraping up sausage bits."
   - "Season with oregano, salt, and black pepper. Add red pepper flakes only if using sweet sausage. Stir in garlic and cook just until fragrant."
-  - "Slice the browned sausages into thick coins or on a bias."
-  - "Add Rotel tomatoes and return sliced sausage to the pan. Stir to combine."
-  - "Cover, reduce heat to low, and simmer about 20 minutes until sausage is cooked through and peppers are tender."
+  - "Add ¼ cup water or red wine and deglaze, scraping up the fond. Let reduce for a minute or two."
+  - "Add Rotel tomatoes with their juices and stir to combine. Bring to a simmer."
+  - "While the tomato comes up to a simmer, slice the browned sausages into thick coins or on a bias."
+  - "When the tomato is simmering, add the sliced sausage back to the pan. Cover, reduce heat to low, and simmer about 20 minutes until sausage is cooked through and peppers are tender."
   - "Turn off heat and stir in butter until the sauce is glossy and emulsified."
   - "Taste, adjust seasoning, and serve over rice."
 ---
@@ -64,6 +66,7 @@ This isn't impressive food. It's reliable food. The kind you make on a weeknight
 - Salt, to taste
 - Black pepper, to taste
 - ½ Tsp red pepper flakes (only if using all sweet sausage)
+- ¼ cup water or red wine
 - 1 (10 oz) can Rotel diced tomatoes, with juices
 - 1–2 Tbsp butter
 
@@ -89,17 +92,17 @@ This isn't impressive food. It's reliable food. The kind you make on a weeknight
 
    Add oregano, salt, and black pepper. Add red pepper flakes only if you are using sweet sausage. Stir in the garlic and cook for 30–60 seconds, just until fragrant.
 
-5. **Slice the sausage**
+5. **Deglaze and reduce**
 
-   Slice the browned sausages into thick coins or on a bias. This helps the sausage absorb flavor and distribute evenly.
+   Add the water or red wine and deglaze, scraping up the fond. Let it reduce for a minute or two.
 
-6. **Add tomatoes and sausage**
+6. **Add tomatoes and bring to a simmer**
 
-   Pour in the Rotel tomatoes with their juices and stir to combine. Add the sliced sausage back to the pan and distribute evenly.
+   Pour in the Rotel tomatoes with their juices and stir to combine. Bring to a simmer. While the tomato comes up to temperature, slice the browned sausages into thick coins or on a bias.
 
-7. **Simmer**
+7. **Add sausage and simmer**
 
-   Reduce heat to low, cover, and simmer for about 20 minutes, until the sausage is fully cooked and the peppers are tender. Uncover for the last few minutes if you want a tighter sauce.
+   When the tomato is simmering, add the sliced sausage back to the pan and distribute evenly. Reduce heat to low, cover, and simmer for about 20 minutes, until the sausage is fully cooked and the peppers are tender. Uncover for the last few minutes if you want a tighter sauce.
 
 8. **Finish with butter**
 
