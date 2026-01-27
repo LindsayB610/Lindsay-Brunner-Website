@@ -21,7 +21,7 @@ Every leadership problem eventually shows up as a communication problem.
 Teams drift when priorities aren't clear. Projects stall when expectations are implied instead of stated. Conflict escalates when feedback is delayed or softened beyond recognition. In remote or fast-growing organizations, small communication gaps don't stay small. They compound.
 
 <div class="image-scaled">
-![Diagram showing the communication breakdown feedback loop: unclear communication leads to different interpretations, which leads to local decision making, resulting in misaligned execution, causing rework and frustration, and ultimately reducing trust](/images/leadership-communication-feedback-loop.png)
+<img src="/images/leadership-communication-feedback-loop.png" alt="Diagram showing the communication breakdown feedback loop: unclear communication leads to different interpretations, which leads to local decision making, resulting in misaligned execution, causing rework and frustration, and ultimately reducing trust">
 </div>
 
 This is especially true when leaders are communicating upward as well as downward. Managing stakeholders, executives, or cross-functional partners requires the same clarity and intent as leading a team. If that's a skill you're actively developing, I've written separately about what it really means to [manage up effectively](https://lindsaybrunner.com/thoughts/2025-07-01/manage-up/) and why it's inseparable from strong leadership communication.
