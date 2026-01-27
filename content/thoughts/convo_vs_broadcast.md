@@ -44,7 +44,7 @@ Here's my cheat sheet for conversations that land:
 
 ### 1. Start with Actual Problems
 
-Instead of guessing, dive directly into real developer forums, GitHub issues, and Stack Overflow questions to uncover genuine frustrations. Clearly translating these into your content demonstrates true empathy and understanding.
+Instead of guessing, dive directly into real developer forums, GitHub issues, and Stack Overflow questions to uncover genuine frustrations. Clearly translating these into your content demonstrates true empathy and understanding. For more on structuring technical content that starts with the problem readers recognize, see *[Technical Storytelling: Bridging Engineering and Narrative](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/)*.
 
 **Hot take:** Stop pestering devs with surveys about their 'pain points'. Google knows their secrets better than they do. Chat with your favorite content guru about tools like Keyword Planner, Ahrefs, or Semrush. You'll make their day, AND pinpoint exactly what developers are searching for, instantly boosting your content's relevance and usefulness.
 

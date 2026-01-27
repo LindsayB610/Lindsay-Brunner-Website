@@ -76,7 +76,7 @@ DevRel and marketing duties are braided through every stage. Separate them and y
 
 Not fluff. Not SEO mush. Real answers to real developer problems.
 
-This means multi-layered content: conceptual explainers for decision-makers, step-by-step tutorials for builders, and reference docs for when anyone hits a wall at 1 a.m. Every format should reduce friction, not introduce it.
+This means multi-layered content: conceptual explainers for decision-makers, step-by-step tutorials for builders, and reference docs for when anyone hits a wall at 1 a.m. Every format should reduce friction, not introduce it. The same system needs different explanations depending on which decision the reader is trying to make, something I've explored in *[Technical Storytelling: Bridging Engineering and Narrative](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/)*.
 
 Your headline should tell a dev why they should care. Your first code block should compile. Your "advanced guide" should solve a problem more elegant than "add logging." If it doesn't pass those tests, you've built a bounce generator, not a funnel.
 
@@ -193,7 +193,7 @@ If not you don't have a leader you have a traffic jam.
 | --------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------- |
 | **Gating every PDF**              | Treating devs like MQL vending machines    | Ungate. Track activations                                                               |
 | **"Revolutionary" feature copy**  | Hype ≠ trust                               | Lead with pain solved                                                                   |
-| **Docs disconnected from funnel** | Devs can't find what they need to activate | Build a handshake between docs, DevRel, and marketing on what gets surfaced and updated |
+| **Docs disconnected from funnel** | Devs can't find what they need to activate | Build a handshake between docs, DevRel, and marketing on what gets surfaced and updated. Most docs answer the question they set out to answer, but fail to answer the next questions: What is this for? When should I use it? What happens if I don't? ([Technical storytelling](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/) helps bridge that gap.) |
 | **Measuring vanity traffic**      | Page views lie                             | Define and track product activation metrics                                             |
 
 </div>
