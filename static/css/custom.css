@@ -307,6 +307,35 @@ td code {
   width: 100%;
 }
 
+/* Scaled image container - centers and scales down images */
+.article-content .image-scaled,
+.image-scaled {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.article-content .image-scaled img,
+.image-scaled img {
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .article-content .image-scaled img,
+  .image-scaled img {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-content .image-scaled img,
+  .image-scaled img {
+    max-width: 100%;
+  }
+}
+
 /* Recipe index page styles */
 .recipe-index-categories-grid {
   display: grid;
