@@ -25,34 +25,39 @@ async function fixBackground(imagePath) {
     console.log(`   Dimensions: ${metadata.width}x${metadata.height}`);
     console.log(`   Format: ${metadata.format}`);
     
-    // Create a new image with black background
-    // We'll composite the original image over a black background
-    const blackBackground = {
-      input: Buffer.from([0, 0, 0, 255]), // Black pixel
+    // Get raw pixel data
+    const { data, info } = await image
+      .ensureAlpha()
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+    
+    // Replace all pixels that are very dark (near black) with pure black
+    // This ensures the background is exactly #000000
+    const threshold = 30; // Pixels darker than this become pure black
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      const a = data[i + 3];
+      
+      // If pixel is very dark (likely background), make it pure black
+      if (r < threshold && g < threshold && b < threshold) {
+        data[i] = 0;     // R
+        data[i + 1] = 0; // G
+        data[i + 2] = 0; // B
+        // Keep alpha as is (or set to 255 for opaque)
+        data[i + 3] = 255;
+      }
+    }
+    
+    // Create new image with pure black background and composited content
+    const result = await sharp(data, {
       raw: {
-        width: 1,
-        height: 1,
+        width: info.width,
+        height: info.height,
         channels: 4
       }
-    };
-    
-    // Get the original image data
-    const originalBuffer = await image.toBuffer();
-    
-    // Create a new image: black background with original composited on top
-    // This approach preserves transparency and ensures black background
-    const result = await sharp({
-      create: {
-        width: metadata.width,
-        height: metadata.height,
-        channels: 4,
-        background: { r: 0, g: 0, b: 0, alpha: 1 }
-      }
     })
-    .composite([{
-      input: originalBuffer,
-      blend: 'over'
-    }])
     .png()
     .toBuffer();
     
@@ -60,7 +65,7 @@ async function fixBackground(imagePath) {
     fs.writeFileSync(imagePath, result);
     
     const newSize = fs.statSync(imagePath).size;
-    console.log(`   ✅ Updated with black background (#000000)`);
+    console.log(`   ✅ Updated with pure black background (#000000)`);
     console.log(`   New size: ${(newSize / 1024).toFixed(2)} KB`);
     
     return true;
