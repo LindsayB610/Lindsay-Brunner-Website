@@ -2,7 +2,7 @@
 title: "Technical Storytelling: Bridging Engineering and Narrative"
 date: 2026-01-27
 slug: "technical-storytelling-bridging-engineering-narrative"
-description: "How to frame technical work so its logic, constraints, and implications are understandable without sacrificing technical truth. A guide to making complex systems navigable."
+description: "How to frame technical work so its logic, constraints, and implications are understandable without sacrificing technical truth."
 subtitle: "Or: Making complex technical work grokable without dumbing it down"
 draft: false
 social_image: "/images/social/technical-storytelling-bridging-engineering-narrative-og.png"
