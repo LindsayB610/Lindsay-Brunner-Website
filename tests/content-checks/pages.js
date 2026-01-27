@@ -435,11 +435,62 @@ function validateNoDraftPrefixInPublishedThoughts() {
   }
 }
 
+function validateNoDuplicateDraftFiles() {
+  console.log('\n🔍 Checking for duplicate draft files (draft-* and non-draft with same slug)...');
+  
+  const errors = [];
+  
+  try {
+    const thoughtsFiles = fs.readdirSync(thoughtsDir)
+      .filter(file => file.endsWith('.md') && file !== '_index.md');
+    
+    // Get all draft files and their slugs
+    const draftFiles = new Map();
+    const nonDraftFiles = new Map();
+    
+    thoughtsFiles.forEach(file => {
+      const filePath = path.join(thoughtsDir, file);
+      const frontMatter = parseFrontMatter(filePath);
+      
+      if (!frontMatter) return;
+      
+      // Get slug from front matter, or derive from filename
+      const slug = frontMatter.slug || file.replace('.md', '').replace(/^draft-/, '');
+      
+      if (file.startsWith('draft-')) {
+        draftFiles.set(slug, file);
+      } else {
+        nonDraftFiles.set(slug, file);
+      }
+    });
+    
+    // Check for duplicates: if a draft file and non-draft file have the same slug
+    draftFiles.forEach((draftFile, slug) => {
+      if (nonDraftFiles.has(slug)) {
+        const nonDraftFile = nonDraftFiles.get(slug);
+        errors.push(`Duplicate files found with slug "${slug}": "${draftFile}" and "${nonDraftFile}". Remove the draft-* file since a published version exists.`);
+      }
+    });
+    
+    if (errors.length > 0) {
+      console.error('❌ Duplicate draft files found:');
+      errors.forEach(error => console.error(`   - ${error}`));
+      process.exit(1);
+    }
+    
+    console.log('✅ No duplicate draft files found.');
+  } catch (error) {
+    console.error(`❌ Error checking for duplicate draft files: ${error.message}`);
+    process.exit(1);
+  }
+}
+
 module.exports = {
   validateAboutPage,
   validate404Page,
   validatePermalinks,
   validateRecipeIndexPage,
   validateNoDraftInThoughtsUrls,
-  validateNoDraftPrefixInPublishedThoughts
+  validateNoDraftPrefixInPublishedThoughts,
+  validateNoDuplicateDraftFiles
 };
