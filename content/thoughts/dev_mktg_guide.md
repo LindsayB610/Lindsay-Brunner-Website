@@ -165,7 +165,7 @@ Post-acquisition, we rebuilt Okta's dev portal and started churning out excellen
 
 **Lesson:** Build trust with devs and the rest of the org will follow.
 
-These companies didn't just get lucky. They built systems where education, community, and product feedback were tightly woven.
+These companies didn't just get lucky. They built systems where education, community, and product feedback were tightly woven. (If you're wondering what the difference is between having tools and having a system, I've written more about that in [**"Content Systems: How You Move from Content Chaos to Content That Works"**](https://lindsaybrunner.com/thoughts/2025-12-09/content-systems-chaos-to-works/).)
 
 Which brings us to the org question no one wants to ask:
 
