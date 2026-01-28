@@ -8,3 +8,4 @@ node_modules
 .config/
 /reference_docs
 *.backup
+static/images/social/working-files/
