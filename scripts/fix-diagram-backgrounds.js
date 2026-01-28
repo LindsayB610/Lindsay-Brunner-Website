@@ -17,7 +17,9 @@ const diagramFiles = [
   'content-system-structure.png',
   'content-system-feedback-loop.png',
   'leadership-communication-feedback-loop.png',
-  'leadership-communication-audience-translation.png'
+  'leadership-communication-audience-translation.png',
+  'responsible-ai-content-creation-governance-workflow.png',
+  'responsible-ai-content-creation-team-implementation-workflow.png'
 ];
 
 async function fixBackground(imagePath) {
