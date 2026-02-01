@@ -146,6 +146,42 @@ This is a sturdy-veg recipe. Use vegetables that can take high heat for 20–25 
 - Refrigerate leftovers in an airtight container for up to 3 days.
 - Reheat on a sheet pan at 425°F (220°C) until hot and re-crisped, about 8–12 minutes. Microwave works, but the texture will be softer.
 
+### Chicken thighs instead of sausage
+
+Same pan, same potato-first logic, but schmaltz-forward and no mayo required. Serves 3–4 in about 90 minutes.
+
+**Ingredients**
+
+- 2½–3 lb bone-in, skin-on chicken thighs
+- 1½–2 Tbsp chicken schmaltz, melted
+- 1¼ Tsp kosher salt, divided
+- Freshly cracked black pepper
+- ½ Tsp garlic powder
+- ½ Tsp onion powder
+- ½ Tsp paprika (not smoked)
+- 1½–2 lb fingerling potatoes, left whole
+- 8–10 oz green beans, trimmed (optional)
+- 1–2 zucchini, sliced into thick half-moons (optional)
+- Olive oil and kosher salt for the potatoes and vegetables
+
+**Method**
+
+1. **Early prep.** If the chicken is frozen, thaw in cold water (change the water once) until pliable. Pat the thighs very dry and season both sides with about ¾ Tsp salt total. Set skin-side up on a plate. Dryness matters more than a long brine here.
+
+2. **Start the potatoes.** Heat the oven to 425°F (220°C). Toss the fingerling potatoes with olive oil and salt, spread on a rimmed sheet pan (cut sides down if any have split), and roast. Set a timer for 10 minutes.
+
+3. **Schmaltz seasoning.** While the potatoes start, melt the schmaltz and stir in the garlic powder, onion powder, paprika, and black pepper. Do not add more salt.
+
+4. **Add chicken.** After 10 minutes, remove the pan from the oven and nestle the chicken thighs among the potatoes, skin-side up. Rub the schmaltz seasoning over the skin only. Return to the oven. Do not open the door for at least 20 minutes.
+
+5. **Add vegetables (optional).** About 25 minutes before you want to eat, toss the green beans and/or zucchini with a little olive oil and salt. Tuck them around the chicken and potatoes. Continue roasting.
+
+6. **Finish.** Roast until the chicken reaches 175–185°F (79–85°C) in the thickest part and the skin is rendered and golden. If the skin needs help, switch to broil for 2–3 minutes and watch closely. Rest the chicken 7–10 minutes. Finish with a light sprinkle of flaky salt and black pepper. No sauce required.
+
+**Why this works**
+
+Potatoes get a full 55 minutes. Chicken gets about 45 minutes at high heat, which is ideal for bone-in thighs. Schmaltz boosts browning without slowing cooking. Vegetables added late avoid steam and mush.
+
 ### Why this method works
 
 - Potatoes get a solo roast so the interiors go creamy before the pan fills up.
