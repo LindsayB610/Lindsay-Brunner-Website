@@ -12,6 +12,7 @@ const {
 } = require('./content-checks/thoughts');
 
 const {
+  validateNoDuplicateRecipeContent,
   validateRecipeFrontMatter,
   checkRecipeSocialImages,
   checkRecipeInlineImages,
@@ -55,6 +56,7 @@ async function runAllTests() {
   checkRecentThoughtsSection();
   checkHomepageContent();
   validateFrontMatter();
+  validateNoDuplicateRecipeContent();
   validateRecipeFrontMatter();
   checkSocialImages();
   checkRecipeSocialImages();

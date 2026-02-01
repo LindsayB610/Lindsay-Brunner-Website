@@ -541,6 +541,7 @@ The test suite includes:
 - **Content Structure**:
   - Homepage sections (hero, Recent Thoughts, Let's Connect)
   - Front matter validation for thoughts and recipes
+  - No duplicate recipe page content (identical body in multiple files)
   - Required fields and data format validation
   - Date format validation (YYYY-MM-DD)
   - Recipe schema validation (times, ingredients, instructions)

@@ -3,6 +3,55 @@ const path = require('path');
 const sharp = require('sharp');
 const { recipesDir, REQUIRED_RECIPE_FIELDS, parseFrontMatter, staticDir } = require('./utils');
 
+/**
+ * Normalize recipe body for comparison: strip front matter, collapse whitespace.
+ * Used to detect duplicate page content (same recipe in two files).
+ */
+function getNormalizedRecipeContent(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const match = content.match(/^---\s*\n[\s\S]*?\n---\s*\n([\s\S]*)$/);
+  const body = match ? match[1] : content;
+  return body.replace(/\s+/g, ' ').trim();
+}
+
+function validateNoDuplicateRecipeContent() {
+  console.log('\n🔍 Checking for duplicate recipe page content...');
+
+  const errors = [];
+  const contentToFiles = new Map();
+
+  const files = fs.readdirSync(recipesDir)
+    .filter(file => file.endsWith('.md') && file !== '_index.md' && file.startsWith('recipe-'));
+
+  files.forEach(file => {
+    const filePath = path.join(recipesDir, file);
+    const signature = getNormalizedRecipeContent(filePath);
+    if (!signature) return;
+
+    if (!contentToFiles.has(signature)) {
+      contentToFiles.set(signature, []);
+    }
+    contentToFiles.get(signature).push(file);
+  });
+
+  contentToFiles.forEach((fileList, _signature) => {
+    if (fileList.length > 1) {
+      errors.push(
+        `Duplicate recipe content in: ${fileList.join(', ')}. ` +
+        'These files have identical page content. Remove or consolidate the duplicate.'
+      );
+    }
+  });
+
+  if (errors.length > 0) {
+    console.error('❌ Duplicate recipe content found:');
+    errors.forEach(error => console.error(`   - ${error}`));
+    process.exit(1);
+  }
+
+  console.log('✅ No duplicate recipe content found.');
+}
+
 function validateRecipeFrontMatter() {
   console.log('\n🍳 Validating recipe front matter structure...');
   
@@ -574,6 +623,7 @@ function validateRecipePrintFunctionality() {
 }
 
 module.exports = {
+  validateNoDuplicateRecipeContent,
   validateRecipeFrontMatter,
   checkRecipeSocialImages,
   checkRecipeInlineImages,

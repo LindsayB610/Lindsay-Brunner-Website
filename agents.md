@@ -198,6 +198,7 @@ npm test           # Run all tests (HTML, links, content, spell check, OG images
 
 **Test coverage includes:**
 - Front matter validation (thoughts & recipes)
+- No duplicate recipe page content (identical body in multiple files)
 - Social image existence
 - Static asset checks (CSS, favicons, default images)
 - RSS feed structure
