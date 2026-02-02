@@ -104,7 +104,7 @@ And GUPPI, even in all his occasionally-buggy glory, is wildly useful.
 
 You don't have to use GPT. You could use any AI tool with context and a decent memory. But if you want to skip the setup pain and just *steal mine*, here you go:
 
-👉 [**Try GUPPI – My Custom GPT**](https://chatgpt.com/g/g-68139cbda9908191ac300b9fe22af111-guppi-task-prioritizer)
+👉 [**Try GUPPI – My Custom GPT**](https://chatgpt.com/g/g-697feda47cd48191840c4850e8f53c16-guppi-task-prioritizer)
 
 It's the same assistant I use daily, built on top of ChatGPT with personality settings, task management logic, and just enough sarcasm to keep you honest.
 
