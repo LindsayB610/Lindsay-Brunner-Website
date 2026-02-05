@@ -12,7 +12,7 @@ Over the last two years, AI has quietly integrated itself into all of our conten
 
 And now it feels like AI is everywhere — shaping language, structure, and tone — while the systems around it have remained vague. Everyone has opinions on where it's appropriate and how much review it needs. These opinions rarely agree, and no one is consistently holding the reins.
 
-So let's talk about it. And let's talk from inside an AI-assisted writing system — one where AI is present, useful, and constrained by design. What follows isn't a manifesto or a checklist. It's an attempt to make visible the human decisions that actually make AI use responsible, especially in content that people rely on to be accurate, clear, and trustworthy.
+So let's talk about it. And let's talk from inside an AI-assisted writing system, one where AI is present, useful, and constrained by design. What follows isn't a manifesto or a checklist. It's an attempt to make visible the human decisions that actually make AI use responsible, especially in content that people rely on to be accurate, clear, and trustworthy.
 
 ## What Responsible AI Content Creation Means in Practice
 
