@@ -613,17 +613,15 @@ td code {
     size: letter;
   }
 
-  /* Hide all non-essential elements */
+  /* Hide all non-essential elements (nav, footer, supplementary sections) */
   .site-header,
   .site-footer,
   .main-nav,
   .social-links,
-  .hero,
   nav,
   script,
   .recipe-search,
-  .recipe-index-categories-grid,
-  /* Hide "Make something else" section */
+  /* Hide supplementary sections (Related Posts, CTAs, etc.) */
   .no-print,
   section.no-print,
   /* Hide decorative elements */
@@ -635,7 +633,10 @@ td code {
   /* Hide JSON-LD structured data (not visible anyway) */
   script[type="application/ld+json"],
   /* Hide header link to browse recipes */
-  header a[href*="/recipes/all/"] {
+  header a[href*="/recipes/all/"],
+  /* Hide prev/next and tags footer inside thought articles */
+  article.section nav,
+  article.section > footer {
     display: none !important;
   }
 
@@ -711,16 +712,7 @@ td code {
     display: none !important;
   }
 
-  /* Ensure only the recipe article content prints */
-  body > main > article.section {
-    display: block !important;
-  }
-
-  body > main > section.section {
-    display: none !important;
-  }
-
-  /* Article content styling */
+  /* Article content styling (recipes + thoughts) */
   .article-content {
     font-size: 11pt !important;
     line-height: 1.7 !important;
@@ -919,6 +911,221 @@ td code {
   .recipe-actions,
   .print-icon-button {
     display: none !important;
+  }
+
+  /* ========== Hero (homepage) print ========== */
+  .hero {
+    padding: 0 0 1.5rem !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 1px solid #333 !important;
+  }
+
+  .hero h1 {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
+    font-size: 22pt !important;
+    font-weight: 700 !important;
+    color: black !important;
+    background: none !important;
+    -webkit-text-fill-color: black !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+  }
+
+  .hero p {
+    font-size: 11pt !important;
+    color: black !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero .hero-cta,
+  .hero a.hero-cta {
+    display: none !important;
+  }
+
+  /* ========== Section layout (homepage, list pages) ========== */
+  main .section {
+    padding: 0 0 1.5rem !important;
+    margin: 0 0 1.5rem !important;
+    border-bottom: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+
+  main .section:last-of-type {
+    border-bottom: none !important;
+  }
+
+  .section-title {
+    margin-bottom: 1rem !important;
+  }
+
+  .section-title h1,
+  .section-title h2 {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
+    font-size: 18pt !important;
+    font-weight: 700 !important;
+    color: black !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .section-title p {
+    font-size: 10pt !important;
+    color: #444 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Cards and grids (homepage Recent Thoughts, etc.) */
+  .grid {
+    display: block !important;
+  }
+
+  .card {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ddd !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .card h3 {
+    font-size: 12pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .card h3 a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  .card .post-meta,
+  .card time {
+    font-size: 9pt !important;
+    color: #666 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .card p {
+    font-size: 10pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .read-more-link,
+  .read-more-featured {
+    display: none !important;
+  }
+
+  /* Thoughts list: featured posts */
+  .featured-post {
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 1px solid #eee !important;
+    page-break-inside: avoid;
+  }
+
+  .featured-post .post-meta,
+  .featured-post time {
+    font-size: 9pt !important;
+    color: #666 !important;
+  }
+
+  .featured-post h2 {
+    font-size: 14pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .featured-post h2 a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  .featured-post .featured-excerpt,
+  .featured-post p {
+    font-size: 10pt !important;
+    color: black !important;
+  }
+
+  /* About page content */
+  .about-content {
+    font-size: 11pt !important;
+    line-height: 1.7 !important;
+    color: black !important;
+    max-width: 100% !important;
+  }
+
+  .about-content h1,
+  .about-content h2,
+  .about-content h3,
+  .about-content h4 {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
+    color: black !important;
+    font-weight: 700 !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+    page-break-after: avoid;
+  }
+
+  .about-content p {
+    font-size: 11pt !important;
+    color: black !important;
+    margin-bottom: 0.75rem !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .about-content a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  .about-content ul,
+  .about-content ol {
+    margin-bottom: 1rem !important;
+    padding-left: 1.5rem !important;
+  }
+
+  .about-content li {
+    font-size: 11pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Recipe index (list) print */
+  .recipe-index-categories-grid {
+    display: block !important;
+  }
+
+  .recipe-index-category {
+    margin-bottom: 1.5rem !important;
+    page-break-inside: avoid;
+  }
+
+  .recipe-index-category-title {
+    font-size: 14pt !important;
+    color: black !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.25rem !important;
+    border-bottom: 1px solid #333 !important;
+  }
+
+  .recipe-index-link {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    padding: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .recipe-index-title {
+    font-size: 11pt !important;
+    color: black !important;
+  }
+
+  .recipe-index-meta {
+    font-size: 9pt !important;
+    color: #666 !important;
   }
 }
 

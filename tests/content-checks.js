@@ -49,6 +49,10 @@ const {
   validateMetaDescriptionLength
 } = require('./content-checks/seo');
 
+const {
+  validatePrintability
+} = require('./content-checks/printability');
+
 // Run all tests
 async function runAllTests() {
   console.log('🧪 Running comprehensive content validation tests...\n');
@@ -63,6 +67,7 @@ async function runAllTests() {
   checkRecipeInlineImages();
   await validateRecipeImageStyling();
   validateRecipePrintFunctionality();
+  validatePrintability();
   checkStaticAssets();
   validateRSSFeed();
   validateRecipesRSSFeed();

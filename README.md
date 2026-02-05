@@ -595,6 +595,9 @@ The test suite includes:
 - **Recipe print functionality** (`tests/content-checks/recipes.js`):
   - Validates print buttons exist on recipe pages
   - Checks print stylesheet has required @media print rules
+- **Printability** (`tests/content-checks/printability.js`):
+  - Validates print stylesheet has hide/show rules for all page types (header, footer, .no-print, .hero, .article-content, .about-content, sections, recipe index)
+  - Validates key pages (homepage, about, thoughts list, recipe index, thought single) have the HTML structure (classes) required for print CSS
   - Verifies email link format and parameters
   - Ensures print-only URL footer exists
 
