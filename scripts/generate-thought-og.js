@@ -62,8 +62,8 @@ function generateThoughtOGImage(text, slug) {
   const ctx = canvas.getContext('2d');
   
   // Calculate text layout
-  const fontSize = 140; // Increased font size for better visibility
-  const lineHeight = 170;
+  const fontSize = 102;
+  const lineHeight = 127;
   
   ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
   const words = text.split(' ');
