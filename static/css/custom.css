@@ -474,6 +474,20 @@ td code {
   font-weight: 500;
 }
 
+/* Recipe list card: date left, dietary icons right */
+.recipe-list-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.recipe-list-card-header .recipe-dietary-icons {
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
 /* Recipe dietary icons (DF, V, VG, GF next to titles) */
 .recipe-dietary-icons {
   display: inline-flex;
