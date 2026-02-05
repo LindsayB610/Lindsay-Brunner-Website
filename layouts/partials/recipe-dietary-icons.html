@@ -11,11 +11,7 @@
     {{- $abbr := cond (eq $slug "dairy-free") "DF" (cond (eq $slug "vegetarian") "V" (cond (eq $slug "vegan") "VG" (cond (eq $slug "gluten-free") "GF" ""))) -}}
     {{- if $abbr -}}
     {{- $url := printf "%s?diet=%s" (strings.TrimSuffix "/" $base) $slug -}}
-  <a href="{{ $url }}" class="recipe-dietary-icon" title="{{ $label }}" aria-label="Filter recipes: {{ $label }}">
-    <svg class="recipe-dietary-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
-      <text x="12" y="16" text-anchor="middle" font-size="14" font-weight="400" font-family="system-ui, sans-serif" fill="currentColor">{{ $abbr }}</text>
-    </svg>
-  </a>
+  <a href="{{ $url }}" class="recipe-dietary-icon" title="{{ $label }}" aria-label="Filter recipes: {{ $label }}">{{ $abbr }}</a>
     {{- end -}}
   {{- end -}}
 </span>
