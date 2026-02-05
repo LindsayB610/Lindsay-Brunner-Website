@@ -12,6 +12,7 @@ totalTime: "PT85M"
 recipeYield: "one 9×5 loaf (8–10 slices)"
 recipeCategory: "Dessert"
 recipeCuisine: "American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "1 stick (8 Tbsp) unsalted butter, softened"
   - "1 cup granulated sugar"

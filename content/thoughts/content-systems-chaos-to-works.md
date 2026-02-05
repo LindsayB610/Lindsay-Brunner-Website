@@ -40,7 +40,7 @@ A content system, by contrast, ensures that every piece of content has a reason 
 
 ## Why This Matters (Especially Now)
 
-In the early days of the internet, publishing itself was the bottleneck. Today, especially with AI now in the mix, publishing is trivial. What's hard is coordination, consistency, and leverage.
+In the early days of the internet, publishing itself was the bottleneck. Today, especially with AI now in the mix, publishing is trivial. What's hard is coordination, consistency, and leverage. I've written about [responsible AI content creation](https://lindsaybrunner.com/thoughts/2026-02-05/responsible-ai-content-creation/) for teams navigating that shift.
 
 Teams can publish dozens or even hundreds of pieces, yet still feel like they're drowning in half-finished drafts, conflicting priorities, and no way to measure what's actually working. The reason isn't that content is inherently harder. It's that content problems are systems problems. They span roles, teams, and incentives — and without a system, they collapse into ad hoc work.
 

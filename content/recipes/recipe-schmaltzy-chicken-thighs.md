@@ -12,6 +12,7 @@ totalTime: "PT60M"
 recipeYield: "3–4 servings"
 recipeCategory: "Weeknight Dinner"
 recipeCuisine: "American"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "2½–3 lb bone-in, skin-on chicken thighs (about 4–5 thighs)"
   - "1½–2 Tbsp chicken schmaltz, melted"

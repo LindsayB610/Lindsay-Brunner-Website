@@ -12,6 +12,7 @@ totalTime: "PT50M"
 recipeYield: "6 main course servings or 8-10 as a side"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
+dietary: []
 recipeIngredient:
   - "16 oz box ditalini (or small shells / elbows)"
   - "~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)"

@@ -12,6 +12,7 @@ totalTime: "PT24H"
 recipeYield: "18 large (5-inch) cookies"
 recipeCategory: "Dessert"
 recipeCuisine: "American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "2½ sticks (1¼ cups / 280 g) butter, at room temperature"
   - "1¼ cups (240 g) light brown sugar"

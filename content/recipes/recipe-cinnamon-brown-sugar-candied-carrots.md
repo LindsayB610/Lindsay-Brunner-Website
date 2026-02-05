@@ -12,6 +12,7 @@ totalTime: "PT25M"
 recipeYield: "4–6 side servings"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "1½ lb (680 g) carrots, peeled"
   - "Salt for the blanching water"

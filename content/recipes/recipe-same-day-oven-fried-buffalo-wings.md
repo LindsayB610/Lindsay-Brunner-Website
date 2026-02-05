@@ -12,6 +12,7 @@ totalTime: "PT150M"
 recipeYield: "2-3 servings"
 recipeCategory: "Appetizer"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "2 to 2.5 lb chicken wings, split at joints, tips removed"
   - "1 Tbsp baking powder (aluminum-free)"

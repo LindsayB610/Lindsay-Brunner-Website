@@ -12,6 +12,7 @@ totalTime: "PT150M"
 recipeYield: "Approximately 40 meatballs (2-inch size), enough sauce to simmer the batch and serve with spaghetti"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
+dietary: []
 recipeIngredient:
   - "2 lb ground beef (75/25)"
   - "1 lb ground pork OR veal"

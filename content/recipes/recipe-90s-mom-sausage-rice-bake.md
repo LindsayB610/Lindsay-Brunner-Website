@@ -12,6 +12,7 @@ totalTime: "PT75M"
 recipeYield: "4-6 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "2 cups long-grain white rice"
   - "3½ to 4 cups water"

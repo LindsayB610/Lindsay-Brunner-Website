@@ -12,6 +12,7 @@ totalTime: "PT70M"
 recipeYield: "about 3 servings"
 recipeCategory: "Weeknight Dinner"
 recipeCuisine: "Italian-American"
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "4 bone-in, skin-on chicken thighs"
   - "½–⅔ cup herb marinade (see below)"

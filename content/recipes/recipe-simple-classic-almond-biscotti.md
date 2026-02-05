@@ -12,6 +12,7 @@ totalTime: "PT75M"
 recipeYield: "About 16 crisp biscotti (depending on how thick you slice)"
 recipeCategory: "Dessert"
 recipeCuisine: "Italian-American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "2 cups (240 g) all-purpose flour"
   - "¾ cup (150 g) granulated sugar"

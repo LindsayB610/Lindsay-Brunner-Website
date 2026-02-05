@@ -12,6 +12,7 @@ totalTime: "PT90M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "1.5 to 2 pounds ground beef"
   - "1 tablespoon duck fat"

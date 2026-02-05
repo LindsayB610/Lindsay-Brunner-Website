@@ -82,6 +82,11 @@ function validateRecipeFrontMatter() {
         errors.push(`${file}: Missing required field "${field}"`);
       }
     });
+
+    // dietary is required on all recipes (use [] when no labels apply)
+    if (!('dietary' in frontMatter)) {
+      errors.push(`${file}: Missing required field "dietary". Add dietary: [] or dietary: ["vegetarian", "dairy-free"] etc. (see docs/recipe-template.md)`);
+    }
     
     // Date is required when draft: false, optional for drafts
     const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';

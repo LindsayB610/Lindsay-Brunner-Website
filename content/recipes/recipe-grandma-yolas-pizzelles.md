@@ -12,6 +12,7 @@ totalTime: "PT60M"
 recipeYield: "About 7–8 dozen pizzelles, depending on iron size"
 recipeCategory: "Dessert"
 recipeCuisine: "Italian-American"
+dietary: ["vegetarian", "dairy-free"]
 recipeIngredient:
   - "12 large eggs"
   - "3½ cups granulated sugar"

@@ -12,6 +12,7 @@ totalTime: "PT55M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "2 cups dry elbow macaroni"
   - "1 lb ground beef"

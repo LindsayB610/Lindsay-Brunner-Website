@@ -12,6 +12,7 @@ totalTime: "PT70M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Turkish"
+dietary: []
 recipeIngredient:
   - "1 lb (about 450 g) ground lamb"
   - "2 lb (about 900 g) 75/25 ground beef"

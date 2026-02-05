@@ -12,6 +12,7 @@ totalTime: "PT45M"
 recipeYield: "one 8×8 pan (about 16 squares)"
 recipeCategory: "Dessert"
 recipeCuisine: "American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "8 Tbsp unsalted butter, melted and cooled slightly"
   - "1 cup packed brown sugar"

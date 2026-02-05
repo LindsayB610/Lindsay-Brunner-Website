@@ -12,6 +12,7 @@ totalTime: "PT35M"
 recipeYield: "about 4 generous bowls"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
+dietary: []
 recipeIngredient:
   - "4 Tbsp salted butter, divided"
   - "1 lb Italian sausage (sweet preferred; hot optional), casings removed"

@@ -12,6 +12,7 @@ totalTime: "PT40M"
 recipeYield: "3-4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "1 to 1¼ lb steak (ribeye, New York strip, or chuck eye), thawed"
   - "1 bag Ore-Ida Potatoes O'Brien (frozen)"

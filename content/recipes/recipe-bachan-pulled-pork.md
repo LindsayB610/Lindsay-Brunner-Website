@@ -12,6 +12,7 @@ totalTime: "PT85M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Japanese-American"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "2 teaspoons Diamond Crystal kosher salt (or 1¼ teaspoons Morton's)"
   - "1 teaspoon garlic powder"

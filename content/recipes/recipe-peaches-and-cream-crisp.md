@@ -12,6 +12,7 @@ totalTime: "PT95M"
 recipeYield: "8 servings"
 recipeCategory: "Dessert"
 recipeCuisine: "American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "1½ cups old-fashioned rolled oats (150 g)"
   - "½ cup all-purpose flour (80 g)"

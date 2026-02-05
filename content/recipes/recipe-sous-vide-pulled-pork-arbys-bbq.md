@@ -12,6 +12,7 @@ totalTime: "PT20H45M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "3 lb boneless pork shoulder (pork butt), thawed"
   - "2½ Tsp kosher salt"

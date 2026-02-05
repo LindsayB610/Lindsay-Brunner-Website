@@ -12,6 +12,7 @@ totalTime: "PT75M"
 recipeYield: "12-16 servings"
 recipeCategory: "Appetizer"
 recipeCuisine: "American"
+dietary: ["vegetarian", "dairy-free"]
 recipeIngredient:
   - "12–16 oz hard sourdough pretzels"
   - "6 Tbsp neutral oil (vegetable or olive), divided"

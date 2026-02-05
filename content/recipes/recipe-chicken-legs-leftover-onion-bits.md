@@ -12,6 +12,7 @@ totalTime: "PT75M"
 recipeYield: "4-6 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "8 chicken legs, drumsticks or whole legs"
   - "About 1 cup of whatever onion you have (leek, yellow onion, white onion, shallot, red onion, or a mix)"

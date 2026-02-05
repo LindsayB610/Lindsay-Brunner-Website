@@ -12,6 +12,7 @@ totalTime: "PT95M"
 recipeYield: "4 hearty main-dish rolls (2 servings)"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "1 lb (450 g) 85% lean ground turkey"
   - "⅓ cup panko or fine dry breadcrumbs"

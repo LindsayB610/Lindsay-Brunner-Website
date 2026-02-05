@@ -12,6 +12,7 @@ totalTime: "PT95M"
 recipeYield: "3-4 servings"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
+dietary: ["vegetarian"]
 recipeIngredient:
   - "1¼–1½ pounds sweet potatoes (565–680 g), whole, unpeeled"
   - "3 tablespoons salted butter, softened"

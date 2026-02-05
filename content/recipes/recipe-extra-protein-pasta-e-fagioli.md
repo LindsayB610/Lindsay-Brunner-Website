@@ -12,6 +12,7 @@ totalTime: "PT60M"
 recipeYield: "about 6 generous bowls"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
+dietary: []
 recipeIngredient:
   - "1 lb Italian sausage (½ lb sweet + ½ lb hot)"
   - "Olive oil"

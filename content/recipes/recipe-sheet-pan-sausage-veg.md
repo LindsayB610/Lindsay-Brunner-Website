@@ -12,6 +12,7 @@ totalTime: "PT1H10M"
 recipeYield: "3–4 servings"
 recipeCategory: "Weeknight Dinner"
 recipeCuisine: "American"
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "1½ lb tiny Yukon Gold potatoes (or fingerlings; see note if larger)"
   - "5 Tbsp olive oil, divided"

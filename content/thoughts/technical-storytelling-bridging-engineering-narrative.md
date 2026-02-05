@@ -110,7 +110,7 @@ Let's state the obvious: oversimplifying until the explanation becomes technical
 
 Also, burying the point under layers of implementation detail makes it impossible for non-builders to engage. If someone has to understand your entire architecture before they know why it exists, you've already lost them.
 
-This can be where a lot of developer marketing quietly fails. Content that's written to sound technical (dense with buzzwords, feature lists, and architectural name-dropping) gives developers nothing they can actually use. When content doesn't help someone ship, debug, or decide, it gets ignored.
+This can be where a lot of developer marketing quietly fails. Content that's written to sound technical (dense with buzzwords, feature lists, and architectural name-dropping) gives developers nothing they can actually use. This failure mode becomes especially visible when AI is involved — fluency without accountability produces exactly this hollow content. I've written about [responsible AI content creation](https://lindsaybrunner.com/thoughts/2026-02-05/responsible-ai-content-creation/) and how to avoid it. When content doesn't help someone ship, debug, or decide, it gets ignored.
 
 Forgetting to answer "so what" leaves readers stranded. They may understand how the system works, but not why it matters or what to do with that understanding.
 

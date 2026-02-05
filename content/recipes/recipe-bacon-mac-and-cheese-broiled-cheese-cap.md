@@ -12,6 +12,7 @@ totalTime: "PT40M"
 recipeYield: "about 4 generous bowls"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: []
 recipeIngredient:
   - "1 lb medium shells"
   - "1 package thick-cut bacon (10 to 12 oz), cooked to crispy and chopped"

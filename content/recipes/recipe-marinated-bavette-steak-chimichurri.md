@@ -12,6 +12,7 @@ totalTime: "PT2H30M"
 recipeYield: "3 to 4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Argentine-inspired"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "1½ to 2 lb bavette steak, fully thawed"
   - "Kosher salt and black pepper"

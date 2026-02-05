@@ -12,6 +12,7 @@ totalTime: "PT45M"
 recipeYield: "1 lb (4-6 servings)"
 recipeCategory: "Breakfast"
 recipeCuisine: "American"
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "1 lb very thick sliced bacon (home-cured is perfect here)"
   - "~¼ cup water, poured into the sheet pan under the rack (optional, helps reduce smoking if your drippings run hot)"

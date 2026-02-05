@@ -12,6 +12,7 @@ totalTime: "PT23M"
 recipeYield: "about 4 servings"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
+dietary: ["vegetarian", "dairy-free", "gluten-free"]
 recipeIngredient:
   - "6 large eggs"
   - "⅓ cup mayonnaise (for standard base)"
