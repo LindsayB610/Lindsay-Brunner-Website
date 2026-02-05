@@ -532,7 +532,7 @@ td code {
   justify-content: space-between;
   gap: 0.5rem;
   width: 100%;
-  flex: 1;
+  min-width: 0;
 }
 
 .recipe-index-title-wrap .recipe-index-title {
