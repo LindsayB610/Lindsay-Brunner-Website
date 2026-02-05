@@ -27,7 +27,7 @@ recipeInstructions:
   - "Flip the thighs skin-side up and transfer the skillet to the oven. Roast until the chicken reaches 175–185°F (79–85°C) in the thickest part, about 15–22 minutes."
   - "If the skin needs more color, switch to broil for 2–3 minutes and watch closely. Rest the chicken 7–10 minutes. Finish with a light sprinkle of flaky salt and black pepper."
 ---
-Bone-in, skin-on chicken thighs in a cast iron pan. Schmaltz and spices on the skin, a long sear so the fat actually renders (not just browns), then into the oven to finish. No potatoes, no vegetables, no sauce. Just thighs and a hot pan.
+I don't know why everyone was conspiring to hide chicken schmaltz from me, but now that I know it exists, there's no going back. Schmaltz is just rendered chicken fat (usually from skin and trimmings), and it turns out it's the missing piece in every "why isn't this as good as I expected" chicken recipe I've ever made. This recipe is what happens when you stop fighting chicken thighs and let them do what they want: render their fat slowly in a hot cast iron pan, crisp the skin properly, then finish in the oven. No vegetables, no sauce, no distractions. Just schmaltz, thighs, and enough patience to let the pan handle the hard part.
 
 ## Snapshot
 
