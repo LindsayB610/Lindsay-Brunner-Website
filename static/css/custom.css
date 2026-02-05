@@ -525,16 +525,28 @@ td code {
   gap: 0.25rem;
 }
 
-/* Index page: title + icons row */
+/* Index page: title left, dietary icons right-justified */
 .recipe-index-title-wrap {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  flex: 1;
 }
 
 .recipe-index-title-wrap .recipe-index-title {
   margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.recipe-index-title-wrap .recipe-dietary-icons {
+  margin-left: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Single recipe: title + dietary icons */
