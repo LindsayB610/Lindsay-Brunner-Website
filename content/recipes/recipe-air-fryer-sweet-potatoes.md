@@ -12,11 +12,11 @@ totalTime: "PT75M"
 recipeYield: "Varies by number of sweet potatoes"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
-dietary: ["vegetarian", "gluten-free"]
+dietary: ["vegetarian", "vegan", "gluten-free", "dairy-free"]
 recipeIngredient:
   - "Whole sweet potatoes, any size"
   - "Neutral oil, optional"
-  - "Butter, for serving"
+  - "Butter or vegan butter, for serving"
   - "Salt, for serving"
 recipeInstructions:
   - "Scrub the sweet potatoes well and dry them. Pierce each one a few times with a fork so steam can escape during cooking."
@@ -54,7 +54,7 @@ The air fryer, turned off and unopened, acts like a dry thermos. Nothing dramati
 
 - Whole sweet potatoes, any size
 - Neutral oil, optional
-- Butter, for serving
+- Butter or vegan butter, for serving
 - Salt, for serving
 - Cheese, Courtney often uses butterkase, cut at her desk with a spoon
 
@@ -87,6 +87,10 @@ This recipe is about method, not seasoning.
 ---
 
 ## Notes and guardrails
+
+### Dietary labels
+
+The vegan and dairy-free labels apply to the base recipe (sweet potato with vegan butter and salt). Adding cheese adds dairy and makes it non-vegan.
 
 ### Keep them whole
 

@@ -12,6 +12,7 @@ totalTime: "PT50M"
 recipeYield: "4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "2 Tbsp olive oil"
   - "5 Italian sausage links (sweet, hot, or a mix)"
@@ -24,7 +25,7 @@ recipeIngredient:
   - "½ Tsp red pepper flakes (only if using all sweet sausage)"
   - "¼ cup water or red wine"
   - "1 (10 oz) can Rotel diced tomatoes, with juices"
-  - "1–2 Tbsp butter"
+  - "1–2 Tbsp butter or vegan butter"
   - "Cooked white rice, for serving"
 recipeInstructions:
   - "Start the rice in a rice cooker so it is ready when the sausage finishes. Keep warm."
@@ -68,7 +69,7 @@ This isn't impressive food. It's reliable food. The kind you make on a weeknight
 - ½ Tsp red pepper flakes (only if using all sweet sausage)
 - ¼ cup water or red wine
 - 1 (10 oz) can Rotel diced tomatoes, with juices
-- 1–2 Tbsp butter
+- 1–2 Tbsp butter or vegan butter
 
 ### To serve
 

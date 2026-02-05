@@ -12,6 +12,7 @@ totalTime: "PT90M"
 recipeYield: "4–6 pieces, generously serving 4 with veg"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
+dietary: ["dairy-free"]
 recipeIngredient:
   - "3–4 lb (1.4–1.8 kg) bone-in, skin-on turkey legs and/or thighs"
   - "4 Tsp (1 Tbsp + 1 Tsp) Diamond Crystal kosher salt"
@@ -31,7 +32,7 @@ recipeIngredient:
   - "½ cup (120 ml) dry white wine, dry vermouth, or extra stock"
   - "1 cup (240 ml) low-sodium chicken or turkey stock"
   - "1–2 Tsp lemon juice or sherry vinegar, to taste"
-  - "2 Tbsp cold unsalted butter, cut into small cubes"
+  - "2 Tbsp cold unsalted butter or vegan butter, cut into small cubes"
   - "1 Tsp Dijon mustard (optional)"
   - "Flaky salt, for serving"
   - "Extra chopped fresh herbs (parsley, thyme, or sage), for serving"
@@ -92,7 +93,7 @@ So, let's get started.
 - ½ cup (120 ml) dry white wine, dry vermouth, or extra stock
 - 1 cup (240 ml) low-sodium chicken or turkey stock
 - 1–2 Tsp lemon juice or sherry vinegar, to taste
-- 2 Tbsp cold unsalted butter, cut into small cubes
+- 2 Tbsp cold unsalted butter or vegan butter, cut into small cubes
 - Optional: 1 Tsp Dijon mustard
 
 ### To serve
