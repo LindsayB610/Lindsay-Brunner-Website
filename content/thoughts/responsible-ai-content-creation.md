@@ -69,7 +69,7 @@ What doesn't work is hiding AI use out of fear, or disclosing it in ways that fe
 ## Governance: Where Responsibility Becomes a System
 
 <div style="display: flex; justify-content: center; margin: 2rem 0;">
-<img src="/images/responsible-ai-content-creation-governance-workflow.png" alt="Flowchart showing the governance workflow for responsible AI content creation: starting with content idea or brief, moving through AI-assisted drafting, human revision, verification steps for factual claims, editor review, disclosure decisions, and final approval before publishing" />
+<img src="/images/responsible-ai-content-creation-governance-workflow.png" alt="Flowchart showing the governance workflow for responsible AI content creation: starting with content idea or brief, moving through AI-assisted drafting, human revision, verification steps for factual claims, editor review, disclosure decisions, and final approval before publishing" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 </div>
 
 Governance matters because responsibility evaporates under deadline pressure unless it's structurally enforced.
@@ -89,7 +89,7 @@ What they don't do is assume responsibility is handled once the tool is configur
 At the team level, these practices compound over time.
 
 <div style="display: flex; justify-content: center; margin: 2rem 0;">
-<img src="/images/responsible-ai-content-creation-team-implementation-workflow.png" alt="Flowchart showing the cyclical team implementation workflow for responsible AI standards: starting with auditing current AI use, then piloting standards, defining policies, training teams, scaling across teams, reviewing quality signals, and updating policies in a continuous feedback loop" />
+<img src="/images/responsible-ai-content-creation-team-implementation-workflow.png" alt="Flowchart showing the cyclical team implementation workflow for responsible AI standards: starting with auditing current AI use, then piloting standards, defining policies, training teams, scaling across teams, reviewing quality signals, and updating policies in a continuous feedback loop" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
 </div>
 
 Most teams don't become "responsible" overnight. The ones that succeed treat this as a gradual systems change, revisiting decisions as tools evolve and failure modes become clearer.
