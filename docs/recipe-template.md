@@ -105,6 +105,16 @@ recipeInstructions:
 
 ### Optional Fields
 
+- **`dietary`** (array of strings): Dietary labels for filtering and icon display. **Labels apply to the base recipe only** (main Ingredients and Method). See definitions below and the Notes section rule.
+  - **Allowed values (use exactly these, lowercase with hyphen):**
+    - **`dairy-free`** — Base recipe contains no milk, cream, butter, cheese, or other dairy products.
+    - **`vegetarian`** — Base recipe contains no meat, poultry, or fish. Eggs and dairy are allowed.
+    - **`vegan`** — Base recipe contains no animal products (no meat, poultry, fish, eggs, dairy, honey, etc.). Plant-based only.
+    - **`gluten-free`** — Base recipe contains no wheat, barley, rye, or ingredients derived from them.
+  - A recipe can have multiple labels. Renders minimal icons next to the title on list, index, and single pages; each icon links to the filtered recipe list.
+  - **Notes section:** If any note, variation, or serving suggestion would change a dietary classification (e.g. "Serve with crusty bread" on a gluten-free recipe, or "Top with cheese" on a dairy-free recipe), explicitly call that out in the note: e.g. "The [label] applies to the base recipe; this variation adds [dairy/gluten/etc.]."
+  - Example: `dietary: ["vegetarian", "gluten-free"]`
+
 - **`social_image`** (string): Path to Open Graph image
   - Format: `"/images/social/recipe-recipe-name-og.png"`
   - **Required for published recipes** (draft: false)
@@ -230,6 +240,8 @@ See [`recipe-snapshot-template.md`](./recipe-snapshot-template.md) for complete 
 - Do not stir.
 - Do not swap in broth unless you want a different dish.
 ```
+
+**Dietary labels and the Notes section:** Labels in front matter (`dietary`) apply to the **base recipe only**. If a note or variation adds something that would change a label (e.g. serving with bread on a gluten-free recipe, or adding cheese on a dairy-free recipe), say so in the note: e.g. "The gluten-free label applies to the base recipe; serving with bread adds gluten."
 
 **Common mistakes to avoid:**
 - ❌ Creating `### Guardrails` subsection (redundant with header)

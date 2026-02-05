@@ -18,7 +18,7 @@ const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
 
 // Required fields in the JSON index
 const REQUIRED_JSON_FIELDS = ['title', 'date', 'permalink'];
-const OPTIONAL_JSON_FIELDS = ['description', 'subtitle', 'slug', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions', 'social_image'];
+const OPTIONAL_JSON_FIELDS = ['description', 'subtitle', 'slug', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions', 'social_image', 'dietary'];
 
 // Simple test runner
 if (require.main === module) {

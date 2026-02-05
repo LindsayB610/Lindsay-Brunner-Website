@@ -141,6 +141,7 @@ The template includes:
 - `recipeYield` (string, e.g., "6-8 servings")
 - `recipeCategory` (string, e.g., "Main Course")
 - `recipeCuisine` (string, e.g., "Japanese-American")
+- `dietary` (optional array) — see **Dietary labels** below. Used for filter chips and title icons.
 - `recipeIngredient` (array of strings)
 - `recipeInstructions` (array of strings)
 
@@ -149,6 +150,12 @@ The template includes:
 **File naming:** Use `recipe-` prefix (e.g., `recipe-bachan-pulled-pork.md`)
 
 **Section separators:** Use `---` (three dashes) as horizontal rules to separate major sections within recipe content. Do not use `⸻` (triple em dash) or other separator characters.
+
+**Dietary labels (optional):** Labels apply to the **base recipe only** (main Ingredients and Method). Use exactly these values (lowercase, hyphenated). If a note or variation would change a classification, explicitly call that out in the note.
+- **dairy-free** — Base recipe has no milk, cream, butter, cheese, or other dairy.
+- **vegetarian** — Base recipe has no meat, poultry, or fish. Eggs and dairy allowed.
+- **vegan** — Base recipe has no animal products (no meat, fish, eggs, dairy, honey, etc.).
+- **gluten-free** — Base recipe has no wheat, barley, rye, or ingredients derived from them.
 
 **Temperature formatting:**
 - Always use degree symbols: `°F` and `°C`
@@ -198,6 +205,7 @@ npm test           # Run all tests (HTML, links, content, spell check, OG images
 
 **Test coverage includes:**
 - Front matter validation (thoughts & recipes)
+- Dietary labels: only `dairy-free`, `vegetarian`, `vegan`, `gluten-free` allowed; no duplicates; labels apply to base recipe only (see docs)
 - No duplicate recipe page content (identical body in multiple files)
 - Social image existence
 - Static asset checks (CSS, favicons, default images)
@@ -335,6 +343,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **tests/schedule-posts.test.js**: Scheduled posts workflow validation
 - **tests/recipe-search-json.test.js**: Recipe search JSON index validation
 - **tests/recipe-template.test.js**: Recipe template structure validation
+- **tests/dietary-labels.test.js**: Dietary label validation (allowed values only; base recipe only)
 - **scripts/schedule-posts.js**: Auto-publish scheduled posts script
 - **scripts/generate-og-images.js**: Generate OG images for recipes
 - **scripts/generate-png-from-svg.js**: Convert SVG to PNG for social media compatibility

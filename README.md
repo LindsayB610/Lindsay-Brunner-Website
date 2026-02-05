@@ -62,7 +62,7 @@ Before you begin, ensure you have the following installed:
 - `npm run start` - Alternative command to start the development server
 - `npm run serve` - Serve the site without draft content
 - `npm run clean` - Remove the generated `public` directory
-- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, mobile responsive)
+- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
@@ -72,6 +72,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:schedule` - Scheduled posts workflow validation
 - `npm run test:search-json` - Recipe search JSON index validation
 - `npm run test:recipe-template` - Recipe template structure validation
+- `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
 - `npm run test:mobile` - Mobile and responsive design validation
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
 - `npm run check:hugo` - Check Hugo version, security status, and available updates
@@ -228,6 +229,19 @@ The template includes:
    - Add `social_image: "/images/social/recipe-xxx-og.png"` to front matter
 
 5. **Test**: Run `npm run build && npm run test:content` to validate
+
+#### Dietary labels (optional)
+
+Recipes can include a `dietary` front matter array for filtering and icon display. **Labels apply to the base recipe only** (main Ingredients and Method). Use exactly these values (lowercase, hyphenated):
+
+| Label | Definition |
+|-------|------------|
+| **dairy-free** | Base recipe contains no milk, cream, butter, cheese, or other dairy. |
+| **vegetarian** | Base recipe contains no meat, poultry, or fish. Eggs and dairy allowed. |
+| **vegan** | Base recipe contains no animal products (no meat, fish, eggs, dairy, honey, etc.). |
+| **gluten-free** | Base recipe contains no wheat, barley, rye, or ingredients derived from them. |
+
+If anything in the **Notes** section (e.g. a serving suggestion or variation) would change the classification (e.g. "Serve with bread" on a gluten-free recipe), explicitly say so in that note: e.g. "The gluten-free label applies to the base recipe; serving with bread adds gluten." See `docs/recipe-template.md` for full definitions and the Notes rule.
 
 ### Recipe Print Functionality
 
@@ -545,6 +559,7 @@ The test suite includes:
   - Required fields and data format validation
   - Date format validation (YYYY-MM-DD)
   - Recipe schema validation (times, ingredients, instructions)
+  - Dietary labels: only `dairy-free`, `vegetarian`, `vegan`, `gluten-free` allowed; no duplicates (base recipe only; see recipe-template.md)
 
 - **Assets**:
   - Social image existence (thoughts and recipes)
@@ -591,6 +606,11 @@ The test suite includes:
 - **Recipe template** (`tests/recipe-template.test.js`):
   - Validates recipe template structure compliance
   - Ensures recipes follow the template guidelines
+
+- **Dietary labels** (`tests/dietary-labels.test.js`) and content-checks recipe front matter:
+  - Allowed values only: `dairy-free`, `vegetarian`, `vegan`, `gluten-free` (labels apply to base recipe only; see docs)
+  - Rejects invalid or duplicate values
+  - Each allowed value validated
 
 - **Recipe print functionality** (`tests/content-checks/recipes.js`):
   - Validates print buttons exist on recipe pages

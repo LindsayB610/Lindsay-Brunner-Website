@@ -30,7 +30,10 @@
         </a>
       </div>
 
-      <h1>{{ .Title }}</h1>
+      <h1 class="recipe-single-title-with-icons">
+        {{ .Title }}
+        {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/") }}
+      </h1>
 
       {{ if .Params.subtitle }}
       <p

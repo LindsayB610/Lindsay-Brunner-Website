@@ -1,0 +1,13 @@
+{{/* Filter chips for recipe index: All, Dairy free, Vegetarian, Vegan, Gluten free. */}}
+{{/* Expects: dict "base" "/recipes/" */}}
+{{- $base := default "/recipes/" .base -}}
+{{- $dietOptions := slice (dict "slug" "" "label" "All") (dict "slug" "dairy-free" "label" "Dairy free") (dict "slug" "vegetarian" "label" "Vegetarian") (dict "slug" "vegan" "label" "Vegan") (dict "slug" "gluten-free" "label" "Gluten free") -}}
+<nav class="recipe-diet-filters" aria-label="Filter recipes by dietary">
+  {{- range $dietOptions -}}
+    {{- $url := $base -}}
+    {{- if .slug -}}
+      {{- $url = printf "%s?diet=%s" (strings.TrimSuffix "/" $base) .slug -}}
+    {{- end -}}
+  <a href="{{ $url }}" class="recipe-diet-filter-chip" data-diet-filter="{{ .slug }}">{{ .label }}</a>
+  {{- end -}}
+</nav>

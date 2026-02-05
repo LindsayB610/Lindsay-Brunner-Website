@@ -5,6 +5,8 @@
       <h1>{{ .Title }}</h1>
     </div>
 
+    {{ partial "recipe-diet-filters.html" (dict "base" "/recipes/all/") }}
+
     {{/* Get all published recipes from the recipes section */}}
     {{ $allRecipes := where .Site.RegularPages "Section" "recipes" }}
     {{ $allRecipes = where $allRecipes "Draft" false }}
@@ -52,9 +54,12 @@
               
               <ul class="recipe-index-list">
                 {{ range $categoryRecipes }}
-                <li class="recipe-index-item">
+                <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
                   <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                    <span class="recipe-index-title">{{ .Title }}</span>
+                    <span class="recipe-index-title-wrap">
+                      <span class="recipe-index-title">{{ .Title }}</span>
+                      {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
+                    </span>
                     {{ if or .Params.totalTime .Params.recipeYield }}
                     <span class="recipe-index-meta">
                       {{ if .Params.totalTime }}
@@ -87,9 +92,12 @@
               
               <ul class="recipe-index-list">
                 {{ range $categoryRecipes }}
-                <li class="recipe-index-item">
+                <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
                   <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                    <span class="recipe-index-title">{{ .Title }}</span>
+                    <span class="recipe-index-title-wrap">
+                      <span class="recipe-index-title">{{ .Title }}</span>
+                      {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
+                    </span>
                     {{ if or .Params.totalTime .Params.recipeYield }}
                     <span class="recipe-index-meta">
                       {{ if .Params.totalTime }}
@@ -121,9 +129,12 @@
           
           <ul class="recipe-index-list">
             {{ range $uncategorizedRecipes }}
-            <li class="recipe-index-item">
+            <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
               <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                <span class="recipe-index-title">{{ .Title }}</span>
+                <span class="recipe-index-title-wrap">
+                  <span class="recipe-index-title">{{ .Title }}</span>
+                  {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
+                </span>
                 {{ if or .Params.totalTime .Params.recipeYield }}
                 <span class="recipe-index-meta">
                   {{ if .Params.totalTime }}
@@ -152,4 +163,24 @@
     {{ end }}
   </div>
 </section>
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var diet = params.get('diet') && params.get('diet').trim() ? params.get('diet').trim() : null;
+  var chips = document.querySelectorAll('.recipe-diet-filter-chip');
+  chips.forEach(function(chip) {
+    chip.classList.toggle('is-active', (chip.getAttribute('data-diet-filter') || '') === (diet || ''));
+  });
+  var items = document.querySelectorAll('.recipe-index-item');
+  items.forEach(function(item) {
+    var dataDiet = item.getAttribute('data-diet') || '';
+    var diets = dataDiet ? dataDiet.split(/\s+/) : [];
+    if (diet) {
+      item.style.display = diets.indexOf(diet) !== -1 ? '' : 'none';
+    } else {
+      item.style.display = '';
+    }
+  });
+})();
+</script>
 {{ end }}

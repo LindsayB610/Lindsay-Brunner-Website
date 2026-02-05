@@ -22,6 +22,16 @@
     {{- if $recipe.Params.recipeCuisine }}
     "recipeCuisine": {{ $recipe.Params.recipeCuisine | jsonify }},
     {{- end }}
+    {{- if $recipe.Params.dietary }}
+    "dietary": [
+      {{- range $i, $d := $recipe.Params.dietary }}
+        {{- if $i }},{{ end }}
+        {{ ($d | urlize) | jsonify }}
+      {{- end }}
+    ],
+    {{- else }}
+    "dietary": [],
+    {{- end }}
     {{- if $recipe.Params.recipeIngredient }}
     "recipeIngredient": [
       {{- range $i, $ingredient := $recipe.Params.recipeIngredient }}

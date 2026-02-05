@@ -3,6 +3,9 @@ const path = require('path');
 const sharp = require('sharp');
 const { recipesDir, REQUIRED_RECIPE_FIELDS, parseFrontMatter, staticDir } = require('./utils');
 
+// Allowed dietary label values (must match partials/recipe-dietary-icons.html and docs)
+const ALLOWED_DIETARY_VALUES = ['dairy-free', 'vegetarian', 'vegan', 'gluten-free'];
+
 /**
  * Normalize recipe body for comparison: strip front matter, collapse whitespace.
  * Used to detect duplicate page content (same recipe in two files).
@@ -122,7 +125,40 @@ function validateRecipeFrontMatter() {
         errors.push(`${file}: recipeInstructions must be a non-empty array`);
       }
     }
-    
+
+    // Validate dietary: if present, must be array of allowed values only (base recipe only; see docs)
+    if (frontMatter.dietary !== undefined) {
+      let dietaryList = frontMatter.dietary;
+      if (!Array.isArray(dietaryList)) {
+        if (typeof dietaryList === 'string' && dietaryList.trim().startsWith('[')) {
+          try {
+            dietaryList = JSON.parse(dietaryList);
+          } catch (_) {
+            dietaryList = null;
+          }
+        }
+        if (!Array.isArray(dietaryList)) {
+          errors.push(`${file}: dietary must be an array (e.g. dietary: ["vegetarian", "gluten-free"])`);
+        }
+      }
+      if (Array.isArray(dietaryList)) {
+        const seen = new Set();
+        dietaryList.forEach((value, index) => {
+          const v = typeof value === 'string' ? value.trim().toLowerCase().replace(/\s+/g, '-') : String(value);
+          if (!ALLOWED_DIETARY_VALUES.includes(v)) {
+            errors.push(
+              `${file}: dietary[${index}] "${value}" is not allowed. ` +
+              `Allowed values: ${ALLOWED_DIETARY_VALUES.join(', ')}. Labels apply to the base recipe only (see docs/recipe-template.md).`
+            );
+          }
+          if (seen.has(v)) {
+            errors.push(`${file}: dietary contains duplicate value "${v}"`);
+          }
+          seen.add(v);
+        });
+      }
+    }
+
     // 🔒 ENFORCE: Published recipes MUST have social_image (manual review required)
     // This ensures OG images are reviewed before going live
     if (!isDraft && !frontMatter.social_image && !frontMatter.og_image) {

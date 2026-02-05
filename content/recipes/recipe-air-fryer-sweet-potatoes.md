@@ -12,6 +12,7 @@ totalTime: "PT75M"
 recipeYield: "Varies by number of sweet potatoes"
 recipeCategory: "Side Dish"
 recipeCuisine: "American"
+dietary: ["vegetarian", "gluten-free"]
 recipeIngredient:
   - "Whole sweet potatoes, any size"
   - "Neutral oil, optional"
