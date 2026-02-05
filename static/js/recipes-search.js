@@ -44,13 +44,6 @@
   let allRecipeElements = [];
   let debounceTimer = null;
 
-  // Read ?diet= from URL (e.g. vegan, gluten-free)
-  function getDietFilter() {
-    const params = new URLSearchParams(window.location.search);
-    const diet = params.get('diet');
-    return diet && diet.trim() ? diet.trim() : null;
-  }
-
   // Initialize: cache recipe elements
   function initRecipeElements() {
     const articles = recipesList.querySelectorAll('article.featured-post');
@@ -124,7 +117,6 @@
 
       // Initialize Fuse.js
       fuse = new Fuse(allRecipes, FUSE_OPTIONS);
-      applyDietFilterUI();
       console.log(`Recipe search initialized with ${allRecipes.length} recipes`);
     } catch (error) {
       console.error('Error initializing recipe search:', error);
@@ -138,14 +130,8 @@
       return;
     }
 
-    const dietFilter = getDietFilter();
     const results = fuse.search(query.trim());
-    let matchedRecipes = results.map(result => result.item);
-    if (dietFilter) {
-      matchedRecipes = matchedRecipes.filter(r =>
-        r.dietary && r.dietary.indexOf(dietFilter) !== -1
-      );
-    }
+    const matchedRecipes = results.map(result => result.item);
 
     // Create a map of permalink to DOM element for quick lookup
     const elementMap = new Map();
@@ -186,31 +172,13 @@
     }
   }
 
-  // Show all recipes (respecting diet filter from URL)
+  // Show all recipes
   function showAllRecipes() {
-    const dietFilter = getDietFilter();
-    allRecipeElements.forEach(({ element, href }) => {
-      if (dietFilter) {
-        const diet = element.getAttribute('data-diet') || '';
-        const diets = diet ? diet.split(/\s+/) : [];
-        element.style.display = diets.indexOf(dietFilter) !== -1 ? '' : 'none';
-      } else {
-        element.style.display = '';
-      }
+    allRecipeElements.forEach(({ element }) => {
+      element.style.display = '';
     });
     emptyState.style.display = 'none';
     resultsCount.textContent = '';
-  }
-
-  // Apply diet filter from URL on load: hide non-matching, set active chip
-  function applyDietFilterUI() {
-    const dietFilter = getDietFilter();
-    const chips = document.querySelectorAll('.recipe-diet-filter-chip');
-    chips.forEach(chip => {
-      const slug = chip.getAttribute('data-diet-filter') || '';
-      chip.classList.toggle('is-active', slug === (dietFilter || ''));
-    });
-    showAllRecipes();
   }
 
   // Event handlers

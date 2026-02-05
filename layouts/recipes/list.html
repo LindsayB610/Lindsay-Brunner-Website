@@ -11,8 +11,6 @@
       </p>
     </div>
 
-    {{ partial "recipe-diet-filters.html" (dict "base" "/recipes/") }}
-
     <div class="recipe-search">
       <label for="recipe-search-input" class="sr-only">Search recipes</label>
       <div class="recipe-search-wrapper">
@@ -47,14 +45,14 @@
 
     {{ if $recipes }}
       {{ range $recipes }}
-      <article class="featured-post" style="margin-bottom: 3rem;" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
+      <article class="featured-post" style="margin-bottom: 3rem;">
         <div class="featured-content">
           <div class="post-meta">
             <time>{{ .Date.Format "January 2, 2006" }}</time>
           </div>
           <h2 class="recipe-title-with-icons">
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/") }}
+            {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
           </h2>
           <p class="featured-excerpt">
             {{ if .Params.subtitle }}

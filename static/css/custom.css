@@ -463,6 +463,10 @@ td code {
   background: var(--dark-surface-lighter);
 }
 
+.recipe-diet-filter-chip::after {
+  display: none;
+}
+
 .recipe-diet-filter-chip.is-active {
   color: var(--color-pink);
   border-color: var(--color-pink);
