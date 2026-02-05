@@ -4,7 +4,7 @@ date: 2026-01-31
 slug: "recipe-roasted-tomato-soup"
 subtitle: "Or: Tomato soup from someone who mostly only knows how to make marinara"
 description: "Roasted fresh tomatoes, olive oil and butter as co-architects, cream added on purpose. Savory, silky, tomato-forward, flexible enough to become your house soup."
-draft: false
+draft: true
 social_image: "/images/social/recipe-roasted-tomato-soup-og.png"
 prepTime: "PT15M"
 cookTime: "PT50M"

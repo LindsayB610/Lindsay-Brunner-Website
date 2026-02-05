@@ -37,3 +37,7 @@
 /thoughts/2025-07-01/manage-up   /thoughts/2025-07-01/manage-up/   301
 /recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf   /recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf/   301
 /recipes/2025-11-16/recipe-turkey-wellington-sausage-roll   /recipes/2025-11-16/recipe-turkey-wellington-sausage-roll/   301
+
+# Discarded recipe (unpublished), redirect to recipe index
+/recipes/2026-01-31/recipe-roasted-tomato-soup/   /recipes/   301
+/recipes/2026-01-31/recipe-roasted-tomato-soup   /recipes/   301
