@@ -3,7 +3,7 @@ title: "Responsible AI Content Creation Is a Human Problem"
 date: 2026-02-05
 slug: "responsible-ai-content-creation"
 description: "How to build systems that let teams use AI in content without eroding trust, clarity, or accountability. Notes from inside."
-subtitle: "Or: Notes From Inside an AI-Assisted Writing System"
+subtitle: "Or: Notes from inside an AI-assisted writing system"
 draft: false
 social_image: "/images/social/responsible-ai-content-creation-is-a-human-problem-og.png"
 ---

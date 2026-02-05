@@ -50,6 +50,31 @@ function validateFrontMatter() {
         frontMatter.draft !== 'false') {
       errors.push(`${file}: Invalid draft value "${frontMatter.draft}" (expected true or false)`);
     }
+
+    // Subtitle should be sentence case (CONTENT_STYLE_GUIDE: "Sentence case all other headers")
+    if (frontMatter.subtitle && frontMatter.subtitle.trim().startsWith('Or:')) {
+      const afterOr = frontMatter.subtitle.substring(3).trim();
+      const words = afterOr.split(/\s+/);
+      // Words that should be lowercase when not first word or after sentence-ending punctuation
+      const shouldBeLowercase = new Set(['from', 'to', 'in', 'on', 'at', 'by', 'for', 'with', 'of', 'inside', 'and', 'or', 'but', 'an', 'a', 'the', 'that', 'when', 'where', 'what', 'how', 'why', 'it', 'its', 'is', 'are', 'was', 'were']);
+      let afterSentenceEnd = true; // First word gets capitalized
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const cleanWord = word.replace(/[^\w'-]/g, '').toLowerCase();
+        const isFirstOrAfterPunct = afterSentenceEnd;
+        afterSentenceEnd = /[.!?]$/.test(word);
+        if (!isFirstOrAfterPunct && shouldBeLowercase.has(cleanWord) && /^[A-Z]/.test(word)) {
+          errors.push(`${file}: Subtitle should be sentence case. "${word}" should be lowercase: "${frontMatter.subtitle}"`);
+        }
+        // Check hyphenated compounds: "AI-Assisted" should be "AI-assisted"
+        if (word.includes('-') && /^[A-Z][a-z]*-[A-Z]/.test(word)) {
+          const afterHyphen = word.split('-').slice(1).join('-');
+          if (/^[a-z]/.test(afterHyphen.toLowerCase()) && /^[A-Z]/.test(afterHyphen)) {
+            errors.push(`${file}: Subtitle should be sentence case. "${word}" should use lowercase after hyphen (e.g. "AI-assisted"): "${frontMatter.subtitle}"`);
+          }
+        }
+      }
+    }
   });
   
   if (errors.length > 0) {
