@@ -1,4 +1,4 @@
-{{/* Renders minimal dietary icons (dairy-free, vegetarian, vegan, gluten-free) as links to filtered recipe list. */}}
+{{/* Renders minimal dietary labels (DF, V, VG, GF) as links to filtered recipe list. */}}
 {{/* Expects: dict "page" . "base" "/recipes/" */}}
 {{- $page := .page -}}
 {{- $base := default "/recipes/" .base -}}
@@ -8,18 +8,11 @@
   {{- range $dietary -}}
     {{- $slug := . | urlize -}}
     {{- $label := . -}}
+    {{- $abbr := cond (eq $slug "dairy-free") "DF" (cond (eq $slug "vegetarian") "V" (cond (eq $slug "vegan") "VG" (cond (eq $slug "gluten-free") "GF" ""))) -}}
+    {{- if $abbr -}}
     {{- $url := printf "%s?diet=%s" (strings.TrimSuffix "/" $base) $slug -}}
-  <a href="{{ $url }}" class="recipe-dietary-icon" title="{{ $label }}" aria-label="Filter recipes: {{ $label }}">
-    {{- if eq $slug "dairy-free" -}}
-    <svg class="recipe-dietary-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2.5c0 0 4 4 4 9.5s-1.5 9-4 9-4-3.5-4-9 4-9.5 4-9.5z"/><path d="M5 5l14 14"/></svg>
-    {{- else if eq $slug "vegetarian" -}}
-    <svg class="recipe-dietary-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-2 5-3 9-3 12a4 4 0 0 0 6 0c0-3-1-7-3-12"/><path d="M12 6v3"/></svg>
-    {{- else if eq $slug "vegan" -}}
-    <svg class="recipe-dietary-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M7 20L12 4l5 16"/><path d="M9 12h6"/></svg>
-    {{- else if eq $slug "gluten-free" -}}
-    <svg class="recipe-dietary-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M9 8l3 4 3-4M9 16l3-4 3 4"/><path d="M4 4l16 16"/></svg>
+  <a href="{{ $url }}" class="recipe-dietary-badge" title="{{ $label }}" aria-label="Filter recipes: {{ $label }}">{{ $abbr }}</a>
     {{- end -}}
-  </a>
   {{- end -}}
 </span>
 {{- end -}}
