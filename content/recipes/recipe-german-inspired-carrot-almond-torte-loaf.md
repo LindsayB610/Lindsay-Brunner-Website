@@ -23,7 +23,7 @@ recipeIngredient:
   - "1½ Tsp baking powder"
   - "1 Tsp ground cinnamon"
   - "¼ Tsp ground nutmeg"
-  - "¼ Tsp fine salt"
+  - "¼ Tsp fine kosher salt"
   - "Zest of 1 lemon, very finely grated"
   - "1 Tsp vanilla extract"
   - "1 cup (120 g) confectioners' sugar"
@@ -32,11 +32,11 @@ recipeIngredient:
 recipeInstructions:
   - "Prepare the pan and oven. Heat the oven to 325°F (165°C). Line a 9×5-inch loaf pan with parchment, leaving overhang on the long sides. Lightly grease any exposed pan."
   - "Mix the yolk base. In a large bowl, whisk the egg yolks and sugar until pale and slightly thickened. Whisk in the oil, vanilla, and lemon zest."
-  - "Add carrots and dry ingredients. Stir the grated carrots into the yolk mixture. In a separate bowl, combine the ground almonds, flour, baking powder, spices, and salt, then fold into the batter just until combined."
+  - "Add carrots and dry ingredients. Stir the grated carrots into the yolk mixture. In a separate bowl, combine the ground almonds, flour, baking powder, spices, and kosher salt, then fold into the batter just until combined."
   - "Whip and fold the egg whites. Beat the egg whites to soft peaks. Fold them into the batter in two additions, using a light hand to preserve air."
   - "Bake the loaf. Pour the batter into the prepared pan, filling no more than ¾ full. Bake for 65 to 75 minutes. At about 40 minutes, loosely tent the loaf with foil if the top is browning faster than the center."
   - "Cool completely. When a toothpick inserted in the center comes out with only moist crumbs and the loaf springs back when pressed, remove from the oven. Cool in the pan for 25 to 30 minutes, then turn out and cool completely before glazing."
-  - "Make the glaze. Whisk the confectioners' sugar, water, almond extract, and a pinch of salt until thick, opaque, and spoonable."
+  - "Make the glaze. Whisk the confectioners' sugar, water, almond extract, and a pinch of kosher salt until thick, opaque, and spoonable."
   - "Glaze and set. Spoon the glaze down the center of the fully cooled loaf and gently encourage it outward. Let the glaze set uncovered at room temperature until matte and crackable."
 ---
 
@@ -48,7 +48,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
 ## Snapshot
 
-- **Implements:** 9×5-inch loaf pan; parchment paper; mixing bowls; whisk; hand or stand mixer; rubber spatula
+- **Implements:** 9×5-inch loaf pan; parchment paper; mixing bowls; whisk; hand or stand mixer; rubber spatula; box or paddle grater; microplane or zester (for lemon)
 - **Oven setting:** 325°F (165°C), center rack
 - **Batch size:** one 9×5 loaf
 
@@ -65,7 +65,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 - 1½ Tsp baking powder
 - 1 Tsp ground cinnamon
 - ¼ Tsp ground nutmeg
-- ¼ Tsp fine salt
+- ¼ Tsp fine kosher salt
 - Zest of 1 lemon, very finely grated
 - 1 Tsp vanilla extract
 
@@ -74,7 +74,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 - 1 cup (120 g) confectioners' sugar
 - 1 Tbsp water
 - 2 to 3 drops almond extract
-- Pinch of salt
+- Pinch of kosher salt
 
 ## Method
 
@@ -88,7 +88,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
 3. **Add carrots and dry ingredients**
 
-   Stir the grated carrots into the yolk mixture. In a separate bowl, mix the ground almonds, flour, baking powder, spices, and salt. Fold the dry ingredients into the batter just until combined.
+   Stir the grated carrots into the yolk mixture. In a separate bowl, mix the ground almonds, flour, baking powder, spices, and kosher salt. Fold the dry ingredients into the batter just until combined.
 
 4. **Whip and fold the egg whites**
 
@@ -106,7 +106,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
 7. **Glaze and set**
 
-   Whisk the confectioners' sugar, water, almond extract, and salt until thick and opaque. Spoon the glaze down the center of the cooled loaf and gently encourage it outward. Let it set uncovered at room temperature until matte and crackable.
+   Whisk the confectioners' sugar, water, almond extract, and kosher salt until thick and opaque. Spoon the glaze down the center of the cooled loaf and gently encourage it outward. Let it set uncovered at room temperature until matte and crackable.
 
 ---
 
@@ -123,7 +123,7 @@ The almond glaze is the most on-theme. If you prefer:
 - **Quiet lemon glaze:** Replace the water with 1 Tbsp lemon juice plus ½ Tbsp water.
 - **Ultra-neutral bakery glaze:** Use 1½ Tbsp water plus ½ Tsp lemon juice.
 
-All options keep the same sugar and salt. Do not add milk, cream, or butter if you want a hard set.
+All options keep the same sugar and kosher salt. Do not add milk, cream, or butter if you want a hard set.
 
 ### Texture and doneness checks
 
