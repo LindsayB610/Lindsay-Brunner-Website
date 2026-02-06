@@ -422,11 +422,6 @@ td code {
   color: var(--color-pink);
 }
 
-.recipe-index-meta-link {
-  text-decoration: none;
-  color: inherit;
-}
-
 .recipe-index-meta {
   display: block;
   font-size: 0.8125rem;

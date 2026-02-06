@@ -61,17 +61,15 @@
                       {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
                     </span>
                     {{ if or .Params.totalTime .Params.recipeYield }}
-                    <a href="{{ .RelPermalink }}" class="recipe-index-meta-link">
-                      <span class="recipe-index-meta">
-                        {{ if .Params.totalTime }}
-                          <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                        {{ end }}
-                        {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                        {{ if .Params.recipeYield }}
-                          <span>{{ .Params.recipeYield }}</span>
-                        {{ end }}
-                      </span>
-                    </a>
+                    <span class="recipe-index-meta">
+                      {{ if .Params.totalTime }}
+                        <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                      {{ end }}
+                      {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                      {{ if .Params.recipeYield }}
+                        <span>{{ .Params.recipeYield }}</span>
+                      {{ end }}
+                    </span>
                     {{ end }}
                   </div>
                 </li>
@@ -101,17 +99,15 @@
                       {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
                     </span>
                     {{ if or .Params.totalTime .Params.recipeYield }}
-                    <a href="{{ .RelPermalink }}" class="recipe-index-meta-link">
-                      <span class="recipe-index-meta">
-                        {{ if .Params.totalTime }}
-                          <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                        {{ end }}
-                        {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                        {{ if .Params.recipeYield }}
-                          <span>{{ .Params.recipeYield }}</span>
-                        {{ end }}
-                      </span>
-                    </a>
+                    <span class="recipe-index-meta">
+                      {{ if .Params.totalTime }}
+                        <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                      {{ end }}
+                      {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                      {{ if .Params.recipeYield }}
+                        <span>{{ .Params.recipeYield }}</span>
+                      {{ end }}
+                    </span>
                     {{ end }}
                   </div>
                 </li>
@@ -140,17 +136,15 @@
                   {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
                 </span>
                 {{ if or .Params.totalTime .Params.recipeYield }}
-                <a href="{{ .RelPermalink }}" class="recipe-index-meta-link">
-                  <span class="recipe-index-meta">
-                    {{ if .Params.totalTime }}
-                      <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                    {{ end }}
-                    {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                    {{ if .Params.recipeYield }}
-                      <span>{{ .Params.recipeYield }}</span>
-                    {{ end }}
-                  </span>
-                </a>
+                <span class="recipe-index-meta">
+                  {{ if .Params.totalTime }}
+                    <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                  {{ end }}
+                  {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                  {{ if .Params.recipeYield }}
+                    <span>{{ .Params.recipeYield }}</span>
+                  {{ end }}
+                </span>
                 {{ end }}
               </div>
             </li>
