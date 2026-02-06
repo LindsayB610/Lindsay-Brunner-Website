@@ -40,7 +40,11 @@ recipeInstructions:
   - "Glaze and set. Spoon the glaze down the center of the fully cooled loaf and gently encourage it outward. Let the glaze set uncovered at room temperature until matte and crackable."
 ---
 
-This is a classic Swiss-style carrot and almond torte, adapted to behave properly in a loaf pan without turning into American carrot cake. It is light, nut-forward, gently spiced, and deliberately restrained. The crack-set almond glaze gives you structure and texture without frosting-level sweetness.
+So, my kid eats a lot of carrots. Probably 1-2 a day. Last weekend,  my local Safeway was out of carrots in every format, except for 5lb bags, so of course I bought a 5lb bag, He's six, so I have a real fear that a week without carrots might mean he decides he hates carrots now. If you're thinking that makes no logical sense, you're right, and also you've clearly never tried to feed a six-year-old. 
+
+Fast forward to Friday and I have approximately 72 aging carrots in my vegetable drawer that are getting bendier by the day. Rationally, it is time to make carrot cake. My go-to recipe from Dorie Greenspan makes a very large three layer cake, which would certainly be great for using up all the carrots, but would also be great for wasting a bunch of other ingredients since my small family would never be able to finish the whole thing. Thus, this German-style carrot and almond torte was adapted to behave properly in a loaf pan. 
+
+Bonus points that it's dairy free, contains some protein, and doesn't require that I mess with cream cheese. The crack-set almond glaze gives you structure and texture without frosting-level sweetness.
 
 ## Snapshot
 
