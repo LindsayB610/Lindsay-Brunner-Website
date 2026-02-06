@@ -112,6 +112,10 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
 ## Notes, swaps, and guardrails
 
+### Carrots
+
+You don't need to peel carrots before grating; just scrub them if they're dirty.
+
 ### About the loaf pan conversion
 
 This cake is traditionally baked low and wide. Baking it in a loaf pan increases height and bake time, which is why the lower oven temperature and foil tenting matter. Do not rush the bake.
