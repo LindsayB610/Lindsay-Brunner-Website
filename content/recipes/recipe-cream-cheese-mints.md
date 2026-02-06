@@ -12,7 +12,7 @@ totalTime: "PT8H"
 recipeYield: "~100–140 bite‑size mints"
 recipeCategory: "Dessert"
 recipeCuisine: "American"
-dietary: ["vegetarian"]
+dietary: ["vegetarian", "gluten-free"]
 recipeIngredient:
   - "4 oz (113 g) full‑fat brick‑style cream cheese, at cool room temperature"
   - "4 cups (about 480 g) powdered sugar, plus up to 1 extra cup (120 g) for adjusting texture and dusting"

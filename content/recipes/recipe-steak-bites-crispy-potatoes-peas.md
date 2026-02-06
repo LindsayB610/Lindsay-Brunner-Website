@@ -12,10 +12,10 @@ totalTime: "PT40M"
 recipeYield: "3-4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
-dietary: []
+dietary: ["gluten-free"]
 recipeIngredient:
   - "1 to 1¼ lb steak (ribeye, New York strip, or chuck eye), thawed"
-  - "1 bag Ore-Ida Potatoes O'Brien (frozen)"
+  - "1 bag Ore-Ida Potatoes O'Brien (frozen, gluten-free options exist)"
   - "1 to 1½ cups frozen peas"
   - "Neutral oil (avocado or canola)"
   - "Kosher salt"
@@ -24,7 +24,7 @@ recipeIngredient:
   - "1 smashed garlic clove (optional)"
   - "1 to 2 sprigs thyme or 1 small sprig rosemary"
   - "Lemon (optional, for peas)"
-  - "Worcestershire sauce (optional, a few drops)"
+  - "Worcestershire sauce (optional, a few drops, gluten-free works fine)"
   - "Fresh parsley (optional, for finishing)"
 recipeInstructions:
   - "Roast the potatoes. Heat oven to 425°F (220°C). Toss frozen Ore-Ida Potatoes O'Brien with neutral oil (canola/avocado/olive) and salt. Spread wide on a sheet pan and roast 25–30 minutes until fully browned (don't rush)."

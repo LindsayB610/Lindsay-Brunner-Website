@@ -12,7 +12,7 @@ totalTime: "PT90M"
 recipeYield: "4–6 pieces, generously serving 4 with veg"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
-dietary: ["dairy-free"]
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "3–4 lb (1.4–1.8 kg) bone-in, skin-on turkey legs and/or thighs"
   - "4 Tsp (1 Tbsp + 1 Tsp) Diamond Crystal kosher salt"

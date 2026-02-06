@@ -12,7 +12,7 @@ totalTime: "PT4H"
 recipeYield: "4 servings (2 racks, 8 bones each)"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
-dietary: ["dairy-free"]
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "2 frenched racks of lamb, about 1.5 to 1.7 lb each"
   - "Kosher salt"

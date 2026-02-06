@@ -12,7 +12,7 @@ totalTime: "PT20H45M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
-dietary: ["dairy-free"]
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "3 lb boneless pork shoulder (pork butt), thawed"
   - "2½ Tsp kosher salt"
@@ -27,7 +27,7 @@ recipeIngredient:
   - "½ cup water"
   - "⅓ cup apple cider vinegar"
   - "¼ cup packed brown sugar"
-  - "2 Tbsp Worcestershire sauce"
+  - "2 Tbsp Worcestershire sauce (gluten free works fine)"
   - "1 Tbsp yellow mustard"
   - "1 Tsp onion powder (for sauce)"
   - "1 Tsp garlic powder (for sauce)"

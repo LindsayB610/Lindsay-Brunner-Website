@@ -12,14 +12,14 @@ totalTime: "PT2H30M"
 recipeYield: "3 to 4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Argentine-inspired"
-dietary: ["dairy-free"]
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "1½ to 2 lb bavette steak, fully thawed"
   - "Kosher salt and black pepper"
-  - "3 Tbsp soy sauce"
+  - "3 Tbsp soy sauce or tamari (tamari for gluten-free)"
   - "3 Tbsp red wine vinegar"
   - "4½ Tbsp olive oil (for marinade)"
-  - "1½ Tbsp Worcestershire sauce"
+  - "1½ Tbsp Worcestershire sauce (use gluten-free for gluten-free)"
   - "½ to ¾ Tsp garlic powder (for marinade)"
   - "1 cup flat-leaf parsley, very finely chopped"
   - "3 to 4 cloves garlic, minced or pasted (for chimichurri)"
@@ -56,10 +56,10 @@ I paired the steak with my fave tiny yellow potatoes from Safeway, and asparagus
 
 - 1½ to 2 lb bavette steak, fully thawed
 - Kosher salt and black pepper
-- 3 Tbsp soy sauce
+- 3 Tbsp soy sauce or tamari (tamari for gluten-free)
 - 3 Tbsp red wine vinegar
 - 4½ Tbsp olive oil
-- 1½ Tbsp Worcestershire sauce
+- 1½ Tbsp Worcestershire sauce (use gluten-free for gluten-free)
 - ½ to ¾ Tsp garlic powder
 
 ### Chimichurri (cilantro-free)
@@ -153,6 +153,8 @@ I paired the steak with my fave tiny yellow potatoes from Safeway, and asparagus
 ---
 
 ## Notes, swaps, and guardrails
+
+The gluten-free label applies when using tamari and gluten-free Worcestershire sauce.
 
 ### Why the steak marinates for 1 to 2 hours
 

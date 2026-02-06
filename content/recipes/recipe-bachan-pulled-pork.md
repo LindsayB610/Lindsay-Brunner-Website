@@ -12,7 +12,7 @@ totalTime: "PT85M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Japanese-American"
-dietary: ["dairy-free"]
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "2 teaspoons Diamond Crystal kosher salt (or 1¼ teaspoons Morton's)"
   - "1 teaspoon garlic powder"
@@ -59,7 +59,7 @@ This started as a mash-up of a few TikTok recipes, plus what's worked for me bef
 
 ### Pressure liquid
 - 1 cup water or low-sodium chicken stock
-- 1 to 2 tablespoons Bachan's Japanese Barbecue Sauce (optional in-pot flavor boost)
+- 1 to 2 tablespoons Bachan's Japanese Barbecue Sauce (optional in-pot flavor boost). Bachan's makes a gluten-free version; the regular sauce contains gluten.
 - 1 tablespoon rice vinegar (or apple cider vinegar)
 - 1 small onion, finely minced (optional)
 - 1 tablespoon neutral oil (only if searing)

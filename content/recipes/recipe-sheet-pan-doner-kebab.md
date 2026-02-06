@@ -12,7 +12,7 @@ totalTime: "PT70M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Turkish"
-dietary: []
+dietary: ["gluten-free"]
 recipeIngredient:
   - "1 lb (about 450 g) ground lamb"
   - "2 lb (about 900 g) 75/25 ground beef"
@@ -32,7 +32,7 @@ recipeIngredient:
   - "1 Tsp sugar"
   - "2 Tbsp Diamond Crystal kosher salt (or 1 Tbsp + ¾ Tsp Morton kosher salt), plus more to taste after the test patty"
   - "Juice of 1–2 lemons"
-  - "Warm pita or flatbreads"
+  - "Warm pita or flatbreads (gluten free if needed)"
   - "For Berlin‑style salad: shredded iceberg lettuce, thinly sliced red cabbage, tomato, cucumber, raw onion"
   - "For Bremen‑style: add white cabbage or German‑style krautsalat alongside the red cabbage"
   - "Sauces: garlic sauce (Knoblauchsoße), herb sauce (Kräutersoße), and scharf sauce (see notes for recipes)"

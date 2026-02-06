@@ -12,7 +12,7 @@ totalTime: "PT50M"
 recipeYield: "4 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
-dietary: ["dairy-free"]
+dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "2 Tbsp olive oil"
   - "5 Italian sausage links (sweet, hot, or a mix)"

@@ -12,7 +12,7 @@ totalTime: "PT90M"
 recipeYield: "6-8 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
-dietary: []
+dietary: ["dairy-free"]
 recipeIngredient:
   - "1.5 to 2 pounds ground beef"
   - "1 tablespoon duck fat"
@@ -161,6 +161,8 @@ Taste and adjust. Add lemon juice, then add smoked salt a little at a time until
 ---
 
 ## Notes, swaps and guardrails
+
+The dairy-free label applies to the base recipe; the optional butter adds dairy.
 
 ### Duck fat note
 If you don't have duck fat, just retain more beef drippings!
