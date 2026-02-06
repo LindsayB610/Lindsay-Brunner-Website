@@ -133,6 +133,8 @@ All options keep the same sugar and salt. Do not add milk, cream, or butter if y
 - Flavor improves on day 2.
 - Freezes well unglazed.
 
+### Critical don'ts
+
 - Do not overfill the pan.
 - Do not skip cooling before glazing.
 - Do not increase oven temperature to hurry the center.
