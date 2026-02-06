@@ -10,7 +10,7 @@ prepTime: "PT10M"
 cookTime: "PT48M"
 totalTime: "PT60M"
 recipeYield: "3–4 servings"
-recipeCategory: "Weeknight Dinner"
+recipeCategory: "Main Course"
 recipeCuisine: "American"
 dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:

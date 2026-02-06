@@ -161,6 +161,8 @@
     {{- if .Site.Params.twitter }}{{ .Site.Params.twitter | jsonify }}{{ end }}
     {{- if and .Site.Params.github (or .Site.Params.linkedin .Site.Params.twitter) }},{{ end }}
     {{- if .Site.Params.github }}{{ .Site.Params.github | jsonify }}{{ end }}
+    {{- if and .Site.Params.bluesky (or .Site.Params.linkedin .Site.Params.twitter .Site.Params.github) }},{{ end }}
+    {{- if .Site.Params.bluesky }}{{ .Site.Params.bluesky | jsonify }}{{ end }}
   ],
   "jobTitle": "Content & Developer Relations Leader",
   "knowsAbout": [
