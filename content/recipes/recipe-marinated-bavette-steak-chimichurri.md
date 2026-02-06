@@ -16,10 +16,10 @@ dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
   - "1½ to 2 lb bavette steak, fully thawed"
   - "Kosher salt and black pepper"
-  - "3 Tbsp soy sauce or tamari (tamari for gluten-free)"
+  - "3 Tbsp soy sauce or tamari"
   - "3 Tbsp red wine vinegar"
   - "4½ Tbsp olive oil (for marinade)"
-  - "1½ Tbsp Worcestershire sauce (use gluten-free for gluten-free)"
+  - "1½ Tbsp Worcestershire sauce (gluten-free options exist)"
   - "½ to ¾ Tsp garlic powder (for marinade)"
   - "1 cup flat-leaf parsley, very finely chopped"
   - "3 to 4 cloves garlic, minced or pasted (for chimichurri)"

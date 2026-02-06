@@ -14,7 +14,7 @@ recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 dietary: ["gluten-free"]
 recipeIngredient:
-  - "16 oz box ditalini (or small shells / elbows; use gluten-free pasta for gluten-free)"
+  - "16 oz box ditalini (or small shells / elbows; use gluten-free pasta if needed)"
   - "~1 lb butternut squash, peeled and cut into ½-inch cubes (fresh or frozen, see note)"
   - "2 Tbsp olive oil"
   - "½ Tsp Diamond Crystal kosher salt (to start)"
@@ -119,8 +119,6 @@ We’ve made this several times now, including once for people who don’t usual
 ---
 
 ## Notes, swaps, and guardrails
-
-The gluten-free label applies when using gluten-free pasta.
 
 ### Fresh vs frozen squash
 
