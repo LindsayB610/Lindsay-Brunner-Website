@@ -56,10 +56,7 @@
                 {{ range $categoryRecipes }}
                 <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
                   <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                    <span class="recipe-index-title-wrap">
-                      <span class="recipe-index-title">{{ .Title }}</span>
-                      {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
-                    </span>
+                    <span class="recipe-index-title-wrap"><span class="recipe-index-title">{{ .Title }}</span>{{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}</span>
                     {{ if or .Params.totalTime .Params.recipeYield }}
                     <span class="recipe-index-meta">
                       {{ if .Params.totalTime }}
@@ -94,10 +91,7 @@
                 {{ range $categoryRecipes }}
                 <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
                   <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                    <span class="recipe-index-title-wrap">
-                      <span class="recipe-index-title">{{ .Title }}</span>
-                      {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
-                    </span>
+                    <span class="recipe-index-title-wrap"><span class="recipe-index-title">{{ .Title }}</span>{{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}</span>
                     {{ if or .Params.totalTime .Params.recipeYield }}
                     <span class="recipe-index-meta">
                       {{ if .Params.totalTime }}
@@ -131,10 +125,7 @@
             {{ range $uncategorizedRecipes }}
             <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
               <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                <span class="recipe-index-title-wrap">
-                  <span class="recipe-index-title">{{ .Title }}</span>
-                  {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
-                </span>
+                <span class="recipe-index-title-wrap"><span class="recipe-index-title">{{ .Title }}</span>{{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}</span>
                 {{ if or .Params.totalTime .Params.recipeYield }}
                 <span class="recipe-index-meta">
                   {{ if .Params.totalTime }}
