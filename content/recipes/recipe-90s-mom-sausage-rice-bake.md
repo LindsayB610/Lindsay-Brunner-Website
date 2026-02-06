@@ -12,11 +12,11 @@ totalTime: "PT75M"
 recipeYield: "4-6 servings"
 recipeCategory: "Main Course"
 recipeCuisine: "American"
-dietary: []
+dietary: ["dairy-free"]
 recipeIngredient:
   - "2 cups long-grain white rice"
   - "3½ to 4 cups water"
-  - "2 Tbsp salted butter"
+  - "2 Tbsp salted butter or olive oil"
   - "1 lb sweet Italian sausage, sliced into thick coins"
   - "1 green bell pepper, sliced into strips"
   - "½ Tsp fennel seeds"
@@ -25,7 +25,7 @@ recipeIngredient:
 recipeInstructions:
   - "Heat oven to 350°F (177°C)."
   - "Rinse the rice briefly under cold water, drain well, and spread evenly in the casserole."
-  - "Warm the water just enough to melt the butter. Stir to combine, then pour evenly over the rice. The rice should be fully wet but not floating."
+  - "Warm the water slightly (just enough to melt butter if using). Add the butter or olive oil and stir to combine, then pour evenly over the rice. The rice should be fully wet but not floating."
   - "Scatter the green bell pepper over the rice."
   - "Arrange the sausage on top, pressing gently into the rice for contact without submerging."
   - "Sprinkle fennel seeds evenly over the dish. Add a few turns of black pepper. Salt very lightly if at all."
@@ -45,7 +45,7 @@ This is the kind of recipe that shows up in church cookbooks and gets passed aro
 
 - 2 cups long-grain white rice
 - 3½ to 4 cups water
-- 2 Tbsp salted butter
+- 2 Tbsp salted butter or olive oil
 - 1 lb sweet Italian sausage, sliced into thick coins
 - 1 green bell pepper, sliced into strips
 - ½ Tsp fennel seeds
@@ -62,7 +62,7 @@ This is the kind of recipe that shows up in church cookbooks and gets passed aro
 
 3. **Prepare the liquid.**
 
-   Warm the water just enough to melt the butter. Stir to combine, then pour evenly over the rice. The rice should be fully wet but not floating.
+   Warm the water slightly (just enough to melt butter if using). Add the butter or olive oil and stir to combine, then pour evenly over the rice. The rice should be fully wet but not floating.
 
 4. **Add the peppers.**
 
@@ -90,11 +90,12 @@ This is the kind of recipe that shows up in church cookbooks and gets passed aro
 
 ### Texture and flavor check
 
-- **Rice:** fluffy, separate grains, lightly buttery, not seasoned rice
+- **Rice:** fluffy, separate grains, lightly rich (buttery with butter, milder with olive oil), not seasoned rice
 - **Sausage:** fully cooked, lightly crisped where it contacts rice
 - **Peppers:** soft, mild, no browning
 - **Overall:** restrained, filling, not clever
 
+- The dairy-free label applies when using olive oil; butter adds dairy.
 - Do not stir.
 - Do not swap in broth unless you want a different dish.
 - If using very juicy sausage, stick closer to 3½ cups water.
