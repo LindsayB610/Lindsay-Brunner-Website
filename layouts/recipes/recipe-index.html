@@ -55,20 +55,25 @@
               <ul class="recipe-index-list">
                 {{ range $categoryRecipes }}
                 <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
-                  <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                    <span class="recipe-index-title-wrap"><span class="recipe-index-title">{{ .Title }}</span>{{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}</span>
-                    {{ if or .Params.totalTime .Params.recipeYield }}
-                    <span class="recipe-index-meta">
-                      {{ if .Params.totalTime }}
-                        <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                      {{ end }}
-                      {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                      {{ if .Params.recipeYield }}
-                        <span>{{ .Params.recipeYield }}</span>
-                      {{ end }}
+                  <div class="recipe-index-link">
+                    <span class="recipe-index-title-wrap">
+                      <a href="{{ .RelPermalink }}" class="recipe-index-title">{{ .Title }}</a>
+                      {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
                     </span>
+                    {{ if or .Params.totalTime .Params.recipeYield }}
+                    <a href="{{ .RelPermalink }}" class="recipe-index-meta-link">
+                      <span class="recipe-index-meta">
+                        {{ if .Params.totalTime }}
+                          <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                        {{ end }}
+                        {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                        {{ if .Params.recipeYield }}
+                          <span>{{ .Params.recipeYield }}</span>
+                        {{ end }}
+                      </span>
+                    </a>
                     {{ end }}
-                  </a>
+                  </div>
                 </li>
                 {{ end }}
               </ul>
@@ -90,20 +95,25 @@
               <ul class="recipe-index-list">
                 {{ range $categoryRecipes }}
                 <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
-                  <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                    <span class="recipe-index-title-wrap"><span class="recipe-index-title">{{ .Title }}</span>{{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}</span>
-                    {{ if or .Params.totalTime .Params.recipeYield }}
-                    <span class="recipe-index-meta">
-                      {{ if .Params.totalTime }}
-                        <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                      {{ end }}
-                      {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                      {{ if .Params.recipeYield }}
-                        <span>{{ .Params.recipeYield }}</span>
-                      {{ end }}
+                  <div class="recipe-index-link">
+                    <span class="recipe-index-title-wrap">
+                      <a href="{{ .RelPermalink }}" class="recipe-index-title">{{ .Title }}</a>
+                      {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
                     </span>
+                    {{ if or .Params.totalTime .Params.recipeYield }}
+                    <a href="{{ .RelPermalink }}" class="recipe-index-meta-link">
+                      <span class="recipe-index-meta">
+                        {{ if .Params.totalTime }}
+                          <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                        {{ end }}
+                        {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                        {{ if .Params.recipeYield }}
+                          <span>{{ .Params.recipeYield }}</span>
+                        {{ end }}
+                      </span>
+                    </a>
                     {{ end }}
-                  </a>
+                  </div>
                 </li>
                 {{ end }}
               </ul>
@@ -124,20 +134,25 @@
           <ul class="recipe-index-list">
             {{ range $uncategorizedRecipes }}
             <li class="recipe-index-item" {{ with .Params.dietary }}data-diet="{{ delimit (apply . "urlize" ".") " " }}"{{ end }}>
-              <a href="{{ .RelPermalink }}" class="recipe-index-link">
-                <span class="recipe-index-title-wrap"><span class="recipe-index-title">{{ .Title }}</span>{{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}</span>
-                {{ if or .Params.totalTime .Params.recipeYield }}
-                <span class="recipe-index-meta">
-                  {{ if .Params.totalTime }}
-                    <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
-                  {{ end }}
-                  {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
-                  {{ if .Params.recipeYield }}
-                    <span>{{ .Params.recipeYield }}</span>
-                  {{ end }}
+              <div class="recipe-index-link">
+                <span class="recipe-index-title-wrap">
+                  <a href="{{ .RelPermalink }}" class="recipe-index-title">{{ .Title }}</a>
+                  {{ partial "recipe-dietary-icons.html" (dict "page" . "base" "/recipes/all/") }}
                 </span>
+                {{ if or .Params.totalTime .Params.recipeYield }}
+                <a href="{{ .RelPermalink }}" class="recipe-index-meta-link">
+                  <span class="recipe-index-meta">
+                    {{ if .Params.totalTime }}
+                      <span>{{ partial "format-duration.html" .Params.totalTime }}</span>
+                    {{ end }}
+                    {{ if and .Params.totalTime .Params.recipeYield }} • {{ end }}
+                    {{ if .Params.recipeYield }}
+                      <span>{{ .Params.recipeYield }}</span>
+                    {{ end }}
+                  </span>
+                </a>
                 {{ end }}
-              </a>
+              </div>
             </li>
             {{ end }}
           </ul>

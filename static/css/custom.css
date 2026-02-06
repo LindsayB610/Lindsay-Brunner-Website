@@ -397,7 +397,6 @@ td code {
   background: var(--dark-surface);
   border: 1px solid var(--dark-border);
   border-radius: var(--radius-md);
-  text-decoration: none;
   color: var(--dark-text);
   transition: all var(--transition-fast);
   position: relative;
@@ -410,18 +409,22 @@ td code {
     -webkit-transform: translateX(4px);
   }
 
-.recipe-index-link:focus {
-  outline: 2px solid var(--color-pink);
-  outline-offset: 2px;
-}
-
-.recipe-index-title {
-  display: block;
+.recipe-index-title-wrap .recipe-index-title {
   font-size: 1rem;
   font-weight: 500;
   color: var(--dark-text);
   line-height: 1.5;
-  margin-bottom: 0.25rem;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.recipe-index-title-wrap .recipe-index-title:hover {
+  color: var(--color-pink);
+}
+
+.recipe-index-meta-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .recipe-index-meta {
