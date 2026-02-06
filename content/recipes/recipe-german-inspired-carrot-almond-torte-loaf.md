@@ -57,7 +57,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 ### Cake batter
 
 - 1¾ cups (200 g) finely grated carrots
-- 1 cup (100 g) ground almonds or almond flour
+- 1 cup (100 g) almond flour
 - ½ cup (60 g) all-purpose flour
 - ¾ cup (150 g) sugar
 - 4 large eggs, separated
@@ -65,7 +65,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 - 1½ Tsp baking powder
 - 1 Tsp ground cinnamon
 - ¼ Tsp ground nutmeg
-- ¼ Tsp fine kosher salt
+- ¼ Tsp kosher salt
 - Zest of 1 lemon, very finely grated
 - 1 Tsp vanilla extract
 
@@ -82,29 +82,33 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
    Heat the oven to 325°F (165°C). Line a 9×5-inch loaf pan with parchment, leaving overhang on the long sides for easy removal. Lightly grease any exposed pan.
 
-2. **Build the yolk base**
+2. **Grate the carrots**
 
-   In a large bowl, whisk the egg yolks and sugar until pale and slightly thickened. Whisk in the oil, vanilla extract, and lemon zest.
+   Grate the carrots on the fine side of a box or paddle grater until you have 1¾ cups (200 g). Set aside.
 
-3. **Add carrots and dry ingredients**
+3. **Build the yolk base**
 
-   Stir the grated carrots into the yolk mixture. In a separate bowl, mix the ground almonds, flour, baking powder, spices, and kosher salt. Fold the dry ingredients into the batter just until combined.
+   In a large bowl, whisk the egg yolks and sugar until pale and slightly thickened. Whisk in the oil, vanilla extract, and lemon zest. Stir the grated carrots into the yolk mixture.
 
-4. **Whip and fold the egg whites**
+4. **Add dry ingredients**
+
+   In a separate bowl, mix the almond flour, all-purpose flour, baking powder, spices, and kosher salt. Fold the dry ingredients into the batter just until combined.
+
+5. **Whip and fold the egg whites**
 
    Beat the egg whites to soft peaks. Fold them into the batter in two additions, using a light hand. The batter should feel airy, not dense.
 
-5. **Bake**
+6. **Bake**
 
    Pour the batter into the prepared pan, filling it no more than ¾ full. Bake for 65 to 75 minutes. At around 40 minutes, loosely tent the loaf with foil if the top is browning faster than the center.
 
    The loaf is done when a toothpick inserted in the center comes out with only moist crumbs and the top springs back when pressed.
 
-6. **Cool completely**
+7. **Cool completely**
 
    Cool the loaf in the pan for 25 to 30 minutes, then turn out and let cool completely. Do not glaze while warm.
 
-7. **Glaze and set**
+8. **Glaze and set**
 
    Whisk the confectioners' sugar, water, almond extract, and kosher salt until thick and opaque. Spoon the glaze down the center of the cooled loaf and gently encourage it outward. Let it set uncovered at room temperature until matte and crackable.
 
