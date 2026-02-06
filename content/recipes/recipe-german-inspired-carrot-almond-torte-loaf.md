@@ -4,7 +4,8 @@ date: 2026-02-06
 slug: "recipe-german-inspired-carrot-almond-torte-loaf"
 subtitle: "Or: A lightly sweet almond carrot cake that behaves in a loaf pan"
 description: "A European-style carrot and almond torte adapted for a loaf pan. Light, nut-forward, and restrained, finished with a crack-set almond glaze instead of frosting."
-draft: true
+draft: false
+social_image: "/images/social/recipe-german-inspired-carrot-almond-torte-loaf-og.png"
 prepTime: "PT30M"
 cookTime: "PT75M"
 totalTime: "PT2H15M"
