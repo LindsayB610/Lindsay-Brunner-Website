@@ -42,7 +42,7 @@ recipeInstructions:
   - "Cook a test patty and adjust seasoning: Pinch off 1–2 tablespoons of the mixture and flatten it into a small patty. Pan‑fry in a lightly oiled skillet over medium to medium‑high heat until cooked through and browned on both sides. Let it cool slightly, then taste. If it tastes flat, add a bit more salt. If you want more heat or spice, bump up the pul biber/Aleppo pepper or chili flakes. Mix any adjustments thoroughly back into the raw meat. If you change things a lot, cook one more mini patty to confirm."
   - "Chill the mixture (optional but helpful): Cover the bowl and refrigerate for 30–60 minutes. This firms the mix up and makes it easier to spread thinly, while the flavours settle in."
   - "Preheat the oven: Heat the oven to 400°F (200°C) with a rack in the middle. Line a rimmed sheet pan with parchment for easier cleanup."
-  - "Spread the meat thinly on parchment: Cut several squares or rectangles of parchment, about 10–12 inches across. Working with one sheet at a time, spread a very thin, even layer of meat over the parchment (just a few millimetres thick), leaving a small clean border at the edges so it doesn't squeeze out when you roll."
+  - "Spread the meat thinly on parchment: Cut several squares or rectangles of parchment, about 10–12 inches across. Working with one sheet at a time, spread a very thin, even layer of meat over the parchment (just a few millimeters thick), leaving a small clean border at the edges so it doesn't squeeze out when you roll."
   - "Roll into tight logs: Starting from one edge, roll the parchment up tightly so the meat forms a compact log inside, like a jelly roll. Twist or fold the ends of the parchment to seal. Repeat with the remaining meat to make 2–4 logs, depending on size. Arrange the logs on the prepared rimmed sheet pan."
   - "First bake: cook through: Roast the logs at 400°F for 20 minutes. They'll firm up and release a good amount of fat."
   - "Drain, second bake, then unwrap and crisp: Carefully remove the pan from the oven and pour off the rendered fat and liquid into a heat‑safe container. Return the pan to the oven and bake for another 15 minutes, until the parchment is turning a deeper brown and the logs feel quite firm when pressed. Take the pan out and carefully unwrap the logs (watch for hot steam). Squeeze the lemon juice over the exposed meat. For extra crispy edges, return the unwrapped logs to the oven for 5–10 more minutes, until the surface is lightly browned in spots."
@@ -126,7 +126,7 @@ The result: deeply seasoned, juicy strips of kebab you can tuck into pita with s
 6. **Spread the meat thinly on parchment**
 
    - Cut several squares or rectangles of parchment, about 10–12 inches across.
-   - Working with one sheet at a time, spread a very thin, even layer of meat over the parchment (just a few millimetres thick), leaving a small clean border at the edges so it doesn't squeeze out when you roll.
+   - Working with one sheet at a time, spread a very thin, even layer of meat over the parchment (just a few millimeters thick), leaving a small clean border at the edges so it doesn't squeeze out when you roll.
 
 7. **Roll into tight logs**
 
