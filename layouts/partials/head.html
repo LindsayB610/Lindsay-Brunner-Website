@@ -30,11 +30,16 @@
   <meta property="og:image" content="{{ .Site.Params.default_social_image | absURL }}" />
 {{ end }}
 
-<!-- Twitter Card -->
+<!-- Twitter Card (X expects @username for site/creator, not full URL) -->
 <meta name="twitter:card" content="summary_large_image" />
 {{ if .Site.Params.twitter }}
-  <meta name="twitter:site" content="{{ .Site.Params.twitter }}" />
-  <meta name="twitter:creator" content="{{ .Site.Params.twitter }}" />
+  {{ $twitterHandle := replace .Site.Params.twitter "https://twitter.com/" "" }}
+  {{ $twitterHandle = replace $twitterHandle "https://x.com/" "" }}
+  {{ $twitterHandle = strings.TrimSuffix "/" $twitterHandle }}
+  {{ if $twitterHandle }}
+  <meta name="twitter:site" content="@{{ $twitterHandle }}" />
+  <meta name="twitter:creator" content="@{{ $twitterHandle }}" />
+  {{ end }}
 {{ end }}
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
 <meta name="twitter:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
