@@ -30,11 +30,11 @@ recipeIngredient:
   - "1 Tbsp water"
   - "2 to 3 drops almond extract"
 recipeInstructions:
-  - "Prepare the pan and oven. Heat the oven to 325°F (165°C). Line a 9×5-inch loaf pan with parchment, leaving overhang on the long sides. Lightly grease any exposed pan."
+  - "Prepare the pan and oven. Heat the oven to 350°F (175°C). Line a 9×5-inch loaf pan with parchment, leaving overhang on the long sides. Lightly grease any exposed pan."
   - "Mix the yolk base. In a large bowl, whisk the egg yolks and sugar until pale and slightly thickened. Whisk in the oil, vanilla, and lemon zest."
   - "Add carrots and dry ingredients. Stir the grated carrots into the yolk mixture. In a separate bowl, combine the ground almonds, flour, baking powder, spices, and kosher salt, then fold into the batter just until combined."
   - "Whip and fold the egg whites. Beat the egg whites to soft peaks. Fold them into the batter in two additions, using a light hand to preserve air."
-  - "Bake the loaf. Pour the batter into the prepared pan, filling no more than ¾ full. Bake for 65 to 75 minutes. At about 40 minutes, loosely tent the loaf with foil if the top is browning faster than the center."
+  - "Bake the loaf. Pour the batter into the prepared pan, filling no more than ¾ full. Bake at 350°F (175°C) for 15 minutes, then reduce the oven to 325°F (165°C) and bake for the remainder (about 50 to 60 minutes more; 65 to 75 minutes total). At about 40 minutes total, loosely tent the loaf with foil if the top is browning faster than the center."
   - "Cool completely. When a toothpick inserted in the center comes out with only moist crumbs and the loaf springs back when pressed, remove from the oven. Cool in the pan for 25 to 30 minutes, then turn out and cool completely before glazing."
   - "Make the glaze. Whisk the confectioners' sugar, water, almond extract, and a pinch of kosher salt until thick, opaque, and spoonable."
   - "Glaze and set. Spoon the glaze down the center of the fully cooled loaf and gently encourage it outward. Let the glaze set uncovered at room temperature until matte and crackable."
@@ -49,7 +49,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 ## Snapshot
 
 - **Implements:** 9×5-inch loaf pan; parchment paper; mixing bowls; whisk; hand or stand mixer; rubber spatula; box or paddle grater; microplane or zester (for lemon)
-- **Oven setting:** 325°F (165°C), center rack
+- **Oven setting:** 350°F (175°C) for 15 minutes, then 325°F (165°C) for the remainder; center rack
 - **Batch size:** one 9×5 loaf
 
 ## Ingredients
@@ -80,7 +80,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
 1. **Prepare the pan and oven**
 
-   Heat the oven to 325°F (165°C). Line a 9×5-inch loaf pan with parchment, leaving overhang on the long sides for easy removal. Lightly grease any exposed pan.
+   Heat the oven to 350°F (175°C). Line a 9×5-inch loaf pan with parchment, leaving overhang on the long sides for easy removal. Lightly grease any exposed pan.
 
 2. **Grate the carrots**
 
@@ -100,7 +100,7 @@ Bonus points that it's dairy free, contains some protein, and doesn't require th
 
 6. **Bake**
 
-   Pour the batter into the prepared pan, filling it no more than ¾ full. Bake for 65 to 75 minutes. At around 40 minutes, loosely tent the loaf with foil if the top is browning faster than the center.
+   Pour the batter into the prepared pan, filling it no more than ¾ full. Bake at 350°F (175°C) for 15 minutes, then reduce the oven to 325°F (165°C) and bake for the remainder (about 50 to 60 minutes more; 65 to 75 minutes total). At around 40 minutes total, loosely tent the loaf with foil if the top is browning faster than the center.
 
    The loaf is done when a toothpick inserted in the center comes out with only moist crumbs and the top springs back when pressed.
 
@@ -122,7 +122,9 @@ You don't need to peel carrots before grating; just scrub them if they're dirty.
 
 ### About the loaf pan conversion
 
-This cake is traditionally baked low and wide. Baking it in a loaf pan increases height and bake time, which is why the lower oven temperature and foil tenting matter. Do not rush the bake.
+This cake is traditionally baked low and wide. Baking it in a loaf pan increases height and bake time, which is why the two-stage bake (start at 350°F, then reduce to 325°F) and foil tenting matter. Do not rush the bake.
+
+The two-stage bake encourages a domed top. If you don't care about doming and want a perfectly flat loaf, bake at 325°F (165°C) for the full 65 to 75 minutes instead.
 
 ### Glaze options (optional paths)
 
