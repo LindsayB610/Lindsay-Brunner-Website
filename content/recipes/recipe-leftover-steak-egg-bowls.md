@@ -2,7 +2,7 @@
 title: "Leftover Steak, Egg, and Black Bean Bowls"
 date: 2026-02-08
 slug: "recipe-leftover-steak-egg-bowls"
-subtitle: "Or: Beef, eggs, avocado, beans, and chips so you scoop instead of fork"
+subtitle: "Or: When last night's steak gets a proper encore."
 description: "Beef and eggs with black beans, avocado, salsa, and chips. Warm the steak, soft eggs, build beans with acid, then assemble and scoop."
 draft: false
 social_image: "/images/social/recipe-leftover-steak-egg-bowls-og.png"
