@@ -28,9 +28,7 @@ recipeIngredient:
   - "2 (15 oz) cans cannellini beans, drained and rinsed"
   - "1 cup dry ditalini pasta"
   - "6 to 7 cups water"
-  - "1 Knorr Rich Beef Stock Pot"
-  - "1 Tsp Better Than Bouillon chicken"
-  - "½ Tsp Better Than Bouillon vegetable"
+  - "About 1½ Tbsp concentrated broth or bouillon (use what you have; I use 1 Knorr Rich Beef Stock Pot, 1 Tsp Better Than Bouillon chicken, ½ Tsp Better Than Bouillon vegetable)"
   - "Parm rind (optional)"
   - "1 cup spinach or kale (fresh or frozen)"
   - "¾ cup finely grated Parmesan, divided"
@@ -76,10 +74,7 @@ The recipe is built from my pantry staples to feel like a meal, but still comes 
 ### Broth and beans
 
 - 6 to 7 cups water
-- 1 Knorr Rich Beef Stock Pot*
-- 1 Tsp Better Than Bouillon chicken*
-- ½ Tsp Better Than Bouillon vegetable*
-*Use what you have, don't fret about having the exact same mix. This is a forgiving soup.
+- About 1½ Tbsp concentrated broth or bouillon (use what you have; I tend to use 1 Knorr Rich Beef Stock Pot, 1 Tsp Better Than Bouillon chicken, ½ Tsp Better Than Bouillon vegetable)
 - 2 (15 oz) cans cannellini beans, drained and rinsed
 - Parm rind (optional)
 
