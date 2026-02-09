@@ -25,9 +25,9 @@ recipeIngredient:
   - "Tortilla chips, sturdy ones"
   - "Optional: lime wedges, hot sauce, crumbled cotija or feta"
 recipeInstructions:
+  - "Warm and build the beans. In a separate pan, add the black beans with a splash of water or stock and a pinch of salt. Warm gently, then mash about half the beans with the back of a spoon to create a loose, saucy texture. Take the pan off the heat and stir in a small splash of vinegar. Taste and adjust salt. Set aside until assembly."
   - "Prep the steak. Slice it thin against the grain while it is cold. Cold steak slices cleaner and more evenly, which matters for tenderness on the reheat."
   - "Warm the steak. Heat a skillet over medium. Add a little butter or oil. Add the steak in a single layer and warm it just until heated through. You are not browning it. Pull it from the pan and set aside."
-  - "Warm and build the beans. In a separate pan, add the black beans with a splash of water or stock and a pinch of salt. Warm gently, then mash about half the beans with the back of a spoon to create a loose, saucy texture. Take the pan off the heat and stir in a small splash of vinegar. Taste and adjust salt. Set aside until assembly."
   - "Cook the eggs. In the main skillet, lower the heat slightly. Add a touch more butter or oil if needed. Beat the eggs with a pinch of salt and cook them slowly, stirring gently, until soft and custardy. The residual beef fat seasons them."
   - "Assemble the bowl. Add the beans first, then steak, then eggs. Top with avocado and salsa. Finish with a squeeze of lime if using. Taste and adjust salt."
   - "Serve with chips. Scoop, do not dip timidly. The bowl is warm and rich; the chips are the crunch and contrast."
@@ -67,17 +67,17 @@ Quantities are flexible by design. Adjust steak, eggs, and beans depending on ho
 
 ## Method
 
-1. **Prep the steak first**
+1. **Build the beans** (in a separate pan)
+
+   In a small pan or second skillet over medium heat, add the black beans with a splash of water or stock and a pinch of salt. Warm gently. Mash about half the beans with the back of a spoon so you get a mix of whole beans and creamy, saucy ones. Take the pan off the heat and stir in a small splash of vinegar. Taste and adjust salt. Set aside until assembly.
+
+2. **Prep the steak first**
 
    Slice it thin against the grain while cold. Cold steak slices cleaner and more evenly, which matters for tenderness on the reheat.
 
-2. **Warm, do not re-cook**
+3. **Warm, do not re-cook**
 
    Heat a skillet over medium. Add a little butter or oil. Add the steak in a single layer and warm it just until heated through. You are not browning it. Pull it from the pan and set aside. This protects the doneness.
-
-3. **Build the beans** (in a separate pan)
-
-   In a small pan or second skillet over medium heat, add the black beans with a splash of water or stock and a pinch of salt. Warm gently. Mash about half the beans with the back of a spoon so you get a mix of whole beans and creamy, saucy ones. Take the pan off the heat and stir in a small splash of vinegar. Taste and adjust salt. Set aside until assembly.
 
 4. **Eggs in beef fat**
 
