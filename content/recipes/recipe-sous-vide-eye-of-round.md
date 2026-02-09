@@ -4,7 +4,7 @@ date: 2026-02-09
 slug: "recipe-sous-vide-eye-of-round"
 subtitle: "Or: The lean cut that only turns tender if you refuse to bully it with heat."
 description: "Eye of round cooked sous vide from frozen for 18–24 hours. Low heat and salt do the work; a ripping hot sear at the end delivers crust and drama."
-draft: true
+draft: false
 social_image: "/images/social/recipe-sous-vide-eye-of-round-og.png"
 prepTime: "PT15M"
 cookTime: "PT24H"
