@@ -10,7 +10,7 @@ prepTime: "PT20M"
 cookTime: "PT50M"
 totalTime: "PT70M"
 recipeYield: "about 3 servings"
-recipeCategory: "Weeknight Dinner"
+recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 dietary: ["dairy-free", "gluten-free"]
 recipeIngredient:
