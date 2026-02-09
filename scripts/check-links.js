@@ -9,7 +9,7 @@
  * Run with: npm run test:links
  */
 
-const { spawn, spawnSync, execSync } = require('child_process');
+const { spawn, execSync } = require('child_process');
 const http = require('http');
 const path = require('path');
 
@@ -17,6 +17,8 @@ const PORT = 1313;
 const BASE_URL = `http://localhost:${PORT}`;
 const READY_TIMEOUT_MS = 30_000;
 const POLL_INTERVAL_MS = 300;
+/** Max time for the broken-link-checker crawl; prevents test suite from hanging. */
+const LINK_CHECK_TIMEOUT_MS = 60_000; // 1 minute (66 pages should finish well under this)
 
 function clearPort() {
   try {
@@ -127,14 +129,25 @@ function startServerAndCheck(projectRoot, retry = false) {
   waitForServer()
     .then(() => {
       resolved = true;
-      console.log('Server ready. Running link check...\n');
-      const blc = spawnSync(
+      console.log('Server ready. Running link check (max %ds)...\n', LINK_CHECK_TIMEOUT_MS / 1000);
+      const blc = spawn(
         'npx',
         ['blc', '--recursive', '--exclude-external', '--filter-level', '2', BASE_URL],
         { cwd: projectRoot, stdio: 'inherit', shell: true }
       );
-      cleanup();
-      process.exit(blc.status ?? 1);
+      const linkCheckTimeout = setTimeout(() => {
+        if (blc.kill) {
+          console.error('\nError: Link check did not finish within %ds. Stopping to avoid hanging.', LINK_CHECK_TIMEOUT_MS / 1000);
+          blc.kill('SIGKILL');
+        }
+        cleanup();
+        process.exit(1);
+      }, LINK_CHECK_TIMEOUT_MS);
+      blc.on('close', (code, signal) => {
+        clearTimeout(linkCheckTimeout);
+        cleanup();
+        process.exit(code !== null && code !== undefined ? code : 1);
+      });
     })
     .catch(async (err) => {
       if (currentHugo && currentHugo.kill) {
