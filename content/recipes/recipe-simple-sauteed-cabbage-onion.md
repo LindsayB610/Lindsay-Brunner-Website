@@ -15,7 +15,7 @@ recipeCuisine: "American"
 dietary: ["gluten-free", "dairy-free", "vegan", "vegetarian"]
 recipeIngredient:
   - "1 Tbsp chicken schmaltz"
-  - "1 Tbsp unsalted butter"
+  - "1 Tbsp butter"
   - "1 medium yellow onion, sliced"
   - "½ large green cabbage, sliced into ribbons"
   - "Salt, to taste"
@@ -42,7 +42,7 @@ Enter Sakkio Japan at the Belden Village Mall Food Court in Canton, Ohio. It was
 ## Ingredients
 
 - 1 Tbsp chicken schmaltz
-- 1 Tbsp unsalted butter
+- 1 Tbsp butter
 - 1 medium yellow onion, sliced
 - ½ large green cabbage, sliced into ribbons
 - Salt, to taste

@@ -85,7 +85,7 @@ The result isn’t a revelation so much as a correction: potatoes that actually 
 
    Remove potatoes from oven. Split lengthwise.
 
-   Scoop flesh into a warm bowl. Leave a thin layer behind to avoid skin bitterness and to keep the skins usable for other purposes.
+   Scoop flesh into a warm bowl. Leave a thin layer behind to avoid skin bitterness and to keep the skins usable for [Potato Skin Chips](/recipes/2026-02-10/recipe-potato-skin-chips-garlic-avocado-oil/) or other purposes.
 
    Pause 30 to 60 seconds. Let visible steam escape.
 
@@ -123,7 +123,7 @@ The result isn’t a revelation so much as a correction: potatoes that actually 
 
 ### Why restaurants bake (not boil)
 
-Restaurants bake potatoes for mash because it concentrates flavor instead of diluting it. Baking drives off water, tightens starch, and preserves that roasted potato aroma that boiling leaches away. That’s why potato skins show up on menus: the mash is a byproduct of that prep flow, not the star of it.
+Restaurants bake potatoes for mash because it concentrates flavor instead of diluting it. Baking drives off water, tightens starch, and preserves that roasted potato aroma that boiling leaches away. That’s why potato skins show up on menus: the mash is a byproduct of that prep flow, not the star of it. Save your skins for [Potato Skin Chips With Garlic Avocado Oil](/recipes/2026-02-10/recipe-potato-skin-chips-garlic-avocado-oil/), and consider [garlic confit in avocado oil](/recipes/2026-02-10/recipe-garlic-in-oil-confit-roasted/) for mashing cloves into the finished dish or for crisping the skins.
 
 ### The two details that matter
 

@@ -38,7 +38,7 @@
         {{- if $i }},{{ end }}
         {{ $ingredient | jsonify }}
       {{- end }}
-    ]{{ if $recipe.Params.social_image }},{{ end }}
+    ],
     {{- end }}
     "permalink": {{ $recipe.RelPermalink | jsonify }}{{ if $recipe.Params.social_image }},
     "social_image": {{ $recipe.Params.social_image | jsonify }}{{ end }}
