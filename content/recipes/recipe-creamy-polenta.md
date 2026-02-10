@@ -4,7 +4,7 @@ date: 2026-02-10
 slug: "recipe-creamy-polenta"
 subtitle: "Or: The kind that feels like soft scrambled eggs in corn form."
 description: "Custardy polenta built on corn quality, hydration, and fat. Coarse stone-ground cornmeal, high liquid ratio, slow low heat, butter and Parmigiano for that silky almost-egg texture."
-draft: true
+draft: false
 social_image: "/images/social/recipe-creamy-polenta-og.png"
 prepTime: "PT5M"
 cookTime: "PT50M"
@@ -27,7 +27,6 @@ recipeInstructions:
   - "Finish. When rich and silky and no longer chalky, turn off the heat. Add butter and stir until melted. Stir in the Parmigiano until glossy and cohesive. Season with black pepper and adjust salt."
   - "Rest. Let it rest off heat for 5 minutes, then give it one last gentle stir before serving."
 ---
-
 It was two years ago, summer, in Kansas City of all places. I'd been attending a trade show, and I'd brough my family along, because this particular show draws a group of friends who long ago also became family. On our last night in town we decided fancy dinner was in order (one can one feed one's six-year-old so much BBQ, even KC BBQ). 
 
 We hit up Pierpont's at Union Station, where I was served a polenta that has haunted my dreams ever since. I'd never before seen polenta appear gently curd-y, like soft scrambled eggs. Rich with (probably too much0 butter, it was divine. This recipe is my attempt to recreate it.
