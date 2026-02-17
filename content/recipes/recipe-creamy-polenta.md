@@ -3,7 +3,7 @@ title: "Soft, Rich, Egg-like Polenta"
 date: 2026-02-10
 slug: "recipe-creamy-polenta"
 subtitle: "Or: The kind that feels like soft scrambled eggs in corn form."
-description: "Custardy polenta built on corn quality, hydration, and fat. Coarse stone-ground cornmeal, high liquid ratio, slow low heat, butter and Parmigiano for that silky almost-egg texture."
+description: "Custardy polenta built on corn quality, hydration, and fat. Stone-ground cornmeal, high liquid ratio, slow heat, butter and Parmigiano for silky texture."
 draft: false
 social_image: "/images/social/recipe-creamy-polenta-og.png"
 prepTime: "PT5M"

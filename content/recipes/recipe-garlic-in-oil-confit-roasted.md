@@ -3,7 +3,7 @@ title: "Garlic in Oil: Confit vs. Roasted (Two Methods, One Decision)"
 date: 2026-02-10
 slug: "recipe-garlic-in-oil-confit-roasted"
 subtitle: "Or: Soft and custardy or golden and aromatic: same setup, different outcome"
-description: "A choose-your-own-adventure garlic recipe: low-and-slow avocado oil confit for pure garlic flavor, or oven-roasted garlic in olive oil for a richer, more aromatic result. Both are useful. The difference is intention."
+description: "Choose-your-own-adventure garlic: avocado oil confit for pure flavor, or oven-roasted in olive oil for richer result. Both useful; the difference is intention."
 draft: false
 social_image: "/images/social/recipe-garlic-in-oil-confit-roasted-og.png"
 prepTime: "PT5M"
