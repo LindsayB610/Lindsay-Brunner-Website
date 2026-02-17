@@ -4,7 +4,7 @@ date: 2026-02-16
 slug: "recipe-baked-ziti-beef-ragu"
 subtitle: "Or: Lasagna energy without buying lasagna noodles"
 description: "A deeply browned 75/25 beef ragù built on the spaghetti-and-meatballs sauce foundation, reduced just enough for structure, then layered with lightly sauced pasta and mozzarella. Makes a generous batch with freezer-friendly leftovers."
-draft: true
+draft: false
 social_image: "/images/social/recipe-baked-ziti-beef-ragu-og.png"
 prepTime: "PT30M"
 cookTime: "PT2H"
