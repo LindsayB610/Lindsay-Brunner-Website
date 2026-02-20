@@ -4,7 +4,8 @@ date: 2026-02-20
 slug: "recipe-roasted-cornish-hens"
 subtitle: "Or: Fancy enough for company, lazy enough for Tuesday"
 description: "Split Cornish hens roasted cut side down with olive oil, garlic powder, and Italian seasoning. Lean, simple, and reliably crisp with minimal fuss."
-draft: true
+social_image: "/images/social/recipe-roasted-cornish-hens-og.png"
+draft: false
 prepTime: "PT15M"
 cookTime: "PT60M"
 totalTime: "PT75M"

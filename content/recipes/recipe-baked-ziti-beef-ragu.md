@@ -1,15 +1,15 @@
 ---
-title: "Baked Ziti with Beef Ragù"
+title: "Baked Ziti with Beef Ragu"
 date: 2026-02-16
 slug: "recipe-baked-ziti-beef-ragu"
 subtitle: "Or: Lasagna energy without buying lasagna noodles"
-description: "A deeply browned 75/25 beef ragù on the spaghetti-and-meatballs sauce base, layered with pasta and mozzarella. Generous batch with freezer-friendly leftovers."
+description: "A deeply browned 75/25 beef ragu on the spaghetti-and-meatballs sauce base, layered with pasta and mozzarella. Generous batch with freezer-friendly leftovers."
 draft: false
 social_image: "/images/social/recipe-baked-ziti-beef-ragu-og.png"
 prepTime: "PT30M"
 cookTime: "PT2H"
 totalTime: "PT2H30M"
-recipeYield: "one 2½ to 3 qt baked pasta plus several quarts extra ragù"
+recipeYield: "one 2½ to 3 qt baked pasta plus several quarts extra ragu"
 recipeCategory: "Main Course"
 recipeCuisine: "Italian-American"
 dietary: []
@@ -36,7 +36,7 @@ recipeInstructions:
   - "Add tomato sauce, whole tomatoes (crushed by hand), and diced tomatoes. Rinse sauce cans with a splash of water and add to the pot."
   - "Return beef to the pot. Simmer partially covered 60 to 90 minutes until slightly thickened but still clearly saucy."
   - "Boil pasta in well-salted water until 2 to 3 minutes shy of al dente. Drain."
-  - "Lightly coat pasta with ragù."
+  - "Lightly coat pasta with ragu."
   - "Layer in a 2½ to 3 qt baking dish, building 2 or 3 layers depending on depth."
   - "Bake at 375°F (190°C) covered 25 to 30 minutes, then uncovered 15 to 25 minutes until bubbling and lightly browned."
   - "Rest 15 to 20 minutes before serving."
@@ -49,11 +49,11 @@ This version intentionally mirrors the tomato structure of your Italian American
 - **Implements:** wide heavy pot or Dutch oven; wooden spoon; 2½ to 3 qt oven-safe baking dish; large pasta pot
 - **Oven setting:** 375°F (190°C)
 - **Stove setting:** medium-high for browning; low gentle simmer
-- **Batch size:** one baked pasta plus multiple quarts leftover ragù
+- **Batch size:** one baked pasta plus multiple quarts leftover ragu
 
 ## Ingredients
 
-### Beef ragù base (large batch)
+### Beef ragu base (large batch)
 
 - 3 lb ground beef (75/25)
 - 2 large yellow onions, finely diced
@@ -92,7 +92,7 @@ This version intentionally mirrors the tomato structure of your Italian American
 
 5. **Layer intentionally**
 
-   Lightly coat pasta first. Spread a thin base of sauce in the dish. Add pasta, more ragù, ricotta mixture if using, mozzarella, and repeat. Finish with sauce and cheese. Fill no higher than ¾ in below the rim.
+   Lightly coat pasta first. Spread a thin base of sauce in the dish. Add pasta, more ragu, ricotta mixture if using, mozzarella, and repeat. Finish with sauce and cheese. Fill no higher than ¾ in below the rim.
 
 6. **Bake and rest**
 
@@ -131,7 +131,7 @@ Fill no closer than ¾ in to the rim.
 
 ### Freezer plan
 
-Cool extra ragù completely. Portion and freeze. Label it. Future you will not remember.
+Cool extra ragu completely. Portion and freeze. Label it. Future you will not remember.
 
 - Do not overcook the pasta.
 - Do not flood the layers with sauce.
