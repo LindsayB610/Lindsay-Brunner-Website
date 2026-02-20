@@ -42,6 +42,8 @@ I'm lucky in life to have well-travelled foodie friends, one of whom brought me 
 
 <img src="/images/PXL_20251230_202603628.jpg" alt="Two jars of sweet spreads: caramel with espresso and chocolate with lebkuchen spices" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
+<p class="image-caption">The two spreads that started it all: caramel with espresso and chocolate with lebkuchen spices.</p>
+
 Blondies work better here than brownies because they let the espresso caramel and spiced chocolate stand out instead of getting lost against cocoa. The high fat, high sugar, low flour ratio means these can handle generous swirls without collapsing or turning gummy in the middle. You'll use about half of each jar in one go, which is exactly the kind of commitment level I'm here for.
 
 These slice cleanly, freeze well, and taste even better on day two. The espresso bitterness keeps the caramel in check, and the lebkuchen spices read grown-up holiday café pastry, not candy bar.

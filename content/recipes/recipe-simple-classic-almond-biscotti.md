@@ -3,7 +3,7 @@ title: "Simple, Classic Almond Biscotti"
 date: 2025-12-05
 slug: "recipe-simple-classic-almond-biscotti"
 subtitle: "Or: The crunchy almond cookie that justifies an extra cup of coffee"
-description: "Simple almond biscotti with a double-bake for maximum crispness. Sturdy enough to ship, perfect for dunking in coffee."
+description: "Simple almond biscotti with a double-bake for maximum crispness. Sturdy enough to ship and perfect for dunking in coffee."
 draft: false
 social_image: "/images/social/recipe-simple-classic-almond-biscotti-og.png"
 prepTime: "PT25M"

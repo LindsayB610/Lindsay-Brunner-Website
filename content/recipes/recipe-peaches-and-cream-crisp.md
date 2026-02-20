@@ -3,7 +3,7 @@ title: "Not Pie, Not Buckle, It's Peaches-and-Cream Crisp"
 date: 2025-11-09
 slug: "recipe-peaches-and-cream-crisp"
 subtitle: "Or: AI can bake, right?"
-description: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble, hacked together with ChatGPT."
+description: "A deep-dish peaches-and-cream crisp built on pastry cream and a pre-toasted oat crumble. Rich, cozy, and ChatGPT-assisted."
 draft: false
 social_image: "/images/social/recipe-peaches-and-cream-crisp-og.png"
 prepTime: "PT30M"

@@ -45,6 +45,8 @@ This is exactly where garlic oil should be loud.
 
 <img src="/images/recipe-potato-skin-chips-garlic-avocado-oil.jpg" alt="Crispy potato skin chips in a bowl, golden brown with blistered edges, seasoned with salt" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
+<p class="image-caption">Crispy potato skin chips seasoned with salt and garlic avocado oil.</p>
+
 ## Ingredients
 
 - Potato skins from [Ultra-Concentrated Baked Potato Mashed Potatoes](/recipes/2026-02-07/recipe-ultra-concentrated-baked-potato-mashed-potatoes/), torn or cut into large pieces

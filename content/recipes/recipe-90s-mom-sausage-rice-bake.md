@@ -3,7 +3,7 @@ title: "90s Mom Sausage and Rice Bake"
 date: 2025-01-20
 slug: "recipe-90s-mom-sausage-rice-bake"
 subtitle: "Or: Buttery, hands-off, and not trying to impress you."
-description: "Neutral, buttery rice with sweet Italian sausage. The sausage does the talking."
+description: "Long-grain rice baked with sweet Italian sausage, bell pepper, and fennel. Buttery, hands-off, and unapologetically simple. The sausage does the talking."
 draft: false
 social_image: "/images/social/recipe-90s-mom-sausage-rice-bake-og.png"
 prepTime: "PT15M"

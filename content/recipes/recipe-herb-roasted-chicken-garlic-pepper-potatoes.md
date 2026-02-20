@@ -51,6 +51,8 @@ This recipe started the way a lot of weeknight dinners do: chicken thighs in the
 
 <img src="/images/herb-roasted-chicken-garlic-pepper-potatoes.jpg" alt="Herb roasted chicken thigh with crispy skin and green herb specks, served with crispy garlic-pepper roasted potatoes and bright green beans on a light pink plate" style="width: 100%; margin: 2rem 0; border-radius: 8px;" />
 
+<p class="image-caption">Herb-roasted chicken thigh with crispy garlic-pepper potatoes and green beans.</p>
+
 ## Ingredients
 
 ### Herb marinade (makes about 1 cup)

@@ -3,7 +3,7 @@ title: "Thanksgiving Turkey Wellington Sausage Roll"
 date: 2025-11-16
 slug: "recipe-turkey-wellington-sausage-roll"
 subtitle: "Or: The Franken-roll that skips the whole bird"
-description: "A three-layer Thanksgiving feast: turkey sausage wrapped in stuffing, encased in puff pastry, served with gravy."
+description: "A three-layer Thanksgiving feast: turkey sausage wrapped in stuffing, encased in puff pastry. Serve with gravy and skip the whole bird."
 draft: false
 social_image: "/images/social/recipe-turkey-wellington-sausage-roll-og.png"
 prepTime: "PT60M"
