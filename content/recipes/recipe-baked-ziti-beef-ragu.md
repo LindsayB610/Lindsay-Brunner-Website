@@ -42,7 +42,9 @@ recipeInstructions:
   - "Rest 15 to 20 minutes before serving."
 ---
 
-This version intentionally mirrors the tomato structure of your Italian American Spaghetti and Meatballs. The difference is architectural, not proportional. Here the sauce is not built to submerge meatballs, but it remains generous and freezer-worthy.
+Lasagna was a staple family dinner for me growing up. Thanksgiving or Christmas? Sure, we'd have a turkey or a ham, but you better believe there'd also be a lasagna on the table. 
+
+As an adult I make lasagna pretty frequently, but honestly, sometimes I really want the lasagna vibes without quite as much effort. Hence this baked ziti/lasagna hybrid. You're using pretty much all the same elements as you would for a lasagna, but the layers are way more forgiving, and the volume is easier to dial in for my family of three who doesn't want to eat lasagna every other day for two weeks.
 
 ## Snapshot
 
@@ -66,7 +68,7 @@ This version intentionally mirrors the tomato structure of your Italian American
 
 ### Pasta and layers
 
-- 1 lb tubular pasta
+- 1 lb pasta (penne, rigs, springs, anything roughly ziti sized)
 - 12 to 16 oz low-moisture mozzarella
 - 15 oz ricotta (optional)
 - 1 egg (if using ricotta)
@@ -104,7 +106,7 @@ This version intentionally mirrors the tomato structure of your Italian American
 
 ### Why this tomato volume works
 
-This mirrors the spaghetti-and-meatballs sauce backbone. You are making a generous pot intentionally. Some goes into the bake. The rest goes to the freezer.
+This mirrors the [spaghetti-and-meatballs](/recipes/2026-01-02/recipe-spaghetti-and-meatballs/) sauce backbone. You are making a generous pot intentionally. Some goes into the bake. The rest goes to the freezer.
 
 ### Fat management
 
@@ -136,7 +138,3 @@ Cool extra ragu completely. Portion and freeze. Label it. Future you will not re
 - Do not overcook the pasta.
 - Do not flood the layers with sauce.
 - Do not cut before resting.
-
-## Credit where it's due
-
-This recipe builds directly from the Italian American Spaghetti and Meatballs on this site, adapting the same layered tomato base into a baked pasta format with generous yield.
