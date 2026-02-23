@@ -34,7 +34,7 @@ If you want a simple way to think about it: quiet signals work like proof. Loud 
 
 There's a cultural version of this conversation (quiet luxury, subtle branding, all that "wealth whispers" stuff).  But what's happening in marketing right now is less about fashion and more about fatigue.
 
-Audiences are tired. Everyone has been marketed at, constantly, for years. Everyone has developed spam filters in their brain. And because AI has made it easier to generate "pretty good" content at scale, the internet is now full of language that sounds fluent while saying absolutely nothing.
+Audiences are tired. Everyone has been marketed at, constantly, for years. Everyone has developed spam filters in their brain. And because [AI has made it easier to generate "pretty good" content at scale](https://lindsaybrunner.com/thoughts/2026-02-05/responsible-ai-content-creation/), the internet is now full of language that sounds fluent while saying absolutely nothing.
 
 So the bar has moved.
 
@@ -70,7 +70,7 @@ A useful, ungated technical post that solves a real problem is a quiet signal. A
 
 Loud signals are great at spikes. Quiet signals are great at gravity.
 
-If you're trying to become the default reference point in a space (where people think of your framing first, link your explanation first, trust your definitions first), quiet is how you get there. You earn it by being consistently useful for long enough that people stop thinking of it as marketing and start thinking of it as infrastructure.
+If you're trying to [become the default reference point in a space](https://lindsaybrunner.com/thoughts/2025-11-17/category-creation-calling-shot/) (where people think of your framing first, link your explanation first, trust your definitions first), quiet is how you get there. You earn it by being consistently useful for long enough that people stop thinking of it as marketing and start thinking of it as infrastructure.
 
 The compounding part matters. A big campaign can make people aware of you. Quiet authority makes people reach for you when they have a real problem.
 

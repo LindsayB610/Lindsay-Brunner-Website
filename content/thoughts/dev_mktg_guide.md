@@ -26,7 +26,7 @@ If you lead product, engineering, or GTM at a dev‑tool org and still treat mar
 
 Three qualifiers that matter:
 
-1. **Useful > Persuasive.** Developers reward utility. They punish hype.
+1. **Useful > Persuasive.** Developers reward utility. They [punish hype](https://lindsaybrunner.com/thoughts/2026-02-23/brand-signals-decoded-quiet-vs-loud-marketing/).
 2. **Fast path to "Hello World."** The shorter the ramp, the higher the retention.
 3. **Community over campaigns.** You can buy clicks. You can't buy trust.
 

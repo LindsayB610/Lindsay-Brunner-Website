@@ -9,7 +9,7 @@ social_image: "/images/social/category-creation-calling-shot-og.png"
 ---
 There's a particular kind of room, especially in Silicon Valley, where someone eventually leans back, folds their hands like a prophet, and announces, "We're going to be iconic. We're going to define a category."
 
-Maybe you've been in that room. Big dreams, big decks, big adjectives. Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
+Maybe you've been in that room. Big dreams, big decks, [big adjectives](https://lindsaybrunner.com/thoughts/2026-02-23/brand-signals-decoded-quiet-vs-loud-marketing/). Someone name-drops Uber or Kleenex as if becoming a verb is a go-to-market motion instead of a weird historical accident.
 
 In my career I've gotten to be in a few rooms like that, all at companies that were developer-focused and convinced they were on the cusp of "creating a category."
 
