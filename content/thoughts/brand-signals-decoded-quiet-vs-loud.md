@@ -1,6 +1,6 @@
 ---
 title: "Brand Signals Decoded: When Quiet Marketing Outperforms"
-date: 2025-02-23
+date: 2026-02-23
 slug: "brand-signals-decoded-quiet-vs-loud-marketing"
 description: "Quiet signals earn trust, loud signals buy attention. When to use each and how to avoid volume without substance."
 subtitle: "Or: Why 'turning it up' isn't a strategy"
