@@ -37,7 +37,8 @@ recipeInstructions:
   - "Return beef to the pot. Simmer partially covered 60 to 90 minutes until slightly thickened but still clearly saucy."
   - "Boil pasta in well-salted water until 2 to 3 minutes shy of al dente. Drain."
   - "Lightly coat pasta with ragu."
-  - "Layer in a 2½ to 3 qt baking dish, building 2 or 3 layers depending on depth."
+  - "If using ricotta, beat the egg in a medium bowl, then add ricotta and about half of the Parmesan; mix until smooth. Set aside."
+  - "Layer in a 2½ to 3 qt baking dish, building 2 or 3 layers: pasta, ragu, ricotta mixture (if using), mozzarella, repeat. Finish with sauce and cheese."
   - "Bake at 375°F (190°C) covered 25 to 30 minutes, then uncovered 15 to 25 minutes until bubbling and lightly browned."
   - "Rest 15 to 20 minutes before serving."
 ---
@@ -92,11 +93,15 @@ As an adult I make lasagna pretty frequently, but honestly, sometimes I really w
 
    Stop 2 to 3 minutes shy of al dente.
 
-5. **Layer intentionally**
+5. **Make the ricotta mixture (if using)**
 
-   Lightly coat pasta first. Spread a thin base of sauce in the dish. Add pasta, more ragu, ricotta mixture if using, mozzarella, and repeat. Finish with sauce and cheese. Fill no higher than ¾ in below the rim.
+   Beat the egg in a medium bowl, then add the ricotta and about half of the Parmesan; mix until smooth. Set aside. (The egg binds the mixture so it doesn't separate in the bake; the Parmesan adds salt and structure.)
 
-6. **Bake and rest**
+6. **Layer intentionally**
+
+   Lightly coat pasta first. Spread a thin base of sauce in the dish. Add pasta, more ragu, ricotta mixture (if using), mozzarella, and repeat. Finish with sauce and cheese. Fill no higher than ¾ in below the rim.
+
+7. **Bake and rest**
 
    Cover and bake 25 to 30 minutes. Uncover and bake 15 to 25 minutes more until bubbling and lightly browned. Rest 15 to 20 minutes before cutting.
 
