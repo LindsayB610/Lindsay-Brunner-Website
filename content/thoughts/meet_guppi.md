@@ -3,7 +3,7 @@ title: "I Built a Custom AI Assistant Because My Brain Refused to Use Notion"
 date: 2025-06-12
 draft: false
 subtitle: "Or: The only organization system my ADHD brain hasn't mutinied against"
-description: "Why a sarcastic AI assistant is the only productivity system my ADHD brain hasn't abandoned, and how you can steal it."
+description: "Why a sarcastic AI assistant is the only productivity system my ADHD brain hasn't abandoned, and how you can build one too."
 slug: "meet-guppi"
 social_image: "/images/social/meet-guppi-og.png"
 ---

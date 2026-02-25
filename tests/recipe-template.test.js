@@ -469,9 +469,9 @@ function validateRecipeTemplate() {
     
     // 9. Method section format validation
     if (hasMethod) {
-      // Fix: The original regex had $ in lookahead which matches end-of-line with /m flag,
-      // causing the non-greedy match to capture nothing. Fix by matching next section or end of string.
-      const methodMatch = content.match(/^##\s+Method\s*$\n?([\s\S]*?)(?=\n##\s+[^#]|\n---|$)/m);
+      // Stop at next ## section or --- separator. Do not use $ in lookahead (with /m, $ matches
+      // end of any line, so the non-greedy match would stop after the first line of the method).
+      const methodMatch = content.match(/^##\s+Method\s*$\n?([\s\S]*?)(?=\n##\s+[^#]|\n---)/m);
       if (methodMatch && methodMatch[1] && methodMatch[1].trim().length > 0) {
         const methodContent = methodMatch[1];
         // Method should use numbered list format: 1. **Step title** or 1. Step title

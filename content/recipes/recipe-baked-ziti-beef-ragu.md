@@ -35,11 +35,12 @@ recipeInstructions:
   - "Add tomato paste and cook, stirring constantly, until it darkens to brick red."
   - "Add tomato sauce, whole tomatoes (crushed by hand), and diced tomatoes. Rinse sauce cans with a splash of water and add to the pot."
   - "Return beef to the pot. Simmer partially covered 60 to 90 minutes until slightly thickened but still clearly saucy."
-  - "Boil pasta in well-salted water until 2 to 3 minutes shy of al dente. Drain."
+  - "Preheat oven to 375°F (190°C)."
+  - "Cook pasta in well-salted water per package directions, stopping 2 to 3 minutes shy of al dente. Drain."
   - "Lightly coat pasta with ragu."
-  - "If using ricotta, beat the egg in a medium bowl, then add ricotta and about half of the Parmesan; mix until smooth. Set aside."
-  - "Layer in a 2½ to 3 qt baking dish, building 2 or 3 layers: pasta, ragu, ricotta mixture (if using), mozzarella, repeat. Finish with sauce and cheese."
-  - "Bake at 375°F (190°C) covered 25 to 30 minutes, then uncovered 15 to 25 minutes until bubbling and lightly browned."
+  - "If using ricotta, while the pasta cooks beat the egg in a medium bowl, then add ricotta and about half of the Parmesan; mix until smooth. Set aside."
+  - "Add the cooked pasta to a bowl and lightly toss with a few scoops of sauce to coat. Spread a thin base of sauce in the dish. Add pasta, more ragu, ricotta mixture (if using), mozzarella, and repeat. Finish with sauce and mozzarella. Fill no higher than ¾ in below the rim."
+  - "Bake covered 25 to 30 minutes. Uncover, sprinkle remaining Parmesan over the top, and bake 15 to 25 minutes more until bubbling and lightly browned."
   - "Rest 15 to 20 minutes before serving."
 ---
 
@@ -83,27 +84,31 @@ As an adult I make lasagna pretty frequently, but honestly, sometimes I really w
 
 2. **Build the tomato base**
 
-   Cook onions until soft. Add garlic briefly. Cook tomato paste until brick red. Add all tomatoes and return beef to the pot.
+   Cook onions until soft. Add garlic. Cook tomato paste until brick red. Add all tomatoes and return beef to the pot.
 
 3. **Simmer for cohesion**
 
    Simmer 60 to 90 minutes until slightly thickened but still saucy. This is not tight Bolognese. It should ladle easily but not look watery.
 
-4. **Undercook the pasta**
+4. **Preheat the oven**
 
-   Stop 2 to 3 minutes shy of al dente.
+   Preheat oven to 375°F (190°C).
 
-5. **Make the ricotta mixture (if using)**
+5. **Cook the pasta**
 
-   Beat the egg in a medium bowl, then add the ricotta and about half of the Parmesan; mix until smooth. Set aside. (The egg binds the mixture so it doesn't separate in the bake; the Parmesan adds salt and structure.)
+   Cook the pasta in well-salted water per package directions, stopping 2 to 3 minutes shy of al dente so it can finish in the bake. Drain.
 
-6. **Layer intentionally**
+6. **Make the ricotta mixture (if using)**
 
-   Lightly coat pasta first. Spread a thin base of sauce in the dish. Add pasta, more ragu, ricotta mixture (if using), mozzarella, and repeat. Finish with sauce and cheese. Fill no higher than ¾ in below the rim.
+   While the pasta cooks, beat the egg in a medium bowl, then add the ricotta and about half of the Parmesan; mix until smooth. Set aside. (The egg binds the mixture so it doesn't separate in the bake; the Parmesan adds salt and structure.)
 
-7. **Bake and rest**
+7. **Layer intentionally**
 
-   Cover and bake 25 to 30 minutes. Uncover and bake 15 to 25 minutes more until bubbling and lightly browned. Rest 15 to 20 minutes before cutting.
+   Add the cooked pasta to a bowl and lightly toss with a few scoops of sauce to coat. Spread a thin base of sauce in the dish. Add pasta, more ragu, ricotta mixture (if using), mozzarella, and repeat. Finish with sauce and mozzarella. Fill no higher than ¾ in below the rim.
+
+8. **Bake and rest**
+
+   Cover and bake 25 to 30 minutes. Uncover, sprinkle the remaining Parmesan over the top, and bake 15 to 25 minutes more until bubbling and lightly browned. Rest 15 to 20 minutes before cutting.
 
 ---
 

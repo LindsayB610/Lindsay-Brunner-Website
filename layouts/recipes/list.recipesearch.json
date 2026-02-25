@@ -1,0 +1,47 @@
+{{- $recipes := where .Site.RegularPages "Section" "recipes" -}}
+{{- $recipes = where $recipes "Draft" false -}}
+{{- $recipes = $recipes.ByDate.Reverse -}}
+[
+{{- range $index, $recipe := $recipes }}
+  {{- if $index }},{{ end }}
+  {
+    "title": {{ $recipe.Title | jsonify }},
+    {{- if $recipe.Params.description }}
+    "description": {{ $recipe.Params.description | jsonify }},
+    {{- end }}
+    {{- if $recipe.Params.subtitle }}
+    "subtitle": {{ $recipe.Params.subtitle | jsonify }},
+    {{- end }}
+    "date": {{ ($recipe.Date.Format "2006-01-02T15:04:05Z07:00") | jsonify }},
+    {{- if $recipe.Params.slug }}
+    "slug": {{ $recipe.Params.slug | jsonify }},
+    {{- end }}
+    {{- if $recipe.Params.recipeCategory }}
+    "recipeCategory": {{ $recipe.Params.recipeCategory | jsonify }},
+    {{- end }}
+    {{- if $recipe.Params.recipeCuisine }}
+    "recipeCuisine": {{ $recipe.Params.recipeCuisine | jsonify }},
+    {{- end }}
+    {{- if $recipe.Params.dietary }}
+    "dietary": [
+      {{- range $i, $d := $recipe.Params.dietary }}
+        {{- if $i }},{{ end }}
+        {{ ($d | urlize) | jsonify }}
+      {{- end }}
+    ],
+    {{- else }}
+    "dietary": [],
+    {{- end }}
+    {{- if $recipe.Params.recipeIngredient }}
+    "recipeIngredient": [
+      {{- range $i, $ingredient := $recipe.Params.recipeIngredient }}
+        {{- if $i }},{{ end }}
+        {{ $ingredient | jsonify }}
+      {{- end }}
+    ],
+    {{- end }}
+    "permalink": {{ $recipe.RelPermalink | jsonify }}{{ if $recipe.Params.social_image }},
+    "social_image": {{ $recipe.Params.social_image | jsonify }}{{ end }}
+  }
+{{- end }}
+]

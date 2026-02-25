@@ -45,7 +45,7 @@ enableRobotsTXT = true
       unsafe = true
 
 [outputs]
-  section = ["HTML", "RSS", "RecipeSearch"]
+  section = ["HTML", "RSS"]
 
 [outputFormats]
   [outputFormats.RSS]

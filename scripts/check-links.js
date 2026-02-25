@@ -132,7 +132,7 @@ function startServerAndCheck(projectRoot, retry = false) {
       console.log('Server ready. Running link check (max %ds)...\n', LINK_CHECK_TIMEOUT_MS / 1000);
       const blc = spawn(
         'npx',
-        ['blc', '--recursive', '--exclude-external', '--filter-level', '2', BASE_URL],
+        ['blc', '--recursive', '--exclude-external', '--filter-level', '2', '--exclude', 'index.xml', BASE_URL],
         { cwd: projectRoot, stdio: 'inherit', shell: true }
       );
       const linkCheckTimeout = setTimeout(() => {

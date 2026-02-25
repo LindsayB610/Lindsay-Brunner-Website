@@ -2,7 +2,7 @@
 title: "Good Developer Content is a Conversation, Not a Broadcast"
 date: 2025-06-14
 slug: "developer-content-conversation-not-broadcast"
-description: "Why truly great developer content talks with developers, not at them, and how to get it right."
+description: "Why truly great developer content talks with developers, not at them, and how to get it right when you're writing for technical audiences."
 subtitle: "Or: Why developer content that listens is way better than content that just talks"
 draft: false
 social_image: "/images/social/convo-vs-broadcast-og.png"
