@@ -124,7 +124,7 @@ You can see it in whether readers finish the content. In the quality and quantit
 
 The most reliable signal is simple: did people understand enough to act?
 
-If they did, the story worked.
+If they did, the story worked. For a framework on measuring when content actually changes behavior (not just engagement), see [the content resonance framework](https://lindsaybrunner.com/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/).
 
 ## Technical storytelling is a strategic advantage
 

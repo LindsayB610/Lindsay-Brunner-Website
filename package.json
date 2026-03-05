@@ -9,12 +9,12 @@
     "url": "https://github.com/LindsayB610/lindsay-brunner-hugo-site"
   },
   "scripts": {
-    "dev": "hugo server -D --bind 0.0.0.0",
+    "dev": "hugo server -D --buildFuture --bind 0.0.0.0",
     "build": "npm run generate:og-images && hugo --gc --minify",
     "generate:og-images": "node scripts/generate-og-images.js",
     "generate:png": "node scripts/generate-png-from-svg.js",
     "generate:substack-banner": "node scripts/generate-substack-banner.js",
-    "start": "hugo server -D --bind 0.0.0.0",
+    "start": "hugo server -D --buildFuture --bind 0.0.0.0",
     "clean": "rm -rf public",
     "serve": "hugo server --bind 0.0.0.0",
     "test:html": "html-validate public/**/*.html",
