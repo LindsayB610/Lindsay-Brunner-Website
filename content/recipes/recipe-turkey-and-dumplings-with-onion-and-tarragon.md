@@ -180,8 +180,6 @@ The broth becomes noticeably richer and silkier. Restaurants do this constantly 
 
 Chemistry explanation in plain English: collagen breaks down into gelatin at around 160–180°F (71–82°C), which gives liquids that luxurious mouthfeel.
 
----
-
 ### Trick 2: add a little fat to the dumplings
 
 Most drop dumplings are lean flour doughs. That can make them a bit bread-like instead of pillowy.
@@ -199,8 +197,6 @@ Both work by interfering with gluten formation, which keeps the dumplings softer
 They cook up lighter and fluffier.
 
 This is the same reason biscuits taste better with butter or cream.
-
----
 
 ### Bonus micro-upgrade: the dumpling steam environment
 
