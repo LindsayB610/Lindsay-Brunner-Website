@@ -913,6 +913,7 @@ body.page-nemesis .social-link:focus-visible {
     border-color 180ms ease,
     box-shadow 180ms ease,
     background 180ms ease;
+  outline: none;
 }
 
 .nemesis-actions a.nemesis-action-button:hover,
@@ -920,6 +921,19 @@ body.page-nemesis .social-link:focus-visible {
   transform: translateY(-1px);
   border-color: rgba(121, 243, 187, 0.38);
   box-shadow: 0 0 22px rgba(121, 243, 187, 0.12);
+  background:
+    linear-gradient(180deg, rgba(121, 243, 187, 0.12), rgba(121, 243, 187, 0.05)),
+    rgba(5, 15, 11, 0.96);
+  color: #e7fff7;
+  text-decoration: none;
+}
+
+.nemesis-actions a.nemesis-action-button:focus,
+.nemesis-actions a.nemesis-action-button:active,
+.nemesis-actions a.nemesis-action-button:visited {
+  color: #d7fff1;
+  text-decoration: none;
+  outline: none;
 }
 
 .nemesis-actions a.nemesis-action-button.is-secondary {
@@ -928,6 +942,25 @@ body.page-nemesis .social-link:focus-visible {
     linear-gradient(180deg, rgba(107, 197, 255, 0.08), rgba(107, 197, 255, 0.03)),
     rgba(5, 10, 15, 0.92);
   color: #caecff;
+}
+
+.nemesis-actions a.nemesis-action-button.is-secondary:hover,
+.nemesis-actions a.nemesis-action-button.is-secondary:focus-visible {
+  border-color: rgba(107, 197, 255, 0.38);
+  box-shadow: 0 0 22px rgba(107, 197, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(107, 197, 255, 0.12), rgba(107, 197, 255, 0.05)),
+    rgba(5, 10, 15, 0.96);
+  color: #e7f6ff;
+  text-decoration: none;
+}
+
+.nemesis-actions a.nemesis-action-button.is-secondary:focus,
+.nemesis-actions a.nemesis-action-button.is-secondary:active,
+.nemesis-actions a.nemesis-action-button.is-secondary:visited {
+  color: #caecff;
+  text-decoration: none;
+  outline: none;
 }
 
 .nemesis-actions-section .nemesis-section-heading {
