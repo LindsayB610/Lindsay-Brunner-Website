@@ -71,6 +71,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:og-images` - OG image generation validation
 - `npm run test:schedule` - Scheduled posts workflow validation
 - `npm run test:search-json` - Recipe search JSON index validation
+- `npm run test:nemesis` - Nemesis tracker data and rendered aggregate validation
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
 - `npm run test:mobile` - Mobile and responsive design validation
@@ -283,6 +284,12 @@ result: "win"
 note: "Short recap of what happened."
 ```
 
+**GitHub shortcut:**
+
+- The `/nemesis/` page includes a **New prefilled session** button that opens GitHub's new-file editor with a starter filename and template.
+- Opening that page does **not** create a file by itself. A session is only created if someone actually commits the new file or opens a pull request.
+- On the public repo, non-collaborators can use the same flow through a fork and submit a PR for approval.
+
 **Allowed values currently in the tracker:**
 
 - `game`: `nemesis`, `lockdown`
@@ -300,6 +307,7 @@ data/nemesis/sessions/2026-03-17-nemesis-intruders-easy-win.yaml
 
 ```bash
 npm run build
+npm run test:nemesis
 ```
 
 For a shorter reference, see [`docs/nemesis-tracker.md`](./docs/nemesis-tracker.md).
