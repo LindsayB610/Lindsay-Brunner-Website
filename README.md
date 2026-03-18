@@ -34,8 +34,8 @@ Before you begin, ensure you have the following installed:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/LindsayB610/lindsay-brunner-hugo-site.git
-   cd lindsay-brunner-hugo-site
+   git clone https://github.com/LindsayB610/Lindsay-Brunner-Website.git
+   cd Lindsay-Brunner-Website
    ```
 
 2. **Install dependencies**
@@ -55,14 +55,17 @@ Before you begin, ensure you have the following installed:
 
 ## 📝 Available Scripts
 
+### Development and builds
+
 - `npm run dev` - Start the Hugo development server with drafts enabled
-- `npm run build` - Build the site for production with minification (includes OG image generation)
-- `npm run generate:og-images` - Generate OG images for recipes (creates SVG files for editing)
-- `npm run generate:png` - Convert SVG to PNG for social media compatibility (usage: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`)
 - `npm run start` - Alternative command to start the development server
 - `npm run serve` - Serve the site without draft content
+- `npm run build` - Build the site for production with minification (includes OG image generation)
 - `npm run clean` - Remove the generated `public` directory
-- `npm run test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
+
+### Testing and validation
+
+- `npm test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
@@ -75,13 +78,21 @@ Before you begin, ensure you have the following installed:
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
 - `npm run test:mobile` - Mobile and responsive design validation
+
+### Content and asset workflows
+
+- `npm run generate:og-images` - Generate OG images for recipes (creates SVG files for editing)
+- `npm run generate:png` - Convert SVG to PNG for social media compatibility (usage: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`)
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
+- `node scripts/fix-diagram-backgrounds.js` - Fix diagram image background colors to match site black (#000000). Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: Currently only relevant for diagrams placed in thoughts posts, not other types of images or other page types.
+
+### Maintenance and security
+
 - `npm run check:hugo` - Check Hugo version, security status, and available updates
 - `npm run check:dependencies` - Check all dependencies (npm packages, Node.js, GitHub Actions) for security issues and updates
 - `npm run optimize:images` - Optimize image file sizes (usage: `npm run optimize:images -- static/images/file.jpg`)
 - `npm run optimize:images -- --cleanup-backups` - Optimize images and automatically delete backup files after successful optimization
 - `npm run cleanup:backups` - Clean up existing backup files created by image optimization
-- `node scripts/fix-diagram-backgrounds.js` - Fix diagram image background colors to match site black (#000000). Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: Currently only relevant for diagrams placed in thoughts posts, not other types of images or other page types.
 
 ## 📁 Project Structure
 
@@ -89,13 +100,23 @@ Before you begin, ensure you have the following installed:
 ├── archetypes/          # Content templates
 ├── content/             # Site content (Markdown files)
 │   ├── about/           # About page content
+│   ├── nemesis/         # Nemesis tracker section content
 │   ├── thoughts/        # Thought leadership content
 │   ├── recipes/         # Recipe content
 │   └── _index.md        # Homepage content
+├── data/                # Structured data files for Hugo
+│   └── nemesis/         # Nemesis tracker data
+│       ├── games.yaml   # Valid games and setup metadata
+│       └── sessions/    # One YAML file per logged session
+├── docs/                # Project documentation and content templates
+│   ├── thoughts-template.md
+│   ├── recipe-template.md
+│   └── nemesis-tracker.md
 ├── layouts/             # Hugo templates
 │   ├── _default/        # Default page layouts
 │   ├── partials/        # Reusable template components
 │   ├── about/           # About page specific layout
+│   ├── nemesis/         # Nemesis tracker layout
 │   ├── thoughts/        # Thoughts section layout
 │   ├── recipes/         # Recipes section layout
 │   │   └── list.json    # Recipe search JSON index template
@@ -109,14 +130,15 @@ Before you begin, ensure you have the following installed:
 │   │       └── working-files/  # Editable SVG files for OG images (before PNG conversion)
 │   ├── _headers         # Netlify headers configuration
 │   └── _redirects       # Netlify redirects configuration
-├── tests/                # Test files
+├── tests/               # Test files
 │   ├── content-checks.js # Content validation tests
-│   ├── spell-check.js    # Spell checking script
+│   ├── nemesis-tracker.test.js # Nemesis tracker data and aggregate validation
+│   ├── spell-check.js   # Spell checking script
 │   ├── og-image-generation.test.js # OG image generation validation
 │   ├── schedule-posts.test.js # Scheduled posts workflow validation
 │   ├── recipe-search-json.test.js # Recipe search JSON index validation
 │   └── recipe-template.test.js # Recipe template structure validation
-├── scripts/              # Build and automation scripts
+├── scripts/             # Build and automation scripts
 │   ├── generate-og-images.js # Generate OG images for recipes
 │   ├── generate-png-from-svg.js # Convert SVG to PNG for social media
 │   ├── fix-diagram-backgrounds.js # Fix diagram image backgrounds to match site black (#000000)
@@ -133,7 +155,7 @@ Before you begin, ensure you have the following installed:
 
 ## ✍️ Content Management
 
-### Adding New Thought Leadership Content
+### Thoughts
 
 The "thoughts" section is where Lindsay shares insights on developer advocacy, content strategy, and technical leadership.
 
@@ -153,7 +175,7 @@ The template includes:
 
    ```bash
    # Navigate to your project directory
-   cd lindsay-brunner-hugo-site
+   cd Lindsay-Brunner-Website
 
    # Create a new thought piece (Hugo will use the archetype template)
    hugo new thoughts/your-thought-title.md
@@ -197,161 +219,15 @@ The template includes:
 - Be descriptive but concise
 - For drafts, use `draft-` prefix: `draft-my-great-thought.md` (helps with organization; the `slug` field determines the URL)
 
-### Adding New Recipe Content
+#### Scheduling thoughts posts
 
-The "recipes" section showcases tested recipes and kitchen experiments.
-
-**📋 For complete recipe guidelines, see [`docs/recipe-template.md`](./docs/recipe-template.md)**
-
-The template includes:
-- Complete front matter template with all required and optional fields
-- Content structure guidelines (snapshot, ingredients, method, notes)
-- Formatting rules (temperatures, measurements, section separators)
-- OG image workflow
-- Scheduling instructions
-- Complete examples
-
-**Quick start:**
-
-1. **Create a new recipe file**:
-   ```bash
-   touch content/recipes/recipe-your-recipe-name.md
-   ```
-
-2. **Use the template**: Copy the front matter template from `docs/recipe-template.md` and fill in your recipe details
-
-3. **Follow the structure**: See the template for the standard content structure (description, snapshot, ingredients, method, notes)
-
-4. **Generate OG image**: 
-   - Run `npm run generate:og-images` to generate SVG files in `static/images/social/working-files/`
-   - Edit the SVG file if needed
-   - Convert to PNG: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`
-   - The PNG will be saved in `static/images/social/` for use as the OG image
-   - Add `social_image: "/images/social/recipe-xxx-og.png"` to front matter
-
-5. **Test**: Run `npm run build && npm run test:content` to validate
-
-#### Dietary labels (optional)
-
-Recipes can include a `dietary` front matter array for filtering and icon display. **Labels apply to the base recipe only** (main Ingredients and Method). Use exactly these values (lowercase, hyphenated):
-
-| Label | Definition |
-|-------|------------|
-| **dairy-free** | Base recipe contains no milk, cream, butter, cheese, or other dairy. |
-| **vegetarian** | Base recipe contains no meat, poultry, or fish. Eggs and dairy allowed. |
-| **vegan** | Base recipe contains no animal products (no meat, fish, eggs, dairy, honey, etc.). |
-| **gluten-free** | Base recipe contains no wheat, barley, rye, or ingredients derived from them. |
-
-If anything in the **Notes** section (e.g. a serving suggestion or variation) would change the classification (e.g. "Serve with bread" on a gluten-free recipe), explicitly say so in that note: e.g. "The gluten-free label applies to the base recipe; serving with bread adds gluten." See `docs/recipe-template.md` for full definitions and the Notes rule.
-
-### Recipe Print Functionality
-
-Recipe pages include optimized print functionality:
-
-**Features:**
-- **Print icon button** at the top-right of the recipe header for quick access
-- **Print and Email buttons** at the bottom of the recipe content (before "Make something else" section)
-- **Optimized print stylesheet** that:
-  - Hides navigation, headers, footers, and non-essential content
-  - Uses serif fonts (Georgia) for better readability on paper
-  - Displays black text on white background
-  - Shows link URLs in parentheses (since links don't work on paper)
-  - Includes recipe URL at the bottom for reference
-  - Controls page breaks to avoid awkward splits
-
-**Analytics tracking:**
-- Print button clicks are tracked in Plausible Analytics as "Print Recipe" events
-- Email button clicks are tracked as "Email Recipe" events
-- Both include custom properties (recipe title and URL) for detailed analytics
-
-**How it works:**
-- Users can click the print icon at the top or the "Print" button at the bottom
-- Both trigger the browser's native print dialog
-- The print stylesheet automatically optimizes the layout for printing
-- Email button opens the user's default email client with pre-filled subject and body
-
-**Testing:**
-- Print functionality is validated by `npm run test:content`
-- Tests verify print buttons exist, print stylesheet is present, and email links are properly formatted
-
-### Logging a Nemesis Session
-
-The `/nemesis/` page uses Git-tracked YAML data so collaborators can log new games without any separate auth system.
-
-**How it works:**
-
-- Game and setup metadata lives in `data/nemesis/games.yaml`
-- Each played session gets its own file in `data/nemesis/sessions/`
-- The tracker page automatically reads those files and updates the records
-
-**To add a new session:**
-
-1. Create a new YAML file in `data/nemesis/sessions/`
-2. Name it like `YYYY-MM-DD-game-setup-board-result.yaml`
-3. Add the session data using this format:
-
-```yaml
-date: "2026-03-17"
-game: "nemesis"
-setup: "intruders"
-board: "easy"
-result: "win"
-note: "Short recap of what happened."
-```
-
-**GitHub shortcut:**
-
-- The `/nemesis/` page includes a **New prefilled session** button that opens GitHub's new-file editor with a starter filename and template.
-- Opening that page does **not** create a file by itself. A session is only created if someone actually commits the new file or opens a pull request.
-- On the public repo, non-collaborators can use the same flow through a fork and submit a PR for approval.
-
-**Allowed values currently in the tracker:**
-
-- `game`: `nemesis`, `lockdown`
-- `setup`: `intruders`, `carnomorphs`, `void-seeders`, `night-stalkers`, `chytrids`
-- `board`: `easy`, `hard`
-- `result`: `win`, `loss`
-
-**Example filename:**
-
-```text
-data/nemesis/sessions/2026-03-17-nemesis-intruders-easy-win.yaml
-```
-
-**Validate after editing:**
-
-```bash
-npm run build
-npm run test:nemesis
-```
-
-For a shorter reference, see [`docs/nemesis-tracker.md`](./docs/nemesis-tracker.md).
-
-### Updating Existing Pages
-
-- **Homepage**: Edit `content/_index.md`
-- **About**: Edit `content/about/index.md`
-- **Thoughts listing page**: Edit `content/thoughts/_index.md`
-
-### Hugo Content Organization Tips
-
-- **Drafts**: Set `draft: true` to work on content without publishing
-- **Draft file naming (thoughts only)**: Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
-- **Future dates**: Hugo won't show posts with future dates unless in draft mode
-- **URL structure**: Files in `thoughts/` become `/thoughts/filename/` (or use the `slug` field in front matter)
-- **Ordering**: Hugo sorts by date (newest first) by default
-
-### 📅 Scheduling Posts for Auto-Publication
-
-The site includes an automated scheduling system that publishes draft posts when their publish date arrives.
+The site includes an automated scheduling system that publishes draft thoughts posts when their publish date arrives.
 
 **How it works:**
 1. Create your post with `draft: true` and set a future `date` in the front matter
 2. The GitHub Actions workflow runs twice daily (at 13:00 and 14:00 UTC) to cover both PDT and PST timezones, and checks for posts ready to publish
 3. When a post's date arrives (or has passed), it automatically sets `draft: false` and commits the change
 4. Netlify rebuilds the site on commit, and your post goes live
-
-**Setting up a scheduled post:**
 
 **Required front matter:**
 ```yaml
@@ -364,7 +240,7 @@ subtitle: "Your subtitle"
 ---
 ```
 
-**How it works:**
+**Workflow timing:**
 1. The GitHub Actions workflow runs twice daily at:
    - 13:00 UTC (covers PDT, when 6am PT = 13:00 UTC)
    - 14:00 UTC (covers PST, when 6am PT = 14:00 UTC)
@@ -418,6 +294,12 @@ npm run schedule-posts
 ```
 This shows which posts would be published without making any changes.
 
+**Thoughts publishing checklist:**
+- ✅ `draft: true` in front matter
+- ✅ Future `date` in YYYY-MM-DD format
+- ✅ No `skip_scheduling: true` (unless you want to prevent auto-publishing)
+- ✅ Commit and push the file to the repository
+
 **Example: Scheduling a post for December 20, 2025**
 ```yaml
 ---
@@ -433,19 +315,173 @@ This will:
 - Publish on December 20, 2025 at 6am PT (or later during the workflow run)
 - Not publish before that date/time
 
-**Summary checklist:**
-- ✅ `draft: true` in front matter
-- ✅ Future `date` in YYYY-MM-DD format
-- ✅ No `skip_scheduling: true` (unless you want to prevent auto-publishing)
-- ✅ Commit and push the file to the repository
+### Nemesis
 
-**Additional notes:**
-- **Recipes**: Scheduled recipes must have `social_image` set in front matter before the publish date, or they will be skipped (to ensure OG images are reviewed)
-- **Manual trigger**: You can manually trigger the workflow from the GitHub Actions tab if needed
+The `/nemesis/` page uses Git-tracked YAML data so collaborators can log new games without any separate auth system.
+
+**How it works:**
+
+- Game and setup metadata lives in `data/nemesis/games.yaml`
+- Each played session gets its own file in `data/nemesis/sessions/`
+- The tracker page automatically reads those files and updates the records
+
+**To add a new session:**
+
+1. Create a new YAML file in `data/nemesis/sessions/`
+2. Name it like `YYYY-MM-DD-game-setup-board-result.yaml`
+3. Add the session data using this format:
+
+```yaml
+date: "2026-03-17"
+game: "nemesis"
+setup: "intruders"
+board: "easy"
+result: "win"
+note: "Short recap of what happened."
+```
+
+**GitHub shortcut:**
+
+- The `/nemesis/` page includes a **New prefilled session** button that opens GitHub's new-file editor with a starter filename and template.
+- Opening that page does **not** create a file by itself. A session is only created if someone actually commits the new file or opens a pull request.
+- On the public repo, non-collaborators can use the same flow through a fork and submit a PR for approval.
+
+**Allowed values currently in the tracker:**
+
+- `game`: `nemesis`, `lockdown`
+- `setup`: `intruders`, `carnomorphs`, `void-seeders`, `night-stalkers`, `chytrids`
+- `board`: `easy`, `hard`
+- `result`: `win`, `loss`
+
+**Example filename:**
+
+```text
+data/nemesis/sessions/2026-03-17-nemesis-intruders-easy-win.yaml
+```
+
+**Validate after editing:**
+
+```bash
+npm run build
+npm run test:nemesis
+```
+
+For a shorter reference, see [`docs/nemesis-tracker.md`](./docs/nemesis-tracker.md).
+
+### Recipes
+
+The "recipes" section showcases tested recipes and kitchen experiments.
+
+**📋 For complete recipe guidelines, see [`docs/recipe-template.md`](./docs/recipe-template.md)**
+
+The template includes:
+- Complete front matter template with all required and optional fields
+- Content structure guidelines (snapshot, ingredients, method, notes)
+- Formatting rules (temperatures, measurements, section separators)
+- OG image workflow
+- Scheduling instructions
+- Complete examples
+
+**Quick start:**
+
+1. **Create a new recipe file**:
+   ```bash
+   touch content/recipes/recipe-your-recipe-name.md
+   ```
+
+2. **Use the template**: Copy the front matter template from `docs/recipe-template.md` and fill in your recipe details
+
+3. **Follow the structure**: See the template for the standard content structure (description, snapshot, ingredients, method, notes)
+
+4. **Generate OG image**: 
+   - Run `npm run generate:og-images` to generate SVG files in `static/images/social/working-files/`
+   - Edit the SVG file if needed
+   - Convert to PNG: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`
+   - The PNG will be saved in `static/images/social/` for use as the OG image
+   - Add `social_image: "/images/social/recipe-xxx-og.png"` to front matter
+
+5. **Test**: Run `npm run build && npm run test:content` to validate
+
+#### Dietary labels (optional)
+
+Recipes can include a `dietary` front matter array for filtering and icon display. **Labels apply to the base recipe only** (main Ingredients and Method). Use exactly these values (lowercase, hyphenated):
+
+| Label | Definition |
+|-------|------------|
+| **dairy-free** | Base recipe contains no milk, cream, butter, cheese, or other dairy. |
+| **vegetarian** | Base recipe contains no meat, poultry, or fish. Eggs and dairy allowed. |
+| **vegan** | Base recipe contains no animal products (no meat, fish, eggs, dairy, honey, etc.). |
+| **gluten-free** | Base recipe contains no wheat, barley, rye, or ingredients derived from them. |
+
+If anything in the **Notes** section (e.g. a serving suggestion or variation) would change the classification (e.g. "Serve with bread" on a gluten-free recipe), explicitly say so in that note: e.g. "The gluten-free label applies to the base recipe; serving with bread adds gluten." See `docs/recipe-template.md` for full definitions and the Notes rule.
+
+#### Scheduling recipe posts
+
+Recipes can also be scheduled for future publication, but they have one extra requirement.
+
+**How it works:**
+- Set `draft: true` and a future `date`
+- The same GitHub Actions workflow used for thoughts checks scheduled recipes
+- When the publish window arrives, the script flips `draft: false`
+
+**Important difference for recipes:**
+- Scheduled recipes must have `social_image` set in front matter before the publish date, or they will be skipped
+- This is intentional so OG images are reviewed before recipes go live
+
+**Testing before scheduling:**
+```bash
+npm run schedule-posts
+```
 
 **Workflow location:** `.github/workflows/schedule-posts.yml`
 
-### 🔒 Security & Dependency Monitoring
+#### Recipe print functionality
+
+Recipe pages include optimized print functionality:
+
+**Features:**
+- **Print icon button** at the top-right of the recipe header for quick access
+- **Print and Email buttons** at the bottom of the recipe content (before "Make something else" section)
+- **Optimized print stylesheet** that:
+  - Hides navigation, headers, footers, and non-essential content
+  - Uses serif fonts (Georgia) for better readability on paper
+  - Displays black text on white background
+  - Shows link URLs in parentheses (since links don't work on paper)
+  - Includes recipe URL at the bottom for reference
+  - Controls page breaks to avoid awkward splits
+
+**Analytics tracking:**
+- Print button clicks are tracked in Plausible Analytics as "Print Recipe" events
+- Email button clicks are tracked as "Email Recipe" events
+- Both include custom properties (recipe title and URL) for detailed analytics
+
+**How it works:**
+- Users can click the print icon at the top or the "Print" button at the bottom
+- Both trigger the browser's native print dialog
+- The print stylesheet automatically optimizes the layout for printing
+- Email button opens the user's default email client with pre-filled subject and body
+
+**Testing:**
+- Print functionality is validated by `npm run test:content`
+- Tests verify print buttons exist, print stylesheet is present, and email links are properly formatted
+
+### Shared content maintenance
+
+- **Homepage**: Edit `content/_index.md`
+- **About**: Edit `content/about/index.md`
+- **Thoughts listing page**: Edit `content/thoughts/_index.md`
+
+#### Hugo content organization tips
+
+- **Drafts**: Set `draft: true` to work on content without publishing
+- **Draft file naming (thoughts only)**: Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
+- **Future dates**: Hugo won't show posts with future dates unless in draft mode
+- **URL structure**: Files in `thoughts/` become `/thoughts/filename/` (or use the `slug` field in front matter)
+- **Ordering**: Hugo sorts by date (newest first) by default
+
+**Manual trigger:** You can manually trigger the scheduling workflow from the GitHub Actions tab if needed.
+
+## 🔒 Security & Dependency Monitoring
 
 The site includes automated security and dependency checking to ensure you're running secure, up-to-date versions of all tools and packages.
 
