@@ -97,7 +97,14 @@ process.on('SIGTERM', () => {
 });
 
 function startServerAndCheck(projectRoot, retry = false) {
-  currentHugo = spawn('hugo', ['server', '--port', String(PORT)], {
+  const hugoBinary = path.join(
+    projectRoot,
+    'node_modules',
+    '.bin',
+    process.platform === 'win32' ? 'hugo.cmd' : 'hugo'
+  );
+
+  currentHugo = spawn(hugoBinary, ['server', '--port', String(PORT)], {
     cwd: projectRoot,
     stdio: 'pipe',
     shell: true,

@@ -3,7 +3,7 @@
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body>
+  <body class="{{ if .IsHome }}page-home{{ else }}page-{{ .Section | default .Type | urlize }}{{ end }}">
     {{ partial "header.html" . }}
 
     <main role="main">{{ block "main" . }}{{ end }}</main>

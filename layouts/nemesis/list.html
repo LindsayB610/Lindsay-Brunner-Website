@@ -1,0 +1,241 @@
+{{ define "main" }}
+{{ $games := site.Data.nemesis.games }}
+{{ $sessions := sort site.Data.nemesis.sessions "date" "desc" }}
+{{ $global := newScratch }}
+{{ $global.Set "wins" 0 }}
+{{ $global.Set "losses" 0 }}
+{{ $global.Set "easyWins" 0 }}
+{{ $global.Set "easyLosses" 0 }}
+{{ $global.Set "hardWins" 0 }}
+{{ $global.Set "hardLosses" 0 }}
+{{ range $sessions }}
+  {{ if eq .result "win" }}
+    {{ $global.Add "wins" 1 }}
+    {{ if eq .board "easy" }}
+      {{ $global.Add "easyWins" 1 }}
+    {{ else if eq .board "hard" }}
+      {{ $global.Add "hardWins" 1 }}
+    {{ end }}
+  {{ else if eq .result "loss" }}
+    {{ $global.Add "losses" 1 }}
+    {{ if eq .board "easy" }}
+      {{ $global.Add "easyLosses" 1 }}
+    {{ else if eq .board "hard" }}
+      {{ $global.Add "hardLosses" 1 }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $totalSessions := add ($global.Get "wins") ($global.Get "losses") }}
+
+<section class="section nemesis-page">
+  <div class="container">
+    <div class="nemesis-terminal-frame">
+      <div class="nemesis-terminal-topbar">
+        <div class="nemesis-terminal-lights" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="nemesis-terminal-id">USCSS NEMESIS / ARCHIVE NODE 03</div>
+        <a href="/" class="nemesis-return-link">Exit to site</a>
+      </div>
+
+      <div class="nemesis-terminal-screen">
+        <div class="nemesis-utility-bar">
+          <span class="nemesis-utility-label">Channel: co-op incident archive</span>
+          <span class="nemesis-utility-label">Operator status: remote crew connected</span>
+        </div>
+
+        <div class="nemesis-hero-panel">
+          <p class="nemesis-kicker">Quarantine log</p>
+          <div class="nemesis-alert-strip">
+            <span>Threat level: severe</span>
+            <span>Transmission: unstable</span>
+            <span>Crew status: mostly doomed</span>
+          </div>
+          <h1>{{ .Title }} Campaign Log</h1>
+
+          <div class="nemesis-boot-log" aria-label="System briefing">
+            <p><span>&gt;</span> {{ .Description }}</p>
+            {{ with .Content }}
+            <div class="nemesis-boot-copy">{{ . }}</div>
+            {{ end }}
+          </div>
+
+          <div class="nemesis-overview-grid">
+            <article class="nemesis-overview-card">
+              <span class="nemesis-overview-label">Total runs</span>
+              <strong>{{ $totalSessions }}</strong>
+              <span class="nemesis-overview-meta">{{ $global.Get "wins" }} wins / {{ $global.Get "losses" }} losses</span>
+            </article>
+            <article class="nemesis-overview-card">
+              <span class="nemesis-overview-label">Easy boards</span>
+              <strong>{{ $global.Get "easyWins" }}W / {{ $global.Get "easyLosses" }}L</strong>
+              <span class="nemesis-overview-meta">A generous word for it</span>
+            </article>
+            <article class="nemesis-overview-card">
+              <span class="nemesis-overview-label">Hard boards</span>
+              <strong>{{ $global.Get "hardWins" }}W / {{ $global.Get "hardLosses" }}L</strong>
+              <span class="nemesis-overview-meta">Respectfully rude</span>
+            </article>
+          </div>
+        </div>
+
+        <section class="nemesis-section nemesis-briefing-grid">
+          <article class="nemesis-briefing-card">
+            <span class="nemesis-briefing-label">Mission protocol</span>
+            <p>Track every co-op run by game, enemy setup, and board difficulty so the page remembers exactly how the ship betrayed you.</p>
+          </article>
+          <article class="nemesis-briefing-card">
+            <span class="nemesis-briefing-label">Field note</span>
+            <p>Easy and hard boards stay split on purpose. Some losses are ordinary. Some losses deserve their own drawer in the evidence locker.</p>
+          </article>
+        </section>
+
+        <section class="nemesis-section">
+      <div class="nemesis-section-heading">
+        <h2>Setup record</h2>
+        <p>Each setup renders as a ship systems card with split board difficulty records and last contact.</p>
+      </div>
+
+      <div class="nemesis-record-groups">
+        {{ range $game := $games }}
+          <section class="nemesis-record-group">
+            <div class="nemesis-group-row">
+              <h3>{{ $game.name }}</h3>
+              <p class="nemesis-group-label">{{ $game.label }}</p>
+            </div>
+            <div class="nemesis-card-grid">
+              {{ range $setup := $game.setups }}
+                {{ $stats := newScratch }}
+                {{ $stats.Set "easyWins" 0 }}
+                {{ $stats.Set "easyLosses" 0 }}
+                {{ $stats.Set "hardWins" 0 }}
+                {{ $stats.Set "hardLosses" 0 }}
+                {{ $stats.Set "wins" 0 }}
+                {{ $stats.Set "losses" 0 }}
+                {{ $stats.Set "lastPlayed" "" }}
+                {{ range $sessions }}
+                  {{ if and (eq .game $game.key) (eq .setup $setup.key) }}
+                    {{ if eq ($stats.Get "lastPlayed") "" }}
+                      {{ $stats.Set "lastPlayed" .date }}
+                    {{ end }}
+                    {{ if eq .result "win" }}
+                      {{ $stats.Add "wins" 1 }}
+                      {{ if eq .board "easy" }}
+                        {{ $stats.Add "easyWins" 1 }}
+                      {{ else if eq .board "hard" }}
+                        {{ $stats.Add "hardWins" 1 }}
+                      {{ end }}
+                    {{ else if eq .result "loss" }}
+                      {{ $stats.Add "losses" 1 }}
+                      {{ if eq .board "easy" }}
+                        {{ $stats.Add "easyLosses" 1 }}
+                      {{ else if eq .board "hard" }}
+                        {{ $stats.Add "hardLosses" 1 }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                {{ $rowTotal := add ($stats.Get "wins") ($stats.Get "losses") }}
+                <article class="nemesis-setup-card">
+                  <div class="nemesis-setup-head">
+                    <div class="nemesis-setup-name">{{ $setup.name }}</div>
+                    {{ if gt $rowTotal 0 }}
+                    <div class="nemesis-setup-meta">{{ $rowTotal }} logged session{{ if ne $rowTotal 1 }}s{{ end }}</div>
+                    {{ else }}
+                    <div class="nemesis-setup-meta">No logged sessions yet</div>
+                    {{ end }}
+                  </div>
+
+                  <div class="nemesis-setup-stats">
+                    <div class="nemesis-stat-block">
+                      <span class="nemesis-stat-label">Easy board</span>
+                      <span class="nemesis-record-chip">{{ $stats.Get "easyWins" }}W / {{ $stats.Get "easyLosses" }}L</span>
+                    </div>
+                    <div class="nemesis-stat-block">
+                      <span class="nemesis-stat-label">Hard board</span>
+                      <span class="nemesis-record-chip is-hard">{{ $stats.Get "hardWins" }}W / {{ $stats.Get "hardLosses" }}L</span>
+                    </div>
+                  </div>
+
+                  <div class="nemesis-setup-footer">
+                    <span class="nemesis-stat-label">Last contact</span>
+                    {{ if ne ($stats.Get "lastPlayed") "" }}
+                      <span class="nemesis-setup-last-played">{{ ($stats.Get "lastPlayed") | time.Format ":date_medium" }}</span>
+                    {{ else }}
+                      <span class="nemesis-muted">No entry yet</span>
+                    {{ end }}
+                  </div>
+                </article>
+              {{ end }}
+            </div>
+          </section>
+        {{ end }}
+      </div>
+        </section>
+
+        <section class="nemesis-section nemesis-log-section">
+      <div class="nemesis-section-heading">
+        <h2>Session log</h2>
+        <p>Reverse chronological, because the fresh disasters are easier to remember.</p>
+      </div>
+
+      <div class="nemesis-log-grid">
+        {{ range $session := $sessions }}
+          {{ $gameName := $session.game }}
+          {{ $setupName := $session.setup }}
+          {{ range $candidateGame := $games }}
+            {{ if eq $candidateGame.key $session.game }}
+              {{ $gameName = $candidateGame.name }}
+              {{ range $candidateSetup := $candidateGame.setups }}
+                {{ if eq $candidateSetup.key $session.setup }}
+                  {{ $setupName = $candidateSetup.name }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          <article class="nemesis-log-card">
+            <div class="nemesis-log-topline">
+              <span class="nemesis-status {{ if eq $session.result "win" }}is-win{{ else }}is-loss{{ end }}">
+                {{ if eq $session.result "win" }}Survived{{ else }}Lost{{ end }}
+              </span>
+              <time datetime="{{ $session.date }}">{{ $session.date | time.Format ":date_medium" }}</time>
+            </div>
+            <h3>{{ $gameName }} / {{ $setupName }}</h3>
+            <p class="nemesis-log-board">{{ title $session.board }} board</p>
+            <p>{{ $session.note }}</p>
+          </article>
+        {{ end }}
+      </div>
+        </section>
+
+        <section class="nemesis-section nemesis-actions-section">
+          <div class="nemesis-section-heading">
+            <h2>Log another disaster</h2>
+            <p>New sessions live in Git. Collaborators can commit directly, and anyone else can fork the repo and open a pull request for you to approve.</p>
+          </div>
+          <div class="nemesis-actions">
+            <a
+              href="https://github.com/LindsayB610/lindsay-brunner-hugo-site/new/master/data/nemesis/sessions?filename=YYYY-MM-DD-game-setup-board-result.yaml&value=%23%20Allowed%20values%0A%23%20game%3A%20nemesis%20%7C%20lockdown%0A%23%20setup%3A%20intruders%20%7C%20carnomorphs%20%7C%20void-seeders%20%7C%20night-stalkers%20%7C%20chytrids%0A%23%20board%3A%20easy%20%7C%20hard%0A%23%20result%3A%20win%20%7C%20loss%0A%0Adate%3A%20%222026-03-17%22%0Agame%3A%20%22nemesis%22%0Asetup%3A%20%22intruders%22%0Aboard%3A%20%22easy%22%0Aresult%3A%20%22win%22%0Anote%3A%20%22Short%20recap%20of%20what%20happened.%22%0A"
+              class="nemesis-action-button"
+              target="_blank"
+              rel="noopener"
+            >
+              New prefilled session
+            </a>
+            <a
+              href="https://github.com/LindsayB610/lindsay-brunner-hugo-site/blob/master/docs/nemesis-tracker.md"
+              class="nemesis-action-button is-secondary"
+              target="_blank"
+              rel="noopener"
+            >
+              View logging guide
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

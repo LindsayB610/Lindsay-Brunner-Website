@@ -258,6 +258,52 @@ Recipe pages include optimized print functionality:
   - Includes recipe URL at the bottom for reference
   - Controls page breaks to avoid awkward splits
 
+### Logging a Nemesis Session
+
+The `/nemesis/` page uses Git-tracked YAML data so collaborators can log new games without any separate auth system.
+
+**How it works:**
+
+- Game and setup metadata lives in `data/nemesis/games.yaml`
+- Each played session gets its own file in `data/nemesis/sessions/`
+- The tracker page automatically reads those files and updates the records
+
+**To add a new session:**
+
+1. Create a new YAML file in `data/nemesis/sessions/`
+2. Name it like `YYYY-MM-DD-game-setup-board-result.yaml`
+3. Add the session data using this format:
+
+```yaml
+date: "2026-03-17"
+game: "nemesis"
+setup: "intruders"
+board: "easy"
+result: "win"
+note: "Short recap of what happened."
+```
+
+**Allowed values currently in the tracker:**
+
+- `game`: `nemesis`, `lockdown`
+- `setup`: `intruders`, `carnomorphs`, `void-seeders`, `night-stalkers`, `chytrids`
+- `board`: `easy`, `hard`
+- `result`: `win`, `loss`
+
+**Example filename:**
+
+```text
+data/nemesis/sessions/2026-03-17-nemesis-intruders-easy-win.yaml
+```
+
+**Validate after editing:**
+
+```bash
+npm run build
+```
+
+For a shorter reference, see [`docs/nemesis-tracker.md`](./docs/nemesis-tracker.md).
+
 **Analytics tracking:**
 - Print button clicks are tracked in Plausible Analytics as "Print Recipe" events
 - Email button clicks are tracked as "Email Recipe" events
