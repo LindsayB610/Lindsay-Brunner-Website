@@ -6,6 +6,28 @@
 
 This is the source code for Lindsay Brunner's personal website, built with Hugo and deployed on Netlify. The site showcases expertise in developer advocacy, content strategy, and technical leadership.
 
+## Table of Contents
+
+- [Live Site](#-live-site)
+- [Tech Stack](#-tech-stack)
+- [Prerequisites](#-prerequisites)
+- [Quick Start](#-quick-start)
+- [Available Scripts](#-available-scripts)
+- [Project Structure](#-project-structure)
+- [Content Management](#-content-management)
+  - [Thoughts](#thoughts)
+  - [Nemesis](#nemesis)
+  - [Recipes](#recipes)
+  - [Shared content maintenance](#shared-content-maintenance)
+- [Security & Dependency Monitoring](#-security--dependency-monitoring)
+- [Social Sharing Images (Open Graph)](#-social-sharing-images-open-graph)
+- [Styling](#-styling)
+- [Testing](#-testing)
+- [AI Assistant Guidelines](#-ai-assistant-guidelines)
+- [SEO & Analytics](#-seo--analytics)
+- [Deployment](#-deployment)
+- [License](#-license)
+
 ## 🚀 Live Site
 
 Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
