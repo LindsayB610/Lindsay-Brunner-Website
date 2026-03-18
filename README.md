@@ -259,6 +259,21 @@ Recipe pages include optimized print functionality:
   - Includes recipe URL at the bottom for reference
   - Controls page breaks to avoid awkward splits
 
+**Analytics tracking:**
+- Print button clicks are tracked in Plausible Analytics as "Print Recipe" events
+- Email button clicks are tracked as "Email Recipe" events
+- Both include custom properties (recipe title and URL) for detailed analytics
+
+**How it works:**
+- Users can click the print icon at the top or the "Print" button at the bottom
+- Both trigger the browser's native print dialog
+- The print stylesheet automatically optimizes the layout for printing
+- Email button opens the user's default email client with pre-filled subject and body
+
+**Testing:**
+- Print functionality is validated by `npm run test:content`
+- Tests verify print buttons exist, print stylesheet is present, and email links are properly formatted
+
 ### Logging a Nemesis Session
 
 The `/nemesis/` page uses Git-tracked YAML data so collaborators can log new games without any separate auth system.
@@ -311,21 +326,6 @@ npm run test:nemesis
 ```
 
 For a shorter reference, see [`docs/nemesis-tracker.md`](./docs/nemesis-tracker.md).
-
-**Analytics tracking:**
-- Print button clicks are tracked in Plausible Analytics as "Print Recipe" events
-- Email button clicks are tracked as "Email Recipe" events
-- Both include custom properties (recipe title and URL) for detailed analytics
-
-**How it works:**
-- Users can click the print icon at the top or the "Print" button at the bottom
-- Both trigger the browser's native print dialog
-- The print stylesheet automatically optimizes the layout for printing
-- Email button opens the user's default email client with pre-filled subject and body
-
-**Testing:**
-- Print functionality is validated by `npm run test:content`
-- Tests verify print buttons exist, print stylesheet is present, and email links are properly formatted
 
 ### Updating Existing Pages
 
