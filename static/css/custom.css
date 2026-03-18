@@ -483,9 +483,22 @@ body.page-nemesis .social-link:focus-visible {
   font-size: 0.78rem;
 }
 
+.nemesis-return-link::after {
+  display: none;
+}
+
 .nemesis-return-link:hover,
 .nemesis-return-link:focus-visible {
   color: #d7fff1;
+  text-decoration: none;
+}
+
+.nemesis-return-link:focus,
+.nemesis-return-link:active,
+.nemesis-return-link:visited {
+  color: #9ceccc;
+  text-decoration: none;
+  outline: none;
 }
 
 .nemesis-utility-label {
@@ -916,6 +929,10 @@ body.page-nemesis .social-link:focus-visible {
   outline: none;
 }
 
+.nemesis-actions a.nemesis-action-button::after {
+  display: none;
+}
+
 .nemesis-actions a.nemesis-action-button:hover,
 .nemesis-actions a.nemesis-action-button:focus-visible {
   transform: translateY(-1px);
@@ -942,6 +959,10 @@ body.page-nemesis .social-link:focus-visible {
     linear-gradient(180deg, rgba(107, 197, 255, 0.08), rgba(107, 197, 255, 0.03)),
     rgba(5, 10, 15, 0.92);
   color: #caecff;
+}
+
+.nemesis-actions a.nemesis-action-button.is-secondary::after {
+  display: none;
 }
 
 .nemesis-actions a.nemesis-action-button.is-secondary:hover,
