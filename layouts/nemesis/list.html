@@ -55,12 +55,12 @@
           </div>
           <h1>{{ .Title }} Campaign Log</h1>
 
-          <div class="nemesis-boot-log" aria-label="System briefing">
-            <p><span>&gt;</span> {{ .Description }}</p>
+          <section class="nemesis-boot-log" aria-label="System briefing">
+            <p class="nemesis-boot-lede">{{ .Description }}</p>
             {{ with .Content }}
             <div class="nemesis-boot-copy">{{ . }}</div>
             {{ end }}
-          </div>
+          </section>
 
           <div class="nemesis-overview-grid">
             <article class="nemesis-overview-card">

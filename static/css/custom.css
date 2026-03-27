@@ -651,6 +651,12 @@ body.page-nemesis .social-link:focus-visible {
   font-size: 0.9rem;
 }
 
+.nemesis-boot-log .nemesis-boot-lede::before {
+  content: ">";
+  margin-right: 0.45rem;
+  color: #6bc5ff;
+}
+
 .nemesis-boot-log p + p {
   margin-top: 0.45rem;
 }
@@ -662,10 +668,6 @@ body.page-nemesis .social-link:focus-visible {
 .nemesis-boot-copy p::before {
   content: ">";
   margin-right: 0.45rem;
-  color: #6bc5ff;
-}
-
-.nemesis-boot-log span {
   color: #6bc5ff;
 }
 
