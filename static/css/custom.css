@@ -1066,6 +1066,16 @@ body.page-nemesis .social-link:focus-visible {
   color: #9cd9ff;
 }
 
+.nemesis-status.is-empty {
+  background: rgba(215, 255, 241, 0.06);
+  border: 1px solid rgba(215, 255, 241, 0.16);
+  color: #d7fff1;
+}
+
+.nemesis-log-card-empty {
+  grid-column: 1 / -1;
+}
+
 @keyframes nemesisScan {
   0% {
     transform: translateY(-100%);

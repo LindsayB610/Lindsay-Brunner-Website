@@ -359,6 +359,7 @@ game: "nemesis"
 setup: "intruders"
 board: "easy"
 result: "win"
+players: 3
 note: "Short recap of what happened."
 ```
 
@@ -374,6 +375,7 @@ note: "Short recap of what happened."
 - `setup`: `intruders`, `carnomorphs`, `void-seeders`, `night-stalkers`, `chytrids`
 - `board`: `easy`, `hard`
 - `result`: `win`, `loss`
+- `players`: `2`, `3`, `4`
 
 **Example filename:**
 

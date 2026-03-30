@@ -1,6 +1,10 @@
 {{ define "main" }}
 {{ $games := site.Data.nemesis.games }}
-{{ $sessions := sort site.Data.nemesis.sessions "date" "desc" }}
+{{ $sessionData := site.Data.nemesis.sessions }}
+{{ $sessions := slice }}
+{{ if $sessionData }}
+  {{ $sessions = sort $sessionData "date" "desc" }}
+{{ end }}
 {{ $global := newScratch }}
 {{ $global.Set "wins" 0 }}
 {{ $global.Set "losses" 0 }}
@@ -182,6 +186,7 @@
       </div>
 
       <div class="nemesis-log-grid">
+        {{ if gt (len $sessions) 0 }}
         {{ range $session := $sessions }}
           {{ $gameName := $session.game }}
           {{ $setupName := $session.setup }}
@@ -203,8 +208,18 @@
               <time datetime="{{ $session.date }}">{{ $session.date | time.Format ":date_medium" }}</time>
             </div>
             <h3>{{ $gameName }} / {{ $setupName }}</h3>
-            <p class="nemesis-log-board">{{ title $session.board }} board</p>
+            <p class="nemesis-log-board">{{ title $session.board }} board / {{ $session.players }} player{{ if ne $session.players 1 }}s{{ end }}</p>
             <p>{{ $session.note }}</p>
+          </article>
+        {{ end }}
+        {{ else }}
+          <article class="nemesis-log-card nemesis-log-card-empty">
+            <div class="nemesis-log-topline">
+              <span class="nemesis-status is-empty">Awaiting contact</span>
+            </div>
+            <h3>No incidents logged yet</h3>
+            <p class="nemesis-log-board">Archive standing by</p>
+            <p>No incidents logged yet. The archive is waiting for its first disaster.</p>
           </article>
         {{ end }}
       </div>
@@ -217,7 +232,7 @@
           </div>
           <div class="nemesis-actions">
             <a
-              href="https://github.com/LindsayB610/Lindsay-Brunner-Website/new/master/data/nemesis/sessions?filename=YYYY-MM-DD-game-setup-board-result.yaml&value=%23%20Allowed%20values%0A%23%20game%3A%20nemesis%20%7C%20lockdown%0A%23%20setup%3A%20intruders%20%7C%20carnomorphs%20%7C%20void-seeders%20%7C%20night-stalkers%20%7C%20chytrids%0A%23%20board%3A%20easy%20%7C%20hard%0A%23%20result%3A%20win%20%7C%20loss%0A%0Adate%3A%20%222026-03-17%22%0Agame%3A%20%22nemesis%22%0Asetup%3A%20%22intruders%22%0Aboard%3A%20%22easy%22%0Aresult%3A%20%22win%22%0Anote%3A%20%22Short%20recap%20of%20what%20happened.%22%0A"
+              href="https://github.com/LindsayB610/Lindsay-Brunner-Website/new/master/data/nemesis/sessions?filename=YYYY-MM-DD-game-setup-board-result.yaml&value=%23%20Allowed%20values%0A%23%20game%3A%20nemesis%20%7C%20lockdown%0A%23%20setup%3A%20intruders%20%7C%20carnomorphs%20%7C%20void-seeders%20%7C%20night-stalkers%20%7C%20chytrids%0A%23%20board%3A%20easy%20%7C%20hard%0A%23%20result%3A%20win%20%7C%20loss%0A%23%20players%3A%202%20%7C%203%20%7C%204%0A%0Adate%3A%20%222026-03-17%22%0Agame%3A%20%22nemesis%22%0Asetup%3A%20%22intruders%22%0Aboard%3A%20%22easy%22%0Aresult%3A%20%22win%22%0Aplayers%3A%203%0Anote%3A%20%22Short%20recap%20of%20what%20happened.%22%0A"
               class="nemesis-action-button"
               target="_blank"
               rel="noopener"

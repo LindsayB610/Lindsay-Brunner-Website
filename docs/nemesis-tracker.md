@@ -10,6 +10,7 @@ game: "nemesis"
 setup: "intruders"
 board: "easy"
 result: "win"
+players: 3
 note: "Short recap of what happened."
 ```
 
@@ -23,3 +24,4 @@ Allowed values currently in the tracker:
 - `setup`: `intruders`, `carnomorphs`, `void-seeders`, `night-stalkers`, `chytrids`
 - `board`: `easy`, `hard`
 - `result`: `win`, `loss`
+- `players`: `2`, `3`, `4`

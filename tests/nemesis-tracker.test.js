@@ -20,6 +20,7 @@ const renderedPagePath = path.join(__dirname, '..', 'public', 'nemesis', 'index.
 const ALLOWED_GAMES = ['nemesis', 'lockdown'];
 const ALLOWED_BOARDS = ['easy', 'hard'];
 const ALLOWED_RESULTS = ['win', 'loss'];
+const ALLOWED_PLAYERS = [2, 3, 4];
 const SESSION_FILENAME_REGEX = /^\d{4}-\d{2}-\d{2}-[a-z0-9-]+-[a-z0-9-]+-(easy|hard)-(win|loss)\.ya?ml$/;
 
 function loadYamlFile(filePath) {
@@ -137,13 +138,8 @@ if (require.main === module) {
     .filter((file) => file.endsWith('.yaml') || file.endsWith('.yml'))
     .sort();
 
-  if (sessionFiles.length === 0) {
-    failed++;
-    errors.push('No Nemesis session files found');
-  } else {
-    console.log(`   ✓ Found ${sessionFiles.length} session file(s)`);
-    passed++;
-  }
+  console.log(`   ✓ Found ${sessionFiles.length} session file(s)`);
+  passed++;
 
   const sessions = [];
   sessionFiles.forEach((file) => {
@@ -162,7 +158,7 @@ if (require.main === module) {
       return;
     }
 
-    const requiredFields = ['date', 'game', 'setup', 'board', 'result', 'note'];
+    const requiredFields = ['date', 'game', 'setup', 'board', 'result', 'players', 'note'];
     requiredFields.forEach((field) => {
       if (!(field in session)) {
         failed++;
@@ -188,6 +184,11 @@ if (require.main === module) {
     if (!ALLOWED_RESULTS.includes(session.result)) {
       failed++;
       errors.push(`Session "${file}" has invalid result "${session.result}"`);
+    }
+
+    if (!ALLOWED_PLAYERS.includes(Number(session.players))) {
+      failed++;
+      errors.push(`Session "${file}" has invalid players "${session.players}"`);
     }
 
     if (typeof session.note !== 'string' || session.note.trim() === '') {
@@ -238,6 +239,11 @@ if (require.main === module) {
         errors.push(`Rendered Nemesis page is missing expected text: "${expected}"`);
       }
     });
+
+    if (sessions.length === 0 && !renderedHtml.includes(normalizeText('No incidents logged yet. The archive is waiting for its first disaster.'))) {
+      failed++;
+      errors.push('Rendered Nemesis page is missing the empty-state session log message');
+    }
 
     if (!errors.some((error) => error.includes('Rendered Nemesis page'))) {
       console.log('   ✓ Rendered counts match session data');
