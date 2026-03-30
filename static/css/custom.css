@@ -821,6 +821,19 @@ body.page-nemesis .social-link:focus-visible {
   gap: 1rem;
 }
 
+.nemesis-subgroup-heading {
+  margin: 0.3rem 0 0.85rem;
+}
+
+.nemesis-subgroup-heading h4 {
+  margin: 0;
+  color: #8fd8ff;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 .nemesis-setup-card {
   position: relative;
   padding: 1.1rem;

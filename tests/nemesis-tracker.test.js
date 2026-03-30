@@ -99,24 +99,38 @@ if (require.main === module) {
       errors.push(`Game "${game.key}" must include both name and label`);
     }
 
-    if (!Array.isArray(game.setups) || game.setups.length === 0) {
+    if (!Array.isArray(game.setup_groups) || game.setup_groups.length === 0) {
       failed++;
-      errors.push(`Game "${game.key}" must include at least one setup`);
+      errors.push(`Game "${game.key}" must include at least one setup group`);
       return;
     }
 
     const setupMap = new Map();
-    game.setups.forEach((setup, setupIndex) => {
-      if (!setup.key || !setup.name) {
+    game.setup_groups.forEach((group, groupIndex) => {
+      if (!group.key || !group.name) {
         failed++;
-        errors.push(`Game "${game.key}" setup ${setupIndex} must include key and name`);
+        errors.push(`Game "${game.key}" setup group ${groupIndex} must include key and name`);
         return;
       }
-      if (setupMap.has(setup.key)) {
+
+      if (!Array.isArray(group.setups) || group.setups.length === 0) {
         failed++;
-        errors.push(`Game "${game.key}" contains duplicate setup key "${setup.key}"`);
+        errors.push(`Game "${game.key}" setup group "${group.key}" must include at least one setup`);
+        return;
       }
-      setupMap.set(setup.key, setup.name);
+
+      group.setups.forEach((setup, setupIndex) => {
+        if (!setup.key || !setup.name) {
+          failed++;
+          errors.push(`Game "${game.key}" setup group "${group.key}" setup ${setupIndex} must include key and name`);
+          return;
+        }
+        if (setupMap.has(setup.key)) {
+          failed++;
+          errors.push(`Game "${game.key}" contains duplicate setup key "${setup.key}"`);
+        }
+        setupMap.set(setup.key, setup.name);
+      });
     });
 
     if (!gameMap.has(game.key)) {

@@ -21,7 +21,8 @@ Use filenames like:
 Allowed values currently in the tracker:
 
 - `game`: `nemesis`, `lockdown`
-- `setup`: `intruders`, `carnomorphs`, `void-seeders`, `night-stalkers`, `chytrids`
+- `setup` for base `nemesis` and `lockdown`: `intruders`, `night-stalkers`, `carnomorphs`, `void-seeders`, `chytrids`
+- `setup` for `nemesis` Aftermath: `aftermath-intruders`, `aftermath-night-stalkers`, `aftermath-carnomorphs`, `aftermath-void-seeders`, `aftermath-chytrids`
 - `board`: `easy`, `hard`
 - `result`: `win`, `loss`
 - `players`: `2`, `3`, `4`

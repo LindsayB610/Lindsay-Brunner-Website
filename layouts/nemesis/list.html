@@ -109,8 +109,12 @@
               <h3>{{ $game.name }}</h3>
               <p class="nemesis-group-label">{{ $game.label }}</p>
             </div>
+            {{ range $setupGroup := $game.setup_groups }}
+            <div class="nemesis-subgroup-heading">
+              <h4>{{ $setupGroup.name }}</h4>
+            </div>
             <div class="nemesis-card-grid">
-              {{ range $setup := $game.setups }}
+              {{ range $setup := $setupGroup.setups }}
                 {{ $stats := newScratch }}
                 {{ $stats.Set "easyWins" 0 }}
                 {{ $stats.Set "easyLosses" 0 }}
@@ -174,6 +178,7 @@
                 </article>
               {{ end }}
             </div>
+            {{ end }}
           </section>
         {{ end }}
       </div>
@@ -193,9 +198,15 @@
           {{ range $candidateGame := $games }}
             {{ if eq $candidateGame.key $session.game }}
               {{ $gameName = $candidateGame.name }}
-              {{ range $candidateSetup := $candidateGame.setups }}
-                {{ if eq $candidateSetup.key $session.setup }}
-                  {{ $setupName = $candidateSetup.name }}
+              {{ range $candidateGroup := $candidateGame.setup_groups }}
+                {{ range $candidateSetup := $candidateGroup.setups }}
+                  {{ if eq $candidateSetup.key $session.setup }}
+                    {{ if eq $candidateGroup.key "core" }}
+                      {{ $setupName = $candidateSetup.name }}
+                    {{ else }}
+                      {{ $setupName = printf "%s / %s" $candidateGroup.name $candidateSetup.name }}
+                    {{ end }}
+                  {{ end }}
                 {{ end }}
               {{ end }}
             {{ end }}
@@ -232,7 +243,7 @@
           </div>
           <div class="nemesis-actions">
             <a
-              href="https://github.com/LindsayB610/Lindsay-Brunner-Website/new/master/data/nemesis/sessions?filename=YYYY-MM-DD-game-setup-board-result.yaml&value=%23%20Allowed%20values%0A%23%20game%3A%20nemesis%20%7C%20lockdown%0A%23%20setup%3A%20intruders%20%7C%20carnomorphs%20%7C%20void-seeders%20%7C%20night-stalkers%20%7C%20chytrids%0A%23%20board%3A%20easy%20%7C%20hard%0A%23%20result%3A%20win%20%7C%20loss%0A%23%20players%3A%202%20%7C%203%20%7C%204%0A%0Adate%3A%20%222026-03-17%22%0Agame%3A%20%22nemesis%22%0Asetup%3A%20%22intruders%22%0Aboard%3A%20%22easy%22%0Aresult%3A%20%22win%22%0Aplayers%3A%203%0Anote%3A%20%22Short%20recap%20of%20what%20happened.%22%0A"
+              href="https://github.com/LindsayB610/Lindsay-Brunner-Website/new/master/data/nemesis/sessions?filename=YYYY-MM-DD-game-setup-board-result.yaml&value=%23%20Allowed%20values%0A%23%20game%3A%20nemesis%20%7C%20lockdown%0A%23%20setup%20(base)%3A%20intruders%20%7C%20night-stalkers%20%7C%20carnomorphs%20%7C%20void-seeders%20%7C%20chytrids%0A%23%20setup%20(nemesis%20aftermath)%3A%20aftermath-intruders%20%7C%20aftermath-night-stalkers%20%7C%20aftermath-carnomorphs%20%7C%20aftermath-void-seeders%20%7C%20aftermath-chytrids%0A%23%20board%3A%20easy%20%7C%20hard%0A%23%20result%3A%20win%20%7C%20loss%0A%23%20players%3A%202%20%7C%203%20%7C%204%0A%0Adate%3A%20%222026-03-17%22%0Agame%3A%20%22nemesis%22%0Asetup%3A%20%22intruders%22%0Aboard%3A%20%22easy%22%0Aresult%3A%20%22win%22%0Aplayers%3A%203%0Anote%3A%20%22Short%20recap%20of%20what%20happened.%22%0A"
               class="nemesis-action-button"
               target="_blank"
               rel="noopener"
