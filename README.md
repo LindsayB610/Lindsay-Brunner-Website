@@ -351,7 +351,9 @@ The `/nemesis/` page uses Git-tracked YAML data so collaborators can log new gam
 
 1. Create a new YAML file in `data/nemesis/sessions/`
 2. Name it like `YYYY-MM-DD-game-setup-board-result.yaml`
-3. Add the session data using this format:
+3. Replace the placeholder filename with the real date, game, setup, board, and result
+4. Replace every example value inside the file
+5. Add the session data using this format:
 
 ```yaml
 date: "2026-03-17"
@@ -366,6 +368,7 @@ note: "Short recap of what happened."
 **GitHub shortcut:**
 
 - The `/nemesis/` page includes a **New prefilled session** button that opens GitHub's new-file editor with a starter filename and template.
+- That template is only a starting point. The filename, `date`, `game`, `setup`, `board`, `result`, `players`, and `note` all need to be updated before committing.
 - Opening that page does **not** create a file by itself. A session is only created if someone actually commits the new file or opens a pull request.
 - On the public repo, non-collaborators can use the same flow through a fork and submit a PR for approval.
 
