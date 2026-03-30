@@ -6,10 +6,10 @@
 # result: win | loss
 # players: 2 | 3 | 4
 
-date: "2026-03-17"
+date: "2026-03-29"
 game: "nemesis"
 setup: "intruders"
 board: "easy"
-result: "lose"
+result: "loss"
 players: 3
-note: "the queen killed lindsay. however we had the egg, we sent the signal, and all rooma were explored."
+note: "The queen killed Lindsay. However, we had the egg, we sent the signal, and all rooms were explored."
