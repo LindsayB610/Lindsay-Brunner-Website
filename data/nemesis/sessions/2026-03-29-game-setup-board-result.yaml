@@ -1,0 +1,15 @@
+# Allowed values
+# game: nemesis | lockdown
+# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
+# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# board: easy | hard
+# result: win | loss
+# players: 2 | 3 | 4
+
+date: "2026-03-17"
+game: "nemesis"
+setup: "intruders"
+board: "easy"
+result: "lose"
+players: 3
+note: "the queen killed lindsay. however we had the egg, we sent the signal, and all rooma were explored."
