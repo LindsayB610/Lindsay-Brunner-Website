@@ -18,6 +18,7 @@ setup: "intruders"
 board: "easy"
 result: "win"
 players: 3
+final_state_image: "/images/nemesis/session-photos/2026-03-29-nemesis-intruders-easy-loss.jpg"
 note: "Short recap of what happened."
 ```
 
@@ -37,6 +38,7 @@ What to fill in:
 - `board`: `easy` or `hard`
 - `result`: `win` or `loss`
 - `players`: `2`, `3`, or `4`
+- `final_state_image`: optional image path for a final board-state photo
 - `note`: a short recap in plain English
 
 Allowed values currently in the tracker:

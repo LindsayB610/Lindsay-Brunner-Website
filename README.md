@@ -362,6 +362,7 @@ setup: "intruders"
 board: "easy"
 result: "win"
 players: 3
+final_state_image: "/images/nemesis/session-photos/2026-03-29-nemesis-intruders-easy-loss.jpg"
 note: "Short recap of what happened."
 ```
 
@@ -380,6 +381,7 @@ note: "Short recap of what happened."
 - `board`: `easy`, `hard`
 - `result`: `win`, `loss`
 - `players`: `2`, `3`, `4`
+- `final_state_image`: optional path to a final board-state photo
 
 **Example filename:**
 

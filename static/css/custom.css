@@ -919,7 +919,7 @@ body.page-nemesis .social-link:focus-visible {
 
 .nemesis-log-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
@@ -1046,6 +1046,20 @@ body.page-nemesis .social-link:focus-visible {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.nemesis-log-photo {
+  margin: 1rem 0 0;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  border: 1px solid rgba(121, 243, 187, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.nemesis-log-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .nemesis-log-topline {

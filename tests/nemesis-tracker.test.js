@@ -224,6 +224,26 @@ if (require.main === module) {
       errors.push(`Session "${file}" must have a non-empty note`);
     }
 
+    if (
+      'final_state_image' in session &&
+      (
+        typeof session.final_state_image !== 'string' ||
+        session.final_state_image.trim() === '' ||
+        !session.final_state_image.startsWith('/')
+      )
+    ) {
+      failed++;
+      errors.push(`Session "${file}" has an invalid final_state_image path`);
+    }
+
+    if (typeof session.final_state_image === 'string' && session.final_state_image.startsWith('/')) {
+      const imagePath = path.join(__dirname, '..', 'static', session.final_state_image.replace(/^\//, ''));
+      if (!fs.existsSync(imagePath)) {
+        failed++;
+        errors.push(`Session "${file}" references missing final_state_image "${session.final_state_image}"`);
+      }
+    }
+
     const filenameBase = file.replace(/\.ya?ml$/, '');
     const filenameParts = filenameBase.split('-');
     const filenameDate = filenameParts.slice(0, 3).join('-');
@@ -298,6 +318,7 @@ if (require.main === module) {
       'board: "REPLACE-ME-BOARD"',
       'result: "REPLACE-ME-RESULT"',
       'players: REPLACE-ME-PLAYERS',
+      'final_state_image: "/images/nemesis/session-photos/REPLACE-ME.jpg"',
       'note: "REPLACE-ME: Short recap of what happened."',
       'aftermath-intruders',
       'aftermath-night-stalkers',
@@ -330,7 +351,8 @@ if (require.main === module) {
     failed++;
     errors.push(`Rendered Nemesis page not found at ${renderedPagePath}. Run "npm run build" first.`);
   } else {
-    const renderedHtml = stripHtml(fs.readFileSync(renderedPagePath, 'utf8'));
+    const renderedHtmlRaw = fs.readFileSync(renderedPagePath, 'utf8');
+    const renderedHtml = stripHtml(renderedHtmlRaw);
     const totalRuns = sessions.length;
     const totalWins = sessions.filter((session) => session.result === 'win').length;
     const totalLosses = sessions.filter((session) => session.result === 'loss').length;
@@ -392,6 +414,16 @@ if (require.main === module) {
           );
         }
       });
+
+      if (
+        typeof session.final_state_image === 'string' &&
+        !renderedHtmlRaw.includes(session.final_state_image)
+      ) {
+        failed++;
+        errors.push(
+          `Rendered Nemesis page is missing expected final_state_image for ${session.game}/${session.setup}: "${session.final_state_image}"`
+        );
+      }
     });
 
     if (
