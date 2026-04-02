@@ -9,6 +9,12 @@ Before you commit it:
 3. Keep the keys exactly as written
 4. Only use the allowed values listed below
 
+If you add a `final_state_image`, optimize it before you commit:
+
+```bash
+npm run optimize:nemesis-photos
+```
+
 Use this format:
 
 ```yaml

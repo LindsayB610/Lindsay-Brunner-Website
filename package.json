@@ -35,6 +35,7 @@
     "check:hugo": "node scripts/check-hugo-version.js",
     "check:dependencies": "node scripts/check-dependencies.js",
     "optimize:images": "node scripts/optimize-images.js",
+    "optimize:nemesis-photos": "node scripts/optimize-nemesis-photos.js",
     "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {

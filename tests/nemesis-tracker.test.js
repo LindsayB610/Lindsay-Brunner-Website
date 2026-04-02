@@ -14,6 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const sharp = require('sharp');
 
 const gamesPath = path.join(__dirname, '..', 'data', 'nemesis', 'games.yaml');
 const sessionsDir = path.join(__dirname, '..', 'data', 'nemesis', 'sessions');
@@ -25,6 +26,8 @@ const ALLOWED_BOARDS = ['easy', 'hard'];
 const ALLOWED_RESULTS = ['win', 'loss'];
 const ALLOWED_PLAYERS = [2, 3, 4];
 const SESSION_FILENAME_REGEX = /^\d{4}-\d{2}-\d{2}-[a-z0-9-]+-[a-z0-9-]+-(easy|hard)-(win|loss)\.ya?ml$/;
+const MAX_SESSION_IMAGE_BYTES = 1024 * 1024;
+const MAX_SESSION_IMAGE_DIMENSION = 2400;
 
 function loadYamlFile(filePath) {
   return yaml.load(fs.readFileSync(filePath, 'utf8'));
@@ -43,7 +46,7 @@ function stripHtml(value) {
   );
 }
 
-if (require.main === module) {
+async function main() {
   console.log('🧪 Testing Nemesis tracker...\n');
 
   let passed = 0;
@@ -170,7 +173,7 @@ if (require.main === module) {
   passed++;
 
   const sessions = [];
-  sessionFiles.forEach((file) => {
+  for (const file of sessionFiles) {
     if (!SESSION_FILENAME_REGEX.test(file)) {
       failed++;
       errors.push(`Session filename does not match expected format: ${file}`);
@@ -241,6 +244,32 @@ if (require.main === module) {
       if (!fs.existsSync(imagePath)) {
         failed++;
         errors.push(`Session "${file}" references missing final_state_image "${session.final_state_image}"`);
+      } else {
+        const imageStats = fs.statSync(imagePath);
+        if (imageStats.size > MAX_SESSION_IMAGE_BYTES) {
+          failed++;
+          errors.push(
+            `Session "${file}" final_state_image exceeds ${MAX_SESSION_IMAGE_BYTES} bytes: "${session.final_state_image}"`
+          );
+        }
+
+        try {
+          const metadata = await sharp(imagePath).metadata();
+          if (
+            metadata.width > MAX_SESSION_IMAGE_DIMENSION ||
+            metadata.height > MAX_SESSION_IMAGE_DIMENSION
+          ) {
+            failed++;
+            errors.push(
+              `Session "${file}" final_state_image exceeds ${MAX_SESSION_IMAGE_DIMENSION}px max dimension: "${session.final_state_image}"`
+            );
+          }
+        } catch (error) {
+          failed++;
+          errors.push(
+            `Session "${file}" final_state_image could not be inspected: "${session.final_state_image}" (${error.message})`
+          );
+        }
       }
     }
 
@@ -286,7 +315,7 @@ if (require.main === module) {
     }
 
     sessions.push(session);
-  });
+  }
 
   if (!errors.some((error) => error.startsWith('Session "'))) {
     console.log('   ✓ Session files are valid');
@@ -454,6 +483,13 @@ if (require.main === module) {
 
   console.log('\n✅ All Nemesis tracker tests passed!');
   process.exit(0);
+}
+
+if (require.main === module) {
+  main().catch((error) => {
+    console.error('\n❌ Unexpected Nemesis tracker test failure:', error);
+    process.exit(1);
+  });
 }
 
 module.exports = {

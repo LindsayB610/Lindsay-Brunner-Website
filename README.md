@@ -372,6 +372,7 @@ note: "Short recap of what happened."
 - That template is only a starting point. The filename, `date`, `game`, `setup`, `board`, `result`, `players`, and `note` all need to be updated before committing.
 - Opening that page does **not** create a file by itself. A session is only created if someone actually commits the new file or opens a pull request.
 - On the public repo, non-collaborators can use the same flow through a fork and submit a PR for approval.
+- If you add a `final_state_image`, run `npm run optimize:nemesis-photos` before committing so session photos stay web-friendly.
 
 **Allowed values currently in the tracker:**
 
