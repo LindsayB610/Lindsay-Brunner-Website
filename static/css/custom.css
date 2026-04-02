@@ -793,6 +793,10 @@ body.page-nemesis .social-link:focus-visible {
   margin-top: 0.35rem;
 }
 
+.nemesis-heading-nowrap {
+  white-space: nowrap;
+}
+
 .nemesis-group-row {
   padding: 0.95rem 1rem;
   border: 1px solid rgba(121, 243, 187, 0.14);
@@ -1154,6 +1158,10 @@ body.page-nemesis .social-link:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .nemesis-heading-nowrap {
+    white-space: normal;
+  }
+
   .nemesis-page {
     padding: 0;
   }
