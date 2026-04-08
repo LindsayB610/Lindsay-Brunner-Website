@@ -6,7 +6,7 @@
   {{- range $dietOptions -}}
     {{- $url := $base -}}
     {{- if .slug -}}
-      {{- $url = printf "%s?diet=%s" (strings.TrimSuffix "/" $base) .slug -}}
+      {{- $url = printf "%s#diet=%s" $base .slug -}}
     {{- end -}}
   <a href="{{ $url }}" class="recipe-diet-filter-chip" data-diet-filter="{{ .slug }}">{{ .label }}</a>
   {{- end -}}

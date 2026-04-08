@@ -43,3 +43,10 @@ NODE_VERSION = "20"
 
 [context.next.environment]
 HUGO_ENABLEGITINFO = "true"
+
+[[redirects]]
+from = "/recipes/"
+to = "/recipes/all/?diet=:diet"
+status = 301
+force = true
+query = { diet = ":diet" }

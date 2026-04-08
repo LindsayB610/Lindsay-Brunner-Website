@@ -10,7 +10,7 @@
     {{- $label := . -}}
     {{- $abbr := cond (eq $slug "dairy-free") "DF" (cond (eq $slug "vegetarian") "V" (cond (eq $slug "vegan") "VG" (cond (eq $slug "gluten-free") "GF" ""))) -}}
     {{- if $abbr -}}
-    {{- $url := printf "%s?diet=%s" (strings.TrimSuffix "/" $base) $slug -}}
+    {{- $url := printf "%s#diet=%s" $base $slug -}}
   <a href="{{ $url }}" class="recipe-dietary-icon" title="{{ $label }}" aria-label="Filter recipes: {{ $label }}">{{ $abbr }}</a>
     {{- end -}}
   {{- end -}}
