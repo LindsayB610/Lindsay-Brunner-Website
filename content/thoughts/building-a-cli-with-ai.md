@@ -3,6 +3,7 @@ title: "Notes From a Marketer Building a Real CLI With Codex"
 date: 2026-04-11
 slug: "building-a-cli-with-ai"
 description: "What building a real CLI with an AI coding agent taught me about taste, guardrails, product judgment, and why non-developers can still be builders."
+subtitle: "Or: How a marketer shipped a developer tool by being very, very annoying about user experience"
 draft: false
 social_image: "/images/social/building-a-cli-with-ai-og.png"
 ---
