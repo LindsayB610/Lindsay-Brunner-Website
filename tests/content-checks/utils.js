@@ -20,8 +20,8 @@ const recipeIndexPath3 = path.join(publicDir, 'recipes', 'index.html');
 const recipeIndexPath4 = path.join(publicDir, 'recipes', '1-01-01', 'recipe-index', 'index.html');
 
 // Required front matter fields for thoughts posts
-const REQUIRED_THOUGHTS_FIELDS = ['title', 'description', 'draft'];
-const OPTIONAL_THOUGHTS_FIELDS = ['slug', 'date', 'og_image', 'social_image', 'subtitle'];
+const REQUIRED_THOUGHTS_FIELDS = ['title', 'description', 'subtitle', 'draft'];
+const OPTIONAL_THOUGHTS_FIELDS = ['slug', 'date', 'og_image', 'social_image'];
 
 // Required front matter fields for recipes
 const REQUIRED_RECIPE_FIELDS = ['title', 'description', 'subtitle', 'draft', 'prepTime', 'cookTime', 'totalTime', 'recipeYield', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions'];
