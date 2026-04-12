@@ -12,6 +12,8 @@ At no point in my ten years working in technology before now did I imagine ever 
 
 Shared links are great when you want to send someone a conversation, most of the time. They are less great when you want to keep the conversation as an artifact. Maybe it needs to become context for yet another AI agent. Maybe you have family or friends who would be scared of a ChatGPT link. Maybe you're just worried about compression, persistence, and repeatable findability. Copy-pasting into a doc is eye-bleedingly tedious. Screenshots are worse. Browser print is cursed. And if you've ever had a long AI conversation that turned into something genuinely useful, you know the feeling: this should be easier to preserve. (Excuse me, OpenAI, are you listening?)
 
+If you want to skip the story and go straight to the code, the project is open source on GitHub: [github.com/LindsayB610/chatgpt-thread-exporter](https://github.com/LindsayB610/chatgpt-thread-exporter).
+
 So I decided to build a tool.
 
 More precisely, I asked Codex to help me build a tool.
@@ -242,3 +244,7 @@ And if the process so far taught me anything, it's this:
 AI can accelerate the work.
 
 But someone still has to care enough to be annoying about the experience.
+
+---
+
+**Try it:** [ChatGPT Thread Exporter on GitHub](https://github.com/LindsayB610/chatgpt-thread-exporter) (MIT license, local-first, README starts from zero CLI experience if you need it).
