@@ -3,11 +3,10 @@ title: "Notes From a Marketer Building a Real CLI With Codex"
 date: 2026-04-11
 slug: "building-a-cli-with-ai"
 description: "What building a real CLI with an AI coding agent taught me about taste, guardrails, product judgment, and why non-developers can still be builders."
-subtitle: "Or: How a marketer shipped a developer tool by being very, very annoying about user experience"
+subtitle: ""
 draft: false
 social_image: "/images/social/building-a-cli-with-ai-og.png"
 ---
-_Or: How a marketer shipped a developer tool by being very, very annoying about user experience_
 
 At no point in my ten years working in technology before now did I imagine ever building a CLI myself. Hell, for most of my *ahem* years on this planet I didn't know WHAT A CLI WAS. So, please believe me when I say that "build a CLI" is not my native solution to virtually any problem I've ever encountered. But, last week I found myself fed up with a recurring, deeply irritating problem, and as it turned out, a CLI was the solution to the problem: I wanted to save complete ChatGPT conversations in a format that did not make me want to fling my laptop forcefully into a decorative pond.
 

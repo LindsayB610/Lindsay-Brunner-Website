@@ -85,7 +85,15 @@ function parseFrontMatter(filePath) {
         }
         
         const key = trimmedLine.substring(0, colonIndex).trim();
-        let value = trimmedLine.substring(colonIndex + 1).trim();
+        const rawValue = trimmedLine.substring(colonIndex + 1).trim();
+        // Explicit empty string (subtitle: "") must not start array mode (see dietary arrays)
+        if (rawValue === '""' || rawValue === "''") {
+          frontMatter[key] = '';
+          currentKey = null;
+          inArray = false;
+          return;
+        }
+        let value = rawValue;
         
         // Remove quotes if present
         if ((value.startsWith('"') && value.endsWith('"')) || 

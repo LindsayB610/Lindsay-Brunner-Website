@@ -52,7 +52,10 @@ function validateFrontMatter() {
     }
 
     // Subtitle should be sentence case (CONTENT_STYLE_GUIDE: "Sentence case all other headers")
-    if (frontMatter.subtitle && frontMatter.subtitle.trim().startsWith('Or:')) {
+    if (
+      typeof frontMatter.subtitle === 'string' &&
+      frontMatter.subtitle.trim().startsWith('Or:')
+    ) {
       const afterOr = frontMatter.subtitle.substring(3).trim();
       const words = afterOr.split(/\s+/);
       // Words that should be lowercase when not first word or after sentence-ending punctuation
