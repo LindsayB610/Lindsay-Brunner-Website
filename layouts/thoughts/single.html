@@ -192,8 +192,9 @@
     "name": {{ .Site.Params.author | jsonify }},
     "url": {{ .Site.BaseURL | jsonify }}
   },
-  {{- if .Params.social_image }}
-  "image": {{ (.Params.social_image | absURL) | jsonify }},
+  {{- $pageOg := or .Params.social_image .Params.og_image }}
+  {{- if $pageOg }}
+  "image": {{ ($pageOg | absURL) | jsonify }},
   {{- else if .Site.Params.default_social_image }}
   "image": {{ (.Site.Params.default_social_image | absURL) | jsonify }},
   {{- end }}

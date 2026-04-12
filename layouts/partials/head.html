@@ -10,6 +10,7 @@
 <meta name="author" content="{{ .Site.Params.author }}" />
 
 <link rel="canonical" href="{{ .Permalink }}" />
+{{ $pageOg := or .Params.social_image .Params.og_image }}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
@@ -17,8 +18,8 @@
 <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
 <meta property="og:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
 <meta property="og:site_name" content="{{ .Site.Title }}" />
-{{ if .Params.social_image }}
-  <meta property="og:image" content="{{ .Params.social_image | absURL }}" />
+{{ if $pageOg }}
+  <meta property="og:image" content="{{ $pageOg | absURL }}" />
 {{ else if and (eq .Section "recipes") .Params.slug }}
   {{ $slug := .Params.slug }}
   {{ if hasPrefix $slug "recipe-" }}
@@ -43,8 +44,8 @@
 {{ end }}
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
 <meta name="twitter:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
-{{ if .Params.social_image }}
-  <meta name="twitter:image" content="{{ .Params.social_image | absURL }}" />
+{{ if $pageOg }}
+  <meta name="twitter:image" content="{{ $pageOg | absURL }}" />
 {{ else if and (eq .Section "recipes") .Params.slug }}
   {{ $slug := .Params.slug }}
   {{ if hasPrefix $slug "recipe-" }}
