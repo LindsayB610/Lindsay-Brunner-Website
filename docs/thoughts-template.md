@@ -42,15 +42,6 @@ social_image: "/images/social/your-thought-og.png"
   - Used for sorting and permalink generation
   - Use future dates with `draft: true` for scheduling
 
-- **`slug`** (string): URL-friendly identifier
-  - Format: `"your-thought-slug"` (no `draft-` prefix)
-  - Should match desired URL (filename prefix doesn't affect URL)
-  - Examples: `"practical-way-to-think-about-aeo"`, `"developer-content-conversation-not-broadcast"`
-
-- **`subtitle`** (string): Brief subtitle or description
-  - Often uses "Or: ..." format for alternative description
-  - Appears on homepage and in listings
-
 - **`description`** (string): SEO and listing description
   - Compelling, descriptive summary
   - Used in meta tags and RSS feeds
@@ -61,6 +52,15 @@ social_image: "/images/social/your-thought-og.png"
   - Set to `true` with future dates for scheduling
 
 ### Optional Fields
+
+- **`slug`** (string): URL-friendly identifier
+  - Format: `"your-thought-slug"` (no `draft-` prefix)
+  - Should match desired URL (filename prefix doesn't affect URL)
+  - Examples: `"practical-way-to-think-about-aeo"`, `"developer-content-conversation-not-broadcast"`
+
+- **`subtitle`** (string): Brief subtitle or description
+  - Often uses "Or: ..." format for alternative description
+  - Appears on homepage and in listings when set; omit to use the auto-generated summary for excerpts
 
 - **`social_image`** or **`og_image`** (string): Path to Open Graph image
   - Format: `"/images/social/your-thought-og.png"`

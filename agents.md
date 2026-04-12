@@ -92,10 +92,10 @@ The template includes:
 - `title` (string)
 - `date` (YYYY-MM-DD format)
 - `description` (string)
-- `subtitle` (string)
 - `draft` (true/false)
 
 **Optional fields:**
+- `subtitle` (string; used for homepage and thoughts index excerpts when set; omit to use the auto summary)
 - `slug` (string)
 - `og_image` or `social_image` (path to image in `/images/social/`)
 
