@@ -132,7 +132,7 @@ The test cases finally made the tool good, because they were real enough to make
 
 The finished CLI now does the thing I wanted in the first place.
 
-You can pull a ChatGPT shared link from any of your own thread and get a markdown file saved into your very own Downloads folder with a unique, title-based filename. You can ask for a PDF instead and get a print-friendly, visually ChatGPT-inspired export with page numbers, conversation dates, preserved headings, code blocks, lists, and generated images.
+You can pull a ChatGPT shared link from any of your own threads and get a markdown file saved into your very own Downloads folder with a unique, title-based filename. You can ask for a PDF instead and get a print-friendly, visually ChatGPT-inspired export with page numbers, conversation dates, preserved headings, code blocks, lists, and generated images.
 
 It also supports GitHub export if you want to write the conversation directly into a repo. (Scope creep, whoops.)
 
