@@ -138,7 +138,7 @@ It also supports GitHub export if you want to write the conversation directly in
 
 The defaults are intentionally boring:
 
-- markdown unless you ask for PDF.
+- Markdown unless you ask for PDF.
 - Downloads unless you choose a path.
 - Unique filenames unless you explicitly force an overwrite.
 - Debug artifacts only when you ask for them.
