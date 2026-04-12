@@ -66,7 +66,7 @@ The coding agent could generate code quickly. It could inspect files, write test
 
 So I kept narrowing the rails.
 
-Local export should work before GitHub export. markdown should be useful before PDF got fancy. PDF should be ChatGPT-inspired, not a pixel-perfect UI clone. It should be print-friendly, with page numbers, readable dates, compact lists, and less whitespace than the live app. Generated images should show up in PDFs, not as ugly "unsupported content" boxes. If a command was meant for troubleshooting, it should not be presented as the normal path.
+Local export should work before GitHub export. Markdown should be useful before PDF got fancy. PDF should be ChatGPT-inspired, not a pixel-perfect UI clone. It should be print-friendly, with page numbers, readable dates, compact lists, and less whitespace than the live app. Generated images should show up in PDFs, not as ugly "unsupported content" boxes. If a command was meant for troubleshooting, it should not be presented as the normal path.
 
 I have spent my career in developer marketing, which means I have a very specific allergy to tools that are powerful but hostile. Developers will forgive rough edges if the value is obvious, but they won't forgive having their time wasted. Non-developers are even less forgiving, mostly because they don't have the vocabulary to explain why something feels broken. Both user personas just leave.
 
