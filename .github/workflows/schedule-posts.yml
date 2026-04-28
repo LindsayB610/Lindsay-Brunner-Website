@@ -4,9 +4,11 @@ on:
   schedule:
     # Run daily to check for posts scheduled at 6am PT
     # 6am PT = 13:00 UTC (PDT, March-Nov) or 14:00 UTC (PST, Nov-March)
-    # Run at both times to cover both timezones; script handles DST detection
-    - cron: '0 13 * * *'  # Covers PDT (6am PT = 13:00 UTC)
-    - cron: '0 14 * * *'  # Covers PST (6am PT = 14:00 UTC)
+    # Run at both times to cover both timezones; script handles DST detection.
+    # Avoid minute 0 because scheduled GitHub Actions can be delayed or dropped
+    # during top-of-hour load.
+    - cron: '17 13 * * *'  # Covers PDT (6am PT = 13:17 UTC)
+    - cron: '17 14 * * *'  # Covers PST (6am PT = 14:17 UTC)
   workflow_dispatch: # Allow manual triggering
 
 jobs:

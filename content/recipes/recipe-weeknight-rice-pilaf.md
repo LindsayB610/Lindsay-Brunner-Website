@@ -22,7 +22,7 @@ recipeIngredient:
   - "3 stalks celery, diced"
   - "4 to 6 cloves garlic, chopped"
   - "2 green onions, sliced"
-  - "½ tsp dried Italian seasoning"
+  - "½ Tsp dried Italian seasoning"
   - "1 to 1½ cups frozen peas"
   - "A handful of fresh parsley, chopped"
   - "Salt and freshly ground black pepper"
@@ -33,7 +33,7 @@ recipeInstructions:
   - "Add the stock, stir once, bring to simmer, cover, and cook on low for 15-18 minutes without lifting the lid."
   - "Rest covered off heat for 5 minutes. Fluff with fork, stir in the parsley and frozen peas (they will warm through from residual heat), taste and adjust salt."
 ---
-My life these days is a neverending battle to get my picky eater to try new things (and actually like them). So, we watch recipes on Tiktok, he picks the ones he wants to try, and then we modify them to not include any of his hard-no's. For example, this recipe would benefit from a can of diced tomatoes, or a freshly chopped, but then he wouldn't touch it. The adults might prefer the texture of brown or wild rice, but again, not a chance.
+My life these days is a never-ending battle to get my picky eater to try new things (and actually like them). So, we watch recipes on Tiktok, he picks the ones he wants to try, and then we modify them to not include any of his hard-no's. For example, this recipe would benefit from a can of diced tomatoes, or a freshly chopped, but then he wouldn't touch it. The adults might prefer the texture of brown or wild rice, but again, not a chance.
 
 So, this is rice pilaf for my kid, made in a way I can get him to eat. We stir in a generous amount of frozen peas at the end for sweetness and color that picky eaters tend to accept. We top it with chicken or a pork chop and he smashes it every time. The base recipe is vegan (vegetable stock + olive oil), but you can easily swap in butter if you want richer flavor, or chicken stock if that's what you like/have. It's full of vegetables, somehow tastes like you tried harder than you did, and makes enough for next day leftovers, or as a base for fried rice.
 
@@ -53,7 +53,7 @@ So, this is rice pilaf for my kid, made in a way I can get him to eat. We stir i
 - 3 stalks celery, diced
 - 4 to 6 cloves garlic, chopped (measure with your heart)
 - 2 green onions, sliced
-- ½ tsp dried Italian seasoning
+- ½ Tsp dried Italian seasoning
 - 1 to 1½ cups frozen peas
 - A handful of fresh parsley, chopped
 - Salt and freshly ground black pepper
@@ -124,7 +124,7 @@ This is extremely forgiving. Add more vegetables. Skip something if you are out.
 
 **Frozen peas:** Stirring in 1 to 1½ cups frozen peas at the end adds pops of sweetness and bright green color that kids tend to like. They warm through from residual heat during the final rest and fluffing stage. Do not add them earlier or they can turn mushy.
 
-**Italian seasoning:** The ½ tsp dried Italian seasoning adds a subtle herb backbone that ties the vegetables and rice together nicely without dominating the dish.
+**Italian seasoning:** The ½ Tsp dried Italian seasoning adds a subtle herb backbone that ties the vegetables and rice together nicely without dominating the dish.
 
 It goes with literally any protein, including chicken thighs and whatever your kid will actually eat.
 
