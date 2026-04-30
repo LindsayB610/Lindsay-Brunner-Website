@@ -1,6 +1,6 @@
 ---
 title: "Beer Bread"
-date: 2026-04-30
+date: 2026-04-29
 slug: "recipe-beer-bread"
 subtitle: "Or: A loaf pan, a beer, and no proofing negotiations"
 description: "A low-drama beer bread made with melted butter and a crisp, lower-bitterness beer. No yeast, no kneading, just a sturdy quick loaf for dinner."
