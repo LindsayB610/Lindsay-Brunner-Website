@@ -10,7 +10,7 @@ prepTime: "PT10M"
 cookTime: "PT45M"
 totalTime: "PT55M"
 recipeYield: "one 9×5 loaf (about 8–10 slices)"
-recipeCategory: "Bread"
+recipeCategory: "Side Dish"
 recipeCuisine: "American"
 dietary: ["vegetarian"]
 recipeIngredient:
