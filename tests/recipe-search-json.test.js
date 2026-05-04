@@ -12,6 +12,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseFrontMatter } = require('./content-checks/utils');
 
 const jsonIndexPath = path.join(__dirname, '..', 'public', 'recipes', 'index.json');
 const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
@@ -174,8 +175,63 @@ if (require.main === module) {
       failed++;
       errors.push(`Error checking drafts: ${error.message}`);
     }
+
+    // Test 6: Verify recipes stay sorted newest-first
+    console.log('\n📅 Testing newest-first sort order...');
+    try {
+      const publishedRecipes = fs.readdirSync(recipesDir)
+        .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md' && file.startsWith('recipe-'))
+        .map(file => ({ file, frontMatter: parseFrontMatter(path.join(recipesDir, file)) }))
+        .filter(({ frontMatter }) => frontMatter && !/true/i.test(String(frontMatter.draft || 'false')) && frontMatter.date);
+
+      if (recipes.length > 0 && publishedRecipes.length > 0) {
+        const latestDate = publishedRecipes.reduce((max, { frontMatter }) => {
+          return frontMatter.date > max ? frontMatter.date : max;
+        }, '0000-00-00');
+
+        const latestTitles = new Set(
+          publishedRecipes
+            .filter(({ frontMatter }) => frontMatter.date === latestDate)
+            .map(({ frontMatter, file }) => frontMatter.title || file)
+        );
+
+        const firstRecipeDate = recipes[0].date.slice(0, 10);
+        if (firstRecipeDate !== latestDate) {
+          console.error(`   ❌ First recipe date mismatch: expected latest published date ${latestDate}, found ${firstRecipeDate}`);
+          failed++;
+          errors.push(`Newest-first sort mismatch: expected first recipe date ${latestDate}, found ${firstRecipeDate}`);
+        } else if (!latestTitles.has(recipes[0].title)) {
+          console.error(`   ❌ First recipe title mismatch for latest date ${latestDate}: found "${recipes[0].title}"`);
+          failed++;
+          errors.push(`Newest-first sort mismatch: first recipe "${recipes[0].title}" is not among latest dated recipes`);
+        } else {
+          console.log(`   ✓ First recipe matches latest published date (${latestDate})`);
+          passed++;
+        }
+
+        let isSorted = true;
+        for (let index = 1; index < recipes.length; index++) {
+          if (recipes[index - 1].date < recipes[index].date) {
+            isSorted = false;
+            console.error(`   ❌ Recipes out of order at indexes ${index - 1} and ${index}: ${recipes[index - 1].date} before ${recipes[index].date}`);
+            failed++;
+            errors.push(`Newest-first sort mismatch between indexes ${index - 1} and ${index}`);
+            break;
+          }
+        }
+
+        if (isSorted) {
+          console.log('   ✓ Recipe index JSON is sorted newest-first');
+          passed++;
+        }
+      }
+    } catch (error) {
+      console.error(`   ❌ Error checking sort order: ${error.message}`);
+      failed++;
+      errors.push(`Error checking sort order: ${error.message}`);
+    }
     
-    // Test 6: Edge cases - at least one recipe
+    // Test 7: Edge cases - at least one recipe
     console.log('\n📊 Testing edge cases...');
     if (recipes.length === 0) {
       console.log('   ⚠️  Warning: No recipes in index (this might be expected if all are drafts)');
@@ -187,7 +243,7 @@ if (require.main === module) {
       passed++;
     }
     
-    // Test 7: Check for unexpected fields
+    // Test 8: Check for unexpected fields
     console.log('\n🔎 Testing for unexpected fields...');
     const allValidFields = [...REQUIRED_JSON_FIELDS, ...OPTIONAL_JSON_FIELDS];
     recipes.forEach((recipe, index) => {
@@ -227,4 +283,3 @@ if (require.main === module) {
 }
 
 module.exports = {};
-

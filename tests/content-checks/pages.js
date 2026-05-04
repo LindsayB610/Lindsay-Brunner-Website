@@ -216,6 +216,14 @@ function validateRecipeIndexPage() {
   try {
     const recipeIndexContent = fs.readFileSync(recipeIndexPath, 'utf8');
     const errors = [];
+    const publishedRecipes = fs.readdirSync(recipesDir)
+      .filter(file => file.endsWith('.md') && file !== '_index.md' && file !== 'recipe-index.md' && file.startsWith('recipe-'))
+      .map(file => {
+        const filePath = path.join(recipesDir, file);
+        const frontMatter = parseFrontMatter(filePath);
+        return { file, frontMatter };
+      })
+      .filter(({ frontMatter }) => frontMatter && !/true/i.test(String(frontMatter.draft || 'false')));
     
     // Check for title (handle minified HTML)
     if (!recipeIndexContent.includes('Recipe Index') && !recipeIndexContent.match(/<title[^>]*>.*Recipe Index/i)) {
@@ -233,12 +241,31 @@ function validateRecipeIndexPage() {
       errors.push('Recipe index page seems to be missing content');
     }
     
-    // Note: The layout may not be applied correctly yet, so we're doing basic validation
-    // Once the layout is fixed, we can add more specific checks for:
-    // - recipe-index-category classes
-    // - recipe-index-list structure  
-    // - recipe links
-    // - category headers
+    if (!recipeIndexContent.includes('recipe-index-category-title')) {
+      errors.push('Recipe index page is missing recipe category headings');
+    }
+    if (!recipeIndexContent.includes('recipe-index-list')) {
+      errors.push('Recipe index page is missing recipe list structure');
+    }
+
+    const categoryNames = [...new Set(
+      publishedRecipes
+        .map(({ frontMatter }) => frontMatter.recipeCategory)
+        .filter(Boolean)
+    )];
+    categoryNames.forEach(category => {
+      if (!recipeIndexContent.includes(category)) {
+        errors.push(`Recipe index page is missing category heading "${category}"`);
+      }
+    });
+
+    publishedRecipes.forEach(({ file, frontMatter }) => {
+      const slug = frontMatter.slug || file.replace(/\.md$/, '');
+      const permalink = `/recipes/${frontMatter.date}/${slug}/`;
+      if (!recipeIndexContent.includes(permalink)) {
+        errors.push(`Recipe index page is missing recipe link for ${file} (${permalink})`);
+      }
+    });
     
     // Check that the page is not empty
     if (recipeIndexContent.length < 1000) {
