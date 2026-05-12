@@ -42,6 +42,10 @@ const {
 } = require('./content-checks/rss-links');
 
 const {
+  validateNavDropdownBehavior
+} = require('./content-checks/navigation');
+
+const {
   validateFooterStructure,
   validateFooterLogoStyles,
   validateFooterSocialAndRSSLinks
@@ -78,6 +82,7 @@ async function runAllTests() {
   validateRSSFeed();
   validateRecipesRSSFeed();
   validateContextAwareRSSLinks();
+  validateNavDropdownBehavior();
   validateFooterStructure();
   validateFooterLogoStyles();
   validateFooterSocialAndRSSLinks();

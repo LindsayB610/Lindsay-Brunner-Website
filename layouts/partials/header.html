@@ -102,3 +102,24 @@
     </div>
   </div>
 </header>
+<script>
+  document.addEventListener("click", function (event) {
+    document
+      .querySelectorAll(".nav-dropdown details[open]")
+      .forEach(function (dropdown) {
+        if (!dropdown.contains(event.target)) {
+          dropdown.removeAttribute("open");
+        }
+      });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+
+    document
+      .querySelectorAll(".nav-dropdown details[open]")
+      .forEach(function (dropdown) {
+        dropdown.removeAttribute("open");
+      });
+  });
+</script>
