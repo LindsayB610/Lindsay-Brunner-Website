@@ -1,151 +1,68 @@
 {{ define "main" }}
-<section class="hero">
-  <div class="container">
-    <h1>Lindsay Brunner</h1>
-    <p>
-      I lead content and DevRel teams that make emerging tech make sense, for
-      the people building with it, and the companies betting&nbsp;on&nbsp;it.
-    </p>
-    <p>
-      I turn complex stuff into content developers actually care about.
-      Strategy, docs, storytelling, the occasional sassy opinion.
-    </p>
-    <p>Also: pretty cool human, good cook, decent taste in stickers.</p>
-    <a
-      href="https://www.linkedin.com/in/lindsaybrunner/"
-      class="hero-cta"
-      target="_blank"
-      rel="noopener"
-    >
-      Explore my work
-    </a>
-  </div>
-</section>
-
-<!-- Temporarily hidden section - How I Earn My Keep
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>How I Earn My Keep</h2>
+<div id="homepage-root"></div>
+<noscript>
+  <section class="hero">
+    <div class="container">
       <p>
-        Herding product, code, and content into one coherent plan—so you don't have to.
+        Freelance technical content, developer marketing, and AI-era editorial
+        strategy.
       </p>
+      <h1>Complex technical ideas, made clear enough to trust.</h1>
+      <p>
+        I help people building complicated things turn deep expertise into
+        content that feels clear, useful, and human.
+      </p>
+      <a
+        href="https://www.linkedin.com/in/lindsaybrunner/"
+        class="hero-cta"
+        target="_blank"
+        rel="noopener"
+      >
+        Talk to me about a project
+      </a>
     </div>
+  </section>
 
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>🚀 Leader</h3>
-        <p>
-          I turn "someone ought to…" into "done—ship it." From chaos to
-          process, I rally product, engineering, and go-to-market teams around one flag
-          and keep momentum visible across the org, and make sure every action lands with an owner (ideally not me).
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>⚡ Strategist</h3>
-        <p>
-          Content, community, or launch plan—I start with the outcome and
-          reverse-engineer the magic. Data for direction, storytelling for
-          traction, and just enough experimentation to scare the legal team
-          without triggering an intervention.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>💬 Advocate</h3>
-        <p>
-          Part hype-squad, part translator. I meet developers where they are,
-          hand them resources they actually want to use, then bring their
-          uncensored feedback straight back to the roadmap. If the docs don't
-          sparkle and the sample app doesn't run, I'm not done.
-        </p>
-      </div>
+  <section class="section">
+    <div class="container">
+      <h2>What I Do</h2>
+      <p>Developer marketing strategy, technical content, content systems, and AI workflows.</p>
     </div>
-  </div>
-</section>
--->
+  </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Recent Thoughts</h2>
-      <p>Life, the universe, and the meaning of everything. Or something.</p>
+  <section class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <p>Okta, Braze, Builder.io, ngrok, and Split.</p>
     </div>
+  </section>
 
-    <div class="grid grid-3">
-      {{ $recent_thoughts := where (where .Site.RegularPages "Type" "thoughts") "Draft" false | first
-      3 }} {{ if ge (len $recent_thoughts) 3 }} {{ range $recent_thoughts }}
-      <div class="card">
-        <div class="post-meta">
-          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
-        </div>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        <p>
-          {{ if .Params.subtitle }} {{ .Params.subtitle }} {{ else }} {{
-          .Summary }} {{ end }}
-        </p>
-        <a href="{{ .RelPermalink }}" class="read-more-link">Read on →</a>
-      </div>
-      {{ end }} {{ else }}
-      <div class="card">
-        <div class="post-meta">
-          <time>Coming Soon</time>
-        </div>
-        <h3>🎯 Developer Experience Design</h3>
-        <p>
-          Thoughts on creating developer tools and experiences that feel
-          magical. From API design to documentation, every touchpoint matters in
-          building trust and adoption.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="post-meta">
-          <time>Coming Soon</time>
-        </div>
-        <h3>📝 Content That Converts</h3>
-        <p>
-          Strategies for technical content that actually drives results. How to
-          balance depth with accessibility while building authentic connections
-          with developer audiences.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="post-meta">
-          <time>Coming Soon</time>
-        </div>
-        <h3>🚀 Building in Public</h3>
-        <p>
-          Lessons learned from leading developer-focused initiatives. The
-          challenges, wins, and insights from building products and communities
-          that developers love.
-        </p>
-      </div>
-      {{ end }}
+  <section class="section">
+    <div class="container">
+      <h2>How I Think</h2>
+      <p>Selected essays and arguments from the archive.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="container-narrow text-center">
-    <h2>Let's Connect</h2>
-    <p>
-      I'm always interested in connecting with fellow builders, creators, and
-      innovators. Whether you want to discuss the future of developer
-      experience, collaborate on ambitious projects, or explore how technology
-      can better serve humanity…
-    </p>
-    <a
-      href="https://www.linkedin.com/in/lindsaybrunner/"
-      class="hero-cta"
-      target="_blank"
-      rel="noopener"
-      >Let's Talk</a
-    >
-  </div>
-</section>
+  <section class="section">
+    <div class="container">
+      <h2>Bring Me Your Weird Content Problem</h2>
+      <p>Open to select freelance and consulting projects.</p>
+    </div>
+  </section>
+</noscript>
+
+{{ $recentThoughts := first 3 (where (where .Site.RegularPages "Type" "thoughts") "Draft" false).ByDate.Reverse }}
+{{ $thoughtItems := slice }}
+{{ range $recentThoughts }}
+  {{ $thoughtItems = $thoughtItems | append (dict
+    "title" .Title
+    "description" (or .Params.subtitle .Params.description .Summary)
+    "date" (.Date.Format "Jan 2, 2006")
+    "href" .RelPermalink
+  ) }}
+{{ end }}
+<script id="homepage-thoughts-data" type="application/json">{{ $thoughtItems | jsonify | safeJS }}</script>
 
 <!-- Person JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -164,9 +81,11 @@
     {{- if and .Site.Params.bluesky (or .Site.Params.linkedin .Site.Params.twitter .Site.Params.github) }},{{ end }}
     {{- if .Site.Params.bluesky }}{{ .Site.Params.bluesky | jsonify }}{{ end }}
   ],
-  "jobTitle": "Content & Developer Relations Leader",
+  "jobTitle": "Freelance Technical Content Strategist",
   "knowsAbout": [
     "Developer Advocacy",
+    "Developer Marketing",
+    "AI Content Workflows",
     "Content Strategy",
     "Technical Writing",
     "Developer Experience"

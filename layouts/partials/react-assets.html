@@ -1,0 +1,26 @@
+{{- $manifestPath := "assets/react/.vite/manifest.json" -}}
+{{- if fileExists $manifestPath -}}
+  {{- $manifest := readFile $manifestPath | transform.Unmarshal -}}
+  {{- with index $manifest . -}}
+    {{- range .imports }}
+      {{- with index $manifest . }}
+        {{- range .css }}
+          {{- with resources.Get (printf "react/%s" .) }}
+            <link rel="stylesheet" href="{{ .RelPermalink }}" />
+          {{- end }}
+        {{- end }}
+        {{- with resources.Get (printf "react/%s" .file) }}
+          <link rel="modulepreload" href="{{ .RelPermalink }}" />
+        {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- range .css }}
+      {{- with resources.Get (printf "react/%s" .) }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" />
+      {{- end }}
+    {{- end }}
+    {{- with resources.Get (printf "react/%s" .file) }}
+      <script type="module" src="{{ .RelPermalink }}"></script>
+    {{- end }}
+  {{- end -}}
+{{- end -}}

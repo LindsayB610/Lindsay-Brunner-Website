@@ -10,7 +10,8 @@
   },
   "scripts": {
     "dev": "hugo server -D --buildFuture --bind 0.0.0.0",
-    "build": "npm run generate:og-images && hugo --gc --minify",
+    "build": "npm run build:react && npm run generate:og-images && hugo --gc --minify --cleanDestinationDir",
+    "build:react": "vite build",
     "generate:og-images": "node scripts/generate-og-images.js",
     "generate:png": "node scripts/generate-png-from-svg.js",
     "generate:substack-banner": "node scripts/generate-substack-banner.js",
@@ -20,6 +21,8 @@
     "test:html": "html-validate public/**/*.html",
     "test:links": "node scripts/check-links.js",
     "test:content": "node tests/content-checks.js",
+    "test:homepage": "node tests/homepage-react-island.test.js",
+    "test:accessibility": "node tests/react-accessibility-render.test.js",
     "test:spell": "node tests/spell-check.js",
     "test:spell:all": "node tests/spell-check.js --all",
     "test:og-images": "node tests/og-image-generation.test.js",
@@ -28,8 +31,10 @@
     "test:nemesis": "node tests/nemesis-tracker.test.js",
     "test:recipe-template": "node tests/recipe-template.test.js",
     "test:dietary": "node tests/dietary-labels.test.js",
-    "test:mobile": "node tests/mobile-responsive.test.js",
-    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json && npm run test:nemesis && npm run test:recipe-template && npm run test:dietary && npm run test:mobile",
+    "test:mobile:static": "node tests/mobile-responsive.test.js",
+    "test:mobile:render": "node tests/react-mobile-render.test.js",
+    "test:mobile": "npm run test:mobile:static && npm run test:mobile:render",
+    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:homepage && npm run test:accessibility && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json && npm run test:nemesis && npm run test:recipe-template && npm run test:dietary && npm run test:mobile",
     "pretest": "npm run build",
     "schedule-posts": "node scripts/schedule-posts.js",
     "check:hugo": "node scripts/check-hugo-version.js",
@@ -39,15 +44,35 @@
     "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {
-    "hugo-bin": "^0.149.2"
+    "@tabler/icons-react": "^3.44.0",
+    "clsx": "^2.1.1",
+    "hugo-bin": "^0.149.2",
+    "lucide-react": "^1.14.0",
+    "motion": "^12.38.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-wrap-balancer": "^1.1.1",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.56",
-    "broken-link-checker": "^0.7.8",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
     "cspell": "^9.4.0",
     "html-validate": "^10.3.0",
     "js-yaml": "^4.1.0",
-    "sharp": "^0.33.0"
+    "linkinator": "^7.6.1",
+    "playwright": "^1.60.0",
+    "shadcn": "^4.7.0",
+    "sharp": "^0.33.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.12"
+  },
+  "overrides": {
+    "file-type": "^21.3.4"
   },
   "engines": {
     "node": ">=18.0.0",

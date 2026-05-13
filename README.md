@@ -14,6 +14,7 @@ This is the source code for Lindsay Brunner's personal website, built with Hugo 
 - [Quick Start](#-quick-start)
 - [Available Scripts](#-available-scripts)
 - [Project Structure](#-project-structure)
+- [React Islands](#-react-islands)
 - [Content Management](#-content-management)
   - [Thoughts](#thoughts)
   - [Nemesis](#nemesis)
@@ -35,7 +36,9 @@ Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
 ## 🛠 Tech Stack
 
 - **Static Site Generator**: [Hugo](https://gohugo.io/) v0.149.2+
+- **Interactive Pages**: React islands bundled with Vite for the homepage and About page
 - **Styling**: Custom CSS with modern design principles and responsive layouts
+- **UI Components**: Aceternity UI components adapted into the local React island layer
 - **Hosting**: [Netlify](https://netlify.com) with continuous deployment
 - **Content Management**: Markdown files with Hugo's content organization
 - **Performance**: Optimized with Hugo's built-in minification and asset processing
@@ -82,15 +85,18 @@ Before you begin, ensure you have the following installed:
 - `npm run dev` - Start the Hugo development server with drafts enabled
 - `npm run start` - Alternative command to start the development server
 - `npm run serve` - Serve the site without draft content
-- `npm run build` - Build the site for production with minification (includes OG image generation)
+- `npm run build:react` - Build the React island bundle with Vite
+- `npm run build` - Build the React islands, generate OG images, then build the Hugo site for production with minification
 - `npm run clean` - Remove the generated `public` directory
 
 ### Testing and validation
 
-- `npm test` - Run all tests (builds site, validates HTML, checks links, validates content, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
+- `npm test` - Run all tests (builds site, validates HTML, checks links, validates content, React islands, accessibility, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
 - `npm run test:content` - Run content validation tests only
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
+- `npm run test:homepage` - Validate the homepage React island integration, fallback behavior, and protected markup
+- `npm run test:accessibility` - Run rendered accessibility checks for the homepage and About page
 - `npm run test:spell` - Spell check modified content files (git diff)
 - `npm run test:spell:all` - Spell check all content files
 - `npm run test:og-images` - OG image generation validation
@@ -99,7 +105,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:nemesis` - Nemesis tracker data and rendered aggregate validation
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
-- `npm run test:mobile` - Mobile and responsive design validation
+- `npm run test:mobile` - Static and rendered mobile/responsive validation
 
 ### Content and asset workflows
 
@@ -137,6 +143,7 @@ Before you begin, ensure you have the following installed:
 ├── layouts/             # Hugo templates
 │   ├── _default/        # Default page layouts
 │   ├── partials/        # Reusable template components
+│   │   └── react-assets.html # Loads Vite-built React island assets
 │   ├── about/           # About page specific layout
 │   ├── nemesis/         # Nemesis tracker layout
 │   ├── thoughts/        # Thoughts section layout
@@ -152,8 +159,16 @@ Before you begin, ensure you have the following installed:
 │   │       └── working-files/  # Editable SVG files for OG images (before PNG conversion)
 │   ├── _headers         # Netlify headers configuration
 │   └── _redirects       # Netlify redirects configuration
+├── src/                 # React island source and Aceternity-derived blocks
+│   ├── block/           # Local component blocks used by React pages
+│   ├── components/      # Shared React UI helpers
+│   └── react/           # Homepage/About entrypoints and island styles
 ├── tests/               # Test files
 │   ├── content-checks.js # Content validation tests
+│   ├── homepage-react-island.test.js # Homepage island source/build guardrails
+│   ├── react-accessibility-render.test.js # Rendered accessibility checks
+│   ├── react-mobile-render.test.js # Rendered mobile checks for React pages
+│   ├── mobile-responsive.test.js # Static responsive CSS checks
 │   ├── nemesis-tracker.test.js # Nemesis tracker data and aggregate validation
 │   ├── spell-check.js   # Spell checking script
 │   ├── og-image-generation.test.js # OG image generation validation
@@ -170,10 +185,48 @@ Before you begin, ensure you have the following installed:
 │   └── check-dependencies.js # Check all dependencies for security and updates
 ├── agents.md            # AI assistant guidelines (for Cursor, Copilot, etc.)
 ├── BRAND.md             # Brand guidelines and design system
+├── components.json      # shadcn/Aceternity registry configuration
 ├── config.toml          # Hugo site configuration
 ├── netlify.toml         # Netlify deployment configuration
 └── package.json         # Node.js dependencies and scripts
 ```
+
+## ⚛️ React Islands
+
+Most of the site is still Hugo-rendered Markdown and templates. The homepage and About page now use React islands for the more designed, interactive sections while preserving Hugo as the publishing system for thoughts, recipes, RSS, SEO, and Netlify deploys.
+
+### How the islands are mounted
+
+- `layouts/index.html` provides the homepage mount point: `#homepage-root`
+- `layouts/about/single.html` provides the About page mount point: `#about-root`
+- `layouts/partials/react-assets.html` reads the Vite manifest and loads the correct hashed JS/CSS files
+- `src/react/homepage.tsx` and `src/react/about.tsx` are the React entrypoints
+- `src/react/styles.css` contains scoped React-island styles, including reduced-motion handling
+- The Hugo templates include `<noscript>` fallbacks so the pages still have meaningful content without JavaScript
+
+### Working locally
+
+For content-only changes, `npm run dev` is enough. For React island changes, rebuild the island bundle before refreshing Hugo:
+
+```bash
+npm run build:react
+npm run dev
+```
+
+For production parity, use `npm run build`, which builds React first, then generates OG images, then builds Hugo.
+
+### Aceternity setup
+
+Aceternity components are pulled through the shadcn registry flow and adapted into `src/`. The registry configuration lives in `components.json`.
+
+Do not commit an Aceternity API key directly to the repo. If the registry needs authentication, keep the key in your local machine or user-level tooling configuration, then use the documented Aceternity/shadcn command from the component page.
+
+### Guardrails
+
+- Keep thoughts, recipes, RSS, and standard content pages Hugo-native unless there is a specific reason to make a React island.
+- Keep homepage and About React styles scoped to `#homepage-root` and `#about-root` so the rest of the site does not inherit island-specific behavior.
+- Maintain reduced-motion support for moving logos, quote rotations, shader/canvas effects, and CSS transitions.
+- Preserve the `<noscript>` fallbacks, but do not render fallback content visibly when JavaScript is enabled.
 
 ## ✍️ Content Management
 
@@ -621,6 +674,9 @@ The site uses custom CSS located in `static/css/`:
 
 - `main.css` - Core styles, layout, and responsive design
 - `custom.css` - Custom styling and overrides
+- `src/react/styles.css` - Scoped styles for the homepage and About React islands
+
+React island styles should stay scoped to their mount roots. Shared header, footer, content list, recipe, thought, and print styles should stay in `static/css/`.
 
 ### Responsive Design Features
 
@@ -670,6 +726,23 @@ The test suite includes:
 - Mobile-specific style patterns
 - Responsive image handling
 - Mobile layout fixes (404 page, featured posts, etc.)
+
+**Rendered mobile checks** (`tests/react-mobile-render.test.js`):
+- Uses Playwright to render the homepage and About page at mobile viewports
+- Checks for horizontal overflow and clipped content
+- Verifies tap targets remain usable
+- Guards homepage and About page layout regressions in the React islands
+
+**React island integration** (`tests/homepage-react-island.test.js`):
+- Validates homepage React mount behavior and no-JavaScript fallback structure
+- Checks protected homepage source patterns, including the H1 gradient and reduced-motion wiring
+- Confirms the React bundle and Vite manifest are present after build
+
+**Rendered accessibility checks** (`tests/react-accessibility-render.test.js`):
+- Uses Playwright to render the homepage and About page
+- Checks landmark structure, visible H1s, heading order, button/link names, image alt text, and focusable content hidden from assistive technology
+- Validates direct text contrast against WCAG thresholds where contrast can be measured from computed styles
+- Runs with `prefers-reduced-motion: reduce` to keep animation-sensitive states covered
 
 **Content validation** (`tests/content-checks.js` - modular structure in `tests/content-checks/`):
 

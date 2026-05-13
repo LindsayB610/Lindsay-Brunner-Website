@@ -1,0 +1,73 @@
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+@theme {
+  --font-sans: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas", monospace;
+
+  --color-site-black: #000000;
+  --color-site-surface: #0f0f0f;
+  --color-site-surface-raised: #1a1a1a;
+  --color-site-border: #3d3d3d;
+  --color-site-text: #ffffff;
+  --color-site-muted: #cccccc;
+  --color-brand-red: #ff0037;
+  --color-brand-pink: #ff1b8d;
+  --color-brand-yellow: #ffdd00;
+  --color-brand-orange: #ff8800;
+}
+
+@layer base {
+  #homepage-root {
+    background: #000000;
+    color: #ffffff;
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  }
+
+  #homepage-root * {
+    box-sizing: border-box;
+  }
+
+  #homepage-root :where(p, h1, h2, h3, h4, h5, h6),
+  #about-root :where(p, h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+  }
+
+}
+
+#homepage-root a::after,
+#about-root a::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+}
+
+#about-root h1 {
+  background: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+#about-root .about-name-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-brand-red) 0%,
+    var(--color-brand-pink) 50%,
+    var(--color-brand-yellow) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #homepage-root *,
+  #about-root * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

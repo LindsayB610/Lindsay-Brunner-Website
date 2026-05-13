@@ -4,10 +4,10 @@ const { homepagePath } = require('./utils');
 function checkRecentThoughtsSection() {
   try {
     const homepageContent = fs.readFileSync(homepagePath, 'utf8');
-    const expectedText = 'Recent Thoughts';
+    const expectedText = 'How I Think';
 
     if (homepageContent.includes(expectedText)) {
-      console.log('✅ "Recent Thoughts" section found on homepage.');
+      console.log('✅ "How I Think" section found on homepage.');
     } else {
       console.error(`❌ "${expectedText}" section NOT found on homepage.`);
       process.exit(1);
@@ -26,18 +26,18 @@ function checkHomepageContent() {
     const errors = [];
     
     // Check for hero section
-    if (!homepageContent.includes('Lindsay Brunner')) {
-      errors.push('Hero section with name not found');
+    if (!homepageContent.includes('Complex technical ideas, made clear enough to trust.')) {
+      errors.push('Hero positioning headline not found');
     }
     
-    // Check for "Recent Thoughts" section
-    if (!homepageContent.includes('Recent Thoughts')) {
-      errors.push('"Recent Thoughts" section not found');
+    // Check for selected writing section
+    if (!homepageContent.includes('How I Think')) {
+      errors.push('"How I Think" section not found');
     }
     
-    // Check for "Let's Connect" section
-    if (!homepageContent.includes("Let's Connect")) {
-      errors.push('"Let\'s Connect" section not found');
+    // Check for consulting CTA section
+    if (!homepageContent.includes('Bring Me Your Weird Content Problem')) {
+      errors.push('"Bring Me Your Weird Content Problem" section not found');
     }
     
     // Check for hero CTA
