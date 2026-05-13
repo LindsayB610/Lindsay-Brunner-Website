@@ -1,7 +1,48 @@
 {{ define "main" }}
-<section class="section">
-  <div class="container-narrow">
-    <div class="about-content">{{ .Content }}</div>
-  </div>
-</section>
+<div id="about-root"></div>
+<noscript>
+  <section class="section about-devpro-fallback">
+    <div class="container">
+      <div class="about-devpro-fallback__intro">
+        <div>
+          <h1>
+            Hey, I'm <span>Lindsay Brunner</span>, a writer, editor, and
+            DevRel-shaped content person in the San Francisco Bay Area.
+          </h1>
+          <div class="about-content">{{ .Content }}</div>
+        </div>
+        <img
+          src="/images/avatar-color-trans.png"
+          alt="Lindsay Brunner"
+          class="about-devpro-fallback__image"
+        />
+      </div>
+      <div class="about-devpro-fallback__timeline">
+      <h2>Here's the timeline version</h2>
+        <ol>
+          <li><strong>Jan 2022-present:</strong> Consultant + Advisor at lindsaybrunner.com.</li>
+          <li><strong>Apr 2025-Jan 2026:</strong> Head of Content at Builder.io.</li>
+          <li><strong>Mar-Aug 2025:</strong> Advisor at Braze.</li>
+          <li><strong>Aug 2023-Jan 2025:</strong> Head of Content and Developer Relations at ngrok.</li>
+          <li><strong>Jan 2022-Jul 2023:</strong> Head of Marketing at Architect.io.</li>
+          <li><strong>Mar 2020-Jan 2022:</strong> Director, Content + Advocacy at Split.</li>
+          <li><strong>Nov 2020-May 2021:</strong> Advisor at Architect.io.</li>
+          <li><strong>Before 2020:</strong> Stormpath and Okta developer content programs.</li>
+        </ol>
+      </div>
+      <div class="text-center">
+        <h2>Bring Me Your Weird Content Problem</h2>
+        <p>Open to select freelance and consulting projects.</p>
+        <a
+          href="https://www.linkedin.com/in/lindsaybrunner/"
+          class="hero-cta"
+          target="_blank"
+          rel="noopener"
+        >
+          Start the conversation
+        </a>
+      </div>
+    </div>
+  </section>
+</noscript>
 {{ end }}

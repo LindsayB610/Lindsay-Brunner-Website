@@ -35,6 +35,84 @@ section.hero h1,
   background-size: 80% 100% !important;
 }
 
+.page-home .hero h1 {
+  color: #fff;
+  background: none;
+  -webkit-text-fill-color: #fff;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-size: clamp(2.75rem, 6.5vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.about-devpro-fallback {
+  background: #000;
+}
+
+.about-devpro-fallback__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-devpro-fallback__intro h1 {
+  color: #fff;
+  background: none;
+  -webkit-text-fill-color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: clamp(2.1rem, 3.8vw, 3.9rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+  margin-bottom: 3rem;
+}
+
+.about-devpro-fallback__intro h1 span {
+  background: var(--gradient-main);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-devpro-fallback__image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 1.75rem;
+  background: rgba(255, 27, 141, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-devpro-fallback__timeline {
+  margin: 6rem 0;
+}
+
+.about-devpro-fallback__timeline h2 {
+  color: #fff;
+  background: none;
+  -webkit-text-fill-color: #fff;
+}
+
+.about-devpro-fallback__timeline ol {
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+}
+
+.about-devpro-fallback__timeline li {
+  color: var(--dark-text-secondary);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .about-devpro-fallback__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .about-devpro-fallback__image {
+    max-width: 260px;
+  }
+}
+
 /* Fix article page h1 gradients - ensure natural gradient flow */
 article.section h1,
 article.section header h1,

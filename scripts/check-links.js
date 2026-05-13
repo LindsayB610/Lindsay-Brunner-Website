@@ -3,7 +3,7 @@
 /**
  * Check Links Script
  *
- * Starts a Hugo dev server, waits for it to be ready, runs broken-link-checker
+ * Starts a Hugo dev server, waits for it to be ready, runs linkinator
  * against localhost:1313, then stops the server. Used by `npm run test:links`.
  *
  * Run with: npm run test:links
@@ -13,20 +13,33 @@ const { spawn, execSync } = require('child_process');
 const http = require('http');
 const path = require('path');
 
-const PORT = 1313;
-const BASE_URL = `http://localhost:${PORT}`;
+const PORT = Number(process.env.LINK_CHECK_PORT || 1314);
+const BASE_URL = `http://127.0.0.1:${PORT}`;
 const READY_TIMEOUT_MS = 30_000;
 const POLL_INTERVAL_MS = 300;
-/** Max time for the broken-link-checker crawl; prevents test suite from hanging. */
+/** Max time for the linkinator crawl; prevents test suite from hanging. */
 const LINK_CHECK_TIMEOUT_MS = 60_000; // 1 minute (66 pages should finish well under this)
 
-function clearPort() {
+function clearPort(projectRoot) {
   try {
-    // Try to find and kill any process using the port
-    const pid = execSync(`lsof -ti:${PORT}`, { encoding: 'utf8', stdio: 'pipe' }).trim();
-    if (pid) {
-      console.log(`Found process ${pid} on port ${PORT}, killing it...`);
-      execSync(`kill -9 ${pid}`, { stdio: 'pipe' });
+    // Try to find any Hugo process from this project using the port. lsof can
+    // also return browser helper processes with open connections, so do not
+    // blindly kill every PID on the port.
+    const pids = execSync(`lsof -ti:${PORT}`, { encoding: 'utf8', stdio: 'pipe' })
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    const hugoPids = pids.filter((pid) => {
+      try {
+        const command = execSync(`ps -p ${pid} -o command=`, { encoding: 'utf8', stdio: 'pipe' });
+        return command.includes('hugo') && command.includes(projectRoot);
+      } catch (err) {
+        return false;
+      }
+    });
+    if (hugoPids.length > 0) {
+      console.log(`Found Hugo process ${hugoPids.join(', ')} on port ${PORT}, killing it...`);
+      execSync(`kill -9 ${hugoPids.join(' ')}`, { stdio: 'pipe' });
       // Give it a moment to fully release the port
       return new Promise((resolve) => setTimeout(resolve, 1000));
     }
@@ -107,14 +120,15 @@ function startServerAndCheck(projectRoot, retry = false) {
   currentHugo = spawn(hugoBinary, ['server', '--port', String(PORT)], {
     cwd: projectRoot,
     stdio: 'pipe',
-    shell: true,
+    shell: false,
   });
+  let hugoOutput = '';
 
   currentHugo.on('error', async (err) => {
     console.error('Failed to start Hugo server:', err.message);
     if (!retry) {
       console.log('Attempting to clear port and retry...');
-      await clearPort();
+      await clearPort(projectRoot);
       startServerAndCheck(projectRoot, true);
     } else {
       process.exit(1);
@@ -122,9 +136,15 @@ function startServerAndCheck(projectRoot, retry = false) {
   });
 
   let resolved = false;
+  currentHugo.stdout?.on('data', (chunk) => {
+    const text = chunk.toString();
+    hugoOutput += text;
+    if (resolved) process.stdout.write(chunk);
+  });
   currentHugo.stderr?.on('data', (chunk) => {
-    if (!resolved) return;
-    process.stderr.write(chunk);
+    const text = chunk.toString();
+    hugoOutput += text;
+    if (resolved) process.stderr.write(chunk);
   });
 
   if (retry) {
@@ -137,20 +157,32 @@ function startServerAndCheck(projectRoot, retry = false) {
     .then(() => {
       resolved = true;
       console.log('Server ready. Running link check (max %ds)...\n', LINK_CHECK_TIMEOUT_MS / 1000);
-      const blc = spawn(
+      const linkinator = spawn(
         'npx',
-        ['blc', '--recursive', '--exclude-external', '--filter-level', '2', '--exclude', 'index.xml', BASE_URL],
-        { cwd: projectRoot, stdio: 'inherit', shell: true }
+        [
+          'linkinator',
+          BASE_URL,
+          '--recurse',
+          '--skip',
+          'index\\.xml$',
+          '--skip',
+          `^https?://(?!(localhost|127\\.0\\.0\\.1):${PORT})`,
+          '--timeout',
+          '10000',
+          '--verbosity',
+          'warning',
+        ],
+        { cwd: projectRoot, stdio: 'inherit', shell: false }
       );
       const linkCheckTimeout = setTimeout(() => {
-        if (blc.kill) {
+        if (linkinator.kill) {
           console.error('\nError: Link check did not finish within %ds. Stopping to avoid hanging.', LINK_CHECK_TIMEOUT_MS / 1000);
-          blc.kill('SIGKILL');
+          linkinator.kill('SIGKILL');
         }
         cleanup();
         process.exit(1);
       }, LINK_CHECK_TIMEOUT_MS);
-      blc.on('close', (code, signal) => {
+      linkinator.on('close', (code, signal) => {
         clearTimeout(linkCheckTimeout);
         cleanup();
         process.exit(code !== null && code !== undefined ? code : 1);
@@ -163,10 +195,13 @@ function startServerAndCheck(projectRoot, retry = false) {
       if (!retry && err.message.includes('did not become ready')) {
         console.error('Error:', err.message);
         console.log('Attempting to clear port and retry...');
-        await clearPort();
+        await clearPort(projectRoot);
         startServerAndCheck(projectRoot, true);
       } else {
         console.error('Error:', err.message);
+        if (hugoOutput.trim()) {
+          console.error('\nHugo output before timeout:\n%s', hugoOutput.trim());
+        }
         process.exit(1);
       }
     });

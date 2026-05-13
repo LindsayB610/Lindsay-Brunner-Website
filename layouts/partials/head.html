@@ -83,6 +83,8 @@
 {{- $assetVersion := now.Unix -}}
 <link rel="stylesheet" href="/css/main.css?v={{ $assetVersion }}" />
 <link rel="stylesheet" href="/css/custom.css?v={{ $assetVersion }}" />
+{{ if .IsHome }}{{ partial "react-assets.html" "src/react/homepage.tsx" }}{{ end }}
+{{ if eq .RelPermalink "/about/" }}{{ partial "react-assets.html" "src/react/about.tsx" }}{{ end }}
 
 <!-- Favicons -->
 <link

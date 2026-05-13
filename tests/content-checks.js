@@ -42,6 +42,12 @@ const {
 } = require('./content-checks/rss-links');
 
 const {
+  validateFooterStructure,
+  validateFooterLogoStyles,
+  validateFooterSocialAndRSSLinks
+} = require('./content-checks/footer');
+
+const {
   validateAllPagesHaveOGImages
 } = require('./content-checks/og-images');
 
@@ -72,6 +78,9 @@ async function runAllTests() {
   validateRSSFeed();
   validateRecipesRSSFeed();
   validateContextAwareRSSLinks();
+  validateFooterStructure();
+  validateFooterLogoStyles();
+  validateFooterSocialAndRSSLinks();
   validateSitemap();
   validateAboutPage();
   validate404Page();
