@@ -96,6 +96,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
 - `npm run test:homepage` - Validate the homepage React island integration, fallback behavior, and protected markup
+- `npm run test:default-branch` - Guard docs, templates, scripts, and config against deprecated default-branch references
 - `npm run test:accessibility` - Run rendered accessibility checks for the homepage and About page
 - `npm run test:spell` - Spell check modified content files (git diff)
 - `npm run test:spell:all` - Spell check all content files
@@ -737,6 +738,10 @@ The test suite includes:
 - Validates homepage React mount behavior and no-JavaScript fallback structure
 - Checks protected homepage source patterns, including the H1 gradient and reduced-motion wiring
 - Confirms the React bundle and Vite manifest are present after build
+
+**Default branch references** (`tests/default-branch-references.test.js`):
+- Guards docs, templates, scripts, workflows, and config against deprecated default-branch references
+- Keeps GitHub links and deployment docs aligned to `main`
 
 **Rendered accessibility checks** (`tests/react-accessibility-render.test.js`):
 - Uses Playwright to render the homepage and About page

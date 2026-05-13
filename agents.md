@@ -200,6 +200,7 @@ npm test           # Run all tests (HTML, links, content, spell check, OG images
 - `npm run test:og-images` - OG image generation validation
 - `npm run test:schedule` - Scheduled posts workflow validation
 - `npm run test:search-json` - Recipe search JSON index validation
+- `npm run test:default-branch` - Default branch reference validation
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm test` - Run all tests (includes pretest build step)
 
@@ -342,6 +343,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **tests/og-image-generation.test.js**: OG image generation validation
 - **tests/schedule-posts.test.js**: Scheduled posts workflow validation
 - **tests/recipe-search-json.test.js**: Recipe search JSON index validation
+- **tests/default-branch-references.test.js**: Default branch reference validation
 - **tests/recipe-template.test.js**: Recipe template structure validation
 - **tests/dietary-labels.test.js**: Dietary label validation (allowed values only; base recipe only)
 - **scripts/schedule-posts.js**: Auto-publish scheduled posts script
