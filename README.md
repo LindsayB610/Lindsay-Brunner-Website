@@ -842,7 +842,7 @@ If you're using an AI assistant to work on this project, refer to `agents.md` fo
 
 ## 🔄 Deployment
 
-The site is automatically deployed to Netlify when changes are pushed to the master branch. The deployment process includes:
+The site is automatically deployed to Netlify when changes are pushed to the main branch. The deployment process includes:
 
 1. Building the site with Hugo
 2. Minifying assets

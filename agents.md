@@ -320,7 +320,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **Social Images**: Place in `static/images/social/`, reference with leading slash
 - **Raw HTML**: Allowed in content (config has `unsafe = true`)
 - **Build**: Always run `npm run build` before testing
-- **Deployment**: Automatic via Netlify on push to master
+- **Deployment**: Automatic via Netlify on push to main
 - **Scheduled Posts**: Posts with `draft: true` and future dates will auto-publish via GitHub Actions (runs twice daily at 13:00 and 14:00 UTC to cover both PDT and PST). See README.md for details.
 - **Recipe Search JSON**: A JSON index is automatically generated at `/recipes/index.json` for client-side recipe search functionality. The index includes recipe metadata and is validated by tests.
 - **Recipe Print Functionality**: Recipe pages include print icon button (top-right) and print/email buttons (bottom). Print stylesheet automatically optimizes layout for printing. Print and email actions are tracked in Plausible Analytics. See README.md for details.
@@ -363,4 +363,3 @@ See `BRAND.md` for complete brand guidelines. Key points:
 3. Check BRAND.md for design constraints
 4. Check CONTENT_STYLE_GUIDE.md for writing style and voice guidelines
 5. Preserve existing conventions unless explicitly asked to change them
-

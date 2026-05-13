@@ -328,7 +328,7 @@ async function main() {
     errors.push(`Nemesis layout not found at ${layoutPath}`);
   } else {
     const layoutSource = fs.readFileSync(layoutPath, 'utf8');
-    const newFileUrlMatch = layoutSource.match(/href="([^"]*github\.com\/LindsayB610\/Lindsay-Brunner-Website\/new\/master\/data\/nemesis\/sessions[^"]*)"/);
+    const newFileUrlMatch = layoutSource.match(/href="([^"]*github\.com\/LindsayB610\/Lindsay-Brunner-Website\/new\/main\/data\/nemesis\/sessions[^"]*)"/);
 
     if (!newFileUrlMatch) {
       failed++;
