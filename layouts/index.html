@@ -1,6 +1,16 @@
 {{ define "main" }}
-<div id="homepage-root"></div>
-<noscript>
+{{ $recentThoughts := first 3 (where (where .Site.RegularPages "Type" "thoughts") "Draft" false).ByDate.Reverse }}
+{{ $thoughtItems := slice }}
+{{ range $recentThoughts }}
+  {{ $thoughtItems = $thoughtItems | append (dict
+    "title" .Title
+    "description" (or .Params.subtitle .Params.description .Summary)
+    "date" (.Date.Format "Jan 2, 2006")
+    "href" .RelPermalink
+  ) }}
+{{ end }}
+
+<div id="homepage-root">
   <section class="hero">
     <div class="container">
       <p>
@@ -20,48 +30,80 @@
       >
         Talk to me about a project
       </a>
+      <a href="/thoughts/" class="hero-cta hero-cta-secondary">Read my blog</a>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <h2>What I Do</h2>
-      <p>Developer marketing strategy, technical content, content systems, and AI workflows.</p>
+      <p>
+        Write, edit, and improve the systems and tooling your teams are already
+        using to reach technical audiences.
+      </p>
+      <ul>
+        <li><strong>AI-era content workflows:</strong> prompts, review loops, and drafting systems that help marketers use AI without outsourcing their judgment.</li>
+        <li><strong>Technical content:</strong> technical blogs, product explainers, tutorials, and long-form assets based on the work you're already doing.</li>
+        <li><strong>Ghostwriting and POV:</strong> founder, executive, and practitioner writing with a real argument, not warmed-over LinkedIn mush.</li>
+        <li><strong>Content rescue missions:</strong> messy strategy, scattered docs, unclear narrative, or drafts that only Claude could love.</li>
+        <li><strong>Developer marketing strategy:</strong> positioning, audience maps, content plans, and launch narratives for products that need developer trust.</li>
+        <li><strong>Developer audience research:</strong> sharper reads on what technical buyers, builders, and skeptical practitioners actually need to hear.</li>
+        <li><strong>Editorial systems:</strong> workflow cleanup, content audits, message architecture, and repeatable systems for teams shipping a lot.</li>
+        <li><strong>Mentorship and enablement:</strong> guidance for content marketers learning dev audiences, plus practical AI workflow coaching for traditional teams.</li>
+      </ul>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <h2>Experience</h2>
-      <p>Okta, Braze, Builder.io, ngrok, and Split.</p>
+      <h2>Trusted by the best</h2>
+      <p>Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, and Split.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <h2>How I Think</h2>
-      <p>Selected essays and arguments from the archive.</p>
+      <p>Samples beat adjectives.</p>
+      <div class="featured-grid">
+        {{ range $thoughtItems }}
+          <article>
+            <p>{{ .date }}</p>
+            <h3><a href="{{ .href }}">{{ .title }}</a></h3>
+            <p>{{ .description }}</p>
+          </article>
+        {{ end }}
+      </div>
+      <p><a href="/thoughts/">Read more thoughts</a></p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <h2>Bring Me Your Weird Content Problem</h2>
-      <p>Open to select freelance and consulting projects.</p>
+      <p>
+        Useful product, messy story, skeptical technical audience, content
+        system held together with vibes and one heroic spreadsheet? Perfect.
+        Let's talk.
+      </p>
+      <ul>
+        <li>Developer marketing and technical content strategy</li>
+        <li>Mentorship for content marketers working with developer audiences</li>
+        <li>Content audits, editorial systems, and AI workflow design</li>
+      </ul>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/lindsaybrunner/"
+          target="_blank"
+          rel="noopener"
+        >
+          Start on LinkedIn
+        </a>
+        <a href="/about/">More about me</a>
+      </p>
     </div>
   </section>
-</noscript>
-
-{{ $recentThoughts := first 3 (where (where .Site.RegularPages "Type" "thoughts") "Draft" false).ByDate.Reverse }}
-{{ $thoughtItems := slice }}
-{{ range $recentThoughts }}
-  {{ $thoughtItems = $thoughtItems | append (dict
-    "title" .Title
-    "description" (or .Params.subtitle .Params.description .Summary)
-    "date" (.Date.Format "Jan 2, 2006")
-    "href" .RelPermalink
-  ) }}
-{{ end }}
+</div>
 <script id="homepage-thoughts-data" type="application/json">{{ $thoughtItems | jsonify | safeJS }}</script>
 
 <!-- Person JSON-LD Structured Data -->
@@ -69,17 +111,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": {{ .Site.Params.author | jsonify }},
-  "url": {{ .Site.BaseURL | jsonify }},
-  "description": {{ .Site.Params.description | jsonify }},
+  "name": {{ .Site.Params.author | jsonify | safeJS }},
+  "url": {{ .Site.BaseURL | jsonify | safeJS }},
+  "description": {{ .Site.Params.description | jsonify | safeJS }},
   "sameAs": [
-    {{- if .Site.Params.linkedin }}{{ .Site.Params.linkedin | jsonify }}{{ end }}
+    {{- if .Site.Params.linkedin }}{{ .Site.Params.linkedin | jsonify | safeJS }}{{ end }}
     {{- if and .Site.Params.linkedin .Site.Params.twitter }},{{ end }}
-    {{- if .Site.Params.twitter }}{{ .Site.Params.twitter | jsonify }}{{ end }}
+    {{- if .Site.Params.twitter }}{{ .Site.Params.twitter | jsonify | safeJS }}{{ end }}
     {{- if and .Site.Params.github (or .Site.Params.linkedin .Site.Params.twitter) }},{{ end }}
-    {{- if .Site.Params.github }}{{ .Site.Params.github | jsonify }}{{ end }}
+    {{- if .Site.Params.github }}{{ .Site.Params.github | jsonify | safeJS }}{{ end }}
     {{- if and .Site.Params.bluesky (or .Site.Params.linkedin .Site.Params.twitter .Site.Params.github) }},{{ end }}
-    {{- if .Site.Params.bluesky }}{{ .Site.Params.bluesky | jsonify }}{{ end }}
+    {{- if .Site.Params.bluesky }}{{ .Site.Params.bluesky | jsonify | safeJS }}{{ end }}
   ],
   "jobTitle": "Freelance Technical Content Strategist",
   "knowsAbout": [

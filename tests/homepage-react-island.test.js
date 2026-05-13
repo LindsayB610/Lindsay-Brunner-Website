@@ -123,7 +123,7 @@ function getPageKind(relativePath) {
 }
 
 function checkBuiltFallbacks() {
-  console.log('🏠 Checking built homepage and about fallbacks...');
+  console.log('🏠 Checking built homepage and about static island content...');
 
   assert(exists('public/index.html'), 'public/index.html should exist. Run npm run build first.');
   assert(exists('public/about/index.html'), 'public/about/index.html should exist. Run npm run build first.');
@@ -141,22 +141,50 @@ function checkBuiltFallbacks() {
     'Freelance Technical Content Strategist',
     'Developer Marketing',
     'AI Content Workflows',
+    'AI-era content workflows',
+    'Ghostwriting and POV',
+    'Developer audience research',
+    'Mentorship and enablement',
+    'Trusted by the best',
+    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, and Split.',
+    'Samples beat adjectives',
+    'Start on LinkedIn',
   ].forEach((expected) => assertIncludes(home, expected, 'built homepage'));
 
   [
     'Bring Me Your Weird Content Problem',
     'Start the conversation',
+    'A freelance practice for technical content, developer marketing, and AI-era editorial systems.',
+    'Went deep on AI, content strategy, and the new shape of technical storytelling.',
+    'Owned the messy middle where content, DevRel, product, and go-to-market meet.',
+    'Built the foundation in developer content, technical editing, and audience trust.',
+    'Read my blog',
   ].forEach((expected) => assertIncludes(about, expected, 'built about page'));
 
   assert(
-    /<div id=homepage-root><\/div><noscript>/.test(home) ||
-      /<div id=["']homepage-root["']><\/div>\s*<noscript>/.test(home),
-    'built homepage should include an empty homepage React mount point before the no-JS fallback',
+    /<div id=homepage-root>\s*<section class=hero>/.test(home) ||
+      /<div id=["']homepage-root["']>\s*<section class=["']hero["']>/.test(home),
+    'built homepage should include meaningful static HTML inside the React mount point',
   );
   assert(
-    /<div id=about-root><\/div><noscript>/.test(about) ||
-      /<div id=["']about-root["']><\/div>\s*<noscript>/.test(about),
-    'built about page should include an empty about React mount point before the no-JS fallback',
+    /<div id=about-root>\s*<section class="section about-devpro-fallback">/.test(about) ||
+      /<div id=["']about-root["']>\s*<section class=["']section about-devpro-fallback["']>/.test(about),
+    'built about page should include meaningful static HTML inside the React mount point',
+  );
+  assertNotIncludes(
+    home,
+    '<noscript>',
+    'built homepage should not depend on noscript for machine-readable content',
+  );
+  assertNotIncludes(
+    about,
+    '<noscript>',
+    'built about page should not depend on noscript for machine-readable content',
+  );
+  assertNotIncludes(
+    home,
+    '\\"Lindsay Brunner\\"',
+    'homepage JSON-LD should not double-encode the author name',
   );
   assert(
     /<script[^>]+type=["']?module["']?[^>]+src=["']?\/react\/assets\/homepage-[^"'>]+\.js["']?[^>]*>/.test(home),
