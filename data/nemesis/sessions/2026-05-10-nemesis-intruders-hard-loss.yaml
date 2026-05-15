@@ -1,0 +1,51 @@
+# Replace everything marked REPLACE-ME before committing.
+# Update the filename too. Example: 2026-03-29-nemesis-intruders-easy-loss.yaml
+#
+# Allowed values
+# game: nemesis | lockdown
+# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
+# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# board: easy | hard
+# result: win | loss
+# players: 2 | 3 | 4
+# final_state_image: optional path like /images/nemesis/session-photos/your-file.jpg
+
+date: "2026-05-10"
+game: "nemesis"
+setup: "intruders"
+board: "hard"
+result: "loss"
+players: 3
+# final_state_image: "/images/nemesis/session-photos/REPLACE-ME.jpg"
+note: "INCIDENT REPORT — USS NEMESIS
+
+Crew Manifest:
+
+* Convict
+* Bounty Hunter
+* Psychologist
+
+Primary Objectives:
+
+* Destroy the Nest
+* Confirm absence of additional survivors
+* Ensure course to Earth remained intact
+
+⸻
+
+Initial operations proceeded toward the engine sector while the Bounty Hunter deployed a drone to scout the cockpit wing remotely. Early contact with Intruders occurred during transit. Several hostile organisms were neutralized through coordinated engagement.
+
+Laboratory analysis identified multiple biological weaknesses within the Intruder species, improving overall combat readiness.
+
+Shipboard conditions deteriorated as fires spread across multiple sections. The crew successfully utilized the vessel’s fire suppression systems to contain several outbreaks and repeatedly forced Intruders to retreat from secured areas.
+
+Engine inspection was completed under increasing hostile pressure. During the operation, the Psychologist became isolated and was overwhelmed by an Adult Intruder. Recovery efforts were initiated immediately, with surviving crew members attempting transport to the Emergency Room for revival procedures.
+
+Before medical recovery could be completed, uncontrolled fire escalation triggered catastrophic systems failure. The USS Nemesis suffered total destruction before evacuation or mission completion could occur.
+
+⸻
+
+MISSION STATUS: FAILURE
+SHIP STATUS: DESTROYED
+SURVIVORS: NONE
+FINAL TRANSMISSION: SIGNAL LOST"
