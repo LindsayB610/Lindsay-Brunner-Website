@@ -34,6 +34,7 @@ async function run() {
   const config = functionModule.config;
   const exportChatWithExporter = adapterModule.exportChatWithExporter;
   const buildExportFilename = adapterModule.buildExportFilename;
+  const buildPdfMetaLine = adapterModule.buildPdfMetaLine;
 
   assert(source.includes('export default async'), 'Netlify function should use modern default export syntax', failures);
   assert(source.includes('export const config'), 'Netlify function should export config', failures);
@@ -56,9 +57,29 @@ async function run() {
   assert(typeof handleExportChatRequest === 'function', 'Netlify function should expose an injectable request handler for tests', failures);
   assert(typeof exportChatWithExporter === 'function', 'exporter adapter should expose exportChatWithExporter', failures);
   assert(typeof buildExportFilename === 'function', 'exporter adapter should expose filename builder for tests', failures);
+  assert(typeof buildPdfMetaLine === 'function', 'exporter adapter should expose PDF metadata builder for tests', failures);
 
   assert(buildExportFilename('My Excellent Thread!', 'md') === 'my-excellent-thread-export.md', 'export filename should use a slugged transcript title', failures);
   assert(buildExportFilename('', 'pdf') === 'chatgpt-thread-export.pdf', 'export filename should fall back for empty titles', failures);
+  assert(
+    buildPdfMetaLine({
+      exportedAt: '2026-05-15T01:30:41.000Z',
+      turns: [
+        { timestamp: '2026-05-13T10:00:00.000Z' },
+        { timestamp: '2026-05-13T10:04:00.000Z' },
+      ],
+    }) === 'Conversation: May 13, 2026',
+    'serverless PDF metadata should prefer the CLI-style conversation date when turn timestamps exist',
+    failures,
+  );
+  assert(
+    buildPdfMetaLine({
+      exportedAt: '2026-05-15T18:30:41.000Z',
+      turns: [],
+    }) === 'Exported: May 15, 2026',
+    'serverless PDF metadata should fall back to an exported date when no conversation timestamps exist',
+    failures,
+  );
 
   const getResponse = await handler(new Request('https://lindsaybrunner.com/api/export-chat', { method: 'GET' }), {});
   assert(getResponse.status === 405, 'GET /api/export-chat should return 405', failures);

@@ -2,7 +2,12 @@ import type { AiChatExportRequest } from "../../../src/lib/ai-chat-exporter";
 
 type PipelineArtifacts = {
   transcript?: {
+    exportedAt?: string;
+    sourceUrl?: string;
     title?: string;
+    turns?: Array<{
+      timestamp?: string;
+    }>;
   };
   outputFormat: "markdown" | "pdf";
   outputContent: string | Uint8Array;
@@ -59,6 +64,21 @@ export function buildExportFilename(title: string | undefined, extension: "md" |
   return `${slug ? `${slug}-export` : "chatgpt-thread-export"}.${extension}`;
 }
 
+export function buildPdfMetaLine(transcript: {
+  exportedAt?: string;
+  turns?: Array<{ timestamp?: string }>;
+}) {
+  const conversationRange = formatConversationRange(
+    (transcript.turns || []).map((turn) => turn.timestamp),
+  );
+
+  if (conversationRange) {
+    return `Conversation: ${conversationRange}`;
+  }
+
+  return `Exported: ${formatDateOnly(transcript.exportedAt || new Date().toISOString())}`;
+}
+
 function slugify(value: string) {
   const slug = value
     .normalize("NFKD")
@@ -110,9 +130,7 @@ async function renderPdfWithServerlessPdfKit(transcript: any) {
   doc.fillColor("#6b7280").font("Helvetica").fontSize(9);
   doc.text("ChatGPT Export", { continued: false });
   doc.text(`Source: ${transcript.sourceUrl || ""}`);
-  if (transcript.exportedAt) {
-    doc.text(`Exported: ${new Date(transcript.exportedAt).toLocaleString("en-US")}`);
-  }
+  doc.text(buildPdfMetaLine(transcript));
   doc.moveDown(1.1);
 
   for (const turn of transcript.turns || []) {
@@ -195,4 +213,47 @@ function labelForRole(role: string) {
   if (role === "system") return "System";
   if (role === "tool") return "Tool";
   return role || "Message";
+}
+
+function formatConversationRange(timestamps: Array<string | undefined>) {
+  const dates = timestamps
+    .filter((value): value is string => typeof value === "string")
+    .map((value) => new Date(value))
+    .filter((date) => !Number.isNaN(date.getTime()))
+    .sort((a, b) => a.getTime() - b.getTime());
+
+  if (dates.length === 0) {
+    return null;
+  }
+
+  const start = dates[0];
+  const end = dates[dates.length - 1];
+
+  if (isSameDay(start, end)) {
+    return formatDateOnly(start.toISOString());
+  }
+
+  return `${formatDateOnly(start.toISOString())} to ${formatDateOnly(end.toISOString())}`;
+}
+
+function formatDateOnly(value: string) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
+function isSameDay(a: Date, b: Date) {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
 }
