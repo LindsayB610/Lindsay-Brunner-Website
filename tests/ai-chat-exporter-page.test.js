@@ -27,6 +27,10 @@ assert(exists('public/ai-chat-exporter/index.html'), 'public/ai-chat-exporter/in
 assert(exists('assets/react/.vite/manifest.json'), 'Vite manifest should exist under assets/react/.vite. Run npm run build first.', failures);
 
 const islandSource = read('src/react/ai-chat-exporter.tsx');
+const pageContent = read('content/ai-chat-exporter/index.md');
+assert(pageContent.includes('description: "Export public ChatGPT share links to Markdown."'), 'AI Chat Exporter should define a meta description in front matter', failures);
+assert(pageContent.includes('social_image: "/images/social/ai-chat-exporter-og.png"'), 'AI Chat Exporter should define a page-specific social image', failures);
+assert(exists('static/images/social/ai-chat-exporter-og.png'), 'AI Chat Exporter social image should exist', failures);
 assert(islandSource.includes('BackgroundBeamsWithCollision'), 'AI Chat Exporter island should use BackgroundBeamsWithCollision', failures);
 assert(islandSource.includes('StatefulButton'), 'AI Chat Exporter island should use StatefulButton', failures);
 assert(islandSource.includes('enabledFormats'), 'AI Chat Exporter island should read enabled formats from the shared launch contract', failures);
@@ -79,6 +83,21 @@ if (exists('public/ai-chat-exporter/index.html')) {
   assert(
     /<script[^>]+type=["']?module["']?[^>]+src=["']?\/react\/assets\/ai-chat-exporter-[^"'>]+\.js["']?[^>]*>/.test(page),
     'built page should load the Vite AI Chat Exporter entry script',
+    failures,
+  );
+  assert(
+    /<meta\s+name=["']?description["']?\s+content=["']Export public ChatGPT share links to Markdown\.["']/.test(page),
+    'built page should include the AI Chat Exporter meta description',
+    failures,
+  );
+  assert(
+    page.includes('<meta property="og:image" content="https://lindsaybrunner.com/images/social/ai-chat-exporter-og.png"'),
+    'built page should include the page-specific AI Chat Exporter OG image',
+    failures,
+  );
+  assert(
+    /<meta\s+name=["']?twitter:image["']?\s+content=["']https:\/\/lindsaybrunner\.com\/images\/social\/ai-chat-exporter-og\.png["']/.test(page),
+    'built page should include the page-specific AI Chat Exporter Twitter image',
     failures,
   );
 }

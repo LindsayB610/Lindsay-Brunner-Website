@@ -52,24 +52,11 @@ function escapeXml(text) {
 /**
  * Generate SVG for thoughts OG image
  */
-function generateThoughtOGImage(text, slug) {
-  const leftPadding = 120;
-  const rightPadding = 120;
-  const maxTextWidth = WIDTH - leftPadding - rightPadding;
-  
-  // Use canvas to measure text and calculate line breaks
-  const canvas = createCanvas(WIDTH, HEIGHT);
-  const ctx = canvas.getContext('2d');
-  
-  // Calculate text layout
-  const fontSize = 102;
-  const lineHeight = 127;
-  
-  ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
+function wrapText(ctx, text, maxTextWidth) {
   const words = text.split(' ');
   const textLines = [];
   let currentLine = '';
-  
+
   words.forEach(word => {
     const testLine = currentLine + (currentLine ? ' ' : '') + word;
     const metrics = ctx.measureText(testLine);
@@ -81,15 +68,41 @@ function generateThoughtOGImage(text, slug) {
     }
   });
   if (currentLine) textLines.push(currentLine);
+
+  return textLines;
+}
+
+function generateThoughtOGImage(text, slug, options = {}) {
+  const leftPadding = 120;
+  const rightPadding = 120;
+  const maxTextWidth = WIDTH - leftPadding - rightPadding;
+  const subtitle = options.subtitle || '';
+  
+  // Use canvas to measure text and calculate line breaks
+  const canvas = createCanvas(WIDTH, HEIGHT);
+  const ctx = canvas.getContext('2d');
+  
+  // Calculate text layout
+  const fontSize = options.titleFontSize || (subtitle ? 190 : 102);
+  const lineHeight = options.titleLineHeight || (subtitle ? 210 : Math.round(fontSize * 1.25));
+  const subtitleFontSize = options.subtitleFontSize || 78;
+  const subtitleLineHeight = options.subtitleLineHeight || 100;
+  
+  ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
+  const textLines = wrapText(ctx, text, maxTextWidth);
+
+  ctx.font = `bold ${subtitleFontSize}px "Inter", sans-serif`;
+  const subtitleLines = subtitle ? wrapText(ctx, subtitle, maxTextWidth) : [];
   
   // Calculate vertical centering
   const totalTextHeight = textLines.length * lineHeight;
-  const textY = (HEIGHT - totalTextHeight) / 2;
+  const subtitleBlockHeight = subtitleLines.length ? 20 + (subtitleLines.length * subtitleLineHeight) : 0;
+  const textY = (HEIGHT - totalTextHeight - subtitleBlockHeight) / 2;
   
   // Website URL position
   const urlX = WIDTH - rightPadding;
   const urlY = HEIGHT - 80;
-  const urlFontSize = 36;
+  const urlFontSize = options.urlFontSize || 56;
   
   // Measure URL text
   ctx.font = `bold ${urlFontSize}px "Inter", sans-serif`;
@@ -123,6 +136,17 @@ function generateThoughtOGImage(text, slug) {
   <text x="${leftPadding}" y="${y}" font-family="Inter, sans-serif" font-size="${fontSize}" font-weight="bold" fill="url(#${gradientId})">${escapeXml(line)}</text>
 `;
   });
+
+  if (subtitleLines.length) {
+    const subtitleY = textY + totalTextHeight + 20;
+    const subtitleBaselineOffset = subtitleFontSize * 0.8;
+    const subtitleIndent = 12;
+    subtitleLines.forEach((line, index) => {
+      const y = subtitleY + (index * subtitleLineHeight) + subtitleBaselineOffset;
+      svg += `  <text x="${leftPadding + subtitleIndent}" y="${y}" font-family="Inter, sans-serif" font-size="${subtitleFontSize}" font-weight="bold" fill="${COLORS.textSecondary}">${escapeXml(line)}</text>
+`;
+    });
+  }
   
   // Add website URL with gradient
   const urlGradientId = 'urlGradient';
@@ -181,11 +205,19 @@ async function generatePNGFromSVG(svgPath, pngPath) {
 async function main() {
   const args = process.argv.slice(2);
   const forceFlag = args.includes('--force');
-  const text = args.find(arg => !arg.startsWith('--') && args.indexOf(arg) === 0) || "Rules are allowed to be ridiculous, and truth is rarely found in the loudest message you hear.";
-  const slug = args.find(arg => !arg.startsWith('--') && args.indexOf(arg) === 1) || "alices-restaurant-family-ritual";
+  const subtitleIndex = args.indexOf('--subtitle');
+  const subtitle = subtitleIndex >= 0 ? args[subtitleIndex + 1] : '';
+  const positionalArgs = args.filter((arg, index) => (
+    !arg.startsWith('--') && index !== subtitleIndex + 1
+  ));
+  const text = positionalArgs[0] || "Rules are allowed to be ridiculous, and truth is rarely found in the loudest message you hear.";
+  const slug = positionalArgs[1] || "alices-restaurant-family-ritual";
   
   console.log('🎨 Generating OG image for thoughts post...\n');
   console.log(`Text: "${text}"`);
+  if (subtitle) {
+    console.log(`Subtitle: "${subtitle}"`);
+  }
   console.log(`Slug: ${slug}\n`);
   
   // Check if PNG already exists
@@ -198,7 +230,7 @@ async function main() {
   }
   
   // Generate SVG
-  const svgPath = generateThoughtOGImage(text, slug);
+  const svgPath = generateThoughtOGImage(text, slug, { subtitle });
   console.log(`✅ Generated SVG: ${svgPath}`);
   
   // Generate PNG
