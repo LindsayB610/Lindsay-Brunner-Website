@@ -110,6 +110,7 @@ async function run() {
       const input = computed('#ai-exporter-url');
       const button = computed('.ai-exporter-button');
       const radio = computed('input[type="radio"]');
+      const status = computed('.ai-exporter-status');
       const focusedRadio = document.querySelector('input[type="radio"]');
       focusedRadio.focus();
       const radioFocus = getComputedStyle(focusedRadio);
@@ -165,6 +166,10 @@ async function run() {
           focusOutlineStyle: radioFocus.outlineStyle,
           focusOutlineWidth: radioFocus.outlineWidth,
         },
+        status: {
+          fontSize: status.fontSize,
+          lineHeight: status.lineHeight,
+        },
         visibleText,
       };
     });
@@ -180,6 +185,8 @@ async function run() {
     assert(metrics.radio.accentColor === 'rgb(255, 27, 141)', `radio selected accent should be brand pink; got ${metrics.radio.accentColor}`, failures);
     assert(metrics.radio.focusBoxShadow === 'none', `radio focus should not draw a Chrome focus square box-shadow; got ${metrics.radio.focusBoxShadow}`, failures);
     assert(metrics.radio.focusOutlineStyle === 'none' || metrics.radio.focusOutlineWidth === '0px', `radio focus should not draw a boxy outline; got ${metrics.radio.focusOutlineWidth} ${metrics.radio.focusOutlineStyle}`, failures);
+    assert(parseFloat(metrics.status.fontSize) < 15, `download status text should be visually small; got ${metrics.status.fontSize}`, failures);
+    assert(parseFloat(metrics.status.lineHeight) < 22, `download status line-height should stay compact; got ${metrics.status.lineHeight}`, failures);
     assert(!metrics.visibleText.includes('Shared ChatGPT URL'), 'URL label should be visually hidden while remaining accessible', failures);
     assert(!metrics.visibleText.includes('Export format'), 'format legend should be visually hidden while remaining accessible', failures);
 

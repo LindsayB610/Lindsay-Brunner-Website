@@ -240,6 +240,8 @@ body:has(#ai-chat-exporter-root) .site-footer {
   min-height: 1.5em;
   margin: 18px auto 0;
   color: rgba(255, 255, 255, 0.72);
+  font-size: 0.86rem !important;
+  line-height: 1.35 !important;
 }
 
 @keyframes ai-exporter-spin {
