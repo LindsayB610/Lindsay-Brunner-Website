@@ -1,4 +1,6 @@
 import type { AiChatExportRequest } from "../../../src/lib/ai-chat-exporter";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 type PipelineArtifacts = {
   transcript?: {
@@ -43,7 +45,15 @@ export async function loadRealBuildPipelineArtifacts(options: {
   format: "markdown" | "pdf";
 }) {
   const exporter = await import("chatgpt-thread-exporter/pipeline");
-  return exporter.buildPipelineArtifacts(options);
+
+  if (options.format !== "pdf" || !shouldUseServerlessChromium()) {
+    return exporter.buildPipelineArtifacts(options);
+  }
+
+  return exporter.buildPipelineArtifacts(options, {
+    ...exporter.defaultPipelineDependencies,
+    renderPdf: renderPdfWithServerlessChromium,
+  });
 }
 
 export function buildExportFilename(title: string | undefined, extension: "md" | "pdf") {
@@ -63,4 +73,75 @@ function slugify(value: string) {
     .replace(/-+$/g, "");
 
   return slug;
+}
+
+function shouldUseServerlessChromium() {
+  return Boolean(
+    process.env.NETLIFY ||
+      process.env.AWS_LAMBDA_FUNCTION_NAME ||
+      process.env.LAMBDA_TASK_ROOT,
+  );
+}
+
+async function renderPdfWithServerlessChromium(transcript: unknown) {
+  const [{ chromium: playwrightChromium }, serverlessChromium, { renderChatGptHtml }] =
+    await Promise.all([
+      import("playwright-core"),
+      import("@sparticuz/chromium"),
+      loadExporterPdfHtmlRenderer(),
+    ]);
+
+  const html = renderChatGptHtml(transcript);
+  const chromium = serverlessChromium.default;
+  const browser = await playwrightChromium.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: true,
+  });
+
+  try {
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: "load" });
+    await page.emulateMedia({ media: "print" });
+
+    return page.pdf({
+      displayHeaderFooter: true,
+      footerTemplate: pdfFooterTemplate(),
+      format: "Letter",
+      headerTemplate: "<div></div>",
+      margin: {
+        top: "16mm",
+        right: "14mm",
+        bottom: "20mm",
+        left: "14mm",
+      },
+      preferCSSPageSize: true,
+      printBackground: true,
+    });
+  } finally {
+    await browser.close();
+  }
+}
+
+async function loadExporterPdfHtmlRenderer() {
+  const rendererPath = path.join(
+    process.cwd(),
+    "node_modules",
+    "chatgpt-thread-exporter",
+    "dist",
+    "pdf",
+    "render-chatgpt-html.js",
+  );
+
+  return import(pathToFileURL(rendererPath).href) as Promise<{
+    renderChatGptHtml: (transcript: unknown) => string;
+  }>;
+}
+
+function pdfFooterTemplate() {
+  return `
+    <div style="width:100%; padding:0 14mm; font-family:Arial, sans-serif; font-size:10px; color:#6b7280; text-align:center;">
+      <span class="pageNumber"></span> / <span class="totalPages"></span>
+    </div>
+  `.trim();
 }

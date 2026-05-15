@@ -53,6 +53,7 @@
     "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^147.0.0",
     "@tabler/icons-react": "^3.44.0",
     "chatgpt-thread-exporter": "github:LindsayB610/chatgpt-thread-exporter",
     "clsx": "^2.1.1",
