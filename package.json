@@ -53,14 +53,13 @@
     "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {
-    "@sparticuz/chromium": "^147.0.0",
     "@tabler/icons-react": "^3.44.0",
     "chatgpt-thread-exporter": "github:LindsayB610/chatgpt-thread-exporter",
     "clsx": "^2.1.1",
     "hugo-bin": "^0.149.2",
     "lucide-react": "^1.14.0",
     "motion": "^12.38.0",
-    "puppeteer-core": "^24.43.1",
+    "pdfkit": "^0.18.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-wrap-balancer": "^1.1.1",

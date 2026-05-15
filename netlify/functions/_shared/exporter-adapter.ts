@@ -1,6 +1,4 @@
 import type { AiChatExportRequest } from "../../../src/lib/ai-chat-exporter";
-import path from "node:path";
-import { pathToFileURL } from "node:url";
 
 type PipelineArtifacts = {
   transcript?: {
@@ -46,13 +44,13 @@ export async function loadRealBuildPipelineArtifacts(options: {
 }) {
   const exporter = await import("chatgpt-thread-exporter/pipeline");
 
-  if (options.format !== "pdf" || !shouldUseServerlessChromium()) {
+  if (options.format !== "pdf" || !shouldUseServerlessPdfRenderer()) {
     return exporter.buildPipelineArtifacts(options);
   }
 
   return exporter.buildPipelineArtifacts(options, {
     ...exporter.defaultPipelineDependencies,
-    renderPdf: renderPdfWithServerlessChromium,
+    renderPdf: renderPdfWithServerlessPdfKit,
   });
 }
 
@@ -75,7 +73,7 @@ function slugify(value: string) {
   return slug;
 }
 
-function shouldUseServerlessChromium() {
+function shouldUseServerlessPdfRenderer() {
   return Boolean(
     process.env.NETLIFY ||
       process.env.AWS_LAMBDA_FUNCTION_NAME ||
@@ -83,69 +81,118 @@ function shouldUseServerlessChromium() {
   );
 }
 
-async function renderPdfWithServerlessChromium(transcript: unknown) {
-  const [puppeteer, serverlessChromium, { renderChatGptHtml }] =
-    await Promise.all([
-      import("puppeteer-core"),
-      import("@sparticuz/chromium"),
-      loadExporterPdfHtmlRenderer(),
-    ]);
-
-  const html = renderChatGptHtml(transcript);
-  const chromium = serverlessChromium.default;
-  const browser = await puppeteer.default.launch({
-    args: chromium.args,
-    defaultViewport: {
-      height: 1080,
-      width: 1920,
+async function renderPdfWithServerlessPdfKit(transcript: any) {
+  const pdfKit = await import("pdfkit");
+  const PDFDocument = pdfKit.default;
+  const chunks: Buffer[] = [];
+  const doc = new PDFDocument({
+    bufferPages: true,
+    info: {
+      Title: transcript.title || "ChatGPT Export",
     },
-    executablePath: await chromium.executablePath(),
-    headless: "shell",
-    });
+    margins: {
+      top: 45,
+      right: 40,
+      bottom: 58,
+      left: 40,
+    },
+    size: "LETTER",
+  });
+  const finished = new Promise<Buffer>((resolve, reject) => {
+    doc.on("data", (chunk: Buffer) => chunks.push(chunk));
+    doc.on("end", () => resolve(Buffer.concat(chunks)));
+    doc.on("error", reject);
+  });
 
-  try {
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: "load" });
-    await page.emulateMediaType("print");
+  doc.fillColor("#202123").font("Helvetica-Bold").fontSize(22);
+  doc.text(transcript.title || "ChatGPT Export", { lineGap: 2 });
+  doc.moveDown(0.45);
+  doc.fillColor("#6b7280").font("Helvetica").fontSize(9);
+  doc.text("ChatGPT Export", { continued: false });
+  doc.text(`Source: ${transcript.sourceUrl || ""}`);
+  if (transcript.exportedAt) {
+    doc.text(`Exported: ${new Date(transcript.exportedAt).toLocaleString("en-US")}`);
+  }
+  doc.moveDown(1.1);
 
-    return page.pdf({
-      displayHeaderFooter: true,
-      footerTemplate: pdfFooterTemplate(),
-      format: "Letter",
-      headerTemplate: "<div></div>",
-      margin: {
-        top: "16mm",
-        right: "14mm",
-        bottom: "20mm",
-        left: "14mm",
-      },
-      preferCSSPageSize: true,
-      printBackground: true,
-    });
-  } finally {
-    await browser.close();
+  for (const turn of transcript.turns || []) {
+    renderPdfTurn(doc, turn);
+  }
+
+  addPdfPageNumbers(doc);
+  doc.end();
+
+  return finished;
+}
+
+function renderPdfTurn(doc: any, turn: any) {
+  const label = labelForRole(turn.role);
+  const isUser = turn.role === "user";
+
+  doc.fillColor(isUser ? "#111827" : "#202123").font("Helvetica-Bold").fontSize(11);
+  doc.text(label);
+  doc.moveDown(0.25);
+  doc.fillColor("#202123").font(isUser ? "Helvetica" : "Helvetica").fontSize(10.5);
+
+  for (const block of turn.blocks || []) {
+    renderPdfBlock(doc, block);
+  }
+
+  doc.moveDown(0.9);
+}
+
+function renderPdfBlock(doc: any, block: any) {
+  switch (block.kind) {
+    case "code":
+      doc.font("Courier").fontSize(9.2).fillColor("#111827");
+      doc.text(block.language ? `${block.language}\n${block.text}` : block.text, {
+        lineGap: 1.5,
+      });
+      doc.font("Helvetica").fontSize(10.5).fillColor("#202123");
+      doc.moveDown(0.45);
+      break;
+    case "list":
+      for (const item of block.items || []) {
+        doc.text(`- ${item}`, { lineGap: 1.5 });
+      }
+      doc.moveDown(0.35);
+      break;
+    case "image":
+      doc.fillColor("#6b7280").text(`[Image: ${block.alt || block.url || "Generated image"}]`);
+      doc.fillColor("#202123").moveDown(0.35);
+      break;
+    case "quote":
+      doc.fillColor("#4b5563").text(`"${block.text}"`, { lineGap: 1.5 });
+      doc.fillColor("#202123").moveDown(0.35);
+      break;
+    case "unknown":
+      doc.fillColor("#6b7280").text(block.summary || "Unsupported content");
+      doc.fillColor("#202123").moveDown(0.35);
+      break;
+    case "text":
+    default:
+      doc.text(block.text || "", { lineGap: 1.5 });
+      doc.moveDown(0.35);
+      break;
   }
 }
 
-async function loadExporterPdfHtmlRenderer() {
-  const rendererPath = path.join(
-    process.cwd(),
-    "node_modules",
-    "chatgpt-thread-exporter",
-    "dist",
-    "pdf",
-    "render-chatgpt-html.js",
-  );
-
-  return import(pathToFileURL(rendererPath).href) as Promise<{
-    renderChatGptHtml: (transcript: unknown) => string;
-  }>;
+function addPdfPageNumbers(doc: any) {
+  const range = doc.bufferedPageRange();
+  for (let index = range.start; index < range.start + range.count; index += 1) {
+    doc.switchToPage(index);
+    doc.fillColor("#6b7280").font("Helvetica").fontSize(8);
+    doc.text(`${index + 1} / ${range.count}`, 40, doc.page.height - 36, {
+      align: "center",
+      width: doc.page.width - 80,
+    });
+  }
 }
 
-function pdfFooterTemplate() {
-  return `
-    <div style="width:100%; padding:0 14mm; font-family:Arial, sans-serif; font-size:10px; color:#6b7280; text-align:center;">
-      <span class="pageNumber"></span> / <span class="totalPages"></span>
-    </div>
-  `.trim();
+function labelForRole(role: string) {
+  if (role === "user") return "You";
+  if (role === "assistant") return "ChatGPT";
+  if (role === "system") return "System";
+  if (role === "tool") return "Tool";
+  return role || "Message";
 }
