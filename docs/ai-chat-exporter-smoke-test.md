@@ -65,4 +65,4 @@ PDF can ship in v1 because:
 - failure states stay user-readable
 - no exporter code appears in client bundles
 
-Current Phase 6 decision: ship Markdown and PDF. PDF uses a serverless PDFKit renderer in Netlify/Lambda environments instead of the exporter package's browser-backed PDF path.
+Current Phase 6 decision: ship Markdown and PDF. PDF uses the exporter CLI's browser-rendered HTML/CSS path with Lambda-compatible Chromium in Netlify/Lambda environments.

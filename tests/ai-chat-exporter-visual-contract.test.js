@@ -108,6 +108,7 @@ async function run() {
 
       const h1 = computed('#ai-exporter-title');
       const input = computed('#ai-exporter-url');
+      const button = computed('.ai-exporter-button');
       const radio = computed('input[type="radio"]');
       const focusedRadio = document.querySelector('input[type="radio"]');
       focusedRadio.focus();
@@ -154,6 +155,10 @@ async function run() {
           backdropFilter: input.backdropFilter || input.webkitBackdropFilter,
           backgroundColor: input.backgroundColor,
         },
+        button: {
+          backgroundColor: button.backgroundColor,
+          color: button.color,
+        },
         radio: {
           accentColor: radio.accentColor,
           focusBoxShadow: radioFocus.boxShadow,
@@ -170,6 +175,8 @@ async function run() {
     assert(metrics.h1.whiteSpace === 'nowrap', `desktop H1 should stay on one line; got ${metrics.h1.whiteSpace}`, failures);
     assert(metrics.input.backgroundColor === 'rgba(20, 20, 20, 0.74)', `URL input should be translucent; got ${metrics.input.backgroundColor}`, failures);
     assert(metrics.input.backdropFilter.includes('blur'), `URL input should soften beams with backdrop blur; got ${metrics.input.backdropFilter}`, failures);
+    assert(metrics.button.backgroundColor === 'rgb(255, 221, 0)', `export button should use brand yellow, not Aceternity green; got ${metrics.button.backgroundColor}`, failures);
+    assert(metrics.button.color === 'rgb(0, 0, 0)', `export button text/icons should stay black on brand yellow; got ${metrics.button.color}`, failures);
     assert(metrics.radio.accentColor === 'rgb(255, 27, 141)', `radio selected accent should be brand pink; got ${metrics.radio.accentColor}`, failures);
     assert(metrics.radio.focusBoxShadow === 'none', `radio focus should not draw a Chrome focus square box-shadow; got ${metrics.radio.focusBoxShadow}`, failures);
     assert(metrics.radio.focusOutlineStyle === 'none' || metrics.radio.focusOutlineWidth === '0px', `radio focus should not draw a boxy outline; got ${metrics.radio.focusOutlineWidth} ${metrics.radio.focusOutlineStyle}`, failures);

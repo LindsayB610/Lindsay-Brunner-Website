@@ -9,6 +9,9 @@ targetPort = 1313
 port = 8888
 framework = "#custom"
 
+[functions]
+included_files = ["node_modules/chatgpt-thread-exporter/dist/pdf/**"]
+
 [build.processing]
 skip_processing = false
 

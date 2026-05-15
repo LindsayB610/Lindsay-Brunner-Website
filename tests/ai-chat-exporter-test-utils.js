@@ -72,6 +72,7 @@ function loadTsModule(relativePath) {
       exports: module.exports,
       globalThis,
       module,
+      process,
       require: (requestPath) => loadFile(requestPath, path.dirname(filename)),
       setTimeout,
     };

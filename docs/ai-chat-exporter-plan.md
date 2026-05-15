@@ -24,7 +24,7 @@ Completed and launched.
 - Markdown and PDF exports are both enabled.
 - Exports run through a Netlify Function at `/api/export-chat`.
 - The server-side adapter imports the GitHub `chatgpt-thread-exporter` dependency and keeps exporter code out of client bundles.
-- PDF export uses a serverless PDFKit renderer when running in Netlify/Lambda environments.
+- PDF export uses the exporter CLI's browser-rendered HTML/CSS path with Lambda-compatible Chromium when running in Netlify/Lambda environments.
 - The visual treatment uses the Aceternity `Background Beams With Collision` pattern, adapted to the site.
 - The export button uses the Aceternity-style `Stateful Button`.
 - The page is listed in the More dropdown as `AI Chat Exporter`, and the More menu is guarded to remain alphabetical.
@@ -449,7 +449,7 @@ Validate whether PDF export works reliably inside Netlify Functions.
 - Markdown deploy-preview smoke succeeded with the README Artemis share URL.
 - Exporter title parsing was corrected upstream so the README Artemis share URL matches `examples/artemis-program-explained.md` exactly from the CLI; the website dependency now points at that fix.
 - PDF initially failed on the standard Netlify Function runtime when using the exporter package's browser-backed PDF path.
-- The PDF runtime strategy was changed to use a serverless PDFKit renderer inside the website adapter.
+- The PDF runtime strategy was changed to use the exporter CLI's HTML renderer and Playwright PDF settings with Lambda-compatible Chromium inside the website adapter.
 - V1 ships both Markdown and PDF export.
 - Runtime fixture coverage verifies Markdown exact output and PDF binary sanity.
 
@@ -520,7 +520,7 @@ Run the complete verification pass and prepare for launch.
 - Background Beams With Collision renders behind the form without overpowering it.
 - Stateful Button handles loading and completion clearly.
 - Markdown export works.
-- PDF export works through the serverless PDFKit renderer.
+- PDF export works through the CLI-equivalent browser renderer in the website adapter.
 - Invalid input and exporter failures are handled gracefully.
 - Downloads use correct file extensions.
 - Exporter package stays out of client bundles.

@@ -34,7 +34,7 @@ async function run() {
   const config = functionModule.config;
   const exportChatWithExporter = adapterModule.exportChatWithExporter;
   const buildExportFilename = adapterModule.buildExportFilename;
-  const buildPdfMetaLine = adapterModule.buildPdfMetaLine;
+  const renderPdfWithServerlessChromium = adapterModule.renderPdfWithServerlessChromium;
 
   assert(source.includes('export default async'), 'Netlify function should use modern default export syntax', failures);
   assert(source.includes('export const config'), 'Netlify function should export config', failures);
@@ -51,35 +51,40 @@ async function run() {
     'exporter adapter should import the package public pipeline export',
     failures,
   );
+  assert(
+    read('netlify/functions/_shared/exporter-adapter.ts').includes('@sparticuz/chromium') &&
+      read('netlify/functions/_shared/exporter-adapter.ts').includes('playwright-core'),
+    'serverless PDF renderer should use Lambda-compatible Chromium with Playwright Core',
+    failures,
+  );
+  assert(
+    read('netlify/functions/_shared/exporter-adapter.ts').includes('render-chatgpt-html.js') &&
+      read('netlify/functions/_shared/exporter-adapter.ts').includes('page.pdf({'),
+    'serverless PDF renderer should use the CLI HTML renderer and browser PDF path for visual parity',
+    failures,
+  );
+  assert(
+    read('netlify/functions/_shared/exporter-adapter.ts').includes('renderPdfWithServerlessChromium') &&
+      !read('netlify/functions/_shared/exporter-adapter.ts').includes('renderPdfWithServerlessPdfKit') &&
+      !read('netlify/functions/_shared/exporter-adapter.ts').includes('pdfkit'),
+    'serverless PDF renderer should not use the PDFKit fallback when CLI visual parity is required',
+    failures,
+  );
+  assert(
+    netlifyConfig.includes('included_files = ["node_modules/chatgpt-thread-exporter/dist/pdf/**"]'),
+    'netlify.toml should include the exporter PDF renderer files used by the dynamic serverless import',
+    failures,
+  );
   assert(config?.path === AI_CHAT_EXPORTER_CONTRACT.apiPath, 'Netlify function config should expose /api/export-chat', failures);
   assert(Array.isArray(config?.method) && config.method.includes('POST'), 'Netlify function config should allow POST', failures);
   assert(typeof handler === 'function', 'Netlify function default export should be callable', failures);
   assert(typeof handleExportChatRequest === 'function', 'Netlify function should expose an injectable request handler for tests', failures);
   assert(typeof exportChatWithExporter === 'function', 'exporter adapter should expose exportChatWithExporter', failures);
   assert(typeof buildExportFilename === 'function', 'exporter adapter should expose filename builder for tests', failures);
-  assert(typeof buildPdfMetaLine === 'function', 'exporter adapter should expose PDF metadata builder for tests', failures);
+  assert(typeof renderPdfWithServerlessChromium === 'function', 'exporter adapter should expose the serverless Chromium PDF renderer for focused tests', failures);
 
   assert(buildExportFilename('My Excellent Thread!', 'md') === 'my-excellent-thread-export.md', 'export filename should use a slugged transcript title', failures);
   assert(buildExportFilename('', 'pdf') === 'chatgpt-thread-export.pdf', 'export filename should fall back for empty titles', failures);
-  assert(
-    buildPdfMetaLine({
-      exportedAt: '2026-05-15T01:30:41.000Z',
-      turns: [
-        { timestamp: '2026-05-13T10:00:00.000Z' },
-        { timestamp: '2026-05-13T10:04:00.000Z' },
-      ],
-    }) === 'Conversation: May 13, 2026',
-    'serverless PDF metadata should prefer the CLI-style conversation date when turn timestamps exist',
-    failures,
-  );
-  assert(
-    buildPdfMetaLine({
-      exportedAt: '2026-05-15T18:30:41.000Z',
-      turns: [],
-    }) === 'Exported: May 15, 2026',
-    'serverless PDF metadata should fall back to an exported date when no conversation timestamps exist',
-    failures,
-  );
 
   const getResponse = await handler(new Request('https://lindsaybrunner.com/api/export-chat', { method: 'GET' }), {});
   assert(getResponse.status === 405, 'GET /api/export-chat should return 405', failures);
