@@ -41,6 +41,8 @@ async function run() {
   assert(source.includes('exportChatWithExporter'), 'Netlify function should use the real exporter adapter by default', failures);
   assert(source.includes('verifyTurnstileToken'), 'Netlify function should verify Turnstile tokens before export work', failures);
   assert(source.includes('TURNSTILE_SECRET_KEY'), 'Netlify function should read the Turnstile secret key from environment', failures);
+  assert(source.includes('checkPdfRateLimit'), 'Netlify function should check a PDF-specific rate limit before export work', failures);
+  assert(source.includes('@netlify/blobs'), 'Netlify function should use Netlify Blobs for shared PDF rate limit state', failures);
   assert(!source.includes('PDF export is not available yet.'), 'Netlify function should not block PDF exports behind a disabled-runtime response', failures);
   assert(
     netlifyConfig.includes('from = "/api/export-chat"') &&
@@ -148,6 +150,7 @@ async function run() {
     sharedUrl: 'https://chatgpt.com/share/mock-thread',
     format: 'pdf',
   }, {
+    checkPdfRateLimit: async () => ({ allowed: true }),
     exportChat: async () => new Response(new Uint8Array([37, 80, 68, 70]), {
       headers: {
         'Cache-Control': 'no-store',
@@ -217,6 +220,56 @@ async function run() {
   });
   assert(validTurnstileResponse.status === 200, 'valid Turnstile token should allow export', failures);
   assert(exporterCalledAfterValidTurnstile, 'valid Turnstile token should invoke exporter work', failures);
+
+  let exporterCalledAfterPdfRateLimit = false;
+  const pdfRateLimitedResponse = await postJson(handleExportChatRequest, {
+    sharedUrl: 'https://chatgpt.com/share/mock-thread',
+    format: 'pdf',
+    turnstileToken: 'good-token',
+  }, {
+    checkPdfRateLimit: async () => ({
+      allowed: false,
+      retryAfterSeconds: 1800,
+    }),
+    exportChat: async () => {
+      exporterCalledAfterPdfRateLimit = true;
+      return new Response('should not export');
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => true,
+  });
+  assert(pdfRateLimitedResponse.status === 429, 'PDF rate limit should return 429 before expensive export work', failures);
+  assert(pdfRateLimitedResponse.headers.get('Retry-After') === '1800', 'PDF rate limit should include Retry-After', failures);
+  assert((await pdfRateLimitedResponse.json()).error === 'PDF exports are temporarily limited. Please try again later.', 'PDF rate limit should use a safe user-readable error', failures);
+  assert(!exporterCalledAfterPdfRateLimit, 'PDF rate limit should not invoke exporter work', failures);
+
+  let markdownRateLimitChecked = false;
+  let markdownExportCalledWithLimiter = false;
+  const markdownWithPdfLimiterResponse = await postJson(handleExportChatRequest, {
+    sharedUrl: 'https://chatgpt.com/share/mock-thread',
+    format: 'markdown',
+    turnstileToken: 'good-token',
+  }, {
+    checkPdfRateLimit: async () => {
+      markdownRateLimitChecked = true;
+      return { allowed: false, retryAfterSeconds: 1800 };
+    },
+    exportChat: async () => {
+      markdownExportCalledWithLimiter = true;
+      return new Response('# Markdown stays available', {
+        headers: {
+          'Cache-Control': 'no-store',
+          'Content-Disposition': 'attachment; filename="human.md"',
+          'Content-Type': 'text/markdown; charset=utf-8',
+        },
+      });
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => true,
+  });
+  assert(markdownWithPdfLimiterResponse.status === 200, 'PDF rate limit should not apply to Markdown exports', failures);
+  assert(!markdownRateLimitChecked, 'PDF rate limit should not be checked for Markdown exports', failures);
+  assert(markdownExportCalledWithLimiter, 'Markdown export should still run when PDF limiter exists', failures);
 
   let receivedPipelineOptions = null;
   const adapterMarkdownResponse = await exportChatWithExporter({

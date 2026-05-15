@@ -1,3 +1,5 @@
+import { getStore } from "@netlify/blobs";
+import { createHash } from "node:crypto";
 import {
   AI_CHAT_EXPORTER_CONTRACT,
   type AiChatExportRequest,
@@ -13,9 +15,22 @@ type ExportRequestPayload = {
 
 type ExportChatDependencies = {
   exportChat: (request: AiChatExportRequest) => Promise<Response>;
+  checkPdfRateLimit: (req: Request) => Promise<PdfRateLimitResult>;
   getTurnstileSecret: () => string | undefined;
   verifyTurnstileToken: (token: string, secret: string, req: Request) => Promise<boolean>;
 };
+
+type PdfRateLimitResult = {
+  allowed: boolean;
+  retryAfterSeconds?: number;
+};
+
+type PdfRateLimitBucket = {
+  count: number;
+  resetAt: string;
+};
+
+const PDF_RATE_LIMIT_PER_HOUR = 5;
 
 export default async function exportChat(req: Request) {
   return handleExportChatRequest(req);
@@ -26,6 +41,7 @@ export function handleExportChatRequest(
   dependencies: Partial<ExportChatDependencies> = {},
 ) {
   const resolvedDependencies: ExportChatDependencies = {
+    checkPdfRateLimit,
     exportChat: exportChatWithExporter,
     getTurnstileSecret,
     verifyTurnstileToken,
@@ -81,6 +97,20 @@ async function handlePost(
       payload.format,
       typeof payload.turnstileToken === "string" ? payload.turnstileToken : undefined,
     );
+
+    if (request.format === "pdf") {
+      const rateLimit = await dependencies.checkPdfRateLimit(req);
+      if (!rateLimit.allowed) {
+        return jsonError(
+          "PDF exports are temporarily limited. Please try again later.",
+          429,
+          {
+            "Retry-After": String(rateLimit.retryAfterSeconds ?? 3600),
+          },
+        );
+      }
+    }
+
     return await dependencies.exportChat(request);
   } catch (error) {
     const message = getErrorMessage(error);
@@ -100,12 +130,17 @@ export const config = {
   method: ["POST"],
 };
 
-function jsonError(message: string, status: number) {
+function jsonError(
+  message: string,
+  status: number,
+  extraHeaders: Record<string, string> = {},
+) {
   return Response.json(
     { error: message },
     {
       headers: {
         "Cache-Control": "no-store",
+        ...extraHeaders,
       },
       status,
     },
@@ -160,4 +195,47 @@ function getClientIp(req: Request) {
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     ""
   );
+}
+
+async function checkPdfRateLimit(req: Request): Promise<PdfRateLimitResult> {
+  const clientKey = getPdfRateLimitClientKey(req);
+  const bucketKey = `pdf/${clientKey}`;
+  const now = new Date();
+  const store = getStore({
+    consistency: "strong",
+    name: "ai-chat-exporter-rate-limits",
+  });
+  const existing = await store.get(bucketKey, { type: "json" }) as PdfRateLimitBucket | null;
+  const resetAt = existing?.resetAt ? new Date(existing.resetAt) : new Date(0);
+
+  if (!existing || Number.isNaN(resetAt.getTime()) || resetAt <= now) {
+    await store.setJSON(bucketKey, {
+      count: 1,
+      resetAt: new Date(now.getTime() + 60 * 60 * 1000).toISOString(),
+    } satisfies PdfRateLimitBucket);
+    return { allowed: true };
+  }
+
+  if (existing.count >= PDF_RATE_LIMIT_PER_HOUR) {
+    return {
+      allowed: false,
+      retryAfterSeconds: Math.max(1, Math.ceil((resetAt.getTime() - now.getTime()) / 1000)),
+    };
+  }
+
+  await store.setJSON(bucketKey, {
+    count: existing.count + 1,
+    resetAt: existing.resetAt,
+  } satisfies PdfRateLimitBucket);
+
+  return { allowed: true };
+}
+
+function getPdfRateLimitClientKey(req: Request) {
+  const ip = getClientIp(req) || "unknown";
+  const userAgent = req.headers.get("user-agent") || "unknown";
+  return createHash("sha256")
+    .update(`${ip}|${userAgent}`)
+    .digest("hex")
+    .slice(0, 32);
 }

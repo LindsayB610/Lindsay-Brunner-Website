@@ -55,6 +55,7 @@
     "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.7.6",
     "@sparticuz/chromium": "^147.0.0",
     "@tabler/icons-react": "^3.44.0",
     "chatgpt-thread-exporter": "github:LindsayB610/chatgpt-thread-exporter",

@@ -570,7 +570,8 @@ This phase should keep the app usable for normal humans while reducing the risk 
 - The Netlify Function verifies Turnstile tokens server-side when `TURNSTILE_SECRET_KEY` is configured.
 - Missing or invalid Turnstile tokens return `403` before the exporter runs.
 - Local/test environments can still run without Turnstile when no secret key is configured.
-- Rate limiting remains the next optional hardening layer if the public endpoint attracts repeated automated use.
+- PDF exports are rate-limited server-side before the expensive renderer runs.
+- Markdown exports remain available when the PDF-specific limiter is active.
 
 ### Tests
 

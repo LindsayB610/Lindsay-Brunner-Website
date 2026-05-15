@@ -95,9 +95,23 @@ async function run() {
       };
     });
 
-    await page.goto(`${origin}/ai-chat-exporter/`, { waitUntil: 'networkidle' });
-
     let apiRequestCount = 0;
+    await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js', async (route) => {
+      await route.fulfill({
+        body: `
+          window.turnstile = {
+            render: function (_container, options) {
+              setTimeout(function () { options.callback('mock-turnstile-token'); }, 0);
+              return 'mock-turnstile-widget';
+            },
+            reset: function () {}
+          };
+        `,
+        contentType: 'text/javascript; charset=utf-8',
+        status: 200,
+      });
+    });
+
     await page.route('**/api/export-chat', async (route) => {
       apiRequestCount += 1;
       const payload = route.request().postDataJSON();
@@ -135,6 +149,8 @@ async function run() {
         status: 200,
       });
     });
+
+    await page.goto(`${origin}/ai-chat-exporter/`, { waitUntil: 'domcontentloaded' });
 
     const urlInput = page.getByLabel('Shared ChatGPT URL');
     const exportButton = page.getByRole('button', { name: 'Export' });
@@ -180,7 +196,7 @@ async function run() {
     await markdownOption.check();
     await page.waitForTimeout(3500);
 
-    await page.reload({ waitUntil: 'networkidle' });
+    await page.reload({ waitUntil: 'domcontentloaded' });
     await page.evaluate(() => {
       window.__aiExporterDownloads = [];
     });
