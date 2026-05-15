@@ -196,6 +196,14 @@ body:has(#ai-chat-exporter-root) .site-footer {
   opacity: 0.58;
 }
 
+#ai-chat-exporter-root .ai-exporter-turnstile {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 65px;
+  justify-content: center;
+}
+
 #ai-chat-exporter-root .ai-exporter-button {
   position: relative;
   z-index: 1;

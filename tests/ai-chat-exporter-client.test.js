@@ -55,6 +55,13 @@ async function run() {
   assert(request.sharedUrl === 'https://chatgpt.com/share/abc123', 'buildExportRequest should trim sharedUrl', failures);
   assert(request.format === 'markdown', 'buildExportRequest should preserve a valid format', failures);
 
+  const requestWithTurnstile = buildExportRequest(
+    'https://chatgpt.com/share/abc123',
+    'pdf',
+    'mock-turnstile-token',
+  );
+  assert(requestWithTurnstile.turnstileToken === 'mock-turnstile-token', 'buildExportRequest should include a Turnstile token when one is provided', failures);
+
   try {
     buildExportRequest('https://example.com/share/abc123', 'markdown');
     failures.push('buildExportRequest should throw for an invalid URL');
@@ -130,6 +137,15 @@ async function run() {
   assert(JSON.parse(fetchInit.body).sharedUrl === request.sharedUrl, 'fetchExportSharedChat should include sharedUrl in the JSON body', failures);
   assert(JSON.parse(fetchInit.body).format === request.format, 'fetchExportSharedChat should include format in the JSON body', failures);
   assert(await fetchResponse.text() === 'api markdown', 'fetchExportSharedChat should return the fetch response', failures);
+
+  let turnstileFetchInit = null;
+  await fetchExportSharedChat(requestWithTurnstile, async (_input, init) => {
+    turnstileFetchInit = init;
+    return new Response('api pdf', {
+      headers: { 'Content-Type': 'application/pdf' },
+    });
+  });
+  assert(JSON.parse(turnstileFetchInit.body).turnstileToken === 'mock-turnstile-token', 'fetchExportSharedChat should send the Turnstile token to the API', failures);
 
   let receivedRequest = null;
   const exported = await exportSharedChat(request, async (payload) => {

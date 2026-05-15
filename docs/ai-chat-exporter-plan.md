@@ -40,6 +40,7 @@ Completed and launched.
 - **Phase 5: GitHub Exporter Dependency Integration** - import the real exporter server-side and protect client bundle boundaries.
 - **Phase 6: PDF Runtime Hardening** - verify PDF export locally and in deploy previews, then decide whether PDF ships in v1.
 - **Phase 7: Full Site Regression And Launch Prep** - finalize metadata, copy, regression tests, and direct-link launch readiness.
+- **Phase 8: Abuse Prevention And Cost Controls** - add bot checks, rate limits, and operational guardrails around the export endpoint.
 
 ## Repositories
 
@@ -513,6 +514,75 @@ Run the complete verification pass and prepare for launch.
 - Link/content tests if route changes affect generated HTML.
 - Manual desktop and mobile review.
 
+## Phase 8: Abuse Prevention And Cost Controls
+
+### Scope
+
+Protect `/api/export-chat` from obvious abuse before the tool is widely shared.
+
+This phase should keep the app usable for normal humans while reducing the risk that bots or repeated automated requests generate large numbers of PDFs and increase Netlify usage.
+
+### Test First
+
+- Add failing function/client tests for:
+  - missing Turnstile token is rejected when Turnstile is configured
+  - invalid Turnstile token is rejected before exporter work starts
+  - valid Turnstile token allows the existing export path
+  - Turnstile is bypassed in local/test only when no secret key is configured
+  - user-facing error text is clear and does not leak implementation details
+- Add rate-limit tests once storage/edge strategy is selected:
+  - Markdown and PDF can have separate thresholds
+  - PDF threshold is stricter than Markdown
+  - exceeded limits return a safe `429`
+  - exporter work is not invoked after a request is rate-limited
+
+### Implementation
+
+- Add Cloudflare Turnstile to the React island:
+  - load the Turnstile script only on `/ai-chat-exporter/`
+  - render a compact widget near the export controls
+  - include the Turnstile response token in the `POST /api/export-chat` payload
+  - reset/retry the widget cleanly after failed or completed exports
+- Add server-side Turnstile verification in the Netlify Function:
+  - require `TURNSTILE_SECRET_KEY` in production
+  - verify tokens with Cloudflare's Siteverify API
+  - reject missing, expired, duplicate, or invalid tokens before fetching/parsing/rendering any thread
+- Add a rate-limit layer:
+  - start with a low-complexity Netlify/Cloudflare dashboard rule if available
+  - add code-level limits if needed, likely with a small shared store rather than in-memory counters
+  - keep PDF limits stricter because PDF generation is the expensive path
+- Add operational guardrails:
+  - cap request body size
+  - keep existing URL validation and `POST`-only behavior
+  - keep no-store response headers
+  - log enough failure context to debug abuse without logging exported thread content
+
+### Review Gate
+
+- A bot cannot call `/api/export-chat` directly without passing server-side Turnstile verification.
+- Repeated requests from the same source can be throttled before expensive PDF work starts.
+- Normal manual use remains smooth.
+- The implementation has a clear local-development path that does not require solving a challenge during every test run.
+
+### Phase 8 Result
+
+- Cloudflare Turnstile is wired into the React island with the public site key.
+- The Netlify Function verifies Turnstile tokens server-side when `TURNSTILE_SECRET_KEY` is configured.
+- Missing or invalid Turnstile tokens return `403` before the exporter runs.
+- Local/test environments can still run without Turnstile when no secret key is configured.
+- Rate limiting remains the next optional hardening layer if the public endpoint attracts repeated automated use.
+
+### Tests
+
+- `npm run test:ai-exporter:client`
+- `npm run test:ai-exporter:function`
+- `npm run test:ai-exporter:interaction`
+- `npm run test:ai-exporter`
+- Manual export smoke test with Turnstile enabled in a Netlify deploy preview.
+- Manual abuse smoke test:
+  - direct POST without Turnstile token returns `403`
+  - repeated PDF requests eventually return `429` if code-level rate limiting ships
+
 ## Launch Checklist
 
 - `/ai-chat-exporter/` builds and renders.
@@ -526,7 +596,8 @@ Run the complete verification pass and prepare for launch.
 - Exporter package stays out of client bundles.
 - Netlify deploy preview is smoke tested.
 - Page is listed in the More dropdown as `AI Chat Exporter`.
+- Abuse-prevention phase is complete before broad public promotion.
 
 ## Remaining Considerations
 
-- Rate limiting or bot protection may be worth adding if the endpoint attracts public abuse.
+- Decide whether Phase 8 should include only Turnstile for the first public release, or Turnstile plus code-level rate limiting.

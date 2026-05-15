@@ -17,6 +17,7 @@ export type AiChatExportFormat = (typeof AI_CHAT_EXPORTER_CONTRACT.formats)[numb
 export type AiChatExportRequest = {
   sharedUrl: string;
   format: AiChatExportFormat;
+  turnstileToken?: string;
 };
 
 export type AiChatExportFile = {
@@ -66,6 +67,7 @@ export function isAiChatExportFormat(value: string): value is AiChatExportFormat
 export function buildExportRequest(
   sharedUrl: string,
   format: string,
+  turnstileToken?: string,
 ): AiChatExportRequest {
   const trimmedUrl = sharedUrl.trim();
 
@@ -77,10 +79,16 @@ export function buildExportRequest(
     throw new Error("Choose Markdown or PDF.");
   }
 
-  return {
+  const request: AiChatExportRequest = {
     sharedUrl: trimmedUrl,
     format,
   };
+
+  if (turnstileToken?.trim()) {
+    request.turnstileToken = turnstileToken.trim();
+  }
+
+  return request;
 }
 
 export async function exportSharedChat(

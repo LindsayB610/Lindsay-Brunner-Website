@@ -39,6 +39,8 @@ async function run() {
   assert(source.includes('export default async'), 'Netlify function should use modern default export syntax', failures);
   assert(source.includes('export const config'), 'Netlify function should export config', failures);
   assert(source.includes('exportChatWithExporter'), 'Netlify function should use the real exporter adapter by default', failures);
+  assert(source.includes('verifyTurnstileToken'), 'Netlify function should verify Turnstile tokens before export work', failures);
+  assert(source.includes('TURNSTILE_SECRET_KEY'), 'Netlify function should read the Turnstile secret key from environment', failures);
   assert(!source.includes('PDF export is not available yet.'), 'Netlify function should not block PDF exports behind a disabled-runtime response', failures);
   assert(
     netlifyConfig.includes('from = "/api/export-chat"') &&
@@ -160,6 +162,61 @@ async function run() {
   assert(pdfResponse.headers.get('Content-Disposition').includes('.pdf'), 'mock PDF export should set a PDF disposition filename', failures);
   assert(pdfResponse.headers.get('Cache-Control') === 'no-store', 'mock PDF export should prevent caching', failures);
   assert((await pdfResponse.blob()).type === 'application/pdf', 'mock PDF export should return a PDF Blob', failures);
+
+  let exporterCalledAfterMissingTurnstile = false;
+  const missingTurnstileResponse = await postJson(handleExportChatRequest, {
+    sharedUrl: 'https://chatgpt.com/share/mock-thread',
+    format: 'markdown',
+  }, {
+    exportChat: async () => {
+      exporterCalledAfterMissingTurnstile = true;
+      return new Response('should not export');
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => true,
+  });
+  assert(missingTurnstileResponse.status === 403, 'missing Turnstile token should return 403 when Turnstile is configured', failures);
+  assert((await missingTurnstileResponse.json()).error === 'Please verify you are human and try again.', 'missing Turnstile token should use a safe human-verification error', failures);
+  assert(!exporterCalledAfterMissingTurnstile, 'missing Turnstile token should not invoke exporter work', failures);
+
+  let exporterCalledAfterInvalidTurnstile = false;
+  const invalidTurnstileResponse = await postJson(handleExportChatRequest, {
+    sharedUrl: 'https://chatgpt.com/share/mock-thread',
+    format: 'markdown',
+    turnstileToken: 'bad-token',
+  }, {
+    exportChat: async () => {
+      exporterCalledAfterInvalidTurnstile = true;
+      return new Response('should not export');
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => false,
+  });
+  assert(invalidTurnstileResponse.status === 403, 'invalid Turnstile token should return 403', failures);
+  assert((await invalidTurnstileResponse.json()).error === 'Please verify you are human and try again.', 'invalid Turnstile token should use a safe human-verification error', failures);
+  assert(!exporterCalledAfterInvalidTurnstile, 'invalid Turnstile token should not invoke exporter work', failures);
+
+  let exporterCalledAfterValidTurnstile = false;
+  const validTurnstileResponse = await postJson(handleExportChatRequest, {
+    sharedUrl: 'https://chatgpt.com/share/mock-thread',
+    format: 'markdown',
+    turnstileToken: 'good-token',
+  }, {
+    exportChat: async () => {
+      exporterCalledAfterValidTurnstile = true;
+      return new Response('# Human export', {
+        headers: {
+          'Cache-Control': 'no-store',
+          'Content-Disposition': 'attachment; filename="human.md"',
+          'Content-Type': 'text/markdown; charset=utf-8',
+        },
+      });
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async (token, secret) => token === 'good-token' && secret === 'mock-secret',
+  });
+  assert(validTurnstileResponse.status === 200, 'valid Turnstile token should allow export', failures);
+  assert(exporterCalledAfterValidTurnstile, 'valid Turnstile token should invoke exporter work', failures);
 
   let receivedPipelineOptions = null;
   const adapterMarkdownResponse = await exportChatWithExporter({

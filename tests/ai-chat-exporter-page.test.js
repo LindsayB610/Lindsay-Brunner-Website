@@ -34,6 +34,9 @@ assert(exists('static/images/social/ai-chat-exporter-og.png'), 'AI Chat Exporter
 assert(islandSource.includes('BackgroundBeamsWithCollision'), 'AI Chat Exporter island should use BackgroundBeamsWithCollision', failures);
 assert(islandSource.includes('StatefulButton'), 'AI Chat Exporter island should use StatefulButton', failures);
 assert(islandSource.includes('enabledFormats'), 'AI Chat Exporter island should read enabled formats from the shared launch contract', failures);
+assert(islandSource.includes('turnstileSiteKey'), 'AI Chat Exporter island should include the Cloudflare Turnstile site key', failures);
+assert(islandSource.includes('challenges.cloudflare.com/turnstile/v0/api.js'), 'AI Chat Exporter island should load the Cloudflare Turnstile script only on this page', failures);
+assert(islandSource.includes('turnstileToken'), 'AI Chat Exporter island should include the Turnstile token in export requests', failures);
 assert(!islandSource.includes('PDF (coming soon)'), 'AI Chat Exporter island should not label PDF as coming soon now that it is enabled', failures);
 assert(islandSource.includes('isExportingRef'), 'AI Chat Exporter should guard duplicate submissions synchronously', failures);
 assert(islandSource.includes('role="status"'), 'AI Chat Exporter island should expose status text through role="status"', failures);
@@ -91,7 +94,7 @@ if (exists('public/ai-chat-exporter/index.html')) {
     failures,
   );
   assert(
-    page.includes('<meta property="og:image" content="https://lindsaybrunner.com/images/social/ai-chat-exporter-og.png"'),
+    /<meta\s+property=["']og:image["']\s+content=["']https:\/\/lindsaybrunner\.com\/images\/social\/ai-chat-exporter-og\.png["']/.test(page),
     'built page should include the page-specific AI Chat Exporter OG image',
     failures,
   );

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
@@ -12,12 +12,82 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import { StatefulButton } from "@/components/ui/stateful-button";
 import "./styles.css";
 
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          callback: (token: string) => void;
+          "error-callback": () => void;
+          "expired-callback": () => void;
+          sitekey: string;
+          theme: "dark";
+        },
+      ) => string;
+      reset: (widgetId: string) => void;
+    };
+  }
+}
+
+const turnstileSiteKey = "0x4AAAAAADPhTg-gZ2PoA0S9";
+const turnstileScriptUrl = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+
 function AiChatExporterPage() {
   const [sharedUrl, setSharedUrl] = useState("");
   const [format, setFormat] = useState<AiChatExportFormat>("markdown");
   const [isExporting, setIsExporting] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const isExportingRef = useRef(false);
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef("");
+
+  useEffect(() => {
+    let isMounted = true;
+
+    function renderTurnstile() {
+      if (
+        !isMounted ||
+        !window.turnstile ||
+        !turnstileContainerRef.current ||
+        turnstileWidgetIdRef.current
+      ) {
+        return;
+      }
+
+      turnstileWidgetIdRef.current = window.turnstile.render(
+        turnstileContainerRef.current,
+        {
+          "error-callback": () => setTurnstileToken(""),
+          "expired-callback": () => setTurnstileToken(""),
+          callback: (token) => setTurnstileToken(token),
+          sitekey: turnstileSiteKey,
+          theme: "dark",
+        },
+      );
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${turnstileScriptUrl}"]`,
+    );
+
+    if (existingScript) {
+      existingScript.addEventListener("load", renderTurnstile, { once: true });
+      renderTurnstile();
+    } else {
+      const script = document.createElement("script");
+      script.async = true;
+      script.defer = true;
+      script.src = turnstileScriptUrl;
+      script.addEventListener("load", renderTurnstile, { once: true });
+      document.head.append(script);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,20 +100,29 @@ function AiChatExporterPage() {
     }
 
     try {
-      const request = buildExportRequest(sharedUrl, format);
+      const request = buildExportRequest(sharedUrl, format, turnstileToken);
       isExportingRef.current = true;
       setIsExporting(true);
       setStatusMessage("Creating your export.");
       const exported = await exportSharedChat(request);
       triggerFileDownload(exported.blob, exported.filename);
       setStatusMessage(`Downloaded ${exported.filename}.`);
+      resetTurnstile();
       return true;
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : "Check the URL and try again.");
+      resetTurnstile();
       return false;
     } finally {
       isExportingRef.current = false;
       setIsExporting(false);
+    }
+  }
+
+  function resetTurnstile() {
+    setTurnstileToken("");
+    if (turnstileWidgetIdRef.current && window.turnstile) {
+      window.turnstile.reset(turnstileWidgetIdRef.current);
     }
   }
 
@@ -92,6 +171,12 @@ function AiChatExporterPage() {
               );
             })}
           </fieldset>
+
+          <div
+            ref={turnstileContainerRef}
+            aria-label="Human verification"
+            className="ai-exporter-turnstile"
+          />
 
           <StatefulButton
             aria-busy={isExporting}
