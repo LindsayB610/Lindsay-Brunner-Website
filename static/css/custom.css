@@ -622,6 +622,12 @@ body.page-nemesis .social-link:focus-visible {
   outline: none;
 }
 
+.nemesis-bottom-exit {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.35rem;
+}
+
 .nemesis-utility-label {
   color: var(--dark-text-muted);
   font-size: 0.78rem;
