@@ -84,19 +84,23 @@ function shouldUseServerlessChromium() {
 }
 
 async function renderPdfWithServerlessChromium(transcript: unknown) {
-  const [{ chromium: playwrightChromium }, serverlessChromium, { renderChatGptHtml }] =
+  const [puppeteer, serverlessChromium, { renderChatGptHtml }] =
     await Promise.all([
-      import("playwright-core"),
+      import("puppeteer-core"),
       import("@sparticuz/chromium"),
       loadExporterPdfHtmlRenderer(),
     ]);
 
   const html = renderChatGptHtml(transcript);
   const chromium = serverlessChromium.default;
-  const browser = await playwrightChromium.launch({
+  const browser = await puppeteer.default.launch({
     args: chromium.args,
+    defaultViewport: {
+      height: 1080,
+      width: 1920,
+    },
     executablePath: await chromium.executablePath(),
-    headless: true,
+    headless: "shell",
   });
 
   try {
