@@ -191,8 +191,17 @@ npm run test:content  # Run content validation tests
 npm test           # Run all tests (HTML, links, content, spell check, OG images, scheduling, search JSON, recipe template)
 ```
 
+For routine content publishing changes, prefer the bounded bundles so post work does not run the React island suites:
+
+```bash
+npm run test:thoughts  # Thought-post publishing checks
+npm run test:recipes   # Recipe publishing checks
+```
+
 **Available test commands:**
 - `npm run test:content` - Content validation tests
+- `npm run test:thoughts` - Bounded thought-post checks; builds the site and validates content, changed-file spelling, OG images, and scheduling without React island suites
+- `npm run test:recipes` - Bounded recipe checks; builds the site and validates content, changed-file spelling, OG images, search JSON, recipe templates, and dietary labels without React island suites
 - `npm run test:html` - HTML validation
 - `npm run test:links` - Broken link detection (starts dev server, waits for ready, runs check, stops server)
 - `npm run test:spell` - Spell check modified content files (git diff)
@@ -267,7 +276,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 4. Optionally create and add social image to `static/images/social/` (manual creation, unlike recipes)
 5. Reference image in front matter: `social_image: "/images/social/my-image.png"`
 6. **For diagram images in thoughts posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to thoughts post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: This script is specifically for diagrams in thoughts posts, not for other types of images or other page types.
-7. Run `npm run build && npm run test:content`
+7. Run `npm run test:thoughts`
 
 **To schedule for future publication:**
 - Set `draft: true` and a future `date` in front matter
@@ -284,7 +293,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
    - After editing the SVG, convert to PNG: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`
    - The PNG will be saved in `static/images/social/` for use as the OG image
 5. Add `social_image` to front matter: `social_image: "/images/social/recipe-xxx-og.png"`
-6. Run `npm run build && npm run test:content`
+6. Run `npm run test:recipes`
 
 **Print functionality:**
 - Recipe pages automatically include print icon button (top-right) and print/email buttons (bottom)

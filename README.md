@@ -93,6 +93,8 @@ Before you begin, ensure you have the following installed:
 
 - `npm test` - Run all tests (builds site, validates HTML, checks links, validates content, React islands, accessibility, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
 - `npm run test:content` - Run content validation tests only
+- `npm run test:thoughts` - Bounded thought-post checks: build, content validation, changed-file spell check, OG image validation, and scheduling workflow tests; does not run React island suites
+- `npm run test:recipes` - Bounded recipe checks: build, content validation, changed-file spell check, OG image validation, recipe search JSON, recipe template, and dietary label tests; does not run React island suites
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
 - `npm run test:homepage` - Validate the homepage React island integration, fallback behavior, and protected markup
@@ -288,7 +290,7 @@ The template includes:
 
 7. **For diagram images in thoughts posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to thoughts post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Add the filename to the `diagramFiles` array in `scripts/fix-diagram-backgrounds.js`, then run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. **Note**: This script is specifically for diagrams in thoughts posts, not for other types of images or other page types.
 
-8. **Test**: Run `npm run build && npm run test:content` to validate
+8. **Test**: Run `npm run test:thoughts` for the bounded thought-post test bundle
 
 **File naming conventions:**
 - Use lowercase letters, hyphens, or underscores
@@ -485,7 +487,7 @@ The template includes:
    - The PNG will be saved in `static/images/social/` for use as the OG image
    - Add `social_image: "/images/social/recipe-xxx-og.png"` to front matter
 
-5. **Test**: Run `npm run build && npm run test:content` to validate
+5. **Test**: Run `npm run test:recipes` for the bounded recipe test bundle
 
 #### Dietary labels (optional)
 
@@ -710,12 +712,20 @@ npm test
 # Run only content validation tests
 npm run test:content
 
+# Run bounded publishing checks for a thought post
+npm run test:thoughts
+
+# Run bounded publishing checks for a recipe
+npm run test:recipes
+
 # Run HTML validation
 npm run test:html
 
 # Check for broken links (starts server, runs check, stops server)
 npm run test:links
 ```
+
+Use `npm run test:thoughts` or `npm run test:recipes` for routine content publishing work. Those bundles build the site and run the relevant content checks without running the React island render, accessibility, mobile, homepage integration, or AI Chat Exporter suites. Use `npm test` when you want the full-site confidence pass before broader releases.
 
 ### Test Coverage
 

@@ -29,6 +29,19 @@ function validateNavDropdownBehavior() {
     if (!headerContent.includes('<a href="/ai-chat-exporter/">AI Chat Exporter</a>')) {
       errors.push('Header More dropdown must link to the AI Chat Exporter page');
     }
+
+    const dropdownMatch = headerContent.match(/<ul class="dropdown-menu">([\s\S]*?)<\/ul>/);
+    if (!dropdownMatch) {
+      errors.push('Header More dropdown menu markup must be present');
+    } else {
+      const menuLabels = Array.from(dropdownMatch[1].matchAll(/<a\b[^>]*>(.*?)<\/a>/g))
+        .map(match => match[1].replace(/\s+/g, ' ').trim());
+      const sortedLabels = [...menuLabels].sort((a, b) => a.localeCompare(b));
+
+      if (menuLabels.join('|') !== sortedLabels.join('|')) {
+        errors.push(`Header More dropdown links must be alphabetical; found ${menuLabels.join(', ')}`);
+      }
+    }
   } catch (error) {
     errors.push(`Error reading header partial - ${error.message}`);
   }

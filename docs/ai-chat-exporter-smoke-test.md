@@ -34,7 +34,7 @@ Test with one public ChatGPT share URL:
 
 - invalid URL shows `Use a public ChatGPT share URL.`
 - Markdown export downloads an `.md` file
-- PDF is disabled in the public UI until the Netlify runtime strategy is solved
+- PDF export downloads a `.pdf` file
 - clicking Export twice creates only one export
 - after an error, the URL field, format controls, and export button are usable again
 
@@ -46,7 +46,7 @@ On a Netlify deploy preview:
 - repeat the local Netlify dev smoke test
 - test one Markdown export from a real public ChatGPT share URL
 - for the README Artemis share URL, confirm the downloaded Markdown matches the checked-in CLI example
-- confirm direct PDF API requests return `503` with `PDF export is not available yet.`
+- test one PDF export from a real public ChatGPT share URL
 
 ## Ship Decision
 
@@ -57,12 +57,12 @@ Markdown can ship in v1 if:
 - failure states stay user-readable
 - no exporter code appears in client bundles
 
-PDF can ship later if:
+PDF can ship in v1 because:
 
-- deploy-preview PDF export succeeds twice in a row
-- PDF response arrives comfortably within the 60-second Netlify Function timeout
+- production PDF export succeeds from a real public ChatGPT share URL
 - downloaded PDF opens locally
+- runtime coverage verifies non-empty PDF output with a `%PDF` signature
 - failure states stay user-readable
 - no exporter code appears in client bundles
 
-Current Phase 6 decision: launch Markdown first. PDF remains disabled because deploy-preview PDF export returned a safe server error on the standard Netlify Function runtime.
+Current Phase 6 decision: ship Markdown and PDF. PDF uses a serverless PDFKit renderer in Netlify/Lambda environments instead of the exporter package's browser-backed PDF path.

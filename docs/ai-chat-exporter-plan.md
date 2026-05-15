@@ -13,13 +13,28 @@ The page should feel simple and focused:
 - clear loading/success/error state
 - automatic file download when export completes
 
-The implementation should use a React island in the existing Hugo site, with Aceternity `Background Lines` for the page treatment and Aceternity `Stateful Button` for export progress.
+The implementation should use a React island in the existing Hugo site, with an Aceternity visual background treatment and Aceternity `Stateful Button` for export progress.
+
+## Completion Status
+
+Completed and launched.
+
+- `/ai-chat-exporter/` builds and renders as a dedicated Hugo page with a React island.
+- The page accepts public `chatgpt.com/share/...` and `chat.openai.com/share/...` URLs.
+- Markdown and PDF exports are both enabled.
+- Exports run through a Netlify Function at `/api/export-chat`.
+- The server-side adapter imports the GitHub `chatgpt-thread-exporter` dependency and keeps exporter code out of client bundles.
+- PDF export uses a serverless PDFKit renderer when running in Netlify/Lambda environments.
+- The visual treatment uses the Aceternity `Background Beams With Collision` pattern, adapted to the site.
+- The export button uses the Aceternity-style `Stateful Button`.
+- The page is listed in the More dropdown as `AI Chat Exporter`, and the More menu is guarded to remain alphabetical.
+- Automated coverage exists for client helpers, page wiring, interaction behavior, visual contract, Netlify Function behavior, client/server bundle boundaries, and real exporter runtime fixtures.
 
 ## Phase Outline
 
 - **Phase 0: Test Harness And Contracts** - establish shared contracts, helper tests, boundary checks, and narrow npm scripts.
 - **Phase 1: Static Page And React Island Shell** - create `/ai-chat-exporter/`, mount the island, and prove the route/build wiring.
-- **Phase 2: Aceternity Visual Components** - add Background Lines and Stateful Button with accessibility and mobile render checks.
+- **Phase 2: Aceternity Visual Components** - add the Aceternity visual treatment and Stateful Button with accessibility and mobile render checks.
 - **Phase 3: Frontend Export Flow With Mock API** - validate inputs, call an API-shaped helper, mock downloads, and test browser behavior.
 - **Phase 4: Netlify Function Contract** - add `/api/export-chat` with mocked exporter internals and robust request/response tests.
 - **Phase 5: GitHub Exporter Dependency Integration** - import the real exporter server-side and protect client bundle boundaries.
@@ -188,7 +203,7 @@ Add the visual treatment and button behavior before backend work begins.
 
 ### Test First
 
-- Add source-level assertions that the exporter island uses the local Background Lines and Stateful Button components.
+- Add source-level assertions that the exporter island uses the local Aceternity background treatment and Stateful Button components.
 - Add accessibility render assertions for:
   - exactly one visible `h1`
   - named input
@@ -202,10 +217,10 @@ Add the visual treatment and button behavior before backend work begins.
 
 ### Implementation
 
-- Add/adapt Aceternity `Background Lines`.
+- Add/adapt an Aceternity background treatment.
 - Add/adapt Aceternity `Stateful Button`.
 - Keep Aceternity code local to the existing component structure, likely under `src/components/ui/`.
-- Use `Background Lines` as the page backdrop.
+- Use the selected Aceternity background as the page backdrop.
 - Use `Stateful Button` as the primary export action.
 - Ensure reduced-motion behavior is acceptable.
 - Keep the design consistent with the existing site palette and React styling.
@@ -433,9 +448,10 @@ Validate whether PDF export works reliably inside Netlify Functions.
 
 - Markdown deploy-preview smoke succeeded with the README Artemis share URL.
 - Exporter title parsing was corrected upstream so the README Artemis share URL matches `examples/artemis-program-explained.md` exactly from the CLI; the website dependency now points at that fix.
-- PDF deploy-preview smoke failed on the standard Netlify Function runtime, even after attempting a Playwright Chromium install during local draft deploy.
-- V1 should ship Markdown only.
-- PDF remains disabled in the public UI and returns a clear `503` from the API until a separate PDF runtime strategy is implemented.
+- PDF initially failed on the standard Netlify Function runtime when using the exporter package's browser-backed PDF path.
+- The PDF runtime strategy was changed to use a serverless PDFKit renderer inside the website adapter.
+- V1 ships both Markdown and PDF export.
+- Runtime fixture coverage verifies Markdown exact output and PDF binary sanity.
 
 ### Tests
 
@@ -476,8 +492,15 @@ Run the complete verification pass and prepare for launch.
 ### Review Gate
 
 - Page is ready to share directly by URL.
-- Navigation can be handled in a later thread.
+- Navigation has been added to the More dropdown as `AI Chat Exporter`.
 - No unrelated visual or content regressions across the site.
+
+### Phase 7 Result
+
+- Page metadata, route generation, React asset wiring, visual behavior, interaction states, and API contract are covered.
+- The More dropdown includes `AI Chat Exporter`.
+- The More dropdown now displays links alphabetically and `npm run test:content` guards that order.
+- Production smoke testing confirmed page load, navigation exposure, Markdown export, and PDF export.
 
 ### Tests
 
@@ -494,19 +517,16 @@ Run the complete verification pass and prepare for launch.
 
 - `/ai-chat-exporter/` builds and renders.
 - React island mounts on the exporter page only.
-- Background Lines renders without overpowering the form.
+- Background Beams With Collision renders behind the form without overpowering it.
 - Stateful Button handles loading and completion clearly.
 - Markdown export works.
-- PDF export decision is resolved.
+- PDF export works through the serverless PDFKit renderer.
 - Invalid input and exporter failures are handled gracefully.
 - Downloads use correct file extensions.
 - Exporter package stays out of client bundles.
 - Netlify deploy preview is smoke tested.
-- Page remains unlisted until navigation is added.
+- Page is listed in the More dropdown as `AI Chat Exporter`.
 
-## Open Decisions
+## Remaining Considerations
 
-- Whether PDF export is reliable enough for the first public launch.
-- Whether filenames should use the exported thread title, the current date, or both.
-- Whether to include a short privacy note on the page.
-- Whether to add rate limiting or bot protection if the endpoint becomes public and discoverable.
+- Rate limiting or bot protection may be worth adding if the endpoint attracts public abuse.
