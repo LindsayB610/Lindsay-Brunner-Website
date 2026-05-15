@@ -101,12 +101,12 @@ async function renderPdfWithServerlessChromium(transcript: unknown) {
     },
     executablePath: await chromium.executablePath(),
     headless: "shell",
-  });
+    });
 
   try {
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "load" });
-    await page.emulateMedia({ media: "print" });
+    await page.emulateMediaType("print");
 
     return page.pdf({
       displayHeaderFooter: true,
