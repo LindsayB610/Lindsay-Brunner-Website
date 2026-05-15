@@ -28,9 +28,13 @@ assert(exists('assets/react/.vite/manifest.json'), 'Vite manifest should exist u
 
 const islandSource = read('src/react/ai-chat-exporter.tsx');
 const pageContent = read('content/ai-chat-exporter/index.md');
+const headersContent = read('static/_headers');
 assert(pageContent.includes('description: "Export public ChatGPT share links to Markdown."'), 'AI Chat Exporter should define a meta description in front matter', failures);
 assert(pageContent.includes('social_image: "/images/social/ai-chat-exporter-og.png"'), 'AI Chat Exporter should define a page-specific social image', failures);
 assert(exists('static/images/social/ai-chat-exporter-og.png'), 'AI Chat Exporter social image should exist', failures);
+assert(headersContent.includes('script-src') && headersContent.includes('https://challenges.cloudflare.com'), 'site CSP should allow Cloudflare Turnstile scripts', failures);
+assert(headersContent.includes('connect-src') && headersContent.includes('https://challenges.cloudflare.com'), 'site CSP should allow Cloudflare Turnstile verification connections', failures);
+assert(headersContent.includes('frame-src https://challenges.cloudflare.com'), 'site CSP should allow the Cloudflare Turnstile iframe', failures);
 assert(islandSource.includes('BackgroundBeamsWithCollision'), 'AI Chat Exporter island should use BackgroundBeamsWithCollision', failures);
 assert(islandSource.includes('StatefulButton'), 'AI Chat Exporter island should use StatefulButton', failures);
 assert(islandSource.includes('enabledFormats'), 'AI Chat Exporter island should read enabled formats from the shared launch contract', failures);
