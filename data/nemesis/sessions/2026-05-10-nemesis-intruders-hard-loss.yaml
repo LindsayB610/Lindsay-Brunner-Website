@@ -16,7 +16,7 @@ setup: "intruders"
 board: "hard"
 result: "loss"
 players: 3
-# final_state_image: "/images/nemesis/session-photos/REPLACE-ME.jpg"
+final_state_image: "/images/nemesis/session-photos/2026-05-10-nemesis-intruders-hard-loss.jpg"
 note: "INCIDENT REPORT — USS NEMESIS
 
 Crew Manifest:
