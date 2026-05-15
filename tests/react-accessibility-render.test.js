@@ -9,6 +9,7 @@ const failures = [];
 const routes = [
   { path: '/', label: 'homepage', h1: 'Complex technical ideas, made clear enough to trust.' },
   { path: '/about/', label: 'about page', h1: "Hey, I'm Lindsay Brunner" },
+  { path: '/ai-chat-exporter/', label: 'AI Chat Exporter page', h1: 'AI Chat Exporter' },
 ];
 
 const contentTypeByExtension = {

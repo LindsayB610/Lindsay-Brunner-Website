@@ -2,6 +2,7 @@
 /assets/react
 **/.DS_Store
 node_modules
+.netlify
 .env
 /dist
 /build

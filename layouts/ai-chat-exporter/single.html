@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div id="ai-chat-exporter-root">
+  <section class="ai-exporter-fallback" aria-labelledby="ai-exporter-title">
+    <div class="ai-exporter-fallback__inner">
+      <p class="ai-exporter-fallback__eyebrow">ChatGPT share link exporter</p>
+      <h1 id="ai-exporter-title">AI Chat Exporter</h1>
+      <p>
+        Paste a public ChatGPT share URL and export a clean Markdown or PDF
+        copy of the thread.
+      </p>
+      <form class="ai-exporter-fallback__form">
+        <label class="sr-only" for="ai-exporter-fallback-url">Shared ChatGPT URL</label>
+        <input
+          id="ai-exporter-fallback-url"
+          name="sharedUrl"
+          placeholder="https://chatgpt.com/share/..."
+          type="url"
+        />
+        <fieldset>
+          <legend class="sr-only">Export format</legend>
+          <label>
+            <input checked name="format" type="radio" value="markdown" />
+            Markdown
+          </label>
+          <label>
+            <input name="format" type="radio" value="pdf" />
+            PDF
+          </label>
+        </fieldset>
+        <button type="submit">Export</button>
+      </form>
+    </div>
+  </section>
+</div>
+{{ end }}

@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         homepage: "src/react/homepage.tsx",
         about: "src/react/about.tsx",
+        "ai-chat-exporter": "src/react/ai-chat-exporter.tsx",
       },
       output: {
         entryFileNames: "assets/[name]-[hash].js",

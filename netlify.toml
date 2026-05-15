@@ -1,7 +1,19 @@
 [build]
 publish = "public"
-command = "npm install && npm run build"
+command = "npm install && npx playwright install chromium && npm run build"
 # Build image configured in Netlify dashboard: Ubuntu Noble 24.04
+
+[build.environment]
+PLAYWRIGHT_BROWSERS_PATH = "0"
+
+[dev]
+command = "npm run dev"
+targetPort = 1313
+port = 8888
+framework = "#custom"
+
+[functions]
+included_files = ["node_modules/playwright-core/.local-browsers/**"]
 
 [build.processing]
 skip_processing = false
@@ -23,26 +35,31 @@ HUGO_ENABLEGITINFO = "true"
 NODE_VERSION = "20"
 
 [context.split1]
-command = "npm install && npm run build"
+command = "npm install && npx playwright install chromium && npm run build"
 
 [context.split1.environment]
 HUGO_ENV = "production"
 NODE_VERSION = "20"
 
 [context.deploy-preview]
-command = "npm install && npm run build"
+command = "npm install && npx playwright install chromium && npm run build"
 
 [context.deploy-preview.environment]
 NODE_VERSION = "20"
 
 [context.branch-deploy]
-command = "npm install && npm run build"
+command = "npm install && npx playwright install chromium && npm run build"
 
 [context.branch-deploy.environment]
 NODE_VERSION = "20"
 
 [context.next.environment]
 HUGO_ENABLEGITINFO = "true"
+
+[[redirects]]
+from = "/api/export-chat"
+to = "/.netlify/functions/export-chat"
+status = 200
 
 [[redirects]]
 from = "/recipes/"

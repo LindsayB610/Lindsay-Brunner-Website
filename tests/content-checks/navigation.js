@@ -25,6 +25,10 @@ function validateNavDropdownBehavior() {
     if (!headerContent.includes('event.key !== "Escape"')) {
       errors.push('Header dropdown must close on Escape for keyboard users');
     }
+
+    if (!headerContent.includes('<a href="/ai-chat-exporter/">AI Chat Exporter</a>')) {
+      errors.push('Header More dropdown must link to the AI Chat Exporter page');
+    }
   } catch (error) {
     errors.push(`Error reading header partial - ${error.message}`);
   }

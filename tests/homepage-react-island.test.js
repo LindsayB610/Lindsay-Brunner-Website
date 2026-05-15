@@ -117,6 +117,7 @@ function readBuiltPage(relativePath) {
 function getPageKind(relativePath) {
   if (relativePath === 'public/index.html') return 'home';
   if (relativePath === 'public/about/index.html') return 'about';
+  if (relativePath === 'public/ai-chat-exporter/index.html') return 'ai-chat-exporter';
   if (relativePath.startsWith('public/thoughts/')) return 'thoughts';
   if (relativePath.startsWith('public/recipes/')) return 'recipes';
   return 'other';
@@ -181,6 +182,35 @@ function checkBuiltFallbacks() {
     '<noscript>',
     'built about page should not depend on noscript for machine-readable content',
   );
+  [
+    {
+      html: home,
+      label: 'homepage',
+      root: 'homepage-root',
+      fallbackPattern: /html\.js-enabled #homepage-root\s*>\s*section/,
+    },
+    {
+      html: about,
+      label: 'about page',
+      root: 'about-root',
+      fallbackPattern: /html\.js-enabled #about-root\s*>\s*\.about-devpro-fallback/,
+    },
+  ].forEach(({ html, label, root, fallbackPattern }) => {
+    assertIncludes(
+      html,
+      'document.documentElement.classList.add("js-enabled")',
+      `built ${label} should mark JavaScript-capable browsers before first paint`,
+    );
+    assertIncludes(
+      html,
+      `html.js-enabled #${root}`,
+      `built ${label} should reserve a black React island shell before hydration`,
+    );
+    assert(
+      fallbackPattern.test(html),
+      `built ${label} should hide static fallback content before React hydration`,
+    );
+  });
   assertNotIncludes(
     home,
     '\\"Lindsay Brunner\\"',
@@ -218,7 +248,11 @@ function checkReactManifest() {
   assert(exists('assets/react/.vite/manifest.json'), 'Vite manifest should exist under assets/react/.vite');
 
   const manifest = JSON.parse(read('assets/react/.vite/manifest.json'));
-  const expectedEntries = ['src/react/homepage.tsx', 'src/react/about.tsx'];
+  const expectedEntries = [
+    'src/react/homepage.tsx',
+    'src/react/about.tsx',
+    'src/react/ai-chat-exporter.tsx',
+  ];
 
   expectedEntries.forEach((entryName) => {
     const entry = manifest[entryName];
@@ -340,11 +374,13 @@ function checkBuiltSiteIsolation() {
     const loadsReact = /\/react\/assets\/[^"']+\.(?:css|js)/.test(html);
     const loadsHomepageEntry = /\/react\/assets\/homepage-[^"']+\.js/.test(html);
     const loadsAboutEntry = /\/react\/assets\/about-[^"']+\.js/.test(html);
+    const loadsAiChatExporterEntry = /\/react\/assets\/ai-chat-exporter-[^"']+\.js/.test(html);
     const loadsSharedReact = /\/react\/assets\/styles-[^"']+\.(?:css|js)/.test(html);
 
     if (kind === 'home') {
       assert(loadsHomepageEntry, 'homepage should load only the homepage React entry');
       assert(!loadsAboutEntry, 'homepage should not load the about contact React entry');
+      assert(!loadsAiChatExporterEntry, 'homepage should not load the AI Chat Exporter React entry');
       assert(loadsSharedReact, 'homepage should load shared React CSS/chunk assets');
       return;
     }
@@ -352,6 +388,15 @@ function checkBuiltSiteIsolation() {
     if (kind === 'about') {
       assert(loadsAboutEntry, 'about page should load only the about contact React entry');
       assert(!loadsHomepageEntry, 'about page should not load the homepage React entry');
+      assert(!loadsAiChatExporterEntry, 'about page should not load the AI Chat Exporter React entry');
+      assert(loadsSharedReact, 'about page should load shared React CSS/chunk assets');
+      return;
+    }
+
+    if (kind === 'ai-chat-exporter') {
+      assert(loadsAiChatExporterEntry, 'AI Chat Exporter page should load only the AI Chat Exporter React entry');
+      assert(!loadsHomepageEntry, 'AI Chat Exporter page should not load the homepage React entry');
+      assert(!loadsAboutEntry, 'AI Chat Exporter page should not load the about React entry');
       assert(loadsSharedReact, 'about page should load shared React CSS/chunk assets');
       return;
     }
@@ -359,6 +404,7 @@ function checkBuiltSiteIsolation() {
     assert(!loadsReact, `${page} should not load any React island assets`);
     assert(!loadsHomepageEntry, `${page} should not load the homepage React entry`);
     assert(!loadsAboutEntry, `${page} should not load the about React entry`);
+    assert(!loadsAiChatExporterEntry, `${page} should not load the AI Chat Exporter React entry`);
   });
 
   assert(/\sid=(["']?)homepage-root\1/.test(home), 'built homepage should include the homepage React root');
@@ -383,6 +429,7 @@ function checkReactCssScoping() {
     '@import "tailwindcss/utilities";',
     '#homepage-root',
     '#about-root',
+    '#ai-chat-exporter-root',
   ].forEach((expected) => assertIncludes(reactStyles, expected, 'React CSS source'));
 
   [
@@ -398,7 +445,7 @@ function checkReactCssScoping() {
     'React CSS source should not define unscoped element selectors',
   );
   assert(
-    /^#homepage-root a::after,\n#about-root a::after \{/m.test(reactStyles),
+    /^#homepage-root a::after,\n#about-root a::after,\n#ai-chat-exporter-root a::after \{/m.test(reactStyles),
     'React link pseudo reset should stay scoped to React mount points',
   );
   assertIncludes(

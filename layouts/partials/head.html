@@ -80,11 +80,48 @@
   rel="stylesheet"
 />
 
+{{ if or .IsHome (eq .RelPermalink "/about/") (eq .RelPermalink "/ai-chat-exporter/") }}
+<script>
+  document.documentElement.classList.add("js-enabled");
+</script>
+<style>
+  {{ if .IsHome }}
+  html.js-enabled #homepage-root {
+    min-height: calc(100vh - 80px);
+    background: #000000;
+  }
+
+  html.js-enabled #homepage-root > section {
+    display: none !important;
+  }
+  {{ else if eq .RelPermalink "/about/" }}
+  html.js-enabled #about-root {
+    min-height: calc(100vh - 80px);
+    background: #000000;
+  }
+
+  html.js-enabled #about-root > .about-devpro-fallback {
+    display: none !important;
+  }
+  {{ else if eq .RelPermalink "/ai-chat-exporter/" }}
+  html.js-enabled #ai-chat-exporter-root {
+    min-height: calc(100vh - 80px);
+    background: #000000;
+  }
+
+  html.js-enabled #ai-chat-exporter-root > .ai-exporter-fallback {
+    display: none !important;
+  }
+  {{ end }}
+</style>
+{{ end }}
+
 {{- $assetVersion := now.Unix -}}
 <link rel="stylesheet" href="/css/main.css?v={{ $assetVersion }}" />
 <link rel="stylesheet" href="/css/custom.css?v={{ $assetVersion }}" />
 {{ if .IsHome }}{{ partial "react-assets.html" "src/react/homepage.tsx" }}{{ end }}
 {{ if eq .RelPermalink "/about/" }}{{ partial "react-assets.html" "src/react/about.tsx" }}{{ end }}
+{{ if eq .RelPermalink "/ai-chat-exporter/" }}{{ partial "react-assets.html" "src/react/ai-chat-exporter.tsx" }}{{ end }}
 
 <!-- Favicons -->
 <link

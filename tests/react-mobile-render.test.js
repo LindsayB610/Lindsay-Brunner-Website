@@ -9,6 +9,7 @@ const failures = [];
 const routes = [
   { path: '/', label: 'homepage' },
   { path: '/about/', label: 'about page' },
+  { path: '/ai-chat-exporter/', label: 'AI Chat Exporter page' },
 ];
 
 const viewports = [
