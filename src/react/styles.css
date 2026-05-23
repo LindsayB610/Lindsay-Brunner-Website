@@ -61,6 +61,10 @@
   padding: 72px 24px 88px;
 }
 
+#ai-chat-exporter-root .ai-exporter-page > .pointer-events-none {
+  overflow: hidden;
+}
+
 body:has(#ai-chat-exporter-root) .site-footer {
   margin-top: 0;
 }

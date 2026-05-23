@@ -165,6 +165,7 @@ async function run() {
           fontWeight: h1.fontWeight,
           whiteSpace: h1.whiteSpace,
         },
+        horizontalOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         input: {
           backdropFilter: input.backdropFilter || input.webkitBackdropFilter,
           backgroundColor: input.backgroundColor,
@@ -188,6 +189,7 @@ async function run() {
     });
 
     assert(metrics.footerGap === 0, `exporter section should meet the existing footer line without a gap; got ${metrics.footerGap}px`, failures);
+    assert(metrics.horizontalOverflow === 0, `ChatGPT tab should not create horizontal page overflow; got ${metrics.horizontalOverflow}px`, failures);
     assert(metrics.h1.fontFamily.includes('Space Grotesk'), `H1 should use the site-standard Space Grotesk stack; got ${metrics.h1.fontFamily}`, failures);
     assert(metrics.h1.fontWeight === '600', `H1 should be unbolded to weight 600; got ${metrics.h1.fontWeight}`, failures);
     assert(metrics.h1.whiteSpace === 'nowrap', `desktop H1 should stay on one line; got ${metrics.h1.whiteSpace}`, failures);
@@ -212,12 +214,15 @@ async function run() {
       const footerRect = rect('.site-footer');
       const buttonRect = rect('#ai-exporter-panel-claude-json .ai-exporter-button');
       const turnstileRect = rect('#ai-exporter-panel-claude-json [aria-label="Human verification"]');
+      const beamLayerStyle = getComputedStyle(document.querySelector('.ai-exporter-page > .pointer-events-none'));
       const turnstileStyle = getComputedStyle(document.querySelector('#ai-exporter-panel-claude-json [aria-label="Human verification"]'));
       const pageStyle = getComputedStyle(document.querySelector('.ai-exporter-page'));
 
       return {
         buttonFooterGap: Math.round((footerRect.top - buttonRect.bottom) * 100) / 100,
+        beamLayerOverflow: beamLayerStyle.overflow,
         footerGap: Math.round((footerRect.top - pageRect.bottom) * 100) / 100,
+        horizontalOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         pageHeight: pageStyle.height,
         pageOverflow: pageStyle.overflow,
         turnstileButtonGap: Math.round((turnstileRect.top - buttonRect.bottom) * 100) / 100,
@@ -226,11 +231,18 @@ async function run() {
     });
 
     assert(claudeMetrics.footerGap === 0, `Claude JSON section should meet the footer without overlap or a gap; got ${claudeMetrics.footerGap}px`, failures);
+    assert(claudeMetrics.horizontalOverflow === 0, `Claude JSON tab should not create horizontal page overflow; got ${claudeMetrics.horizontalOverflow}px`, failures);
     assert(claudeMetrics.buttonFooterGap > 80, `Claude JSON export button should not sit behind the footer; got ${claudeMetrics.buttonFooterGap}px`, failures);
     assert(claudeMetrics.turnstileButtonGap >= 20, `Turnstile should have breathing room below the Claude button; got ${claudeMetrics.turnstileButtonGap}px`, failures);
     assert(claudeMetrics.turnstileMarginTop === '24px', `Turnstile should keep explicit top spacing; got ${claudeMetrics.turnstileMarginTop}`, failures);
+    assert(claudeMetrics.beamLayerOverflow === 'hidden', `decorative beam layer should clip horizontal animation overflow; got ${claudeMetrics.beamLayerOverflow}`, failures);
     assert(claudeMetrics.pageOverflow === 'visible', `AI exporter page should allow long tab content to define height; got ${claudeMetrics.pageOverflow}`, failures);
     assert(claudeMetrics.pageHeight !== '640px', `AI exporter page should not be locked to the background hero height; got ${claudeMetrics.pageHeight}`, failures);
+
+    await page.getByRole('tab', { name: 'Claude Link' }).click();
+    await page.getByText('Claude share-link export is experimental.').waitFor();
+    const claudeLinkOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    assert(claudeLinkOverflow === 0, `Claude Link tab should not create horizontal page overflow; got ${claudeLinkOverflow}px`, failures);
 
     await page.close();
   } finally {
