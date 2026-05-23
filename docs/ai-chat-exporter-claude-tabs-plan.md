@@ -170,7 +170,7 @@ Key risk surfaces:
 | --- | --- | --- |
 | 0 | Branch, plan, contracts | Complete |
 | 1 | Tabbed UI shell | Complete |
-| 2 | Client contract and helper refactor | Not started |
+| 2 | Client contract and helper refactor | Complete |
 | 3 | Claude JSON Markdown path | Not started |
 | 4 | Claude JSON PDF path | Not started |
 | 5 | Claude Link tab and warning behavior | Not started |
@@ -265,7 +265,7 @@ Tests:
 
 ## Phase 2: Client Contract And Helper Refactor
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -289,6 +289,16 @@ Implementation:
 - Keep `triggerFileDownload`, filename parsing, and timeout behavior shared.
 - Update tests without moving server work yet.
 
+Completed:
+
+- Added provider and mode contracts for `chatgpt`, `claude`, `share-link`, and `snapshot-json`.
+- Added Claude share URL validation for `https://claude.ai/share/...`.
+- Added Claude snapshot JSON validation and parsing for direct, `snapshot`, and `data` wrapped payloads that contain `chat_messages`.
+- Added provider-aware `buildExportRequest()` support for Claude snapshot JSON and Claude share-link requests.
+- Preserved the existing ChatGPT `buildExportRequest(sharedUrl, format, turnstileToken)` call path for the launched UI.
+- Kept Claude source URLs optional, trimmed, and validated when present.
+- Expanded bundle-boundary tests to guard both `chatgpt-thread-exporter` and `claude-thread-exporter` out of client assets.
+
 Review gate:
 
 - Client helper API can represent all three tabs.
@@ -297,8 +307,10 @@ Review gate:
 
 Tests:
 
-- `npm run test:ai-exporter:client`
-- `npm run test:ai-exporter:boundary`
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile:render`
 
 ## Phase 3: Claude JSON Markdown Path
 

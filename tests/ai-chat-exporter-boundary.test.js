@@ -9,7 +9,7 @@ const {
 } = require('./ai-chat-exporter-test-utils');
 
 const failures = [];
-const EXPORTER_PACKAGE = 'chatgpt-thread-exporter';
+const EXPORTER_PACKAGES = ['chatgpt-thread-exporter', 'claude-thread-exporter'];
 
 console.log('🚧 Checking AI Chat Exporter bundle boundaries...');
 
@@ -36,16 +36,22 @@ function listFiles(relativeDir) {
 listFiles('src/react')
   .filter((file) => /\.(tsx?|jsx?)$/.test(file))
   .forEach((file) => {
-    assert(!read(file).includes(EXPORTER_PACKAGE), `${file} should not import ${EXPORTER_PACKAGE}`, failures);
+    EXPORTER_PACKAGES.forEach((exporterPackage) => {
+      assert(!read(file).includes(exporterPackage), `${file} should not import ${exporterPackage}`, failures);
+    });
   });
 
-assert(!read('vite.config.ts').includes(EXPORTER_PACKAGE), `vite.config.ts should not reference ${EXPORTER_PACKAGE}`, failures);
+EXPORTER_PACKAGES.forEach((exporterPackage) => {
+  assert(!read('vite.config.ts').includes(exporterPackage), `vite.config.ts should not reference ${exporterPackage}`, failures);
+});
 
 if (exists('assets/react')) {
   listFiles('assets/react')
     .filter((file) => /\.(js|css)$/.test(file))
     .forEach((file) => {
-      assert(!read(file).includes(EXPORTER_PACKAGE), `${file} should not include ${EXPORTER_PACKAGE}`, failures);
+      EXPORTER_PACKAGES.forEach((exporterPackage) => {
+        assert(!read(file).includes(exporterPackage), `${file} should not include ${exporterPackage}`, failures);
+      });
     });
 }
 

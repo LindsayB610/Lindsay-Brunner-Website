@@ -11,7 +11,10 @@ const {
   exportSharedChat,
   fetchExportSharedChat,
   isChatGptShareUrl,
+  isClaudeShareUrl,
+  isClaudeSnapshotJson,
   mockExportSharedChat,
+  parseClaudeSnapshotJson,
   parseDownloadFilename,
   triggerFileDownload,
   withExportTimeout,
@@ -39,6 +42,16 @@ async function run() {
     'tab contract should be ChatGPT, Claude JSON, Claude Link',
     failures,
   );
+  assert(
+    JSON.stringify(AI_CHAT_EXPORTER_CONTRACT.providers) === JSON.stringify(['chatgpt', 'claude']),
+    'provider contract should be chatgpt and claude',
+    failures,
+  );
+  assert(
+    JSON.stringify(AI_CHAT_EXPORTER_CONTRACT.modes) === JSON.stringify(['share-link', 'snapshot-json']),
+    'mode contract should be share-link and snapshot-json',
+    failures,
+  );
 
   [
     'https://chatgpt.com/share/abc123',
@@ -55,6 +68,53 @@ async function run() {
     'https://evil.chatgpt.com/share/abc123',
     'https://chat.openai.com/shared/abc123',
   ].forEach((url) => assert(!isChatGptShareUrl(url), `${url || '(empty)'} should be rejected as a ChatGPT share URL`, failures));
+
+  [
+    'https://claude.ai/share/7b2442ee-2ffb-4f82-8852-291840cf5ca0',
+    'https://claude.ai/share/abc123?utm_source=test',
+    ' https://claude.ai/share/abc123 ',
+  ].forEach((url) => assert(isClaudeShareUrl(url), `${url} should be accepted as a Claude share URL`, failures));
+
+  [
+    '',
+    'not a url',
+    'https://example.com/share/abc123',
+    'https://claude.ai/chat/abc123',
+    'https://evil.claude.ai/share/abc123',
+    'https://claude.ai/shared/abc123',
+  ].forEach((url) => assert(!isClaudeShareUrl(url), `${url || '(empty)'} should be rejected as a Claude share URL`, failures));
+
+  const claudeSnapshotJson = JSON.stringify({
+    snapshot: {
+      uuid: 'snapshot-abc',
+      snapshot_name: 'Claude fixture',
+      chat_messages: [
+        {
+          sender: 'human',
+          text: 'Hello',
+        },
+      ],
+    },
+  });
+  assert(isClaudeSnapshotJson(claudeSnapshotJson), 'Claude snapshot JSON with chat_messages should be accepted', failures);
+  assert(isClaudeSnapshotJson(JSON.stringify({ data: JSON.parse(claudeSnapshotJson) })), 'nested Claude snapshot JSON should be accepted', failures);
+  assert(!isClaudeSnapshotJson('{bad json'), 'malformed Claude snapshot JSON should be rejected', failures);
+  assert(!isClaudeSnapshotJson(JSON.stringify({ messages: [] })), 'JSON without chat_messages should be rejected as a Claude snapshot', failures);
+  assert(parseClaudeSnapshotJson(claudeSnapshotJson).snapshot_name === 'Claude fixture', 'parseClaudeSnapshotJson should return the nested Claude snapshot payload', failures);
+
+  try {
+    parseClaudeSnapshotJson('{bad json');
+    failures.push('parseClaudeSnapshotJson should throw for malformed JSON');
+  } catch (error) {
+    assert(error.message === 'Paste valid Claude snapshot JSON.', 'malformed Claude JSON error should be user-readable', failures);
+  }
+
+  try {
+    parseClaudeSnapshotJson(JSON.stringify({ messages: [] }));
+    failures.push('parseClaudeSnapshotJson should throw for unsupported snapshot JSON');
+  } catch (error) {
+    assert(error.message === 'Snapshot JSON must include Claude chat_messages.', 'unsupported Claude JSON error should be user-readable', failures);
+  }
 
   const request = buildExportRequest(' https://chatgpt.com/share/abc123 ', 'markdown');
   assert(request.sharedUrl === 'https://chatgpt.com/share/abc123', 'buildExportRequest should trim sharedUrl', failures);
@@ -79,6 +139,67 @@ async function run() {
     failures.push('buildExportRequest should throw for an invalid format');
   } catch (error) {
     assert(error.message === 'Choose Markdown or PDF.', 'invalid format error should be user-readable', failures);
+  }
+
+  const claudeRequest = buildExportRequest({
+    format: 'pdf',
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: ` ${claudeSnapshotJson} `,
+    sourceUrl: ' https://claude.ai/share/7b2442ee-2ffb-4f82-8852-291840cf5ca0 ',
+    turnstileToken: ' mock-turnstile-token ',
+  });
+  assert(claudeRequest.provider === 'claude', 'Claude snapshot request should include provider claude', failures);
+  assert(claudeRequest.mode === 'snapshot-json', 'Claude snapshot request should include mode snapshot-json', failures);
+  assert(claudeRequest.format === 'pdf', 'Claude snapshot request should preserve the selected format', failures);
+  assert(claudeRequest.snapshotJson === claudeSnapshotJson, 'Claude snapshot request should trim snapshotJson', failures);
+  assert(claudeRequest.sourceUrl === 'https://claude.ai/share/7b2442ee-2ffb-4f82-8852-291840cf5ca0', 'Claude snapshot request should trim a valid source URL', failures);
+  assert(claudeRequest.turnstileToken === 'mock-turnstile-token', 'Claude snapshot request should trim a Turnstile token', failures);
+
+  const claudeRequestWithoutSource = buildExportRequest({
+    format: 'markdown',
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: claudeSnapshotJson,
+    sourceUrl: '   ',
+  });
+  assert(!('sourceUrl' in claudeRequestWithoutSource), 'empty Claude source URL should be omitted', failures);
+
+  try {
+    buildExportRequest({
+      format: 'markdown',
+      provider: 'claude',
+      mode: 'snapshot-json',
+      snapshotJson: '{bad json',
+    });
+    failures.push('buildExportRequest should throw before network work for malformed Claude JSON');
+  } catch (error) {
+    assert(error.message === 'Paste valid Claude snapshot JSON.', 'Claude request malformed JSON error should be user-readable', failures);
+  }
+
+  try {
+    buildExportRequest({
+      format: 'markdown',
+      provider: 'claude',
+      mode: 'snapshot-json',
+      snapshotJson: claudeSnapshotJson,
+      sourceUrl: 'https://example.com/share/not-claude',
+    });
+    failures.push('buildExportRequest should throw for invalid Claude source URL');
+  } catch (error) {
+    assert(error.message === 'Use a public Claude share URL.', 'invalid Claude source URL error should be user-readable', failures);
+  }
+
+  try {
+    buildExportRequest({
+      format: 'markdown',
+      provider: 'claude',
+      mode: 'share-link',
+      sharedUrl: 'https://example.com/share/not-claude',
+    });
+    failures.push('buildExportRequest should throw for invalid Claude share link');
+  } catch (error) {
+    assert(error.message === 'Use a public Claude share URL.', 'invalid Claude share link error should be user-readable', failures);
   }
 
   assert(

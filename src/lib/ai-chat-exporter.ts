@@ -3,9 +3,12 @@ export const AI_CHAT_EXPORTER_CONTRACT = {
   rootId: "ai-chat-exporter-root",
   apiPath: "/api/export-chat",
   tabs: ["ChatGPT", "Claude JSON", "Claude Link"] as const,
+  providers: ["chatgpt", "claude"] as const,
+  modes: ["share-link", "snapshot-json"] as const,
   formats: ["markdown", "pdf"] as const,
   enabledFormats: ["markdown", "pdf"] as const,
   validHosts: ["chatgpt.com", "chat.openai.com"] as const,
+  validClaudeHosts: ["claude.ai"] as const,
   exportTimeoutMs: 65_000,
   fallbackFilenames: {
     markdown: "chatgpt-thread-export.md",
@@ -14,12 +17,48 @@ export const AI_CHAT_EXPORTER_CONTRACT = {
 } as const;
 
 export type AiChatExportFormat = (typeof AI_CHAT_EXPORTER_CONTRACT.formats)[number];
+export type AiChatExportProvider = (typeof AI_CHAT_EXPORTER_CONTRACT.providers)[number];
+export type AiChatExportMode = (typeof AI_CHAT_EXPORTER_CONTRACT.modes)[number];
 
 export type AiChatExportRequest = {
-  sharedUrl: string;
+  provider?: AiChatExportProvider;
+  mode?: AiChatExportMode;
+  sharedUrl?: string;
+  snapshotJson?: string;
+  sourceUrl?: string;
   format: AiChatExportFormat;
   turnstileToken?: string;
 };
+
+type BuildChatGptExportRequestInput = {
+  provider?: "chatgpt";
+  mode?: "share-link";
+  sharedUrl: string;
+  format: string;
+  turnstileToken?: string;
+};
+
+type BuildClaudeSnapshotExportRequestInput = {
+  provider: "claude";
+  mode: "snapshot-json";
+  snapshotJson: string;
+  sourceUrl?: string;
+  format: string;
+  turnstileToken?: string;
+};
+
+type BuildClaudeShareLinkExportRequestInput = {
+  provider: "claude";
+  mode: "share-link";
+  sharedUrl: string;
+  format: string;
+  turnstileToken?: string;
+};
+
+type BuildExportRequestInput =
+  | BuildChatGptExportRequestInput
+  | BuildClaudeSnapshotExportRequestInput
+  | BuildClaudeShareLinkExportRequestInput;
 
 export type AiChatExportFile = {
   blob: Blob;
@@ -45,17 +84,17 @@ type DownloadEnvironment = {
 };
 
 export function isChatGptShareUrl(value: string) {
-  try {
-    const url = new URL(value.trim());
-    const isValidHost = AI_CHAT_EXPORTER_CONTRACT.validHosts.includes(
-      url.hostname as (typeof AI_CHAT_EXPORTER_CONTRACT.validHosts)[number],
-    );
-    const hasShareSegment = url.pathname
-      .split("/")
-      .filter(Boolean)
-      .includes("share");
+  return isShareUrlForHosts(value, AI_CHAT_EXPORTER_CONTRACT.validHosts);
+}
 
-    return isValidHost && hasShareSegment;
+export function isClaudeShareUrl(value: string) {
+  return isShareUrlForHosts(value, AI_CHAT_EXPORTER_CONTRACT.validClaudeHosts);
+}
+
+export function isClaudeSnapshotJson(value: string) {
+  try {
+    parseClaudeSnapshotJson(value);
+    return true;
   } catch {
     return false;
   }
@@ -65,31 +104,117 @@ export function isAiChatExportFormat(value: string): value is AiChatExportFormat
   return AI_CHAT_EXPORTER_CONTRACT.formats.includes(value as AiChatExportFormat);
 }
 
+export function parseClaudeSnapshotJson(raw: string): Record<string, unknown> {
+  let parsed: unknown;
+
+  try {
+    parsed = JSON.parse(raw.trim());
+  } catch {
+    throw new Error("Paste valid Claude snapshot JSON.");
+  }
+
+  const snapshot = findClaudeSnapshotPayload(parsed);
+  if (!snapshot) {
+    throw new Error("Snapshot JSON must include Claude chat_messages.");
+  }
+
+  return snapshot;
+}
+
+export function buildExportRequest(input: BuildExportRequestInput): AiChatExportRequest;
 export function buildExportRequest(
   sharedUrl: string,
   format: string,
   turnstileToken?: string,
+): AiChatExportRequest;
+export function buildExportRequest(
+  inputOrSharedUrl: BuildExportRequestInput | string,
+  format?: string,
+  turnstileToken?: string,
 ): AiChatExportRequest {
-  const trimmedUrl = sharedUrl.trim();
+  if (typeof inputOrSharedUrl === "string") {
+    return buildChatGptShareLinkRequest({
+      format: format ?? "",
+      sharedUrl: inputOrSharedUrl,
+      turnstileToken,
+    });
+  }
 
+  if (inputOrSharedUrl.provider === "claude") {
+    return buildClaudeExportRequest(inputOrSharedUrl);
+  }
+
+  return buildChatGptShareLinkRequest(inputOrSharedUrl);
+}
+
+function buildChatGptShareLinkRequest(input: BuildChatGptExportRequestInput): AiChatExportRequest {
+  const trimmedUrl = input.sharedUrl.trim();
   if (!isChatGptShareUrl(trimmedUrl)) {
     throw new Error("Use a public ChatGPT share URL.");
   }
 
-  if (!isAiChatExportFormat(format)) {
+  if (!isAiChatExportFormat(input.format)) {
     throw new Error("Choose Markdown or PDF.");
   }
 
   const request: AiChatExportRequest = {
     sharedUrl: trimmedUrl,
-    format,
+    format: input.format,
   };
 
+  addTurnstileToken(request, input.turnstileToken);
+  return request;
+}
+
+function buildClaudeExportRequest(
+  input: BuildClaudeSnapshotExportRequestInput | BuildClaudeShareLinkExportRequestInput,
+): AiChatExportRequest {
+  if (!isAiChatExportFormat(input.format)) {
+    throw new Error("Choose Markdown or PDF.");
+  }
+
+  if (input.mode === "share-link") {
+    const trimmedUrl = input.sharedUrl.trim();
+    if (!isClaudeShareUrl(trimmedUrl)) {
+      throw new Error("Use a public Claude share URL.");
+    }
+
+    const request: AiChatExportRequest = {
+      provider: "claude",
+      mode: "share-link",
+      sharedUrl: trimmedUrl,
+      format: input.format,
+    };
+    addTurnstileToken(request, input.turnstileToken);
+    return request;
+  }
+
+  const snapshotJson = input.snapshotJson.trim();
+  parseClaudeSnapshotJson(snapshotJson);
+
+  const request: AiChatExportRequest = {
+    provider: "claude",
+    mode: "snapshot-json",
+    snapshotJson,
+    format: input.format,
+  };
+
+  const sourceUrl = input.sourceUrl?.trim();
+  if (sourceUrl) {
+    if (!isClaudeShareUrl(sourceUrl)) {
+      throw new Error("Use a public Claude share URL.");
+    }
+    request.sourceUrl = sourceUrl;
+  }
+
+  addTurnstileToken(request, input.turnstileToken);
+  return request;
+}
+
+function addTurnstileToken(request: AiChatExportRequest, turnstileToken: string | undefined) {
   if (turnstileToken?.trim()) {
     request.turnstileToken = turnstileToken.trim();
   }
-
-  return request;
 }
 
 export async function exportSharedChat(
@@ -233,6 +358,51 @@ function sanitizeFilename(filename: string) {
     .trim();
 
   return sanitized || "chatgpt-thread-export";
+}
+
+function isShareUrlForHosts<const Hosts extends readonly string[]>(value: string, hosts: Hosts) {
+  try {
+    const url = new URL(value.trim());
+    const isValidHost = hosts.includes(url.hostname as Hosts[number]);
+    const hasShareSegment = url.pathname
+      .split("/")
+      .filter(Boolean)
+      .includes("share");
+
+    return isValidHost && hasShareSegment;
+  } catch {
+    return false;
+  }
+}
+
+function findClaudeSnapshotPayload(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
+
+  if (isClaudeSnapshotPayload(value)) {
+    return value as Record<string, unknown>;
+  }
+
+  if ("snapshot" in value) {
+    const snapshot = findClaudeSnapshotPayload((value as { snapshot?: unknown }).snapshot);
+    if (snapshot) {
+      return snapshot;
+    }
+  }
+
+  if ("data" in value) {
+    const snapshot = findClaudeSnapshotPayload((value as { data?: unknown }).data);
+    if (snapshot) {
+      return snapshot;
+    }
+  }
+
+  return null;
+}
+
+function isClaudeSnapshotPayload(value: object) {
+  return "chat_messages" in value && Array.isArray((value as { chat_messages?: unknown }).chat_messages);
 }
 
 async function getExportErrorMessage(response: Response) {
