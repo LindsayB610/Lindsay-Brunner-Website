@@ -312,14 +312,14 @@ export async function mockExportSharedChat(
 
   if (request.format === "pdf") {
     headers.set("Content-Type", "application/pdf");
-    return new Response(buildMockPdf(request.sharedUrl), {
+    return new Response(buildMockPdf(request), {
       headers,
       status: 200,
     });
   }
 
   headers.set("Content-Type", "text/markdown; charset=utf-8");
-  return new Response(buildMockMarkdown(request.sharedUrl), {
+  return new Response(buildMockMarkdown(request), {
     headers,
     status: 200,
   });
@@ -452,19 +452,28 @@ async function getExportErrorMessage(response: Response) {
   return "The export failed. Please try again.";
 }
 
-function buildMockMarkdown(sharedUrl: string) {
+function getMockSource(request: AiChatExportRequest) {
+  if ("sharedUrl" in request) {
+    return request.sharedUrl;
+  }
+
+  return request.sourceUrl || "Claude snapshot JSON";
+}
+
+function buildMockMarkdown(request: AiChatExportRequest) {
   return [
-    "# ChatGPT Thread Export",
+    `# ${(request.provider ?? "chatgpt") === "claude" ? "Claude" : "ChatGPT"} Thread Export`,
     "",
-    `Source: ${sharedUrl}`,
+    `Source: ${getMockSource(request)}`,
     "",
     "This mock export proves the browser download flow before the server exporter is connected.",
     "",
   ].join("\n");
 }
 
-function buildMockPdf(sharedUrl: string) {
-  const body = `Mock ChatGPT Thread Export\nSource: ${sharedUrl}\n`;
+function buildMockPdf(request: AiChatExportRequest) {
+  const providerLabel = (request.provider ?? "chatgpt") === "claude" ? "Claude" : "ChatGPT";
+  const body = `Mock ${providerLabel} Thread Export\nSource: ${getMockSource(request)}\n`;
   return new Blob([body], { type: "application/pdf" });
 }
 

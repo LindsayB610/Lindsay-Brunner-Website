@@ -374,6 +374,36 @@ async function run() {
   assert(!markdownRateLimitChecked, 'PDF rate limit should not be checked for Markdown exports', failures);
   assert(markdownExportCalledWithLimiter, 'Markdown export should still run when PDF limiter exists', failures);
 
+  let claudeMarkdownRateLimitChecked = false;
+  let claudeMarkdownExportCalledWithLimiter = false;
+  const claudeMarkdownWithPdfLimiterResponse = await postJson(handleExportChatRequest, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: claudeSnapshotJson,
+    format: 'markdown',
+    turnstileToken: 'good-token',
+  }, {
+    checkPdfRateLimit: async () => {
+      claudeMarkdownRateLimitChecked = true;
+      return { allowed: false, retryAfterSeconds: 1800 };
+    },
+    exportChat: async () => {
+      claudeMarkdownExportCalledWithLimiter = true;
+      return new Response('# Claude Markdown stays available', {
+        headers: {
+          'Cache-Control': 'no-store',
+          'Content-Disposition': 'attachment; filename="claude-human.md"',
+          'Content-Type': 'text/markdown; charset=utf-8',
+        },
+      });
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => true,
+  });
+  assert(claudeMarkdownWithPdfLimiterResponse.status === 200, 'PDF rate limit should not apply to Claude Markdown exports', failures);
+  assert(!claudeMarkdownRateLimitChecked, 'PDF rate limit should not be checked for Claude Markdown exports', failures);
+  assert(claudeMarkdownExportCalledWithLimiter, 'Claude Markdown export should still run when PDF limiter exists', failures);
+
   let receivedPipelineOptions = null;
   const adapterMarkdownResponse = await exportChatWithExporter({
     sharedUrl: 'https://chatgpt.com/share/adapter-thread',
@@ -444,8 +474,12 @@ async function run() {
   }, undefined, async () => ({
     parseSnapshotJson: (raw) => JSON.parse(raw),
     renderMarkdown: () => '# not used\n',
-    renderClaudeHtml: ({ snapshot }) => `<h1>${snapshot.snapshot_name}</h1>`,
-  }), async () => new Uint8Array([37, 80, 68, 70]));
+    renderClaudeHtml: ({ snapshot, sourceUrl }) => `<h1>${snapshot.snapshot_name}</h1><a href="${sourceUrl}">${sourceUrl}</a>`,
+  }), async (html) => {
+    assert(html.includes('<h1>Claude Adapter Thread</h1>'), 'adapter Claude PDF should render HTML from the snapshot before PDF conversion', failures);
+    assert(html.includes('https://claude.ai/share/mock-thread'), 'adapter Claude PDF should pass source URL into the HTML renderer', failures);
+    return new Uint8Array([37, 80, 68, 70]);
+  });
 
   assert(adapterClaudePdfResponse.status === 200, 'adapter Claude PDF response should return 200', failures);
   assert(adapterClaudePdfResponse.headers.get('Content-Type') === 'application/pdf', 'adapter Claude PDF response should set PDF content type', failures);

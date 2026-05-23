@@ -261,6 +261,21 @@ async function run() {
   assert(markdownResponse.headers.get('Content-Disposition').includes('.md'), 'mock Markdown response should set a Markdown filename', failures);
   assert((await markdownResponse.text()).includes('https://chatgpt.com/share/abc123'), 'mock Markdown body should include the source URL', failures);
 
+  const claudeMockMarkdownResponse = await mockExportSharedChat({
+    ...claudeRequest,
+    format: 'markdown',
+  });
+  const claudeMockMarkdown = await claudeMockMarkdownResponse.text();
+  assert(claudeMockMarkdown.includes('# Claude Thread Export'), 'mock Claude Markdown body should use a Claude title', failures);
+  assert(claudeMockMarkdown.includes('https://claude.ai/share/7b2442ee-2ffb-4f82-8852-291840cf5ca0'), 'mock Claude Markdown body should include the optional source URL', failures);
+
+  const claudeMockSnapshotOnlyResponse = await mockExportSharedChat({
+    ...claudeRequest,
+    format: 'markdown',
+    sourceUrl: undefined,
+  });
+  assert((await claudeMockSnapshotOnlyResponse.text()).includes('Source: Claude snapshot JSON'), 'mock Claude Markdown body should not print undefined when no source URL is available', failures);
+
   const pdfResponse = await mockExportSharedChat({
     sharedUrl: 'https://chatgpt.com/share/abc123',
     format: 'pdf',
