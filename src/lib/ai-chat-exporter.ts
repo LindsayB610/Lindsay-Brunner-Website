@@ -11,8 +11,14 @@ export const AI_CHAT_EXPORTER_CONTRACT = {
   validClaudeHosts: ["claude.ai"] as const,
   exportTimeoutMs: 65_000,
   fallbackFilenames: {
-    markdown: "chatgpt-thread-export.md",
-    pdf: "chatgpt-thread-export.pdf",
+    chatgpt: {
+      markdown: "chatgpt-thread-export.md",
+      pdf: "chatgpt-thread-export.pdf",
+    },
+    claude: {
+      markdown: "claude-thread-export.md",
+      pdf: "claude-thread-export.pdf",
+    },
   },
 } as const;
 
@@ -20,19 +26,38 @@ export type AiChatExportFormat = (typeof AI_CHAT_EXPORTER_CONTRACT.formats)[numb
 export type AiChatExportProvider = (typeof AI_CHAT_EXPORTER_CONTRACT.providers)[number];
 export type AiChatExportMode = (typeof AI_CHAT_EXPORTER_CONTRACT.modes)[number];
 
-export type AiChatExportRequest = {
-  provider?: AiChatExportProvider;
-  mode?: AiChatExportMode;
-  sharedUrl?: string;
-  snapshotJson?: string;
-  sourceUrl?: string;
+type AiChatExportBaseRequest = {
   format: AiChatExportFormat;
   turnstileToken?: string;
 };
 
-type BuildChatGptExportRequestInput = {
+export type ChatGptExportRequest = AiChatExportBaseRequest & {
   provider?: "chatgpt";
   mode?: "share-link";
+  sharedUrl: string;
+};
+
+export type ClaudeSnapshotExportRequest = AiChatExportBaseRequest & {
+  provider: "claude";
+  mode: "snapshot-json";
+  snapshotJson: string;
+  sourceUrl?: string;
+};
+
+export type ClaudeShareLinkExportRequest = AiChatExportBaseRequest & {
+  provider: "claude";
+  mode: "share-link";
+  sharedUrl: string;
+};
+
+export type AiChatExportRequest =
+  | ChatGptExportRequest
+  | ClaudeSnapshotExportRequest
+  | ClaudeShareLinkExportRequest;
+
+type BuildChatGptExportRequestInput = {
+  provider?: "chatgpt";
+  mode?: AiChatExportMode;
   sharedUrl: string;
   format: string;
   turnstileToken?: string;
@@ -149,6 +174,10 @@ export function buildExportRequest(
 
 function buildChatGptShareLinkRequest(input: BuildChatGptExportRequestInput): AiChatExportRequest {
   const trimmedUrl = input.sharedUrl.trim();
+  if (input.mode && input.mode !== "share-link") {
+    throw new Error("ChatGPT exports use public share links.");
+  }
+
   if (!isChatGptShareUrl(trimmedUrl)) {
     throw new Error("Use a public ChatGPT share URL.");
   }
@@ -232,7 +261,7 @@ export async function exportSharedChat(
     blob: await response.blob(),
     filename: parseDownloadFilename(
       response.headers.get("Content-Disposition"),
-      AI_CHAT_EXPORTER_CONTRACT.fallbackFilenames[request.format],
+      getFallbackFilename(request),
     ),
   };
 }
@@ -275,7 +304,7 @@ export async function mockExportSharedChat(
 ): Promise<Response> {
   await wait(700);
 
-  const filename = AI_CHAT_EXPORTER_CONTRACT.fallbackFilenames[request.format];
+  const filename = getFallbackFilename(request);
   const headers = new Headers({
     "Cache-Control": "no-store",
     "Content-Disposition": `attachment; filename="${filename}"`,
@@ -358,6 +387,11 @@ function sanitizeFilename(filename: string) {
     .trim();
 
   return sanitized || "chatgpt-thread-export";
+}
+
+function getFallbackFilename(request: AiChatExportRequest) {
+  const provider = request.provider ?? "chatgpt";
+  return AI_CHAT_EXPORTER_CONTRACT.fallbackFilenames[provider][request.format];
 }
 
 function isShareUrlForHosts<const Hosts extends readonly string[]>(value: string, hosts: Hosts) {

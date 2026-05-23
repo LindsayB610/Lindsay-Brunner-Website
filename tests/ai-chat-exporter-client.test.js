@@ -52,6 +52,16 @@ async function run() {
     'mode contract should be share-link and snapshot-json',
     failures,
   );
+  assert(
+    AI_CHAT_EXPORTER_CONTRACT.fallbackFilenames.chatgpt.markdown === 'chatgpt-thread-export.md',
+    'ChatGPT Markdown fallback filename should remain stable',
+    failures,
+  );
+  assert(
+    AI_CHAT_EXPORTER_CONTRACT.fallbackFilenames.claude.pdf === 'claude-thread-export.pdf',
+    'Claude PDF fallback filename should be provider-specific',
+    failures,
+  );
 
   [
     'https://chatgpt.com/share/abc123',
@@ -202,6 +212,18 @@ async function run() {
     assert(error.message === 'Use a public Claude share URL.', 'invalid Claude share link error should be user-readable', failures);
   }
 
+  try {
+    buildExportRequest({
+      format: 'markdown',
+      provider: 'chatgpt',
+      mode: 'snapshot-json',
+      sharedUrl: 'https://chatgpt.com/share/abc123',
+    });
+    failures.push('buildExportRequest should throw for unsupported ChatGPT modes');
+  } catch (error) {
+    assert(error.message === 'ChatGPT exports use public share links.', 'unsupported ChatGPT mode error should be user-readable', failures);
+  }
+
   assert(
     parseDownloadFilename('attachment; filename="thread-export.md"', 'fallback.md') === 'thread-export.md',
     'parseDownloadFilename should parse quoted filenames',
@@ -264,6 +286,19 @@ async function run() {
   assert(JSON.parse(fetchInit.body).format === request.format, 'fetchExportSharedChat should include format in the JSON body', failures);
   assert(await fetchResponse.text() === 'api markdown', 'fetchExportSharedChat should return the fetch response', failures);
 
+  let claudeFetchInit = null;
+  await fetchExportSharedChat(claudeRequest, async (_input, init) => {
+    claudeFetchInit = init;
+    return new Response('api claude pdf', {
+      headers: { 'Content-Type': 'application/pdf' },
+    });
+  });
+  const claudeFetchPayload = JSON.parse(claudeFetchInit.body);
+  assert(claudeFetchPayload.provider === 'claude', 'fetchExportSharedChat should send Claude provider in the JSON body', failures);
+  assert(claudeFetchPayload.mode === 'snapshot-json', 'fetchExportSharedChat should send Claude mode in the JSON body', failures);
+  assert(claudeFetchPayload.snapshotJson === claudeSnapshotJson, 'fetchExportSharedChat should send Claude snapshot JSON in the JSON body', failures);
+  assert(!('sharedUrl' in claudeFetchPayload), 'Claude snapshot JSON requests should not send sharedUrl', failures);
+
   let turnstileFetchInit = null;
   await fetchExportSharedChat(requestWithTurnstile, async (_input, init) => {
     turnstileFetchInit = init;
@@ -294,6 +329,11 @@ async function run() {
     headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
   }));
   assert(fallbackExported.filename === 'chatgpt-thread-export.md', 'exportSharedChat should use the format fallback filename when no header exists', failures);
+
+  const claudeFallbackExported = await exportSharedChat(claudeRequest, async () => new Response('fallback pdf', {
+    headers: { 'Content-Type': 'application/pdf' },
+  }));
+  assert(claudeFallbackExported.filename === 'claude-thread-export.pdf', 'exportSharedChat should use the Claude fallback filename for Claude responses without a filename header', failures);
 
   try {
     await exportSharedChat(request, async () => new Response(JSON.stringify({ error: 'Mock export failed.' }), {

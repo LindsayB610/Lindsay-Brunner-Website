@@ -297,6 +297,8 @@ Completed:
 - Added provider-aware `buildExportRequest()` support for Claude snapshot JSON and Claude share-link requests.
 - Preserved the existing ChatGPT `buildExportRequest(sharedUrl, format, turnstileToken)` call path for the launched UI.
 - Kept Claude source URLs optional, trimmed, and validated when present.
+- Tightened the request type into provider/mode-specific shapes while keeping legacy ChatGPT requests compatible.
+- Made fallback download filenames provider-specific so Claude responses without filename headers do not fall back to ChatGPT names.
 - Expanded bundle-boundary tests to guard both `chatgpt-thread-exporter` and `claude-thread-exporter` out of client assets.
 
 Review gate:
