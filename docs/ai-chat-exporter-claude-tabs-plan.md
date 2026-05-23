@@ -172,7 +172,7 @@ Key risk surfaces:
 | 1 | Tabbed UI shell | Complete |
 | 2 | Client contract and helper refactor | Complete |
 | 3 | Claude JSON Markdown path | Complete |
-| 4 | Claude JSON PDF path | Not started |
+| 4 | Claude JSON PDF path | Complete |
 | 5 | Claude Link tab and warning behavior | Not started |
 | 6 | Server adapter and dependency integration | Not started |
 | 7 | Abuse controls and runtime guardrails | Not started |
@@ -349,7 +349,6 @@ Completed:
 - Added a real Claude JSON tab form with snapshot paste, optional source URL, and Markdown download.
 - Kept human verification visible for both ChatGPT and Claude JSON exports.
 - Moved cheap request validation before Turnstile checks so malformed Claude JSON receives the correct user-readable validation message while exporter work remains behind Turnstile.
-- Added an explicit Phase 4 gate for Claude snapshot PDF requests so the API does not return a generic exporter failure before PDF support is implemented.
 - Preserved ChatGPT behavior and regression coverage.
 - Removed the shared Motion `layoutId` from `StatefulButton` because two mounted tab-panel buttons interfered with pointer targeting.
 
@@ -372,7 +371,7 @@ Tests:
 
 ## Phase 4: Claude JSON PDF Path
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -394,6 +393,18 @@ Implementation:
 - Ensure Claude PDF renderer can run in the same Netlify function environment.
 - Keep PDF path behind local verification until deploy-preview proof exists.
 
+Completed:
+
+- Added Claude snapshot JSON PDF support through the existing `/api/export-chat` path.
+- Reused the serverless Chromium strategy with `playwright-core` and `@sparticuz/chromium`.
+- Added a local Playwright Chromium fallback for non-serverless development and smoke tests.
+- Rendered Claude PDF from the Claude exporter package's HTML renderer for UI parity.
+- Added Claude PDF response headers, binary response handling, and `.pdf` filename coverage.
+- Added shared PDF rate-limit coverage for Claude PDF exports.
+- Confirmed Markdown exports are not blocked by PDF rate limiting.
+- Added a local Claude PDF runtime smoke test using the real Claude exporter package.
+- Added Claude JSON tab format controls so users can choose Markdown or PDF.
+
 Review gate:
 
 - Local PDF smoke passes.
@@ -401,9 +412,10 @@ Review gate:
 
 Tests:
 
-- `npm run test:ai-exporter:function`
-- `npm run test:ai-exporter:runtime`
-- local PDF artifact sanity check
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile:render`
 
 ## Phase 5: Claude Link Tab And Warning Behavior
 

@@ -130,6 +130,19 @@ async function run() {
       await new Promise((resolve) => setTimeout(resolve, 800));
 
       if (payload.provider === 'claude') {
+        if (payload.format === 'pdf') {
+          await route.fulfill({
+            body: 'mock claude pdf',
+            contentType: 'application/pdf',
+            headers: {
+              'Cache-Control': 'no-store',
+              'Content-Disposition': 'attachment; filename="claude-thread-export.pdf"',
+            },
+            status: 200,
+          });
+          return;
+        }
+
         await route.fulfill({
           body: `# Claude Mock Export\n\nSource: ${payload.sourceUrl || 'snapshot'}\n`,
           contentType: 'text/markdown; charset=utf-8',
@@ -206,7 +219,7 @@ async function run() {
     assert(!(await page.getByLabel('Shared ChatGPT URL').isVisible()), 'ChatGPT URL input should be hidden outside the ChatGPT tab', failures);
     assert(await page.getByLabel('Claude snapshot JSON').isVisible(), 'Claude JSON tab should show a snapshot JSON textarea', failures);
     assert(await page.getByLabel('Human verification').isVisible(), 'Claude JSON tab should keep human verification visible', failures);
-    assert(await page.getByRole('button', { name: 'Export Claude Markdown' }).isVisible(), 'Claude JSON tab should expose a Markdown export button', failures);
+    assert(await page.getByRole('button', { name: 'Export Claude' }).isVisible(), 'Claude JSON tab should expose an export button', failures);
 
     await page.getByRole('tab', { name: 'Claude Link' }).click();
     await page.getByText('Claude share-link export is experimental.').waitFor();
@@ -218,8 +231,9 @@ async function run() {
     const urlInput = page.getByLabel('Shared ChatGPT URL');
     const exportButton = page.getByRole('button', { name: 'Export' });
     const status = page.getByRole('status');
-    const markdownOption = page.getByRole('radio', { name: 'Markdown' });
-    const pdfOption = page.getByRole('radio', { name: 'PDF' });
+    const chatGptPanel = page.getByRole('tabpanel', { name: 'ChatGPT' });
+    const markdownOption = chatGptPanel.getByRole('radio', { name: 'Markdown' });
+    const pdfOption = chatGptPanel.getByRole('radio', { name: 'PDF' });
 
     assert(await markdownOption.isEnabled(), 'Markdown option should be enabled', failures);
     assert(await pdfOption.isEnabled(), 'PDF option should be enabled', failures);
@@ -284,8 +298,8 @@ async function run() {
     await exportButton.click();
     await page.getByText('The export failed. Please try again.').waitFor();
     assert(await urlInput.isEnabled(), 'URL input should recover after an API error', failures);
-    assert(await page.getByLabel('Markdown').isEnabled(), 'Markdown format control should recover after an API error', failures);
-    assert(await page.getByLabel('PDF').isEnabled(), 'PDF format control should recover after an API error', failures);
+    assert(await markdownOption.isEnabled(), 'Markdown format control should recover after an API error', failures);
+    assert(await pdfOption.isEnabled(), 'PDF format control should recover after an API error', failures);
     assert(await exportButton.isEnabled(), 'export button should recover after an API error', failures);
     downloads = await page.evaluate(() => window.__aiExporterDownloads);
     assert(downloads.length === 1, 'API errors should not trigger an extra download', failures);
@@ -293,7 +307,7 @@ async function run() {
 
     await page.getByRole('tab', { name: 'Claude JSON' }).click();
     await page.getByLabel('Claude snapshot JSON').fill('{bad json');
-    await page.getByRole('button', { name: 'Export Claude Markdown' }).click();
+    await page.getByRole('button', { name: 'Export Claude' }).click();
     await page.getByText('Paste valid Claude snapshot JSON.').waitFor();
     assert(apiRequestCount === 2, 'invalid Claude snapshot JSON should not call the export API', failures);
 
@@ -308,7 +322,7 @@ async function run() {
     });
     await page.getByLabel('Claude snapshot JSON').fill(claudeSnapshotJson);
     await page.getByLabel('Claude source share URL').fill('https://claude.ai/share/browser-fixture');
-    await page.getByRole('button', { name: 'Export Claude Markdown' }).click();
+    await page.getByRole('button', { name: 'Export Claude' }).click();
     await page.getByText('Downloaded claude-thread-export.md.').waitFor();
     downloads = await page.evaluate(() => window.__aiExporterDownloads);
     assert(downloads.length === 2, 'valid Claude Markdown export should trigger one additional download', failures);
@@ -319,7 +333,20 @@ async function run() {
     assert(claudePayload.mode === 'snapshot-json', 'Claude browser export should send snapshot-json mode', failures);
     assert(claudePayload.snapshotJson === claudeSnapshotJson, 'Claude browser export should send pasted snapshot JSON', failures);
     assert(claudePayload.sourceUrl === 'https://claude.ai/share/browser-fixture', 'Claude browser export should send optional source URL', failures);
-    assert(claudePayload.format === 'markdown', 'Claude browser export should request Markdown in Phase 3', failures);
+    assert(claudePayload.format === 'markdown', 'Claude browser export should request Markdown by default', failures);
+
+    await page.waitForTimeout(3500);
+    await page.getByRole('tabpanel', { name: 'Claude JSON' }).getByRole('radio', { name: 'PDF' }).check();
+    await page.getByRole('button', { name: 'Export Claude' }).click();
+    await page.getByText('Downloaded claude-thread-export.pdf.').waitFor();
+    downloads = await page.evaluate(() => window.__aiExporterDownloads);
+    assert(downloads.length === 3, 'valid Claude PDF export should trigger one additional download', failures);
+    assert(downloads[2].download === 'claude-thread-export.pdf', 'Claude PDF export should download the Claude PDF fallback filename', failures);
+    assert(apiRequestCount === 4, 'valid Claude PDF export should call the export API once', failures);
+    const claudePdfPayload = apiPayloads[apiPayloads.length - 1];
+    assert(claudePdfPayload.provider === 'claude', 'Claude PDF browser export should send provider claude', failures);
+    assert(claudePdfPayload.mode === 'snapshot-json', 'Claude PDF browser export should send snapshot-json mode', failures);
+    assert(claudePdfPayload.format === 'pdf', 'Claude PDF browser export should request PDF', failures);
 
     await page.close();
   } finally {

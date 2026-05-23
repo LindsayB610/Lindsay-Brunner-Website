@@ -66,6 +66,12 @@ async function run() {
     failures,
   );
   assert(
+    read('netlify/functions/_shared/exporter-adapter.ts').includes('import("playwright")') &&
+      read('netlify/functions/_shared/exporter-adapter.ts').includes('renderClaudePdfWithLocalChromium'),
+    'Claude PDF renderer should have a local Playwright path for development smoke tests',
+    failures,
+  );
+  assert(
     read('netlify/functions/_shared/exporter-adapter.ts').includes('render-chatgpt-html.js') &&
       read('netlify/functions/_shared/exporter-adapter.ts').includes('page.pdf({'),
     'serverless PDF renderer should use the CLI HTML renderer and browser PDF path for visual parity',
@@ -168,14 +174,14 @@ async function run() {
   assert(!exporterCalledAfterInvalidClaudeWithTurnstile, 'invalid Claude snapshot JSON should not invoke exporter work even when Turnstile is configured', failures);
 
   let exporterCalledForClaudePdf = false;
-  const claudePdfResponse = await postJson(handleExportChatRequest, {
+  const claudePdfRateLimitedResponse = await postJson(handleExportChatRequest, {
     provider: 'claude',
     mode: 'snapshot-json',
     snapshotJson: JSON.stringify({ chat_messages: [] }),
     format: 'pdf',
     turnstileToken: 'good-token',
   }, {
-    checkPdfRateLimit: async () => ({ allowed: true }),
+    checkPdfRateLimit: async () => ({ allowed: false, retryAfterSeconds: 900 }),
     exportChat: async () => {
       exporterCalledForClaudePdf = true;
       return new Response('should not export');
@@ -183,9 +189,10 @@ async function run() {
     getTurnstileSecret: () => 'mock-secret',
     verifyTurnstileToken: async () => true,
   });
-  assert(claudePdfResponse.status === 400, 'Claude snapshot PDF should be gated until Phase 4', failures);
-  assert((await claudePdfResponse.json()).error === 'Claude snapshot PDF export is not available yet.', 'Claude snapshot PDF gate should be user-readable', failures);
-  assert(!exporterCalledForClaudePdf, 'Claude snapshot PDF gate should not invoke exporter work', failures);
+  assert(claudePdfRateLimitedResponse.status === 429, 'Claude snapshot PDF should use the shared PDF rate limit', failures);
+  assert(claudePdfRateLimitedResponse.headers.get('Retry-After') === '900', 'Claude PDF rate limit should include Retry-After', failures);
+  assert((await claudePdfRateLimitedResponse.json()).error === 'PDF exports are temporarily limited. Please try again later.', 'Claude PDF rate limit should be user-readable', failures);
+  assert(!exporterCalledForClaudePdf, 'Claude PDF rate limit should not invoke exporter work', failures);
 
   let claudeMarkdownRequest = null;
   const claudeSnapshotJson = JSON.stringify({
@@ -427,6 +434,23 @@ async function run() {
   assert(adapterClaudeMarkdown.includes('# Claude Adapter Thread'), 'adapter Claude Markdown response should render the snapshot title', failures);
   assert(adapterClaudeMarkdown.includes('Source: https://claude.ai/share/mock-thread'), 'adapter Claude Markdown response should include source metadata', failures);
   assert(adapterClaudeMarkdown.includes('## Claude'), 'adapter Claude Markdown response should render Claude messages', failures);
+
+  const adapterClaudePdfResponse = await exportChatWithExporter({
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: claudeSnapshotJson,
+    sourceUrl: 'https://claude.ai/share/mock-thread',
+    format: 'pdf',
+  }, undefined, async () => ({
+    parseSnapshotJson: (raw) => JSON.parse(raw),
+    renderMarkdown: () => '# not used\n',
+    renderClaudeHtml: ({ snapshot }) => `<h1>${snapshot.snapshot_name}</h1>`,
+  }), async () => new Uint8Array([37, 80, 68, 70]));
+
+  assert(adapterClaudePdfResponse.status === 200, 'adapter Claude PDF response should return 200', failures);
+  assert(adapterClaudePdfResponse.headers.get('Content-Type') === 'application/pdf', 'adapter Claude PDF response should set PDF content type', failures);
+  assert(adapterClaudePdfResponse.headers.get('Content-Disposition').includes('claude-adapter-thread-export.pdf'), 'adapter Claude PDF response should use the snapshot title filename', failures);
+  assert((await adapterClaudePdfResponse.arrayBuffer()).byteLength === 4, 'adapter Claude PDF response should preserve binary output content', failures);
 
   const exporterFailureResponse = await handleExportChatRequest(new Request('https://lindsaybrunner.com/api/export-chat', {
     body: JSON.stringify({

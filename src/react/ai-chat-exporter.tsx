@@ -147,7 +147,7 @@ function AiChatExporterPage() {
               mode: "snapshot-json",
               snapshotJson: claudeSnapshotJson,
               sourceUrl: claudeSourceUrl,
-              format: "markdown",
+              format,
               turnstileToken,
             })
           : buildExportRequest(sharedUrl, format, turnstileToken);
@@ -282,7 +282,7 @@ function AiChatExporterPage() {
           <h2>Paste saved Claude snapshot JSON</h2>
           <p>
             Save a snapshot locally with the Claude CLI, then paste the JSON
-            here to export Markdown.
+            here to export Markdown or PDF.
           </p>
 
           <form className="ai-exporter-form" onSubmit={handleSubmit}>
@@ -312,6 +312,29 @@ function AiChatExporterPage() {
               />
             </label>
 
+            <fieldset className="ai-exporter-format">
+              <legend className="sr-only">Claude export format</legend>
+              {AI_CHAT_EXPORTER_CONTRACT.formats.map((option) => {
+                const isEnabled = AI_CHAT_EXPORTER_CONTRACT.enabledFormats.includes(
+                  option as (typeof AI_CHAT_EXPORTER_CONTRACT.enabledFormats)[number],
+                );
+
+                return (
+                  <label key={option} aria-disabled={!isEnabled}>
+                    <input
+                      checked={format === option}
+                      disabled={isExporting || !isEnabled}
+                      name="claudeFormat"
+                      onChange={() => setFormat(option)}
+                      type="radio"
+                      value={option}
+                    />
+                    <span>{option === "markdown" ? "Markdown" : "PDF"}</span>
+                  </label>
+                );
+              })}
+            </fieldset>
+
             <StatefulButton
               aria-busy={isExporting}
               className="ai-exporter-button"
@@ -319,7 +342,7 @@ function AiChatExporterPage() {
               onClick={runExport}
               type="button"
             >
-              Export Claude Markdown
+              Export Claude
             </StatefulButton>
           </form>
 

@@ -4,7 +4,6 @@ import {
   AI_CHAT_EXPORTER_CONTRACT,
   type AiChatExportRequest,
   buildExportRequest,
-  isClaudeSnapshotMarkdownRequest,
 } from "../../src/lib/ai-chat-exporter";
 import { exportChatWithExporter } from "./_shared/exporter-adapter";
 
@@ -77,9 +76,6 @@ async function handlePost(
 
   try {
     const request = buildValidatedRequest(payload);
-    if (request.provider === "claude" && !isClaudeSnapshotMarkdownRequest(request)) {
-      return jsonError("Claude snapshot PDF export is not available yet.", 400);
-    }
 
     const turnstileSecret = dependencies.getTurnstileSecret();
     if (turnstileSecret) {

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const { assert, report, root } = require('./ai-chat-exporter-test-utils');
 
@@ -17,6 +18,8 @@ async function run() {
   assert(typeof exporter.buildPipelineArtifacts === 'function', 'GitHub exporter package should expose buildPipelineArtifacts', failures);
   assert(typeof claudeExporter.parseSnapshotJson === 'function', 'Claude exporter package should expose parseSnapshotJson', failures);
   assert(typeof claudeExporter.renderMarkdown === 'function', 'Claude exporter package should expose renderMarkdown', failures);
+  assert(typeof claudeExporter.renderClaudeHtml === 'function', 'Claude exporter package should expose renderClaudeHtml for web PDF rendering', failures);
+  assert(typeof claudeExporter.renderPdf === 'function', 'Claude exporter package should expose renderPdf', failures);
 
   const dependencies = {
     ...exporter.defaultPipelineDependencies,
@@ -78,6 +81,25 @@ async function run() {
     'Claude Markdown fixture output should match the exporter-rendered snapshot shape',
     failures,
   );
+  const claudeHtml = claudeExporter.renderClaudeHtml({
+    snapshot: claudeSnapshot,
+    sourceUrl: 'https://claude.ai/share/runtime-fixture',
+  });
+  assert(claudeHtml.includes('Claude runtime fixture'), 'Claude HTML fixture output should include the snapshot title', failures);
+  assert(claudeHtml.includes('https://claude.ai/share/runtime-fixture'), 'Claude HTML fixture output should include the source link', failures);
+
+  const claudePdfPath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'claude-exporter-')), 'fixture.pdf');
+  const claudePdfStartedAt = Date.now();
+  await claudeExporter.renderPdf({
+    snapshot: claudeSnapshot,
+    sourceUrl: 'https://claude.ai/share/runtime-fixture',
+  }, claudePdfPath);
+  const claudePdfDurationMs = Date.now() - claudePdfStartedAt;
+  const claudePdfBytes = fs.readFileSync(claudePdfPath);
+
+  assert(claudePdfBytes.byteLength > 1000, 'Claude PDF fixture output should contain a non-empty PDF body', failures);
+  assert(claudePdfBytes.subarray(0, 4).toString('utf8') === '%PDF', 'Claude PDF fixture output should start with a PDF signature', failures);
+  assert(claudePdfDurationMs < 15000, 'Claude PDF fixture export should stay within a local smoke-test budget', failures);
 
   report(failures, '✅ AI Chat Exporter real exporter runtime passed.');
 }

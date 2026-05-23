@@ -18,15 +18,19 @@ type BuildPipelineArtifacts = (options: {
 type ClaudeExporter = {
   parseSnapshotJson: (raw: string) => any;
   renderMarkdown: (input: { snapshot: any; sourceUrl?: string }) => string;
+  renderClaudeHtml: (input: { snapshot: any; sourceUrl?: string }) => string;
 };
+
+type RenderClaudePdf = (html: string) => Promise<Uint8Array>;
 
 export async function exportChatWithExporter(
   request: AiChatExportRequest,
   buildPipelineArtifacts: BuildPipelineArtifacts = loadRealBuildPipelineArtifacts,
   loadClaudeExporter: () => Promise<ClaudeExporter> = loadRealClaudeExporter,
+  renderClaudePdf: RenderClaudePdf = renderClaudePdfWithServerlessChromium,
 ) {
   if (request.provider === "claude") {
-    return exportClaudeWithExporter(request, loadClaudeExporter);
+    return exportClaudeWithExporter(request, loadClaudeExporter, renderClaudePdf);
   }
 
   if (!request.sharedUrl) {
@@ -57,24 +61,23 @@ export async function exportChatWithExporter(
 async function exportClaudeWithExporter(
   request: AiChatExportRequest,
   loadClaudeExporter: () => Promise<ClaudeExporter>,
+  renderClaudePdf: RenderClaudePdf,
 ) {
   if (request.provider !== "claude" || request.mode !== "snapshot-json") {
     throw new Error("The export failed. Please try again.");
   }
 
-  if (request.format !== "markdown") {
-    throw new Error("The export failed. Please try again.");
-  }
-
-  const { parseSnapshotJson, renderMarkdown } = await loadClaudeExporter();
+  const { parseSnapshotJson, renderMarkdown, renderClaudeHtml } = await loadClaudeExporter();
   const snapshot = parseSnapshotJson(request.snapshotJson);
-  const outputContent = renderMarkdown({
-    snapshot,
-    sourceUrl: request.sourceUrl,
-  });
+  const input = { snapshot, sourceUrl: request.sourceUrl };
+  const extension = request.format === "pdf" ? "pdf" : "md";
+  const outputContent =
+    request.format === "pdf"
+      ? await renderClaudePdf(renderClaudeHtml(input))
+      : renderMarkdown(input);
   const filename = buildExportFilename(
     typeof snapshot.snapshot_name === "string" ? snapshot.snapshot_name : undefined,
-    "md",
+    extension,
     "claude-thread-export",
   );
 
@@ -82,7 +85,9 @@ async function exportClaudeWithExporter(
     headers: {
       "Cache-Control": "no-store",
       "Content-Disposition": `attachment; filename="${filename}"`,
-      "Content-Type": "text/markdown; charset=utf-8",
+      "Content-Type": request.format === "pdf"
+        ? "application/pdf"
+        : "text/markdown; charset=utf-8",
     },
     status: 200,
   });
@@ -172,6 +177,71 @@ export async function renderPdfWithServerlessChromium(transcript: any) {
   }
 }
 
+export async function renderClaudePdfWithServerlessChromium(html: string) {
+  if (!shouldUseServerlessPdfRenderer()) {
+    return renderClaudePdfWithLocalChromium(html);
+  }
+
+  const [{ chromium: playwrightChromium }, chromiumPackage] =
+    await Promise.all([
+      import("playwright-core"),
+      import("@sparticuz/chromium"),
+    ]);
+  const chromium = chromiumPackage.default;
+  const browser = await playwrightChromium.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
+  });
+
+  try {
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: "load" });
+    await page.emulateMedia({ media: "print" });
+    return await page.pdf({
+      displayHeaderFooter: true,
+      footerTemplate: claudePdfFooterTemplate(),
+      format: "Letter",
+      headerTemplate: "<div></div>",
+      margin: {
+        bottom: "18mm",
+        left: "10mm",
+        right: "10mm",
+        top: "14mm",
+      },
+      printBackground: true,
+    });
+  } finally {
+    await browser.close();
+  }
+}
+
+async function renderClaudePdfWithLocalChromium(html: string) {
+  const { chromium } = await import("playwright");
+  const browser = await chromium.launch({ headless: true });
+
+  try {
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: "load" });
+    await page.emulateMedia({ media: "print" });
+    return await page.pdf({
+      displayHeaderFooter: true,
+      footerTemplate: claudePdfFooterTemplate(),
+      format: "Letter",
+      headerTemplate: "<div></div>",
+      margin: {
+        bottom: "18mm",
+        left: "10mm",
+        right: "10mm",
+        top: "14mm",
+      },
+      printBackground: true,
+    });
+  } finally {
+    await browser.close();
+  }
+}
+
 async function loadCliHtmlRenderer(): Promise<(transcript: any) => string> {
   const rendererPath = path.join(
     process.cwd(),
@@ -188,6 +258,14 @@ async function loadCliHtmlRenderer(): Promise<(transcript: any) => string> {
 function pdfFooterTemplate() {
   return `
     <div style="width:100%; padding:0 14mm; font-family:Arial, sans-serif; font-size:10px; color:#6b7280; text-align:center;">
+      <span class="pageNumber"></span> / <span class="totalPages"></span>
+    </div>
+  `.trim();
+}
+
+function claudePdfFooterTemplate() {
+  return `
+    <div style="width:100%; padding:0 10mm; font-family:Arial, sans-serif; font-size:9px; color:#8a8580; text-align:center;">
       <span class="pageNumber"></span> / <span class="totalPages"></span>
     </div>
   `.trim();
