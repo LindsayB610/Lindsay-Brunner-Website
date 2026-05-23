@@ -10,6 +10,7 @@ const {
   buildExportRequest,
   exportSharedChat,
   fetchExportSharedChat,
+  isClaudeSnapshotMarkdownRequest,
   isChatGptShareUrl,
   isClaudeShareUrl,
   isClaudeSnapshotJson,
@@ -165,6 +166,9 @@ async function run() {
   assert(claudeRequest.snapshotJson === claudeSnapshotJson, 'Claude snapshot request should trim snapshotJson', failures);
   assert(claudeRequest.sourceUrl === 'https://claude.ai/share/7b2442ee-2ffb-4f82-8852-291840cf5ca0', 'Claude snapshot request should trim a valid source URL', failures);
   assert(claudeRequest.turnstileToken === 'mock-turnstile-token', 'Claude snapshot request should trim a Turnstile token', failures);
+  assert(isClaudeSnapshotMarkdownRequest({ ...claudeRequest, format: 'markdown' }), 'isClaudeSnapshotMarkdownRequest should accept Claude snapshot Markdown requests', failures);
+  assert(!isClaudeSnapshotMarkdownRequest(claudeRequest), 'isClaudeSnapshotMarkdownRequest should reject Claude snapshot PDF requests for Phase 3', failures);
+  assert(!isClaudeSnapshotMarkdownRequest(request), 'isClaudeSnapshotMarkdownRequest should reject ChatGPT requests', failures);
 
   const claudeRequestWithoutSource = buildExportRequest({
     format: 'markdown',

@@ -43,7 +43,6 @@ async function run() {
   assert(source.includes('TURNSTILE_SECRET_KEY'), 'Netlify function should read the Turnstile secret key from environment', failures);
   assert(source.includes('checkPdfRateLimit'), 'Netlify function should check a PDF-specific rate limit before export work', failures);
   assert(source.includes('@netlify/blobs'), 'Netlify function should use Netlify Blobs for shared PDF rate limit state', failures);
-  assert(!source.includes('PDF export is not available yet.'), 'Netlify function should not block PDF exports behind a disabled-runtime response', failures);
   assert(
     netlifyConfig.includes('from = "/api/export-chat"') &&
       netlifyConfig.includes('to = "/.netlify/functions/export-chat"'),
@@ -149,6 +148,44 @@ async function run() {
   });
   assert(claudeUnsupportedJsonResponse.status === 400, 'unsupported Claude snapshot JSON should return 400', failures);
   assert((await claudeUnsupportedJsonResponse.json()).error === 'Snapshot JSON must include Claude chat_messages.', 'unsupported Claude snapshot JSON should be user-readable', failures);
+
+  let exporterCalledAfterInvalidClaudeWithTurnstile = false;
+  const claudeMalformedWithTurnstileResponse = await postJson(handleExportChatRequest, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: '{bad json',
+    format: 'markdown',
+  }, {
+    exportChat: async () => {
+      exporterCalledAfterInvalidClaudeWithTurnstile = true;
+      return new Response('should not export');
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => false,
+  });
+  assert(claudeMalformedWithTurnstileResponse.status === 400, 'invalid Claude snapshot JSON should return validation errors before Turnstile challenges', failures);
+  assert((await claudeMalformedWithTurnstileResponse.json()).error === 'Paste valid Claude snapshot JSON.', 'invalid Claude snapshot JSON with Turnstile configured should still be user-readable', failures);
+  assert(!exporterCalledAfterInvalidClaudeWithTurnstile, 'invalid Claude snapshot JSON should not invoke exporter work even when Turnstile is configured', failures);
+
+  let exporterCalledForClaudePdf = false;
+  const claudePdfResponse = await postJson(handleExportChatRequest, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: JSON.stringify({ chat_messages: [] }),
+    format: 'pdf',
+    turnstileToken: 'good-token',
+  }, {
+    checkPdfRateLimit: async () => ({ allowed: true }),
+    exportChat: async () => {
+      exporterCalledForClaudePdf = true;
+      return new Response('should not export');
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => true,
+  });
+  assert(claudePdfResponse.status === 400, 'Claude snapshot PDF should be gated until Phase 4', failures);
+  assert((await claudePdfResponse.json()).error === 'Claude snapshot PDF export is not available yet.', 'Claude snapshot PDF gate should be user-readable', failures);
+  assert(!exporterCalledForClaudePdf, 'Claude snapshot PDF gate should not invoke exporter work', failures);
 
   let claudeMarkdownRequest = null;
   const claudeSnapshotJson = JSON.stringify({

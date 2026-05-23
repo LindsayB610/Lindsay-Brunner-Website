@@ -348,6 +348,8 @@ Completed:
 - Added safe malformed/unsupported Claude snapshot JSON errors.
 - Added a real Claude JSON tab form with snapshot paste, optional source URL, and Markdown download.
 - Kept human verification visible for both ChatGPT and Claude JSON exports.
+- Moved cheap request validation before Turnstile checks so malformed Claude JSON receives the correct user-readable validation message while exporter work remains behind Turnstile.
+- Added an explicit Phase 4 gate for Claude snapshot PDF requests so the API does not return a generic exporter failure before PDF support is implemented.
 - Preserved ChatGPT behavior and regression coverage.
 - Removed the shared Motion `layoutId` from `StatefulButton` because two mounted tab-panel buttons interfered with pointer targeting.
 

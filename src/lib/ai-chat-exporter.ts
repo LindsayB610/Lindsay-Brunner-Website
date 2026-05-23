@@ -146,6 +146,14 @@ export function parseClaudeSnapshotJson(raw: string): Record<string, unknown> {
   return snapshot;
 }
 
+export function isClaudeSnapshotMarkdownRequest(request: AiChatExportRequest) {
+  return (
+    request.provider === "claude" &&
+    request.mode === "snapshot-json" &&
+    request.format === "markdown"
+  );
+}
+
 export function buildExportRequest(input: BuildExportRequestInput): AiChatExportRequest;
 export function buildExportRequest(
   sharedUrl: string,

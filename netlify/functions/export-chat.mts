@@ -4,6 +4,7 @@ import {
   AI_CHAT_EXPORTER_CONTRACT,
   type AiChatExportRequest,
   buildExportRequest,
+  isClaudeSnapshotMarkdownRequest,
 } from "../../src/lib/ai-chat-exporter";
 import { exportChatWithExporter } from "./_shared/exporter-adapter";
 
@@ -75,6 +76,11 @@ async function handlePost(
   }
 
   try {
+    const request = buildValidatedRequest(payload);
+    if (request.provider === "claude" && !isClaudeSnapshotMarkdownRequest(request)) {
+      return jsonError("Claude snapshot PDF export is not available yet.", 400);
+    }
+
     const turnstileSecret = dependencies.getTurnstileSecret();
     if (turnstileSecret) {
       if (typeof payload.turnstileToken !== "string" || !payload.turnstileToken.trim()) {
@@ -91,8 +97,6 @@ async function handlePost(
         return jsonError("Please verify you are human and try again.", 403);
       }
     }
-
-    const request = buildValidatedRequest(payload);
 
     if (request.format === "pdf") {
       const rateLimit = await dependencies.checkPdfRateLimit(req);
