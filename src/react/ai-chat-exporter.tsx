@@ -445,7 +445,7 @@ function AiChatExporterPage() {
               />
             </label>
 
-            <button className="ai-exporter-secondary-button" type="submit">
+            <button className="ai-exporter-button" type="submit">
               Generate CLI command
             </button>
           </form>
