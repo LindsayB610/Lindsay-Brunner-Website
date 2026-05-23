@@ -140,13 +140,8 @@ body:has(#ai-chat-exporter-root) .site-footer {
 }
 
 #ai-chat-exporter-root .ai-exporter-panel {
-  max-width: 680px;
+  max-width: 640px;
   margin: 28px auto 0;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 12px;
-  background: rgba(20, 20, 20, 0.74);
-  backdrop-filter: blur(3px);
-  padding: 26px;
   text-align: left;
 }
 
