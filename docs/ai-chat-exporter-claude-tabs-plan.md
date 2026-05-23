@@ -512,6 +512,7 @@ Status: not started.
 Scope:
 
 - add a public documentation page at `/ai-chat-exporter/docs/`
+- build it as a standard Hugo content page, not a React island
 - explain how the ChatGPT and Claude exporter tools work
 - document the difference between Claude share-link and Claude snapshot JSON paths
 - link to the relevant GitHub repo READMEs for deeper CLI/reference details
@@ -536,6 +537,7 @@ Test first:
 
 - built Hugo route exists at `public/ai-chat-exporter/docs/index.html`
 - docs page has one `h1`
+- docs page does not mount or load a React island
 - docs page links to both exporter repositories
 - docs page links back to `/ai-chat-exporter/`
 - docs page includes the phrases `Claude share link`, `Claude snapshot JSON`, and `ChatGPT share URL`
@@ -545,7 +547,8 @@ Implementation:
 
 - add Hugo content for `/ai-chat-exporter/docs/`
 - add layout only if the default page layout is not sufficient
-- keep the page visually consistent with the site, but avoid turning it into another app shell
+- keep the page visually consistent with the site using normal Hugo/content styling
+- do not add a Vite entry, React root, or client-side app script for the docs page
 - add local navigation from the exporter tool page to the docs page
 - add local navigation from the docs page back to the tool page
 
