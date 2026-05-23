@@ -175,7 +175,7 @@ Key risk surfaces:
 | 4 | Claude JSON PDF path | Complete |
 | 5 | Claude Link tab and warning behavior | Complete |
 | 6 | Server adapter and dependency integration | Complete |
-| 7 | Abuse controls and runtime guardrails | Not started |
+| 7 | Abuse controls and runtime guardrails | Complete |
 | 8 | Full local regression and polish | Not started |
 | 9 | Public docs page | Not started |
 | 10 | Launch decision package | Not started |
