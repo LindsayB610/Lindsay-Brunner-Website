@@ -369,12 +369,12 @@ export function parseDownloadFilename(
 
   const quotedMatch = contentDisposition.match(/filename="([^"]+)"/i);
   if (quotedMatch?.[1]) {
-    return sanitizeFilename(quotedMatch[1].trim());
+    return sanitizeFilename(quotedMatch[1].trim(), fallbackFilename);
   }
 
   const unquotedMatch = contentDisposition.match(/filename=([^;]+)/i);
   if (unquotedMatch?.[1]) {
-    return sanitizeFilename(unquotedMatch[1].trim());
+    return sanitizeFilename(unquotedMatch[1].trim(), fallbackFilename);
   }
 
   return fallbackFilename;
@@ -405,13 +405,13 @@ export function triggerFileDownload(
   }
 }
 
-function sanitizeFilename(filename: string) {
+function sanitizeFilename(filename: string, fallbackFilename: string) {
   const sanitized = filename
     .replace(/[/\\?%*:|"<>]/g, "-")
     .replace(/^\.+/, "")
     .trim();
 
-  return sanitized || "chatgpt-thread-export";
+  return sanitized || fallbackFilename;
 }
 
 function getFallbackFilename(request: AiChatExportRequest) {

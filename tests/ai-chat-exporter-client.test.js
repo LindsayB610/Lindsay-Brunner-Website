@@ -309,6 +309,11 @@ async function run() {
     failures,
   );
   assert(
+    parseDownloadFilename('attachment; filename="..."', 'claude-thread-export.pdf') === 'claude-thread-export.pdf',
+    'parseDownloadFilename should use the provider fallback when a filename sanitizes to empty',
+    failures,
+  );
+  assert(
     parseDownloadFilename("attachment; filename*=UTF-8''bad%ZZname.md", 'fallback.md') === 'fallback.md',
     'parseDownloadFilename should fall back when encoded filenames are malformed',
     failures,
@@ -408,6 +413,14 @@ async function run() {
     headers: { 'Content-Type': 'application/pdf' },
   }));
   assert(claudeFallbackExported.filename === 'claude-thread-export.pdf', 'exportSharedChat should use the Claude fallback filename for Claude responses without a filename header', failures);
+
+  const claudeSanitizedFallbackExported = await exportSharedChat(claudeRequest, async () => new Response('fallback pdf', {
+    headers: {
+      'Content-Disposition': 'attachment; filename="..."',
+      'Content-Type': 'application/pdf',
+    },
+  }));
+  assert(claudeSanitizedFallbackExported.filename === 'claude-thread-export.pdf', 'exportSharedChat should use the Claude fallback filename when the response filename sanitizes to empty', failures);
 
   try {
     await exportSharedChat(request, async () => new Response(JSON.stringify({ error: 'Mock export failed.' }), {
