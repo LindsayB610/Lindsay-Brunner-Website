@@ -53,8 +53,11 @@
 }
 
 #ai-chat-exporter-root .ai-exporter-page {
+  align-items: flex-start;
   background: #000000 !important;
+  height: auto !important;
   min-height: calc(100vh - 80px);
+  overflow: visible;
   padding: 72px 24px 88px;
 }
 
@@ -281,6 +284,7 @@ body:has(#ai-chat-exporter-root) .site-footer {
   position: relative;
   z-index: 1;
   display: flex;
+  margin-top: 24px;
   min-height: 65px;
   justify-content: center;
 }

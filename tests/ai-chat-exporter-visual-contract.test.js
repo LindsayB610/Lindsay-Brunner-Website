@@ -203,6 +203,35 @@ async function run() {
     assert(!metrics.visibleText.includes('Shared ChatGPT URL'), 'URL label should be visually hidden while remaining accessible', failures);
     assert(!metrics.visibleText.includes('Export format'), 'format legend should be visually hidden while remaining accessible', failures);
 
+    await page.getByRole('tab', { name: 'Claude JSON' }).click();
+    await page.locator('#ai-exporter-panel-claude-json [aria-label="Human verification"]').waitFor({ state: 'visible' });
+
+    const claudeMetrics = await page.evaluate(() => {
+      const rect = (selector) => document.querySelector(selector).getBoundingClientRect();
+      const pageRect = rect('.ai-exporter-page');
+      const footerRect = rect('.site-footer');
+      const buttonRect = rect('#ai-exporter-panel-claude-json .ai-exporter-button');
+      const turnstileRect = rect('#ai-exporter-panel-claude-json [aria-label="Human verification"]');
+      const turnstileStyle = getComputedStyle(document.querySelector('#ai-exporter-panel-claude-json [aria-label="Human verification"]'));
+      const pageStyle = getComputedStyle(document.querySelector('.ai-exporter-page'));
+
+      return {
+        buttonFooterGap: Math.round((footerRect.top - buttonRect.bottom) * 100) / 100,
+        footerGap: Math.round((footerRect.top - pageRect.bottom) * 100) / 100,
+        pageHeight: pageStyle.height,
+        pageOverflow: pageStyle.overflow,
+        turnstileButtonGap: Math.round((turnstileRect.top - buttonRect.bottom) * 100) / 100,
+        turnstileMarginTop: turnstileStyle.marginTop,
+      };
+    });
+
+    assert(claudeMetrics.footerGap === 0, `Claude JSON section should meet the footer without overlap or a gap; got ${claudeMetrics.footerGap}px`, failures);
+    assert(claudeMetrics.buttonFooterGap > 80, `Claude JSON export button should not sit behind the footer; got ${claudeMetrics.buttonFooterGap}px`, failures);
+    assert(claudeMetrics.turnstileButtonGap >= 20, `Turnstile should have breathing room below the Claude button; got ${claudeMetrics.turnstileButtonGap}px`, failures);
+    assert(claudeMetrics.turnstileMarginTop === '24px', `Turnstile should keep explicit top spacing; got ${claudeMetrics.turnstileMarginTop}`, failures);
+    assert(claudeMetrics.pageOverflow === 'visible', `AI exporter page should allow long tab content to define height; got ${claudeMetrics.pageOverflow}`, failures);
+    assert(claudeMetrics.pageHeight !== '640px', `AI exporter page should not be locked to the background hero height; got ${claudeMetrics.pageHeight}`, failures);
+
     await page.close();
   } finally {
     if (browser) await browser.close();
