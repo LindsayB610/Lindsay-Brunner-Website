@@ -3,7 +3,7 @@ title: "Weeknight Rice Pilaf (That Actually Gets Eaten)"
 date: 2026-04-21
 slug: "recipe-weeknight-rice-pilaf"
 subtitle: "Or: The rice dish everyone actually eats without complaint"
-description: "Vegan rice pilaf base loaded with onions, carrots, celery and garlic. Richer with butter. Everyone eats it."
+description: "Vegan rice pilaf loaded with onions, carrots, celery, garlic, and peas. Use butter or chicken stock for a richer weeknight side."
 draft: false
 social_image: "/images/social/recipe-weeknight-rice-pilaf-og.png"
 prepTime: "PT15M"
