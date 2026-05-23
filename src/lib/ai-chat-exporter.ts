@@ -10,6 +10,7 @@ export const AI_CHAT_EXPORTER_CONTRACT = {
   validHosts: ["chatgpt.com", "chat.openai.com"] as const,
   validClaudeHosts: ["claude.ai"] as const,
   exportTimeoutMs: 65_000,
+  maxClaudeSnapshotJsonBytes: 2_000_000,
   fallbackFilenames: {
     chatgpt: {
       markdown: "chatgpt-thread-export.md",
@@ -150,6 +151,10 @@ export function buildClaudeSnapshotCommand(
 }
 
 export function parseClaudeSnapshotJson(raw: string): Record<string, unknown> {
+  if (getUtf8ByteLength(raw.trim()) > AI_CHAT_EXPORTER_CONTRACT.maxClaudeSnapshotJsonBytes) {
+    throw new Error("Claude snapshot JSON is too large for the web exporter. Use the local CLI for this export.");
+  }
+
   let parsed: unknown;
 
   try {
@@ -482,6 +487,10 @@ function getMockSource(request: AiChatExportRequest) {
 
 function shellQuote(value: string) {
   return `"${value.replace(/(["\\$`])/g, "\\$1")}"`;
+}
+
+function getUtf8ByteLength(value: string) {
+  return new globalThis.TextEncoder().encode(value).byteLength;
 }
 
 function buildMockMarkdown(request: AiChatExportRequest) {

@@ -161,6 +161,33 @@ async function run() {
   assert(claudeUnsupportedJsonResponse.status === 400, 'unsupported Claude snapshot JSON should return 400', failures);
   assert((await claudeUnsupportedJsonResponse.json()).error === 'Snapshot JSON must include Claude chat_messages.', 'unsupported Claude snapshot JSON should be user-readable', failures);
 
+  const oversizedClaudeSnapshotJson = JSON.stringify({
+    chat_messages: [
+      {
+        sender: 'human',
+        text: 'x'.repeat(AI_CHAT_EXPORTER_CONTRACT.maxClaudeSnapshotJsonBytes),
+      },
+    ],
+  });
+  let exporterCalledAfterOversizedClaude = false;
+  const claudeOversizedJsonResponse = await postJson(handleExportChatRequest, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: oversizedClaudeSnapshotJson,
+    format: 'markdown',
+    turnstileToken: 'good-token',
+  }, {
+    exportChat: async () => {
+      exporterCalledAfterOversizedClaude = true;
+      return new Response('should not export');
+    },
+    getTurnstileSecret: () => 'mock-secret',
+    verifyTurnstileToken: async () => true,
+  });
+  assert(claudeOversizedJsonResponse.status === 413, 'oversized Claude snapshot JSON should return 413', failures);
+  assert((await claudeOversizedJsonResponse.json()).error === 'Claude snapshot JSON is too large for the web exporter. Use the local CLI for this export.', 'oversized Claude snapshot JSON should be user-readable', failures);
+  assert(!exporterCalledAfterOversizedClaude, 'oversized Claude snapshot JSON should not invoke exporter work', failures);
+
   let exporterCalledAfterInvalidClaudeWithTurnstile = false;
   const claudeMalformedWithTurnstileResponse = await postJson(handleExportChatRequest, {
     provider: 'claude',

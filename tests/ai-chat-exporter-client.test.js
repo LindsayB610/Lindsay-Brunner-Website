@@ -29,6 +29,12 @@ async function run() {
   assert(AI_CHAT_EXPORTER_CONTRACT.apiPath === '/api/export-chat', 'API path contract should be /api/export-chat', failures);
   assert(AI_CHAT_EXPORTER_CONTRACT.exportTimeoutMs <= 65000, 'export timeout should stay below or near the Netlify function timeout', failures);
   assert(
+    AI_CHAT_EXPORTER_CONTRACT.maxClaudeSnapshotJsonBytes > 0 &&
+      AI_CHAT_EXPORTER_CONTRACT.maxClaudeSnapshotJsonBytes <= 2_000_000,
+    'Claude snapshot JSON payload limit should be explicit and conservative for the web exporter',
+    failures,
+  );
+  assert(
     JSON.stringify(AI_CHAT_EXPORTER_CONTRACT.formats) === JSON.stringify(['markdown', 'pdf']),
     'supported format contract should be markdown and pdf',
     failures,
@@ -151,6 +157,22 @@ async function run() {
     assert(error.message === 'Snapshot JSON must include Claude chat_messages.', 'unsupported Claude JSON error should be user-readable', failures);
   }
 
+  const oversizedClaudeSnapshotJson = JSON.stringify({
+    chat_messages: [
+      {
+        sender: 'human',
+        text: 'x'.repeat(AI_CHAT_EXPORTER_CONTRACT.maxClaudeSnapshotJsonBytes),
+      },
+    ],
+  });
+  assert(!isClaudeSnapshotJson(oversizedClaudeSnapshotJson), 'oversized Claude snapshot JSON should be rejected before parsing', failures);
+  try {
+    parseClaudeSnapshotJson(oversizedClaudeSnapshotJson);
+    failures.push('parseClaudeSnapshotJson should throw for oversized Claude JSON');
+  } catch (error) {
+    assert(error.message === 'Claude snapshot JSON is too large for the web exporter. Use the local CLI for this export.', 'oversized Claude JSON error should be user-readable', failures);
+  }
+
   const request = buildExportRequest(' https://chatgpt.com/share/abc123 ', 'markdown');
   assert(request.sharedUrl === 'https://chatgpt.com/share/abc123', 'buildExportRequest should trim sharedUrl', failures);
   assert(request.format === 'markdown', 'buildExportRequest should preserve a valid format', failures);
@@ -210,6 +232,18 @@ async function run() {
     failures.push('buildExportRequest should throw before network work for malformed Claude JSON');
   } catch (error) {
     assert(error.message === 'Paste valid Claude snapshot JSON.', 'Claude request malformed JSON error should be user-readable', failures);
+  }
+
+  try {
+    buildExportRequest({
+      format: 'markdown',
+      provider: 'claude',
+      mode: 'snapshot-json',
+      snapshotJson: oversizedClaudeSnapshotJson,
+    });
+    failures.push('buildExportRequest should throw before network work for oversized Claude JSON');
+  } catch (error) {
+    assert(error.message === 'Claude snapshot JSON is too large for the web exporter. Use the local CLI for this export.', 'Claude request oversized JSON error should be user-readable', failures);
   }
 
   try {

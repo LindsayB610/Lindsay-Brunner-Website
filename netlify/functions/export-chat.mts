@@ -116,12 +116,16 @@ async function handlePost(
       message === "Use a public Claude share URL." ||
       message === "Paste valid Claude snapshot JSON." ||
       message === "Snapshot JSON must include Claude chat_messages." ||
+      message === "Claude snapshot JSON is too large for the web exporter. Use the local CLI for this export." ||
       message === "ChatGPT exports use public share links." ||
       message === "Choose Markdown or PDF.";
+    const status = message === "Claude snapshot JSON is too large for the web exporter. Use the local CLI for this export."
+      ? 413
+      : 400;
 
     return jsonError(
       isValidationError ? message : "The export failed. Please try again.",
-      isValidationError ? 400 : 500,
+      isValidationError ? status : 500,
     );
   }
 }

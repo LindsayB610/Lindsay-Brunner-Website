@@ -520,7 +520,7 @@ Tests:
 
 ## Phase 7: Abuse Controls And Runtime Guardrails
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -540,6 +540,16 @@ Implementation:
 - Add payload-size guardrails if Netlify/request behavior requires them.
 - Keep `Cache-Control: no-store`.
 
+Completed:
+
+- Confirmed Turnstile checks block ChatGPT and Claude export work when configured and missing or invalid.
+- Confirmed the PDF rate limit applies before expensive PDF work for both providers and does not block Markdown exports.
+- Added an explicit Claude snapshot JSON size limit for the web exporter.
+- Added client-side validation so oversized Claude snapshots fail before network work.
+- Added server-side normalization so oversized Claude snapshots return a safe `413` response.
+- Kept malformed Claude JSON validation ahead of Turnstile checks and exporter work.
+- Kept successful and error export responses on `Cache-Control: no-store`.
+
 Review gate:
 
 - No expensive export path runs before guardrails.
@@ -547,8 +557,9 @@ Review gate:
 
 Tests:
 
-- `npm run test:ai-exporter:function`
-- `npm run test:ai-exporter:runtime`
+- Passed: `npm run test:ai-exporter:client`
+- Passed: `npm run test:ai-exporter:function`
+- Passed: `npm run test:ai-exporter:runtime`
 
 ## Phase 8: Full Local Regression And Polish
 
