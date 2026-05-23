@@ -176,7 +176,7 @@ Key risk surfaces:
 | 5 | Claude Link tab and warning behavior | Complete |
 | 6 | Server adapter and dependency integration | Complete |
 | 7 | Abuse controls and runtime guardrails | Complete |
-| 8 | Full local regression and polish | Not started |
+| 8 | Full local regression and polish | Complete |
 | 9 | Public docs page | Not started |
 | 10 | Launch decision package | Not started |
 
@@ -563,7 +563,7 @@ Tests:
 
 ## Phase 8: Full Local Regression And Polish
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -583,13 +583,27 @@ Checklist:
 - No clipped text.
 - Full site build passes.
 
+Completed:
+
+- Completed the final local regression pass for the three-tab exporter.
+- Preserved the existing ChatGPT export path as the regression baseline.
+- Confirmed Claude JSON Markdown and PDF paths remain covered by the real exporter runtime tests.
+- Confirmed Claude Link remains warning-first and CLI-directed.
+- Removed the extra visual boxes around Claude tab content so the Claude tabs match the ChatGPT tab structure.
+- Added Turnstile visibility to the Claude JSON tab and kept Claude Link free of hosted-export verification.
+- Fixed Turnstile/button/footer spacing for long Claude JSON content.
+- Fixed horizontal overflow from the decorative beam layer while preserving normal vertical page flow.
+- Confirmed tab interaction, visual layout, accessibility, mobile rendering, site content, link crawling, and HTML validation pass locally.
+
 Tests:
 
-- `npm run build`
-- `npm run test:ai-exporter`
-- `npm run test:accessibility`
-- `npm run test:mobile`
-- relevant content/page tests
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile`
+- Passed: `npm run test:content`
+- Passed: `npm run test:links`
+- Passed: `npm run test:html`
 
 Review gate:
 
