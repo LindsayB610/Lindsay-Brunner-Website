@@ -94,7 +94,16 @@ async function run() {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 
     await page.addInitScript(() => {
+      window.__aiExporterCopiedText = '';
       window.__aiExporterDownloads = [];
+      Object.defineProperty(navigator, 'clipboard', {
+        configurable: true,
+        value: {
+          writeText: async (text) => {
+            window.__aiExporterCopiedText = text;
+          },
+        },
+      });
       const originalClick = HTMLAnchorElement.prototype.click;
       HTMLAnchorElement.prototype.click = function patchedClick() {
         window.__aiExporterDownloads.push({
@@ -224,6 +233,30 @@ async function run() {
     await page.getByRole('tab', { name: 'Claude Link' }).click();
     await page.getByText('Claude share-link export is experimental.').waitFor();
     assert(await page.getByRole('tab', { name: 'Claude Link' }).getAttribute('aria-selected') === 'true', 'Claude Link tab should become selected after click', failures);
+    assert(!(await page.getByLabel('Human verification').isVisible()), 'Claude Link tab should not show human verification for a local CLI handoff', failures);
+
+    await page.getByLabel('Claude share URL').fill('https://example.com/share/not-claude');
+    await page.getByRole('button', { name: 'Generate CLI command' }).click();
+    await page.getByText('Use a public Claude share URL.').waitFor();
+    assert(apiRequestCount === 0, 'invalid Claude share-link command generation should not call the export API', failures);
+
+    await page.getByLabel('Claude share URL').fill('https://claude.ai/share/browser-link');
+    await page.getByRole('button', { name: 'Generate CLI command' }).click();
+    await page.getByText('Command ready. Run it locally, then paste the saved JSON in the Claude JSON tab.').waitFor();
+    const claudeCommand = await page.getByLabel('Local snapshot command').inputValue();
+    assert(claudeCommand.includes('claude-thread-exporter'), 'Claude Link tab should generate a CLI command', failures);
+    assert(claudeCommand.includes('--claude-url "https://claude.ai/share/browser-link"'), 'Claude Link command should include the validated share URL', failures);
+    assert(claudeCommand.includes('--save-snapshot "./claude-thread.snapshot.json"'), 'Claude Link command should include a snapshot output path', failures);
+    assert(apiRequestCount === 0, 'Claude share-link command generation should not call the export API', failures);
+
+    await page.getByRole('button', { name: 'Copy command' }).click();
+    await page.getByText('Command copied.').waitFor();
+    assert(await page.evaluate(() => window.__aiExporterCopiedText) === claudeCommand, 'Copy command should write the generated CLI command to the clipboard', failures);
+
+    await page.getByRole('button', { name: 'Use link in JSON tab' }).click();
+    await waitForSelectedTab(page, 'Claude JSON');
+    assert(await page.getByLabel('Claude source share URL').inputValue() === 'https://claude.ai/share/browser-link', 'Use link in JSON tab should prefill the Claude source URL', failures);
+    assert(apiRequestCount === 0, 'using a Claude link as JSON source metadata should not call the export API', failures);
 
     await page.getByRole('tab', { name: 'ChatGPT' }).click();
     await page.getByText('Paste a public ChatGPT share URL and export a clean Markdown or PDF copy of the thread.').waitFor();

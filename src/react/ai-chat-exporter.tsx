@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
   AI_CHAT_EXPORTER_CONTRACT,
+  buildClaudeSnapshotCommand,
   buildExportRequest,
   exportSharedChat,
   triggerFileDownload,
@@ -39,6 +40,9 @@ function AiChatExporterPage() {
   const [sharedUrl, setSharedUrl] = useState("");
   const [claudeSnapshotJson, setClaudeSnapshotJson] = useState("");
   const [claudeSourceUrl, setClaudeSourceUrl] = useState("");
+  const [claudeLinkUrl, setClaudeLinkUrl] = useState("");
+  const [claudeLinkCommand, setClaudeLinkCommand] = useState("");
+  const [claudeLinkStatus, setClaudeLinkStatus] = useState("");
   const [format, setFormat] = useState<AiChatExportFormat>("markdown");
   const [isExporting, setIsExporting] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -98,6 +102,17 @@ function AiChatExporterPage() {
     void runExport();
   }
 
+  function handleClaudeLinkSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    try {
+      setClaudeLinkCommand(buildClaudeSnapshotCommand(claudeLinkUrl));
+      setClaudeLinkStatus("Command ready. Run it locally, then paste the saved JSON in the Claude JSON tab.");
+    } catch (error) {
+      setClaudeLinkCommand("");
+      setClaudeLinkStatus(error instanceof Error ? error.message : "Use a public Claude share URL.");
+    }
+  }
+
   function handleTabKeyDown(
     event: React.KeyboardEvent<HTMLButtonElement>,
     currentTab: AiChatExporterTab,
@@ -132,6 +147,30 @@ function AiChatExporterPage() {
   function selectTab(tab: AiChatExporterTab) {
     setActiveTab(tab);
     setStatusMessage("");
+  }
+
+  async function copyClaudeLinkCommand() {
+    if (!claudeLinkCommand) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(claudeLinkCommand);
+      setClaudeLinkStatus("Command copied.");
+    } catch {
+      setClaudeLinkStatus("Copy failed. Select the command text and copy it manually.");
+    }
+  }
+
+  function useClaudeLinkAsSource() {
+    try {
+      buildClaudeSnapshotCommand(claudeLinkUrl);
+      setClaudeSourceUrl(claudeLinkUrl.trim());
+      setActiveTab("Claude JSON");
+      setStatusMessage("");
+    } catch (error) {
+      setClaudeLinkStatus(error instanceof Error ? error.message : "Use a public Claude share URL.");
+    }
   }
 
   async function runExport() {
@@ -361,8 +400,61 @@ function AiChatExporterPage() {
           <h2>Claude share-link export is experimental.</h2>
           <p>
             Claude may ask for browser verification, and that verification can
-            loop. This path will stay warning-first until hosted export is proven
-            reliable.
+            loop. The reliable path is to capture a snapshot locally, then paste
+            that JSON into the Claude JSON tab.
+          </p>
+
+          <form className="ai-exporter-form" onSubmit={handleClaudeLinkSubmit}>
+            <label className="ai-exporter-field" htmlFor="ai-exporter-claude-link">
+              <span className="sr-only">Claude share URL</span>
+              <input
+                id="ai-exporter-claude-link"
+                name="claudeLinkUrl"
+                onChange={(event) => {
+                  setClaudeLinkUrl(event.target.value);
+                  setClaudeLinkStatus("");
+                }}
+                placeholder="https://claude.ai/share/..."
+                type="url"
+                value={claudeLinkUrl}
+              />
+            </label>
+
+            <button className="ai-exporter-secondary-button" type="submit">
+              Generate CLI command
+            </button>
+          </form>
+
+          {claudeLinkCommand ? (
+            <div className="ai-exporter-command-panel">
+              <label htmlFor="ai-exporter-claude-command">Local snapshot command</label>
+              <textarea
+                id="ai-exporter-claude-command"
+                readOnly
+                rows={4}
+                value={claudeLinkCommand}
+              />
+              <div className="ai-exporter-command-actions">
+                <button
+                  className="ai-exporter-secondary-button"
+                  onClick={copyClaudeLinkCommand}
+                  type="button"
+                >
+                  Copy command
+                </button>
+                <button
+                  className="ai-exporter-secondary-button"
+                  onClick={useClaudeLinkAsSource}
+                  type="button"
+                >
+                  Use link in JSON tab
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          <p className="ai-exporter-status" role="status">
+            {activeTab === "Claude Link" ? claudeLinkStatus : ""}
           </p>
         </section>
 

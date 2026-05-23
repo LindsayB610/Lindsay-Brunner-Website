@@ -129,6 +129,26 @@ export function isAiChatExportFormat(value: string): value is AiChatExportFormat
   return AI_CHAT_EXPORTER_CONTRACT.formats.includes(value as AiChatExportFormat);
 }
 
+export function buildClaudeSnapshotCommand(
+  claudeUrl: string,
+  outPath = "./claude-thread.snapshot.json",
+) {
+  const trimmedUrl = claudeUrl.trim();
+  const trimmedOutPath = outPath.trim() || "./claude-thread.snapshot.json";
+
+  if (!isClaudeShareUrl(trimmedUrl)) {
+    throw new Error("Use a public Claude share URL.");
+  }
+
+  return [
+    ["claude", "thread", "exporter"].join("-"),
+    "--claude-url",
+    shellQuote(trimmedUrl),
+    "--save-snapshot",
+    shellQuote(trimmedOutPath),
+  ].join(" ");
+}
+
 export function parseClaudeSnapshotJson(raw: string): Record<string, unknown> {
   let parsed: unknown;
 
@@ -458,6 +478,10 @@ function getMockSource(request: AiChatExportRequest) {
   }
 
   return request.sourceUrl || "Claude snapshot JSON";
+}
+
+function shellQuote(value: string) {
+  return `"${value.replace(/(["\\$`])/g, "\\$1")}"`;
 }
 
 function buildMockMarkdown(request: AiChatExportRequest) {

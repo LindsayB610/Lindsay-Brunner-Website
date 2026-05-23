@@ -173,7 +173,7 @@ Key risk surfaces:
 | 2 | Client contract and helper refactor | Complete |
 | 3 | Claude JSON Markdown path | Complete |
 | 4 | Claude JSON PDF path | Complete |
-| 5 | Claude Link tab and warning behavior | Not started |
+| 5 | Claude Link tab and warning behavior | Complete |
 | 6 | Server adapter and dependency integration | Not started |
 | 7 | Abuse controls and runtime guardrails | Not started |
 | 8 | Full local regression and polish | Not started |
@@ -419,7 +419,7 @@ Tests:
 
 ## Phase 5: Claude Link Tab And Warning Behavior
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -447,6 +447,14 @@ Implementation:
 - Add copyable CLI command.
 - Add optional source link handoff affordance for Claude JSON if useful.
 
+Completed:
+
+- Kept the Claude Link tab warning-first and explicitly local/CLI-directed.
+- Added Claude share URL validation before any command is generated.
+- Added a copyable `claude-thread-exporter --claude-url ... --save-snapshot ...` command.
+- Added a handoff button that prefills the Claude JSON tab's optional source URL.
+- Confirmed the Claude Link tab does not call the hosted export endpoint.
+
 Review gate:
 
 - The warning is clear but not alarming.
@@ -455,9 +463,10 @@ Review gate:
 
 Tests:
 
-- `npm run test:ai-exporter:client`
-- `npm run test:ai-exporter:interaction`
-- `npm run test:ai-exporter:visual`
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile:render`
 
 ## Phase 6: Server Adapter And Dependency Integration
 

@@ -7,6 +7,7 @@ const {
 const failures = [];
 const {
   AI_CHAT_EXPORTER_CONTRACT,
+  buildClaudeSnapshotCommand,
   buildExportRequest,
   exportSharedChat,
   fetchExportSharedChat,
@@ -93,6 +94,25 @@ async function run() {
     'https://evil.claude.ai/share/abc123',
     'https://claude.ai/shared/abc123',
   ].forEach((url) => assert(!isClaudeShareUrl(url), `${url || '(empty)'} should be rejected as a Claude share URL`, failures));
+
+  const claudeSnapshotCommand = buildClaudeSnapshotCommand(' https://claude.ai/share/abc123 ');
+  assert(
+    claudeSnapshotCommand === 'claude-thread-exporter --claude-url "https://claude.ai/share/abc123" --save-snapshot "./claude-thread.snapshot.json"',
+    'buildClaudeSnapshotCommand should generate the local snapshot command with the default output path',
+    failures,
+  );
+  assert(
+    buildClaudeSnapshotCommand('https://claude.ai/share/abc123', './exports/my thread.json').includes('--save-snapshot "./exports/my thread.json"'),
+    'buildClaudeSnapshotCommand should quote custom output paths',
+    failures,
+  );
+
+  try {
+    buildClaudeSnapshotCommand('https://example.com/share/nope');
+    failures.push('buildClaudeSnapshotCommand should throw for invalid Claude share links');
+  } catch (error) {
+    assert(error.message === 'Use a public Claude share URL.', 'invalid Claude command URL error should be user-readable', failures);
+  }
 
   const claudeSnapshotJson = JSON.stringify({
     snapshot: {
