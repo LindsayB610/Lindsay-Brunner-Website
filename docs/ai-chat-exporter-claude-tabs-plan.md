@@ -502,6 +502,10 @@ Completed:
 - Verified Claude package runtime exports through the real installed GitHub dependency.
 - Confirmed ChatGPT PDF dynamic renderer assets remain covered by `netlify.toml`; Claude PDF uses package exports and does not require an extra included-file glob.
 
+Review note:
+
+- The committed `package.json` and `package-lock.json` pin `claude-thread-exporter` with `git+https`, and the boundary test guards that. `npm ls` still reports the installed package metadata as `git+ssh`, which appears to be npm's GitHub dependency canonicalization rather than an app runtime failure. Before launch, the cleaner dependency shape would be a published package or a tarball that includes built `dist/` files; the current GitHub dependency works locally and is covered by tests.
+
 Review gate:
 
 - Boundary tests pass.
