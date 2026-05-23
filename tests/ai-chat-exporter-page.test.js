@@ -101,12 +101,12 @@ if (exists('public/ai-chat-exporter/index.html')) {
     failures,
   );
   assert(
-    /<meta\s+property=["']og:image["']\s+content=["']https:\/\/lindsaybrunner\.com\/images\/social\/ai-chat-exporter-og\.png["']/.test(page),
+    /<meta\s+property=["']og:image["']\s+content=["']https?:\/\/[^"']+\/images\/social\/ai-chat-exporter-og\.png["']/.test(page),
     'built page should include the page-specific AI Chat Exporter OG image',
     failures,
   );
   assert(
-    /<meta\s+name=["']?twitter:image["']?\s+content=["']https:\/\/lindsaybrunner\.com\/images\/social\/ai-chat-exporter-og\.png["']/.test(page),
+    /<meta\s+name=["']?twitter:image["']?\s+content=["']https?:\/\/[^"']+\/images\/social\/ai-chat-exporter-og\.png["']/.test(page),
     'built page should include the page-specific AI Chat Exporter Twitter image',
     failures,
   );

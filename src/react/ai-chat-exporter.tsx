@@ -232,9 +232,6 @@ function AiChatExporterPage() {
           Paste a public ChatGPT share URL, or choose a Claude path that matches
           what you have available.
         </p>
-        <p className="ai-exporter-docs-link">
-          <a href="/ai-chat-exporter/docs/">How this works</a>
-        </p>
 
         <div
           aria-label="Exporter type"
@@ -326,6 +323,8 @@ function AiChatExporterPage() {
             />
           ) : null}
 
+          <DocsLink />
+
           <p className="ai-exporter-status" role="status">
             {activeTab === "ChatGPT" ? statusMessage : ""}
           </p>
@@ -413,6 +412,8 @@ function AiChatExporterPage() {
             />
           ) : null}
 
+          <DocsLink />
+
           <p className="ai-exporter-status" role="status">
             {activeTab === "Claude JSON" ? statusMessage : ""}
           </p>
@@ -451,6 +452,7 @@ function AiChatExporterPage() {
             <button className="ai-exporter-button" type="submit">
               Generate CLI command
             </button>
+            <DocsLink />
           </form>
 
           {claudeLinkCommand ? (
@@ -488,6 +490,14 @@ function AiChatExporterPage() {
 
       </div>
     </BackgroundBeamsWithCollision>
+  );
+}
+
+function DocsLink() {
+  return (
+    <p className="ai-exporter-docs-link">
+      <a href="/ai-chat-exporter/docs/">Read the docs</a>
+    </p>
   );
 }
 

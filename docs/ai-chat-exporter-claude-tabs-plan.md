@@ -178,7 +178,7 @@ Key risk surfaces:
 | 7 | Abuse controls and runtime guardrails | Complete |
 | 8 | Full local regression and polish | Complete |
 | 9 | Public docs page | Complete |
-| 10 | Launch decision package | Not started |
+| 10 | Launch decision package | Complete |
 
 ## Phase 0: Branch, Plan, Contracts
 
@@ -695,7 +695,7 @@ Tests:
 
 ## Phase 10: Launch Decision Package
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -709,11 +709,67 @@ Deliverables:
 - rollback notes
 - final copy review
 
+Completed:
+
+- Prepared launch notes for the three-tab AI Chat Exporter update.
+- Confirmed the reliable Claude path is Claude snapshot JSON and the Claude share-link path remains local CLI-directed.
+- Confirmed `/ai-chat-exporter/docs/` is a plain Hugo docs page with links to both CLI repos.
+- Confirmed the local UI copy does not overpromise hosted Claude share-link export.
+- Confirmed `Read the docs` appears below Turnstile on ChatGPT and Claude JSON, and below the command button on Claude Link.
+- Confirmed the intro-to-tabs spacing is 44px on desktop and mobile.
+- Fixed the full-suite ordering issue where local link-check builds changed OG image hostnames before AI exporter page-contract assertions.
+
+Launch notes:
+
+- The existing ChatGPT export flow remains the default tab and regression baseline.
+- Claude JSON adds the reliable web export path for pasted snapshot JSON, with Markdown and PDF output.
+- Claude Link generates a local CLI command instead of attempting hosted browser verification.
+- The docs page explains the ChatGPT share URL, Claude snapshot JSON, and Claude share-link workflows.
+- Known caveat: Claude share-link capture can still be flaky because Claude browser verification may loop; use the snapshot JSON path when reliability matters.
+
+Smoke-test checklist:
+
+- Open `/ai-chat-exporter/`.
+- Confirm the default tab is `ChatGPT`.
+- Confirm all three tabs switch cleanly: `ChatGPT`, `Claude JSON`, `Claude Link`.
+- Confirm ChatGPT and Claude JSON show Turnstile and `Read the docs` below it.
+- Confirm Claude Link does not show Turnstile and can generate a CLI command from a `https://claude.ai/share/...` URL.
+- Open `/ai-chat-exporter/docs/`.
+- Confirm the docs page links back to the exporter and links to both CLI repos.
+
+Deploy-preview checklist:
+
+- Run the Netlify deploy preview build.
+- Visit the preview `/ai-chat-exporter/` route.
+- Verify the Turnstile widget loads under the preview domain.
+- Verify the `/api/export-chat` function responds to validation errors without exposing stack traces.
+- Verify `/ai-chat-exporter/docs/` renders as a normal Hugo page and does not load the React exporter island.
+- Run the exporter smoke tests manually against the preview before production.
+
+Rollback notes:
+
+- Revert the feature branch merge or restore the prior production deploy from Netlify if the page breaks after launch.
+- The page route remains `/ai-chat-exporter/`, so rollback does not require URL changes.
+- The Claude dependency is server-side only; rollback removes the new Claude web paths by reverting this branch.
+
+Final copy review:
+
+- ChatGPT copy remains intentionally unchanged except for the shared page framing.
+- Claude JSON copy names it as the reliable path.
+- Claude Link copy says hosted Claude share fetch is unreliable because verification must happen in a real browser the user controls.
+- Docs copy links to `chatgpt-thread-exporter` and `claude-thread-exporter`.
+
 Launch gate:
 
 - User explicitly approves push/merge/deploy.
 - Deploy preview passes the webapp smoke tests.
 - Production launch remains a separate explicit step.
+
+Tests:
+
+- Passed: `npm test`
+- Passed: local Playwright visual metrics for desktop and mobile on all three tabs
+- Note: `test:content` still reports an unrelated SEO warning for `recipes/recipe-weeknight-rice-pilaf.md` meta description length; it does not fail the suite.
 
 ## Open Questions
 

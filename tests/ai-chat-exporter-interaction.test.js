@@ -209,6 +209,8 @@ async function run() {
     assert(await tabs.nth(1).textContent() === 'Claude JSON', 'second tab should be Claude JSON', failures);
     assert(await tabs.nth(2).textContent() === 'Claude Link', 'third tab should be Claude Link', failures);
     assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ChatGPT tab should be selected by default', failures);
+    assert(await page.getByRole('link', { name: 'Read the docs' }).isVisible(), 'ChatGPT tab should expose a visible docs link below human verification', failures);
+    assert(await page.getByRole('link', { name: 'Read the docs' }).getAttribute('href') === '/ai-chat-exporter/docs/', 'docs link should point to /ai-chat-exporter/docs/', failures);
 
     await page.getByRole('tab', { name: 'ChatGPT' }).press('ArrowRight');
     await waitForSelectedTab(page, 'Claude JSON');
@@ -236,12 +238,14 @@ async function run() {
     assert(await page.getByLabel('Human verification').isVisible(), 'Claude JSON tab should keep human verification visible', failures);
     assert(await page.locator('#ai-exporter-panel-claude-json [aria-label="Human verification"]').isVisible(), 'Claude JSON panel should contain its own human verification slot', failures);
     assert(await page.getByRole('button', { name: 'Export Claude' }).isVisible(), 'Claude JSON tab should expose an export button', failures);
+    assert(await page.getByRole('link', { name: 'Read the docs' }).isVisible(), 'Claude JSON tab should expose a visible docs link below human verification', failures);
 
     await page.getByRole('tab', { name: 'Claude Link' }).click();
     await page.getByText('Claude Link: local capture path').waitFor();
     await page.getByText('The website cannot reliably fetch Claude shares because verification has to happen in a real browser you control.').waitFor();
     assert(await page.getByRole('tab', { name: 'Claude Link' }).getAttribute('aria-selected') === 'true', 'Claude Link tab should become selected after click', failures);
     assert(!(await page.getByLabel('Human verification').isVisible()), 'Claude Link tab should not show human verification for a local CLI handoff', failures);
+    assert(await page.getByRole('link', { name: 'Read the docs' }).isVisible(), 'Claude Link tab should expose a visible docs link under the command button', failures);
 
     await page.getByLabel('Claude share URL').fill('https://example.com/share/not-claude');
     await page.getByRole('button', { name: 'Generate CLI command' }).click();

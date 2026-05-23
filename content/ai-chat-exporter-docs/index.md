@@ -10,6 +10,11 @@ social_image: "/images/social/ai-chat-exporter-og.png"
 
 AI Chat Exporter turns useful AI conversations into clean Markdown or PDF files. The tool supports ChatGPT and Claude, but the two services expose shared conversations differently.
 
+## CLI tool repos
+
+- [chatgpt-thread-exporter](https://github.com/LindsayB610/chatgpt-thread-exporter)
+- [claude-thread-exporter](https://github.com/LindsayB610/claude-thread-exporter)
+
 ## ChatGPT share URL
 
 Use the ChatGPT tab when you have a public ChatGPT share URL like `https://chatgpt.com/share/...`.

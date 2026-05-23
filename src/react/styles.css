@@ -100,23 +100,33 @@ body:has(#ai-chat-exporter-root) .site-footer {
 }
 
 #ai-chat-exporter-root .ai-exporter-docs-link {
-  margin: 14px auto 0;
+  margin: 10px auto 0;
+  text-align: center;
   font-size: 0.95rem;
   line-height: 1.4;
 }
 
 #ai-chat-exporter-root .ai-exporter-docs-link a {
-  color: var(--color-brand-yellow);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 800;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 221, 0, 0.45);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
 }
 
-#ai-chat-exporter-root .ai-exporter-docs-link a:hover {
-  color: #ffffff;
-  text-decoration-color: var(--color-brand-pink);
+#ai-chat-exporter-root .ai-exporter-docs-link a::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  display: block !important;
+  width: 0 !important;
+  height: 2px;
+  background: var(--gradient-main);
+  transition: width var(--transition-normal);
+}
+
+#ai-chat-exporter-root .ai-exporter-docs-link a:hover::after {
+  width: 100% !important;
 }
 
 #ai-chat-exporter-root .ai-exporter-tabs {
@@ -126,7 +136,7 @@ body:has(#ai-chat-exporter-root) .site-footer {
   flex-wrap: wrap;
   gap: 4px;
   max-width: 100%;
-  margin: 30px auto 0;
+  margin: 44px auto 0;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 12px;
   background: rgba(20, 20, 20, 0.74);

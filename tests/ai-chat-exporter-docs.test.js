@@ -22,11 +22,12 @@ assert(
 
 if (exists('content/ai-chat-exporter-docs/index.md')) {
   const content = read('content/ai-chat-exporter-docs/index.md');
-  assert(content.includes('type: "page"'), 'docs page should use the default Hugo page renderer, not the React exporter layout', failures);
+  assert(content.includes('type: "page"'), 'docs page should use a plain Hugo page renderer, not the React exporter layout', failures);
   assert(content.includes('url: "/ai-chat-exporter/docs/"'), 'docs content should pin the public /ai-chat-exporter/docs/ route', failures);
   assert(content.includes('Claude share link'), 'docs content should explain the Claude share link path', failures);
   assert(content.includes('Claude snapshot JSON'), 'docs content should explain the Claude snapshot JSON path', failures);
   assert(content.includes('ChatGPT share URL'), 'docs content should explain the ChatGPT share URL path', failures);
+  assert(content.includes('## CLI tool repos'), 'docs content should include a dedicated CLI tool repos section', failures);
   assert(content.includes('https://github.com/LindsayB610/chatgpt-thread-exporter'), 'docs content should link to the ChatGPT exporter repo', failures);
   assert(content.includes('https://github.com/LindsayB610/claude-thread-exporter'), 'docs content should link to the Claude exporter repo', failures);
   assert(content.includes('/ai-chat-exporter/'), 'docs content should link back to the exporter tool', failures);
@@ -42,6 +43,7 @@ if (exists('public/ai-chat-exporter/docs/index.html')) {
   assert(html.includes('Claude share link'), 'built docs page should mention Claude share link', failures);
   assert(html.includes('Claude snapshot JSON'), 'built docs page should mention Claude snapshot JSON', failures);
   assert(html.includes('ChatGPT share URL'), 'built docs page should mention ChatGPT share URL', failures);
+  assert(html.includes('CLI tool repos'), 'built docs page should include a dedicated CLI tool repos section', failures);
   assert(html.includes('https://github.com/LindsayB610/chatgpt-thread-exporter'), 'built docs page should link to the ChatGPT exporter repo', failures);
   assert(html.includes('https://github.com/LindsayB610/claude-thread-exporter'), 'built docs page should link to the Claude exporter repo', failures);
   assert(/href=["']?\/ai-chat-exporter\/["']?/.test(html), 'built docs page should link back to the exporter tool', failures);
