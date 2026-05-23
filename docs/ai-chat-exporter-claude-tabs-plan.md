@@ -169,7 +169,7 @@ Key risk surfaces:
 | Phase | Focus | Status |
 | --- | --- | --- |
 | 0 | Branch, plan, contracts | Complete |
-| 1 | Tabbed UI shell | Not started |
+| 1 | Tabbed UI shell | Complete |
 | 2 | Client contract and helper refactor | Not started |
 | 3 | Claude JSON Markdown path | Not started |
 | 4 | Claude JSON PDF path | Not started |
@@ -210,7 +210,7 @@ Tests:
 
 ## Phase 1: Tabbed UI Shell
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -237,6 +237,16 @@ Implementation:
 - Add placeholder Claude Link and Claude JSON panels.
 - Keep current visual treatment and button component.
 
+Completed:
+
+- Added an accessible three-tab shell with the order `ChatGPT`, `Claude JSON`, `Claude Link`.
+- Kept `ChatGPT` selected by default.
+- Kept the existing ChatGPT form and export behavior in the ChatGPT panel.
+- Added non-functional Claude JSON and Claude Link placeholder panels with warning-first copy.
+- Added the tab labels to the shared AI exporter contract.
+- Updated browser interaction coverage for tab order, default state, tab switching, hidden ChatGPT form behavior on Claude tabs, and the existing ChatGPT export flow.
+- Updated render-test harnesses to block the external Cloudflare Turnstile challenge script during layout/accessibility checks, because those tests validate local page rendering rather than captcha behavior.
+
 Review gate:
 
 - ChatGPT flow still looks and behaves like the launched version.
@@ -245,12 +255,13 @@ Review gate:
 
 Tests:
 
-- `npm run build`
-- `npm run test:ai-exporter:client`
-- `npm run test:ai-exporter:interaction`
-- `npm run test:ai-exporter:visual`
-- `npm run test:accessibility`
-- `npm run test:mobile:render`
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter:client`
+- Passed: `npm run test:ai-exporter:page`
+- Passed: `npm run test:ai-exporter:interaction`
+- Passed: `npm run test:ai-exporter:visual`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile:render`
 
 ## Phase 2: Client Contract And Helper Refactor
 

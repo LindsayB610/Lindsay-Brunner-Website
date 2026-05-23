@@ -34,6 +34,11 @@ async function run() {
     'public launch should enable Markdown and PDF exports',
     failures,
   );
+  assert(
+    JSON.stringify(AI_CHAT_EXPORTER_CONTRACT.tabs) === JSON.stringify(['ChatGPT', 'Claude JSON', 'Claude Link']),
+    'tab contract should be ChatGPT, Claude JSON, Claude Link',
+    failures,
+  );
 
   [
     'https://chatgpt.com/share/abc123',

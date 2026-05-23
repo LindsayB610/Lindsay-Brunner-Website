@@ -152,6 +152,31 @@ async function run() {
 
     await page.goto(`${origin}/ai-chat-exporter/`, { waitUntil: 'domcontentloaded' });
 
+    const tabs = page.getByRole('tab');
+    assert(await tabs.count() === 3, 'AI Chat Exporter should render three tabs', failures);
+    assert(await tabs.nth(0).textContent() === 'ChatGPT', 'first tab should be ChatGPT', failures);
+    assert(await tabs.nth(1).textContent() === 'Claude JSON', 'second tab should be Claude JSON', failures);
+    assert(await tabs.nth(2).textContent() === 'Claude Link', 'third tab should be Claude Link', failures);
+    assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ChatGPT tab should be selected by default', failures);
+
+    await page.getByRole('tab', { name: 'ChatGPT' }).focus();
+    await page.keyboard.press('ArrowRight');
+    assert(await page.getByRole('tab', { name: 'Claude JSON' }).getAttribute('aria-selected') === 'true', 'ArrowRight should move from ChatGPT to Claude JSON', failures);
+    await page.keyboard.press('ArrowLeft');
+    assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ArrowLeft should move from Claude JSON to ChatGPT', failures);
+
+    await page.getByRole('tab', { name: 'Claude JSON' }).click();
+    await page.getByText('Paste saved Claude snapshot JSON').waitFor();
+    assert(await page.getByRole('tab', { name: 'Claude JSON' }).getAttribute('aria-selected') === 'true', 'Claude JSON tab should become selected after click', failures);
+    assert(!(await page.getByLabel('Shared ChatGPT URL').isVisible()), 'ChatGPT URL input should be hidden outside the ChatGPT tab', failures);
+
+    await page.getByRole('tab', { name: 'Claude Link' }).click();
+    await page.getByText('Claude share-link export is experimental.').waitFor();
+    assert(await page.getByRole('tab', { name: 'Claude Link' }).getAttribute('aria-selected') === 'true', 'Claude Link tab should become selected after click', failures);
+
+    await page.getByRole('tab', { name: 'ChatGPT' }).click();
+    await page.getByText('Paste a public ChatGPT share URL and export a clean Markdown or PDF copy of the thread.').waitFor();
+
     const urlInput = page.getByLabel('Shared ChatGPT URL');
     const exportButton = page.getByRole('button', { name: 'Export' });
     const status = page.getByRole('status');

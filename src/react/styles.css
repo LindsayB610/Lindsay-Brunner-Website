@@ -92,6 +92,78 @@ body:has(#ai-chat-exporter-root) .site-footer {
   line-height: 1.7;
 }
 
+#ai-chat-exporter-root .ai-exporter-tabs {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 100%;
+  margin: 30px auto 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.74);
+  backdrop-filter: blur(3px);
+  padding: 5px;
+}
+
+#ai-chat-exporter-root .ai-exporter-tab {
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.68);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 0 16px;
+}
+
+#ai-chat-exporter-root .ai-exporter-tab[aria-selected="true"] {
+  background: #ffffff;
+  color: #000000;
+}
+
+#ai-chat-exporter-root .ai-exporter-tab:focus-visible {
+  outline: 3px solid rgba(255, 221, 0, 0.4);
+  outline-offset: 3px;
+}
+
+#ai-chat-exporter-root .ai-exporter-panel-copy {
+  max-width: 620px;
+  margin: 24px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#ai-chat-exporter-root .ai-exporter-panel {
+  max-width: 680px;
+  margin: 28px auto 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.74);
+  backdrop-filter: blur(3px);
+  padding: 26px;
+  text-align: left;
+}
+
+#ai-chat-exporter-root .ai-exporter-panel h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+#ai-chat-exporter-root .ai-exporter-panel p {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 #ai-chat-exporter-root .ai-exporter-form {
   display: grid;
   gap: 22px;
@@ -302,6 +374,11 @@ body:has(#ai-chat-exporter-root) .site-footer {
   #ai-chat-exporter-root .ai-exporter-copy {
     font-size: 1rem;
     line-height: 1.65;
+  }
+
+  #ai-chat-exporter-root .ai-exporter-tabs {
+    display: grid;
+    width: min(100%, 360px);
   }
 
   #ai-chat-exporter-root .ai-exporter-button {

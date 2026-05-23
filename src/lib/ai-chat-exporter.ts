@@ -2,6 +2,7 @@ export const AI_CHAT_EXPORTER_CONTRACT = {
   route: "/ai-chat-exporter/",
   rootId: "ai-chat-exporter-root",
   apiPath: "/api/export-chat",
+  tabs: ["ChatGPT", "Claude JSON", "Claude Link"] as const,
   formats: ["markdown", "pdf"] as const,
   enabledFormats: ["markdown", "pdf"] as const,
   validHosts: ["chatgpt.com", "chat.openai.com"] as const,

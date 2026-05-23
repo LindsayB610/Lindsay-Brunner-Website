@@ -214,6 +214,7 @@ async function run() {
           isMobile: true,
         });
 
+        await page.route('https://challenges.cloudflare.com/**', (route) => route.abort());
         await page.goto(`${origin}${route.path}`, { waitUntil: 'networkidle' });
         await page.waitForTimeout(250);
         const metrics = await collectMobileMetrics(page);

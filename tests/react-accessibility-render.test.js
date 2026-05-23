@@ -318,6 +318,7 @@ async function run() {
         reducedMotion: 'reduce',
       });
 
+      await page.route('https://challenges.cloudflare.com/**', (route) => route.abort());
       await page.goto(`${origin}${route.path}`, { waitUntil: 'networkidle' });
       await page.waitForTimeout(250);
       const metrics = await collectAccessibilityMetrics(page);

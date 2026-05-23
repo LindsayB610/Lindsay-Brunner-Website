@@ -41,6 +41,9 @@ assert(islandSource.includes('enabledFormats'), 'AI Chat Exporter island should 
 assert(islandSource.includes('turnstileSiteKey'), 'AI Chat Exporter island should include the Cloudflare Turnstile site key', failures);
 assert(islandSource.includes('challenges.cloudflare.com/turnstile/v0/api.js'), 'AI Chat Exporter island should load the Cloudflare Turnstile script only on this page', failures);
 assert(islandSource.includes('turnstileToken'), 'AI Chat Exporter island should include the Turnstile token in export requests', failures);
+assert(islandSource.includes('role="tablist"'), 'AI Chat Exporter island should render a tablist for provider/mode selection', failures);
+assert(islandSource.includes('Claude JSON'), 'AI Chat Exporter island should include the Claude JSON tab shell', failures);
+assert(islandSource.includes('Claude Link'), 'AI Chat Exporter island should include the Claude Link tab shell', failures);
 assert(!islandSource.includes('PDF (coming soon)'), 'AI Chat Exporter island should not label PDF as coming soon now that it is enabled', failures);
 assert(islandSource.includes('isExportingRef'), 'AI Chat Exporter should guard duplicate submissions synchronously', failures);
 assert(islandSource.includes('role="status"'), 'AI Chat Exporter island should expose status text through role="status"', failures);
