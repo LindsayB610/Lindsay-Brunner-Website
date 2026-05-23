@@ -176,7 +176,8 @@ Key risk surfaces:
 | 6 | Server adapter and dependency integration | Not started |
 | 7 | Abuse controls and runtime guardrails | Not started |
 | 8 | Full local regression and polish | Not started |
-| 9 | Launch decision package | Not started |
+| 9 | Public docs page | Not started |
+| 10 | Launch decision package | Not started |
 
 ## Phase 0: Branch, Plan, Contracts
 
@@ -504,7 +505,65 @@ Review gate:
 - Known launch blockers are documented.
 - No launch yet.
 
-## Phase 9: Launch Decision Package
+## Phase 9: Public Docs Page
+
+Status: not started.
+
+Scope:
+
+- add a public documentation page at `/ai-chat-exporter/docs/`
+- explain how the ChatGPT and Claude exporter tools work
+- document the difference between Claude share-link and Claude snapshot JSON paths
+- link to the relevant GitHub repo READMEs for deeper CLI/reference details
+- keep the docs page useful for non-technical users without hiding important limitations
+
+Content should cover:
+
+- what the AI Chat Exporter does
+- supported providers and formats
+- ChatGPT share-link workflow
+- Claude share-link workflow and why it is experimental
+- Claude snapshot JSON workflow and why it is the reliable Claude path
+- how to create a Claude snapshot JSON with the CLI
+- privacy model: what runs in the browser, what goes through the server, and what is not stored
+- troubleshooting and expected failure modes
+- links to:
+  - `chatgpt-thread-exporter` repo README
+  - `claude-thread-exporter` repo README
+  - the current `/ai-chat-exporter/` tool page
+
+Test first:
+
+- built Hugo route exists at `public/ai-chat-exporter/docs/index.html`
+- docs page has one `h1`
+- docs page links to both exporter repositories
+- docs page links back to `/ai-chat-exporter/`
+- docs page includes the phrases `Claude share link`, `Claude snapshot JSON`, and `ChatGPT share URL`
+- docs page is included in relevant link/content checks
+
+Implementation:
+
+- add Hugo content for `/ai-chat-exporter/docs/`
+- add layout only if the default page layout is not sufficient
+- keep the page visually consistent with the site, but avoid turning it into another app shell
+- add local navigation from the exporter tool page to the docs page
+- add local navigation from the docs page back to the tool page
+
+Review gate:
+
+- Docs page is readable standalone.
+- Docs page does not overpromise Claude hosted share-link export.
+- Docs page gives users a clear path when Claude link export is flaky.
+- Internal links and external repo links pass local checks.
+
+Tests:
+
+- `npm run build`
+- `npm run test:content`
+- `npm run test:links`
+- docs-specific route assertions, either added to an existing page/content test or a new narrow test
+
+## Phase 10: Launch Decision Package
 
 Status: not started.
 
