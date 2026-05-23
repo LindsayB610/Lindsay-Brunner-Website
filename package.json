@@ -59,7 +59,7 @@
     "@sparticuz/chromium": "^147.0.0",
     "@tabler/icons-react": "^3.44.0",
     "chatgpt-thread-exporter": "github:LindsayB610/chatgpt-thread-exporter",
-    "claude-thread-exporter": "file:../claude-thread-exporter",
+    "claude-thread-exporter": "git+https://github.com/LindsayB610/claude-thread-exporter.git#1d1060e",
     "clsx": "^2.1.1",
     "hugo-bin": "^0.149.2",
     "lucide-react": "^1.14.0",

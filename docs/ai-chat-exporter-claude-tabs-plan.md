@@ -342,7 +342,7 @@ Implementation:
 
 Completed:
 
-- Added `claude-thread-exporter` as a local file dependency for branch-local development.
+- Added `claude-thread-exporter` as a local file dependency for branch-local development, then replaced it with a pinned GitHub dependency before deploy work.
 - Routed `provider: "claude"` and `mode: "snapshot-json"` requests through the Netlify function.
 - Added server-side Claude Markdown rendering via `parseSnapshotJson` and `renderMarkdown` from the Claude exporter package.
 - Added safe malformed/unsupported Claude snapshot JSON errors.
@@ -354,7 +354,7 @@ Completed:
 
 Launch note:
 
-- Before deploy, replace the local `file:../claude-thread-exporter` dependency with a published or GitHub dependency that Netlify can install.
+- Resolved: `claude-thread-exporter` now installs from GitHub commit `1d1060e` instead of a sibling local path.
 
 Review gate:
 
