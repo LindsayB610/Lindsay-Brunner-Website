@@ -358,6 +358,7 @@ body:has(#ai-chat-exporter-root) .site-footer {
 #ai-chat-exporter-root .ai-exporter-command-panel textarea {
   font-family: var(--font-mono);
   font-size: 0.9rem;
+  min-height: 112px;
 }
 
 #ai-chat-exporter-root .ai-exporter-command-actions {

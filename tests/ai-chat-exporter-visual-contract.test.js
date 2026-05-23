@@ -87,8 +87,21 @@ async function run() {
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage({ viewport: { width: 1440, height: 950 } });
 
-    await page.goto(`${origin}/ai-chat-exporter/`, { waitUntil: 'networkidle' });
-    await page.waitForTimeout(250);
+    await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js', async (route) => {
+      await route.fulfill({
+        body: `
+          window.turnstile = {
+            render: function () { return 'mock-turnstile-widget'; },
+            reset: function () {}
+          };
+        `,
+        contentType: 'text/javascript; charset=utf-8',
+        status: 200,
+      });
+    });
+
+    await page.goto(`${origin}/ai-chat-exporter/`, { waitUntil: 'domcontentloaded' });
+    await page.locator('#ai-chat-exporter-root .ai-exporter-shell').waitFor();
 
     const metrics = await page.evaluate(() => {
       const toRect = (element) => {

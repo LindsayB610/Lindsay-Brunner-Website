@@ -106,6 +106,11 @@ async function run() {
     'buildClaudeSnapshotCommand should quote custom output paths',
     failures,
   );
+  assert(
+    buildClaudeSnapshotCommand('https://claude.ai/share/abc123?note=$draft', './exports/"quoted".json').includes('--save-snapshot "./exports/\\"quoted\\".json"'),
+    'buildClaudeSnapshotCommand should escape shell-sensitive output paths',
+    failures,
+  );
 
   try {
     buildClaudeSnapshotCommand('https://example.com/share/nope');
