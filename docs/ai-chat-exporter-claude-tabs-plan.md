@@ -174,7 +174,7 @@ Key risk surfaces:
 | 3 | Claude JSON Markdown path | Complete |
 | 4 | Claude JSON PDF path | Complete |
 | 5 | Claude Link tab and warning behavior | Complete |
-| 6 | Server adapter and dependency integration | Not started |
+| 6 | Server adapter and dependency integration | Complete |
 | 7 | Abuse controls and runtime guardrails | Not started |
 | 8 | Full local regression and polish | Not started |
 | 9 | Public docs page | Not started |
@@ -470,7 +470,7 @@ Tests:
 
 ## Phase 6: Server Adapter And Dependency Integration
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -492,6 +492,16 @@ Implementation:
 - Keep dynamic imports server-side.
 - Update `netlify.toml` included files for PDF renderer assets if needed.
 
+Completed:
+
+- Replaced the local Claude exporter dependency with a pinned GitHub dependency at commit `1d1060e`.
+- Added boundary coverage that prevents reverting `claude-thread-exporter` to a local sibling path.
+- Kept exporter package imports out of the React island and built client assets.
+- Split the server adapter into explicit ChatGPT and Claude provider paths.
+- Added coverage that unsupported Claude share-link requests cannot fall through to the ChatGPT exporter path.
+- Verified Claude package runtime exports through the real installed GitHub dependency.
+- Confirmed ChatGPT PDF dynamic renderer assets remain covered by `netlify.toml`; Claude PDF uses package exports and does not require an extra included-file glob.
+
 Review gate:
 
 - Boundary tests pass.
@@ -499,9 +509,10 @@ Review gate:
 
 Tests:
 
-- `npm run test:ai-exporter:boundary`
-- `npm run test:ai-exporter:function`
-- `npm run build`
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile:render`
 
 ## Phase 7: Abuse Controls And Runtime Guardrails
 

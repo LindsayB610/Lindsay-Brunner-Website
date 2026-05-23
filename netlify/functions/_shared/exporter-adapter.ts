@@ -33,6 +33,13 @@ export async function exportChatWithExporter(
     return exportClaudeWithExporter(request, loadClaudeExporter, renderClaudePdf);
   }
 
+  return exportChatGptWithExporter(request, buildPipelineArtifacts);
+}
+
+async function exportChatGptWithExporter(
+  request: AiChatExportRequest,
+  buildPipelineArtifacts: BuildPipelineArtifacts,
+) {
   if (!request.sharedUrl) {
     throw new Error("Paste a public ChatGPT share URL.");
   }

@@ -96,6 +96,12 @@ async function run() {
   assert(typeof exportChatWithExporter === 'function', 'exporter adapter should expose exportChatWithExporter', failures);
   assert(typeof buildExportFilename === 'function', 'exporter adapter should expose filename builder for tests', failures);
   assert(typeof renderPdfWithServerlessChromium === 'function', 'exporter adapter should expose the serverless Chromium PDF renderer for focused tests', failures);
+  assert(
+    read('netlify/functions/_shared/exporter-adapter.ts').includes('function exportChatGptWithExporter') &&
+      read('netlify/functions/_shared/exporter-adapter.ts').includes('function exportClaudeWithExporter'),
+    'exporter adapter should keep ChatGPT and Claude provider paths separated internally',
+    failures,
+  );
 
   assert(buildExportFilename('My Excellent Thread!', 'md') === 'my-excellent-thread-export.md', 'export filename should use a slugged transcript title', failures);
   assert(buildExportFilename('', 'pdf') === 'chatgpt-thread-export.pdf', 'export filename should fall back for empty titles', failures);
@@ -437,6 +443,23 @@ async function run() {
   assert(adapterPdfResponse.headers.get('Content-Type') === 'application/pdf', 'adapter PDF response should set PDF content type', failures);
   assert(adapterPdfResponse.headers.get('Content-Disposition').includes('adapter-pdf-export.pdf'), 'adapter PDF response should use transcript title filename', failures);
   assert((await adapterPdfResponse.arrayBuffer()).byteLength === 4, 'adapter PDF response should preserve binary output content', failures);
+
+  let chatGptExporterCalledForClaudeShare = false;
+  const adapterClaudeShareLinkResponse = await exportChatWithExporter({
+    provider: 'claude',
+    mode: 'share-link',
+    sharedUrl: 'https://claude.ai/share/mock-thread',
+    format: 'markdown',
+  }, async () => {
+    chatGptExporterCalledForClaudeShare = true;
+    return {
+      transcript: { title: 'wrong provider' },
+      outputFormat: 'markdown',
+      outputContent: '# wrong provider\n',
+    };
+  }).catch((error) => error);
+  assert(adapterClaudeShareLinkResponse?.message === 'The export failed. Please try again.', 'adapter should reject unsupported Claude share-link requests with a normalized error until hosted capture is explicitly implemented', failures);
+  assert(!chatGptExporterCalledForClaudeShare, 'Claude share-link requests should not fall through to the ChatGPT exporter path', failures);
 
   const adapterClaudeMarkdownResponse = await exportChatWithExporter({
     provider: 'claude',
