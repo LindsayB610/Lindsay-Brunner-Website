@@ -335,10 +335,10 @@ function AiChatExporterPage() {
           id={panelId("Claude JSON")}
           role="tabpanel"
         >
-          <h2>Paste saved Claude snapshot JSON</h2>
+          <h2>Claude JSON: reliable path</h2>
           <p>
-            Save a snapshot locally with the Claude CLI, then paste the JSON
-            here to export Markdown or PDF.
+            Save a snapshot locally with the CLI, then paste the JSON here. The
+            website can turn that saved conversation into Markdown or PDF.
           </p>
 
           <form className="ai-exporter-form" onSubmit={handleSubmit}>
@@ -422,11 +422,11 @@ function AiChatExporterPage() {
           id={panelId("Claude Link")}
           role="tabpanel"
         >
-          <h2>Claude share-link export is experimental.</h2>
+          <h2>Claude Link: local capture path</h2>
           <p>
-            Claude may ask for browser verification, and that verification can
-            loop. The reliable path is to capture a snapshot locally, then paste
-            that JSON into the Claude JSON tab.
+            Paste a Claude share link to generate a local CLI command. The
+            website cannot reliably fetch Claude shares because verification has
+            to happen in a real browser you control.
           </p>
 
           <form className="ai-exporter-form" onSubmit={handleClaudeLinkSubmit}>

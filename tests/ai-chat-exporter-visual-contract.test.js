@@ -240,7 +240,7 @@ async function run() {
     assert(claudeMetrics.pageHeight !== '640px', `AI exporter page should not be locked to the background hero height; got ${claudeMetrics.pageHeight}`, failures);
 
     await page.getByRole('tab', { name: 'Claude Link' }).click();
-    await page.getByText('Claude share-link export is experimental.').waitFor();
+    await page.getByText('Claude Link: local capture path').waitFor();
     const claudeLinkOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(claudeLinkOverflow === 0, `Claude Link tab should not create horizontal page overflow; got ${claudeLinkOverflow}px`, failures);
 

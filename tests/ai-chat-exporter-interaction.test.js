@@ -227,7 +227,8 @@ async function run() {
     assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ArrowRight should wrap from Claude Link to ChatGPT', failures);
 
     await page.getByRole('tab', { name: 'Claude JSON' }).click();
-    await page.getByText('Paste saved Claude snapshot JSON').waitFor();
+    await page.getByText('Claude JSON: reliable path').waitFor();
+    await page.getByText('The website can turn that saved conversation into Markdown or PDF.').waitFor();
     assert(await page.getByRole('tab', { name: 'Claude JSON' }).getAttribute('aria-selected') === 'true', 'Claude JSON tab should become selected after click', failures);
     assert(!(await page.getByLabel('Shared ChatGPT URL').isVisible()), 'ChatGPT URL input should be hidden outside the ChatGPT tab', failures);
     assert(await page.getByLabel('Claude snapshot JSON').isVisible(), 'Claude JSON tab should show a snapshot JSON textarea', failures);
@@ -237,7 +238,8 @@ async function run() {
     assert(await page.getByRole('button', { name: 'Export Claude' }).isVisible(), 'Claude JSON tab should expose an export button', failures);
 
     await page.getByRole('tab', { name: 'Claude Link' }).click();
-    await page.getByText('Claude share-link export is experimental.').waitFor();
+    await page.getByText('Claude Link: local capture path').waitFor();
+    await page.getByText('The website cannot reliably fetch Claude shares because verification has to happen in a real browser you control.').waitFor();
     assert(await page.getByRole('tab', { name: 'Claude Link' }).getAttribute('aria-selected') === 'true', 'Claude Link tab should become selected after click', failures);
     assert(!(await page.getByLabel('Human verification').isVisible()), 'Claude Link tab should not show human verification for a local CLI handoff', failures);
 
