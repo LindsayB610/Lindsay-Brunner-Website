@@ -5,8 +5,8 @@
 Evolve the launched `/ai-chat-exporter/` page from a ChatGPT-only exporter into a three-tab AI chat export tool:
 
 - `ChatGPT`
-- `Claude Link`
 - `Claude JSON`
+- `Claude Link`
 
 The page should stay recognizably part of `lindsaybrunner.com`: focused, useful, a little editorial, and honest about rough edges. The ChatGPT flow should remain stable. Claude support should make the reliable path obvious while still documenting the experimental share-link path.
 
@@ -55,20 +55,7 @@ Keep the current behavior:
 
 The tab label should be `ChatGPT`.
 
-### Tab 2: Claude Link
-
-Status: experimental / warning-first.
-
-Target behavior:
-
-- accept a Claude shared link in the UI
-- clearly explain that this path is flaky and may not work from a hosted webapp
-- offer a CLI command for local capture/export
-- avoid implying that the hosted backend can solve Claude browser verification
-
-Initial implementation should be conservative. This tab may be informational plus CLI-oriented until we prove a hosted endpoint has a trustworthy path.
-
-### Tab 3: Claude JSON
+### Tab 2: Claude JSON
 
 Status: reliable webapp path.
 
@@ -82,10 +69,24 @@ Target behavior:
 
 This should become the primary Claude webapp utility.
 
+### Tab 3: Claude Link
+
+Status: experimental / warning-first.
+
+Target behavior:
+
+- accept a Claude shared link in the UI
+- clearly explain that this path is flaky and may not work from a hosted webapp
+- offer a CLI command for local capture/export
+- avoid implying that the hosted backend can solve Claude browser verification
+
+Initial implementation should be conservative. This tab may be informational plus CLI-oriented until we prove a hosted endpoint has a trustworthy path.
+
 ## UX Principles
 
 - The tabbed UI should feel calm and native to the existing page, not like three different apps bolted together.
-- The default tab stays `ChatGPT` unless there is a strong reason to change it later.
+- The tab order is `ChatGPT`, `Claude JSON`, `Claude Link`.
+- The default tab stays `ChatGPT`.
 - Claude warning copy should be honest but not dramatic.
 - The reliable Claude JSON path should be easy to understand without knowing exporter internals.
 - Any “What is snapshot JSON?” help should be a tooltip/popover or compact helper block, not a wall of text.
@@ -215,8 +216,10 @@ Scope:
 
 - turn the current ChatGPT-only island into a tabbed interface
 - keep ChatGPT selected by default
+- use tab order `ChatGPT`, `Claude JSON`, `Claude Link`
 - keep existing ChatGPT form behavior unchanged
 - add non-functional Claude tab shells with accurate copy
+- consider where the app should eventually link to `/ai-chat-exporter/docs/`, but do not build the docs page in Phase 1
 
 Test first:
 
