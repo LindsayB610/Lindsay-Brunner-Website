@@ -99,6 +99,26 @@ body:has(#ai-chat-exporter-root) .site-footer {
   line-height: 1.7;
 }
 
+#ai-chat-exporter-root .ai-exporter-docs-link {
+  margin: 14px auto 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+#ai-chat-exporter-root .ai-exporter-docs-link a {
+  color: var(--color-brand-yellow);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 221, 0, 0.45);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+#ai-chat-exporter-root .ai-exporter-docs-link a:hover {
+  color: #ffffff;
+  text-decoration-color: var(--color-brand-pink);
+}
+
 #ai-chat-exporter-root .ai-exporter-tabs {
   position: relative;
   z-index: 1;

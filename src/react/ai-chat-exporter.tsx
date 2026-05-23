@@ -232,6 +232,9 @@ function AiChatExporterPage() {
           Paste a public ChatGPT share URL, or choose a Claude path that matches
           what you have available.
         </p>
+        <p className="ai-exporter-docs-link">
+          <a href="/ai-chat-exporter/docs/">How this works</a>
+        </p>
 
         <div
           aria-label="Exporter type"

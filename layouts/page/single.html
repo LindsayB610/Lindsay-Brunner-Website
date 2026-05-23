@@ -1,0 +1,23 @@
+{{ define "main" }}
+<article class="section">
+  <div class="container-narrow">
+    <header style="text-align: center; margin-bottom: 3rem">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.description }}
+      <p
+        style="
+          font-size: 1.25rem;
+          color: var(--dark-text-secondary);
+          margin-top: 1.5rem;
+          font-style: italic;
+        "
+      >
+        {{ . }}
+      </p>
+      {{ end }}
+    </header>
+
+    <div class="article-content">{{ .Content }}</div>
+  </div>
+</article>
+{{ end }}

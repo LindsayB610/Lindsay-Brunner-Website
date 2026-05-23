@@ -177,7 +177,7 @@ Key risk surfaces:
 | 6 | Server adapter and dependency integration | Complete |
 | 7 | Abuse controls and runtime guardrails | Complete |
 | 8 | Full local regression and polish | Complete |
-| 9 | Public docs page | Not started |
+| 9 | Public docs page | Complete |
 | 10 | Launch decision package | Not started |
 
 ## Phase 0: Branch, Plan, Contracts
@@ -613,7 +613,7 @@ Review gate:
 
 ## Phase 9: Public Docs Page
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -657,6 +657,27 @@ Implementation:
 - do not add a Vite entry, React root, or client-side app script for the docs page
 - add local navigation from the exporter tool page to the docs page
 - add local navigation from the docs page back to the tool page
+
+Completed:
+
+- Added a plain Hugo docs page at `/ai-chat-exporter/docs/`.
+- Kept the docs page out of the React island and AI exporter client bundle.
+- Added a small `How this works` link from the exporter page.
+- Documented ChatGPT share URL export, Claude snapshot JSON export, and Claude share link local capture.
+- Explained why the hosted website cannot reliably fetch Claude share links directly.
+- Added privacy and troubleshooting notes.
+- Linked to the `chatgpt-thread-exporter` and `claude-thread-exporter` GitHub repos.
+- Added a lightweight page layout for `type: "page"` content so the docs page does not render article date metadata.
+- Added a docs-specific test and wired it into `npm run test:ai-exporter`.
+
+Tests:
+
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter:docs`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:content`
+- Passed: `npm run test:links`
+- Passed: `npm run test:html`
 
 Review gate:
 
