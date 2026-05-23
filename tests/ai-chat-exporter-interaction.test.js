@@ -70,6 +70,16 @@ function startStaticServer() {
   });
 }
 
+async function waitForSelectedTab(page, tabName) {
+  await page.waitForFunction(
+    (name) => {
+      const selectedTab = document.querySelector('[role="tab"][aria-selected="true"]');
+      return selectedTab?.textContent === name;
+    },
+    tabName,
+  );
+}
+
 async function run() {
   console.log('🖱️  Checking AI Chat Exporter browser interaction...');
 
@@ -159,11 +169,21 @@ async function run() {
     assert(await tabs.nth(2).textContent() === 'Claude Link', 'third tab should be Claude Link', failures);
     assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ChatGPT tab should be selected by default', failures);
 
-    await page.getByRole('tab', { name: 'ChatGPT' }).focus();
-    await page.keyboard.press('ArrowRight');
+    await page.getByRole('tab', { name: 'ChatGPT' }).press('ArrowRight');
+    await waitForSelectedTab(page, 'Claude JSON');
     assert(await page.getByRole('tab', { name: 'Claude JSON' }).getAttribute('aria-selected') === 'true', 'ArrowRight should move from ChatGPT to Claude JSON', failures);
-    await page.keyboard.press('ArrowLeft');
-    assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ArrowLeft should move from Claude JSON to ChatGPT', failures);
+    await page.getByRole('tab', { name: 'Claude JSON' }).press('End');
+    await waitForSelectedTab(page, 'Claude Link');
+    assert(await page.getByRole('tab', { name: 'Claude Link' }).getAttribute('aria-selected') === 'true', 'End should move to Claude Link', failures);
+    await page.getByRole('tab', { name: 'Claude Link' }).press('Home');
+    await waitForSelectedTab(page, 'ChatGPT');
+    assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'Home should move to ChatGPT', failures);
+    await page.getByRole('tab', { name: 'ChatGPT' }).press('ArrowLeft');
+    await waitForSelectedTab(page, 'Claude Link');
+    assert(await page.getByRole('tab', { name: 'Claude Link' }).getAttribute('aria-selected') === 'true', 'ArrowLeft should wrap from ChatGPT to Claude Link', failures);
+    await page.getByRole('tab', { name: 'Claude Link' }).press('ArrowRight');
+    await waitForSelectedTab(page, 'ChatGPT');
+    assert(await page.getByRole('tab', { name: 'ChatGPT' }).getAttribute('aria-selected') === 'true', 'ArrowRight should wrap from Claude Link to ChatGPT', failures);
 
     await page.getByRole('tab', { name: 'Claude JSON' }).click();
     await page.getByText('Paste saved Claude snapshot JSON').waitFor();
@@ -192,6 +212,10 @@ async function run() {
     assert(await status.textContent() === 'Use a public ChatGPT share URL.', 'invalid URL should show validation status', failures);
     assert((await page.evaluate(() => window.__aiExporterDownloads)).length === 0, 'invalid URL should not trigger a download', failures);
     assert(apiRequestCount === 0, 'invalid URL should not call the export API', failures);
+    await page.getByRole('tab', { name: 'Claude JSON' }).click();
+    await waitForSelectedTab(page, 'Claude JSON');
+    assert(!(await page.getByText('Use a public ChatGPT share URL.').isVisible()), 'ChatGPT validation status should be hidden outside the ChatGPT tab', failures);
+    await page.getByRole('tab', { name: 'ChatGPT' }).click();
 
     await urlInput.fill('https://chatgpt.com/share/mock-thread');
     await exportButton.click();

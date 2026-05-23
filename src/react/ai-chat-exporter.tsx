@@ -100,15 +100,27 @@ function AiChatExporterPage() {
     event: React.KeyboardEvent<HTMLButtonElement>,
     currentTab: AiChatExporterTab,
   ) {
-    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+    if (
+      event.key !== "ArrowLeft" &&
+      event.key !== "ArrowRight" &&
+      event.key !== "Home" &&
+      event.key !== "End"
+    ) {
       return;
     }
 
     event.preventDefault();
     const tabs = AI_CHAT_EXPORTER_CONTRACT.tabs;
     const currentIndex = tabs.indexOf(currentTab);
-    const offset = event.key === "ArrowRight" ? 1 : -1;
-    const nextTab = tabs[(currentIndex + offset + tabs.length) % tabs.length];
+    const nextTab =
+      event.key === "Home"
+        ? tabs[0]
+        : event.key === "End"
+          ? tabs[tabs.length - 1]
+          : tabs[
+              (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) %
+                tabs.length
+            ];
     setActiveTab(nextTab);
     window.requestAnimationFrame(() => {
       document.getElementById(tabId(nextTab))?.focus();
@@ -243,6 +255,10 @@ function AiChatExporterPage() {
               Export
             </StatefulButton>
           </form>
+
+          <p className="ai-exporter-status" role="status">
+            {statusMessage}
+          </p>
         </section>
 
         <section
@@ -274,9 +290,6 @@ function AiChatExporterPage() {
           </p>
         </section>
 
-        <p className="ai-exporter-status" role="status">
-          {statusMessage}
-        </p>
       </div>
     </BackgroundBeamsWithCollision>
   );
