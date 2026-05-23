@@ -15,10 +15,24 @@ type BuildPipelineArtifacts = (options: {
   format: "markdown" | "pdf";
 }) => Promise<PipelineArtifacts>;
 
+type ClaudeExporter = {
+  parseSnapshotJson: (raw: string) => any;
+  renderMarkdown: (input: { snapshot: any; sourceUrl?: string }) => string;
+};
+
 export async function exportChatWithExporter(
   request: AiChatExportRequest,
   buildPipelineArtifacts: BuildPipelineArtifacts = loadRealBuildPipelineArtifacts,
+  loadClaudeExporter: () => Promise<ClaudeExporter> = loadRealClaudeExporter,
 ) {
+  if (request.provider === "claude") {
+    return exportClaudeWithExporter(request, loadClaudeExporter);
+  }
+
+  if (!request.sharedUrl) {
+    throw new Error("Paste a public ChatGPT share URL.");
+  }
+
   const artifacts = await buildPipelineArtifacts({
     url: request.sharedUrl,
     format: request.format,
@@ -40,6 +54,40 @@ export async function exportChatWithExporter(
   });
 }
 
+async function exportClaudeWithExporter(
+  request: AiChatExportRequest,
+  loadClaudeExporter: () => Promise<ClaudeExporter>,
+) {
+  if (request.provider !== "claude" || request.mode !== "snapshot-json") {
+    throw new Error("The export failed. Please try again.");
+  }
+
+  if (request.format !== "markdown") {
+    throw new Error("The export failed. Please try again.");
+  }
+
+  const { parseSnapshotJson, renderMarkdown } = await loadClaudeExporter();
+  const snapshot = parseSnapshotJson(request.snapshotJson);
+  const outputContent = renderMarkdown({
+    snapshot,
+    sourceUrl: request.sourceUrl,
+  });
+  const filename = buildExportFilename(
+    typeof snapshot.snapshot_name === "string" ? snapshot.snapshot_name : undefined,
+    "md",
+    "claude-thread-export",
+  );
+
+  return new Response(outputContent, {
+    headers: {
+      "Cache-Control": "no-store",
+      "Content-Disposition": `attachment; filename="${filename}"`,
+      "Content-Type": "text/markdown; charset=utf-8",
+    },
+    status: 200,
+  });
+}
+
 export async function loadRealBuildPipelineArtifacts(options: {
   url: string;
   format: "markdown" | "pdf";
@@ -56,9 +104,13 @@ export async function loadRealBuildPipelineArtifacts(options: {
   });
 }
 
-export function buildExportFilename(title: string | undefined, extension: "md" | "pdf") {
+export function buildExportFilename(
+  title: string | undefined,
+  extension: "md" | "pdf",
+  fallbackBase = "chatgpt-thread-export",
+) {
   const slug = slugify(title || "");
-  return `${slug ? `${slug}-export` : "chatgpt-thread-export"}.${extension}`;
+  return `${slug ? `${slug}-export` : fallbackBase}.${extension}`;
 }
 
 function slugify(value: string) {
@@ -139,4 +191,8 @@ function pdfFooterTemplate() {
       <span class="pageNumber"></span> / <span class="totalPages"></span>
     </div>
   `.trim();
+}
+
+async function loadRealClaudeExporter(): Promise<ClaudeExporter> {
+  return import("claude-thread-exporter");
 }

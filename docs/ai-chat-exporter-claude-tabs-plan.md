@@ -171,7 +171,7 @@ Key risk surfaces:
 | 0 | Branch, plan, contracts | Complete |
 | 1 | Tabbed UI shell | Complete |
 | 2 | Client contract and helper refactor | Complete |
-| 3 | Claude JSON Markdown path | Not started |
+| 3 | Claude JSON Markdown path | Complete |
 | 4 | Claude JSON PDF path | Not started |
 | 5 | Claude Link tab and warning behavior | Not started |
 | 6 | Server adapter and dependency integration | Not started |
@@ -316,7 +316,7 @@ Tests:
 
 ## Phase 3: Claude JSON Markdown Path
 
-Status: not started.
+Status: complete.
 
 Scope:
 
@@ -340,6 +340,21 @@ Implementation:
 - Add one committed safe Claude fixture for web runtime tests if needed, or import from the CLI package if packaged fixtures become available.
 - Wire the Claude JSON tab to call the API and download Markdown.
 
+Completed:
+
+- Added `claude-thread-exporter` as a local file dependency for branch-local development.
+- Routed `provider: "claude"` and `mode: "snapshot-json"` requests through the Netlify function.
+- Added server-side Claude Markdown rendering via `parseSnapshotJson` and `renderMarkdown` from the Claude exporter package.
+- Added safe malformed/unsupported Claude snapshot JSON errors.
+- Added a real Claude JSON tab form with snapshot paste, optional source URL, and Markdown download.
+- Kept human verification visible for both ChatGPT and Claude JSON exports.
+- Preserved ChatGPT behavior and regression coverage.
+- Removed the shared Motion `layoutId` from `StatefulButton` because two mounted tab-panel buttons interfered with pointer targeting.
+
+Launch note:
+
+- Before deploy, replace the local `file:../claude-thread-exporter` dependency with a published or GitHub dependency that Netlify can install.
+
 Review gate:
 
 - Claude JSON Markdown works locally.
@@ -348,10 +363,10 @@ Review gate:
 
 Tests:
 
-- `npm run test:ai-exporter:function`
-- `npm run test:ai-exporter:runtime`
-- `npm run test:ai-exporter:client`
-- `npm run test:ai-exporter:interaction`
+- Passed: `npm run build`
+- Passed: `npm run test:ai-exporter`
+- Passed: `npm run test:accessibility`
+- Passed: `npm run test:mobile:render`
 
 ## Phase 4: Claude JSON PDF Path
 

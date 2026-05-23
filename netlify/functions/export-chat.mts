@@ -8,7 +8,11 @@ import {
 import { exportChatWithExporter } from "./_shared/exporter-adapter";
 
 type ExportRequestPayload = {
+  provider?: unknown;
+  mode?: unknown;
   sharedUrl?: unknown;
+  snapshotJson?: unknown;
+  sourceUrl?: unknown;
   format?: unknown;
   turnstileToken?: unknown;
 };
@@ -66,10 +70,6 @@ async function handlePost(
     return jsonError("Request body must be valid JSON.", 400);
   }
 
-  if (typeof payload.sharedUrl !== "string" || !payload.sharedUrl.trim()) {
-    return jsonError("Paste a public ChatGPT share URL.", 400);
-  }
-
   if (typeof payload.format !== "string") {
     return jsonError("Choose Markdown or PDF.", 400);
   }
@@ -92,11 +92,7 @@ async function handlePost(
       }
     }
 
-    const request = buildExportRequest(
-      payload.sharedUrl,
-      payload.format,
-      typeof payload.turnstileToken === "string" ? payload.turnstileToken : undefined,
-    );
+    const request = buildValidatedRequest(payload);
 
     if (request.format === "pdf") {
       const rateLimit = await dependencies.checkPdfRateLimit(req);
@@ -116,6 +112,11 @@ async function handlePost(
     const message = getErrorMessage(error);
     const isValidationError =
       message === "Use a public ChatGPT share URL." ||
+      message === "Paste a public ChatGPT share URL." ||
+      message === "Use a public Claude share URL." ||
+      message === "Paste valid Claude snapshot JSON." ||
+      message === "Snapshot JSON must include Claude chat_messages." ||
+      message === "ChatGPT exports use public share links." ||
       message === "Choose Markdown or PDF.";
 
     return jsonError(
@@ -123,6 +124,58 @@ async function handlePost(
       isValidationError ? 400 : 500,
     );
   }
+}
+
+function buildValidatedRequest(payload: ExportRequestPayload) {
+  const turnstileToken =
+    typeof payload.turnstileToken === "string" ? payload.turnstileToken : undefined;
+
+  if (payload.provider === "claude") {
+    if (payload.mode === "snapshot-json") {
+      if (typeof payload.snapshotJson !== "string" || !payload.snapshotJson.trim()) {
+        throw new Error("Snapshot JSON must include Claude chat_messages.");
+      }
+
+      return buildExportRequest({
+        provider: "claude",
+        mode: "snapshot-json",
+        snapshotJson: payload.snapshotJson,
+        sourceUrl: typeof payload.sourceUrl === "string" ? payload.sourceUrl : undefined,
+        format: payload.format as string,
+        turnstileToken,
+      });
+    }
+
+    if (payload.mode === "share-link") {
+      if (typeof payload.sharedUrl !== "string" || !payload.sharedUrl.trim()) {
+        throw new Error("Use a public Claude share URL.");
+      }
+
+      return buildExportRequest({
+        provider: "claude",
+        mode: "share-link",
+        sharedUrl: payload.sharedUrl,
+        format: payload.format as string,
+        turnstileToken,
+      });
+    }
+
+    throw new Error("Snapshot JSON must include Claude chat_messages.");
+  }
+
+  if (payload.mode && payload.mode !== "share-link") {
+    throw new Error("ChatGPT exports use public share links.");
+  }
+
+  if (typeof payload.sharedUrl !== "string" || !payload.sharedUrl.trim()) {
+    throw new Error("Paste a public ChatGPT share URL.");
+  }
+
+  return buildExportRequest(
+    payload.sharedUrl,
+    payload.format as string,
+    turnstileToken,
+  );
 }
 
 export const config = {

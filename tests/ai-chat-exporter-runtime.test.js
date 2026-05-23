@@ -12,8 +12,11 @@ async function run() {
     'utf8',
   );
   const exporter = await import('chatgpt-thread-exporter/pipeline');
+  const claudeExporter = await import('claude-thread-exporter');
 
   assert(typeof exporter.buildPipelineArtifacts === 'function', 'GitHub exporter package should expose buildPipelineArtifacts', failures);
+  assert(typeof claudeExporter.parseSnapshotJson === 'function', 'Claude exporter package should expose parseSnapshotJson', failures);
+  assert(typeof claudeExporter.renderMarkdown === 'function', 'Claude exporter package should expose renderMarkdown', failures);
 
   const dependencies = {
     ...exporter.defaultPipelineDependencies,
@@ -58,6 +61,24 @@ async function run() {
   assert(Buffer.from(pdfArtifacts.outputContent.slice(0, 4)).toString('utf8') === '%PDF', 'PDF fixture output should start with a PDF signature', failures);
   assert(pdfDurationMs < 15000, 'PDF fixture export should stay within a local smoke-test budget', failures);
 
+  const claudeSnapshot = claudeExporter.parseSnapshotJson(JSON.stringify({
+    snapshot_name: 'Claude runtime fixture',
+    chat_messages: [
+      { sender: 'human', content: [{ type: 'text', text: 'Can you summarize kelp forests?' }] },
+      { sender: 'assistant', content: [{ type: 'text', text: 'Kelp forests are underwater ecosystems anchored by large brown algae.' }] },
+    ],
+  }));
+  const claudeMarkdown = claudeExporter.renderMarkdown({
+    snapshot: claudeSnapshot,
+    sourceUrl: 'https://claude.ai/share/runtime-fixture',
+  });
+
+  assert(
+    claudeMarkdown === expectedClaudeFixtureMarkdown(),
+    'Claude Markdown fixture output should match the exporter-rendered snapshot shape',
+    failures,
+  );
+
   report(failures, '✅ AI Chat Exporter real exporter runtime passed.');
 }
 
@@ -91,4 +112,22 @@ function formatToday() {
     month: 'long',
     year: 'numeric',
   }).format(new Date());
+}
+
+function expectedClaudeFixtureMarkdown() {
+  return [
+    '# Claude runtime fixture',
+    '',
+    'Source: https://claude.ai/share/runtime-fixture',
+    'Messages: 2',
+    '',
+    '## You',
+    '',
+    'Can you summarize kelp forests?',
+    '',
+    '## Claude',
+    '',
+    'Kelp forests are underwater ecosystems anchored by large brown algae.',
+    '',
+  ].join('\n');
 }

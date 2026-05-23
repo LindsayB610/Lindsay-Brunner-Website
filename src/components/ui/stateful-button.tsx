@@ -115,7 +115,6 @@ export const StatefulButton = ({
   return (
     <motion.button
       layout
-      layoutId="button"
       ref={scope}
       className={cn(
         "stateful-button flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-medium ring-offset-2 transition duration-200 dark:ring-offset-black",

@@ -56,6 +56,11 @@ async function run() {
     failures,
   );
   assert(
+    read('netlify/functions/_shared/exporter-adapter.ts').includes('claude-thread-exporter'),
+    'exporter adapter should import the Claude exporter package server-side',
+    failures,
+  );
+  assert(
     read('netlify/functions/_shared/exporter-adapter.ts').includes('@sparticuz/chromium') &&
       read('netlify/functions/_shared/exporter-adapter.ts').includes('playwright-core'),
     'serverless PDF renderer should use Lambda-compatible Chromium with Playwright Core',
@@ -126,6 +131,60 @@ async function run() {
   });
   assert(unsupportedFormatResponse.status === 400, 'unsupported format should return 400', failures);
   assert((await unsupportedFormatResponse.json()).error === 'Choose Markdown or PDF.', 'unsupported format response should reuse the shared validation message', failures);
+
+  const claudeMalformedJsonResponse = await postJson(handler, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: '{bad json',
+    format: 'markdown',
+  });
+  assert(claudeMalformedJsonResponse.status === 400, 'malformed Claude snapshot JSON should return 400', failures);
+  assert((await claudeMalformedJsonResponse.json()).error === 'Paste valid Claude snapshot JSON.', 'malformed Claude snapshot JSON should be user-readable', failures);
+
+  const claudeUnsupportedJsonResponse = await postJson(handler, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: JSON.stringify({ messages: [] }),
+    format: 'markdown',
+  });
+  assert(claudeUnsupportedJsonResponse.status === 400, 'unsupported Claude snapshot JSON should return 400', failures);
+  assert((await claudeUnsupportedJsonResponse.json()).error === 'Snapshot JSON must include Claude chat_messages.', 'unsupported Claude snapshot JSON should be user-readable', failures);
+
+  let claudeMarkdownRequest = null;
+  const claudeSnapshotJson = JSON.stringify({
+    snapshot_name: 'Claude Adapter Thread',
+    chat_messages: [
+      { sender: 'human', text: 'Hello Claude' },
+      { sender: 'assistant', text: 'Hello human' },
+    ],
+  });
+  const claudeMarkdownResponse = await postJson(handleExportChatRequest, {
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: claudeSnapshotJson,
+    sourceUrl: 'https://claude.ai/share/mock-thread',
+    format: 'markdown',
+  }, {
+    exportChat: async (request) => {
+      claudeMarkdownRequest = request;
+      return new Response('# Claude Adapter Thread\n', {
+        headers: {
+          'Cache-Control': 'no-store',
+          'Content-Disposition': 'attachment; filename="claude-adapter-thread-export.md"',
+          'Content-Type': 'text/markdown; charset=utf-8',
+        },
+        status: 200,
+      });
+    },
+  });
+  assert(claudeMarkdownResponse.status === 200, 'mock Claude Markdown export should return 200', failures);
+  assert(claudeMarkdownRequest.provider === 'claude', 'Claude Markdown export should pass provider to the adapter', failures);
+  assert(claudeMarkdownRequest.mode === 'snapshot-json', 'Claude Markdown export should pass snapshot-json mode to the adapter', failures);
+  assert(claudeMarkdownRequest.snapshotJson === claudeSnapshotJson, 'Claude Markdown export should pass snapshot JSON to the adapter', failures);
+  assert(claudeMarkdownRequest.sourceUrl === 'https://claude.ai/share/mock-thread', 'Claude Markdown export should pass source URL to the adapter', failures);
+  assert(claudeMarkdownResponse.headers.get('Content-Type').includes('text/markdown'), 'mock Claude Markdown export should set text/markdown content type', failures);
+  assert(claudeMarkdownResponse.headers.get('Content-Disposition').includes('.md'), 'mock Claude Markdown export should set a Markdown filename', failures);
+  assert(claudeMarkdownResponse.headers.get('Cache-Control') === 'no-store', 'mock Claude Markdown export should prevent caching', failures);
 
   const markdownResponse = await postJson(handleExportChatRequest, {
     sharedUrl: 'https://chatgpt.com/share/mock-thread',
@@ -304,6 +363,33 @@ async function run() {
   assert(adapterPdfResponse.headers.get('Content-Type') === 'application/pdf', 'adapter PDF response should set PDF content type', failures);
   assert(adapterPdfResponse.headers.get('Content-Disposition').includes('adapter-pdf-export.pdf'), 'adapter PDF response should use transcript title filename', failures);
   assert((await adapterPdfResponse.arrayBuffer()).byteLength === 4, 'adapter PDF response should preserve binary output content', failures);
+
+  const adapterClaudeMarkdownResponse = await exportChatWithExporter({
+    provider: 'claude',
+    mode: 'snapshot-json',
+    snapshotJson: claudeSnapshotJson,
+    sourceUrl: 'https://claude.ai/share/mock-thread',
+    format: 'markdown',
+  }, undefined, async () => ({
+    parseSnapshotJson: (raw) => JSON.parse(raw),
+    renderMarkdown: ({ snapshot, sourceUrl }) => [
+      `# ${snapshot.snapshot_name}`,
+      '',
+      `Source: ${sourceUrl}`,
+      '',
+      '## Claude',
+      '',
+      snapshot.chat_messages[1].text,
+      '',
+    ].join('\n'),
+  }));
+  const adapterClaudeMarkdown = await adapterClaudeMarkdownResponse.text();
+  assert(adapterClaudeMarkdownResponse.status === 200, 'adapter Claude Markdown response should return 200', failures);
+  assert(adapterClaudeMarkdownResponse.headers.get('Content-Type').includes('text/markdown'), 'adapter Claude Markdown response should set Markdown content type', failures);
+  assert(adapterClaudeMarkdownResponse.headers.get('Content-Disposition').includes('claude-adapter-thread-export.md'), 'adapter Claude Markdown response should use the snapshot title filename', failures);
+  assert(adapterClaudeMarkdown.includes('# Claude Adapter Thread'), 'adapter Claude Markdown response should render the snapshot title', failures);
+  assert(adapterClaudeMarkdown.includes('Source: https://claude.ai/share/mock-thread'), 'adapter Claude Markdown response should include source metadata', failures);
+  assert(adapterClaudeMarkdown.includes('## Claude'), 'adapter Claude Markdown response should render Claude messages', failures);
 
   const exporterFailureResponse = await handleExportChatRequest(new Request('https://lindsaybrunner.com/api/export-chat', {
     body: JSON.stringify({

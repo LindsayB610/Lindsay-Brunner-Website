@@ -179,20 +179,33 @@ body:has(#ai-chat-exporter-root) .site-footer {
   font-weight: 700;
 }
 
-#ai-chat-exporter-root input[type="url"] {
+#ai-chat-exporter-root input[type="url"],
+#ai-chat-exporter-root textarea {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: 52px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 8px;
   background: rgba(20, 20, 20, 0.74);
   backdrop-filter: blur(3px);
   color: #ffffff;
+}
+
+#ai-chat-exporter-root input[type="url"] {
+  min-height: 52px;
   padding: 0 16px;
 }
 
-#ai-chat-exporter-root input[type="url"]::placeholder {
+#ai-chat-exporter-root textarea {
+  min-height: 180px;
+  resize: vertical;
+  padding: 16px;
+  font: inherit;
+  line-height: 1.45;
+}
+
+#ai-chat-exporter-root input[type="url"]::placeholder,
+#ai-chat-exporter-root textarea::placeholder {
   color: rgba(255, 255, 255, 0.44);
 }
 
@@ -203,6 +216,7 @@ body:has(#ai-chat-exporter-root) .site-footer {
 }
 
 #ai-chat-exporter-root input[type="url"]:focus-visible,
+#ai-chat-exporter-root textarea:focus-visible,
 #ai-chat-exporter-root .ai-exporter-button:focus-visible {
   outline: 3px solid rgba(255, 221, 0, 0.4);
   outline-offset: 3px;

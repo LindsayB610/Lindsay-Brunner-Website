@@ -106,6 +106,7 @@ async function run() {
     });
 
     let apiRequestCount = 0;
+    const apiPayloads = [];
     await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js', async (route) => {
       await route.fulfill({
         body: `
@@ -125,7 +126,21 @@ async function run() {
     await page.route('**/api/export-chat', async (route) => {
       apiRequestCount += 1;
       const payload = route.request().postDataJSON();
+      apiPayloads.push(payload);
       await new Promise((resolve) => setTimeout(resolve, 800));
+
+      if (payload.provider === 'claude') {
+        await route.fulfill({
+          body: `# Claude Mock Export\n\nSource: ${payload.sourceUrl || 'snapshot'}\n`,
+          contentType: 'text/markdown; charset=utf-8',
+          headers: {
+            'Cache-Control': 'no-store',
+            'Content-Disposition': 'attachment; filename="claude-thread-export.md"',
+          },
+          status: 200,
+        });
+        return;
+      }
 
       if (payload.sharedUrl.includes('server-error')) {
         await route.fulfill({
@@ -189,6 +204,9 @@ async function run() {
     await page.getByText('Paste saved Claude snapshot JSON').waitFor();
     assert(await page.getByRole('tab', { name: 'Claude JSON' }).getAttribute('aria-selected') === 'true', 'Claude JSON tab should become selected after click', failures);
     assert(!(await page.getByLabel('Shared ChatGPT URL').isVisible()), 'ChatGPT URL input should be hidden outside the ChatGPT tab', failures);
+    assert(await page.getByLabel('Claude snapshot JSON').isVisible(), 'Claude JSON tab should show a snapshot JSON textarea', failures);
+    assert(await page.getByLabel('Human verification').isVisible(), 'Claude JSON tab should keep human verification visible', failures);
+    assert(await page.getByRole('button', { name: 'Export Claude Markdown' }).isVisible(), 'Claude JSON tab should expose a Markdown export button', failures);
 
     await page.getByRole('tab', { name: 'Claude Link' }).click();
     await page.getByText('Claude share-link export is experimental.').waitFor();
@@ -272,6 +290,36 @@ async function run() {
     downloads = await page.evaluate(() => window.__aiExporterDownloads);
     assert(downloads.length === 1, 'API errors should not trigger an extra download', failures);
     assert(apiRequestCount === 2, 'API error path should still make exactly one request', failures);
+
+    await page.getByRole('tab', { name: 'Claude JSON' }).click();
+    await page.getByLabel('Claude snapshot JSON').fill('{bad json');
+    await page.getByRole('button', { name: 'Export Claude Markdown' }).click();
+    await page.getByText('Paste valid Claude snapshot JSON.').waitFor();
+    assert(apiRequestCount === 2, 'invalid Claude snapshot JSON should not call the export API', failures);
+
+    const claudeSnapshotJson = JSON.stringify({
+      snapshot_name: 'Claude browser fixture',
+      chat_messages: [
+        {
+          sender: 'human',
+          content: [{ type: 'text', text: 'Hello Claude' }],
+        },
+      ],
+    });
+    await page.getByLabel('Claude snapshot JSON').fill(claudeSnapshotJson);
+    await page.getByLabel('Claude source share URL').fill('https://claude.ai/share/browser-fixture');
+    await page.getByRole('button', { name: 'Export Claude Markdown' }).click();
+    await page.getByText('Downloaded claude-thread-export.md.').waitFor();
+    downloads = await page.evaluate(() => window.__aiExporterDownloads);
+    assert(downloads.length === 2, 'valid Claude Markdown export should trigger one additional download', failures);
+    assert(downloads[1].download === 'claude-thread-export.md', 'Claude Markdown export should download the Claude fallback filename', failures);
+    assert(apiRequestCount === 3, 'valid Claude Markdown export should call the export API once', failures);
+    const claudePayload = apiPayloads[apiPayloads.length - 1];
+    assert(claudePayload.provider === 'claude', 'Claude browser export should send provider claude', failures);
+    assert(claudePayload.mode === 'snapshot-json', 'Claude browser export should send snapshot-json mode', failures);
+    assert(claudePayload.snapshotJson === claudeSnapshotJson, 'Claude browser export should send pasted snapshot JSON', failures);
+    assert(claudePayload.sourceUrl === 'https://claude.ai/share/browser-fixture', 'Claude browser export should send optional source URL', failures);
+    assert(claudePayload.format === 'markdown', 'Claude browser export should request Markdown in Phase 3', failures);
 
     await page.close();
   } finally {

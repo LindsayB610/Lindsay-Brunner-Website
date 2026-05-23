@@ -37,6 +37,8 @@ type AiChatExporterTab = (typeof AI_CHAT_EXPORTER_CONTRACT.tabs)[number];
 function AiChatExporterPage() {
   const [activeTab, setActiveTab] = useState<AiChatExporterTab>("ChatGPT");
   const [sharedUrl, setSharedUrl] = useState("");
+  const [claudeSnapshotJson, setClaudeSnapshotJson] = useState("");
+  const [claudeSourceUrl, setClaudeSourceUrl] = useState("");
   const [format, setFormat] = useState<AiChatExportFormat>("markdown");
   const [isExporting, setIsExporting] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -121,10 +123,15 @@ function AiChatExporterPage() {
               (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) %
                 tabs.length
             ];
-    setActiveTab(nextTab);
+    selectTab(nextTab);
     window.requestAnimationFrame(() => {
       document.getElementById(tabId(nextTab))?.focus();
     });
+  }
+
+  function selectTab(tab: AiChatExporterTab) {
+    setActiveTab(tab);
+    setStatusMessage("");
   }
 
   async function runExport() {
@@ -133,7 +140,17 @@ function AiChatExporterPage() {
     }
 
     try {
-      const request = buildExportRequest(sharedUrl, format, turnstileToken);
+      const request =
+        activeTab === "Claude JSON"
+          ? buildExportRequest({
+              provider: "claude",
+              mode: "snapshot-json",
+              snapshotJson: claudeSnapshotJson,
+              sourceUrl: claudeSourceUrl,
+              format: "markdown",
+              turnstileToken,
+            })
+          : buildExportRequest(sharedUrl, format, turnstileToken);
       isExportingRef.current = true;
       setIsExporting(true);
       setStatusMessage("Creating your export.");
@@ -180,7 +197,7 @@ function AiChatExporterPage() {
               className="ai-exporter-tab"
               id={tabId(tab)}
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => selectTab(tab)}
               onKeyDown={(event) => handleTabKeyDown(event, tab)}
               role="tab"
               tabIndex={activeTab === tab ? 0 : -1}
@@ -239,12 +256,6 @@ function AiChatExporterPage() {
               })}
             </fieldset>
 
-            <div
-              ref={turnstileContainerRef}
-              aria-label="Human verification"
-              className="ai-exporter-turnstile"
-            />
-
             <StatefulButton
               aria-busy={isExporting}
               className="ai-exporter-button"
@@ -257,7 +268,7 @@ function AiChatExporterPage() {
           </form>
 
           <p className="ai-exporter-status" role="status">
-            {statusMessage}
+            {activeTab === "ChatGPT" ? statusMessage : ""}
           </p>
         </section>
 
@@ -270,8 +281,50 @@ function AiChatExporterPage() {
         >
           <h2>Paste saved Claude snapshot JSON</h2>
           <p>
-            This will be the reliable Claude path. Save a snapshot locally with
-            the Claude CLI, then paste the JSON here to export Markdown or PDF.
+            Save a snapshot locally with the Claude CLI, then paste the JSON
+            here to export Markdown.
+          </p>
+
+          <form className="ai-exporter-form" onSubmit={handleSubmit}>
+            <label className="ai-exporter-field" htmlFor="ai-exporter-claude-snapshot">
+              <span className="sr-only">Claude snapshot JSON</span>
+              <textarea
+                id="ai-exporter-claude-snapshot"
+                disabled={isExporting}
+                name="claudeSnapshotJson"
+                onChange={(event) => setClaudeSnapshotJson(event.target.value)}
+                placeholder='{"snapshot_name":"...","chat_messages":[...]}'
+                rows={8}
+                value={claudeSnapshotJson}
+              />
+            </label>
+
+            <label className="ai-exporter-field" htmlFor="ai-exporter-claude-source">
+              <span className="sr-only">Claude source share URL</span>
+              <input
+                id="ai-exporter-claude-source"
+                disabled={isExporting}
+                name="claudeSourceUrl"
+                onChange={(event) => setClaudeSourceUrl(event.target.value)}
+                placeholder="Optional source: https://claude.ai/share/..."
+                type="url"
+                value={claudeSourceUrl}
+              />
+            </label>
+
+            <StatefulButton
+              aria-busy={isExporting}
+              className="ai-exporter-button"
+              disabled={isExporting}
+              onClick={runExport}
+              type="button"
+            >
+              Export Claude Markdown
+            </StatefulButton>
+          </form>
+
+          <p className="ai-exporter-status" role="status">
+            {activeTab === "Claude JSON" ? statusMessage : ""}
           </p>
         </section>
 
@@ -290,6 +343,13 @@ function AiChatExporterPage() {
           </p>
         </section>
 
+        <div hidden={activeTab === "Claude Link"}>
+          <div
+            ref={turnstileContainerRef}
+            aria-label="Human verification"
+            className="ai-exporter-turnstile"
+          />
+        </div>
       </div>
     </BackgroundBeamsWithCollision>
   );
