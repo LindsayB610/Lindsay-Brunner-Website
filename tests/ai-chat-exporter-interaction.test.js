@@ -120,10 +120,14 @@ async function run() {
       await route.fulfill({
         body: `
           window.turnstile = {
-            render: function (_container, options) {
+            render: function (container, options) {
+              var marker = document.createElement('div');
+              marker.textContent = 'Mock Turnstile';
+              container.appendChild(marker);
               setTimeout(function () { options.callback('mock-turnstile-token'); }, 0);
               return 'mock-turnstile-widget';
             },
+            remove: function () {},
             reset: function () {}
           };
         `,
@@ -227,7 +231,9 @@ async function run() {
     assert(await page.getByRole('tab', { name: 'Claude JSON' }).getAttribute('aria-selected') === 'true', 'Claude JSON tab should become selected after click', failures);
     assert(!(await page.getByLabel('Shared ChatGPT URL').isVisible()), 'ChatGPT URL input should be hidden outside the ChatGPT tab', failures);
     assert(await page.getByLabel('Claude snapshot JSON').isVisible(), 'Claude JSON tab should show a snapshot JSON textarea', failures);
+    await page.locator('#ai-exporter-panel-claude-json [aria-label="Human verification"]').waitFor({ state: 'visible' });
     assert(await page.getByLabel('Human verification').isVisible(), 'Claude JSON tab should keep human verification visible', failures);
+    assert(await page.locator('#ai-exporter-panel-claude-json [aria-label="Human verification"]').isVisible(), 'Claude JSON panel should contain its own human verification slot', failures);
     assert(await page.getByRole('button', { name: 'Export Claude' }).isVisible(), 'Claude JSON tab should expose an export button', failures);
 
     await page.getByRole('tab', { name: 'Claude Link' }).click();

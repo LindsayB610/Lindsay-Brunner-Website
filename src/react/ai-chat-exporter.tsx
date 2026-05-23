@@ -26,6 +26,7 @@ declare global {
           theme: "dark";
         },
       ) => string;
+      remove?: (widgetId: string) => void;
       reset: (widgetId: string) => void;
     };
   }
@@ -57,6 +58,7 @@ function AiChatExporterPage() {
     function renderTurnstile() {
       if (
         !isMounted ||
+        activeTab === "Claude Link" ||
         !window.turnstile ||
         !turnstileContainerRef.current ||
         turnstileWidgetIdRef.current
@@ -94,8 +96,15 @@ function AiChatExporterPage() {
 
     return () => {
       isMounted = false;
+      if (turnstileWidgetIdRef.current && window.turnstile?.remove) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+      } else if (turnstileContainerRef.current) {
+        turnstileContainerRef.current.innerHTML = "";
+      }
+      turnstileWidgetIdRef.current = "";
+      setTurnstileToken("");
     };
-  }, []);
+  }, [activeTab]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -306,6 +315,14 @@ function AiChatExporterPage() {
             </StatefulButton>
           </form>
 
+          {activeTab === "ChatGPT" ? (
+            <div
+              ref={turnstileContainerRef}
+              aria-label="Human verification"
+              className="ai-exporter-turnstile"
+            />
+          ) : null}
+
           <p className="ai-exporter-status" role="status">
             {activeTab === "ChatGPT" ? statusMessage : ""}
           </p>
@@ -385,6 +402,14 @@ function AiChatExporterPage() {
             </StatefulButton>
           </form>
 
+          {activeTab === "Claude JSON" ? (
+            <div
+              ref={turnstileContainerRef}
+              aria-label="Human verification"
+              className="ai-exporter-turnstile"
+            />
+          ) : null}
+
           <p className="ai-exporter-status" role="status">
             {activeTab === "Claude JSON" ? statusMessage : ""}
           </p>
@@ -458,13 +483,6 @@ function AiChatExporterPage() {
           </p>
         </section>
 
-        <div hidden={activeTab === "Claude Link"}>
-          <div
-            ref={turnstileContainerRef}
-            aria-label="Human verification"
-            className="ai-exporter-turnstile"
-          />
-        </div>
       </div>
     </BackgroundBeamsWithCollision>
   );
