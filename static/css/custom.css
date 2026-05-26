@@ -1039,7 +1039,7 @@ body.page-nemesis .social-link:focus-visible {
 
 .nemesis-log-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -1139,6 +1139,8 @@ body.page-nemesis .social-link:focus-visible {
 }
 
 .nemesis-log-card {
+  display: flex;
+  flex-direction: column;
   padding: 1.25rem;
   border-radius: 0.4rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1168,18 +1170,149 @@ body.page-nemesis .social-link:focus-visible {
   letter-spacing: 0.04em;
 }
 
+.nemesis-log-note-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(1.6em * 5 + 1.35rem);
+  margin-top: 0.75rem;
+}
+
+.nemesis-log-note {
+  display: -webkit-box;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.nemesis-log-note.is-expanded {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+.nemesis-log-note-toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: 0.55rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #79f3bb;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nemesis-log-note-toggle:hover,
+.nemesis-log-note-toggle:focus-visible {
+  color: #e7fff7;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.nemesis-log-note-toggle[hidden] {
+  display: none;
+}
+
 .nemesis-log-photo {
-  margin: 1rem 0 0;
+  margin: auto 0 0;
+  aspect-ratio: 16 / 9;
   border-radius: 0.35rem;
   overflow: hidden;
   border: 1px solid rgba(121, 243, 187, 0.12);
   background: rgba(255, 255, 255, 0.02);
 }
 
+.nemesis-log-photo-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
 .nemesis-log-photo img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.nemesis-log-photo-trigger:hover img,
+.nemesis-log-photo-trigger:focus-visible img {
+  filter: brightness(1.08) contrast(1.04);
+  transform: scale(1.01);
+}
+
+.nemesis-log-photo-trigger:focus-visible {
+  outline: 2px solid rgba(121, 243, 187, 0.7);
+  outline-offset: -2px;
+}
+
+.nemesis-photo-dialog {
+  width: min(96vw, 92rem);
+  max-width: 96vw;
+  max-height: 96vh;
+  padding: 0;
+  border: 1px solid rgba(121, 243, 187, 0.22);
+  border-radius: 0.45rem;
+  background: rgba(2, 8, 6, 0.98);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.75);
+}
+
+.nemesis-photo-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.nemesis-photo-dialog-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 96vh;
+  padding: 0.75rem;
+}
+
+.nemesis-photo-dialog-image {
+  display: block;
+  width: auto;
+  max-width: calc(96vw - 1.5rem);
+  max-height: calc(96vh - 1.5rem);
+  border-radius: 0.25rem;
+  object-fit: contain;
+}
+
+.nemesis-photo-dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(121, 243, 187, 0.3);
+  border-radius: 999px;
+  background: rgba(2, 8, 6, 0.86);
+  color: #e7fff7;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nemesis-photo-dialog-close:hover,
+.nemesis-photo-dialog-close:focus-visible {
+  border-color: rgba(121, 243, 187, 0.65);
+  background: rgba(10, 28, 20, 0.94);
 }
 
 .nemesis-log-topline {

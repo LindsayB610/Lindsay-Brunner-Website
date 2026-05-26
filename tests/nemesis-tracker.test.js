@@ -28,6 +28,8 @@ const ALLOWED_PLAYERS = [2, 3, 4];
 const SESSION_FILENAME_REGEX = /^\d{4}-\d{2}-\d{2}-[a-z0-9-]+-[a-z0-9-]+-(easy|hard)-(win|loss)\.ya?ml$/;
 const MAX_SESSION_IMAGE_BYTES = 1024 * 1024;
 const MAX_SESSION_IMAGE_DIMENSION = 2400;
+const SESSION_IMAGE_WIDTH = 2400;
+const SESSION_IMAGE_HEIGHT = 1350;
 
 function loadYamlFile(filePath) {
   return yaml.load(fs.readFileSync(filePath, 'utf8'));
@@ -262,6 +264,16 @@ async function main() {
             failed++;
             errors.push(
               `Session "${file}" final_state_image exceeds ${MAX_SESSION_IMAGE_DIMENSION}px max dimension: "${session.final_state_image}"`
+            );
+          }
+
+          if (
+            metadata.width !== SESSION_IMAGE_WIDTH ||
+            metadata.height !== SESSION_IMAGE_HEIGHT
+          ) {
+            failed++;
+            errors.push(
+              `Session "${file}" final_state_image must be ${SESSION_IMAGE_WIDTH}x${SESSION_IMAGE_HEIGHT}: "${session.final_state_image}" is ${metadata.width}x${metadata.height}`
             );
           }
         } catch (error) {

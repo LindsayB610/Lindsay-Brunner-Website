@@ -9,11 +9,13 @@ Before you commit it:
 3. Keep the keys exactly as written
 4. Only use the allowed values listed below
 
-If you add a `final_state_image`, optimize it before you commit:
+If you add a `final_state_image`, put the original image in `static/images/nemesis/session-photos/` and optimize it before you commit:
 
 ```bash
 npm run optimize:nemesis-photos
 ```
+
+The optimizer crops every Nemesis session photo to `2400x1350` (16:9), compresses it as a progressive JPEG, and keeps the file web-friendly. `npm run test:nemesis` enforces the exact image dimensions and a maximum file size.
 
 Use this format:
 
@@ -46,6 +48,12 @@ What to fill in:
 - `players`: `2`, `3`, or `4`
 - `final_state_image`: optional image path for a final board-state photo
 - `note`: a short recap in plain English
+
+Display notes:
+
+- Setup records hide unplayed setups, except base Intruders for Nemesis and Lockdown
+- Session log cards show notes clamped to five lines, with a More/Less toggle for longer notes
+- Session photos are clickable and open in a screen-sized dialog
 
 Allowed values currently in the tracker:
 

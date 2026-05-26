@@ -402,6 +402,9 @@ The `/nemesis/` page uses Git-tracked YAML data so collaborators can log new gam
 - Game and setup metadata lives in `data/nemesis/games.yaml`
 - Each played session gets its own file in `data/nemesis/sessions/`
 - The tracker page automatically reads those files and updates the records
+- Setup records hide unplayed setups, except base Intruders for Nemesis and Lockdown
+- Session log notes clamp to five lines with a More/Less toggle when needed
+- Session photos are clickable and open in a screen-sized dialog
 
 **To add a new session:**
 
@@ -428,7 +431,8 @@ note: "Short recap of what happened."
 - That template is only a starting point. The filename, `date`, `game`, `setup`, `board`, `result`, `players`, and `note` all need to be updated before committing.
 - Opening that page does **not** create a file by itself. A session is only created if someone actually commits the new file or opens a pull request.
 - On the public repo, non-collaborators can use the same flow through a fork and submit a PR for approval.
-- If you add a `final_state_image`, run `npm run optimize:nemesis-photos` before committing so session photos stay web-friendly.
+- If you add a `final_state_image`, put it in `static/images/nemesis/session-photos/` and run `npm run optimize:nemesis-photos` before committing. The optimizer crops session photos to `2400x1350` (16:9), compresses them as progressive JPEGs, and keeps them web-friendly.
+- `npm run test:nemesis` validates referenced photos, exact `2400x1350` dimensions, and file size.
 
 **Allowed values currently in the tracker:**
 
