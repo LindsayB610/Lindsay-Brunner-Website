@@ -1,0 +1,16 @@
+# Allowed values
+# game: nemesis | lockdown
+# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
+# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# board: easy | hard
+# result: win | loss
+# players: 2 | 3 | 4
+
+date: "2026-05-16"
+game: "nemesis"
+setup: "intruders"
+board: "easy"
+result: "win"
+players: 3
+final_state_image: "/images/nemesis/session-photos/2026-05-16-nemesis-intruders-easy-win.jpg"
+note: "Alex, Micah, and Lindsay won the base game that opened the door to Aftermath. It went suspiciously well: everyone kept waiting for the ship to finally kill them, and somehow it just... didn't."

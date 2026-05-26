@@ -1,0 +1,16 @@
+# Allowed values
+# game: nemesis | lockdown
+# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
+# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# board: easy | hard
+# result: win | loss
+# players: 2 | 3 | 4
+
+date: "2026-05-14"
+game: "nemesis"
+setup: "intruders"
+board: "hard"
+result: "loss"
+players: 3
+final_state_image: "/images/nemesis/session-photos/2026-05-14-nemesis-intruders-hard-loss.jpg"
+note: "Hard mode taught the crew several lessons at once. Lindsay was playing her character wrong, the mid-game lacked a coherent strategy, and the objectives were rude enough that the whole run started sliding before anyone could turn it around."

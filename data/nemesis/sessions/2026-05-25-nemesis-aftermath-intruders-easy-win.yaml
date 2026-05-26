@@ -1,0 +1,16 @@
+# Allowed values
+# game: nemesis | lockdown
+# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
+# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# board: easy | hard
+# result: win | loss
+# players: 2 | 3 | 4
+
+date: "2026-05-25"
+game: "nemesis"
+setup: "aftermath-intruders"
+board: "easy"
+result: "win"
+players: 3
+final_state_image: "/images/nemesis/session-photos/2026-05-25-nemesis-aftermath-intruders-easy-win.jpg"
+note: "Alex, Micah, and Lindsay survived Aftermath by the skin of their teeth. The board was ugly, the Intruders were everywhere, and somehow the crew still limped out with a win."
