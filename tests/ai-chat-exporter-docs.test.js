@@ -54,4 +54,9 @@ if (exists('src/react/ai-chat-exporter.tsx')) {
   assert(islandSource.includes('/ai-chat-exporter/docs/'), 'exporter app should link to the docs page', failures);
 }
 
+if (exists('layouts/ai-chat-exporter/single.html')) {
+  const fallbackSource = read('layouts/ai-chat-exporter/single.html');
+  assert(fallbackSource.includes('/ai-chat-exporter/docs/'), 'exporter fallback HTML should link to the docs page for crawlers', failures);
+}
+
 report(failures, '✅ AI Chat Exporter docs page passed.');
