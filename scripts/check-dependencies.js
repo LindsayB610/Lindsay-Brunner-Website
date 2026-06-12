@@ -279,7 +279,14 @@ async function main() {
     }
     const outdated = getOutdatedPackages();
     
-    if (Object.keys(outdated).length > 0) {
+    if (outdated.error) {
+      results.npm.outdated = { error: outdated.error };
+
+      if (!jsonOutput) {
+        const message = typeof outdated.error === 'string' ? outdated.error : outdated.error.summary || 'Could not check outdated packages';
+        console.log(`   ⚠️  ${message}`);
+      }
+    } else if (Object.keys(outdated).length > 0) {
       results.npm.outdated = outdated;
       results.summary.hasUpdates = true;
       results.summary.outdatedCount = Object.keys(outdated).length;
@@ -363,7 +370,7 @@ async function main() {
     
     // Output JSON if requested
     if (jsonOutput) {
-      console.log(JSON.stringify(results, null, 2));
+      console.log(JSON.stringify(results));
     }
     
     // Exit with error code if security issues found
@@ -373,7 +380,7 @@ async function main() {
     
   } catch (error) {
     if (jsonOutput) {
-      console.log(JSON.stringify({ error: error.message }, null, 2));
+      console.log(JSON.stringify({ error: error.message }));
     } else {
       console.error('❌ Error:', error.message);
     }

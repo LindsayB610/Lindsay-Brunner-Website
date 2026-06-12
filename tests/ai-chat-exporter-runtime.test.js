@@ -131,7 +131,7 @@ function expectedFixtureMarkdown() {
 function formatToday() {
   return new Intl.DateTimeFormat('en-US', {
     day: 'numeric',
-    month: 'long',
+    month: 'short',
     year: 'numeric',
   }).format(new Date());
 }

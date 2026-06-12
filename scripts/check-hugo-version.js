@@ -13,6 +13,8 @@
 
 const { execSync } = require('child_process');
 const https = require('https');
+const fs = require('fs');
+const path = require('path');
 
 // Known security vulnerabilities and their fixes
 const SECURITY_FIXES = {
@@ -107,6 +109,72 @@ function checkSecurityStatus(currentVersion) {
   return issues;
 }
 
+function readJsonFile(filePath) {
+  try {
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  } catch (err) {
+    return null;
+  }
+}
+
+function getInstalledHugoBinMetadata() {
+  const packageJsonPath = path.join(__dirname, '..', 'node_modules', 'hugo-bin', 'package.json');
+  const packageJson = readJsonFile(packageJsonPath);
+
+  if (!packageJson) {
+    return null;
+  }
+
+  return {
+    hugoVersion: packageJson.hugoVersion || null,
+    hugoBinVersion: packageJson.version || null,
+    source: packageJsonPath
+  };
+}
+
+function getDeclaredHugoBinVersion() {
+  const packageJsonPath = path.join(__dirname, '..', 'package.json');
+  const packageJson = readJsonFile(packageJsonPath);
+
+  return packageJson?.dependencies?.['hugo-bin'] || packageJson?.devDependencies?.['hugo-bin'] || null;
+}
+
+function getCurrentHugoVersion() {
+  const installedMetadata = getInstalledHugoBinMetadata();
+
+  if (installedMetadata?.hugoVersion) {
+    return {
+      output: `hugo v${installedMetadata.hugoVersion}`,
+      metadata: installedMetadata,
+      source: 'hugo-bin package metadata'
+    };
+  }
+
+  try {
+    const output = execSync('npx hugo version', { encoding: 'utf-8', stdio: 'pipe' });
+    return {
+      output: output.trim(),
+      metadata: installedMetadata,
+      source: 'hugo binary'
+    };
+  } catch (err) {
+    const errorMsg = err.message || 'Could not determine Hugo version';
+    const details = err.stdout || err.stderr;
+    const declaredHugoBinVersion = getDeclaredHugoBinVersion();
+
+    return {
+      error: errorMsg,
+      details,
+      metadata: installedMetadata,
+      declaredHugoBinVersion
+    };
+  }
+}
+
 async function main() {
   const jsonOutput = process.argv.includes('--json');
   
@@ -116,34 +184,32 @@ async function main() {
   
   try {
     // Get current version
-    let hugoVersionOutput;
-    try {
-      hugoVersionOutput = execSync('npx hugo version', { encoding: 'utf-8', stdio: 'pipe' });
-    } catch (err) {
-      // npx hugo might not be available or might fail
-      const errorMsg = err.message || 'Could not run npx hugo version';
+    const currentHugo = getCurrentHugoVersion();
+
+    if (currentHugo.error) {
       if (jsonOutput) {
-        console.log(JSON.stringify({ error: errorMsg, details: err.stdout || err.stderr }, null, 2));
+        console.log(JSON.stringify(currentHugo));
       } else {
-        console.error(`❌ Error running Hugo: ${errorMsg}`);
+        console.error(`❌ Error determining Hugo version: ${currentHugo.error}`);
       }
       process.exit(1);
     }
     
-    const currentVersion = parseHugoVersion(hugoVersionOutput.trim());
+    const currentVersion = parseHugoVersion(currentHugo.output);
     
     if (!currentVersion) {
       if (jsonOutput) {
-        console.log(JSON.stringify({ error: 'Could not parse Hugo version', output: hugoVersionOutput }, null, 2));
+        console.log(JSON.stringify({ error: 'Could not parse Hugo version', output: currentHugo.output }));
       } else {
         console.error('❌ Could not parse Hugo version');
-        console.error(`Raw output: ${hugoVersionOutput}`);
+        console.error(`Raw output: ${currentHugo.output}`);
       }
       process.exit(1);
     }
     
     if (!jsonOutput) {
       console.log(`📦 Current Hugo version: v${currentVersion.full}`);
+      console.log(`   Source: ${currentHugo.source}`);
     }
     
     // Check security status
@@ -231,20 +297,11 @@ async function main() {
     }
     
     // Check hugo-bin package version
-    let hugoBinVersion = null;
-    try {
-      const path = require('path');
-      const fs = require('fs');
-      const packageJsonPath = path.join(__dirname, '..', 'package.json');
-      if (fs.existsSync(packageJsonPath)) {
-        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-        hugoBinVersion = packageJson.dependencies && packageJson.dependencies['hugo-bin'];
-        if (!jsonOutput && hugoBinVersion) {
-          console.log(`\n📦 hugo-bin package: ${hugoBinVersion}`);
-        }
-      }
-    } catch (err) {
-      // Ignore - not critical
+    const hugoBinVersion = getDeclaredHugoBinVersion();
+    const installedHugoBinVersion = currentHugo.metadata?.hugoBinVersion || null;
+
+    if (!jsonOutput && hugoBinVersion) {
+      console.log(`\n📦 hugo-bin package: ${hugoBinVersion}`);
     }
     
     if (!jsonOutput) {
@@ -262,9 +319,11 @@ async function main() {
         updateAvailable: updateAvailable,
         versionBehind: versionBehind,
         hugoBinVersion: hugoBinVersion,
+        installedHugoBinVersion: installedHugoBinVersion,
+        versionSource: currentHugo.source,
         timestamp: new Date().toISOString()
       };
-      console.log(JSON.stringify(result, null, 2));
+      console.log(JSON.stringify(result));
     }
     
     // Don't exit with error code - let the workflow handle it
@@ -272,7 +331,7 @@ async function main() {
     
   } catch (error) {
     if (jsonOutput) {
-      console.log(JSON.stringify({ error: error.message }, null, 2));
+      console.log(JSON.stringify({ error: error.message }));
     } else {
       console.error('❌ Error:', error.message);
     }

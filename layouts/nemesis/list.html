@@ -328,12 +328,13 @@
 <dialog class="nemesis-photo-dialog" aria-label="Final game state photo">
   <div class="nemesis-photo-dialog-frame">
     <button type="button" class="nemesis-photo-dialog-close" aria-label="Close photo">×</button>
-    <img class="nemesis-photo-dialog-image" alt="" />
+    <img class="nemesis-photo-dialog-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
   </div>
 </dialog>
 
 <script>
   (() => {
+    const placeholderImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
     const dialog = document.querySelector(".nemesis-photo-dialog");
     const dialogImage = document.querySelector(".nemesis-photo-dialog-image");
     const closeButton = document.querySelector(".nemesis-photo-dialog-close");
@@ -374,7 +375,7 @@
 
     const closeDialog = () => {
       dialog.close();
-      dialogImage.removeAttribute("src");
+      dialogImage.src = placeholderImageSrc;
       dialogImage.alt = "";
     };
 
@@ -395,7 +396,7 @@
     });
 
     dialog.addEventListener("close", () => {
-      dialogImage.removeAttribute("src");
+      dialogImage.src = placeholderImageSrc;
       dialogImage.alt = "";
     });
   })();
