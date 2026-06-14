@@ -20,6 +20,9 @@ const gamesPath = path.join(__dirname, '..', 'data', 'nemesis', 'games.yaml');
 const sessionsDir = path.join(__dirname, '..', 'data', 'nemesis', 'sessions');
 const renderedPagePath = path.join(__dirname, '..', 'public', 'nemesis', 'index.html');
 const layoutPath = path.join(__dirname, '..', 'layouts', 'nemesis', 'list.html');
+const headPath = path.join(__dirname, '..', 'layouts', 'partials', 'head.html');
+const customCssPath = path.join(__dirname, '..', 'static', 'css', 'custom.css');
+const nemesisCssPath = path.join(__dirname, '..', 'static', 'css', 'nemesis.css');
 
 const ALLOWED_GAMES = ['nemesis', 'lockdown'];
 const ALLOWED_BOARDS = ['easy', 'hard'];
@@ -71,6 +74,17 @@ async function main() {
     console.log('   ✓ sessions directory exists');
     passed++;
   }
+
+  [
+    headPath,
+    customCssPath,
+    nemesisCssPath,
+  ].forEach((targetPath) => {
+    if (!fs.existsSync(targetPath)) {
+      failed++;
+      errors.push(`Missing Nemesis support file: ${targetPath}`);
+    }
+  });
 
   if (errors.length > 0) {
     console.log('\n❌ Errors:');
@@ -387,12 +401,62 @@ async function main() {
     }
   }
 
+  console.log('\n🎨 Validating Nemesis page stylesheet split...');
+  if (fs.existsSync(headPath) && fs.existsSync(customCssPath) && fs.existsSync(nemesisCssPath)) {
+    const head = fs.readFileSync(headPath, 'utf8');
+    const customCss = fs.readFileSync(customCssPath, 'utf8');
+    const nemesisCss = fs.readFileSync(nemesisCssPath, 'utf8');
+
+    [
+      'eq .RelPermalink "/nemesis/"',
+      '/css/nemesis.css?v={{ $assetVersion }}',
+    ].forEach((snippet) => {
+      if (!head.includes(snippet)) {
+        failed++;
+        errors.push(`Head partial is missing Nemesis CSS loading hook: ${snippet}`);
+      }
+    });
+
+    [
+      '/* Nemesis tracker */',
+      '.nemesis-page',
+      '.nemesis-terminal-frame',
+      '.nemesis-status.is-win',
+      '.nemesis-photo-dialog',
+    ].forEach((snippet) => {
+      if (!nemesisCss.includes(snippet)) {
+        failed++;
+        errors.push(`Nemesis CSS is missing expected page styling hook: ${snippet}`);
+      }
+    });
+
+    [
+      '/* Nemesis tracker */',
+      '.nemesis-page',
+      '.nemesis-terminal-frame',
+    ].forEach((snippet) => {
+      if (customCss.includes(snippet)) {
+        failed++;
+        errors.push(`Shared custom CSS should not contain Nemesis page styling: ${snippet}`);
+      }
+    });
+
+    if (!errors.some((error) => error.includes('Nemesis CSS') || error.includes('Head partial') || error.includes('Shared custom CSS'))) {
+      console.log('   ✓ Nemesis CSS is isolated and loaded only by the Nemesis route');
+      passed++;
+    }
+  }
+
   console.log('\n📊 Validating rendered aggregate counts...');
   if (!fs.existsSync(renderedPagePath)) {
     failed++;
     errors.push(`Rendered Nemesis page not found at ${renderedPagePath}. Run "npm run build" first.`);
   } else {
     const renderedHtmlRaw = fs.readFileSync(renderedPagePath, 'utf8');
+    if (!renderedHtmlRaw.includes('/css/nemesis.css')) {
+      failed++;
+      errors.push('Rendered Nemesis page should load the page-specific stylesheet');
+    }
     const renderedHtml = stripHtml(renderedHtmlRaw);
     const totalRuns = sessions.length;
     const totalWins = sessions.filter((session) => session.result === 'win').length;

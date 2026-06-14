@@ -1,0 +1,17 @@
+date: "2026-06-10"
+result: "win"
+players: 3
+heroes:
+  - "Frodo & Sam"
+  - "Arwen"
+  - "Faramir"
+  - "Eowyn"
+  - "Legolas"
+  - "Galadriel"
+objectives:
+  - "Destroy the One Ring"
+  - "That Makes Six"
+  - "Infiltrate Minas Morgul"
+  - "Secure the Crossing of the Anduin"
+final_state_image: "/images/fate-of-the-fellowship/session-photos/2026-06-10-win.jpg"
+note: "Lindsay, Alex, and Micah logged a three-player win."

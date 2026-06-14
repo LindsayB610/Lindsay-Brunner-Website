@@ -29,6 +29,26 @@ objectives:
 note: "Short recap of what happened."
 ```
 
+For a loss, also mark every assigned objective as either completed or incomplete:
+
+```yaml
+date: "2026-06-12"
+result: "loss"
+players: 3
+heroes:
+  - "Frodo & Sam"
+  - "Legolas"
+objectives:
+  - "Destroy the One Ring"
+  - "Challenge Sauron"
+completed_objectives:
+  - "Challenge Sauron"
+incomplete_objectives:
+  - "Destroy the One Ring"
+# final_state_image: "/images/fate-of-the-fellowship/session-photos/2026-06-12-loss.jpg"
+note: "Short recap of what happened."
+```
+
 Use filenames like:
 
 `YYYY-MM-DD-result.yaml`
@@ -44,8 +64,15 @@ What to fill in:
 - `players`: `1`, `2`, `3`, `4`, or `5`
 - `heroes`: hero card names used in the session
 - `objectives`: objective card names assigned in the session
+- `completed_objectives`: required for losses; every completed objective from `objectives`
+- `incomplete_objectives`: required for losses; every incomplete objective from `objectives`
 - `final_state_image`: optional image path for a final board-state photo
 - `note`: a short recap in plain English
+
+Loss objective rule:
+
+- For `result: "loss"`, every value in `objectives` must appear exactly once across `completed_objectives` and `incomplete_objectives`
+- Do not include objectives in those status lists unless they were assigned in `objectives`
 
 Required objective:
 

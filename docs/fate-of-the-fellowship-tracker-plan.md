@@ -12,20 +12,20 @@ Do not push tracker work until the active phase is green and reviewed locally.
 
 ## Current status
 
-Phases 1 through 7 are complete locally. Phase 8 final verification is still pending, and the page is intentionally hidden from public header/footer navigation while the visual direction is being reworked.
+Phases 1 through 8 are complete locally. Final verification is green. The page is exposed in the header More dropdown as `LOTR: FotF`, while footer navigation remains unchanged. Do not push until the user explicitly asks.
 
 Completed local contracts:
 
 - `content/fate-of-the-fellowship/_index.md` exists and publishes through a custom tracker layout
 - `data/fate-of-the-fellowship/heroes.yaml` contains the locked hero names and stable keys
 - `data/fate-of-the-fellowship/objectives.yaml` contains the locked objective names, stable keys, and marks `Destroy the One Ring` as required
-- `data/fate-of-the-fellowship/sessions/.gitkeep` exists and the current placeholder session YAML validates against the live session contract
+- `data/fate-of-the-fellowship/sessions/.gitkeep` exists, and the real June 10 and June 12 session YAML files validate against the live session contract
 - `docs/fate-of-the-fellowship-tracker.md` documents the data shape and uses a valid sample session
 - `layouts/fate-of-the-fellowship/list.html` renders the first tracker shell, empty-state session log, populated session log, card-value lists, and add-entry actions
-- `layouts/fate-of-the-fellowship/list.html` renders totals, win/loss counts, win rate, player split, hero usage, objective attempts/successes, and reverse chronological session cards when sessions exist
+- `layouts/fate-of-the-fellowship/list.html` renders journey wins, tie-aware winningest hero/objective stats, hero usage with wins, objective attempts/successes, and reverse chronological session cards when sessions exist
 - `layouts/fate-of-the-fellowship/list.html` renders optional final board-state photos with thumbnail buttons and a lightbox dialog
 - `static/images/fate-of-the-fellowship/session-photos/.gitkeep` tracks the future Fate photo directory
-- `static/css/custom.css` includes a scoped visual treatment for the Fate page with parchment panels, quest slips, result seals, pinned-photo treatment, responsive grids, and a work-in-progress hero that needs design rework
+- `static/css/custom.css` includes a scoped visual treatment for the Fate page with parchment panels, quest slips, green win badges, red loss badges, pinned-photo treatment, responsive grids, and a custom inn-ledger visual treatment
 - `tests/fate-of-the-fellowship-tracker.test.js` enforces the scaffold, locked card values, required Ring objective, valid docs sample, real session YAML validation, rendered tracker shell, empty-state rendering, populated aggregate rendering with temporary fixture sessions, image path/dimension/file-size/format validation with a temporary fixture image, rendered thumbnail/lightbox markup, scoped visual CSS hooks, desktop/mobile browser render checks, mobile overflow checks, and this TDD plan contract
 - `npm run test:fate` is wired into `npm test`
 - `layouts/partials/header.html` and `layouts/partials/footer.html` intentionally do not expose the tracker yet; reserve `LOTR: FotF` for the More dropdown when the page is ready to launch
@@ -363,10 +363,15 @@ Browser-check:
 
 ### Done
 
+Final verification is complete locally:
+
+- `npm run build`
+- `npm run test:fate`
+- `npm test`
+
 Only after the active phase and final verification are green should the work be committed. Do not push until the user explicitly asks.
 
 ## Open decisions
 
 - Whether the introductory/default objective set should be marked in metadata
 - Whether objectives have categories, difficulty markers, or setup labels worth tracking
-- Whether to keep the same `2400x1350` session image contract as Nemesis or choose a different crop for the tavern-ledger design

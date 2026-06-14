@@ -125,6 +125,12 @@
 {{- $assetVersion := now.Unix -}}
 <link rel="stylesheet" href="/css/main.css?v={{ $assetVersion }}" />
 <link rel="stylesheet" href="/css/custom.css?v={{ $assetVersion }}" />
+{{ if eq .RelPermalink "/nemesis/" }}
+<link rel="stylesheet" href="/css/nemesis.css?v={{ $assetVersion }}" />
+{{ end }}
+{{ if eq .RelPermalink "/fate-of-the-fellowship/" }}
+<link rel="stylesheet" href="/css/fate-of-the-fellowship.css?v={{ $assetVersion }}" />
+{{ end }}
 {{ if .IsHome }}{{ partial "react-assets.html" "src/react/homepage.tsx" }}{{ end }}
 {{ if eq .RelPermalink "/about/" }}{{ partial "react-assets.html" "src/react/about.tsx" }}{{ end }}
 {{ if eq .RelPermalink "/ai-chat-exporter/" }}{{ partial "react-assets.html" "src/react/ai-chat-exporter.tsx" }}{{ end }}

@@ -1,0 +1,17 @@
+date: "2026-06-12"
+result: "win"
+players: 3
+heroes:
+  - "Frodo & Sam"
+  - "Arwen"
+  - "Gandalf"
+  - "Gollum"
+  - "Eomer"
+  - "Gimli"
+objectives:
+  - "Destroy the One Ring"
+  - "Arwen Unfurls the Banner"
+  - "Lift Shadow from Dwarven Lands"
+  - "Confront the Balrog"
+final_state_image: "/images/fate-of-the-fellowship/session-photos/2026-06-12-win.jpg"
+note: "Lindsay, Alex, and Micah logged a three-player win."

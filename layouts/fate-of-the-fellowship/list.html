@@ -20,9 +20,61 @@
   {{ end }}
 {{ end }}
 {{ $totalSessions := len $sessions }}
-{{ $winRate := 0 }}
-{{ if gt $totalSessions 0 }}
-  {{ $winRate = div (add (mul ($totals.Get "wins") 100) (div $totalSessions 2)) $totalSessions }}
+{{ $topHeroNames := slice }}
+{{ $topHeroWins := 0 }}
+{{ $topHeroAttempts := 0 }}
+{{ range $hero := $heroes }}
+  {{ if not $hero.required }}
+    {{ $heroStats := newScratch }}
+    {{ $heroStats.Set "wins" 0 }}
+    {{ $heroStats.Set "attempts" 0 }}
+    {{ range $session := $sessions }}
+      {{ if in $session.heroes $hero.name }}
+        {{ $heroStats.Add "attempts" 1 }}
+        {{ if eq $session.result "win" }}
+          {{ $heroStats.Add "wins" 1 }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if gt ($heroStats.Get "wins") $topHeroWins }}
+      {{ $topHeroNames = slice $hero.name }}
+      {{ $topHeroWins = $heroStats.Get "wins" }}
+      {{ $topHeroAttempts = $heroStats.Get "attempts" }}
+    {{ else if and (gt ($heroStats.Get "wins") 0) (eq ($heroStats.Get "wins") $topHeroWins) }}
+      {{ $topHeroNames = $topHeroNames | append $hero.name }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if eq (len $topHeroNames) 0 }}
+  {{ $topHeroNames = slice "None yet" }}
+{{ end }}
+{{ $topObjectiveNames := slice }}
+{{ $topObjectiveWins := 0 }}
+{{ $topObjectiveAttempts := 0 }}
+{{ range $objective := $objectives }}
+  {{ if not $objective.required }}
+    {{ $objectiveStats := newScratch }}
+    {{ $objectiveStats.Set "wins" 0 }}
+    {{ $objectiveStats.Set "attempts" 0 }}
+    {{ range $session := $sessions }}
+      {{ if in $session.objectives $objective.name }}
+        {{ $objectiveStats.Add "attempts" 1 }}
+        {{ if eq $session.result "win" }}
+          {{ $objectiveStats.Add "wins" 1 }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if gt ($objectiveStats.Get "wins") $topObjectiveWins }}
+      {{ $topObjectiveNames = slice $objective.name }}
+      {{ $topObjectiveWins = $objectiveStats.Get "wins" }}
+      {{ $topObjectiveAttempts = $objectiveStats.Get "attempts" }}
+    {{ else if and (gt ($objectiveStats.Get "wins") 0) (eq ($objectiveStats.Get "wins") $topObjectiveWins) }}
+      {{ $topObjectiveNames = $topObjectiveNames | append $objective.name }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if eq (len $topObjectiveNames) 0 }}
+  {{ $topObjectiveNames = slice "None yet" }}
 {{ end }}
 
 <section class="section fate-page">
@@ -40,20 +92,8 @@
           {{ with .Content }}
           <div class="fate-intro">{{ . }}</div>
           {{ end }}
-          <a class="fate-enter-link" href="#fate-overview-heading">Read the record</a>
         </div>
       </header>
-
-      <section class="fate-section fate-briefing-grid fate-rulebook-callouts" aria-label="Table notes">
-        <article class="fate-briefing-card fate-callout-box">
-          <span class="fate-briefing-label">Table rule</span>
-          <p>Only companions and quests that have actually reached the table earn ink in the record. Empty boasts can wait outside with the ponies.</p>
-        </article>
-        <article class="fate-briefing-card fate-callout-box">
-          <span class="fate-briefing-label">Margin note</span>
-          <p>Victories are toasted. Defeats are also toasted, but with a sterner look toward Mordor and fewer second breakfasts.</p>
-        </article>
-      </section>
 
       <section class="fate-section fate-overview-section" aria-labelledby="fate-overview-heading">
         <div class="fate-section-heading">
@@ -62,33 +102,30 @@
         </div>
         <div class="fate-overview-grid fate-stat-strip">
           <article class="fate-overview-card">
-            <span class="fate-overview-label">Journeys logged</span>
-            <strong>{{ $totalSessions }}</strong>
+            <span class="fate-overview-label">Journey record</span>
+            <strong>{{ $totals.Get "wins" }} win{{ if ne ($totals.Get "wins") 1 }}s{{ end }}</strong>
+            <p>out of {{ $totalSessions }} journey{{ if ne $totalSessions 1 }}s{{ end }} attempted</p>
           </article>
           <article class="fate-overview-card">
-            <span class="fate-overview-label">Victories</span>
-            <strong>{{ $totals.Get "wins" }}</strong>
-          </article>
-          <article class="fate-overview-card">
-            <span class="fate-overview-label">Defeats</span>
-            <strong>{{ $totals.Get "losses" }}</strong>
-          </article>
-          <article class="fate-overview-card">
-            <span class="fate-overview-label">Win rate</span>
-            <strong>{{ $winRate }}%</strong>
-          </article>
-        </div>
-        <div class="fate-player-split">
-          {{ range $players := seq 1 5 }}
-          {{ $playerStats := newScratch }}
-          {{ $playerStats.Set "count" 0 }}
-          {{ range $session := $sessions }}
-            {{ if eq (int $session.players) $players }}
-              {{ $playerStats.Add "count" 1 }}
+            <span class="fate-overview-label">Winningest character</span>
+            {{ if gt (len $topHeroNames) 2 }}
+            <strong>No clear winner</strong>
+            <p>{{ len $topHeroNames }} tied at {{ $topHeroWins }} win{{ if ne $topHeroWins 1 }}s{{ end }}</p>
+            {{ else }}
+            <strong>{{ range $nameIndex, $name := $topHeroNames }}{{ if gt $nameIndex 0 }}, {{ end }}{{ range $partIndex, $part := split $name "&" }}{{ if gt $partIndex 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end }}{{ $part }}{{ end }}{{ end }}</strong>
+            <p>{{ $topHeroWins }} win{{ if ne $topHeroWins 1 }}s{{ end }}{{ if gt (len $topHeroNames) 1 }} each{{ else }} over {{ $topHeroAttempts }} journey{{ if ne $topHeroAttempts 1 }}s{{ end }}{{ end }}</p>
             {{ end }}
-          {{ end }}
-          <span class="fate-player-count">{{ $players }} player{{ if ne $players 1 }}s{{ end }} {{ $playerStats.Get "count" }} journey{{ if ne ($playerStats.Get "count") 1 }}s{{ end }}</span>
-          {{ end }}
+          </article>
+          <article class="fate-overview-card">
+            <span class="fate-overview-label">Winningest objective</span>
+            {{ if gt (len $topObjectiveNames) 2 }}
+            <strong>No clear winner</strong>
+            <p>{{ len $topObjectiveNames }} tied at {{ $topObjectiveWins }} win{{ if ne $topObjectiveWins 1 }}s{{ end }}</p>
+            {{ else }}
+            <strong>{{ delimit $topObjectiveNames ", " }}</strong>
+            <p>{{ $topObjectiveWins }} win{{ if ne $topObjectiveWins 1 }}s{{ end }}{{ if gt (len $topObjectiveNames) 1 }} each{{ else }} over {{ $topObjectiveAttempts }} attempt{{ if ne $topObjectiveAttempts 1 }}s{{ end }}{{ end }}</p>
+            {{ end }}
+          </article>
         </div>
       </section>
 
@@ -98,18 +135,33 @@
           <p>Only heroes who have answered the call are named here.</p>
         </div>
         <div class="fate-card-list">
+          {{ $orderedHeroes := slice }}
           {{ range $hero := $heroes }}
-          {{ $heroStats := newScratch }}
-          {{ $heroStats.Set "count" 0 }}
-          {{ range $session := $sessions }}
-            {{ if in $session.heroes $hero.name }}
-              {{ $heroStats.Add "count" 1 }}
+            {{ if $hero.required }}
+              {{ $orderedHeroes = $orderedHeroes | append $hero }}
             {{ end }}
           {{ end }}
-          {{ if gt ($heroStats.Get "count") 0 }}
-          <article class="fate-record-card">
+          {{ range $hero := $heroes }}
+            {{ if not $hero.required }}
+              {{ $orderedHeroes = $orderedHeroes | append $hero }}
+            {{ end }}
+          {{ end }}
+          {{ range $hero := $orderedHeroes }}
+          {{ $heroStats := newScratch }}
+          {{ $heroStats.Set "journeys" 0 }}
+          {{ $heroStats.Set "wins" 0 }}
+          {{ range $session := $sessions }}
+            {{ if in $session.heroes $hero.name }}
+              {{ $heroStats.Add "journeys" 1 }}
+              {{ if eq $session.result "win" }}
+                {{ $heroStats.Add "wins" 1 }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ if gt ($heroStats.Get "journeys") 0 }}
+          <article class="fate-record-card{{ if $hero.required }} is-required{{ end }}">
             <h3>{{ range $index, $part := split $hero.name "&" }}{{ if gt $index 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end }}{{ $part }}{{ end }}</h3>
-            <p>{{ $heroStats.Get "count" }} journey{{ if ne ($heroStats.Get "count") 1 }}s{{ end }}</p>
+            <p>{{ $heroStats.Get "journeys" }} journey{{ if ne ($heroStats.Get "journeys") 1 }}s{{ end }} {{ $heroStats.Get "wins" }} win{{ if ne ($heroStats.Get "wins") 1 }}s{{ end }}</p>
           </article>
           {{ end }}
           {{ end }}
@@ -190,9 +242,6 @@
               </figure>
             {{ end }}
           </article>
-          {{ if lt (add $sessionIndex 1) (len $sessions) }}
-          <div class="fate-session-separator" aria-hidden="true">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ</div>
-          {{ end }}
           {{ end }}
           {{ else }}
           <article class="fate-log-card fate-empty-log">
@@ -205,7 +254,7 @@
 
       <section class="fate-section fate-actions-section" aria-labelledby="fate-actions-heading">
         <div class="fate-section-heading">
-          <h2 id="fate-actions-heading">Add a tale to the record</h2>
+          <h2 id="fate-actions-heading">Add your fate to the record</h2>
           <p>New sessions live as YAML entries in Git.</p>
         </div>
         <div class="fate-actions">

@@ -11,6 +11,7 @@ items:
     name: "Eowyn"
   - key: "frodo-and-sam"
     name: "Frodo & Sam"
+    required: true
   - key: "galadriel"
     name: "Galadriel"
   - key: "gandalf"

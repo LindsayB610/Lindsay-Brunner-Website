@@ -476,7 +476,7 @@ The `/fate-of-the-fellowship/` page tracks Lord of the Rings: Fate of the Fellow
 - Hero metadata lives in `data/fate-of-the-fellowship/heroes.yaml`
 - Objective metadata lives in `data/fate-of-the-fellowship/objectives.yaml`
 - Each played session gets its own file in `data/fate-of-the-fellowship/sessions/`
-- The tracker page automatically reads those files and updates wins, losses, player counts, hero usage, objective attempts, and objective successes
+- The tracker page automatically reads those files and updates journey wins, winningest heroes/objectives, hero usage, objective attempts, and objective successes
 - Optional final-state photos live in `static/images/fate-of-the-fellowship/session-photos/`
 - The logging guide lives at [`docs/fate-of-the-fellowship-tracker.md`](./docs/fate-of-the-fellowship-tracker.md)
 
@@ -489,8 +489,8 @@ The `/fate-of-the-fellowship/` page tracks Lord of the Rings: Fate of the Fellow
 5. Add the session data using this format:
 
 ```yaml
-date: "2026-06-13"
-result: "loss"
+date: "2026-06-12"
+result: "win"
 players: 3
 heroes:
   - "Frodo & Sam"
@@ -498,9 +498,11 @@ heroes:
 objectives:
   - "Destroy the One Ring"
   - "Challenge Sauron"
-# final_state_image: "/images/fate-of-the-fellowship/session-photos/2026-06-13-loss.jpg"
+# final_state_image: "/images/fate-of-the-fellowship/session-photos/2026-06-12-win.jpg"
 note: "Short recap of what happened."
 ```
+
+For losses, also add `completed_objectives` and `incomplete_objectives`, and account for every objective assigned in `objectives` exactly once across those two lists.
 
 **GitHub shortcut:**
 
