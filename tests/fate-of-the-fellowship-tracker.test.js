@@ -24,20 +24,6 @@ const heroesPath = path.join(root, 'data', 'fate-of-the-fellowship', 'heroes.yam
 const objectivesPath = path.join(root, 'data', 'fate-of-the-fellowship', 'objectives.yaml');
 const sessionsDir = path.join(root, 'data', 'fate-of-the-fellowship', 'sessions');
 const sessionPhotosDir = path.join(root, 'static', 'images', 'fate-of-the-fellowship', 'session-photos');
-const sectionBorderPath = path.join(root, 'static', 'images', 'fate-of-the-fellowship', 'scrollwork-section-border.svg');
-const cardBorderPath = path.join(root, 'static', 'images', 'fate-of-the-fellowship', 'scrollwork-card-border.svg');
-const titleDividerPath = path.join(root, 'static', 'images', 'fate-of-the-fellowship', 'scrollwork-title-divider.svg');
-const kenneyAssetsDir = path.join(root, 'static', 'images', 'fate-of-the-fellowship', 'kenney');
-const kenneyNoticePath = path.join(kenneyAssetsDir, 'KENNEY-FANTASY-UI-BORDERS-NOTICE.txt');
-const kenneyRequiredAssetPaths = [
-  'frame-hero-gold.png',
-  'frame-section-gold.png',
-  'frame-card-gold.png',
-  'panel-hero-parchment.png',
-  'panel-card-parchment.png',
-  'divider-green.png',
-  'divider-gold.png',
-].map((file) => path.join(kenneyAssetsDir, file));
 const docsPath = path.join(root, 'docs', 'fate-of-the-fellowship-tracker.md');
 const planPath = path.join(root, 'docs', 'fate-of-the-fellowship-tracker-plan.md');
 const readmePath = path.join(root, 'README.md');
@@ -479,11 +465,6 @@ async function main() {
     objectivesPath,
     sessionsDir,
     sessionPhotosDir,
-    sectionBorderPath,
-    cardBorderPath,
-    titleDividerPath,
-    kenneyNoticePath,
-    ...kenneyRequiredAssetPaths,
     docsPath,
     planPath,
     customCssPath,
@@ -717,20 +698,19 @@ async function main() {
 
     [
       '<h1>Fate of the Fellowship</h1>',
-      'fate-kenney-hero',
-      'fate-hero-panel',
-      'The innkeeper\'s record of',
-      'divider-gold.png',
-      'divider-green.png',
+      'fate-rulebook-hero',
+      'fate-hero-plate',
+      'A field record for',
+      'fate-script-band',
       'Heroes called',
       'Quests assigned',
       'Tales worth keeping',
-      'Enter the ledger',
-      'Overview',
+      'Read the record',
+      'The road so far',
       'Fellowship record',
       'Quest record',
       'Session log',
-      'Add a tale to the ledger',
+      'Add a tale to the record',
       'Empty boasts can wait outside with the ponies.',
       'fewer second breakfasts',
       'Destroy the One Ring',
@@ -781,6 +761,7 @@ async function main() {
       ].forEach((snippet) => {
         assert(emptyRendered.includes(snippet) || emptyText.includes(snippet), `Rendered empty Fate page is missing expected text: ${snippet}`, errors);
       });
+      assert(!emptyRendered.includes('fate-session-separator'), 'Rendered empty Fate page should not include session separators', errors);
 
       [
         'Legolas 0 journeys',
@@ -860,9 +841,12 @@ async function main() {
         'data-fate-lightbox-src',
         'fate-photo-dialog',
         'fate-photo-dialog-image',
+        'fate-session-separator',
       ].forEach((snippet) => {
         assert(populated.includes(snippet), `Rendered populated Fate page is missing expected image markup: ${snippet}`, errors);
       });
+      const separatorCount = (populated.match(/fate-session-separator/g) || []).length;
+      assert(separatorCount === 2, `Rendered populated Fate page should include separators between three sessions, found ${separatorCount}`, errors);
 
       const newestIndex = populatedText.indexOf('June 12, 2026');
       const middleIndex = populatedText.indexOf('June 1, 2026');
@@ -917,17 +901,18 @@ async function main() {
       'body.page-fate-of-the-fellowship .fate-page',
       'body.page-fate-of-the-fellowship .fate-ledger',
       'body.page-fate-of-the-fellowship .fate-section',
-      'body.page-fate-of-the-fellowship .fate-kenney-hero',
-      'body.page-fate-of-the-fellowship .fate-hero-panel',
-      'body.page-fate-of-the-fellowship .fate-kenney-divider',
+      'body.page-fate-of-the-fellowship .fate-rulebook-hero',
+      'body.page-fate-of-the-fellowship .fate-hero-plate',
+      'body.page-fate-of-the-fellowship .fate-script-band',
       'body.page-fate-of-the-fellowship .fate-enter-link',
-      'body.page-fate-of-the-fellowship .fate-title-divider',
       'body.page-fate-of-the-fellowship .fate-briefing-grid',
       'body.page-fate-of-the-fellowship .fate-briefing-card',
+      'body.page-fate-of-the-fellowship .fate-callout-box',
       'body.page-fate-of-the-fellowship .fate-overview-grid',
       'body.page-fate-of-the-fellowship .fate-card-list',
       'body.page-fate-of-the-fellowship .fate-quest-list',
       'body.page-fate-of-the-fellowship .fate-log-list',
+      'body.page-fate-of-the-fellowship .fate-session-separator',
       'body.page-fate-of-the-fellowship .fate-quest-card',
       'body.page-fate-of-the-fellowship .fate-result-seal',
       'body.page-fate-of-the-fellowship .fate-log-photo',
@@ -939,37 +924,37 @@ async function main() {
       'display: none',
       '@media (max-width: 768px)',
       '@media (max-width: 520px)',
-      'parchment',
+      'rulebook redesign',
       'quest',
-      'wax',
-      'brass',
-      '--fate-olive: #77745f',
-      '--fate-ochre: #bd9854',
-      '--fate-blush: #dfc1ad',
-      '--fate-rust: #a85f2c',
-      'Fate parchment and scrollwork pass: no decorative background images.',
-      'Fate SVG scrollwork borders',
-      'Fate Kenney fantasy UI asset pass',
-      '/images/fate-of-the-fellowship/scrollwork-section-border.svg',
-      '/images/fate-of-the-fellowship/scrollwork-card-border.svg',
-      '/images/fate-of-the-fellowship/kenney/frame-hero-gold.png',
-      '/images/fate-of-the-fellowship/kenney/frame-section-gold.png',
-      '/images/fate-of-the-fellowship/kenney/frame-card-gold.png',
-      '/images/fate-of-the-fellowship/kenney/divider-green.png',
-      'image-rendering: pixelated',
-      'border-image-source',
-      '--fate-leaf: #5f7645',
-      '--fate-gold: #c69a3e',
-      'background-image: none',
+      'parchment',
+      '--fate-green: #26351f',
+      '--fate-paper: #efe0b7',
+      '--fate-gold: #c79a45',
+      '--fate-rust: #8e2f24',
       'body.page-fate-of-the-fellowship .fate-ledger::before',
-      'Uncial Antiqua',
       'Cinzel Decorative',
       'IM Fell English',
-      'background-image: none',
-      '-webkit-text-fill-color: #2b1b0d',
-      'body.page-fate-of-the-fellowship .site-header::after',
+      'Noto Sans Runic',
+      'background: linear-gradient(180deg, #5b6f3f, #26351f) !important;',
+      'background: none',
+      '-webkit-text-fill-color: var(--fate-green)',
+      'body.page-fate-of-the-fellowship .fate-section-heading h2',
+      'text-transform: uppercase',
     ].forEach((snippet) => {
       assert(customCss.includes(snippet), `Fate visual CSS is missing expected scoped hook: ${snippet}`, errors);
+    });
+
+    [
+      'rulebook-border-rail.svg',
+      'rulebook-section-divider.svg',
+      'rulebook-side-ornament.svg',
+      'rulebook-map-inset.svg',
+      'rulebook-token-icons.svg',
+      'fate-border-rail',
+      'fate-section-divider',
+      'fate-map-inset',
+    ].forEach((snippet) => {
+      assert(!customCss.includes(snippet), `Fate visual CSS should not reference removed overlapping decoration: ${snippet}`, errors);
     });
 
     const fateSelectorMatches = customCss.match(/(^|\n)([^\n{}]*\.fate-[^\n{}]*)\{/g) || [];
@@ -992,31 +977,26 @@ async function main() {
 
     const { chromium } = await import('playwright');
     const renderedPage = fs.readFileSync(renderedPagePath, 'utf8');
-    const sectionBorder = fs.readFileSync(sectionBorderPath, 'utf8');
-    const cardBorder = fs.readFileSync(cardBorderPath, 'utf8');
-    const titleDivider = fs.readFileSync(titleDividerPath, 'utf8');
-    const kenneyNotice = fs.readFileSync(kenneyNoticePath, 'utf8');
-    ['.leaf', '.flower', '.gold', '.vine', '#3e5a31'].forEach((snippet) => {
-      assert(sectionBorder.includes(snippet), `Fate section scrollwork border should include ornament layer: ${snippet}`, errors);
-    });
-    ['.leaf', '.dot', '.vine', '#3e5a31'].forEach((snippet) => {
-      assert(cardBorder.includes(snippet), `Fate card scrollwork border should include ornament layer: ${snippet}`, errors);
-    });
-    ['.vine', '.leaf', '#26351f', '#5f7645'].forEach((snippet) => {
-      assert(titleDivider.includes(snippet), `Fate title divider should include green vine ornament: ${snippet}`, errors);
-    });
-    ['Kenney Fantasy UI Borders', 'https://kenney.nl/assets/fantasy-ui-borders', 'Creative Commons CC0'].forEach((snippet) => {
-      assert(kenneyNotice.includes(snippet), `Fate Kenney asset notice should include provenance: ${snippet}`, errors);
-    });
-    kenneyRequiredAssetPaths.forEach((assetPath) => {
-      assert(fs.existsSync(assetPath), `Fate Kenney asset is missing: ${assetPath}`, errors);
-    });
     assert(
-      renderedPage.includes('fonts.googleapis.com/css2?family=Cinzel+Decorative') &&
-        renderedPage.includes('family=Uncial+Antiqua'),
-      'Fate rendered page should load the page-specific Tolkien-inspired font families',
+      renderedPage.includes('fonts.googleapis.com/css2?family=Cinzel') &&
+        renderedPage.includes('family=Cinzel+Decorative') &&
+        renderedPage.includes('family=IM+Fell+English') &&
+        renderedPage.includes('family=Noto+Sans+Runic'),
+      'Fate rendered page should load the page-specific rulebook font families',
       errors
     );
+    [
+      'rulebook-border-rail.svg',
+      'rulebook-section-divider.svg',
+      'rulebook-side-ornament.svg',
+      'rulebook-map-inset.svg',
+      'rulebook-token-icons.svg',
+      'fate-border-rail',
+      'fate-section-divider',
+      'fate-map-inset',
+    ].forEach((snippet) => {
+      assert(!renderedPage.includes(snippet), `Fate rendered page should not include removed overlapping decoration: ${snippet}`, errors);
+    });
     const customCss = fs.readFileSync(customCssPath, 'utf8');
     const fixtureImageFileUrl = pathToFileURL(path.join(root, 'static', TEMP_FIXTURE_IMAGE_PATH.replace(/^\//, ''))).href;
     const browserHtml = renderedPage
@@ -1042,7 +1022,6 @@ async function main() {
           const doc = document.documentElement;
           const fatePage = document.querySelector('.fate-page');
           const header = document.querySelector('.fate-ledger-header');
-          const heroPanel = document.querySelector('.fate-hero-panel');
           const topExit = document.querySelector('.fate-ledger-header > .fate-return-link');
           const briefingCopy = document.querySelector('.fate-briefing-card p');
           const styles = fatePage ? getComputedStyle(fatePage) : null;
@@ -1058,17 +1037,13 @@ async function main() {
             h1FontFamily: getComputedStyle(document.querySelector('.fate-ledger h1')).fontFamily,
             h1TextFillColor: getComputedStyle(document.querySelector('.fate-ledger h1')).webkitTextFillColor,
             headerBackgroundImage: getComputedStyle(document.querySelector('.fate-ledger-header')).backgroundImage,
-            kenneyHeroCount: document.querySelectorAll('.fate-kenney-hero').length,
-            heroPanelBorderImageSource: heroPanel ? getComputedStyle(heroPanel).borderImageSource : '',
-            heroPanelImageRendering: heroPanel ? getComputedStyle(heroPanel).imageRendering : '',
-            kenneyDividerCount: document.querySelectorAll('.fate-kenney-divider').length,
+            rulebookHeroCount: document.querySelectorAll('.fate-rulebook-hero').length,
+            heroPlateCount: document.querySelectorAll('.fate-hero-plate').length,
+            scriptBandCount: document.querySelectorAll('.fate-script-band[aria-hidden="true"]').length,
+            calloutCount: document.querySelectorAll('.fate-callout-box').length,
+            separatorCount: document.querySelectorAll('.fate-session-separator').length,
             posterArtCount: document.querySelectorAll('.fate-poster-art').length,
-            sectionBorderImageSource: getComputedStyle(document.querySelector('.fate-section')).borderImageSource,
-            cardBorderImageSource: getComputedStyle(document.querySelector('.fate-briefing-card')).borderImageSource,
             ledgerBeforeDisplay: getComputedStyle(document.querySelector('.fate-ledger'), '::before').display,
-            sectionBeforeDisplay: getComputedStyle(document.querySelector('.fate-section'), '::before').display,
-            ledgerHeaderBeforeDisplay: getComputedStyle(document.querySelector('.fate-ledger-header'), '::before').display,
-            ledgerHeaderAfterDisplay: getComputedStyle(document.querySelector('.fate-ledger-header'), '::after').display,
             headerDisplay: getComputedStyle(document.querySelector('.site-header')).display,
             footerDisplay: getComputedStyle(document.querySelector('.site-footer')).display,
             topExitText: topExit.textContent.trim(),
@@ -1091,18 +1066,14 @@ async function main() {
         assert(visualMetrics.hasFatePage, `Fate ${viewport.label} render should include the page shell`, errors);
         assert(visualMetrics.headerDisplay === 'none', `Fate ${viewport.label} render should hide the shared site header like Nemesis`, errors);
         assert(visualMetrics.footerDisplay === 'none', `Fate ${viewport.label} render should hide the shared site footer like Nemesis`, errors);
-        assert(!visualMetrics.headerBackgroundImage.includes('url('), `Fate ${viewport.label} header should not use decorative background images`, errors);
-        assert(visualMetrics.kenneyHeroCount === 1, `Fate ${viewport.label} hero should use the Kenney fantasy UI hero wrapper`, errors);
+        assert(visualMetrics.headerBackgroundImage.includes('linear-gradient'), `Fate ${viewport.label} header should render parchment texture`, errors);
+        assert(visualMetrics.rulebookHeroCount === 1, `Fate ${viewport.label} hero should use the rulebook hero wrapper`, errors);
+        assert(visualMetrics.heroPlateCount === 1, `Fate ${viewport.label} hero should render the title plate`, errors);
+        assert(visualMetrics.scriptBandCount === 1, `Fate ${viewport.label} hero should render decorative script marked aria-hidden`, errors);
+        assert(visualMetrics.calloutCount >= 2, `Fate ${viewport.label} render should include boxed rule callouts`, errors);
+        assert(visualMetrics.separatorCount >= 2, `Fate ${viewport.label} render should place runic separators between fixture sessions`, errors);
         assert(visualMetrics.posterArtCount === 0, `Fate ${viewport.label} hero should not render the rejected poster art image`, errors);
-        assert(visualMetrics.kenneyDividerCount >= 2, `Fate ${viewport.label} hero should render Kenney divider assets`, errors);
-        assert(visualMetrics.heroPanelBorderImageSource.includes('frame-hero-gold.png'), `Fate ${viewport.label} hero panel should use the Kenney hero frame`, errors);
-        assert(visualMetrics.heroPanelImageRendering === 'pixelated', `Fate ${viewport.label} hero panel should preserve the Kenney pixel-art border style`, errors);
-        assert(visualMetrics.sectionBorderImageSource.includes('frame-section-gold.png'), `Fate ${viewport.label} sections should use the Kenney section frame asset`, errors);
-        assert(visualMetrics.cardBorderImageSource.includes('frame-card-gold.png'), `Fate ${viewport.label} cards should use the Kenney card frame asset`, errors);
-        assert(visualMetrics.ledgerBeforeDisplay === 'none', `Fate ${viewport.label} should not render abstract ledger circle overlays`, errors);
-        assert(visualMetrics.sectionBeforeDisplay === 'none', `Fate ${viewport.label} should not fake scrollwork with section pseudo-corners`, errors);
-        assert(visualMetrics.ledgerHeaderBeforeDisplay === 'none', `Fate ${viewport.label} should not render abstract header ring overlays`, errors);
-        assert(visualMetrics.ledgerHeaderAfterDisplay === 'none', `Fate ${viewport.label} should not render abstract header line overlays`, errors);
+        assert(visualMetrics.ledgerBeforeDisplay === 'none', `Fate ${viewport.label} render should not show vertical ornamental side rails`, errors);
         assert(visualMetrics.topExitText === 'Exit to site', `Fate ${viewport.label} top exit should match the Nemesis exit label`, errors);
         assert(
           visualMetrics.topExitJustifySelf === 'end' || visualMetrics.topExitPosition === 'absolute',
@@ -1134,9 +1105,8 @@ async function main() {
         );
         assert(visualMetrics.h1Background === 'none', `Fate ${viewport.label} h1 should not inherit the site gradient`, errors);
         assert(
-          visualMetrics.h1FontFamily.includes('Uncial Antiqua') ||
-            visualMetrics.h1FontFamily.includes('Cinzel Decorative'),
-          `Fate ${viewport.label} h1 should use the Tolkien-inspired display font stack`,
+          visualMetrics.h1FontFamily.includes('Cinzel Decorative'),
+          `Fate ${viewport.label} h1 should use the rulebook display font stack`,
           errors
         );
         assert(
