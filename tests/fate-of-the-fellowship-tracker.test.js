@@ -1528,6 +1528,8 @@ async function main() {
             requiredQuestCardCount: document.querySelectorAll('.fate-quest-card.is-required').length,
             firstHeroCardText: document.querySelector('.fate-record-card')?.textContent.trim() || '',
             firstQuestCardText: document.querySelector('.fate-quest-card')?.textContent.trim() || '',
+            secondHeroCardText: document.querySelectorAll('.fate-record-card')[1]?.textContent.trim() || '',
+            secondQuestCardText: document.querySelectorAll('.fate-quest-card')[1]?.textContent.trim() || '',
             headerDisplay: getComputedStyle(document.querySelector('.site-header')).display,
             footerDisplay: getComputedStyle(document.querySelector('.site-footer')).display,
             topExitText: topExit.textContent.trim(),
@@ -1608,6 +1610,16 @@ async function main() {
         assert(
           visualMetrics.firstQuestCardText.includes('Destroy the One Ring'),
           `Fate ${viewport.label} render should put required Destroy the One Ring first in the quest record`,
+          errors
+        );
+        assert(
+          visualMetrics.secondHeroCardText.includes('Legolas') && visualMetrics.secondHeroCardText.includes('2 journeys'),
+          `Fate ${viewport.label} render should rank non-required fellowship cards by journey count after the required hero`,
+          errors
+        );
+        assert(
+          visualMetrics.secondQuestCardText.includes('Challenge Sauron') && visualMetrics.secondQuestCardText.includes('2 attempts'),
+          `Fate ${viewport.label} render should rank non-required quest cards by attempt count after the required objective`,
           errors
         );
         if (viewport.label === 'desktop') {

@@ -135,35 +135,49 @@
           <p>Only heroes who have answered the call are named here.</p>
         </div>
         <div class="fate-card-list">
-          {{ $orderedHeroes := slice }}
           {{ range $hero := $heroes }}
-            {{ if $hero.required }}
-              {{ $orderedHeroes = $orderedHeroes | append $hero }}
-            {{ end }}
-          {{ end }}
-          {{ range $hero := $heroes }}
-            {{ if not $hero.required }}
-              {{ $orderedHeroes = $orderedHeroes | append $hero }}
-            {{ end }}
-          {{ end }}
-          {{ range $hero := $orderedHeroes }}
-          {{ $heroStats := newScratch }}
-          {{ $heroStats.Set "journeys" 0 }}
-          {{ $heroStats.Set "wins" 0 }}
-          {{ range $session := $sessions }}
-            {{ if in $session.heroes $hero.name }}
-              {{ $heroStats.Add "journeys" 1 }}
-              {{ if eq $session.result "win" }}
-                {{ $heroStats.Add "wins" 1 }}
+            {{ $heroStats := newScratch }}
+            {{ $heroStats.Set "journeys" 0 }}
+            {{ $heroStats.Set "wins" 0 }}
+            {{ range $session := $sessions }}
+              {{ if in $session.heroes $hero.name }}
+                {{ $heroStats.Add "journeys" 1 }}
+                {{ if eq $session.result "win" }}
+                  {{ $heroStats.Add "wins" 1 }}
+                {{ end }}
               {{ end }}
             {{ end }}
-          {{ end }}
-          {{ if gt ($heroStats.Get "journeys") 0 }}
-          <article class="fate-record-card{{ if $hero.required }} is-required{{ end }}">
+            {{ if and $hero.required (gt ($heroStats.Get "journeys") 0) }}
+          <article class="fate-record-card is-required">
             <h3>{{ range $index, $part := split $hero.name "&" }}{{ if gt $index 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end }}{{ $part }}{{ end }}</h3>
             <p>{{ $heroStats.Get "journeys" }} journey{{ if ne ($heroStats.Get "journeys") 1 }}s{{ end }} {{ $heroStats.Get "wins" }} win{{ if ne ($heroStats.Get "wins") 1 }}s{{ end }}</p>
           </article>
+            {{ end }}
           {{ end }}
+          {{ $heroRows := slice }}
+          {{ range $hero := $heroes }}
+            {{ if not $hero.required }}
+              {{ $heroStats := newScratch }}
+              {{ $heroStats.Set "journeys" 0 }}
+              {{ $heroStats.Set "wins" 0 }}
+              {{ range $session := $sessions }}
+                {{ if in $session.heroes $hero.name }}
+                  {{ $heroStats.Add "journeys" 1 }}
+                  {{ if eq $session.result "win" }}
+                    {{ $heroStats.Add "wins" 1 }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              {{ if gt ($heroStats.Get "journeys") 0 }}
+                {{ $heroRows = $heroRows | append (dict "name" $hero.name "journeys" ($heroStats.Get "journeys") "wins" ($heroStats.Get "wins")) }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ range $row := sort (sort $heroRows "name") "journeys" "desc" }}
+          <article class="fate-record-card">
+            <h3>{{ range $index, $part := split $row.name "&" }}{{ if gt $index 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end }}{{ $part }}{{ end }}</h3>
+            <p>{{ $row.journeys }} journey{{ if ne $row.journeys 1 }}s{{ end }} {{ $row.wins }} win{{ if ne $row.wins 1 }}s{{ end }}</p>
+          </article>
           {{ end }}
         </div>
       </section>
@@ -186,13 +200,38 @@
               {{ end }}
             {{ end }}
           {{ end }}
-          {{ if gt ($objectiveStats.Get "attempts") 0 }}
-          <article class="fate-quest-card{{ if $objective.required }} is-required{{ end }}">
+          {{ if and $objective.required (gt ($objectiveStats.Get "attempts") 0) }}
+          <article class="fate-quest-card is-required">
             <h3>{{ $objective.name }}</h3>
             <p>{{ $objectiveStats.Get "attempts" }} attempt{{ if ne ($objectiveStats.Get "attempts") 1 }}s{{ end }} {{ $objectiveStats.Get "successes" }} success{{ if ne ($objectiveStats.Get "successes") 1 }}es{{ end }}</p>
-            {{ if $objective.required }}<p>Required every journey.</p>{{ end }}
+            <p>Required every journey.</p>
           </article>
           {{ end }}
+          {{ end }}
+          {{ $objectiveRows := slice }}
+          {{ range $objective := $objectives }}
+            {{ if not $objective.required }}
+              {{ $objectiveStats := newScratch }}
+              {{ $objectiveStats.Set "attempts" 0 }}
+              {{ $objectiveStats.Set "successes" 0 }}
+              {{ range $session := $sessions }}
+                {{ if in $session.objectives $objective.name }}
+                  {{ $objectiveStats.Add "attempts" 1 }}
+                  {{ if eq $session.result "win" }}
+                    {{ $objectiveStats.Add "successes" 1 }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              {{ if gt ($objectiveStats.Get "attempts") 0 }}
+                {{ $objectiveRows = $objectiveRows | append (dict "name" $objective.name "attempts" ($objectiveStats.Get "attempts") "successes" ($objectiveStats.Get "successes")) }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ range $row := sort (sort $objectiveRows "name") "attempts" "desc" }}
+          <article class="fate-quest-card">
+            <h3>{{ $row.name }}</h3>
+            <p>{{ $row.attempts }} attempt{{ if ne $row.attempts 1 }}s{{ end }} {{ $row.successes }} success{{ if ne $row.successes 1 }}es{{ end }}</p>
+          </article>
           {{ end }}
         </div>
       </section>
