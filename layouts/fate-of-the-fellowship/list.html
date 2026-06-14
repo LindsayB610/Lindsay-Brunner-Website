@@ -1,0 +1,288 @@
+{{ define "main" }}
+{{ $fateData := index site.Data "fate-of-the-fellowship" }}
+{{ $heroMetadata := index $fateData "heroes" }}
+{{ $objectiveMetadata := index $fateData "objectives" }}
+{{ $sessionData := index $fateData "sessions" }}
+{{ $heroes := $heroMetadata.items }}
+{{ $objectives := $objectiveMetadata.items }}
+{{ $sessions := slice }}
+{{ if $sessionData }}
+  {{ $sessions = sort $sessionData "date" "desc" }}
+{{ end }}
+{{ $totals := newScratch }}
+{{ $totals.Set "wins" 0 }}
+{{ $totals.Set "losses" 0 }}
+{{ range $session := $sessions }}
+  {{ if eq $session.result "win" }}
+    {{ $totals.Add "wins" 1 }}
+  {{ else if eq $session.result "loss" }}
+    {{ $totals.Add "losses" 1 }}
+  {{ end }}
+{{ end }}
+{{ $totalSessions := len $sessions }}
+{{ $winRate := 0 }}
+{{ if gt $totalSessions 0 }}
+  {{ $winRate = div (add (mul ($totals.Get "wins") 100) (div $totalSessions 2)) $totalSessions }}
+{{ end }}
+
+<section class="section fate-page">
+  <div class="container">
+    <div class="fate-ledger">
+      <header class="fate-ledger-header fate-kenney-hero">
+        <a href="/" class="fate-return-link">Exit to site</a>
+        <div class="fate-hero-panel">
+          <img
+            class="fate-kenney-divider"
+            src="/images/fate-of-the-fellowship/kenney/divider-gold.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <p class="fate-hero-pretitle">The innkeeper's record of</p>
+          <h1>Fate of the Fellowship</h1>
+          <p class="fate-hero-tagline">
+            Heroes called <span aria-hidden="true">&bull;</span> Quests assigned <span aria-hidden="true">&bull;</span> Tales worth keeping
+          </p>
+          {{ with .Content }}
+          <div class="fate-intro">{{ . }}</div>
+          {{ end }}
+          <a class="fate-enter-link" href="#fate-overview-heading">Enter the ledger</a>
+          <img
+            class="fate-kenney-divider is-lower"
+            src="/images/fate-of-the-fellowship/kenney/divider-green.png"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </header>
+
+      <section class="fate-section fate-briefing-grid" aria-label="Innkeeper notes">
+        <article class="fate-briefing-card">
+          <span class="fate-briefing-label">House rule</span>
+          <p>Only companions and quests that have actually reached the table earn ink in the ledger. Empty boasts can wait outside with the ponies.</p>
+        </article>
+        <article class="fate-briefing-card">
+          <span class="fate-briefing-label">Inn gossip</span>
+          <p>Victories are toasted. Defeats are also toasted, but with a sterner look toward Mordor and fewer second breakfasts.</p>
+        </article>
+      </section>
+
+      <section class="fate-section fate-overview-section" aria-labelledby="fate-overview-heading">
+        <div class="fate-section-heading">
+          <h2 id="fate-overview-heading">Overview</h2>
+          <p>The road so far, as remembered by witnesses with mugs in hand.</p>
+        </div>
+        <div class="fate-overview-grid">
+          <article class="fate-overview-card">
+            <span class="fate-overview-label">Journeys logged</span>
+            <strong>{{ $totalSessions }}</strong>
+          </article>
+          <article class="fate-overview-card">
+            <span class="fate-overview-label">Victories</span>
+            <strong>{{ $totals.Get "wins" }}</strong>
+          </article>
+          <article class="fate-overview-card">
+            <span class="fate-overview-label">Defeats</span>
+            <strong>{{ $totals.Get "losses" }}</strong>
+          </article>
+          <article class="fate-overview-card">
+            <span class="fate-overview-label">Win rate</span>
+            <strong>{{ $winRate }}%</strong>
+          </article>
+        </div>
+        <div class="fate-player-split">
+          {{ range $players := seq 1 5 }}
+          {{ $playerStats := newScratch }}
+          {{ $playerStats.Set "count" 0 }}
+          {{ range $session := $sessions }}
+            {{ if eq (int $session.players) $players }}
+              {{ $playerStats.Add "count" 1 }}
+            {{ end }}
+          {{ end }}
+          <span class="fate-player-count">{{ $players }} player{{ if ne $players 1 }}s{{ end }} {{ $playerStats.Get "count" }} journey{{ if ne ($playerStats.Get "count") 1 }}s{{ end }}</span>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="fate-section fate-fellowship-section" aria-labelledby="fate-fellowship-heading">
+        <div class="fate-section-heading">
+          <h2 id="fate-fellowship-heading">Fellowship record</h2>
+          <p>Only heroes who have answered the call are named here.</p>
+        </div>
+        <div class="fate-card-list">
+          {{ range $hero := $heroes }}
+          {{ $heroStats := newScratch }}
+          {{ $heroStats.Set "count" 0 }}
+          {{ range $session := $sessions }}
+            {{ if in $session.heroes $hero.name }}
+              {{ $heroStats.Add "count" 1 }}
+            {{ end }}
+          {{ end }}
+          {{ if gt ($heroStats.Get "count") 0 }}
+          <article class="fate-record-card">
+            <h3>{{ range $index, $part := split $hero.name "&" }}{{ if gt $index 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end }}{{ $part }}{{ end }}</h3>
+            <p>{{ $heroStats.Get "count" }} journey{{ if ne ($heroStats.Get "count") 1 }}s{{ end }}</p>
+          </article>
+          {{ end }}
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="fate-section fate-quest-section" aria-labelledby="fate-quest-heading">
+        <div class="fate-section-heading">
+          <h2 id="fate-quest-heading">Quest record</h2>
+          <p>Errands, oaths, and wildly unreasonable requests already placed before the company.</p>
+        </div>
+        <div class="fate-quest-list">
+          {{ range $objective := $objectives }}
+          {{ $objectiveStats := newScratch }}
+          {{ $objectiveStats.Set "attempts" 0 }}
+          {{ $objectiveStats.Set "successes" 0 }}
+          {{ range $session := $sessions }}
+            {{ if in $session.objectives $objective.name }}
+              {{ $objectiveStats.Add "attempts" 1 }}
+              {{ if eq $session.result "win" }}
+                {{ $objectiveStats.Add "successes" 1 }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ if gt ($objectiveStats.Get "attempts") 0 }}
+          <article class="fate-quest-card{{ if $objective.required }} is-required{{ end }}">
+            <h3>{{ $objective.name }}</h3>
+            <p>{{ $objectiveStats.Get "attempts" }} attempt{{ if ne ($objectiveStats.Get "attempts") 1 }}s{{ end }} {{ $objectiveStats.Get "successes" }} success{{ if ne ($objectiveStats.Get "successes") 1 }}es{{ end }}</p>
+            {{ if $objective.required }}<p>Required every journey.</p>{{ end }}
+          </article>
+          {{ end }}
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="fate-section fate-log-section" aria-labelledby="fate-log-heading">
+        <div class="fate-section-heading">
+          <h2 id="fate-log-heading">Session log</h2>
+          <p>Newest tales first, because fresh peril makes better tavern talk.</p>
+        </div>
+        <div class="fate-log-list">
+          {{ if gt (len $sessions) 0 }}
+          {{ range $session := $sessions }}
+          <article class="fate-log-card">
+            <div class="fate-log-topline">
+              <span class="fate-result-seal is-{{ $session.result }}">{{ title $session.result }}</span>
+              <time datetime="{{ $session.date }}">{{ $session.date | time.Format "January 2, 2006" }}</time>
+            </div>
+            <p>{{ $session.players }} player{{ if ne $session.players 1 }}s{{ end }}</p>
+            <p>
+              {{- range $heroIndex, $heroName := $session.heroes -}}
+                {{- if gt $heroIndex 0 }}, {{ end -}}
+                {{- range $partIndex, $part := split $heroName "&" -}}{{- if gt $partIndex 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end -}}{{- $part -}}{{- end -}}
+              {{- end -}}
+            </p>
+            <p>
+              {{- range $objectiveIndex, $objectiveName := $session.objectives -}}
+                {{- if gt $objectiveIndex 0 }}, {{ end -}}
+                {{- range $partIndex, $part := split $objectiveName "&" -}}{{- if gt $partIndex 0 }}<span class="fate-amp" role="img" aria-label="and"></span>{{ end -}}{{- $part -}}{{- end -}}
+              {{- end -}}
+            </p>
+            <p>{{ $session.note }}</p>
+            {{ with $session.final_state_image }}
+              <figure class="fate-log-photo">
+                <button
+                  type="button"
+                  class="fate-log-photo-trigger"
+                  data-fate-lightbox-src="{{ . }}"
+                  data-fate-lightbox-alt="Final board state for Fate of the Fellowship on {{ $session.date }}"
+                  aria-label="Open final board state photo for Fate of the Fellowship on {{ $session.date }}"
+                >
+                  <img
+                    src="{{ . }}"
+                    alt="Final board state for Fate of the Fellowship on {{ $session.date }}"
+                    loading="lazy"
+                  />
+                </button>
+              </figure>
+            {{ end }}
+          </article>
+          {{ end }}
+          {{ else }}
+          <article class="fate-log-card fate-empty-log">
+            <h3>No tales entered yet</h3>
+            <p>The ledger is waiting for its first journey from Bag End to the fire.</p>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="fate-section fate-actions-section" aria-labelledby="fate-actions-heading">
+        <div class="fate-section-heading">
+          <h2 id="fate-actions-heading">Add a tale to the ledger</h2>
+          <p>New sessions live as YAML entries in Git.</p>
+        </div>
+        <div class="fate-actions">
+          <a
+            class="fate-action-button"
+            href="https://github.com/LindsayB610/Lindsay-Brunner-Website/new/main/data/fate-of-the-fellowship/sessions?filename=REPLACE-ME-YYYY-MM-DD-result.yaml&amp;value=date%3A%20%22REPLACE-ME-YYYY-MM-DD%22%0Aresult%3A%20%22REPLACE-ME-win-or-loss%22%0Aplayers%3A%20REPLACE-ME-1-to-5%0Aheroes%3A%0A%20%20-%20%22Frodo%20%26%20Sam%22%0Aobjectives%3A%0A%20%20-%20%22Destroy%20the%20One%20Ring%22%0A%23%20final_state_image%3A%20%22%2Fimages%2Ffate-of-the-fellowship%2Fsession-photos%2FREPLACE-ME.jpg%22%0Anote%3A%20%22REPLACE-ME%3A%20Short%20recap%20of%20what%20happened.%22%0A"
+            target="_blank"
+            rel="noopener"
+          >New prefilled session</a>
+          <a
+            class="fate-action-button is-secondary"
+            href="https://github.com/LindsayB610/Lindsay-Brunner-Website/blob/main/docs/fate-of-the-fellowship-tracker.md"
+            target="_blank"
+            rel="noopener"
+          >View logging guide</a>
+        </div>
+      </section>
+      <div class="fate-bottom-exit">
+        <a href="/" class="fate-return-link">Exit to site</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog class="fate-photo-dialog" aria-label="Final board state photo">
+  <div class="fate-photo-dialog-frame">
+    <button type="button" class="fate-photo-dialog-close" aria-label="Close photo">Close</button>
+    <img class="fate-photo-dialog-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    const placeholderImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+    const dialog = document.querySelector(".fate-photo-dialog");
+    const dialogImage = document.querySelector(".fate-photo-dialog-image");
+    const closeButton = document.querySelector(".fate-photo-dialog-close");
+    const triggers = document.querySelectorAll("[data-fate-lightbox-src]");
+
+    if (!dialog || !dialogImage || !closeButton || triggers.length === 0) {
+      return;
+    }
+
+    const closeDialog = () => {
+      dialog.close();
+      dialogImage.src = placeholderImageSrc;
+      dialogImage.alt = "";
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        dialogImage.src = trigger.dataset.fateLightboxSrc;
+        dialogImage.alt = trigger.dataset.fateLightboxAlt || "";
+        dialog.showModal();
+      });
+    });
+
+    closeButton.addEventListener("click", closeDialog);
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        closeDialog();
+      }
+    });
+
+    dialog.addEventListener("close", () => {
+      dialogImage.src = placeholderImageSrc;
+      dialogImage.alt = "";
+    });
+  })();
+</script>
+{{ end }}

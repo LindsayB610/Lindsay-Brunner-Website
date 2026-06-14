@@ -1,53 +1,262 @@
-# Fate of the Fellowship Tracker Implementation Plan
+# Fate of the Fellowship Tracker TDD Plan
 
 Build `/fate-of-the-fellowship/` as a sibling to `/nemesis/`: same website repo, same YAML-driven publishing model, same test discipline, but with a warm inn-ledger or Shire noticeboard visual identity.
 
-## Phase 1: Data model
+## TDD rule
 
-Create the core content and data files:
+Each implementation phase should start with the narrowest failing test that describes the next behavior or contract. Implementation follows only far enough to turn that test green, then cleanup/refactor stays within that phase's scope.
+
+When a phase depends on missing physical card text, encode the pending boundary explicitly instead of inventing values. Tests should enforce that pending state until the real card text is available.
+
+Do not push tracker work until the active phase is green and reviewed locally.
+
+## Current status
+
+Phases 1 through 7 are complete locally. Phase 8 final verification is still pending, and the page is intentionally hidden from public header/footer navigation while the visual direction is being reworked.
+
+Completed local contracts:
+
+- `content/fate-of-the-fellowship/_index.md` exists and publishes through a custom tracker layout
+- `data/fate-of-the-fellowship/heroes.yaml` contains the locked hero names and stable keys
+- `data/fate-of-the-fellowship/objectives.yaml` contains the locked objective names, stable keys, and marks `Destroy the One Ring` as required
+- `data/fate-of-the-fellowship/sessions/.gitkeep` exists and the current placeholder session YAML validates against the live session contract
+- `docs/fate-of-the-fellowship-tracker.md` documents the data shape and uses a valid sample session
+- `layouts/fate-of-the-fellowship/list.html` renders the first tracker shell, empty-state session log, populated session log, card-value lists, and add-entry actions
+- `layouts/fate-of-the-fellowship/list.html` renders totals, win/loss counts, win rate, player split, hero usage, objective attempts/successes, and reverse chronological session cards when sessions exist
+- `layouts/fate-of-the-fellowship/list.html` renders optional final board-state photos with thumbnail buttons and a lightbox dialog
+- `static/images/fate-of-the-fellowship/session-photos/.gitkeep` tracks the future Fate photo directory
+- `static/css/custom.css` includes a scoped visual treatment for the Fate page with parchment panels, quest slips, result seals, pinned-photo treatment, responsive grids, and a work-in-progress hero that needs design rework
+- `tests/fate-of-the-fellowship-tracker.test.js` enforces the scaffold, locked card values, required Ring objective, valid docs sample, real session YAML validation, rendered tracker shell, empty-state rendering, populated aggregate rendering with temporary fixture sessions, image path/dimension/file-size/format validation with a temporary fixture image, rendered thumbnail/lightbox markup, scoped visual CSS hooks, desktop/mobile browser render checks, mobile overflow checks, and this TDD plan contract
+- `npm run test:fate` is wired into `npm test`
+- `layouts/partials/header.html` and `layouts/partials/footer.html` intentionally do not expose the tracker yet; reserve `LOTR: FotF` for the More dropdown when the page is ready to launch
+- `README.md` documents the tracker, logging guide, and `npm run test:fate`
+- `docs/fate-of-the-fellowship-tracker.md` links back to this implementation plan
+
+The content page moved out of draft in Phase 3 only after the custom layout existed, so the default Hugo list template never published a placeholder page.
+
+## Phase 1: Scaffold contract
+
+### Red
+
+Add or update `tests/fate-of-the-fellowship-tracker.test.js` so it fails unless the Phase 1 scaffold exists:
+
+- content file exists
+- front matter title is `Fate of the Fellowship`
+- front matter description frames the page as an inn ledger
+- front matter has `draft: true`
+- hero metadata exists as an object with an empty `items` array
+- objective metadata exists as an object with an empty `items` array
+- sessions directory exists, is tracked, and contains no sample YAML
+- logging guide includes the planned session keys
+- plan doc includes the TDD rule, `LOTR: FotF`, and `Fate of the Fellowship`
+
+### Green
+
+Create only the files needed to satisfy that scaffold:
 
 - `content/fate-of-the-fellowship/_index.md`
 - `data/fate-of-the-fellowship/heroes.yaml`
 - `data/fate-of-the-fellowship/objectives.yaml`
-- `data/fate-of-the-fellowship/sessions/`
+- `data/fate-of-the-fellowship/sessions/.gitkeep`
 - `docs/fate-of-the-fellowship-tracker.md`
+- `tests/fate-of-the-fellowship-tracker.test.js`
 
-Use one YAML file per session.
+Wire the test:
 
-```yaml
-date: "2026-06-12"
-result: "win"
-players: 3
-heroes:
-  - "Frodo"
-  - "Sam"
-objectives:
-  - "Blessing of the Elves"
-  - "Destroy the One Ring"
-final_state_image: "/images/fate-of-the-fellowship/session-photos/example.jpg"
-note: "Short recap."
+```json
+"test:fate": "node tests/fate-of-the-fellowship-tracker.test.js"
 ```
 
-Once the physical card text is available, hard-code strict allowed values for `heroes` and `objectives`.
+### Refactor
 
-## Phase 2: Page structure
+Keep names and paths stable. Do not add a layout, nav link, real session, image optimizer, or hard-coded card text in this phase.
 
-Create `layouts/fate-of-the-fellowship/list.html`.
+### Done
+
+Run:
+
+```bash
+npm run test:fate
+npm run build
+npm run test:content
+npm test
+```
+
+Also verify `public/fate-of-the-fellowship/index.html` is not generated while the page is still draft-only.
+
+## Phase 2: Card text and strict data validation
+
+### Red
+
+After the physical card names are transcribed, extend `tests/fate-of-the-fellowship-tracker.test.js` so it fails unless:
+
+- every hero metadata item has a stable lowercase hyphenated `key`
+- every hero metadata item has a non-empty exact printed `name`
+- every objective metadata item has a stable lowercase hyphenated `key`
+- every objective metadata item has a non-empty exact printed `name`
+- duplicate hero keys or names fail
+- duplicate objective keys or names fail
+- session `heroes` values must match known hero names
+- session `objectives` values must match known objective names
+- `result` is only `win` or `loss`
+- `players` is only `1`, `2`, `3`, `4`, or `5`
+- `date` uses `YYYY-MM-DD`
+- filename matches `YYYY-MM-DD-result.yaml`
+- no sample sessions are required unless real play data exists
+
+### Green
+
+Populate:
+
+- `data/fate-of-the-fellowship/heroes.yaml`
+- `data/fate-of-the-fellowship/objectives.yaml`
+
+Update `docs/fate-of-the-fellowship-tracker.md` with the exact allowed values.
+
+### Refactor
+
+Keep validation helpers small and specific. If the Fate test starts duplicating a lot of Nemesis test code, extract only the minimum shared helper after both tests are green.
+
+### Done
+
+Run:
+
+```bash
+npm run test:fate
+npm test
+```
+
+## Phase 3: First rendered tracker layout
+
+### Red
+
+Extend `tests/fate-of-the-fellowship-tracker.test.js` so it fails unless the built page:
+
+- renders `/fate-of-the-fellowship/`
+- uses H1 `Fate of the Fellowship`
+- does not show the default Hugo `Coming Soon` section markup
+- shows an empty-state session log when no sessions exist
+- includes page-specific tracker shell classes
+- includes sections for overview, fellowship record, quest record, session log, and add-entry actions
+
+### Green
+
+Create `layouts/fate-of-the-fellowship/list.html` and move the content page out of draft only when the custom layout satisfies the rendered-page tests.
 
 Planned sections:
 
-- Hero or intro: `Fate of the Fellowship Ledger`
-- Overview cards: journeys logged, victories, defeats, win rate
-- Fellowship record: hero usage totals
-- Quest record: objective usage and success counts
-- Session log: reverse chronological entries
-- Action area: `Add a tale to the ledger`, with a GitHub prefilled YAML link and logging guide
+- overview cards: journeys logged, victories, defeats, win rate
+- fellowship record: hero usage totals
+- quest record: objective usage and success counts
+- session log: reverse chronological entries
+- action area: `Add a tale to the ledger`, with a GitHub prefilled YAML link and logging guide
 
-Reuse the Nemesis implementation pattern for aggregation, session sorting, optional photos, note display, and lightbox behavior where it fits.
+### Refactor
 
-## Phase 3: Visual design
+Reuse Nemesis concepts where they reduce risk: session sorting, optional photos, note display, and lightbox shape. Do not copy Nemesis terminal language or markup wholesale.
 
-Add a dedicated CSS block in `static/css/custom.css`, scoped to `body.page-fate-of-the-fellowship`.
+### Done
+
+Run:
+
+```bash
+npm run build
+npm run test:fate
+npm test
+```
+
+## Phase 4: Aggregate behavior
+
+### Red
+
+Add fixture or real session data and make tests fail unless rendered output includes:
+
+- total journeys
+- victories
+- defeats
+- win rate
+- player-count split
+- hero usage totals
+- objective usage totals
+- objective success counts where relevant
+- reverse chronological session ordering
+- each session's date, result, players, heroes, objectives, and note
+
+### Green
+
+Implement only the aggregation and rendering needed for those assertions.
+
+### Refactor
+
+Keep the Hugo template readable. If a scratch-map block becomes hard to follow, extract small partials after tests pass.
+
+### Done
+
+Run:
+
+```bash
+npm run build
+npm run test:fate
+npm test
+```
+
+## Phase 5: Images and lightbox
+
+### Red
+
+Extend tests so image behavior fails unless:
+
+- optional `final_state_image` paths start with `/`
+- referenced images exist
+- referenced images meet the selected size and file-size contract
+- rendered sessions with images include a thumbnail button
+- rendered thumbnails include a lightbox source attribute
+- the dialog markup exists
+
+### Green
+
+Create:
+
+- `static/images/fate-of-the-fellowship/session-photos/`
+- optional `scripts/optimize-fate-photos.js`
+
+Default image contract:
+
+- `2400x1350`
+- progressive JPEG
+- maximum file size enforced by tests
+
+### Refactor
+
+Only generalize the Nemesis photo optimizer if both games can share it without obscuring the per-game directories and error messages.
+
+### Done
+
+Run:
+
+```bash
+npm run build
+npm run test:fate
+npm test
+```
+
+Then browser-check one image lightbox manually.
+
+## Phase 6: Visual design
+
+### Red
+
+Add static CSS and browser assertions that fail unless:
+
+- styles are scoped under `body.page-fate-of-the-fellowship`
+- layout has responsive breakpoints for the tracker grids
+- key visual hooks exist for parchment panels, quest tags, result seals, and photo thumbnails
+- desktop and mobile screenshots are nonblank
+- mobile has no horizontal overflow
+
+### Green
+
+Add the dedicated CSS block in `static/css/custom.css`.
 
 Design direction:
 
@@ -61,76 +270,79 @@ Design direction:
 
 Do not visually copy the Nemesis terminal. Reuse the machinery, not the sci-fi surface.
 
-## Phase 4: Images
+### Refactor
 
-Create:
+Trim decorative CSS if it harms legibility, mobile layout, or test stability.
 
-- `static/images/fate-of-the-fellowship/session-photos/`
-- optional optimizer script: `scripts/optimize-fate-photos.js`
+### Done
 
-Default image contract:
+Run:
 
-- `2400x1350`
-- progressive JPEG
-- maximum file size enforced by tests
-
-Keep the same lightbox interaction pattern as Nemesis, but restyle the dialog and thumbnails for the inn-ledger page.
-
-## Phase 5: Tests
-
-Create `tests/fate-of-the-fellowship-tracker.test.js`.
-
-Validate:
-
-- hero metadata exists and parses
-- objective metadata exists and parses
-- session files parse
-- filename matches session date and result
-- `result` is `win` or `loss`
-- `players` is `1-5`
-- every listed hero is known
-- every listed objective is known
-- required fields exist
-- image paths exist when provided
-- referenced images meet the size contract
-- rendered page includes aggregate counts
-- rendered page includes hero, objective, and session data
-- GitHub prefilled logging link contains required placeholders
-
-Add an npm script:
-
-```json
-"test:fate": "node tests/fate-of-the-fellowship-tracker.test.js"
+```bash
+npm run build
+npm run test:fate
+npm run test:mobile
+npm test
 ```
 
-Wire `test:fate` into `npm test` once the first stable page and sample data exist.
+Browser-check desktop and mobile.
 
-## Phase 6: Navigation and docs
+## Phase 7: Navigation and docs integration
 
-Add page links where appropriate:
+### Red
+
+Extend existing nav/footer/content tests so they fail unless:
+
+- the More dropdown and footer do not expose `/fate-of-the-fellowship/` before launch
+- the reserved launch label is documented as `LOTR: FotF`
+- README mentions the tracker and logging guide
+- `docs/fate-of-the-fellowship-tracker.md` links back to the implementation plan
+
+### Green
+
+Keep public page links withheld until launch, and document the tracker where appropriate:
 
 - `layouts/partials/header.html`
 - `layouts/partials/footer.html`
 - `README.md`
 - `docs/fate-of-the-fellowship-tracker.md`
 
-Use a short nav label. Candidates:
+Use this short nav label:
 
-- `Fellowship`
-- `Fate`
-- `Fate Ledger`
+`LOTR: FotF`
 
-Likely URL:
+URL:
 
 `/fate-of-the-fellowship/`
 
-Likely H1:
+H1:
 
-`Fate of the Fellowship Ledger`
+`Fate of the Fellowship`
 
-## Phase 7: Build and verify
+### Refactor
+
+Keep dropdown ordering compatible with the existing alphabetical navigation test, or update the test if the desired order is intentionally different.
+
+### Done
 
 Run:
+
+```bash
+npm run build
+npm run test:content
+npm run test:fate
+npm test
+```
+
+## Phase 8: Final verification
+
+### Red
+
+No new implementation should start here. This phase exists to catch integration issues before publish.
+
+### Green
+
+Run the full local verification:
 
 ```bash
 npm run build
@@ -145,14 +357,16 @@ Browser-check:
 - no horizontal overflow
 - long hero names wrap cleanly
 - long objective names wrap cleanly
+- empty-state rendering
+- populated-state rendering if real sessions exist
 - session photo lightbox opens and closes
-- empty-state rendering if no sessions exist
+
+### Done
+
+Only after the active phase and final verification are green should the work be committed. Do not push until the user explicitly asks.
 
 ## Open decisions
 
-- Exact hero names from the physical cards
-- Exact objective names from the physical cards
 - Whether the introductory/default objective set should be marked in metadata
 - Whether objectives have categories, difficulty markers, or setup labels worth tracking
-- Final nav label
 - Whether to keep the same `2400x1350` session image contract as Nemesis or choose a different crop for the tavern-ledger design

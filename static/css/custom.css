@@ -2578,3 +2578,1894 @@ body.page-nemesis .social-link:focus-visible {
     margin-bottom: var(--space-xl) !important;
   }
 }
+
+body.page-fate-of-the-fellowship {
+  --fate-ink: #23180f;
+  --fate-ink-soft: #4b3524;
+  --fate-parchment: #e4d3aa;
+  --fate-parchment-deep: #c8a96f;
+  --fate-brass: #c9973d;
+  --fate-forest: #263c26;
+  --fate-forest-dark: #122316;
+  --fate-oxblood: #7c2725;
+  --fate-wax: #a7352d;
+  --fate-charcoal: #15100b;
+  --fate-shadow: rgba(10, 6, 3, 0.58);
+  background:
+    radial-gradient(circle at 14% 12%, rgba(201, 151, 61, 0.22), transparent 23rem),
+    radial-gradient(circle at 86% 8%, rgba(38, 60, 38, 0.36), transparent 26rem),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.36) 0 2px, transparent 2px 8px),
+    linear-gradient(180deg, #21140c 0%, #160f0a 45%, #0f0b08 100%);
+}
+
+body.page-fate-of-the-fellowship .site-footer {
+  background: #0f0b08;
+}
+
+body.page-fate-of-the-fellowship .site-header {
+  background:
+    linear-gradient(180deg, rgba(18, 11, 6, 0.98), rgba(10, 7, 4, 0.96)),
+    repeating-linear-gradient(90deg, rgba(210, 174, 101, 0.08) 0 1px, transparent 1px 14px);
+  border-bottom-color: rgba(185, 144, 70, 0.45);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.46);
+}
+
+body.page-fate-of-the-fellowship .site-header::after,
+body.page-fate-of-the-fellowship .site-footer::before {
+  background: linear-gradient(90deg, transparent, rgba(197, 151, 73, 0.72), transparent);
+  opacity: 0.62;
+  animation: none;
+}
+
+body.page-fate-of-the-fellowship .site-logo {
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: #d6bd75;
+  color: #d6bd75;
+  filter: none;
+  animation: none;
+}
+
+body.page-fate-of-the-fellowship .main-nav a,
+body.page-fate-of-the-fellowship .nav-link {
+  color: #eadbb1;
+}
+
+body.page-fate-of-the-fellowship .main-nav a:hover,
+body.page-fate-of-the-fellowship .nav-link:hover,
+body.page-fate-of-the-fellowship .nav-dropdown details[open] > summary.nav-link {
+  color: #f5edcf;
+}
+
+body.page-fate-of-the-fellowship .social-link svg,
+body.page-fate-of-the-fellowship .footer-social-link svg {
+  fill: #d6bd75;
+}
+
+body.page-fate-of-the-fellowship .site-footer {
+  background:
+    linear-gradient(180deg, rgba(15, 10, 6, 0.96), rgba(7, 5, 3, 0.98)),
+    radial-gradient(circle at 50% 0%, rgba(106, 73, 35, 0.2), transparent 30rem);
+  border-top-color: rgba(185, 144, 70, 0.4);
+}
+
+body.page-fate-of-the-fellowship .fate-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+  color: var(--fate-ink);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 151, 61, 0.12), transparent 28rem),
+    linear-gradient(180deg, rgba(18, 35, 22, 0.28), transparent 26rem);
+}
+
+body.page-fate-of-the-fellowship .fate-page::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 1px, transparent 1px);
+  background-size: 72px 100%, 100% 46px;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+}
+
+body.page-fate-of-the-fellowship .fate-page .container {
+  width: min(1180px, calc(100vw - 2rem));
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  position: relative;
+  display: grid;
+  gap: clamp(1.1rem, 2vw, 1.75rem);
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid rgba(201, 151, 61, 0.38);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(228, 211, 170, 0.95), rgba(200, 169, 111, 0.9)),
+    repeating-linear-gradient(0deg, rgba(35, 24, 15, 0.035) 0 1px, transparent 1px 7px);
+  box-shadow:
+    0 30px 80px var(--fate-shadow),
+    inset 0 0 0 1px rgba(255, 252, 228, 0.46);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger::before,
+body.page-fate-of-the-fellowship .fate-ledger::after {
+  position: absolute;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  content: "";
+  background:
+    radial-gradient(circle, rgba(167, 53, 45, 0.86) 0 32%, rgba(124, 39, 37, 0.94) 33% 56%, rgba(68, 21, 18, 0.12) 57% 100%);
+  opacity: 0.18;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger::before {
+  top: 1rem;
+  right: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger::after {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.75rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid rgba(75, 53, 36, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 214, 0.48), rgba(228, 211, 170, 0.22)),
+    radial-gradient(circle at 16% 0%, rgba(201, 151, 61, 0.28), transparent 17rem);
+}
+
+body.page-fate-of-the-fellowship .fate-return-link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(35, 24, 15, 0.28);
+  border-radius: 999px;
+  background: rgba(18, 35, 22, 0.92);
+  color: #f7edcd;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(18, 35, 22, 0.22);
+}
+
+body.page-fate-of-the-fellowship .fate-return-link:hover,
+body.page-fate-of-the-fellowship .fate-return-link:focus-visible {
+  background: var(--fate-oxblood);
+  color: #fffaf0;
+}
+
+body.page-fate-of-the-fellowship .fate-kicker {
+  margin: 0;
+  color: var(--fate-oxblood);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--fate-ink);
+  text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(255, 252, 228, 0.58);
+}
+
+body.page-fate-of-the-fellowship .fate-intro {
+  max-width: 68ch;
+  color: var(--fate-ink-soft);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+body.page-fate-of-the-fellowship .fate-intro p {
+  margin: 0;
+}
+
+body.page-fate-of-the-fellowship .fate-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  border: 1px solid rgba(75, 53, 36, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 214, 0.55), rgba(228, 211, 170, 0.3)),
+    linear-gradient(90deg, rgba(38, 60, 38, 0.06), transparent 52%);
+  box-shadow: 0 14px 32px rgba(35, 24, 15, 0.12);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading {
+  display: grid;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading h2 {
+  margin: 0;
+  color: var(--fate-forest-dark);
+  font-size: clamp(1.28rem, 2vw, 1.65rem);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading p {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--fate-ink-soft);
+  line-height: 1.55;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-grid,
+body.page-fate-of-the-fellowship .fate-card-list,
+body.page-fate-of-the-fellowship .fate-quest-list,
+body.page-fate-of-the-fellowship .fate-log-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body.page-fate-of-the-fellowship .fate-card-list {
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+}
+
+body.page-fate-of-the-fellowship .fate-quest-list {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+
+body.page-fate-of-the-fellowship .fate-log-list {
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  border: 1px solid rgba(75, 53, 36, 0.2);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 214, 0.72), rgba(226, 204, 151, 0.72)),
+    repeating-linear-gradient(100deg, rgba(35, 24, 15, 0.035) 0 1px, transparent 1px 10px);
+  color: var(--fate-ink);
+  box-shadow: 0 10px 20px rgba(35, 24, 15, 0.1);
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card {
+  display: grid;
+  gap: 0.3rem;
+  min-height: 7rem;
+  padding: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-label {
+  color: var(--fate-ink-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card strong {
+  align-self: end;
+  color: var(--fate-forest-dark);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1;
+}
+
+body.page-fate-of-the-fellowship .fate-player-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-player-count {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(38, 60, 38, 0.24);
+  border-radius: 999px;
+  background: rgba(38, 60, 38, 0.12);
+  color: var(--fate-forest-dark);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  padding: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-record-card h3,
+body.page-fate-of-the-fellowship .fate-quest-card h3,
+body.page-fate-of-the-fellowship .fate-log-card h3 {
+  margin: 0;
+  color: var(--fate-ink);
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+body.page-fate-of-the-fellowship .fate-record-card p,
+body.page-fate-of-the-fellowship .fate-quest-card p,
+body.page-fate-of-the-fellowship .fate-log-card p {
+  margin: 0;
+  color: var(--fate-ink-soft);
+  line-height: 1.48;
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card {
+  position: relative;
+  transform: rotate(-0.35deg);
+  background:
+    linear-gradient(180deg, rgba(250, 238, 198, 0.86), rgba(220, 193, 131, 0.84)),
+    repeating-linear-gradient(90deg, rgba(35, 24, 15, 0.04) 0 1px, transparent 1px 12px);
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card:nth-child(2n) {
+  transform: rotate(0.28deg);
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card::before {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.65rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  content: "";
+  background: var(--fate-brass);
+  box-shadow: 0 1px 2px rgba(35, 24, 15, 0.35);
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card.is-required {
+  border-color: rgba(124, 39, 37, 0.42);
+}
+
+body.page-fate-of-the-fellowship .fate-log-card {
+  min-width: 0;
+}
+
+body.page-fate-of-the-fellowship .fate-log-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+body.page-fate-of-the-fellowship .fate-log-topline time {
+  color: var(--fate-ink-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+body.page-fate-of-the-fellowship .fate-result-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18), transparent 32%),
+    var(--fate-wax);
+  color: #fff7e6;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 -3px 0 rgba(68, 21, 18, 0.28),
+    0 3px 9px rgba(124, 39, 37, 0.28);
+}
+
+body.page-fate-of-the-fellowship .fate-result-seal.is-loss {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.16), transparent 32%),
+    #4b3524;
+}
+
+body.page-fate-of-the-fellowship .fate-empty-log {
+  min-height: 9rem;
+  border-style: dashed;
+}
+
+body.page-fate-of-the-fellowship .fate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+body.page-fate-of-the-fellowship .fate-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(35, 24, 15, 0.24);
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--fate-forest), var(--fate-forest-dark));
+  color: #fffaf0;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+body.page-fate-of-the-fellowship .fate-action-button:hover,
+body.page-fate-of-the-fellowship .fate-action-button:focus-visible {
+  background: linear-gradient(135deg, var(--fate-oxblood), var(--fate-wax));
+  color: #fffaf0;
+}
+
+body.page-fate-of-the-fellowship .fate-action-button.is-secondary {
+  background: rgba(255, 248, 214, 0.72);
+  color: var(--fate-ink);
+}
+
+body.page-fate-of-the-fellowship .fate-action-button.is-secondary:hover,
+body.page-fate-of-the-fellowship .fate-action-button.is-secondary:focus-visible {
+  background: var(--fate-brass);
+  color: #1d130b;
+}
+
+body.page-fate-of-the-fellowship .fate-amp::before {
+  content: "&";
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo {
+  margin: 1rem 0 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 6px solid rgba(255, 248, 214, 0.74);
+  border-radius: 5px;
+  background: rgba(35, 24, 15, 0.12);
+  box-shadow:
+    0 10px 22px rgba(35, 24, 15, 0.22),
+    inset 0 0 0 1px rgba(35, 24, 15, 0.16);
+  transform: rotate(0.4deg);
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: sepia(0.12) contrast(1.02);
+  object-fit: cover;
+  transition:
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo-trigger:hover img,
+body.page-fate-of-the-fellowship .fate-log-photo-trigger:focus-visible img {
+  filter: sepia(0.04) contrast(1.06) brightness(1.04);
+  transform: scale(1.015);
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo-trigger:focus-visible {
+  outline: 3px solid rgba(124, 39, 37, 0.76);
+  outline-offset: -3px;
+}
+
+body.page-fate-of-the-fellowship .fate-photo-dialog {
+  width: min(96vw, 92rem);
+  max-width: 96vw;
+  max-height: 96vh;
+  padding: 0;
+  border: 1px solid rgba(201, 151, 61, 0.44);
+  border-radius: 8px;
+  background: #120d08;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.72);
+}
+
+body.page-fate-of-the-fellowship .fate-photo-dialog::backdrop {
+  background: rgba(10, 6, 3, 0.84);
+}
+
+body.page-fate-of-the-fellowship .fate-photo-dialog-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 96vh;
+  padding: 0.75rem;
+}
+
+body.page-fate-of-the-fellowship .fate-photo-dialog-image {
+  display: block;
+  width: auto;
+  max-width: calc(96vw - 1.5rem);
+  max-height: calc(96vh - 1.5rem);
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+body.page-fate-of-the-fellowship .fate-photo-dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(255, 248, 214, 0.38);
+  border-radius: 999px;
+  background: rgba(18, 35, 22, 0.92);
+  color: #fffaf0;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+body.page-fate-of-the-fellowship .fate-photo-dialog-close:hover,
+body.page-fate-of-the-fellowship .fate-photo-dialog-close:focus-visible {
+  background: var(--fate-oxblood);
+  color: #fffaf0;
+}
+
+html:has(body.page-fate-of-the-fellowship),
+body.page-fate-of-the-fellowship {
+  --fate-ink: #2b1b0d;
+  --fate-ink-soft: #583d22;
+  --fate-parchment: #d9bf7c;
+  --fate-parchment-deep: #9f7738;
+  --fate-brass: #b88a3f;
+  --fate-forest: #20351f;
+  --fate-forest-dark: #0d1b10;
+  --fate-oxblood: #6d2520;
+  --fate-wax: #8e2e25;
+  --fate-charcoal: #100b06;
+  --fate-shadow: rgba(4, 2, 1, 0.72);
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(194, 150, 73, 0.26), transparent 24rem),
+    radial-gradient(ellipse at 82% 4%, rgba(19, 49, 23, 0.34), transparent 26rem),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0 2px, transparent 2px 12px),
+    repeating-linear-gradient(90deg, rgba(217, 191, 124, 0.055) 0 1px, transparent 1px 42px),
+    linear-gradient(180deg, #211306 0%, #140c05 42%, #090603 100%);
+  color: var(--fate-ink);
+  scrollbar-color: rgba(184, 138, 63, 0.72) rgba(20, 12, 5, 0.95);
+  scrollbar-width: thin;
+}
+
+html:has(body.page-fate-of-the-fellowship)::-webkit-scrollbar,
+body.page-fate-of-the-fellowship::-webkit-scrollbar {
+  width: 10px;
+}
+
+html:has(body.page-fate-of-the-fellowship)::-webkit-scrollbar-track,
+body.page-fate-of-the-fellowship::-webkit-scrollbar-track {
+  background:
+    linear-gradient(180deg, rgba(20, 12, 5, 0.98), rgba(8, 5, 3, 0.98));
+}
+
+html:has(body.page-fate-of-the-fellowship)::-webkit-scrollbar-thumb,
+body.page-fate-of-the-fellowship::-webkit-scrollbar-thumb {
+  border: 1px solid rgba(20, 12, 5, 0.85);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(231, 205, 132, 0.72), rgba(116, 78, 31, 0.78));
+}
+
+body.page-fate-of-the-fellowship .site-header,
+body.page-fate-of-the-fellowship .site-footer {
+  display: none;
+}
+
+body.page-fate-of-the-fellowship .fate-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% -8%, rgba(184, 138, 63, 0.18), transparent 25rem),
+    linear-gradient(180deg, rgba(10, 27, 16, 0.42), transparent 34rem);
+}
+
+body.page-fate-of-the-fellowship .fate-page::before {
+  background:
+    radial-gradient(ellipse at 22% 18%, transparent 0 18%, rgba(60, 38, 18, 0.18) 18.5% 19%, transparent 19.5%),
+    radial-gradient(ellipse at 76% 22%, transparent 0 15%, rgba(32, 53, 31, 0.2) 15.5% 16%, transparent 16.5%),
+    linear-gradient(28deg, transparent 0 48%, rgba(184, 138, 63, 0.16) 48.2% 48.7%, transparent 49%),
+    linear-gradient(138deg, transparent 0 54%, rgba(184, 138, 63, 0.1) 54.2% 54.7%, transparent 55%);
+  background-size: 38rem 28rem, 34rem 24rem, 100% 100%, 100% 100%;
+  background-position: 4% 2%, 94% 6%, center, center;
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  border: 0;
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, rgba(54, 31, 13, 0.92), rgba(27, 15, 7, 0.92)) left / 1.05rem 100% no-repeat,
+    linear-gradient(270deg, rgba(54, 31, 13, 0.88), rgba(27, 15, 7, 0.88)) right / 1.05rem 100% no-repeat,
+    linear-gradient(180deg, rgba(92, 55, 22, 0.82), rgba(35, 20, 9, 0.86)) top / 100% 1.05rem no-repeat,
+    linear-gradient(0deg, rgba(92, 55, 22, 0.78), rgba(35, 20, 9, 0.86)) bottom / 100% 1.05rem no-repeat,
+    radial-gradient(circle at 20% 12%, rgba(255, 244, 198, 0.5), transparent 18rem),
+    linear-gradient(135deg, rgba(216, 190, 128, 0.98), rgba(171, 128, 59, 0.96)),
+    repeating-linear-gradient(0deg, rgba(61, 38, 17, 0.055) 0 1px, transparent 1px 8px);
+  box-shadow:
+    0 38px 110px var(--fate-shadow),
+    inset 0 0 0 1px rgba(237, 213, 147, 0.42),
+    inset 0 0 0 1.05rem rgba(43, 24, 10, 0.24);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger::before,
+body.page-fate-of-the-fellowship .fate-ledger::after {
+  opacity: 0.26;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  overflow: hidden;
+  border-color: rgba(84, 55, 25, 0.38);
+  background:
+    linear-gradient(90deg, rgba(68, 37, 15, 0.16), transparent 16%, transparent 84%, rgba(68, 37, 15, 0.14)),
+    radial-gradient(circle at 20% 0%, rgba(246, 222, 155, 0.5), transparent 18rem),
+    linear-gradient(180deg, rgba(244, 222, 166, 0.58), rgba(181, 137, 65, 0.2));
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header::after {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1rem;
+  width: min(24rem, 44%);
+  height: 7rem;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(ellipse at 20% 70%, transparent 0 16%, rgba(74, 49, 26, 0.18) 17% 18%, transparent 19%),
+    radial-gradient(ellipse at 60% 45%, transparent 0 21%, rgba(32, 53, 31, 0.18) 22% 23%, transparent 24%),
+    linear-gradient(14deg, transparent 0 45%, rgba(74, 49, 26, 0.16) 45.5% 46%, transparent 46.5%);
+  opacity: 0.72;
+}
+
+body.page-fate-of-the-fellowship .fate-return-link {
+  border-color: rgba(214, 189, 117, 0.5);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(36, 56, 33, 0.98), rgba(12, 27, 14, 0.98));
+  color: #efe0ad;
+  font-family: "IM Fell English SC", Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
+}
+
+body.page-fate-of-the-fellowship .fate-kicker {
+  color: #6d2520;
+  font-family: "IM Fell English SC", Georgia, "Times New Roman", serif;
+  letter-spacing: 0.18em;
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  max-width: 48rem;
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span,
+body.page-fate-of-the-fellowship .fate-briefing-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(86, 52, 21, 0.34);
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(246, 226, 170, 0.78), rgba(187, 139, 63, 0.42)),
+    repeating-linear-gradient(90deg, rgba(66, 39, 16, 0.08) 0 1px, transparent 1px 8px);
+  color: #442514;
+  font-family: "IM Fell English SC", Georgia, "Times New Roman", serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 244, 199, 0.26),
+    0 5px 12px rgba(69, 41, 16, 0.12);
+}
+
+body.page-fate-of-the-fellowship .fate-briefing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-briefing-card {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  min-height: 100%;
+}
+
+body.page-fate-of-the-fellowship .fate-briefing-card p {
+  margin: 0;
+  color: #3d2514;
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  line-height: 1.55;
+  -webkit-text-fill-color: #3d2514;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger h1 {
+  max-width: 12ch;
+  background: none !important;
+  background-image: none !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  -webkit-text-fill-color: #2b1b0d;
+  color: #2b1b0d;
+  font-family: "Uncial Antiqua", "Cinzel Decorative", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.7rem, 7vw, 5.9rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.98;
+  text-shadow:
+    0 1px 0 rgba(255, 243, 198, 0.66),
+    0 3px 0 rgba(123, 76, 24, 0.16),
+    0 10px 22px rgba(69, 41, 16, 0.18);
+}
+
+body.page-fate-of-the-fellowship .fate-intro,
+body.page-fate-of-the-fellowship .fate-section-heading p,
+body.page-fate-of-the-fellowship .fate-record-card p,
+body.page-fate-of-the-fellowship .fate-quest-card p,
+body.page-fate-of-the-fellowship .fate-log-card p,
+body.page-fate-of-the-fellowship .fate-log-topline time {
+  color: var(--fate-ink-soft);
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  -webkit-text-fill-color: currentColor;
+}
+
+body.page-fate-of-the-fellowship .fate-intro p {
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+}
+
+body.page-fate-of-the-fellowship .fate-section {
+  border-color: rgba(73, 45, 18, 0.32);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(247, 224, 157, 0.36), transparent 14rem),
+    linear-gradient(180deg, rgba(239, 214, 154, 0.7), rgba(181, 137, 65, 0.28)),
+    repeating-linear-gradient(90deg, rgba(54, 31, 13, 0.035) 0 1px, transparent 1px 18px);
+  box-shadow:
+    0 14px 38px rgba(43, 24, 10, 0.16),
+    inset 0 0 0 1px rgba(255, 243, 198, 0.34);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading h2,
+body.page-fate-of-the-fellowship .fate-record-card h3,
+body.page-fate-of-the-fellowship .fate-quest-card h3,
+body.page-fate-of-the-fellowship .fate-log-card h3 {
+  color: #1f321e;
+  font-family: "Cinzel Decorative", "IM Fell English SC", Georgia, serif;
+  font-weight: 700;
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading h2 {
+  font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  border-color: rgba(73, 45, 18, 0.32);
+  border-radius: 3px;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 240, 187, 0.42), transparent 9rem),
+    linear-gradient(180deg, rgba(239, 217, 161, 0.92), rgba(199, 160, 83, 0.78)),
+    repeating-linear-gradient(101deg, rgba(43, 27, 13, 0.045) 0 1px, transparent 1px 11px);
+  box-shadow:
+    0 10px 22px rgba(44, 25, 10, 0.16),
+    inset 0 0 0 1px rgba(255, 242, 191, 0.26);
+}
+
+body.page-fate-of-the-fellowship .fate-overview-label,
+body.page-fate-of-the-fellowship .fate-player-count {
+  font-family: "IM Fell English SC", Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card strong {
+  color: #20351f;
+  font-family: "Cinzel Decorative", "IM Fell English SC", Georgia, serif;
+}
+
+body.page-fate-of-the-fellowship .fate-player-count {
+  border-color: rgba(32, 53, 31, 0.32);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(213, 188, 120, 0.72), rgba(157, 115, 51, 0.32));
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card {
+  border-style: solid;
+  background:
+    linear-gradient(90deg, rgba(91, 50, 20, 0.18), transparent 1.25rem),
+    radial-gradient(circle at 90% 12%, rgba(111, 38, 28, 0.16), transparent 5rem),
+    linear-gradient(180deg, rgba(236, 214, 158, 0.94), rgba(190, 143, 66, 0.82)),
+    repeating-linear-gradient(90deg, rgba(43, 27, 13, 0.05) 0 1px, transparent 1px 12px);
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card::before {
+  top: 0.65rem;
+  right: 0.7rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  background:
+    radial-gradient(circle at 35% 30%, #efd28a 0 18%, #a87931 19% 58%, #5a3415 59% 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-result-seal {
+  min-width: 3.65rem;
+  min-height: 3.65rem;
+  border: 2px solid rgba(255, 230, 171, 0.5);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255, 240, 196, 0.22), transparent 24%),
+    radial-gradient(circle, #9a3329 0 48%, #6d2520 50% 72%, #4a1712 73% 100%);
+  color: #fff1cf;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
+  box-shadow:
+    inset 0 -5px 0 rgba(53, 14, 10, 0.24),
+    0 5px 12px rgba(70, 18, 13, 0.32);
+}
+
+body.page-fate-of-the-fellowship .fate-result-seal.is-loss {
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255, 240, 196, 0.16), transparent 24%),
+    radial-gradient(circle, #554026 0 48%, #352416 50% 72%, #1f140c 73% 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-action-button {
+  border-color: rgba(214, 189, 117, 0.5);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, #263f27, #0f2412);
+  color: #fff1cf;
+  font-family: "Palatino Linotype", Palatino, Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+body.page-fate-of-the-fellowship .fate-action-button:hover,
+body.page-fate-of-the-fellowship .fate-action-button:focus-visible {
+  background: linear-gradient(180deg, #6d2520, #431610);
+}
+
+body.page-fate-of-the-fellowship .fate-action-button.is-secondary {
+  background:
+    linear-gradient(180deg, rgba(239, 214, 154, 0.86), rgba(174, 127, 57, 0.7));
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo {
+  border-color: rgba(239, 214, 154, 0.88);
+  border-radius: 2px;
+  box-shadow:
+    0 12px 26px rgba(43, 24, 10, 0.28),
+    0 0 0 1px rgba(72, 44, 18, 0.28);
+}
+
+body.page-fate-of-the-fellowship {
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(77, 19, 12, 0.34), transparent 22rem),
+    radial-gradient(ellipse at 86% 18%, rgba(183, 132, 48, 0.12), transparent 28rem),
+    radial-gradient(ellipse at 50% 100%, rgba(15, 35, 18, 0.36), transparent 36rem),
+    linear-gradient(90deg, rgba(255, 226, 151, 0.045) 0 1px, transparent 1px 36px),
+    linear-gradient(180deg, #130806 0%, #090604 46%, #050403 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-page {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(220, 187, 111, 0.08), transparent 20rem),
+    radial-gradient(circle at 88% 0%, rgba(84, 19, 14, 0.22), transparent 24rem);
+}
+
+body.page-fate-of-the-fellowship .fate-page .container {
+  width: min(1280px, calc(100vw - 2rem));
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  overflow: hidden;
+  padding: clamp(1.25rem, 2.6vw, 2.4rem);
+  border: 1px solid rgba(218, 190, 120, 0.42);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 10% 8%, rgba(255, 244, 207, 0.62), transparent 24rem),
+    radial-gradient(circle at 95% 10%, rgba(108, 36, 23, 0.13), transparent 18rem),
+    linear-gradient(90deg, rgba(40, 20, 9, 0.95), rgba(25, 12, 6, 0.94)) left / 1.05rem 100% no-repeat,
+    linear-gradient(270deg, rgba(40, 20, 9, 0.95), rgba(25, 12, 6, 0.94)) right / 1.05rem 100% no-repeat,
+    linear-gradient(180deg, rgba(68, 35, 14, 0.92), rgba(29, 14, 6, 0.94)) top / 100% 1.05rem no-repeat,
+    linear-gradient(0deg, rgba(68, 35, 14, 0.9), rgba(29, 14, 6, 0.94)) bottom / 100% 1.05rem no-repeat,
+    linear-gradient(135deg, rgba(232, 209, 164, 0.98), rgba(207, 171, 107, 0.98) 46%, rgba(177, 131, 66, 0.98)),
+    repeating-linear-gradient(90deg, rgba(54, 31, 13, 0.045) 0 1px, transparent 1px 18px);
+  box-shadow:
+    0 34px 95px rgba(0, 0, 0, 0.78),
+    inset 0 0 0 1px rgba(255, 244, 198, 0.44),
+    inset 0 0 0 1.05rem rgba(37, 18, 8, 0.22);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger::before {
+  top: -2rem;
+  right: -1.2rem;
+  width: 8.5rem;
+  height: 8.5rem;
+  border: 1px solid rgba(112, 39, 25, 0.2);
+  background:
+    radial-gradient(circle, rgba(157, 45, 35, 0.36) 0 34%, transparent 35% 49%, rgba(88, 31, 20, 0.22) 50% 56%, transparent 57%);
+  opacity: 1;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger::after {
+  right: auto;
+  bottom: -2.4rem;
+  left: -1.4rem;
+  width: 9rem;
+  height: 9rem;
+  border: 1px solid rgba(32, 53, 31, 0.18);
+  background:
+    radial-gradient(circle, rgba(32, 53, 31, 0.22) 0 28%, transparent 29% 47%, rgba(88, 31, 20, 0.18) 48% 55%, transparent 56%);
+  opacity: 1;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  min-height: clamp(31rem, 52vw, 39rem);
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  border: 1px solid rgba(77, 49, 24, 0.36);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 27% 30%, rgba(255, 245, 210, 0.64), transparent 18rem),
+    linear-gradient(90deg, rgba(66, 34, 15, 0.14), transparent 18%, transparent 82%, rgba(66, 34, 15, 0.14)),
+    linear-gradient(180deg, rgba(240, 220, 181, 0.68), rgba(205, 163, 98, 0.22)),
+    repeating-linear-gradient(0deg, rgba(55, 33, 16, 0.035) 0 1px, transparent 1px 11px);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header::before {
+  position: absolute;
+  right: clamp(1rem, 5vw, 4rem);
+  top: clamp(4.5rem, 10vw, 7rem);
+  width: clamp(16rem, 34vw, 29rem);
+  aspect-ratio: 1;
+  pointer-events: none;
+  content: "";
+  border: clamp(0.5rem, 1vw, 0.8rem) solid rgba(235, 226, 206, 0.72);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 51%, rgba(214, 189, 117, 0.5) 52% 53%, transparent 54% 62%, rgba(235, 226, 206, 0.28) 63% 64%, transparent 65%),
+    conic-gradient(from -22deg, rgba(255, 255, 255, 0.08), rgba(198, 190, 177, 0.72), rgba(255, 255, 255, 0.1), rgba(198, 190, 177, 0.58), rgba(255, 255, 255, 0.08));
+  filter: drop-shadow(0 0 22px rgba(255, 248, 220, 0.16));
+  opacity: 0.88;
+  mask: radial-gradient(circle, transparent 0 44%, #000 45% 61%, transparent 62%);
+  -webkit-mask: radial-gradient(circle, transparent 0 44%, #000 45% 61%, transparent 62%);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header::after {
+  right: 0;
+  bottom: 0;
+  width: min(34rem, 52%);
+  height: 17rem;
+  background:
+    radial-gradient(ellipse at 24% 72%, transparent 0 15%, rgba(58, 38, 22, 0.18) 16% 17%, transparent 18%),
+    radial-gradient(ellipse at 64% 48%, transparent 0 20%, rgba(32, 53, 31, 0.18) 21% 22%, transparent 23%),
+    linear-gradient(16deg, transparent 0 45%, rgba(58, 38, 22, 0.16) 45.5% 46%, transparent 46.5%),
+    linear-gradient(146deg, transparent 0 58%, rgba(58, 38, 22, 0.12) 58.5% 59%, transparent 59.5%);
+  opacity: 0.85;
+}
+
+body.page-fate-of-the-fellowship .fate-return-link {
+  background:
+    linear-gradient(180deg, rgba(39, 65, 37, 0.98), rgba(13, 30, 15, 0.98));
+  box-shadow:
+    0 9px 18px rgba(19, 34, 17, 0.28),
+    inset 0 0 0 1px rgba(255, 238, 174, 0.14);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header > .fate-return-link {
+  justify-self: end;
+  margin-left: auto;
+  position: relative;
+  z-index: 2;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 11ch;
+  margin-top: clamp(1.2rem, 4vw, 2.3rem);
+  color: #180d06;
+  -webkit-text-fill-color: #180d06;
+  font-size: clamp(3.7rem, 9vw, 8.25rem);
+  line-height: 0.86;
+  text-shadow:
+    0 1px 0 rgba(255, 246, 214, 0.76),
+    0 5px 18px rgba(34, 15, 6, 0.22);
+}
+
+body.page-fate-of-the-fellowship .fate-intro {
+  position: relative;
+  z-index: 1;
+  max-width: 47rem;
+  margin-top: 0.4rem;
+  color: #4b2f19;
+  font-size: clamp(1.03rem, 1.5vw, 1.24rem);
+}
+
+body.page-fate-of-the-fellowship .fate-section {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255, 242, 200, 0.52), transparent 15rem),
+    linear-gradient(180deg, rgba(235, 211, 166, 0.84), rgba(189, 142, 73, 0.34)),
+    repeating-linear-gradient(90deg, rgba(54, 31, 13, 0.035) 0 1px, transparent 1px 18px);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading {
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(80, 51, 25, 0.22);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading h2 {
+  letter-spacing: 0;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 241, 203, 0.5), transparent 9rem),
+    linear-gradient(180deg, rgba(240, 219, 177, 0.94), rgba(204, 160, 87, 0.78)),
+    repeating-linear-gradient(101deg, rgba(43, 27, 13, 0.045) 0 1px, transparent 1px 11px);
+}
+
+body.page-fate-of-the-fellowship .fate-action-button {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 238, 174, 0.12),
+    0 8px 18px rgba(17, 31, 16, 0.24);
+}
+
+body.page-fate-of-the-fellowship .fate-bottom-exit {
+  display: flex;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2rem) 0 0;
+}
+
+@media (max-width: 768px) {
+  body.page-fate-of-the-fellowship .fate-page {
+    padding: 1rem 0;
+  }
+
+  body.page-fate-of-the-fellowship .fate-page .container {
+    width: min(100%, calc(100vw - 1rem));
+  }
+
+  body.page-fate-of-the-fellowship .fate-ledger {
+    padding: 0.75rem;
+  }
+
+  body.page-fate-of-the-fellowship .fate-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.page-fate-of-the-fellowship .fate-briefing-grid,
+  body.page-fate-of-the-fellowship .fate-log-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  body.page-fate-of-the-fellowship .fate-ledger-header,
+  body.page-fate-of-the-fellowship .fate-section {
+    padding: 1rem;
+  }
+
+  body.page-fate-of-the-fellowship .fate-overview-grid,
+  body.page-fate-of-the-fellowship .fate-briefing-grid,
+  body.page-fate-of-the-fellowship .fate-card-list,
+  body.page-fate-of-the-fellowship .fate-quest-list,
+  body.page-fate-of-the-fellowship .fate-log-list {
+    grid-template-columns: 1fr;
+  }
+
+  body.page-fate-of-the-fellowship .fate-ledger h1 {
+    max-width: 100%;
+  }
+
+  body.page-fate-of-the-fellowship .fate-actions {
+    display: grid;
+  }
+}
+
+/* Fate woodcut art pass */
+body.page-fate-of-the-fellowship {
+  --fate-olive: #77745f;
+  --fate-ochre: #bd9854;
+  --fate-blush: #dfc1ad;
+  --fate-rust: #a85f2c;
+  --fate-paper: #f1e6cf;
+  --fate-ink: #24170d;
+  --fate-ink-soft: #4a321f;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(223, 193, 173, 0.15), transparent 24rem),
+    radial-gradient(ellipse at 88% 18%, rgba(119, 116, 95, 0.28), transparent 28rem),
+    radial-gradient(ellipse at 50% 100%, rgba(168, 95, 44, 0.18), transparent 36rem),
+    linear-gradient(180deg, #15100a 0%, #0b0805 58%, #050403 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-page {
+  background:
+    radial-gradient(circle at 50% -12%, rgba(189, 152, 84, 0.18), transparent 26rem),
+    linear-gradient(180deg, rgba(36, 23, 13, 0.16), transparent 34rem);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  border-color: rgba(189, 152, 84, 0.48);
+  background:
+    linear-gradient(90deg, rgba(119, 116, 95, 0.52), transparent 1.4rem, transparent calc(100% - 1.4rem), rgba(168, 95, 44, 0.36)),
+    radial-gradient(circle at 8% 8%, rgba(255, 249, 232, 0.7), transparent 24rem),
+    linear-gradient(135deg, rgba(241, 230, 207, 0.99), rgba(218, 195, 150, 0.97) 52%, rgba(189, 152, 84, 0.86)),
+    repeating-linear-gradient(90deg, rgba(36, 23, 13, 0.035) 0 1px, transparent 1px 18px);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  background-image:
+    radial-gradient(ellipse at 33% 64%, rgba(246, 236, 213, 0.96) 0 32%, rgba(246, 236, 213, 0.76) 42%, transparent 63%),
+    linear-gradient(90deg, rgba(119, 116, 95, 0.16), transparent 15%, transparent 82%, rgba(168, 95, 44, 0.16)),
+    linear-gradient(180deg, rgba(241, 230, 207, 0.82), rgba(189, 152, 84, 0.2));
+  background-position: left center, center, center;
+  background-repeat: no-repeat;
+  background-size: 66% 76%, auto, auto;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header::before {
+  border-color: rgba(189, 152, 84, 0.34);
+  background:
+    radial-gradient(circle, transparent 0 51%, rgba(189, 152, 84, 0.36) 52% 53%, transparent 54% 62%, rgba(223, 193, 173, 0.28) 63% 64%, transparent 65%),
+    conic-gradient(from -22deg, rgba(255, 255, 255, 0.04), rgba(189, 152, 84, 0.34), rgba(255, 255, 255, 0.06), rgba(119, 116, 95, 0.28), rgba(255, 255, 255, 0.04));
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span:nth-child(1),
+body.page-fate-of-the-fellowship .fate-briefing-card:nth-child(1) .fate-briefing-label {
+  background:
+    linear-gradient(180deg, rgba(223, 193, 173, 0.78), rgba(189, 152, 84, 0.28));
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span:nth-child(2),
+body.page-fate-of-the-fellowship .fate-briefing-card:nth-child(2) .fate-briefing-label {
+  background:
+    linear-gradient(180deg, rgba(189, 152, 84, 0.74), rgba(119, 116, 95, 0.24));
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span:nth-child(3) {
+  background:
+    linear-gradient(180deg, rgba(119, 116, 95, 0.42), rgba(168, 95, 44, 0.24));
+}
+
+body.page-fate-of-the-fellowship .fate-section,
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 249, 232, 0.62), transparent 12rem),
+    linear-gradient(180deg, rgba(241, 230, 207, 0.92), rgba(189, 152, 84, 0.26)),
+    repeating-linear-gradient(90deg, rgba(36, 23, 13, 0.035) 0 1px, transparent 1px 13px);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading h2,
+body.page-fate-of-the-fellowship .fate-record-card h3,
+body.page-fate-of-the-fellowship .fate-quest-card h3,
+body.page-fate-of-the-fellowship .fate-log-card h3,
+body.page-fate-of-the-fellowship .fate-overview-card strong {
+  color: #27331f;
+}
+
+body.page-fate-of-the-fellowship .fate-briefing-card p,
+body.page-fate-of-the-fellowship .fate-intro,
+body.page-fate-of-the-fellowship .fate-section-heading p,
+body.page-fate-of-the-fellowship .fate-record-card p,
+body.page-fate-of-the-fellowship .fate-quest-card p,
+body.page-fate-of-the-fellowship .fate-log-card p,
+body.page-fate-of-the-fellowship .fate-log-topline time {
+  color: var(--fate-ink-soft);
+  -webkit-text-fill-color: currentColor;
+}
+
+body.page-fate-of-the-fellowship .fate-quest-card::before {
+  background:
+    radial-gradient(circle at 35% 30%, #f4e6bf 0 18%, var(--fate-ochre) 19% 58%, var(--fate-rust) 59% 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-return-link,
+body.page-fate-of-the-fellowship .fate-action-button {
+  background:
+    linear-gradient(180deg, #384532, #172313);
+}
+
+body.page-fate-of-the-fellowship .fate-action-button:hover,
+body.page-fate-of-the-fellowship .fate-action-button:focus-visible,
+body.page-fate-of-the-fellowship .fate-return-link:hover,
+body.page-fate-of-the-fellowship .fate-return-link:focus-visible {
+  background:
+    linear-gradient(180deg, var(--fate-rust), #683218);
+}
+
+/* Keep the Fate background art object-based, not abstract rings or blobs. */
+body.page-fate-of-the-fellowship .fate-ledger::before,
+body.page-fate-of-the-fellowship .fate-ledger::after {
+  display: none;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  background-image:
+    radial-gradient(ellipse at 32% 64%, rgba(246, 236, 213, 0.97) 0 30%, rgba(246, 236, 213, 0.82) 42%, transparent 64%),
+    linear-gradient(180deg, rgba(241, 230, 207, 0.88), rgba(189, 152, 84, 0.18));
+  background-position: left center, center;
+  background-repeat: no-repeat;
+  background-size: 66% 78%, auto;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header::before,
+body.page-fate-of-the-fellowship .fate-ledger-header::after {
+  display: none;
+}
+
+/* Fate parchment and scrollwork pass: no decorative background images. */
+body.page-fate-of-the-fellowship {
+  --fate-paper: #efe1c2;
+  --fate-paper-light: #f7edda;
+  --fate-frame: #8b6a36;
+  --fate-scroll: #6e4f25;
+  --fate-ink: #211409;
+  --fate-ink-soft: #4b321c;
+  background:
+    linear-gradient(180deg, #17100a 0%, #0b0805 58%, #050403 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-page {
+  background:
+    linear-gradient(180deg, rgba(41, 25, 12, 0.28), transparent 28rem);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  border-color: rgba(139, 106, 54, 0.58);
+  background:
+    linear-gradient(90deg, rgba(75, 48, 21, 0.42), transparent 1.25rem, transparent calc(100% - 1.25rem), rgba(75, 48, 21, 0.34)),
+    linear-gradient(180deg, rgba(247, 237, 218, 0.96), rgba(218, 190, 132, 0.9)),
+    repeating-linear-gradient(90deg, rgba(33, 20, 9, 0.035) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(0deg, rgba(33, 20, 9, 0.025) 0 1px, transparent 1px 10px);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  background-image: none;
+  background:
+    linear-gradient(180deg, rgba(247, 237, 218, 0.94), rgba(226, 199, 144, 0.32)),
+    repeating-linear-gradient(90deg, rgba(33, 20, 9, 0.03) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(0deg, rgba(33, 20, 9, 0.024) 0 1px, transparent 1px 11px);
+}
+
+body.page-fate-of-the-fellowship .fate-section {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(110, 79, 37, 0.48);
+  outline: 1px solid rgba(255, 247, 222, 0.36);
+  outline-offset: -8px;
+  background:
+    linear-gradient(180deg, rgba(247, 237, 218, 0.9), rgba(216, 188, 128, 0.32)),
+    repeating-linear-gradient(90deg, rgba(33, 20, 9, 0.028) 0 1px, transparent 1px 13px);
+}
+
+body.page-fate-of-the-fellowship .fate-section::before,
+body.page-fate-of-the-fellowship .fate-section::after {
+  position: absolute;
+  width: 5.5rem;
+  height: 5.5rem;
+  pointer-events: none;
+  content: "";
+  border-color: rgba(110, 79, 37, 0.5);
+  border-style: double;
+  opacity: 0.72;
+}
+
+body.page-fate-of-the-fellowship .fate-section::before {
+  top: 0.8rem;
+  left: 0.8rem;
+  border-width: 3px 0 0 3px;
+  border-top-left-radius: 4rem;
+}
+
+body.page-fate-of-the-fellowship .fate-section::after {
+  right: 0.8rem;
+  bottom: 0.8rem;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 4rem;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  position: relative;
+  border: 1px solid rgba(110, 79, 37, 0.42);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 247, 222, 0.34),
+    0 10px 22px rgba(49, 30, 12, 0.14);
+  background:
+    linear-gradient(180deg, rgba(248, 239, 220, 0.88), rgba(219, 191, 132, 0.38)),
+    repeating-linear-gradient(90deg, rgba(33, 20, 9, 0.026) 0 1px, transparent 1px 12px);
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card::after,
+body.page-fate-of-the-fellowship .fate-briefing-card::after,
+body.page-fate-of-the-fellowship .fate-record-card::after,
+body.page-fate-of-the-fellowship .fate-quest-card::after,
+body.page-fate-of-the-fellowship .fate-log-card::after {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.55rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  pointer-events: none;
+  content: "";
+  border-right: 2px double rgba(110, 79, 37, 0.42);
+  border-bottom: 2px double rgba(110, 79, 37, 0.42);
+  border-bottom-right-radius: 1rem;
+}
+
+body.page-fate-of-the-fellowship .fate-briefing-card p {
+  color: #4a321f;
+  -webkit-text-fill-color: #4a321f;
+}
+
+/* Fate SVG scrollwork borders */
+body.page-fate-of-the-fellowship .fate-ledger-header,
+body.page-fate-of-the-fellowship .fate-section {
+  border: 18px solid transparent;
+  border-image-source: url("/images/fate-of-the-fellowship/scrollwork-section-border.svg");
+  border-image-slice: 34;
+  border-image-width: 18px;
+  border-image-repeat: stretch;
+  outline: none;
+}
+
+body.page-fate-of-the-fellowship .fate-section::before,
+body.page-fate-of-the-fellowship .fate-section::after,
+body.page-fate-of-the-fellowship .fate-overview-card::after,
+body.page-fate-of-the-fellowship .fate-briefing-card::after,
+body.page-fate-of-the-fellowship .fate-record-card::after,
+body.page-fate-of-the-fellowship .fate-quest-card::after,
+body.page-fate-of-the-fellowship .fate-log-card::after {
+  display: none;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  border: 12px solid transparent;
+  border-image-source: url("/images/fate-of-the-fellowship/scrollwork-card-border.svg");
+  border-image-slice: 26;
+  border-image-width: 12px;
+  border-image-repeat: stretch;
+}
+
+/* Fate Middle-earth poster pass */
+body.page-fate-of-the-fellowship {
+  --fate-forest: #26351f;
+  --fate-leaf: #5f7645;
+  --fate-gold: #c69a3e;
+  --fate-rust: #9a5529;
+  --fate-blush: #dfc1ad;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  border: 22px solid transparent;
+  border-image-source: url("/images/fate-of-the-fellowship/scrollwork-section-border.svg");
+  border-image-slice: 34;
+  border-image-width: 22px;
+  border-image-repeat: stretch;
+  background:
+    linear-gradient(180deg, rgba(248, 240, 221, 0.97), rgba(224, 197, 142, 0.9)),
+    repeating-linear-gradient(90deg, rgba(38, 53, 31, 0.034) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(0deg, rgba(38, 53, 31, 0.026) 0 1px, transparent 1px 12px);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  min-height: clamp(32rem, 54vw, 42rem);
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(248, 240, 221, 0.94), rgba(225, 200, 148, 0.24)),
+    repeating-linear-gradient(90deg, rgba(38, 53, 31, 0.032) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(0deg, rgba(38, 53, 31, 0.024) 0 1px, transparent 1px 11px);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header > .fate-return-link {
+  justify-self: end;
+  align-self: start;
+}
+
+body.page-fate-of-the-fellowship .fate-kicker {
+  color: #7a2319;
+  font-size: 0.9rem;
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip {
+  justify-content: center;
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span,
+body.page-fate-of-the-fellowship .fate-briefing-label {
+  border-color: rgba(38, 53, 31, 0.42);
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span:nth-child(1),
+body.page-fate-of-the-fellowship .fate-briefing-card:nth-child(1) .fate-briefing-label {
+  background:
+    linear-gradient(180deg, rgba(223, 193, 173, 0.84), rgba(198, 154, 62, 0.22));
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span:nth-child(2),
+body.page-fate-of-the-fellowship .fate-briefing-card:nth-child(2) .fate-briefing-label {
+  background:
+    linear-gradient(180deg, rgba(198, 154, 62, 0.72), rgba(95, 118, 69, 0.24));
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip span:nth-child(3) {
+  background:
+    linear-gradient(180deg, rgba(95, 118, 69, 0.38), rgba(154, 85, 41, 0.24));
+}
+
+body.page-fate-of-the-fellowship .fate-ledger h1 {
+  max-width: 10ch;
+  margin-top: clamp(1.4rem, 3vw, 2rem);
+  color: #160d06;
+  -webkit-text-fill-color: #160d06;
+  font-size: clamp(3.8rem, 8.4vw, 8rem);
+  text-shadow:
+    0 1px 0 rgba(255, 247, 224, 0.78),
+    0 4px 0 rgba(198, 154, 62, 0.16),
+    0 13px 24px rgba(38, 53, 31, 0.22);
+}
+
+body.page-fate-of-the-fellowship .fate-intro {
+  max-width: 44rem;
+  color: #3d2817;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger-header,
+body.page-fate-of-the-fellowship .fate-section {
+  border-width: 24px;
+  border-image-width: 24px;
+  border-image-outset: 0;
+}
+
+body.page-fate-of-the-fellowship .fate-section {
+  padding: clamp(1.65rem, 3vw, 2.4rem);
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  border-width: 14px;
+  border-image-width: 14px;
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading {
+  border-bottom-color: rgba(38, 53, 31, 0.24);
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading h2,
+body.page-fate-of-the-fellowship .fate-record-card h3,
+body.page-fate-of-the-fellowship .fate-quest-card h3,
+body.page-fate-of-the-fellowship .fate-log-card h3,
+body.page-fate-of-the-fellowship .fate-overview-card strong {
+  color: var(--fate-forest);
+}
+
+body.page-fate-of-the-fellowship .fate-result-seal {
+  border-color: rgba(198, 154, 62, 0.7);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255, 240, 196, 0.22), transparent 24%),
+    radial-gradient(circle, #9a5529 0 48%, #723417 50% 72%, #3b1b0c 73% 100%);
+}
+
+/* Fate hero simplification */
+body.page-fate-of-the-fellowship .fate-ledger-header {
+  gap: clamp(0.8rem, 1.8vw, 1.35rem);
+  padding: clamp(2rem, 5vw, 4.25rem);
+  background:
+    linear-gradient(180deg, rgba(248, 240, 221, 0.96), rgba(232, 207, 155, 0.25)),
+    repeating-linear-gradient(90deg, rgba(38, 53, 31, 0.026) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(0deg, rgba(38, 53, 31, 0.02) 0 1px, transparent 1px 11px);
+}
+
+body.page-fate-of-the-fellowship .fate-notice-strip {
+  display: none;
+}
+
+body.page-fate-of-the-fellowship .fate-title-divider {
+  width: min(48rem, 72%);
+  height: auto;
+  opacity: 0.95;
+}
+
+body.page-fate-of-the-fellowship .fate-title-divider.is-lower {
+  transform: rotate(180deg);
+}
+
+body.page-fate-of-the-fellowship .fate-ledger h1 {
+  margin: 0;
+}
+
+/* Fate Kenney fantasy UI asset pass */
+body.page-fate-of-the-fellowship {
+  --fate-kenney-frame-hero: url("/images/fate-of-the-fellowship/kenney/frame-hero-gold.png");
+  --fate-kenney-frame-section: url("/images/fate-of-the-fellowship/kenney/frame-section-gold.png");
+  --fate-kenney-frame-card: url("/images/fate-of-the-fellowship/kenney/frame-card-gold.png");
+  --fate-kenney-panel-hero: url("/images/fate-of-the-fellowship/kenney/panel-hero-parchment.png");
+  --fate-kenney-panel-card: url("/images/fate-of-the-fellowship/kenney/panel-card-parchment.png");
+  --fate-kenney-divider-green: url("/images/fate-of-the-fellowship/kenney/divider-green.png");
+  --fate-kenney-divider-gold: url("/images/fate-of-the-fellowship/kenney/divider-gold.png");
+}
+
+body.page-fate-of-the-fellowship .fate-page {
+  background:
+    linear-gradient(180deg, #140b06 0%, #241207 46%, #100906 100%);
+}
+
+body.page-fate-of-the-fellowship .fate-page::before,
+body.page-fate-of-the-fellowship .fate-ledger::before,
+body.page-fate-of-the-fellowship .fate-ledger::after {
+  display: none;
+}
+
+body.page-fate-of-the-fellowship .fate-page .container {
+  max-width: 1320px;
+}
+
+body.page-fate-of-the-fellowship .fate-ledger {
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding: 0;
+  border: 0;
+  border-image-source: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: clamp(30rem, 48vw, 38rem);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 4rem);
+  overflow: hidden;
+  place-items: center;
+  border: 0;
+  border-image-source: none;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(80, 104, 59, 0.26), transparent 30rem),
+    radial-gradient(circle at 16% 72%, rgba(154, 85, 41, 0.28), transparent 18rem),
+    linear-gradient(135deg, #160c06 0%, #2a1709 42%, #0d0906 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(212, 166, 72, 0.18),
+    inset 0 0 80px rgba(0, 0, 0, 0.46);
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-hero::before,
+body.page-fate-of-the-fellowship .fate-kenney-hero::after {
+  position: absolute;
+  inset: clamp(1rem, 2vw, 1.6rem);
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  border: 26px solid transparent;
+  border-image-source: var(--fate-kenney-frame-section);
+  border-image-slice: 32;
+  border-image-width: 26px;
+  border-image-repeat: stretch;
+  image-rendering: pixelated;
+  opacity: 0.42;
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-hero::after {
+  inset: clamp(2.2rem, 4vw, 3.4rem);
+  border-image-source: var(--fate-kenney-frame-card);
+  opacity: 0.24;
+}
+
+body.page-fate-of-the-fellowship .fate-hero-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(52rem, 88%);
+  padding: clamp(1.8rem, 3.5vw, 3rem) clamp(1.25rem, 4vw, 3.5rem);
+  border: 30px solid transparent;
+  border-image-source: var(--fate-kenney-frame-hero);
+  border-image-slice: 32 fill;
+  border-image-width: 30px;
+  border-image-repeat: stretch;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255, 236, 178, 0.36), transparent 22rem),
+    linear-gradient(180deg, rgba(236, 205, 136, 0.98), rgba(182, 126, 53, 0.9));
+  box-shadow:
+    0 24px 44px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(79, 48, 19, 0.46);
+  image-rendering: pixelated;
+  text-align: center;
+  justify-items: center;
+}
+
+body.page-fate-of-the-fellowship .fate-hero-panel::before {
+  position: absolute;
+  inset: 1.4rem;
+  pointer-events: none;
+  content: "";
+  border: 16px solid transparent;
+  border-image-source: var(--fate-kenney-frame-card);
+  border-image-slice: 32;
+  border-image-width: 16px;
+  border-image-repeat: stretch;
+  opacity: 0.35;
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-divider {
+  position: relative;
+  z-index: 1;
+  width: min(22rem, 78%);
+  height: auto;
+  margin-bottom: clamp(0.55rem, 1.1vw, 0.85rem);
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-divider.is-lower {
+  width: min(28rem, 84%);
+  margin-top: clamp(1rem, 1.9vw, 1.5rem);
+  margin-bottom: 0;
+}
+
+body.page-fate-of-the-fellowship .fate-hero-pretitle {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.45rem;
+  color: #38240e;
+  font-family: "Cinzel Decorative", Georgia, serif;
+  font-size: clamp(0.82rem, 1.45vw, 1.22rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 234, 181, 0.68);
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-hero h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 13ch;
+  margin: 0;
+  color: #261405;
+  font-family: "Uncial Antiqua", "Cinzel Decorative", Georgia, serif;
+  font-size: clamp(2.75rem, 5.9vw, 5.35rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.94;
+  text-shadow:
+    0 1px 0 rgba(255, 232, 174, 0.75),
+    0 9px 16px rgba(80, 44, 14, 0.2);
+  -webkit-text-fill-color: #261405;
+}
+
+body.page-fate-of-the-fellowship .fate-hero-tagline {
+  position: relative;
+  z-index: 1;
+  max-width: 44rem;
+  margin: clamp(0.65rem, 1.2vw, 0.95rem) 0 0;
+  color: #30401f;
+  font-family: "Cinzel Decorative", Georgia, serif;
+  font-size: clamp(0.78rem, 1.25vw, 1.08rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+body.page-fate-of-the-fellowship .fate-hero-tagline span {
+  color: #8f551f;
+  padding: 0 0.42rem;
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-hero .fate-intro {
+  position: relative;
+  z-index: 1;
+  max-width: 36rem;
+  margin-top: clamp(0.85rem, 1.7vw, 1.2rem);
+  color: #34210d;
+  font-family: "IM Fell English", Georgia, serif;
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
+  font-style: italic;
+  line-height: 1.48;
+  -webkit-text-fill-color: #34210d;
+}
+
+body.page-fate-of-the-fellowship .fate-kenney-hero > .fate-return-link {
+  position: absolute;
+  top: clamp(1.4rem, 3vw, 2.35rem);
+  right: clamp(1.4rem, 3vw, 2.35rem);
+  z-index: 3;
+  border: 12px solid transparent;
+  border-image-source: var(--fate-kenney-frame-card);
+  border-image-slice: 32 fill;
+  border-image-width: 12px;
+  border-image-repeat: stretch;
+  color: #f3dfaa;
+  background: rgba(48, 64, 31, 0.84);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.24);
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-enter-link,
+body.page-fate-of-the-fellowship .fate-action-button,
+body.page-fate-of-the-fellowship .fate-bottom-exit .fate-return-link {
+  position: relative;
+  z-index: 1;
+  border: 16px solid transparent;
+  border-image-source: var(--fate-kenney-frame-card);
+  border-image-slice: 32 fill;
+  border-image-width: 16px;
+  border-image-repeat: stretch;
+  color: #f7e6b5;
+  background: linear-gradient(180deg, rgba(65, 88, 42, 0.98), rgba(35, 55, 28, 0.98));
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-enter-link {
+  min-width: min(19rem, 100%);
+  min-height: 3.45rem;
+  margin-top: clamp(0.95rem, 1.9vw, 1.45rem);
+}
+
+body.page-fate-of-the-fellowship .fate-section {
+  border: 28px solid transparent;
+  border-image-source: var(--fate-kenney-frame-section);
+  border-image-slice: 32 fill;
+  border-image-width: 28px;
+  border-image-repeat: stretch;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 238, 185, 0.2), transparent 28rem),
+    linear-gradient(180deg, rgba(237, 214, 160, 0.94), rgba(190, 139, 64, 0.6));
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading {
+  position: relative;
+  padding-bottom: 1.1rem;
+  border-bottom: 0;
+}
+
+body.page-fate-of-the-fellowship .fate-section-heading::after {
+  display: block;
+  width: min(24rem, 100%);
+  height: 28px;
+  margin-top: 0.85rem;
+  content: "";
+  background: var(--fate-kenney-divider-green) center / contain no-repeat;
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-overview-card,
+body.page-fate-of-the-fellowship .fate-briefing-card,
+body.page-fate-of-the-fellowship .fate-record-card,
+body.page-fate-of-the-fellowship .fate-quest-card,
+body.page-fate-of-the-fellowship .fate-log-card {
+  border: 20px solid transparent;
+  border-image-source: var(--fate-kenney-frame-card);
+  border-image-slice: 32 fill;
+  border-image-width: 20px;
+  border-image-repeat: stretch;
+  background:
+    linear-gradient(180deg, rgba(238, 218, 171, 0.96), rgba(199, 151, 78, 0.58));
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-briefing-label,
+body.page-fate-of-the-fellowship .fate-result-seal,
+body.page-fate-of-the-fellowship .fate-player-count {
+  border: 12px solid transparent;
+  border-image-source: var(--fate-kenney-frame-card);
+  border-image-slice: 32 fill;
+  border-image-width: 12px;
+  border-image-repeat: stretch;
+  image-rendering: pixelated;
+}
+
+body.page-fate-of-the-fellowship .fate-log-photo {
+  border: 18px solid transparent;
+  border-image-source: var(--fate-kenney-frame-card);
+  border-image-slice: 32 fill;
+  border-image-width: 18px;
+  border-image-repeat: stretch;
+  image-rendering: pixelated;
+}
+
+@media (max-width: 768px) {
+  body.page-fate-of-the-fellowship .fate-kenney-hero {
+    min-height: clamp(35rem, 130vw, 43rem);
+    padding: 4.5rem 0.75rem 2rem;
+  }
+
+  body.page-fate-of-the-fellowship .fate-kenney-hero::before,
+  body.page-fate-of-the-fellowship .fate-kenney-hero::after {
+    inset: 0.65rem;
+    border-width: 18px;
+    border-image-width: 18px;
+  }
+
+  body.page-fate-of-the-fellowship .fate-hero-panel {
+    width: min(25rem, 96%);
+    padding: 2rem 1rem;
+    border-width: 24px;
+    border-image-width: 24px;
+  }
+
+  body.page-fate-of-the-fellowship .fate-kenney-divider {
+    width: min(19rem, 84%);
+  }
+
+  body.page-fate-of-the-fellowship .fate-kenney-divider.is-lower {
+    width: min(21rem, 88%);
+  }
+
+  body.page-fate-of-the-fellowship .fate-kenney-hero > .fate-return-link {
+    top: 0.9rem;
+    right: 0.85rem;
+  }
+}
+
+@media (max-width: 520px) {
+  body.page-fate-of-the-fellowship .fate-hero-panel::before {
+    display: none;
+  }
+
+  body.page-fate-of-the-fellowship .fate-hero-tagline {
+    max-width: 17rem;
+  }
+}

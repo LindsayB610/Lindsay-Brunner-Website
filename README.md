@@ -18,6 +18,7 @@ This is the source code for Lindsay Brunner's personal website, built with Hugo 
 - [Content Management](#-content-management)
   - [Thoughts](#thoughts)
   - [Nemesis](#nemesis)
+  - [LOTR: FotF](#lotr-fotf)
   - [Recipes](#recipes)
   - [Shared content maintenance](#shared-content-maintenance)
 - [Security & Dependency Monitoring](#-security--dependency-monitoring)
@@ -106,6 +107,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:schedule` - Scheduled posts workflow validation
 - `npm run test:search-json` - Recipe search JSON index validation
 - `npm run test:nemesis` - Nemesis tracker data and rendered aggregate validation
+- `npm run test:fate` - Lord of the Rings: Fate of the Fellowship tracker data, image contract, visual contract, and rendered aggregate validation
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
 - `npm run test:mobile` - Static and rendered mobile/responsive validation
@@ -131,23 +133,28 @@ Before you begin, ensure you have the following installed:
 ├── archetypes/          # Content templates
 ├── content/             # Site content (Markdown files)
 │   ├── about/           # About page content
+│   ├── fate-of-the-fellowship/ # LOTR: FotF tracker section content
 │   ├── nemesis/         # Nemesis tracker section content
 │   ├── thoughts/        # Thought leadership content
 │   ├── recipes/         # Recipe content
 │   └── _index.md        # Homepage content
 ├── data/                # Structured data files for Hugo
+│   ├── fate-of-the-fellowship/ # LOTR: FotF tracker metadata and sessions
 │   └── nemesis/         # Nemesis tracker data
 │       ├── games.yaml   # Valid games and setup metadata
 │       └── sessions/    # One YAML file per logged session
 ├── docs/                # Project documentation and content templates
 │   ├── thoughts-template.md
 │   ├── recipe-template.md
+│   ├── fate-of-the-fellowship-tracker.md
+│   ├── fate-of-the-fellowship-tracker-plan.md
 │   └── nemesis-tracker.md
 ├── layouts/             # Hugo templates
 │   ├── _default/        # Default page layouts
 │   ├── partials/        # Reusable template components
 │   │   └── react-assets.html # Loads Vite-built React island assets
 │   ├── about/           # About page specific layout
+│   ├── fate-of-the-fellowship/ # LOTR: FotF tracker layout
 │   ├── nemesis/         # Nemesis tracker layout
 │   ├── thoughts/        # Thoughts section layout
 │   ├── recipes/         # Recipes section layout
@@ -172,6 +179,7 @@ Before you begin, ensure you have the following installed:
 │   ├── react-accessibility-render.test.js # Rendered accessibility checks
 │   ├── react-mobile-render.test.js # Rendered mobile checks for React pages
 │   ├── mobile-responsive.test.js # Static responsive CSS checks
+│   ├── fate-of-the-fellowship-tracker.test.js # LOTR: FotF tracker validation
 │   ├── nemesis-tracker.test.js # Nemesis tracker data and aggregate validation
 │   ├── spell-check.js   # Spell checking script
 │   ├── og-image-generation.test.js # OG image generation validation
@@ -458,6 +466,47 @@ npm run test:nemesis
 ```
 
 For a shorter reference, see [`docs/nemesis-tracker.md`](./docs/nemesis-tracker.md).
+
+### LOTR: FotF
+
+The `/fate-of-the-fellowship/` page tracks Lord of the Rings: Fate of the Fellowship sessions using the same Git-tracked YAML pattern as Nemesis, with a warmer inn-ledger visual treatment.
+
+**How it works:**
+
+- Hero metadata lives in `data/fate-of-the-fellowship/heroes.yaml`
+- Objective metadata lives in `data/fate-of-the-fellowship/objectives.yaml`
+- Each played session gets its own file in `data/fate-of-the-fellowship/sessions/`
+- The tracker page automatically reads those files and updates wins, losses, player counts, hero usage, objective attempts, and objective successes
+- Optional final-state photos live in `static/images/fate-of-the-fellowship/session-photos/`
+- The logging guide lives at [`docs/fate-of-the-fellowship-tracker.md`](./docs/fate-of-the-fellowship-tracker.md)
+
+**To add a new session:**
+
+1. Create a new YAML file in `data/fate-of-the-fellowship/sessions/`
+2. Name it like `YYYY-MM-DD-result.yaml`
+3. Replace the placeholder filename with the real date and result
+4. Replace every example value inside the file
+5. Add the session data using this format:
+
+```yaml
+date: "2026-06-13"
+result: "loss"
+players: 3
+heroes:
+  - "Frodo & Sam"
+  - "Legolas"
+objectives:
+  - "Destroy the One Ring"
+  - "Challenge Sauron"
+# final_state_image: "/images/fate-of-the-fellowship/session-photos/2026-06-13-loss.jpg"
+note: "Short recap of what happened."
+```
+
+**GitHub shortcut:**
+
+- The `/fate-of-the-fellowship/` page includes a **New prefilled session** button that opens GitHub's new-file editor with a starter filename and template.
+- Opening that page does **not** create a file by itself. A session is only created if someone commits the new file or opens a pull request.
+- Run `npm run test:fate` after editing Fate metadata, sessions, images, layout, or docs.
 
 ### Recipes
 

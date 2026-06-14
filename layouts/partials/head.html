@@ -79,6 +79,12 @@
   href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
   rel="stylesheet"
 />
+{{ if eq .RelPermalink "/fate-of-the-fellowship/" }}
+<link
+  href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Uncial+Antiqua&display=swap"
+  rel="stylesheet"
+/>
+{{ end }}
 
 {{ if or .IsHome (eq .RelPermalink "/about/") (eq .RelPermalink "/ai-chat-exporter/") }}
 <script>

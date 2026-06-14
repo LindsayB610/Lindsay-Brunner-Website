@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <style>
+      .line { fill: none; stroke: #26351f; stroke-width: 7.5; stroke-linecap: round; stroke-linejoin: round; }
+      .fine { fill: none; stroke: #7c632f; stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+      .vine { fill: none; stroke: #3e5a31; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+      .leaf { fill: #5f7645; stroke: #26351f; stroke-width: 2.5; opacity: .98; }
+      .flower { fill: #dfc1ad; stroke: #5f3e18; stroke-width: 2.4; opacity: .92; }
+      .gold { fill: #c69a3e; stroke: #5f3e18; stroke-width: 2.4; opacity: .98; }
+    </style>
+  </defs>
+
+  <rect x="9" y="9" width="162" height="162" rx="10" class="fine"/>
+  <rect x="24" y="24" width="132" height="132" rx="5" class="fine"/>
+
+  <path class="line" d="M28 78V28h50"/>
+  <path class="line" d="M102 28h50v50"/>
+  <path class="line" d="M152 102v50h-50"/>
+  <path class="line" d="M78 152H28v-50"/>
+
+  <path class="fine" d="M44 78c29-7 36-25 18-43"/>
+  <path class="fine" d="M78 44c-7 29-25 36-43 18"/>
+  <path class="fine" d="M136 78c-29-7-36-25-18-43"/>
+  <path class="fine" d="M102 44c7 29 25 36 43 18"/>
+  <path class="fine" d="M136 102c-29 7-36 25-18 43"/>
+  <path class="fine" d="M102 136c7-29 25-36 43-18"/>
+  <path class="fine" d="M44 102c29 7 36 25 18 43"/>
+  <path class="fine" d="M78 136c-7-29-25-36-43-18"/>
+
+  <path class="vine" d="M44 90c22-13 48-13 68 0 11 7 22 7 34 0"/>
+  <path class="vine" d="M90 44c13 22 13 48 0 68-7 11-7 22 0 34"/>
+
+  <path class="leaf" d="M50 48c-17-11-28-10-35 2 9 12 22 13 37 2z"/>
+  <path class="leaf" d="M130 48c17-11 28-10 35 2-9 12-22 13-37 2z"/>
+  <path class="leaf" d="M130 132c17 11 28 10 35-2-9-12-22-13-37-2z"/>
+  <path class="leaf" d="M50 132c-17 11-28 10-35-2 9-12 22-13 37-2z"/>
+
+  <circle class="flower" cx="32" cy="32" r="7"/>
+  <circle class="flower" cx="148" cy="32" r="7"/>
+  <circle class="flower" cx="148" cy="148" r="7"/>
+  <circle class="flower" cx="32" cy="148" r="7"/>
+  <circle class="gold" cx="90" cy="24" r="4"/>
+  <circle class="gold" cx="156" cy="90" r="4"/>
+  <circle class="gold" cx="90" cy="156" r="4"/>
+  <circle class="gold" cx="24" cy="90" r="4"/>
+</svg>

@@ -1,0 +1,3 @@
+Derived from Kenney Fantasy UI Borders. Source: https://kenney.nl/assets/fantasy-ui-borders
+License: Creative Commons CC0 1.0 Universal.
+Downloaded for the Fate of the Fellowship tracker visual treatment.
