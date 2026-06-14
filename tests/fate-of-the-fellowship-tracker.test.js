@@ -33,6 +33,8 @@ const headPath = path.join(root, 'layouts', 'partials', 'head.html');
 const layoutPath = path.join(root, 'layouts', 'fate-of-the-fellowship', 'list.html');
 const customCssPath = path.join(root, 'static', 'css', 'custom.css');
 const fateCssPath = path.join(root, 'static', 'css', 'fate-of-the-fellowship.css');
+const fateSocialImagePath = path.join(root, 'static', 'images', 'social', 'fate-of-the-fellowship-og.png');
+const fateSocialImageSourcePath = path.join(root, 'static', 'images', 'social', 'working-files', 'fate-of-the-fellowship-og.svg');
 const renderedPagePath = path.join(root, 'public', 'fate-of-the-fellowship', 'index.html');
 const TEMP_FIXTURE_IMAGE_PATH = '/images/fate-of-the-fellowship/session-photos/2026-06-12-win-test-fixture.jpg';
 const TEMP_NON_PROGRESSIVE_IMAGE_PATH = '/images/fate-of-the-fellowship/session-photos/2026-06-12-win-non-progressive-test-fixture.jpg';
@@ -658,6 +660,8 @@ async function main() {
     headPath,
     customCssPath,
     fateCssPath,
+    fateSocialImagePath,
+    fateSocialImageSourcePath,
   ].forEach((targetPath) => {
     assert(fs.existsSync(targetPath), `Missing scaffold path: ${targetPath}`, errors);
   });
@@ -677,6 +681,11 @@ async function main() {
       assert(
         typeof frontMatter.description === 'string' && frontMatter.description.includes('inn ledger'),
         'Fate content description should frame the page as an inn ledger',
+        errors
+      );
+      assert(
+        frontMatter.social_image === '/images/social/fate-of-the-fellowship-og.png',
+        'Fate content should define a page-specific social image',
         errors
       );
       assert(frontMatter.draft !== true, 'Fate content should publish once the custom tracker layout exists', errors);
@@ -968,6 +977,7 @@ async function main() {
 
     [
       '<h1>Fate of the Fellowship</h1>',
+      'https://lindsaybrunner.com/images/social/fate-of-the-fellowship-og.png',
       'fate-rulebook-hero',
       'fate-hero-plate',
       'A field record for',

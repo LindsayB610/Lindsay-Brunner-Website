@@ -1,6 +1,7 @@
 ---
 title: "Fate of the Fellowship"
 description: "A running inn ledger for The Lord of the Rings: Fate of the Fellowship sessions, heroes, objectives, and narrow escapes from the Shadow."
+social_image: "/images/social/fate-of-the-fellowship-og.png"
 draft: false
 ---
 
