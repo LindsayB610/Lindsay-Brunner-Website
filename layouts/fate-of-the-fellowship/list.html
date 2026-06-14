@@ -27,51 +27,40 @@
 
 <section class="section fate-page">
   <div class="container">
-    <div class="fate-ledger">
-      <header class="fate-ledger-header fate-kenney-hero">
+    <div class="fate-ledger fate-rulebook-spread">
+      <header class="fate-ledger-header fate-rulebook-hero">
         <a href="/" class="fate-return-link">Exit to site</a>
-        <div class="fate-hero-panel">
-          <img
-            class="fate-kenney-divider"
-            src="/images/fate-of-the-fellowship/kenney/divider-gold.png"
-            alt=""
-            aria-hidden="true"
-          />
-          <p class="fate-hero-pretitle">The innkeeper's record of</p>
+        <div class="fate-hero-plate">
+          <p class="fate-hero-pretitle">A field record for</p>
           <h1>Fate of the Fellowship</h1>
+          <p class="fate-script-band" aria-hidden="true">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ</p>
           <p class="fate-hero-tagline">
             Heroes called <span aria-hidden="true">&bull;</span> Quests assigned <span aria-hidden="true">&bull;</span> Tales worth keeping
           </p>
           {{ with .Content }}
           <div class="fate-intro">{{ . }}</div>
           {{ end }}
-          <a class="fate-enter-link" href="#fate-overview-heading">Enter the ledger</a>
-          <img
-            class="fate-kenney-divider is-lower"
-            src="/images/fate-of-the-fellowship/kenney/divider-green.png"
-            alt=""
-            aria-hidden="true"
-          />
+          <a class="fate-enter-link" href="#fate-overview-heading">Read the record</a>
         </div>
       </header>
 
-      <section class="fate-section fate-briefing-grid" aria-label="Innkeeper notes">
-        <article class="fate-briefing-card">
-          <span class="fate-briefing-label">House rule</span>
-          <p>Only companions and quests that have actually reached the table earn ink in the ledger. Empty boasts can wait outside with the ponies.</p>
+      <section class="fate-section fate-briefing-grid fate-rulebook-callouts" aria-label="Table notes">
+        <article class="fate-briefing-card fate-callout-box">
+          <span class="fate-briefing-label">Table rule</span>
+          <p>Only companions and quests that have actually reached the table earn ink in the record. Empty boasts can wait outside with the ponies.</p>
         </article>
-        <article class="fate-briefing-card">
-          <span class="fate-briefing-label">Inn gossip</span>
+        <article class="fate-briefing-card fate-callout-box">
+          <span class="fate-briefing-label">Margin note</span>
           <p>Victories are toasted. Defeats are also toasted, but with a sterner look toward Mordor and fewer second breakfasts.</p>
         </article>
       </section>
 
       <section class="fate-section fate-overview-section" aria-labelledby="fate-overview-heading">
         <div class="fate-section-heading">
-          <h2 id="fate-overview-heading">Overview</h2>
-          <p>The road so far, as remembered by witnesses with mugs in hand.</p>
+          <h2 id="fate-overview-heading">The road so far</h2>
+          <p>The record as it stands before the next company sets out.</p>
         </div>
-        <div class="fate-overview-grid">
+        <div class="fate-overview-grid fate-stat-strip">
           <article class="fate-overview-card">
             <span class="fate-overview-label">Journeys logged</span>
             <strong>{{ $totalSessions }}</strong>
@@ -163,7 +152,7 @@
         </div>
         <div class="fate-log-list">
           {{ if gt (len $sessions) 0 }}
-          {{ range $session := $sessions }}
+          {{ range $sessionIndex, $session := $sessions }}
           <article class="fate-log-card">
             <div class="fate-log-topline">
               <span class="fate-result-seal is-{{ $session.result }}">{{ title $session.result }}</span>
@@ -201,6 +190,9 @@
               </figure>
             {{ end }}
           </article>
+          {{ if lt (add $sessionIndex 1) (len $sessions) }}
+          <div class="fate-session-separator" aria-hidden="true">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ</div>
+          {{ end }}
           {{ end }}
           {{ else }}
           <article class="fate-log-card fate-empty-log">
@@ -213,7 +205,7 @@
 
       <section class="fate-section fate-actions-section" aria-labelledby="fate-actions-heading">
         <div class="fate-section-heading">
-          <h2 id="fate-actions-heading">Add a tale to the ledger</h2>
+          <h2 id="fate-actions-heading">Add a tale to the record</h2>
           <p>New sessions live as YAML entries in Git.</p>
         </div>
         <div class="fate-actions">
