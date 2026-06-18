@@ -147,7 +147,7 @@ function checkBuiltFallbacks() {
     'Developer audience research',
     'Mentorship and enablement',
     'Trusted by the best',
-    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, and Split.',
+    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, Split, and Parasail.',
     'Samples beat adjectives',
     'Start on LinkedIn',
   ].forEach((expected) => assertIncludes(home, expected, 'built homepage'));
@@ -520,11 +520,13 @@ function checkHomepageSourceContent() {
     'ngrok',
     'Builder.io',
     'Braze',
+    'Parasail',
     '/images/logos/okta.svg',
     '/images/logos/braze.svg',
     '/images/logos/builder.svg',
     '/images/logos/ngrok.svg',
     '/images/logos/split.svg',
+    '/images/logos/parasail.png',
     'Companies Lindsay has worked with',
     'Trusted by the best',
     'Samples beat adjectives',
@@ -606,7 +608,8 @@ function checkHomepageSourceContent() {
     'appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 shadow-none',
     'AnimatePresence mode="popLayout"',
     'const LOGOS_PER_ROW = 5',
-    'setSetIndex((i) => (i + 1) % setCount)',
+    'setSetIndex((i) => (i + 1) % logos.length)',
+    'Array.from(',
     '}, 5200)',
     'duration: 0.55',
     'key={logo.id}',
@@ -803,9 +806,14 @@ function checkLogoAssets() {
     'static/images/logos/builder.svg',
     'static/images/logos/ngrok.svg',
     'static/images/logos/split.svg',
+    'static/images/logos/parasail.png',
   ].forEach((asset) => {
     assert(exists(asset), `${asset} should exist for the homepage logo cloud`);
-    assertIncludes(read(asset), '<svg', `${asset} should be an SVG logo asset`);
+    if (asset.endsWith('.svg')) {
+      assertIncludes(read(asset), '<svg', `${asset} should be an SVG logo asset`);
+    } else {
+      assert(fs.statSync(path.join(root, asset)).size > 0, `${asset} should be a non-empty logo asset`);
+    }
   });
 }
 

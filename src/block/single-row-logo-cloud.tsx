@@ -38,6 +38,12 @@ export default function SingleRowLogoCloud() {
       className: "h-7 max-w-[142px] grayscale brightness-125 contrast-125",
     },
     {
+      id: "parasail-a",
+      title: "Parasail",
+      src: "/images/logos/parasail.png",
+      className: "h-6 max-w-[146px]",
+    },
+    {
       id: "builder-b",
       title: "Builder.io",
       src: "/images/logos/builder.svg",
@@ -66,6 +72,12 @@ export default function SingleRowLogoCloud() {
       title: "Braze",
       src: "/images/logos/braze.svg",
       className: "h-6 max-w-[110px] translate-y-0.5 invert",
+    },
+    {
+      id: "parasail-b",
+      title: "Parasail",
+      src: "/images/logos/parasail.png",
+      className: "h-6 max-w-[146px]",
     },
     {
       id: "ngrok-c",
@@ -97,9 +109,14 @@ export default function SingleRowLogoCloud() {
       src: "/images/logos/okta.svg",
       className: "h-6 max-w-[118px] invert",
     },
+    {
+      id: "parasail-c",
+      title: "Parasail",
+      src: "/images/logos/parasail.png",
+      className: "h-6 max-w-[146px]",
+    },
   ];
 
-  const setCount = Math.ceil(logos.length / LOGOS_PER_ROW);
   const [setIndex, setSetIndex] = useState(0);
 
   useEffect(() => {
@@ -108,14 +125,14 @@ export default function SingleRowLogoCloud() {
     }
 
     const id = setInterval(() => {
-      setSetIndex((i) => (i + 1) % setCount);
+      setSetIndex((i) => (i + 1) % logos.length);
     }, 5200);
     return () => clearInterval(id);
-  }, [setCount]);
+  }, [logos.length]);
 
-  const visibleLogos = logos.slice(
-    setIndex * LOGOS_PER_ROW,
-    setIndex * LOGOS_PER_ROW + LOGOS_PER_ROW,
+  const visibleLogos = Array.from(
+    { length: LOGOS_PER_ROW },
+    (_, index) => logos[(setIndex + index) % logos.length],
   );
 
   return (
