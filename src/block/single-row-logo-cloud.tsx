@@ -73,28 +73,33 @@ export default function SingleRowLogoCloud() {
           Trusted by the best
         </h2>
         <div className="grid min-h-10 w-full grid-cols-5 items-center justify-items-center gap-x-3 sm:gap-x-5 md:flex md:min-h-12 md:flex-1 md:justify-between md:gap-8">
-          <AnimatePresence mode="popLayout">
-            {visibleLogos.map((logo, index) => (
-              <motion.div
-                key={logo.id}
-                initial={{ opacity: 0, x: -18 }}
-                animate={{ opacity: 0.68, x: 0 }}
-                exit={{ opacity: 0, x: 18 }}
-                transition={{
-                  duration: 0.55,
-                  ease: "easeInOut",
-                  delay: index * 0.08,
-                }}
-                className="flex w-full items-center justify-center"
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.title}
-                  className={`w-full object-contain transition-opacity duration-200 hover:opacity-100 ${logo.className}`}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {visibleLogos.map((logo, index) => (
+            <div
+              key={`logo-slot-${index}`}
+              className="relative flex min-h-10 w-full items-center justify-center md:min-h-12"
+            >
+              <AnimatePresence>
+                <motion.div
+                  key={logo.id}
+                  initial={{ opacity: 0, x: -18 }}
+                  animate={{ opacity: 0.68, x: 0 }}
+                  exit={{ opacity: 0, x: 18 }}
+                  transition={{
+                    duration: 0.55,
+                    ease: "easeInOut",
+                    delay: index * 0.08,
+                  }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.title}
+                    className={`w-full object-contain transition-opacity duration-200 hover:opacity-100 ${logo.className}`}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          ))}
         </div>
       </div>
     </section>
