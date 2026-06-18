@@ -77,14 +77,13 @@ export default function SingleRowLogoCloud() {
             {visibleLogos.map((logo, index) => (
               <motion.div
                 key={logo.id}
-                layout
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 0.68, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, x: -18 }}
+                animate={{ opacity: 0.68, x: 0 }}
+                exit={{ opacity: 0, x: 18 }}
                 transition={{
-                  duration: 0.42,
+                  duration: 0.55,
                   ease: "easeInOut",
-                  delay: index * 0.06,
+                  delay: index * 0.08,
                 }}
                 className="flex w-full items-center justify-center"
               >
