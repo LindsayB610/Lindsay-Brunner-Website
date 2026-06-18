@@ -239,7 +239,7 @@ async function run() {
         }
 
         if (route.path === '/about/') {
-          const maxTimelineStart = viewport.width <= 360 ? 1750 : 1700;
+          const maxTimelineStart = viewport.width <= 360 ? 2550 : 2450;
           assert(
             metrics.aboutTimelineHeadingTop !== null && metrics.aboutTimelineHeadingTop < maxTimelineStart,
             `${label} should reach the timeline before ${maxTimelineStart}px; got ${metrics.aboutTimelineHeadingTop}`,

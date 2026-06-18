@@ -83,6 +83,33 @@ section.hero h1,
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
+.about-devpro-fallback__receipts {
+  margin: 5rem 0 0;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-devpro-fallback__receipts h2 {
+  color: #fff;
+  background: none;
+  -webkit-text-fill-color: #fff;
+  max-width: 760px;
+}
+
+.about-devpro-fallback__receipts ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+  padding-left: 1.25rem;
+}
+
+.about-devpro-fallback__receipts li {
+  color: var(--dark-text-secondary);
+  line-height: 1.6;
+}
+
 .about-devpro-fallback__timeline {
   margin: 6rem 0;
 }
@@ -110,6 +137,10 @@ section.hero h1,
 
   .about-devpro-fallback__image {
     max-width: 260px;
+  }
+
+  .about-devpro-fallback__receipts ul {
+    grid-template-columns: 1fr;
   }
 }
 

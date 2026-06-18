@@ -12,12 +12,26 @@ const timelineItems = [
     title: "Now",
     content: (
       <TimelineEntryContent
-        eyebrow="Jan 2022-present · Consultant + Advisor · lindsaybrunner.com"
-        title="A freelance practice for technical content, developer marketing, and AI-era editorial systems."
+        eyebrow="2026-present · Founder · Brunner Creative, LLC"
+        title="Made the practice official."
         items={[
-          "Helping teams turn ideas into content people actually read and use.",
-          "Helping companies explain complex products without flattening the interesting parts.",
-          "Working at the intersection of developer tools, AI, DevRel, and content strategy.",
+          "Launched Brunner Creative, LLC for technical content, developer marketing, and AI-era editorial systems.",
+          "Kept the work centered on the same problem I have chased for years: making complex products easier to understand, trust, and use.",
+          "Built the business around practical strategy, sharp execution, and a deep suspicion of beige content machinery.",
+        ]}
+      />
+    ),
+  },
+  {
+    title: "2022-now",
+    content: (
+      <TimelineEntryContent
+        eyebrow="Jan 2022-present · Consultant and advisor · lindsaybrunner.com"
+        title="Built the freelance and advisory layer."
+        items={[
+          "Helped teams turn complicated ideas into content people actually read and use.",
+          "Worked with companies on strategy, messaging, technical storytelling, and content systems.",
+          "Operated across developer tools, AI, DevRel, startup GTM, and editorial operations.",
         ]}
       />
     ),
@@ -29,9 +43,9 @@ const timelineItems = [
         eyebrow="Apr 2025-Jan 2026 · Head of Content · Builder.io"
         title="Went deep on AI, content strategy, and the new shape of technical storytelling."
         items={[
-          "Led content for an AI-native developer product company.",
-          "Worked close to product, engineering, and executive strategy.",
-          "Turned fast-moving technical ideas into clear, useful editorial and launch work.",
+          "Led content for an AI-native developer product company while translating complex AI and developer concepts for multiple buyer segments.",
+          "Built early content workflows, owned non-developer content, and helped guide developer content strategy.",
+          "Launched influencer marketing, persona-specific email campaigns, and SEO/AEO work for AI-driven discovery.",
         ]}
       />
     ),
@@ -57,9 +71,9 @@ const timelineItems = [
         eyebrow="Aug 2023-Jan 2025 · Head of Content and Developer Relations · ngrok"
         title="Owned the messy middle where content, DevRel, product, and go-to-market meet."
         items={[
-          "Led content and developer relations for a developer-focused infrastructure company.",
-          "Built messaging, launch content, technical explainers, and editorial systems.",
-          "Managed teams and protected the quality bar when the work got complicated.",
+          "Architected and scaled content, developer relations, brand, events, and customer marketing for a developer infrastructure company.",
+          "Revamped global email strategy, including a developer newsletter to 7M+ users with 5x open-rate lift and 5.5x click-through lift.",
+          "Built webinar and research programs that generated 1,000+ monthly leads, $57M in influenced pipeline, and 2,500+ developer survey responses.",
         ]}
       />
     ),
@@ -71,9 +85,9 @@ const timelineItems = [
         eyebrow="Jan 2022-Jul 2023 · Head of Marketing · Architect.io"
         title="Ran marketing for an early-stage developer tooling company."
         items={[
-          "Turned product direction into positioning, launch work, and developer-facing content.",
-          "Worked across product, engineering, founder strategy, and go-to-market execution.",
-          "Kept the story legible while the company and category were still taking shape.",
+          "Doubled inbound traffic twice within 12 months.",
+          "Defined buyer personas, built initial sales enablement, and led a brand and website evolution.",
+          "Designed the first live event strategy, generating 900+ leads from KCDC 2023.",
         ]}
       />
     ),
@@ -85,9 +99,9 @@ const timelineItems = [
         eyebrow="Mar 2020-Jan 2022 · Director, Content + Advocacy · Split"
         title="Led content and advocacy work for feature delivery and experimentation."
         items={[
-          "Built content systems for a technical B2B audience.",
-          "Connected product storytelling, developer education, and market-facing strategy.",
-          "Helped make complex software delivery concepts easier to understand and trust.",
+          "Led content and advocacy through an executive transition while keeping the marketing engine stable.",
+          "Launched Split's first virtual user conference, with 700+ registrations, 300+ live attendees, and $2.8M in pipeline.",
+          "Expanded thought leadership, grew CFP acceptances 5x, and delivered 12+ marquee customer stories.",
         ]}
       />
     ),
@@ -113,9 +127,9 @@ const timelineItems = [
         eyebrow="Stormpath and Okta"
         title="Built the foundation in developer content, technical editing, and audience trust."
         items={[
-          "Scaled developer content programs across identity, auth, and SaaS infrastructure.",
-          "Edited and coordinated technical articles, contractor programs, and special projects.",
-          "Learned that developer attention is earned by being useful first.",
+          "Led developer content strategy across identity, auth, and SaaS infrastructure.",
+          "Managed 17 writers and partnered with Developer Relations to publish 150+ technical articles per year.",
+          "Helped launch developer.okta.com and scale it to 2M+ annual visitors.",
         ]}
       />
     ),
@@ -126,6 +140,7 @@ function AboutPage() {
   return (
     <div className="bg-site-black text-white">
       <AboutIntro />
+      <ReceiptsSection />
       <Timeline
         data={timelineItems}
         heading="Here's the timeline version"
@@ -138,6 +153,37 @@ function AboutPage() {
         }}
       />
     </div>
+  );
+}
+
+function ReceiptsSection() {
+  const receipts = [
+    "Built developer content programs reaching 2M+ annual visitors.",
+    "Ran a developer newsletter to 7M+ users, improving open rates 5x and click-through rates 5.5x.",
+    "Built webinar and event programs that generated 1,000+ monthly leads and $57M in influenced pipeline.",
+    "Launched community and customer programs with 2,500+ survey responses, 700+ conference registrations, and 12+ marquee customer stories.",
+    "Led content, DevRel, brand, events, customer marketing, SEO, and AI-era editorial systems across developer tooling companies.",
+  ];
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 pb-4 md:px-8 md:pb-10 lg:px-10">
+      <div className="border-y border-white/10 py-8 md:py-10">
+        <h2 className="max-w-4xl text-3xl leading-tight font-bold tracking-tight text-white md:text-5xl">
+          The receipts
+        </h2>
+        <div className="mt-7 grid gap-4 md:grid-cols-2 md:gap-x-8">
+          {receipts.map((receipt) => (
+            <div
+              key={receipt}
+              className="flex gap-3 text-sm leading-7 text-white/68 md:text-base"
+            >
+              <CheckCircle2 className="mt-1.5 h-4 w-4 shrink-0 text-brand-pink" />
+              <span>{receipt}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
