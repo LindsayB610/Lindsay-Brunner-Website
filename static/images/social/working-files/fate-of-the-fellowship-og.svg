@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Fate of the Fellowship</title>
+  <desc id="desc">Working OG source for the Fate of the Fellowship tracker.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f0f" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff0037" />
+      <stop offset="50%" stop-color="#ff1b8d" />
+      <stop offset="100%" stop-color="#ffdd00" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#111111" stroke="#9d7a32" stroke-width="4" />
+  <text x="120" y="192" fill="#f3e7c2" font-family="Georgia, serif" font-size="32" letter-spacing="6">A field record for</text>
+  <text x="120" y="290" fill="#f7efd7" font-family="Georgia, serif" font-size="72" font-weight="700">Fate of the Fellowship</text>
+  <rect x="120" y="334" width="520" height="8" rx="4" fill="url(#accent)" />
+  <text x="120" y="408" fill="#d6c59c" font-family="Helvetica, Arial, sans-serif" font-size="28">Heroes called. Quests assigned. Tales worth keeping.</text>
+  <text x="120" y="484" fill="#b7ab8e" font-family="Helvetica, Arial, sans-serif" font-size="24">Working source SVG for the tracker OG image.</text>
+</svg>
