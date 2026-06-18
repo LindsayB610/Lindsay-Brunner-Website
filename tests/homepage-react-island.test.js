@@ -608,10 +608,12 @@ function checkHomepageSourceContent() {
     'appearance-none items-center justify-center rounded-full border-0 bg-transparent p-0 shadow-none',
     'AnimatePresence mode="popLayout"',
     'const LOGOS_PER_ROW = 5',
-    'setSetIndex((i) => (i + 1) % logos.length)',
+    'const LOGOS = [',
+    'setSetIndex((i) => (i + 1) % LOGOS.length)',
     'Array.from(',
     '}, 5200)',
-    'duration: 0.55',
+    'duration: 0.42',
+    'layout',
     'key={logo.id}',
     'alt={logo.title}',
     '#homepage-root :where(p, h1, h2, h3, h4, h5, h6)',
@@ -631,6 +633,24 @@ function checkHomepageSourceContent() {
     'group-hover/feature:translate-x-2',
     'group-hover/feature:bg-brand-pink',
   ].forEach((expected) => assertIncludes(combined, expected, 'homepage accessibility source'));
+
+  const logoTitles = [...logoCloud.matchAll(/title: "([^"]+)"/g)].map((match) => match[1]);
+  const logoSources = [...logoCloud.matchAll(/src: "([^"]+)"/g)].map((match) => match[1]);
+  const uniqueLogoTitles = new Set(logoTitles);
+  const uniqueLogoSources = new Set(logoSources);
+  assert(logoTitles.length === 6, 'homepage logo cloud should define exactly one source entry per company');
+  assert(
+    uniqueLogoTitles.size === logoTitles.length,
+    'homepage logo cloud should not define duplicate company titles',
+  );
+  assert(
+    uniqueLogoSources.size === logoSources.length,
+    'homepage logo cloud should not define duplicate logo asset paths',
+  );
+  assert(
+    uniqueLogoTitles.size > 5,
+    'homepage logo cloud should have more unique companies than visible slots so rotation never repeats a visible logo',
+  );
 
   [
     'Experience with',

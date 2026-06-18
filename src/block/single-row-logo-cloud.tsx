@@ -5,118 +5,46 @@ import { useEffect, useState } from "react";
 
 const LOGOS_PER_ROW = 5;
 
-export default function SingleRowLogoCloud() {
-  const logos = [
-    {
-      id: "okta-a",
-      title: "Okta",
-      src: "/images/logos/okta.svg",
-      className: "h-6 max-w-[118px] invert",
-    },
-    {
-      id: "braze-a",
-      title: "Braze",
-      src: "/images/logos/braze.svg",
-      className: "h-6 max-w-[110px] translate-y-0.5 invert",
-    },
-    {
-      id: "builder-a",
-      title: "Builder.io",
-      src: "/images/logos/builder.svg",
-      className: "h-7 max-w-[142px] invert",
-    },
-    {
-      id: "ngrok-a",
-      title: "ngrok",
-      src: "/images/logos/ngrok.svg",
-      className: "h-6 max-w-[112px] invert",
-    },
-    {
-      id: "split-a",
-      title: "Split",
-      src: "/images/logos/split.svg",
-      className: "h-7 max-w-[142px] grayscale brightness-125 contrast-125",
-    },
-    {
-      id: "parasail-a",
-      title: "Parasail",
-      src: "/images/logos/parasail.png",
-      className: "h-5 max-w-[126px]",
-    },
-    {
-      id: "builder-b",
-      title: "Builder.io",
-      src: "/images/logos/builder.svg",
-      className: "h-7 max-w-[142px] invert",
-    },
-    {
-      id: "split-b",
-      title: "Split",
-      src: "/images/logos/split.svg",
-      className: "h-7 max-w-[142px] grayscale brightness-125 contrast-125",
-    },
-    {
-      id: "okta-b",
-      title: "Okta",
-      src: "/images/logos/okta.svg",
-      className: "h-6 max-w-[118px] invert",
-    },
-    {
-      id: "ngrok-b",
-      title: "ngrok",
-      src: "/images/logos/ngrok.svg",
-      className: "h-6 max-w-[112px] invert",
-    },
-    {
-      id: "braze-b",
-      title: "Braze",
-      src: "/images/logos/braze.svg",
-      className: "h-6 max-w-[110px] translate-y-0.5 invert",
-    },
-    {
-      id: "parasail-b",
-      title: "Parasail",
-      src: "/images/logos/parasail.png",
-      className: "h-5 max-w-[126px]",
-    },
-    {
-      id: "ngrok-c",
-      title: "ngrok",
-      src: "/images/logos/ngrok.svg",
-      className: "h-6 max-w-[112px] invert",
-    },
-    {
-      id: "builder-c",
-      title: "Builder.io",
-      src: "/images/logos/builder.svg",
-      className: "h-7 max-w-[142px] invert",
-    },
-    {
-      id: "braze-c",
-      title: "Braze",
-      src: "/images/logos/braze.svg",
-      className: "h-6 max-w-[110px] translate-y-0.5 invert",
-    },
-    {
-      id: "split-c",
-      title: "Split",
-      src: "/images/logos/split.svg",
-      className: "h-7 max-w-[142px] grayscale brightness-125 contrast-125",
-    },
-    {
-      id: "okta-c",
-      title: "Okta",
-      src: "/images/logos/okta.svg",
-      className: "h-6 max-w-[118px] invert",
-    },
-    {
-      id: "parasail-c",
-      title: "Parasail",
-      src: "/images/logos/parasail.png",
-      className: "h-5 max-w-[126px]",
-    },
-  ];
+const LOGOS = [
+  {
+    id: "okta",
+    title: "Okta",
+    src: "/images/logos/okta.svg",
+    className: "h-6 max-w-[118px] invert",
+  },
+  {
+    id: "braze",
+    title: "Braze",
+    src: "/images/logos/braze.svg",
+    className: "h-6 max-w-[110px] translate-y-0.5 invert",
+  },
+  {
+    id: "builder",
+    title: "Builder.io",
+    src: "/images/logos/builder.svg",
+    className: "h-7 max-w-[142px] invert",
+  },
+  {
+    id: "ngrok",
+    title: "ngrok",
+    src: "/images/logos/ngrok.svg",
+    className: "h-6 max-w-[112px] invert",
+  },
+  {
+    id: "split",
+    title: "Split",
+    src: "/images/logos/split.svg",
+    className: "h-7 max-w-[142px] grayscale brightness-125 contrast-125",
+  },
+  {
+    id: "parasail",
+    title: "Parasail",
+    src: "/images/logos/parasail.png",
+    className: "h-5 max-w-[126px]",
+  },
+];
 
+export default function SingleRowLogoCloud() {
   const [setIndex, setSetIndex] = useState(0);
 
   useEffect(() => {
@@ -125,14 +53,14 @@ export default function SingleRowLogoCloud() {
     }
 
     const id = setInterval(() => {
-      setSetIndex((i) => (i + 1) % logos.length);
+      setSetIndex((i) => (i + 1) % LOGOS.length);
     }, 5200);
     return () => clearInterval(id);
-  }, [logos.length]);
+  }, []);
 
   const visibleLogos = Array.from(
     { length: LOGOS_PER_ROW },
-    (_, index) => logos[(setIndex + index) % logos.length],
+    (_, index) => LOGOS[(setIndex + index) % LOGOS.length],
   );
 
   return (
@@ -149,13 +77,14 @@ export default function SingleRowLogoCloud() {
             {visibleLogos.map((logo, index) => (
               <motion.div
                 key={logo.id}
-                initial={{ opacity: 0, x: -18 }}
-                animate={{ opacity: 0.68, x: 0 }}
-                exit={{ opacity: 0, x: 18 }}
+                layout
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 0.68, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
                 transition={{
-                  duration: 0.55,
+                  duration: 0.42,
                   ease: "easeInOut",
-                  delay: index * 0.08,
+                  delay: index * 0.06,
                 }}
                 className="flex w-full items-center justify-center"
               >
