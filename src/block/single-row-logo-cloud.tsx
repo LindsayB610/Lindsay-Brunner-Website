@@ -41,7 +41,7 @@ export default function SingleRowLogoCloud() {
       id: "parasail-a",
       title: "Parasail",
       src: "/images/logos/parasail.png",
-      className: "h-6 max-w-[146px]",
+      className: "h-5 max-w-[126px]",
     },
     {
       id: "builder-b",
@@ -77,7 +77,7 @@ export default function SingleRowLogoCloud() {
       id: "parasail-b",
       title: "Parasail",
       src: "/images/logos/parasail.png",
-      className: "h-6 max-w-[146px]",
+      className: "h-5 max-w-[126px]",
     },
     {
       id: "ngrok-c",
@@ -113,7 +113,7 @@ export default function SingleRowLogoCloud() {
       id: "parasail-c",
       title: "Parasail",
       src: "/images/logos/parasail.png",
-      className: "h-6 max-w-[146px]",
+      className: "h-5 max-w-[126px]",
     },
   ];
 
