@@ -28,6 +28,8 @@ We use information to:
 
 If you opt in to receive SMS messages from Brunner Creative or a Brunner Creative-operated tool such as Pulse, we use your phone number only to send the operational messages you requested.
 
+The [Pulse SMS consent page](/pulse-sms-consent/) explains the Pulse opt-in flow, required SMS disclosures, example messages, opt-out instructions, and help instructions.
+
 SMS consent is not shared with third parties or affiliates for marketing purposes. We do not sell SMS opt-in data.
 
 You can opt out of SMS messages at any time by replying **STOP**. You can request help by replying **HELP**.

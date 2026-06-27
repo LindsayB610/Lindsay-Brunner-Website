@@ -19,7 +19,7 @@ Any consulting, content, marketing, editorial, or related services are governed 
 
 Brunner Creative may operate SMS reminder workflows, including Pulse, for low-volume operational reminders configured by the recipient or account owner.
 
-SMS messages may include reminders about tasks, appointments, medication, follow-ups, or other configured personal or operational reminders.
+SMS messages may include reminders about tasks, appointments, follow-ups, or other configured personal or operational reminders.
 
 Message frequency varies based on the reminders configured by the recipient or account owner. Message and data rates may apply.
 
