@@ -1,16 +1,20 @@
 ---
 title: "Pulse SMS Consent"
 description: "SMS opt-in and consent details for Brunner Creative Pulse reminders."
-date: 2026-06-27
+date: 2026-06-30
 ---
 
-Last updated: June 27, 2026
+Last updated: June 30, 2026
 
 Pulse is a Brunner Creative-operated reminder tool that can send low-volume SMS reminders configured by the recipient or account owner.
 
 ## How SMS Opt-In Works
 
 Pulse SMS reminders are enabled only when a person intentionally configures Pulse for their own reminders or asks Brunner Creative to configure Pulse reminders for a phone number they control.
+
+Reviewers can view the opt-in screen here: [Pulse SMS opt-in flow screenshot](/images/pulse-sms-opt-in-flow.png).
+
+![Pulse SMS opt-in flow screenshot showing an unchecked SMS consent checkbox](/images/pulse-sms-opt-in-flow.png)
 
 Before SMS reminders are enabled, the recipient is told that:
 
