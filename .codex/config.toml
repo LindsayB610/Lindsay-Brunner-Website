@@ -1,5 +1,0 @@
-# GUPPI MCP access is deliberately limited to the personal-creative profile.
-[mcp_servers.guppi]
-command = "node"
-args = ["/Users/lindsaybrunner/Developer/GUPPI/mcp/src/server.mjs", "--profile", "personal-creative", "--workspace-root", "/Users/lindsaybrunner/Documents/Lindsay-Brunner-Website"]
-cwd = "/Users/lindsaybrunner/Developer/GUPPI/mcp"
