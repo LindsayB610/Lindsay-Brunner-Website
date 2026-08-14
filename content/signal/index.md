@@ -1,10 +1,11 @@
 ---
-title: "Signal"
+title: "Signal by Lindsay Brunner"
+browser_title: "Signal by Lindsay Brunner"
 description: "A private SEO and content-planning tool built and operated by Lindsay Brunner."
 draft: false
 ---
 
-Signal is a private, owner-operated SEO and content-planning tool built by Lindsay Brunner. It turns search performance and keyword data into a prioritized list of editorial opportunities for [lindsaybrunner.com](/).
+Signal by Lindsay Brunner is a private, owner-operated SEO and content-planning tool. It turns search performance and keyword data into a prioritized list of editorial opportunities for [lindsaybrunner.com](/).
 
 ## What Signal does
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title description">
+  <title id="title">Signal by Lindsay Brunner logo</title>
+  <desc id="description">LB monogram and the word Signal on a black rounded square with a red, pink, and yellow border.</desc>
+  <defs>
+    <linearGradient id="signal-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff0037"/>
+      <stop offset="0.5" stop-color="#ff1b8d"/>
+      <stop offset="1" stop-color="#ffdd00"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="24" fill="#000000"/>
+  <rect x="3" y="3" width="114" height="114" rx="21" fill="none" stroke="url(#signal-gradient)" stroke-width="6"/>
+  <text x="60" y="70" fill="url(#signal-gradient)" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="-4" text-anchor="middle">LB</text>
+  <text x="60" y="94" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2" text-anchor="middle">SIGNAL</text>
+</svg>
