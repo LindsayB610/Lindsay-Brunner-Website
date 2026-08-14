@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "Privacy policy for Lindsay Brunner and Brunner Creative."
 ---
 
-Last updated: June 25, 2026
+Last updated: August 14, 2026
 
 This privacy policy explains how Lindsay Brunner and Brunner Creative, LLC collect and use information through this website and related services.
 
@@ -12,6 +12,19 @@ This privacy policy explains how Lindsay Brunner and Brunner Creative, LLC colle
 If you contact us, work with us, or opt in to receive SMS reminders, we may collect information you provide directly, including your name, email address, phone number, business information, and message content.
 
 We may also use privacy-friendly analytics to understand general website traffic and performance.
+
+## Signal and Google User Data
+
+[Signal](/signal/) is a private SEO and content-planning tool operated by Lindsay Brunner. When an authorized Google account is connected, Signal may access:
+
+- Google Search Console search performance data, including queries, pages, clicks, impressions, click-through rate, and average position;
+- Google Ads historical keyword metrics, including average monthly searches, competition, and top-of-page bid ranges.
+
+Signal uses this data only to analyze search opportunities and generate private SEO planning reports for the authorized account. Signal does not use Google user data to create or modify advertising campaigns, serve advertising, or build advertising profiles. Google user data is not sold or exposed publicly.
+
+Access is limited to Signal's owner and Google accounts explicitly authorized by the owner. Generated metrics may be retained in private Signal reports only as long as needed for SEO planning and historical comparison. Authorization can be revoked through the connected Google account's security settings.
+
+Signal's use and transfer of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ## How We Use Information
 
