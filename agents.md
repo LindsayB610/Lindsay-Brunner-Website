@@ -6,6 +6,28 @@ This document provides context for AI assistants working on this Hugo static sit
 
 This is a personal website built with **Hugo** (v0.149.2+), deployed on **Netlify**. The site showcases thought leadership content and recipes with a custom dark theme design.
 
+## GUPPI MCP services
+
+This project has a local GUPPI MCP server configured in `.codex/config.toml`.
+Use its tools as the default surface for connected services; don't fall back to
+browser control or claim a service is unavailable before calling
+`connection.list`.
+
+- The authoritative connection list is already filtered to this project's
+  `personal-creative` profile. Never guess or request another profile's
+  connection ID.
+- For Slack, use the People in the World connection only. It can search and
+  read every conversation Lindsay can see, including DMs and private channels,
+  and can download an attachment returned by a Slack read into a **new** path
+  inside this workspace. It cannot post to Slack.
+- For recipe source material received in Slack, prefer the ignored
+  `reference_docs/` directory. Create that directory if needed, then use
+  `slack.file.download` with the exact `channel_id` and `file_id` returned by
+  the prior Slack search/read.
+- Use the same MCP for this project's scoped Google, GitHub, and Netlify work.
+  The server-side profile policy, not a prompt assumption, is the authority on
+  what the project can access.
+
 ## Critical Protected Elements ⚠️
 
 **NEVER modify these without explicit user permission:**

@@ -1068,7 +1068,9 @@ blockquote {
 .footer-legal-nav a {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   color: var(--dark-text-muted);
   font-size: 0.82rem;
   font-weight: 600;
@@ -1311,7 +1313,7 @@ blockquote {
 
   .footer-legal-nav a {
     font-size: 0.78rem;
-    min-height: 32px;
+    min-height: 44px;
   }
 
   .footer-social-links {
