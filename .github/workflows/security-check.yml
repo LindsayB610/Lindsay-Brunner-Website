@@ -235,7 +235,7 @@ jobs:
           if [ "${{ steps.parse-hugo.outputs.security_issues }}" == "true" ]; then
             REPORT+="$ACTION_NUM. **🚨 URGENT:** Update Hugo (security issues detected)\n"
             REPORT+="   \`\`\`bash\n"
-            REPORT+="   npm install hugo-bin@latest\n"
+            REPORT+="   # Update HUGO_VERSION in netlify.toml, then install the same Hugo version locally\n"
             REPORT+="   npm run build && npm test\n"
             REPORT+="   \`\`\`\n\n"
             ACTION_NEEDED=true
@@ -243,7 +243,7 @@ jobs:
           elif [ "${{ steps.parse-hugo.outputs.update_available }}" == "true" ]; then
             REPORT+="$ACTION_NUM. **💡 Recommended:** Update Hugo\n"
             REPORT+="   \`\`\`bash\n"
-            REPORT+="   npm install hugo-bin@latest\n"
+            REPORT+="   # Update HUGO_VERSION in netlify.toml, then install the same Hugo version locally\n"
             REPORT+="   npm run build && npm test\n"
             REPORT+="   \`\`\`\n\n"
             ACTION_NEEDED=true
@@ -368,7 +368,7 @@ jobs:
             
             emailSummary += `\n**Quick Actions:**\n`;
             if ('${{ steps.parse-hugo.outputs.security_issues }}' === 'true' || '${{ steps.parse-hugo.outputs.update_available }}' === 'true') {
-              emailSummary += `- Hugo: \`npm install hugo-bin@latest && npm test\`\n`;
+              emailSummary += `- Hugo: update \`HUGO_VERSION\` in \`netlify.toml\`, then run \`npm test\`\n`;
             }
             if ('${{ steps.parse-deps.outputs.has_security }}' === 'true') {
               emailSummary += `- npm: \`npm audit fix && npm test\`\n`;

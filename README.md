@@ -36,7 +36,7 @@ Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
 
 ## 🛠 Tech Stack
 
-- **Static Site Generator**: [Hugo](https://gohugo.io/) v0.149.2+
+- **Static Site Generator**: [Hugo](https://gohugo.io/) v0.152.2 (pinned in `netlify.toml`)
 - **Interactive Pages**: React islands bundled with Vite for the homepage and About page
 - **Styling**: Custom CSS with modern design principles and responsive layouts
 - **UI Components**: Aceternity UI components adapted into the local React island layer
@@ -53,7 +53,7 @@ Before you begin, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher (specified in `.nvmrc`)
 - [npm](https://www.npmjs.com/) v8.0.0 or higher
-- [Hugo](https://gohugo.io/installation/) (automatically installed via hugo-bin)
+- [Hugo](https://gohugo.io/installation/) v0.152.2 (Netlify provides the pinned build binary; install the same version locally for `npm run dev` and `npm run build`)
 
 ## 🏃‍♀️ Quick Start
 
@@ -111,6 +111,7 @@ Before you begin, ensure you have the following installed:
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
 - `npm run test:mobile` - Static and rendered mobile/responsive validation
+- `npm run test:netlify-build` - Guard Netlify's native Hugo pin, deterministic install command, and the absence of `hugo-bin`
 
 ### Content and asset workflows
 

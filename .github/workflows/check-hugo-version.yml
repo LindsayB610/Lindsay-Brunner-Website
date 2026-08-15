@@ -101,7 +101,7 @@ jobs:
             REPORT+="### 🚨 ACTION REQUIRED: Security Issues Detected\n\n"
             REPORT+="**Your Hugo version has known security vulnerabilities and must be updated immediately.**\n\n"
             REPORT+="**What to do:**\n"
-            REPORT+="1. Update Hugo: \`npm install hugo-bin@latest\`\n"
+            REPORT+="1. Update Hugo: change \`HUGO_VERSION\` in \`netlify.toml\` and install the same version locally\n"
             REPORT+="2. Test your site: \`npm run build && npm test\`\n"
             REPORT+="3. Commit and push the changes\n\n"
           elif [ "${{ steps.parse-status.outputs.update_available }}" == "true" ]; then
@@ -121,7 +121,7 @@ jobs:
             REPORT+="### 💡 Update Available\n\n"
             REPORT+="A newer version of Hugo is available. You're currently on \`${{ steps.parse-status.outputs.current_version }}\` and the latest is \`${{ steps.parse-status.outputs.latest_version }}\`.\n\n"
             REPORT+="**Recommended action:**\n"
-            REPORT+="1. Update Hugo: \`npm install hugo-bin@latest\`\n"
+            REPORT+="1. Update Hugo: change \`HUGO_VERSION\` in \`netlify.toml\` and install the same version locally\n"
             REPORT+="2. Test your site: \`npm run build && npm test\`\n"
             REPORT+="3. Commit and push the changes\n\n"
             REPORT+="*Note: This is not urgent, but keeping dependencies up to date is recommended.*\n\n"
@@ -160,7 +160,7 @@ jobs:
             const emailSummary = `**QUICK SUMMARY FOR EMAIL:**\n\n`;
             const emailSummaryContent = `${{ steps.parse-status.outputs.security_issues == 'true' && '🚨 URGENT: Hugo has security vulnerabilities. Update immediately.' || '💡 Hugo update available. Consider updating when convenient.' }}\n\n`;
             const emailSummaryDetails = `Current: \`${{ steps.parse-status.outputs.current_version }}\` → Latest: \`${{ steps.parse-status.outputs.latest_version }}\`\n\n`;
-            const emailSummaryAction = `**Action:** Run \`npm install hugo-bin@latest && npm run build && npm test\`\n\n---\n\n`;
+            const emailSummaryAction = `**Action:** Update \`HUGO_VERSION\` in \`netlify.toml\`, then run \`npm run build && npm test\`\n\n---\n\n`;
             const fullBody = emailSummary + emailSummaryContent + emailSummaryDetails + emailSummaryAction + report;
             
             // Check if an open issue with this title already exists

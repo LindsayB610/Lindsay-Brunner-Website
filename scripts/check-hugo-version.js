@@ -4,14 +4,13 @@
  * Check Hugo version and security status
  * 
  * This script checks:
- * - Current Hugo version (via hugo-bin)
+ * - Configured Hugo version (via Netlify's native Hugo pin)
  * - Available updates
  * - Known security vulnerabilities
  * 
  * Run with: npm run check:hugo
  */
 
-const { execSync } = require('child_process');
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
@@ -109,70 +108,20 @@ function checkSecurityStatus(currentVersion) {
   return issues;
 }
 
-function readJsonFile(filePath) {
-  try {
-    if (!fs.existsSync(filePath)) {
-      return null;
-    }
-
-    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  } catch (err) {
-    return null;
-  }
-}
-
-function getInstalledHugoBinMetadata() {
-  const packageJsonPath = path.join(__dirname, '..', 'node_modules', 'hugo-bin', 'package.json');
-  const packageJson = readJsonFile(packageJsonPath);
-
-  if (!packageJson) {
-    return null;
-  }
-
-  return {
-    hugoVersion: packageJson.hugoVersion || null,
-    hugoBinVersion: packageJson.version || null,
-    source: packageJsonPath
-  };
-}
-
-function getDeclaredHugoBinVersion() {
-  const packageJsonPath = path.join(__dirname, '..', 'package.json');
-  const packageJson = readJsonFile(packageJsonPath);
-
-  return packageJson?.dependencies?.['hugo-bin'] || packageJson?.devDependencies?.['hugo-bin'] || null;
-}
-
 function getCurrentHugoVersion() {
-  const installedMetadata = getInstalledHugoBinMetadata();
+  const netlifyConfigPath = path.join(__dirname, '..', 'netlify.toml');
+  const netlifyConfig = fs.existsSync(netlifyConfigPath) ? fs.readFileSync(netlifyConfigPath, 'utf8') : '';
+  const configuredVersion = netlifyConfig.match(/^HUGO_VERSION\s*=\s*"([^"]+)"\s*$/m)?.[1];
 
-  if (installedMetadata?.hugoVersion) {
+  if (configuredVersion) {
     return {
-      output: `hugo v${installedMetadata.hugoVersion}`,
-      metadata: installedMetadata,
-      source: 'hugo-bin package metadata'
+      output: `hugo v${configuredVersion}`,
+      configuredVersion,
+      source: 'netlify.toml HUGO_VERSION'
     };
   }
 
-  try {
-    const output = execSync('npx hugo version', { encoding: 'utf-8', stdio: 'pipe' });
-    return {
-      output: output.trim(),
-      metadata: installedMetadata,
-      source: 'hugo binary'
-    };
-  } catch (err) {
-    const errorMsg = err.message || 'Could not determine Hugo version';
-    const details = err.stdout || err.stderr;
-    const declaredHugoBinVersion = getDeclaredHugoBinVersion();
-
-    return {
-      error: errorMsg,
-      details,
-      metadata: installedMetadata,
-      declaredHugoBinVersion
-    };
-  }
+  return { error: 'HUGO_VERSION is not configured in netlify.toml' };
 }
 
 async function main() {
@@ -280,8 +229,8 @@ async function main() {
           
           console.log(`\n🔗 Release notes: ${latestVersion.url}`);
           console.log(`\n💡 To update:`);
-          console.log(`   1. Check hugo-bin package for updates: npm outdated hugo-bin`);
-          console.log(`   2. Update if available: npm install hugo-bin@latest`);
+          console.log(`   1. Update HUGO_VERSION in netlify.toml`);
+          console.log(`   2. Install the matching Hugo version locally`);
           console.log(`   3. Test your site: npm run build && npm test`);
         }
       } else {
@@ -294,14 +243,6 @@ async function main() {
         console.log(`\n⚠️  Could not check latest version (network error): ${err.message}`);
         console.log('   You can manually check: https://github.com/gohugoio/hugo/releases/latest');
       }
-    }
-    
-    // Check hugo-bin package version
-    const hugoBinVersion = getDeclaredHugoBinVersion();
-    const installedHugoBinVersion = currentHugo.metadata?.hugoBinVersion || null;
-
-    if (!jsonOutput && hugoBinVersion) {
-      console.log(`\n📦 hugo-bin package: ${hugoBinVersion}`);
     }
     
     if (!jsonOutput) {
@@ -318,8 +259,7 @@ async function main() {
         latestVersion: latestVersion ? latestVersion.full : null,
         updateAvailable: updateAvailable,
         versionBehind: versionBehind,
-        hugoBinVersion: hugoBinVersion,
-        installedHugoBinVersion: installedHugoBinVersion,
+        configuredHugoVersion: currentHugo.configuredVersion || null,
         versionSource: currentHugo.source,
         timestamp: new Date().toISOString()
       };
