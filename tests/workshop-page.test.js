@@ -20,6 +20,10 @@ const headPath = path.join(root, 'layouts', 'partials', 'head.html');
 const headerPath = path.join(root, 'layouts', 'partials', 'header.html');
 const footerPath = path.join(root, 'layouts', 'partials', 'footer.html');
 const failures = [];
+const workshopRepositoryUrl = 'https://github.com/LindsayB610/workshop';
+const workshopDownloadUrl = 'https://github.com/LindsayB610/workshop/releases/latest/download/Workshop-aarch64.dmg';
+const workshopOgImage = '/images/social/workshop-og-1200x630.png';
+const workshopOgImagePath = path.join(root, 'static', workshopOgImage.replace(/^\//, ''));
 
 const expectedImages = [
   {
@@ -98,6 +102,7 @@ function testSourceContracts() {
 
   if (!fs.existsSync(layoutPath) || !fs.existsSync(cssPath)) return;
 
+  const content = read(contentPath);
   const layout = read(layoutPath);
   const css = read(cssPath);
   const head = read(headPath);
@@ -111,6 +116,14 @@ function testSourceContracts() {
     'Slate and Pulse should both be explicitly labeled as Workshop tools',
   );
   assert(!layout.includes('workshop-flow'), 'Workshop layout should not restore the removed duplicate how-it-works section');
+  assert(content.includes(`social_image: "${workshopOgImage}"`), 'Workshop should declare its page-specific social image');
+  assert(fs.existsSync(workshopOgImagePath), 'Workshop social image should exist');
+
+  if (fs.existsSync(workshopOgImagePath)) {
+    const ogHeader = fs.readFileSync(workshopOgImagePath);
+    assert(ogHeader.subarray(1, 4).toString('ascii') === 'PNG', 'Workshop social image should be a PNG');
+    assert(ogHeader.readUInt32BE(16) === 1200 && ogHeader.readUInt32BE(20) === 630, 'Workshop social image should be 1200×630');
+  }
 
   assert(head.includes('eq .RelPermalink "/workshop/"'), 'Workshop stylesheet should load only on the Workshop route');
   assert(css.includes('.workshop-page'), 'Workshop stylesheet should use a page-scoped root selector');
@@ -136,6 +149,7 @@ function testRenderedContracts() {
   const pulseIndex = rendered.indexOf('Pulse is the Workshop tool');
 
   assert(rendered.includes('/css/workshop.css'), 'Rendered Workshop page should load its dedicated stylesheet');
+  assert(rendered.includes(`https://lindsaybrunner.com${workshopOgImage}`), 'Rendered Workshop page should expose its page-specific Open Graph image');
   assert(rendered.includes('A home for the tools that keep your real work moving.'), 'Rendered Workshop page should retain its approved hero promise');
   assert(rendered.includes('Workshop, Slate, and Pulse are open source.'), 'Rendered Workshop page should state that Workshop and its included tools are open source');
   assert(workshopIndex !== -1 && slateIndex > workshopIndex && pulseIndex > slateIndex, 'Rendered Workshop page should introduce Workshop before Slate, then Pulse');
@@ -151,11 +165,15 @@ function testRenderedContracts() {
   });
 
   assert(
-    rendered.includes('href=https://github.com/LindsayB610/workshop') &&
+    rendered.includes(`href=${workshopRepositoryUrl}`) &&
       rendered.includes('target=_blank') &&
       rendered.includes('rel="noopener noreferrer"'),
     'Workshop GitHub CTA should keep its destination and safe external-link attributes',
   );
+  assert(rendered.includes(`href=${workshopDownloadUrl}`), 'Workshop should expose the stable macOS download link');
+  assert(rendered.includes('Download for macOS'), 'Workshop should make the macOS download the primary hero action');
+  assert(rendered.split('Built for Apple Silicon Macs · No account required.').length === 3, 'Workshop should state the platform requirement and account policy below both download CTAs');
+  assert(!rendered.includes('class=workshop-proof'), 'Workshop hero should not use a redundant proof-bullet list');
 }
 
 async function testBrowserLayout() {
@@ -191,8 +209,14 @@ async function testBrowserLayout() {
           complete: image.complete,
           naturalWidth: image.naturalWidth,
         }));
-        const heroCta = document.querySelector('.workshop-hero .workshop-button--primary');
-        const closingCta = document.querySelector('.workshop-closing .workshop-button--primary');
+        const heroCta = document.querySelector('.workshop-hero .workshop-download-button');
+        const heroGithub = document.querySelector('.workshop-hero .workshop-github-link');
+        const closingCta = document.querySelector('.workshop-closing .workshop-download-button');
+        const closingGithub = document.querySelector('.workshop-closing .workshop-github-link');
+        const downloadNotes = [...document.querySelectorAll('.workshop-download > p')].map((note) => ({
+          text: note.textContent.trim(),
+          fontStyle: getComputedStyle(note).fontStyle,
+        }));
         const headingTexts = [...document.querySelectorAll('.workshop-page h1, .workshop-page h2')]
           .map((heading) => heading.textContent.trim());
         const foundationCards = document.querySelector('.workshop-foundation__cards');
@@ -208,15 +232,21 @@ async function testBrowserLayout() {
           imageMetrics,
           heroCtaText: heroCta?.textContent.trim() || '',
           heroCtaHref: heroCta?.getAttribute('href') || '',
+          heroGithubText: heroGithub?.textContent.trim() || '',
+          heroGithubHref: heroGithub?.getAttribute('href') || '',
           closingCtaText: closingCta?.textContent.trim() || '',
+          closingCtaHref: closingCta?.getAttribute('href') || '',
+          closingGithubText: closingGithub?.textContent.trim() || '',
+          closingGithubHref: closingGithub?.getAttribute('href') || '',
+          downloadNotes,
           foundationColumns: foundationCards ? getComputedStyle(foundationCards).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
           slateColumns: slateTool ? getComputedStyle(slateTool).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
           pulseColumns: pulseTool ? getComputedStyle(pulseTool).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
         };
       });
 
-      await page.locator('.workshop-hero .workshop-button--primary').focus();
-      const focusMetrics = await page.locator('.workshop-hero .workshop-button--primary').evaluate((button) => {
+      await page.locator('.workshop-hero .workshop-download-button').focus();
+      const focusMetrics = await page.locator('.workshop-hero .workshop-download-button').evaluate((button) => {
         const styles = getComputedStyle(button);
         return {
           outlineWidth: styles.outlineWidth,
@@ -237,9 +267,19 @@ async function testBrowserLayout() {
         assert(image.alt, `Workshop ${viewport.label} screenshot ${image.src} should have alt text`);
         assert(image.complete && image.naturalWidth > 0, `Workshop ${viewport.label} screenshot ${image.src} should load successfully`);
       });
-      assert(metrics.heroCtaText.includes('View Workshop on GitHub'), `Workshop ${viewport.label} hero should retain the GitHub CTA`);
-      assert(metrics.heroCtaHref === 'https://github.com/LindsayB610/workshop', `Workshop ${viewport.label} hero CTA should point to the Workshop repository`);
-      assert(metrics.closingCtaText.includes('View Workshop on GitHub'), `Workshop ${viewport.label} closing should repeat the GitHub CTA`);
+      assert(metrics.heroCtaText.includes('Download for macOS'), `Workshop ${viewport.label} hero should lead with the macOS download CTA`);
+      assert(metrics.heroCtaHref === workshopDownloadUrl, `Workshop ${viewport.label} hero CTA should point to the stable macOS download`);
+      assert(metrics.heroGithubText.includes('View Workshop on GitHub'), `Workshop ${viewport.label} hero should retain the GitHub CTA`);
+      assert(metrics.heroGithubHref === workshopRepositoryUrl, `Workshop ${viewport.label} hero should retain the Workshop repository link`);
+      assert(metrics.closingCtaText.includes('Download for macOS'), `Workshop ${viewport.label} closing should lead with the macOS download CTA`);
+      assert(metrics.closingCtaHref === workshopDownloadUrl, `Workshop ${viewport.label} closing CTA should point to the stable macOS download`);
+      assert(metrics.closingGithubText.includes('View Workshop on GitHub'), `Workshop ${viewport.label} closing should retain the GitHub CTA`);
+      assert(metrics.closingGithubHref === workshopRepositoryUrl, `Workshop ${viewport.label} closing should retain the Workshop repository link`);
+      assert(metrics.downloadNotes.length === 2, `Workshop ${viewport.label} should show the download qualifier under both download CTAs`);
+      metrics.downloadNotes.forEach((note) => {
+        assert(note.text === 'Built for Apple Silicon Macs · No account required.', `Workshop ${viewport.label} download qualifier should be consistent`);
+        assert(note.fontStyle === 'italic', `Workshop ${viewport.label} download qualifier should be italic`);
+      });
       assert(focusMetrics.borderWidth === '0px', `Workshop ${viewport.label} gradient CTA should remain borderless`);
       assert(focusMetrics.outlineWidth === '3px' && focusMetrics.outlineStyle === 'solid', `Workshop ${viewport.label} gradient CTA should retain a visible keyboard focus treatment`);
       assert(screenshot.length > 10_000, `Workshop ${viewport.label} screenshot should contain rendered page content`);
