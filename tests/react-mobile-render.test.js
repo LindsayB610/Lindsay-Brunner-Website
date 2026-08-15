@@ -170,6 +170,12 @@ async function collectMobileMetrics(page) {
 
     const aboutTimelineHeading = [...document.querySelectorAll('#about-root h2')]
       .find((heading) => heading.textContent?.includes('timeline'));
+    const main = document.querySelector('main');
+    const homepageSections = [...document.querySelectorAll('main section')]
+      .map((section) => Math.round(section.getBoundingClientRect().height))
+      .filter((height) => height > 0);
+    const footer = document.querySelector('#site-footer');
+    const footerRect = footer?.getBoundingClientRect();
 
     return {
       overflowX: doc.scrollWidth - doc.clientWidth,
@@ -179,6 +185,15 @@ async function collectMobileMetrics(page) {
       testimonialIndicatorIssues,
       aboutTimelineHeadingTop: aboutTimelineHeading
         ? Math.round(aboutTimelineHeading.getBoundingClientRect().top)
+        : null,
+      homepageSectionHeights: homepageSections,
+      mainBottom: main ? Math.round(main.getBoundingClientRect().bottom) : null,
+      footer: footerRect
+        ? {
+            top: Math.round(footerRect.top),
+            bottom: Math.round(footerRect.bottom),
+            height: Math.round(footerRect.height),
+          }
         : null,
     };
   });
@@ -247,10 +262,26 @@ async function run() {
         }
 
         if (route.path === '/') {
-          const maxHeight = viewport.width <= 360 ? 6800 : 6600;
+          const maxSectionHeight = viewport.height * 4;
           assert(
-            metrics.scrollHeight < maxHeight,
-            `${label} should stay reasonably compact on mobile; got ${metrics.scrollHeight}px`,
+            metrics.homepageSectionHeights.length >= 3,
+            `${label} should render its major content sections`,
+          );
+          assert(
+            metrics.homepageSectionHeights.every((height) => height <= maxSectionHeight),
+            `${label} should not let a single homepage section grow past four viewports: ${metrics.homepageSectionHeights.join(', ')}px`,
+          );
+          assert(
+            metrics.footer !== null && metrics.footer.height > 100,
+            `${label} should render a visible site footer`,
+          );
+          assert(
+            metrics.footer !== null && metrics.mainBottom !== null && metrics.footer.top >= metrics.mainBottom - 1,
+            `${label} should keep the footer after the homepage content`,
+          );
+          assert(
+            metrics.footer !== null && metrics.footer.bottom <= metrics.scrollHeight + 1,
+            `${label} should keep the footer reachable in the document flow`,
           );
         }
       }
