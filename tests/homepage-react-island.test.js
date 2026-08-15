@@ -149,6 +149,11 @@ function checkBuiltFallbacks() {
     'Trusted by the best',
     'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, Split, and Parasail.',
     'Samples beat adjectives',
+    'A tiny desktop home for the tools I actually use.',
+    'I built this',
+    'Workshop is a local-first Mac app with a deliberately empty shelf.',
+    'Explore Workshop',
+    'Meet Slate + Pulse',
     'Start on LinkedIn',
   ].forEach((expected) => assertIncludes(home, expected, 'built homepage'));
 
@@ -168,6 +173,13 @@ function checkBuiltFallbacks() {
     /<div id=homepage-root>\s*<section class=hero>/.test(home) ||
       /<div id=["']homepage-root["']>\s*<section class=["']hero["']>/.test(home),
     'built homepage should include meaningful static HTML inside the React mount point',
+  );
+  const workshopFallbackIndex = home.indexOf('A tiny desktop home for the tools I actually use.');
+  const contactFallbackIndex = home.indexOf('Bring Me Your Weird Content Problem');
+  const footerIndex = home.indexOf('site-footer');
+  assert(
+    workshopFallbackIndex > contactFallbackIndex && footerIndex > workshopFallbackIndex,
+    'built homepage fallback should place Workshop after the contact section and before the footer',
   );
   assert(
     /<div id=about-root>\s*<section class="section about-devpro-fallback">/.test(about) ||
@@ -532,6 +544,13 @@ function checkHomepageSourceContent() {
     'Companies Lindsay has worked with',
     'Trusted by the best',
     'Samples beat adjectives',
+    'workshop-home-title',
+    'A tiny desktop home for the tools I actually use.',
+    'I built this',
+    'Workshop is a local-first Mac app with a deliberately empty shelf.',
+    '/workshop/#tools',
+    '/images/workshop/workshop-shelf.png',
+    'group-hover:scale-[1.01]',
     'group-hover:bg-[length:100%_2px]',
     '/thoughts/2026-04-21/the-problem-is-usually-not-the-prompt/',
     '/thoughts/2026-04-11/building-a-cli-with-ai/',
@@ -539,6 +558,18 @@ function checkHomepageSourceContent() {
     'Bring me your weird content problems',
     'Start on LinkedIn',
   ].forEach((expected) => assertIncludes(combined, expected, 'homepage React source'));
+
+  const contactSectionIndex = homepage.indexOf('<ContactSectionWithShader');
+  const workshopSectionIndex = homepage.indexOf('workshop-home-section');
+  assert(
+    workshopSectionIndex > contactSectionIndex,
+    'Workshop should be the final homepage segment, after the contact section',
+  );
+  assertNotIncludes(homepage, 'bg-[#080809]', 'Workshop screenshot panel should share the card background instead of restoring a black band');
+  assertIncludes(reactStyles, '#homepage-root .workshop-home-section', 'homepage React styles should scope the Workshop background');
+  assertIncludes(reactStyles, 'linear-gradient(125deg, #26081f 0%, #40142f 52%, #24101f 100%)', 'Workshop segment should retain its distinct plum background');
+  assertIncludes(reactStyles, 'body:has(#homepage-root) .site-footer', 'homepage styles should target the footer handoff only on the homepage');
+  assertIncludes(reactStyles, 'margin-top: 0;', 'homepage Workshop segment should run directly into the footer');
 
   [
     'AI-era content workflows',
@@ -865,6 +896,7 @@ function checkReferencedRoutes() {
   [
     'public/thoughts/index.html',
     'public/about/index.html',
+    'public/workshop/index.html',
     'public/thoughts/2026-04-21/the-problem-is-usually-not-the-prompt/index.html',
     'public/thoughts/2026-04-11/building-a-cli-with-ai/index.html',
     'public/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/index.html',

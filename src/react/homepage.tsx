@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import HeroSectionWithBeamsAndGrid from "@/block/hero-section-with-beams-and-grid";
 import ContactSectionWithShader from "@/block/contact-section-with-shader";
 import SingleRowLogoCloud from "@/block/single-row-logo-cloud";
@@ -137,6 +137,45 @@ function Homepage() {
           label: "More about me",
         }}
       />
+
+      <section className="workshop-home-section px-6 py-16 md:py-20" aria-labelledby="workshop-home-title">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-white/20 bg-[#1d0e1d]">
+          <div className="grid gap-8 p-7 sm:p-10 md:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.9fr)] md:items-end md:gap-12 md:p-12">
+            <div>
+              <Eyebrow>I built this</Eyebrow>
+              <h2 id="workshop-home-title" className="max-w-2xl text-3xl font-bold text-white sm:text-5xl">
+                A tiny desktop home for the tools I actually use.
+              </h2>
+            </div>
+            <div>
+              <p className="max-w-xl text-base leading-7 text-site-muted sm:text-lg">
+                Workshop is a local-first Mac app with a deliberately empty shelf. Add Slate for the Markdown you keep reopening, or Pulse for recurring things that cannot quietly disappear.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+                <a
+                  href="/workshop/"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand-yellow px-5 py-3 font-bold text-black no-underline transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-pink"
+                >
+                  Explore Workshop
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+                <a href="/workshop/#tools" className="inline-flex min-h-11 items-center gap-2 font-bold text-brand-yellow no-underline hover:text-white focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-pink">
+                  Meet Slate + Pulse
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="/workshop/" className="group block p-3 no-underline sm:p-5" aria-label="Explore Workshop">
+            <img
+              src="/images/workshop/workshop-shelf.png"
+              alt="Workshop desktop app with Slate and Pulse ready to install"
+              className="w-full rounded-lg border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition duration-500 group-hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

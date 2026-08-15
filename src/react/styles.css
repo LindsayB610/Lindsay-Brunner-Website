@@ -46,6 +46,17 @@
   width: 0 !important;
 }
 
+#homepage-root .workshop-home-section {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(255, 27, 141, 0.38), transparent 31rem),
+    radial-gradient(circle at 10% 92%, rgba(255, 221, 0, 0.18), transparent 27rem),
+    linear-gradient(125deg, #26081f 0%, #40142f 52%, #24101f 100%);
+}
+
+body:has(#homepage-root) .site-footer {
+  margin-top: 0;
+}
+
 #ai-chat-exporter-root {
   background: #000000;
   color: #ffffff;

@@ -37,7 +37,8 @@ function validateFooterStructure() {
     { label: 'Thoughts', href: '/thoughts/' },
     { label: 'Recipes', href: '/recipes/' },
     { label: 'Nemesis', href: '/nemesis/' },
-    { label: 'Vinyl', href: 'https://github.com/LindsayB610/family-vinyl' }
+    { label: 'Vinyl', href: 'https://github.com/LindsayB610/family-vinyl' },
+    { label: 'Workshop', href: '/workshop/' }
   ];
 
   try {
@@ -79,6 +80,18 @@ function validateFooterStructure() {
           errors.push(`Homepage footer missing ${label} link (${href})`);
         }
       });
+
+      const primaryNavMatch = footerContent.match(/<nav\b[^>]*class=["']?footer-nav["']?[^>]*>([\s\S]*?)<\/nav>/);
+      if (!primaryNavMatch) {
+        errors.push('Homepage footer missing primary navigation');
+      } else {
+        const labels = [...primaryNavMatch[1].matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)]
+          .map((match) => match[1].trim());
+        const expectedOrder = ['About', 'Nemesis', 'Recipes', 'Thoughts', 'Vinyl', 'Workshop'];
+        if (labels.join('|') !== expectedOrder.join('|')) {
+          errors.push(`Homepage footer navigation should be alphabetical; got "${labels.join(', ')}"`);
+        }
+      }
 
       ['picsift', 'yarny'].forEach(projectName => {
         if (footerContent.toLowerCase().includes(projectName)) {
