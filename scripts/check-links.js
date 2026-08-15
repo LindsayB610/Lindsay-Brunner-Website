@@ -110,12 +110,10 @@ process.on('SIGTERM', () => {
 });
 
 function startServerAndCheck(projectRoot, retry = false) {
-  const hugoBinary = path.join(
-    projectRoot,
-    'node_modules',
-    '.bin',
-    process.platform === 'win32' ? 'hugo.cmd' : 'hugo'
-  );
+  // Hugo is supplied by the developer environment and by Netlify's native
+  // HUGO_VERSION pin. Do not reach into node_modules: hugo-bin is deliberately
+  // not part of this project because its postinstall download is unreliable.
+  const hugoBinary = process.platform === 'win32' ? 'hugo.cmd' : 'hugo';
 
   currentHugo = spawn(hugoBinary, ['server', '--port', String(PORT)], {
     cwd: projectRoot,
