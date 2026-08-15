@@ -1,0 +1,130 @@
+{{ define "main" }}
+<div class="workshop-page">
+  <section class="workshop-hero" aria-labelledby="workshop-title">
+    <div class="container workshop-hero__grid">
+      <div class="workshop-hero__copy">
+        <p class="workshop-kicker">Local-first desktop tools</p>
+          <h1 id="workshop-title">A home for the tools that keep your real work moving.</h1>
+        <p class="workshop-hero__lede">Workshop is where small, local-first tools live. Right now, that means Slate for the Markdown you keep reopening and Pulse for recurring things that can't quietly disappear because you got busy. Install what helps. Your files, credentials, and private systems stay yours.</p>
+        <div class="workshop-hero__actions">
+          <a class="workshop-button workshop-button--primary" href="https://github.com/LindsayB610/workshop" target="_blank" rel="noopener noreferrer">View Workshop on GitHub <span aria-hidden="true">↗</span></a>
+          <a class="workshop-text-link" href="#tools">Meet the tools <span aria-hidden="true">↓</span></a>
+        </div>
+        <ul class="workshop-proof">
+          <li>Mac desktop app</li>
+          <li>No account required</li>
+          <li>Your data stays yours</li>
+        </ul>
+      </div>
+
+      <figure class="workshop-hero-shot">
+        <img src="/images/workshop/workshop-shelf.png" alt="Workshop desktop app with Slate and Pulse ready to install" />
+        <figcaption>Start with an intentionally empty shelf. Add only what helps.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="workshop-problem" aria-labelledby="workshop-problem-title">
+    <div class="container workshop-problem__grid">
+      <p class="workshop-kicker">The thing no one says</p>
+      <div>
+        <h2 id="workshop-problem-title">Most personal systems fail when they become another thing you have to maintain.</h2>
+        <p>Notes live in one app. Reminders live in another. Then someone suggests a dashboard, and suddenly you're maintaining the system that was supposed to maintain you. Very efficient. Very cursed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="workshop-foundation" aria-labelledby="workshop-foundation-title">
+    <div class="container">
+      <div class="workshop-foundation__heading">
+        <p class="workshop-kicker">Workshop is the home base</p>
+        <h2 id="workshop-foundation-title">One desktop home. Two focused tools.</h2>
+        <p>Workshop is the host. Slate and Pulse live inside it. Each does one narrow job and leaves the rest of your setup alone.</p>
+      </div>
+      <div class="workshop-foundation__cards">
+        <article><span aria-hidden="true">HOST</span><h3>Workshop is the shelf</h3><p>It starts empty on purpose. Add the tools you want. The rest stays out of your face.</p></article>
+        <article><span aria-hidden="true">TOOL 01</span><h3>Slate is the reference desk</h3><p>Point it at the Markdown files you choose, then quit hunting through folders for the same reference doc.</p></article>
+        <article><span aria-hidden="true">TOOL 02</span><h3>Pulse runs the follow-up</h3><p>Give it a recurring reminder and it keeps following up through your private runner until you call it done.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="workshop-product-section workshop-product-section--slate" id="tools" aria-labelledby="slate-title">
+    <div class="container">
+      <div class="workshop-product-heading">
+        <p class="workshop-kicker">Inside Workshop · Tool 01</p>
+        <h2 id="slate-title">Slate is the Workshop tool for the Markdown you keep reopening.</h2>
+      </div>
+      <article class="workshop-tool workshop-tool--slate">
+        <div class="workshop-tool__copy">
+          <p class="workshop-tool__index">Slate · local reference desk</p>
+          <h3>Stop reopening the same file just to find one thing.</h3>
+          <p>Slate reads only the files you point it at, then gives them a sane place for tables, tabs, and the reference material that somehow keeps ending up in six Finder windows.</p>
+          <ul class="workshop-feature-list">
+            <li>Set up Markdown, table, and tabbed views</li>
+            <li>Star the reference material you actually reach for</li>
+            <li>It doesn't scan folders, edit source files, or upload content</li>
+          </ul>
+        </div>
+        <div class="workshop-window workshop-window--slate">
+          <div class="workshop-window__bar"><span class="workshop-window__lights" aria-hidden="true"><i></i><i></i><i></i></span><span>Workshop / Slate</span><span aria-hidden="true"></span></div>
+          <div class="slate-preview">
+            <div class="slate-preview__top"><span class="slate-preview__mark" aria-hidden="true">▤</span><div><span>SLATE · LOCAL REFERENCE DESK</span><strong>Slate</strong></div><button type="button" tabindex="-1">Manage documents</button></div>
+            <div class="slate-preview__content"><p>FAVORITES</p><div class="slate-preview__featured"><span aria-hidden="true">▤</span><div><strong>Project reference</strong><small>Tabbed Markdown reference</small></div><b aria-hidden="true">★</b></div><p>ALL DOCUMENTS</p><div class="slate-preview__grid"><span>Research notes</span><span>Writing system</span><span>Operations</span><span>Reference library</span></div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="workshop-product-section workshop-product-section--pulse" aria-labelledby="pulse-title">
+    <div class="container">
+      <div class="workshop-product-heading workshop-product-heading--pulse">
+        <p class="workshop-kicker">Inside Workshop · Tool 02</p>
+        <h2 id="pulse-title">Pulse is the Workshop tool for recurring things you can't let slide.</h2>
+      </div>
+      <article class="workshop-tool workshop-tool--pulse">
+        <div class="workshop-tool__visual workshop-pulse-gallery">
+          <figure class="workshop-pulse-shot"><img src="/images/workshop/pulse-take-out-trash.png" alt="Pulse reminders dashboard showing a Take out trash reminder and an online runner" loading="lazy" /><figcaption>One active reminder. Clear next notification. Runner status at a glance.</figcaption></figure>
+          <figure class="workshop-pulse-shot workshop-pulse-shot--detail"><img src="/images/workshop/pulse-edit-take-out-trash.png" alt="Pulse editor for the Take out trash reminder, showing its weekly schedule and snooze timing" loading="lazy" /><figcaption>Adjust the schedule and follow-up behavior without decoding a raw config file.</figcaption></figure>
+        </div>
+        <div class="workshop-tool__copy">
+          <p class="workshop-tool__index">Pulse · recurring follow-up</p>
+          <h3>For recurring things that can't quietly disappear because you got busy.</h3>
+          <p>Pulse isn't a task manager or a guilt-powered calendar. It runs recurring reminders through a private runner and keeps notifying until you've marked the work done.</p>
+          <ul class="workshop-feature-list">
+            <li>See the next occurrence without doing calendar math</li>
+            <li>Done and Snooze live on your Android notification</li>
+            <li>Your runner is yours. Credentials stay outside the app webview.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="workshop-boundary" aria-labelledby="boundary-title">
+    <div class="container workshop-boundary__grid">
+      <div>
+        <p class="workshop-kicker">Privacy, because obviously</p>
+        <h2 id="boundary-title">Your source of truth stays where you put it.</h2>
+      </div>
+      <div class="workshop-boundary__rules">
+        <article><span aria-hidden="true">01</span><div><h3>Your local files stay local</h3><p>Slate reads the Markdown paths you declare. It doesn't scan nearby folders, hunt for fallbacks, copy a repository, or mirror anything to the cloud.</p></div></article>
+        <article><span aria-hidden="true">02</span><div><h3>Your credentials stay out of the webview</h3><p>Pulse uses Workshop's narrow service capability. The credential stays in your operating-system keychain, where it belongs.</p></div></article>
+        <article><span aria-hidden="true">03</span><div><h3>No tool gets assumed</h3><p>A fresh Workshop install is empty on purpose. Add Slate or Pulse when you want them. Remove either without touching the underlying data.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="workshop-closing" aria-labelledby="workshop-closing-title">
+    <div class="container">
+      <div class="workshop-closing__inner">
+        <p class="workshop-kicker">Open source. Still opinionated.</p>
+        <h2 id="workshop-closing-title">Build the system that gets out of your way.</h2>
+        <p>Workshop, Slate, and Pulse are open source. The GitHub repo has setup guidance and the public-safe source for all three.</p>
+        <a class="workshop-button workshop-button--primary" href="https://github.com/LindsayB610/workshop" target="_blank" rel="noopener noreferrer">View Workshop on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}

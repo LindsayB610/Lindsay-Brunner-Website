@@ -131,6 +131,9 @@
 {{ if eq .RelPermalink "/fate-of-the-fellowship/" }}
 <link rel="stylesheet" href="/css/fate-of-the-fellowship.css?v={{ $assetVersion }}" />
 {{ end }}
+{{ if eq .RelPermalink "/workshop/" }}
+<link rel="stylesheet" href="/css/workshop.css?v={{ $assetVersion }}" />
+{{ end }}
 {{ if .IsHome }}{{ partial "react-assets.html" "src/react/homepage.tsx" }}{{ end }}
 {{ if eq .RelPermalink "/about/" }}{{ partial "react-assets.html" "src/react/about.tsx" }}{{ end }}
 {{ if eq .RelPermalink "/ai-chat-exporter/" }}{{ partial "react-assets.html" "src/react/ai-chat-exporter.tsx" }}{{ end }}
