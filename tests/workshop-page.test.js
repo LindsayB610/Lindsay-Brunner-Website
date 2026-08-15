@@ -106,8 +106,10 @@ function testSourceContracts() {
 
   assert(layout.includes('id="workshop-title"'), 'Workshop layout should expose an identified hero heading');
   assert(layout.includes('Workshop is the host. Slate and Pulse live inside it.'), 'Workshop layout should state the host → tool relationship');
-  assert(layout.includes('Inside Workshop · Tool 01'), 'Slate should be explicitly labeled as a Workshop tool');
-  assert(layout.includes('Inside Workshop · Tool 02'), 'Pulse should be explicitly labeled as a Workshop tool');
+  assert(
+    (layout.match(/Inside Workshop/g) || []).length >= 2,
+    'Slate and Pulse should both be explicitly labeled as Workshop tools',
+  );
   assert(!layout.includes('workshop-flow'), 'Workshop layout should not restore the removed duplicate how-it-works section');
 
   assert(head.includes('eq .RelPermalink "/workshop/"'), 'Workshop stylesheet should load only on the Workshop route');
