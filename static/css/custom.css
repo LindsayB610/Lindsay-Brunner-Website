@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 🔒 HOMEPAGE HERO H1 GRADIENT FIX - HIGHEST PRIORITY */
 .hero h1,
 section.hero h1,
-.hero > .container > h1 {
+.hero > .site-container > h1 {
   background-size: 80% 100% !important;
 }
 
@@ -891,7 +891,7 @@ td code {
   }
 
   /* Container adjustments for print */
-  .container,
+  .site-container,
   .container-narrow {
     max-width: 100% !important;
     width: 100% !important;
@@ -1382,14 +1382,14 @@ td code {
 /* Comprehensive Safari/iPhone fixes for consistent rendering */
 @supports (-webkit-touch-callout: none) {
   /* Fix container padding for safe areas on notched devices */
-  .container,
+  .site-container,
   .container-narrow {
     padding-left: max(var(--space-lg), env(safe-area-inset-left));
     padding-right: max(var(--space-lg), env(safe-area-inset-right));
   }
 
   @media (max-width: 480px) {
-    .container,
+    .site-container,
     .container-narrow {
       padding-left: max(var(--space-md), env(safe-area-inset-left));
       padding-right: max(var(--space-md), env(safe-area-inset-right));

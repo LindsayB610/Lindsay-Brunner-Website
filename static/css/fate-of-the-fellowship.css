@@ -65,7 +65,7 @@ body.page-fate-of-the-fellowship .fate-page {
     linear-gradient(180deg, rgba(41, 76, 81, 0.2), rgba(7, 17, 14, 0.18) 24rem, transparent 48rem);
 }
 
-body.page-fate-of-the-fellowship .fate-page .container {
+body.page-fate-of-the-fellowship .fate-page .site-container {
   width: min(1280px, calc(100vw - 1.5rem));
   max-width: none;
 }
@@ -600,7 +600,7 @@ body.page-fate-of-the-fellowship .fate-photo-dialog-close:focus-visible {
 }
 
 @media (max-width: 768px) {
-  body.page-fate-of-the-fellowship .fate-page .container {
+  body.page-fate-of-the-fellowship .fate-page .site-container {
     width: min(100vw - 0.75rem, 44rem);
   }
 

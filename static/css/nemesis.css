@@ -106,7 +106,7 @@ body.page-nemesis .social-link:focus-visible {
   isolation: isolate;
 }
 
-.nemesis-page .container {
+.nemesis-page .site-container {
   position: relative;
   z-index: 1;
   max-width: 1240px;

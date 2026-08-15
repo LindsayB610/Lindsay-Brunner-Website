@@ -334,7 +334,7 @@ blockquote {
 }
 
 /* Layout components */
-.container {
+.site-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
@@ -1249,7 +1249,7 @@ blockquote {
 }
 
 @media (max-width: 480px) {
-  .container,
+  .site-container,
   .container-narrow {
     padding: 0 var(--space-md);
   }
