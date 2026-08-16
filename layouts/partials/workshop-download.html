@@ -1,0 +1,3 @@
+{{- $classes := slice "plausible-event-name=Workshop+Download" -}}
+{{- with .class }}{{ $classes = $classes | append . }}{{ end -}}
+<a class="{{ delimit $classes " " }}" href="/workshop/download">{{ if .apple }}<span class="workshop-apple-mark" aria-hidden="true"></span> {{ end }}{{ .label | default "Download Workshop for macOS" }}</a>

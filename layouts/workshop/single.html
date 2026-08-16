@@ -12,7 +12,7 @@
         <p class="workshop-hero__lede">Workshop is where small, local-first tools live. Right now, that means Slate for the Markdown you keep reopening and Pulse for recurring things that can't quietly disappear because you got busy. Install what helps. Your files, credentials, and private systems stay yours.</p>
         <div class="workshop-hero__actions">
           <div class="workshop-download">
-            <a class="workshop-button workshop-button--primary workshop-download-button plausible-event-name=Workshop+Download" href="/workshop/download"><span class="workshop-apple-mark" aria-hidden="true"></span> Download for macOS</a>
+            {{ partial "workshop-download.html" (dict "class" "workshop-button workshop-button--primary workshop-download-button" "apple" true "label" "Download for macOS") }}
             <p>Built for Apple Silicon Macs · No account required.</p>
           </div>
           <a class="workshop-github-link" href="https://github.com/LindsayB610/workshop" target="_blank" rel="noopener noreferrer">View Workshop on GitHub <span aria-hidden="true">↗</span></a>
@@ -127,7 +127,7 @@
         <p>Workshop, Slate, and Pulse are open source. The GitHub repo has setup guidance and the public-safe source for all three.</p>
         <div class="workshop-closing__actions">
           <div class="workshop-download">
-            <a class="workshop-button workshop-button--primary workshop-download-button plausible-event-name=Workshop+Download" href="/workshop/download"><span class="workshop-apple-mark" aria-hidden="true"></span> Download for macOS</a>
+            {{ partial "workshop-download.html" (dict "class" "workshop-button workshop-button--primary workshop-download-button" "apple" true "label" "Download for macOS") }}
             <p>Built for Apple Silicon Macs · No account required.</p>
           </div>
           <a class="workshop-github-link" href="https://github.com/LindsayB610/workshop" target="_blank" rel="noopener noreferrer">View Workshop on GitHub <span aria-hidden="true">↗</span></a>

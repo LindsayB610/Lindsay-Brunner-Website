@@ -23,10 +23,12 @@ const failures = [];
 const workshopRepositoryUrl = 'https://github.com/LindsayB610/workshop';
 const workshopDownloadUrl = 'https://github.com/LindsayB610/workshop/releases/latest/download/Workshop-aarch64.dmg';
 const workshopDownloadPath = '/workshop/download';
+const workshopDownloadEventClass = 'plausible-event-name=Workshop+Download';
 const workshopOgImage = '/images/social/workshop-og-1200x630.png';
 const workshopOgImagePath = path.join(root, 'static', workshopOgImage.replace(/^\//, ''));
 const workshopMark = '/images/workshop/workshop-mark.svg';
 const workshopMarkPath = path.join(root, 'static', workshopMark.replace(/^\//, ''));
+const workshopDownloadPartialPath = path.join(root, 'layouts', 'partials', 'workshop-download.html');
 
 const expectedImages = [
   {
@@ -99,7 +101,7 @@ function startStaticServer() {
 function testSourceContracts() {
   console.log('🧰 Validating Workshop source contracts...');
 
-  [contentPath, layoutPath, cssPath, headPath, headerPath, footerPath].forEach((filePath) => {
+  [contentPath, layoutPath, cssPath, headPath, headerPath, footerPath, workshopDownloadPartialPath].forEach((filePath) => {
     assert(fs.existsSync(filePath), `Expected Workshop support file is missing: ${path.relative(root, filePath)}`);
   });
 
@@ -111,6 +113,7 @@ function testSourceContracts() {
   const head = read(headPath);
   const header = read(headerPath);
   const footer = read(footerPath);
+  const downloadPartial = read(workshopDownloadPartialPath);
 
   assert(layout.includes('id="workshop-title"'), 'Workshop layout should expose an identified hero heading');
   assert(layout.includes('Workshop is the host. Slate and Pulse live inside it.'), 'Workshop layout should state the host → tool relationship');
@@ -145,6 +148,9 @@ function testSourceContracts() {
     `\\[\\[redirects\\]\\]\\s+from = "${workshopDownloadPath}"\\s+to = "${workshopDownloadUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\s+status = 302`,
   );
   assert(downloadRedirect.test(netlifyConfig), 'Netlify should keep a changeable Workshop download doorway that follows GitHub’s latest Apple Silicon release');
+  assert(downloadPartial.includes(`href="${workshopDownloadPath}"`), 'Workshop download partial should use the stable local download doorway');
+  assert(downloadPartial.includes(workshopDownloadEventClass), 'Workshop download partial should emit the dedicated Plausible goal event');
+  assert((layout.match(/partial "workshop-download.html"/g) || []).length === 2, 'Workshop product-page download CTAs should use the shared download partial');
   assert(
     header.indexOf('href="/workshop/"') < header.indexOf('class="nav-dropdown"'),
     'Workshop should be a top-level navigation item before More',
@@ -187,7 +193,7 @@ function testRenderedContracts() {
     'Workshop GitHub CTA should keep its destination and safe external-link attributes',
   );
   assert(rendered.includes(`href=${workshopDownloadPath}`), 'Workshop should route downloads through its stable local download doorway');
-  assert(rendered.includes('plausible-event-name=Workshop+Download'), 'Workshop download CTAs should emit a dedicated Plausible goal event');
+  assert(rendered.includes(workshopDownloadEventClass), 'Workshop download CTAs should emit a dedicated Plausible goal event');
   assert(
     (rendered.match(new RegExp(`href=${workshopDownloadPath}`, 'g')) || []).length === 2 &&
       (rendered.match(/plausible-event-name=Workshop\+Download/g) || []).length === 2,
