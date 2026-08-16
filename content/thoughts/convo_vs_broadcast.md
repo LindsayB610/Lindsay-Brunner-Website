@@ -1,8 +1,8 @@
 ---
-title: "Good Developer Content is a Conversation, Not a Broadcast"
+title: "Good Developer Content Is a Conversation, Not a Broadcast"
 date: 2025-06-14
 slug: "developer-content-conversation-not-broadcast"
-description: "Why truly great developer content talks with developers, not at them, and how to get it right when you're writing for technical audiences."
+description: "What makes developer content useful? Start with a real problem, preserve technical truth, show the tradeoffs, and give the reader a next move."
 subtitle: "Or: Why developer content that listens is way better than content that just talks"
 draft: false
 social_image: "/images/social/convo-vs-broadcast-og.png"
@@ -11,11 +11,11 @@ social_image: "/images/social/convo-vs-broadcast-og.png"
 <!-- Start writing your post below this line --> 
 _Or: Why developer content that listens is way better than content that just talks_
 
-I've been doing developer marketing for almost a decade now, and one of the very first things I learned, which still proves itself true every day, is that developers are incredibly smart, and incredibly impatient. They're quick to spot marketing fluff and even quicker to bounce if your content wastes their time. Respect that intelligence and impatience, reward their time with usefulness, and you'll earn their attention.
+I've been doing developer marketing for almost a decade now, and one of the first things I learned, which still proves itself true every day, is that developers are smart and impatient. They're quick to spot marketing fluff and even quicker to bounce if your content wastes their time. Respect that intelligence and impatience, reward their time with usefulness, and you'll earn their attention.
 
-While this dynamic isn't unique to developers (it's true for almost any knowledge worker) dev content is what I know best, so let's focus there.
+While this dynamic isn't unique to developers (it's true for almost any knowledge worker), dev content is what I know best, so let's focus there.
 
-After years of wrangling developer-focused content at companies like Okta, ngrok, and Builder.io, here's what I've figured out about how to achieve usefulness, and engagement: the best developer content isn't a lecture, it's banter. It's conversational. It reads as real human-to-human connection. (As an aside, this is also why I'm not worried about AI eating my job. If there's one thing AI sucks at, it's mimicking humanity. The uncanny valley is real.)
+After years of wrangling developer-focused content at companies like Okta, ngrok, and Builder.io, here's what I've figured out: the best developer content isn't a lecture, it's a conversation. Not because it sounds casual or tosses in a winking aside. Because it starts with a real problem, gives the reader enough context to trust the answer, acknowledges the relevant tradeoffs, and leaves them with something useful to do next.
 
 ## The Broadcast Trap
 
@@ -23,63 +23,75 @@ So much dev content I read feels like yelling random JavaScript functions into t
 
 Here's why broadcasts tank:
 
-- **They don't read the room:** They're too busy telling you the thing they want to say to notice whether their audience is even paying attention. Have you ever had a conversation with someone who's truly and deeply self-absorbed? A conversation where you could tell that instead of listening to you they're thinking about the next thing they want to say? Yeah, don't write content like that... Consider what your reader might be thinking as they experience your piece.
-- **They're generic:** "Insert your problem here" won't resonate with devs who are knee-deep in actual, messy code. You don't have to invent an incredibly involved sample app, just bring in some real life. Show your reader that you understand that their codebase will have all the problems of something that's lived and breathed with multiple developers adding to it, and let's be honest, fucking it up. 
-- **They're time thieves:** Devs have zero patience for preamble. Give 'em the goods immediately. You'll hear me say this a lot because it's important: Just be useful.
+- **They don't read the room:** They're too busy telling you the thing they want to say to notice the question the reader brought with them. Have you ever had a conversation with someone who's truly and deeply self-absorbed? Yeah, don't write content like that.
+- **They're generic:** "Insert your problem here" won't resonate with devs who are knee-deep in actual, messy code. You don't need an elaborate sample app, but you do need to show that you understand a codebase has history, constraints, and multiple people adding to it, and let's be honest, fucking it up.
+- **They make the reader work for the point:** Developers don't need every answer compressed into a slogan. They do need the answer before the preamble eats their afternoon.
 
-Good developer content isn't a lecture, it's a late-night chat, complete with tangents, side quests, genuine laughs, and valuable insights.
+Good developer content isn't a lecture, it's a useful response. It anticipates the next question instead of saving the point for the final paragraph.
 
 Think of the difference between:
 
-- **Broadcast:** "Feature X is revolutionary (trust us)."
-- **Conversation:** "You know that annoying thing about Y? Yeah, feature X squashes that. Here's proof, try it out. Still confused? Let's chat."
+- **Broadcast:** "Feature X is revolutionary."
+- **Conversation:** "If you're trying to test webhooks locally without redeploying every change, Feature X can help. It won't solve every network problem, but here's where it fits, what it doesn't replace, and how to try it."
 
-One feels like spam; the other feels like empathy.
+One is a claim. The other gives the reader a way to evaluate it.
 
-Conversational content is deeply useful by design. Developers immediately recognize and reward content that prioritizes solving actual problems quickly over merely being interesting or clever.
+That is the relationship between conversation and usefulness. The writer isn't performing attentiveness. They're making the content accountable to a real problem and a real decision.
 
-## How to Make Your Content Actually Conversational
+## The Conversation Test for Developer Content
 
-Here's my cheat sheet for conversations that land:
+Before you publish, run the conversation test:
+
+1. What real problem or decision is the reader bringing here?
+2. What context, constraint, or tradeoff do they need before the answer is trustworthy?
+3. What can they do, test, decide, or read next?
+4. What feedback would tell you whether the piece landed?
+
+That doesn't make content formulaic. It keeps you from mistaking polish for usefulness.
 
 ### 1. Start with Actual Problems
 
-Instead of guessing, dive directly into real developer forums, GitHub issues, and Stack Overflow questions to uncover genuine frustrations. Clearly translating these into your content demonstrates true empathy and understanding. For more on structuring technical content that starts with the problem readers recognize, see *[Technical Storytelling: Bridging Engineering and Narrative](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/)*.
+Instead of guessing, look at the places developers already describe the work: forums, GitHub issues, support conversations, docs feedback, and the questions your own team keeps answering. Search data can point at a pattern, but it isn't a substitute for understanding why the problem is expensive or annoying in the first place.
 
-**Hot take:** Stop pestering devs with surveys about their 'pain points'. Google knows their secrets better than they do. Chat with your favorite content guru about tools like Keyword Planner, Ahrefs, or Semrush. You'll make their day, AND pinpoint exactly what developers are searching for, instantly boosting your content's relevance and usefulness.
+For more on structuring technical content around the problem readers recognize, see *[Technical Storytelling: Bridging Engineering and Narrative](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/)*.
 
-### 2. Keep Context Alive
+### 2. Keep Context and Tradeoffs Alive
 
-Maintain continuity by referencing previous articles, clearly indicating what's coming next, or providing follow-up resources. Use linked series and interconnected content so developers can easily explore topics deeply or quickly catch up. (Note: I'm not advocating for content series where every post replies on a reader having read and potentially completed tutorial steps from the previous. Neither your readers nor Google like content that can't stand alone. Instead, think about gentle nudges to related topics and resources.)
+Technical accuracy is table stakes. Context is what makes that accuracy useful. A reader needs to know why the problem exists, what constraint shapes the answer, and where the recommendation stops applying. Otherwise, even a carefully reviewed explanation can feel inert.
 
-**Bonus tip:** interlinking content not only boosts conversationality but also strengthens SEO. Your content marketer will thank you.
+That doesn't mean every post needs the whole system diagram. It means you keep the load-bearing nuance and cut the ornamental detail. Related links help when they offer a genuinely useful next layer, not when they're a scavenger hunt disguised as a content series.
 
-### 3. Crowdsource Your Wisdom
+### 3. Treat Accuracy as Part of the Relationship
 
-Highlight real developer contributions in your content, such as questions answered, issues solved, or ideas adopted. Publicly acknowledging community input fosters deeper trust and encourages more developers to engage actively.
+"Human" does not mean casual imprecision. It means being honest about what you know, what the system does, and what the reader should verify for their own situation. A good technical editor helps surface missing context. Subject-matter experts keep claims from wandering off into the woods. The writer makes the logic navigable.
 
-### 4. Be a Person, Not a Bot
+Personality helps. It just can't carry an answer that doesn't hold up.
 
-Authenticity means admitting when things aren't perfect, celebrating real developer experiences, and using language that's relatable rather than overly polished. Letting your personality show through, complete with occasional self-deprecating humor or behind-the-scenes insights, builds genuine rapport. Think of the most memorable technical talks you've attended. Were they flawless, or did the "demo gods" strike, causing something to fail, and you got to watch a human actually human for a while?
+### 4. Give the Reader a Next Move
 
-**Polish doesn't create engagement; being engaging does.**
+Useful content shouldn't end with the reader thinking, "neat." It should help them make a decision, try an approach, inspect the docs, ask a sharper question, or move to the next relevant explanation. The next move can be small. It just needs to match the reason they showed up.
 
-### 5. Lower the Barrier to Interaction
+This is where a lot of polished developer content quietly fails. It explains a thing and then leaves the reader standing in the parking lot.
 
-Make it easy and clear how developers can interact with you: direct links to community forums, straightforward commenting systems, scheduled AMAs, and visible prompts to reach out. Reducing barriers and showing your openness encourages real dialogue.
+That same standard applies to product pages. [Workshop, my local-first Mac app for small tools](https://lindsaybrunner.com/workshop/), starts with the narrow jobs its tools do instead of making visitors excavate the point from a feature list.
 
-Conversational developer content thrives when it's supported by genuine human interactions.
+### 5. Let the Conversation Continue After Publication
 
-Companies like Stripe, Fly.io, and LaunchDarkly excel precisely because they're present and visible, answering real-time questions, sharing behind-the-scenes insights, and engaging authentically. This consistent human visibility not only boosts trust but also ensures developers feel heard, valued, and actively involved.
+You don't need comments, AMAs, or an enormous public community to make content conversational. You do need a way to notice what happens after publication: recurring questions, reader confusion, support or sales reuse, deeper clicks, or the gap that the piece exposed.
+
+That feedback belongs in the next brief and the next revision. Otherwise you're publishing, reporting, and learning absolutely nothing, which is a very expensive hobby. For a framework on whether content changes what people do next, see [the content resonance framework](https://lindsaybrunner.com/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/). For the systems side of making that learning repeatable, see [Content Systems](https://lindsaybrunner.com/thoughts/2025-12-09/content-systems-chaos-to-works/).
+
 
 ## The Constant Usefulness Check
 
-Throughout the entire content planning process, from ideation and outlining through drafting and final review, I continuously ask:
+Throughout planning, drafting, and review, I come back to one question:
 
 > "Does this immediately help someone do their job better, or is it just fancy filler?"
 
-By repeatedly checking for genuine usefulness at every stage, you ensure the end result is focused, valuable, and genuinely beneficial to your audience. If it's filler, drop it early and refine until you hit real utility.
+If the answer is no, diagnose what is missing: the real problem, the context or tradeoff, or the next step. Then fix that. Don't add more adjectives and hope the reader mistakes them for value.
 
 ## Time to Ditch the Megaphone
 
-Treat developers as the smart, skeptical humans they are. [Ditch the megaphone](https://lindsaybrunner.com/thoughts/2026-02-23/brand-signals-decoded-quiet-vs-loud-marketing/), start the conversation, and maybe they'll stop muting your brand. Remember, broadcasting is one-way information, delivery. Generic, passive, and often ignored, while conversing is two-way engagement, responsive, useful, and interactive. Aim to create content that feels conversational, earning trust, attention, and real engagement. If you want to know how to tell whether that engagement is actually changing behavior (not just looking good on a dashboard), I've written about [the content resonance framework](https://lindsaybrunner.com/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/).
+Treat developers as the smart, skeptical humans they are. Ditch the megaphone. Before the next brief, draft, or technical explanation goes out, ask whether it answers a real question, preserves the context needed to trust it, and gives the reader a next move.
+
+If it doesn't, you're not having a conversation. You're just publishing at people.
