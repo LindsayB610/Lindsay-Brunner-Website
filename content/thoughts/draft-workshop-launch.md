@@ -48,7 +48,7 @@ Workshop currently includes two apps: Slate and Pulse.
 
 And Slate has already made [GUPPI](/thoughts/2025-06-12/meet-guppi/) , my AI personal assistant, more useful. GUPPI is still the conversational layer that helps me sort through the pile, but my running to-do list now has a local Markdown home he can read from. When I resurface after a week and ask what I was supposed to be doing, we have somewhere better to start than his memory.
 
-Workshop, Slate, and Pulse were built with Codex.
+Workshop, Slate, and Pulse were vibe coded (and maybe a little bit scream coded) with [OpenAI](https://openai.com/)'s Codex.
 
 ## Try Workshop
 
