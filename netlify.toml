@@ -59,6 +59,11 @@ to = "/.netlify/functions/export-chat"
 status = 200
 
 [[redirects]]
+from = "/workshop/download"
+to = "https://github.com/LindsayB610/workshop/releases/latest/download/Workshop-aarch64.dmg"
+status = 302
+
+[[redirects]]
 from = "/recipes/"
 to = "/recipes/all/?diet=:diet"
 status = 301

@@ -166,7 +166,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-          <a href="/workshop/" className="group block p-3 no-underline sm:p-5" aria-label="Explore Workshop">
+          <a href="/workshop/" className="group block min-h-11 p-3 no-underline sm:p-5" aria-label="Explore Workshop">
             <img
               src="/images/workshop/workshop-shelf.png"
               alt="Workshop desktop app with Slate and Pulse ready to install"

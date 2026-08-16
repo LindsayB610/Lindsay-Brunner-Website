@@ -90,6 +90,24 @@ async function collectMobileMetrics(page) {
     const doc = document.documentElement;
 
     const isVisible = (el) => {
+      let ancestor = el;
+
+      // The Hugo fallback remains in the document behind each React island so
+      // the page still works without JavaScript. Its children can retain their
+      // own dimensions even when a parent is display:none, so check the whole
+      // chain before treating a control as visible to a person.
+      while (ancestor) {
+        const ancestorStyle = getComputedStyle(ancestor);
+        if (
+          ancestorStyle.display === 'none' ||
+          ancestorStyle.visibility === 'hidden' ||
+          ancestorStyle.contentVisibility === 'hidden'
+        ) {
+          return false;
+        }
+        ancestor = ancestor.parentElement;
+      }
+
       const style = getComputedStyle(el);
       const rect = el.getBoundingClientRect();
       return (
