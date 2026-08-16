@@ -59,7 +59,7 @@
       <div style="flex: 1; min-width: 200px; text-align: {{ if $newerPost }}right{{ else }}left{{ end }};">
         <div style="font-size: 0.875rem; color: var(--dark-text-secondary); margin-bottom: 0.5rem;">Older Post</div>
         <a href="{{ $olderPost.RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500; display: block;">
-          {{ $olderPost.Title }} →
+          ← {{ $olderPost.Title }}
         </a>
       </div>
       {{ end }}
@@ -235,4 +235,3 @@
 }
 </script>
 {{ end }}
-
