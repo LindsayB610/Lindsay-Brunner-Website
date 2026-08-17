@@ -11,6 +11,7 @@
  */
 
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const { processFile, isDatePassed, isPacificDST, getNthDayOfMonth } = require('../scripts/schedule-posts');
 
@@ -316,6 +317,47 @@ if (require.main === module) {
     console.error(`   ❌ Time-aware date comparison test error: ${error.message}`);
     failed++;
     errors.push(`Time-aware date comparison test error: ${error.message}`);
+  }
+
+  // Test thought publication filename cleanup
+  console.log('\n🧹 Testing published thought filename cleanup...');
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'schedule-posts-'));
+  try {
+    const draftPath = path.join(tempDir, 'draft-example-thought.md');
+    const publishedPath = path.join(tempDir, 'example-thought.md');
+    fs.writeFileSync(draftPath, `---
+title: "Example Thought"
+date: 2000-01-01
+slug: "stable-example-url"
+description: "A scheduled thought used to test publication bookkeeping."
+subtitle: "A stable URL after publication"
+draft: true
+---
+Body copy.
+`);
+
+    const result = processFile(draftPath, 'thought');
+    const publishedContent = fs.readFileSync(publishedPath, 'utf8');
+    if (
+      result.published === true &&
+      result.file === 'example-thought.md' &&
+      !fs.existsSync(draftPath) &&
+      publishedContent.includes('draft: false') &&
+      publishedContent.includes('slug: "stable-example-url"')
+    ) {
+      console.log('   ✓ Published thoughts lose draft- while preserving their slug');
+      passed++;
+    } else {
+      console.log('   ❌ Published thought filename cleanup changed the wrong fields');
+      failed++;
+      errors.push('Published thought filename cleanup failed');
+    }
+  } catch (error) {
+    console.log(`   ❌ Published thought filename cleanup test error: ${error.message}`);
+    failed++;
+    errors.push(`Published thought filename cleanup test error: ${error.message}`);
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
   }
   
   // Test actual content files

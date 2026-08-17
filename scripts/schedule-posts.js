@@ -5,6 +5,7 @@
  * 
  * This script checks for draft posts (thoughts and recipes) where the publish
  * date has arrived, and automatically sets draft: false to publish them.
+ * Published thought posts also lose the draft- filename prefix.
  * 
  * Designed to run via GitHub Actions on a schedule, but can also be run locally
  * for testing purposes.
@@ -173,6 +174,19 @@ function validateRecipeForPublishing(filePath, frontMatter) {
 }
 
 /**
+ * Resolve the canonical filename for a published post.
+ * Recipe filenames keep their recipe- prefix; thought drafts lose draft-.
+ */
+function publishedFilePath(filePath, type) {
+  const filename = path.basename(filePath);
+  if (type !== 'thought' || !filename.startsWith('draft-')) {
+    return filePath;
+  }
+
+  return path.join(path.dirname(filePath), filename.slice('draft-'.length));
+}
+
+/**
  * Process a single content file
  */
 function processFile(filePath, type) {
@@ -202,12 +216,24 @@ function processFile(filePath, type) {
   if (type === 'recipe' && !validateRecipeForPublishing(filePath, frontMatter)) {
     return { published: false, skipped: true, reason: 'Missing required fields (social_image)' };
   }
+
+  const finalPath = publishedFilePath(filePath, type);
+  if (finalPath !== filePath && fs.existsSync(finalPath)) {
+    return {
+      published: false,
+      skipped: true,
+      reason: `Published thought filename already exists: ${path.basename(finalPath)}`,
+    };
+  }
   
   // Update draft status
   const changed = updateDraftStatus(filePath, frontMatter, content, match);
   
   if (changed) {
-    return { published: true, skipped: false, file: path.basename(filePath) };
+    if (finalPath !== filePath) {
+      fs.renameSync(filePath, finalPath);
+    }
+    return { published: true, skipped: false, file: path.basename(finalPath) };
   }
   
   return { published: false, skipped: true, reason: 'No change needed' };
@@ -288,6 +314,7 @@ if (require.main === module) {
 
 module.exports = { 
   processFile, 
+  publishedFilePath,
   isDatePassed,
   isPacificDST,
   getNthDayOfMonth
