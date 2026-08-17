@@ -4,10 +4,9 @@ date: 2026-08-17
 slug: "workshop-launch"
 description: "Workshop is a macOS shell for small, local-first tools that need a useful home."
 subtitle: "Or: What happens after you build the useful little thing."
-draft: true
+draft: false
 social_image: "/images/social/workshop-launch-og-1200x630.png"
 ---
-
 Small everyday tools have a predictable lifecycle.
 
 First, you build a tool, a script, a skill, something that solves one irritating problem. It lives in a terminal command, a generically named repo, a Google Doc, or a file somewhere on your local disk. You did a good job, so the tool becomes indispensable very quickly.
