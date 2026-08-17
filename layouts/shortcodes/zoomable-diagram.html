@@ -1,0 +1,31 @@
+{{- $id := .Get "id" | default "zoomable-diagram" -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+<figure class="zoomable-diagram">
+  <button type="button" class="zoomable-diagram__trigger" aria-haspopup="dialog" aria-controls="{{ $id }}-dialog">
+    <img src="{{ $src }}" alt="{{ $alt }}" loading="eager" decoding="async" />
+  </button>
+</figure>
+
+<dialog id="{{ $id }}-dialog" class="zoomable-diagram__dialog" aria-label="Expanded diagram">
+  <div class="zoomable-diagram__dialog-frame">
+    <button type="button" class="zoomable-diagram__close" aria-label="Close enlarged diagram">Close</button>
+    <img src="{{ $src }}" alt="{{ $alt }}" decoding="async" />
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    const dialog = document.getElementById("{{ $id }}-dialog");
+    const trigger = document.querySelector('[aria-controls="{{ $id }}-dialog"]');
+    const closeButton = dialog?.querySelector(".zoomable-diagram__close");
+
+    if (!dialog || !trigger || !closeButton) return;
+
+    trigger.addEventListener("click", () => dialog.showModal());
+    closeButton.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  })();
+</script>

@@ -439,11 +439,11 @@ td code {
 /* Workshop launch screenshots only */
 .article-content .workshop-screenshot {
   margin: 2rem 0;
-  padding: clamp(0.35rem, 1vw, 0.65rem);
+  padding: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: var(--radius-lg);
-  background: #080808;
+  background: #fff;
   box-shadow: 0 0 0 1px rgba(255, 27, 141, 0.12), 0 1.25rem 2.75rem rgba(0, 0, 0, 0.42);
 }
 
@@ -452,7 +452,101 @@ td code {
   width: 100%;
   height: auto;
   margin: 0;
-  border-radius: calc(var(--radius-lg) - 0.25rem);
+  border-radius: 0;
+}
+
+/* Expandable diagrams keep their compact reading layout and open at source resolution. */
+.article-content .zoomable-diagram {
+  margin: 2rem 0;
+}
+
+.zoomable-diagram__trigger,
+.zoomable-diagram__trigger:focus {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.zoomable-diagram__trigger:focus-visible,
+.zoomable-diagram__close:focus-visible {
+  outline: 3px solid var(--color-yellow);
+  outline-offset: 3px;
+}
+
+.zoomable-diagram__trigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  transition: transform 180ms ease, filter 180ms ease;
+  will-change: transform;
+}
+
+.zoomable-diagram__trigger:hover img {
+  filter: brightness(1.06);
+  transform: translateY(-2px) scale(1.006);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoomable-diagram__trigger img {
+    transition: none;
+  }
+
+  .zoomable-diagram__trigger:hover img {
+    transform: none;
+  }
+}
+
+.zoomable-diagram__dialog {
+  width: min(96vw, 2000px);
+  max-width: none;
+  max-height: 94vh;
+  padding: 0;
+  overflow: visible;
+  color: var(--dark-text);
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.72);
+}
+
+.zoomable-diagram__dialog::backdrop {
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.zoomable-diagram__dialog-frame {
+  position: relative;
+  padding: clamp(1.75rem, 3vw, 3.5rem) clamp(0.5rem, 1.5vw, 1.25rem) clamp(0.5rem, 1.5vw, 1.25rem);
+}
+
+.zoomable-diagram__dialog img {
+  display: block;
+  width: 100%;
+  max-height: calc(94vh - 4.5rem);
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.zoomable-diagram__close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  color: var(--dark-text);
+  background: var(--dark-surface-lighter);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.zoomable-diagram__close:hover {
+  background: rgba(255, 27, 141, 0.2);
 }
 
 .article-content .workshop-post-download-button {

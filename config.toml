@@ -43,6 +43,10 @@ enableRobotsTXT = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.highlight]
+    codeFences = true
+    noClasses = false
+    style = "dracula"
 
 [outputs]
   section = ["HTML", "RSS"]

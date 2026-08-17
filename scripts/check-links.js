@@ -20,6 +20,30 @@ const POLL_INTERVAL_MS = 300;
 /** Max time for the linkinator crawl; prevents test suite from hanging. */
 const LINK_CHECK_TIMEOUT_MS = 60_000; // 1 minute (66 pages should finish well under this)
 
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function netlifyExternalRedirectSkips(projectRoot) {
+  const configPath = path.join(projectRoot, 'netlify.toml');
+  if (!require('fs').existsSync(configPath)) return [];
+
+  const config = require('fs').readFileSync(configPath, 'utf8');
+  const redirectBlocks = config.split(/\[\[redirects\]\]/).slice(1);
+
+  return redirectBlocks.flatMap((block) => {
+    const from = block.match(/^from\s*=\s*"([^"]+)"/m)?.[1];
+    const to = block.match(/^to\s*=\s*"(https?:\/\/[^\"]+)"/m)?.[1];
+    const status = Number(block.match(/^status\s*=\s*(\d+)/m)?.[1]);
+
+    if (!from || !to || ![301, 302, 303, 307, 308].includes(status) || from.includes('*') || from.includes(':')) {
+      return [];
+    }
+
+    return [`^${escapeRegex(`${BASE_URL}${from}`)}$`];
+  });
+}
+
 function clearPort(projectRoot) {
   try {
     // Try to find any Hugo process from this project using the port. lsof can
@@ -155,6 +179,10 @@ function startServerAndCheck(projectRoot, retry = false) {
     .then(() => {
       resolved = true;
       console.log('Server ready. Running link check (max %ds)...\n', LINK_CHECK_TIMEOUT_MS / 1000);
+      const netlifyRedirectSkips = netlifyExternalRedirectSkips(projectRoot);
+      if (netlifyRedirectSkips.length > 0) {
+        console.log('Skipping external Netlify redirect route(s) that Hugo cannot serve locally.');
+      }
       const linkinator = spawn(
         'npx',
         [
@@ -165,6 +193,7 @@ function startServerAndCheck(projectRoot, retry = false) {
           'index\\.xml$',
           '--skip',
           `^https?://(?!(localhost|127\\.0\\.0\\.1):${PORT})`,
+          ...netlifyRedirectSkips.flatMap((skip) => ['--skip', skip]),
           '--timeout',
           '10000',
           '--verbosity',

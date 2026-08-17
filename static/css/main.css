@@ -301,18 +301,9 @@ pre::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px;
   background: var(--gradient-main);
-  animation: code-flow 4s linear infinite;
-}
-
-@keyframes code-flow {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(50%);
-  }
+  box-shadow: 0 0 8px rgba(255, 27, 141, 0.45);
 }
 
 pre code {
