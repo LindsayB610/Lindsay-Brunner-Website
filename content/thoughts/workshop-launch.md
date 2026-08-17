@@ -27,27 +27,26 @@ I built **Workshop**, a small macOS app that gives independent, local-first tool
 
 {{< workshop-screenshot src="/images/workshop/workshop-home.png" alt="Workshop home screen with Slate and Pulse available as ready tools." >}}
 
-When I set out with the initial idea for Workshop I had two main goals: I wanted a desktop app that could live in my dock, instead of a webapp that would just be Chrome tab number 347. I also really didn't want to build a monolith. I wanted something I could half commit my local messy tools too just to see if they could survive the light of day. A design conversayion with Codex led me to Tauri, and the Workshop concept of a wrapper tool that functions only as a shell for other things. Every tool in Workshop has it's own repo, it's own docs. The messes, at the very least, are forced to remain in their own piles.
+When I set out with the initial idea for Workshop I had two main goals: I wanted a desktop app that could live in my dock, instead of a webapp that would just be Chrome tab number 347. I also really didn't want to build a monolith. I wanted something I could half commit my local messy tools to just to see if they could survive the light of day. A design conversation with Codex led me to Tauri, and the Workshop concept of a wrapper tool that functions only as a shell for other things. Every tool in Workshop has its own repo, its own docs. The messes, at the very least, are forced to remain in their own piles.
 
 
-I also wanted to try building something another person could use, just to push myself to not fully half ass it, so I thought through privacy pretty much from day one. With the apps I've built  inside Workshop my personal data stays in deliberately selected local folders, not in the public repos. And thus, so does yours.
+I also wanted to try building something another person could use, just to push myself to not fully half ass it, so I thought through privacy pretty much from day one. With the apps I've built inside Workshop my personal data stays in deliberately selected local folders, not in the public repos. And thus, so does yours.
 
 ## Two small tools, two different jobs
 
 Workshop currently includes two apps: Slate and Pulse.
 
-**Slate** is a local reference desk. You explicitly choose the Markdown files it can read, then Slate gives them a more visually appealing home. It can handle a few different files types like standard docs, long pages with multiple subheads that become tabs, and tables.
-
+**Slate** is a local reference desk. You explicitly choose the Markdown files it can read, then Slate gives them a more visually appealing home. It can handle a few different file types like standard docs, long pages with multiple subheads that become tabs, and tables.
 
 {{< slate-gallery >}}
 
-**Pulse** does a completely different job. It manages recurring reminders and follows up through an Android notification until I mark something done or snooze it. Because of the aforementioned ADHD, there are some reminders in my life that I just need to be supremly, reliably annoying in a very specific way, so l actually do the things. Pulse's runner, credentials, and reminder data stay behind a narrow local and secure-service boundary. Workshop gives Pulse a home and a constrained way to connect.
+Slate is the tool that finally pushed me over the edge to build Workshop. I use [GUPPI](/thoughts/2025-06-12/meet-guppi/), my AI agent, to manage the task list for my consulting business and personal life. GUPPI keeps it in one extremely long Markdown file, which had become hard to parse at a glance. Slate turns that same file into a tabbed view and updates whenever the local file changes.
+
+I also use Slate for the table-based inventory of my outdoor chest freezer, my business opportunity tracker, and a tabbed inventory of all my AI skills. I'm starting to adapt some weekly Codex automations to write their results to Markdown, so the useful output doesn't disappear into chat threads. Those automations surface SEO opportunities for websites I manage and generate blog ideas for me and my clients.
+
+**Pulse** does a completely different job. It manages recurring reminders and follows up through an Android notification until I mark something done or snooze it. Because of the aforementioned ADHD, there are some reminders in my life that I just need to be supremely, reliably annoying in a very specific way, so I actually do the things. Pulse's runner, credentials, and reminder data stay behind a narrow local and secure-service boundary. Workshop gives Pulse a home and a constrained way to connect.
 
 {{< workshop-screenshot src="/images/workshop/pulse-take-out-trash.png" alt="Pulse reminder dashboard showing an active Take out trash reminder, its next notification, and runner status." >}}
-
-And Slate has already made [GUPPI](/thoughts/2025-06-12/meet-guppi/) , my AI personal assistant, more useful. GUPPI is still the conversational layer that helps me sort through the pile, but my running to-do list now has a local Markdown home he can read from. When I resurface after a week and ask what I was supposed to be doing, we have somewhere better to start than his memory.
-
-Workshop, Slate, and Pulse were vibe coded (and maybe a little bit scream coded) with [OpenAI](https://openai.com/)'s Codex.
 
 ## Try Workshop
 
