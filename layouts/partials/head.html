@@ -162,18 +162,20 @@
 
 {{ hugo.Generator }}
 
-<!-- Plausible Analytics with Outbound Links for custom domain -->
-<script
-  defer
-  data-domain="lindsaybrunner.com"
-  src="https://plausible.io/js/script.outbound-links.js"
-></script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-YmJ_1vdZw8Sew5X4SlKz_.js"></script>
 <script>
   window.plausible =
     window.plausible ||
     function () {
       (window.plausible.q = window.plausible.q || []).push(arguments);
     };
+  window.plausible.init =
+    window.plausible.init ||
+    function (options) {
+      window.plausible.o = options || {};
+    };
+  window.plausible.init();
 </script>
 
 <!-- Ahrefs Web Analytics -->

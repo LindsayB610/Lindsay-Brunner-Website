@@ -24,11 +24,13 @@ const workshopRepositoryUrl = 'https://github.com/LindsayB610/workshop';
 const workshopDownloadUrl = 'https://github.com/LindsayB610/workshop/releases/latest/download/Workshop-aarch64.dmg';
 const workshopDownloadPath = '/workshop/download';
 const workshopDownloadEventClass = 'plausible-event-name=Workshop+Download';
+const plausibleScriptUrl = 'https://plausible.io/js/pa-YmJ_1vdZw8Sew5X4SlKz_.js';
 const workshopOgImage = '/images/social/workshop-og-1200x630.png';
 const workshopOgImagePath = path.join(root, 'static', workshopOgImage.replace(/^\//, ''));
 const workshopMark = '/images/workshop/workshop-mark.svg';
 const workshopMarkPath = path.join(root, 'static', workshopMark.replace(/^\//, ''));
 const workshopDownloadPartialPath = path.join(root, 'layouts', 'partials', 'workshop-download.html');
+const workshopDownloadShortcodePath = path.join(root, 'layouts', 'shortcodes', 'workshop-download.html');
 
 const expectedImages = [
   {
@@ -51,6 +53,24 @@ function assert(condition, message) {
 
 function read(filePath) {
   return fs.readFileSync(filePath, 'utf8');
+}
+
+function listHtmlFiles(directory) {
+  const files = [];
+
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...listHtmlFiles(entryPath));
+    if (entry.isFile() && entry.name.endsWith('.html')) files.push(entryPath);
+  }
+
+  return files;
+}
+
+function workshopDownloadAnchors(html) {
+  return (html.match(/<a\b[^>]*>/gi) || []).filter((anchor) =>
+    /\bhref=(?:["']\/workshop\/download["']|\/workshop\/download)(?:\s|>)/i.test(anchor),
+  );
 }
 
 function contentType(filePath) {
@@ -101,9 +121,11 @@ function startStaticServer() {
 function testSourceContracts() {
   console.log('🧰 Validating Workshop source contracts...');
 
-  [contentPath, layoutPath, cssPath, headPath, headerPath, footerPath, workshopDownloadPartialPath].forEach((filePath) => {
-    assert(fs.existsSync(filePath), `Expected Workshop support file is missing: ${path.relative(root, filePath)}`);
-  });
+  [contentPath, layoutPath, cssPath, headPath, headerPath, footerPath, workshopDownloadPartialPath, workshopDownloadShortcodePath].forEach(
+    (filePath) => {
+      assert(fs.existsSync(filePath), `Expected Workshop support file is missing: ${path.relative(root, filePath)}`);
+    },
+  );
 
   if (!fs.existsSync(layoutPath) || !fs.existsSync(cssPath)) return;
 
@@ -114,6 +136,7 @@ function testSourceContracts() {
   const header = read(headerPath);
   const footer = read(footerPath);
   const downloadPartial = read(workshopDownloadPartialPath);
+  const downloadShortcode = read(workshopDownloadShortcodePath);
 
   assert(layout.includes('id="workshop-title"'), 'Workshop layout should expose an identified hero heading');
   assert(layout.includes('Workshop is the host. Slate and Pulse live inside it.'), 'Workshop layout should state the host → tool relationship');
@@ -137,6 +160,9 @@ function testSourceContracts() {
   }
 
   assert(head.includes('eq .RelPermalink "/workshop/"'), 'Workshop stylesheet should load only on the Workshop route');
+  assert(head.includes(`src="${plausibleScriptUrl}"`), 'Site head should load the current site-specific Plausible tracker');
+  assert(head.includes('window.plausible.init();'), 'Site head should initialize the current Plausible tracker');
+  assert(!/https:\/\/plausible\.io\/js\/script(?:\.[^"']+)?\.js/.test(head), 'Site head should not restore a legacy Plausible extension bundle');
   assert(css.includes('.workshop-page'), 'Workshop stylesheet should use a page-scoped root selector');
   assert(css.includes('.workshop-brand-line'), 'Workshop stylesheet should scope the product-identification line');
   assert(css.includes('grid-template-columns: minmax(0, 1.08fr) minmax(28rem, .92fr)'), 'Workshop desktop hero should give the promise a wider reading column');
@@ -150,6 +176,7 @@ function testSourceContracts() {
   assert(downloadRedirect.test(netlifyConfig), 'Netlify should keep a changeable Workshop download doorway that follows GitHub’s latest Apple Silicon release');
   assert(downloadPartial.includes(`href="${workshopDownloadPath}"`), 'Workshop download partial should use the stable local download doorway');
   assert(downloadPartial.includes(workshopDownloadEventClass), 'Workshop download partial should emit the dedicated Plausible goal event');
+  assert(downloadShortcode.includes('partial "workshop-download.html"'), 'Workshop download shortcode should delegate to the tracked shared partial');
   assert((layout.match(/partial "workshop-download.html"/g) || []).length === 2, 'Workshop product-page download CTAs should use the shared download partial');
   assert(
     header.indexOf('href="/workshop/"') < header.indexOf('class="nav-dropdown"'),
@@ -165,6 +192,9 @@ function testRenderedContracts() {
   if (!fs.existsSync(renderedPagePath)) return;
 
   const rendered = read(renderedPagePath);
+  const siteWideDownloadLinks = listHtmlFiles(publicDir).flatMap((filePath) =>
+    workshopDownloadAnchors(read(filePath)).map((anchor) => ({ anchor, filePath })),
+  );
   const workshopIndex = rendered.indexOf('One desktop home. Two focused tools.');
   const slateIndex = rendered.indexOf('Slate is the Workshop tool');
   const pulseIndex = rendered.indexOf('Pulse is the Workshop tool');
@@ -194,6 +224,11 @@ function testRenderedContracts() {
   );
   assert(rendered.includes(`href=${workshopDownloadPath}`), 'Workshop should route downloads through its stable local download doorway');
   assert(rendered.includes(workshopDownloadEventClass), 'Workshop download CTAs should emit a dedicated Plausible goal event');
+  assert(siteWideDownloadLinks.length >= 3, 'The built site should expose the Workshop downloads on the product page and published launch post');
+  assert(
+    siteWideDownloadLinks.every(({ anchor }) => anchor.includes(workshopDownloadEventClass)),
+    `Every rendered ${workshopDownloadPath} link should emit the Workshop Download event`,
+  );
   assert(
     (rendered.match(new RegExp(`href=${workshopDownloadPath}`, 'g')) || []).length === 2 &&
       (rendered.match(/plausible-event-name=Workshop\+Download/g) || []).length === 2,
