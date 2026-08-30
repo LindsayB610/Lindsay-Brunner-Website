@@ -21,7 +21,7 @@
     "test:html": "html-validate public/**/*.html",
     "test:links": "node scripts/check-links.js",
     "test:content": "node tests/content-checks.js",
-    "test:blog": "npm run build && npm run test:content && npm run test:blog-migration && npm run test:blog-navigation && npm run test:homepage && npm run test:workshop-launch && npm run test:spell && npm run test:og-images && npm run test:schedule",
+    "test:blog": "npm run build && npm run test:content && npm run test:blog-migration && npm run test:blog-navigation && npm run test:homepage && npm run test:workshop && npm run test:workshop-launch && npm run test:spell && npm run test:og-images && npm run test:schedule",
     "test:blog-migration": "node tests/blog-section-migration.test.js",
     "test:blog-navigation": "node tests/blog-post-navigation.test.js",
     "test:homepage": "node tests/homepage-react-island.test.js",
