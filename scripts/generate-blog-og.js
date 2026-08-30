@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate Open Graph image for a specific thoughts post
+ * Generate Open Graph image for a specific blog post
  * Uses the same style as recipe OG images: black background, gradient text
  */
 
@@ -50,7 +50,7 @@ function escapeXml(text) {
 }
 
 /**
- * Generate SVG for thoughts OG image
+ * Generate SVG for blog OG image
  */
 function wrapText(ctx, text, maxTextWidth) {
   const words = text.split(' ');
@@ -72,7 +72,7 @@ function wrapText(ctx, text, maxTextWidth) {
   return textLines;
 }
 
-function generateThoughtOGImage(text, slug, options = {}) {
+function generateBlogOGImage(text, slug, options = {}) {
   const leftPadding = 120;
   const rightPadding = 120;
   const maxTextWidth = WIDTH - leftPadding - rightPadding;
@@ -213,7 +213,7 @@ async function main() {
   const text = positionalArgs[0] || "Rules are allowed to be ridiculous, and truth is rarely found in the loudest message you hear.";
   const slug = positionalArgs[1] || "alices-restaurant-family-ritual";
   
-  console.log('🎨 Generating OG image for thoughts post...\n');
+  console.log('🎨 Generating OG image for blog post...\n');
   console.log(`Text: "${text}"`);
   if (subtitle) {
     console.log(`Subtitle: "${subtitle}"`);
@@ -224,13 +224,13 @@ async function main() {
   const pngPath = path.join(outputDir, `${slug}-og.png`);
   if (fs.existsSync(pngPath) && !forceFlag) {
     console.log(`⚠️  OG image already exists: ${pngPath}`);
-    console.log(`   To regenerate, use --force flag: node scripts/generate-thought-og.js "${text}" ${slug} --force`);
+    console.log(`   To regenerate, use --force flag: node scripts/generate-blog-og.js "${text}" ${slug} --force`);
     console.log(`\n✨ Skipping generation (image is locked in).`);
     return;
   }
   
   // Generate SVG
-  const svgPath = generateThoughtOGImage(text, slug, { subtitle });
+  const svgPath = generateBlogOGImage(text, slug, { subtitle });
   console.log(`✅ Generated SVG: ${svgPath}`);
   
   // Generate PNG
@@ -250,4 +250,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { generateThoughtOGImage };
+module.exports = { generateBlogOGImage };

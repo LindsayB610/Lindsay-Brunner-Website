@@ -90,7 +90,7 @@ export default function HeroSectionWithBeamsAndGrid() {
           <ArrowRight className="h-4 w-4" />
         </a>
         <a
-          href="/thoughts/"
+          href="/blog/"
           className="shadow-input group relative z-20 flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-neutral-900 p-px px-4 py-2 text-sm leading-6 font-semibold text-white no-underline transition duration-200 hover:-translate-y-0.5 sm:w-52"
         >
           Read my blog

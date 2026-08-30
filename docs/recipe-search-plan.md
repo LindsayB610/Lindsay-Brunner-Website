@@ -1,7 +1,7 @@
 # Recipe Search Implementation Plan
 
 ## Recommendation
-Start with **section-scoped search limited to recipes**. The site already has structured front matter for recipes, and traffic is likely concentrated on that section. A scoped search is faster to ship, lighter to load, and avoids indexing non-recipe content (thoughts, about). If it proves useful, you can expand to global search later by reusing the same pipeline with a broader index.
+Start with **section-scoped search limited to recipes**. The site already has structured front matter for recipes, and traffic is likely concentrated on that section. A scoped search is faster to ship, lighter to load, and avoids indexing non-recipe content (blog, about). If it proves useful, you can expand to global search later by reusing the same pipeline with a broader index.
 
 ## Goals
 - Help visitors find recipes quickly by title, description, ingredients, or category.
@@ -206,7 +206,7 @@ Start with **section-scoped search limited to recipes**. The site already has st
 - [ ] Add loading state during JSON fetch
 
 ## Optional extensions (future)
-- Add **global search** by expanding the index template to include thoughts and pages with a `type` discriminator. Render results in a dedicated `/search` page, reusing the same JS but with filters.
+- Add **global search** by expanding the index template to include blog and pages with a `type` discriminator. Render results in a dedicated `/search` page, reusing the same JS but with filters.
 - Add **advanced filtering**: filter by category, cuisine, prep time, etc.
 - Add **pinning or favoriting** via `localStorage` to highlight frequently viewed recipes.
 - Add **search history** in localStorage.

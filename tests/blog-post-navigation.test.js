@@ -1,5 +1,5 @@
 /**
- * Thoughts post navigation contract.
+ * Blog post navigation contract.
  *
  * Chronological navigation should read in the direction it travels: newer
  * posts point back, and older posts point backward in the archive.
@@ -9,7 +9,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
-const templatePath = path.join(__dirname, '..', 'layouts', 'thoughts', 'single.html');
+const templatePath = path.join(__dirname, '..', 'layouts', 'blog', 'single.html');
 const template = fs.readFileSync(templatePath, 'utf8');
 
 assert(
@@ -21,4 +21,4 @@ assert(
   'Older-post links should not end with a right-pointing arrow',
 );
 
-console.log('✅ Thoughts post navigation contract passed!');
+console.log('✅ Blog post navigation contract passed!');

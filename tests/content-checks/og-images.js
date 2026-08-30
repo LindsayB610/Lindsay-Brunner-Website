@@ -6,7 +6,7 @@ const {
   error404Path,
   recipeIndexPath1,
   publicDir,
-  thoughtsDir,
+  blogDir,
   recipesDir,
   staticDir,
   parseFrontMatter
@@ -72,7 +72,7 @@ function validateAllPagesHaveOGImages() {
     { path: aboutPagePath, name: 'About page' },
     { path: error404Path, name: '404 page' },
     { path: path.join(publicDir, 'recipes', 'index.html'), name: 'Recipes list page' },
-    { path: path.join(publicDir, 'thoughts', 'index.html'), name: 'Thoughts list page' },
+    { path: path.join(publicDir, 'blog', 'index.html'), name: 'Blog list page' },
     { path: recipeIndexPath1, name: 'Recipe index page (/recipes/all/)' },
   ];
   
@@ -94,19 +94,19 @@ function validateAllPagesHaveOGImages() {
   // Also check a sample of published content pages
   const samplePages = [];
   
-  // Sample thought post
-  const thoughtFiles = fs.readdirSync(thoughtsDir)
+  // Sample blog post
+  const blogFiles = fs.readdirSync(blogDir)
     .filter(file => file.endsWith('.md') && file !== '_index.md');
-  if (thoughtFiles.length > 0) {
-    const thoughtFile = thoughtFiles[0];
-    const thoughtFrontMatter = parseFrontMatter(path.join(thoughtsDir, thoughtFile));
-    if (thoughtFrontMatter && thoughtFrontMatter.date && thoughtFrontMatter.slug && !thoughtFrontMatter.draft) {
-      const dateMatch = thoughtFrontMatter.date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (blogFiles.length > 0) {
+    const blogFile = blogFiles[0];
+    const blogFrontMatter = parseFrontMatter(path.join(blogDir, blogFile));
+    if (blogFrontMatter && blogFrontMatter.date && blogFrontMatter.slug && !blogFrontMatter.draft) {
+      const dateMatch = blogFrontMatter.date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
       if (dateMatch) {
         const [, year, month, day] = dateMatch;
-        const thoughtPath = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, thoughtFrontMatter.slug, 'index.html');
-        if (fs.existsSync(thoughtPath)) {
-          samplePages.push({ path: thoughtPath, name: `Thought post: ${thoughtFile}` });
+        const blogPath = path.join(publicDir, 'blog', `${year}-${month}-${day}`, blogFrontMatter.slug, 'index.html');
+        if (fs.existsSync(blogPath)) {
+          samplePages.push({ path: blogPath, name: `Blog post: ${blogFile}` });
         }
       }
     }

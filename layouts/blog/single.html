@@ -35,16 +35,16 @@
     <div class="article-content">{{ .Content }}</div>
 
     {{/* Previous/Next Post Navigation - sorted newest first */}}
-    {{ $allThoughts := where (where .Site.RegularPages "Type" "thoughts") "Draft" false }}
-    {{ $sortedThoughts := $allThoughts.ByDate.Reverse }}
+    {{ $allBlog := where (where .Site.RegularPages "Type" "blog") "Draft" false }}
+    {{ $sortedBlog := $allBlog.ByDate.Reverse }}
     {{ $currentIndex := 0 }}
-    {{ range $index, $post := $sortedThoughts }}
+    {{ range $index, $post := $sortedBlog }}
       {{ if eq $post.Permalink $.Permalink }}
         {{ $currentIndex = $index }}
       {{ end }}
     {{ end }}
-    {{ $olderPost := index $sortedThoughts (add $currentIndex 1) }}
-    {{ $newerPost := index $sortedThoughts (sub $currentIndex 1) }}
+    {{ $olderPost := index $sortedBlog (add $currentIndex 1) }}
+    {{ $newerPost := index $sortedBlog (sub $currentIndex 1) }}
     {{ if or $olderPost $newerPost }}
     <nav style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dark-border); display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
       {{ if $newerPost }}
@@ -126,10 +126,10 @@
         </li>
         {{ end }}
       {{ else }}
-        {{ $allThoughts := where (where .Site.RegularPages "Type" "thoughts") "Draft" false }}
-        {{ $otherThoughts := where $allThoughts "Permalink" "!=" .Permalink }}
-        {{ $recentThoughts := $otherThoughts.ByDate.Reverse | first 5 }}
-        {{ range $recentThoughts }}
+        {{ $allBlog := where (where .Site.RegularPages "Type" "blog") "Draft" false }}
+        {{ $otherBlog := where $allBlog "Permalink" "!=" .Permalink }}
+        {{ $recentBlog := $otherBlog.ByDate.Reverse | first 5 }}
+        {{ range $recentBlog }}
         <li>
           <a href="{{ .RelPermalink }}" style="color: var(--electric-purple); text-decoration: none; font-weight: 500;">
             {{ .Title }}
@@ -222,8 +222,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Thoughts",
-      "item": {{ (printf "%s/thoughts/" .Site.BaseURL) | jsonify }}
+      "name": "Blog",
+      "item": {{ (printf "%s/blog/" .Site.BaseURL) | jsonify }}
     },
     {
       "@type": "ListItem",

@@ -53,7 +53,7 @@ That doesn't make content formulaic. It keeps you from mistaking polish for usef
 
 Instead of guessing, look at the places developers already describe the work: forums, GitHub issues, support conversations, docs feedback, and the questions your own team keeps answering. Search data can point at a pattern, but it isn't a substitute for understanding why the problem is expensive or annoying in the first place.
 
-For more on structuring technical content around the problem readers recognize, see *[Technical Storytelling: Bridging Engineering and Narrative](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/)*.
+For more on structuring technical content around the problem readers recognize, see *[Technical Storytelling: Bridging Engineering and Narrative](https://lindsaybrunner.com/blog/2026-01-27/technical-storytelling-bridging-engineering-narrative/)*.
 
 ### 2. Keep Context and Tradeoffs Alive
 
@@ -79,7 +79,7 @@ That same standard applies to product pages. [Workshop, my local-first Mac app f
 
 You don't need comments, AMAs, or an enormous public community to make content conversational. You do need a way to notice what happens after publication: recurring questions, reader confusion, support or sales reuse, deeper clicks, or the gap that the piece exposed.
 
-That feedback belongs in the next brief and the next revision. Otherwise you're publishing, reporting, and learning absolutely nothing, which is a very expensive hobby. For a framework on whether content changes what people do next, see [the content resonance framework](https://lindsaybrunner.com/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/). For the systems side of making that learning repeatable, see [Content Systems](https://lindsaybrunner.com/thoughts/2025-12-09/content-systems-chaos-to-works/).
+That feedback belongs in the next brief and the next revision. Otherwise you're publishing, reporting, and learning absolutely nothing, which is a very expensive hobby. For a framework on whether content changes what people do next, see [the content resonance framework](https://lindsaybrunner.com/blog/2026-03-05/content-resonance-framework-beyond-engagement-metrics/). For the systems side of making that learning repeatable, see [Content Systems](https://lindsaybrunner.com/blog/2025-12-09/content-systems-chaos-to-works/).
 
 
 ## The Constant Usefulness Check

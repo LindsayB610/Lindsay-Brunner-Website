@@ -2,14 +2,14 @@
 // This file imports and runs all validation checks
 
 const {
-  checkRecentThoughtsSection,
+  checkRecentBlogSection,
   checkHomepageContent
 } = require('./content-checks/homepage');
 
 const {
   validateFrontMatter,
   checkSocialImages
-} = require('./content-checks/thoughts');
+} = require('./content-checks/blog');
 
 const {
   validateNoDuplicateRecipeContent,
@@ -32,8 +32,8 @@ const {
   validate404Page,
   validatePermalinks,
   validateRecipeIndexPage,
-  validateNoDraftInThoughtsUrls,
-  validateNoDraftPrefixInPublishedThoughts,
+  validateNoDraftInBlogUrls,
+  validateNoDraftPrefixInPublishedBlog,
   validateNoDuplicateDraftFiles
 } = require('./content-checks/pages');
 
@@ -67,7 +67,7 @@ const {
 async function runAllTests() {
   console.log('🧪 Running comprehensive content validation tests...\n');
 
-  checkRecentThoughtsSection();
+  checkRecentBlogSection();
   checkHomepageContent();
   validateFrontMatter();
   validateNoDuplicateRecipeContent();
@@ -91,8 +91,8 @@ async function runAllTests() {
   validate404Page();
   validatePermalinks();
   validateRecipeIndexPage();
-  validateNoDraftInThoughtsUrls();
-  validateNoDraftPrefixInPublishedThoughts();
+  validateNoDraftInBlogUrls();
+  validateNoDraftPrefixInPublishedBlog();
   validateNoDuplicateDraftFiles();
   validateAllPagesHaveOGImages();
   validateMetaDescriptionLength();

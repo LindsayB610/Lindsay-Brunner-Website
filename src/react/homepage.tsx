@@ -20,24 +20,24 @@ const fallbackEssays: Essay[] = [
     title: "The Problem Is Usually Not the Prompt",
     description: "Or: the tedious human work hiding behind every good AI workflow",
     date: "Apr 21, 2026",
-    href: "/thoughts/2026-04-21/the-problem-is-usually-not-the-prompt/",
+    href: "/blog/2026-04-21/the-problem-is-usually-not-the-prompt/",
   },
   {
     title: "Notes From a Marketer Building a Real CLI With Codex",
     description: "Or: How a marketer shipped a developer tool by being very, very annoying about user experience",
     date: "Apr 11, 2026",
-    href: "/thoughts/2026-04-11/building-a-cli-with-ai/",
+    href: "/blog/2026-04-11/building-a-cli-with-ai/",
   },
   {
     title: "The Content Resonance Framework: Beyond Engagement Metrics",
     description: "Or: Why top-performing content can still do almost nothing for pipeline, adoption, or trust",
     date: "Mar 5, 2026",
-    href: "/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/",
+    href: "/blog/2026-03-05/content-resonance-framework-beyond-engagement-metrics/",
   },
 ];
 
 function getHomepageEssays(): Essay[] {
-  const dataEl = document.getElementById("homepage-thoughts-data");
+  const dataEl = document.getElementById("homepage-blog-data");
 
   if (!dataEl?.textContent) {
     return fallbackEssays;
@@ -102,8 +102,8 @@ function Homepage() {
               <Eyebrow>How I think</Eyebrow>
               <h2 className="mb-0 text-3xl font-bold text-white sm:text-5xl">Samples beat adjectives</h2>
             </div>
-            <a href="/thoughts/" className="inline-flex min-h-11 items-center gap-2 font-bold text-brand-yellow no-underline">
-              Read more thoughts
+            <a href="/blog/" className="inline-flex min-h-11 items-center gap-2 font-bold text-brand-yellow no-underline">
+              Read the blog
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>

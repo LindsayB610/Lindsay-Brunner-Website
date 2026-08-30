@@ -28,7 +28,7 @@ Without standards, AI creates a convincing illusion of progress. Content ships f
 
 This becomes especially visible with technical and developer audiences, the place where I live. Our readers are quick to detect inaccuracies, generic explanations, or instructions that collapse under real-world use. Once trust is lost here, it's difficult to regain.
 
-This kind of drift isn't unique to AI. It's what happens any time content production outpaces the systems meant to support it. I've written before about how [technical storytelling breaks down when narrative replaces understanding rather than reinforcing it](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/).
+This kind of drift isn't unique to AI. It's what happens any time content production outpaces the systems meant to support it. I've written before about how [technical storytelling breaks down when narrative replaces understanding rather than reinforcing it](https://lindsaybrunner.com/blog/2026-01-27/technical-storytelling-bridging-engineering-narrative/).
 
 **Clear standards remove ambiguity. They don't slow teams down. They make it possible to move quickly without renegotiating responsibility every time AI is involved.**
 
@@ -112,7 +112,7 @@ AI helped with this post, but not by writing it and walking away. It was used to
 
 Every judgment call in this piece is mine. I decided what stayed, what went, and what crossed the line into overconfidence or speculation. 
 
-If you're curious about how this system works more broadly, and why I built it in the first place, [I wrote about that process here](https://lindsaybrunner.com/thoughts/2025-06-12/meet-guppi/).
+If you're curious about how this system works more broadly, and why I built it in the first place, [I wrote about that process here](https://lindsaybrunner.com/blog/2025-06-12/meet-guppi/).
 
 To make the collaboration explicit, I want to let that system speak for itself.
 

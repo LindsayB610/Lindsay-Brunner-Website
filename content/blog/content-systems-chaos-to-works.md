@@ -40,7 +40,7 @@ A content system, by contrast, ensures that every piece of content has a reason 
 
 ## Why This Matters (Especially Now)
 
-In the early days of the internet, publishing itself was the bottleneck. Today, especially with AI now in the mix, publishing is trivial. What's hard is coordination, consistency, and leverage. I've written about [responsible AI content creation](https://lindsaybrunner.com/thoughts/2026-02-05/responsible-ai-content-creation/) for teams navigating that shift.
+In the early days of the internet, publishing itself was the bottleneck. Today, especially with AI now in the mix, publishing is trivial. What's hard is coordination, consistency, and leverage. I've written about [responsible AI content creation](https://lindsaybrunner.com/blog/2026-02-05/responsible-ai-content-creation/) for teams navigating that shift.
 
 Teams can publish dozens or even hundreds of pieces, yet still feel like they're drowning in half-finished drafts, conflicting priorities, and no way to measure what's actually working. The reason isn't that content is inherently harder. It's that content problems are systems problems. They span roles, teams, and incentives — and without a system, they collapse into ad hoc work.
 
@@ -52,7 +52,7 @@ I saw this most clearly working on content at companies like [Okta](https://www.
 
 I've watched teams spend months building content "playbooks" that sit untouched in a shared drive. I've also seen teams with no formal documentation at all produce cleaner, faster, more effective content because their systems were embedded in how decisions were made and work moved forward.
 
-A content system isn't defined by how well it's documented. It's defined by behavior — the defaults people fall into when no one is watching. This is the same philosophy I explored in [**"Good Developer Content Is a Conversation, Not a Broadcast"**](https://lindsaybrunner.com/thoughts/2025-06-14/developer-content-conversation-not-broadcast/), where effective content isn't something you simply ship — it's something that responds to real questions, real friction, and real feedback.
+A content system isn't defined by how well it's documented. It's defined by behavior — the defaults people fall into when no one is watching. This is the same philosophy I explored in [**"Good Developer Content Is a Conversation, Not a Broadcast"**](https://lindsaybrunner.com/blog/2025-06-14/developer-content-conversation-not-broadcast/), where effective content isn't something you simply ship — it's something that responds to real questions, real friction, and real feedback.
 
 In practice, effective content systems behave less like pipelines and more like feedback loops.
 
@@ -76,7 +76,7 @@ Both outcomes feel familiar to anyone who's lived through CMS migrations, editor
 
 Building a content system doesn't start with software. It starts with questions about outcomes, audiences, and usefulness. What decisions are you trying to support? Who is this content actually for? How will you know if it's working?
 
-Answering those questions forces you to define principles that guide creation and governance. Only then do tools enter the picture, selected to support those principles rather than define them. This mirrors what I've written about in [**"What Is Developer Marketing? A Guide from the Trenches"**](https://lindsaybrunner.com/thoughts/2025-06-25/what-is-developer-marketing-guide/), where content succeeds not because it exists, but because it's connected to adoption, trust, and meaningful signals.
+Answering those questions forces you to define principles that guide creation and governance. Only then do tools enter the picture, selected to support those principles rather than define them. This mirrors what I've written about in [**"What Is Developer Marketing? A Guide from the Trenches"**](https://lindsaybrunner.com/blog/2025-06-25/what-is-developer-marketing-guide/), where content succeeds not because it exists, but because it's connected to adoption, trust, and meaningful signals.
 
 A strong content system assumes change. It's designed to evolve as products, teams, and audiences change.
 
@@ -86,7 +86,7 @@ Perfect systems don't exist. Useful ones do.
 
 At companies like [ngrok](https://ngrok.com/), content isn't something users encounter after the product, it *is* part of the product. Documentation, examples, and explanations shape how quickly users succeed and how much they trust what they're building. In environments like that, weak content systems surface immediately, because friction in content becomes friction in adoption.
 
-This is also where clarity and framing matter. The gap between raw technical accuracy and real understanding is something I explore more deeply in [**"Technical Storytelling: Bridging Engineering and Narrative"**](https://lindsaybrunner.com/thoughts/2026-01-27/technical-storytelling-bridging-engineering-narrative/). A strong content system makes that translation repeatable, not accidental.
+This is also where clarity and framing matter. The gap between raw technical accuracy and real understanding is something I explore more deeply in [**"Technical Storytelling: Bridging Engineering and Narrative"**](https://lindsaybrunner.com/blog/2026-01-27/technical-storytelling-bridging-engineering-narrative/). A strong content system makes that translation repeatable, not accidental.
 
 A good content system doesn't prevent mistakes. It makes them visible early and recoverable. It doesn't eliminate complexity — it helps people navigate it. Most importantly, it treats content as a strategic capability, not a checklist of posts to ship.
 

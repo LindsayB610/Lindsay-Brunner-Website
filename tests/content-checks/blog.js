@@ -1,21 +1,21 @@
 const fs = require('fs');
 const path = require('path');
-const { thoughtsDir, REQUIRED_THOUGHTS_FIELDS, parseFrontMatter, staticDir } = require('./utils');
+const { blogDir, REQUIRED_BLOG_FIELDS, parseFrontMatter, staticDir } = require('./utils');
 
 function validateFrontMatter() {
-  console.log('\n📋 Validating thoughts front matter structure...');
+  console.log('\n📋 Validating blog front matter structure...');
   
   const errors = [];
-  const files = fs.readdirSync(thoughtsDir)
+  const files = fs.readdirSync(blogDir)
     .filter(file => file.endsWith('.md') && file !== '_index.md');
   
   if (files.length === 0) {
-    console.log('⚠️  No thought posts found to validate.');
+    console.log('⚠️  No blog posts found to validate.');
     return;
   }
   
   files.forEach(file => {
-    const filePath = path.join(thoughtsDir, file);
+    const filePath = path.join(blogDir, file);
     const frontMatter = parseFrontMatter(filePath);
     
     if (!frontMatter) {
@@ -24,7 +24,7 @@ function validateFrontMatter() {
     }
     
     // Check required fields
-    REQUIRED_THOUGHTS_FIELDS.forEach(field => {
+    REQUIRED_BLOG_FIELDS.forEach(field => {
       if (!(field in frontMatter)) {
         errors.push(`${file}: Missing required field "${field}"`);
       }
@@ -86,23 +86,23 @@ function validateFrontMatter() {
     process.exit(1);
   }
   
-  console.log(`✅ Front matter validation passed for ${files.length} thought post(s).`);
+  console.log(`✅ Front matter validation passed for ${files.length} blog post(s).`);
 }
 
 function checkSocialImages() {
-  console.log('\n🖼️  Checking social images for thoughts...');
+  console.log('\n🖼️  Checking social images for blog...');
   
   const errors = [];
-  const files = fs.readdirSync(thoughtsDir)
+  const files = fs.readdirSync(blogDir)
     .filter(file => file.endsWith('.md') && file !== '_index.md');
   
   if (files.length === 0) {
-    console.log('⚠️  No thought posts found to check.');
+    console.log('⚠️  No blog posts found to check.');
     return;
   }
   
   files.forEach(file => {
-    const filePath = path.join(thoughtsDir, file);
+    const filePath = path.join(blogDir, file);
     const frontMatter = parseFrontMatter(filePath);
     
     if (!frontMatter) return;
@@ -131,7 +131,7 @@ function checkSocialImages() {
     process.exit(1);
   }
   
-  console.log('✅ All specified social images exist for thoughts.');
+  console.log('✅ All specified social images exist for blog.');
 }
 
 module.exports = {

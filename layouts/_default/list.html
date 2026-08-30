@@ -25,7 +25,7 @@
     <!-- Rest of posts in grid -->
     {{ $remaining := after 1 $posts }} {{ if $remaining }}
     <div class="posts-grid">
-      <h3 class="grid-title">Latest Thoughts</h3>
+      <h3 class="grid-title">Latest Posts</h3>
       <div class="grid grid-3">
         {{ range $remaining }}
         <article class="post-card card">
@@ -47,7 +47,7 @@
     <div class="no-posts">
       <h2>Coming Soon</h2>
       <p>
-        Thoughts are brewing! Check back soon for insights on developer
+        Posts are brewing! Check back soon for insights on developer
         experience, content strategy, and building things that matter.
       </p>
     </div>

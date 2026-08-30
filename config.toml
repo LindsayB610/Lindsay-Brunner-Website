@@ -7,8 +7,7 @@ SectionPagesMenu = "main"
 googleAnalytics = ""
 
 [permalinks]
-  blog = "/blog/:slug/"
-  thoughts = "/thoughts/:year-:month-:day/:slug/"
+  blog = "/blog/:year-:month-:day/:slug/"
   recipes = "/recipes/:year-:month-:day/:slug/"
 
 [pagination]

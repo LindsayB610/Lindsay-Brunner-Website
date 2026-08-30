@@ -14,7 +14,7 @@ const {
   recipeIndexPath2,
   recipeIndexPath3,
   recipeIndexPath4,
-  thoughtsDir,
+  blogDir,
   parseFrontMatter
 } = require('./utils');
 
@@ -94,13 +94,13 @@ function getRecipeIndexPath() {
 }
 
 /**
- * Find one published thought and return its built HTML path.
+ * Find one published blog and return its built HTML path.
  */
-function getOneThoughtSinglePath() {
-  const files = fs.readdirSync(thoughtsDir)
+function getOneBlogSinglePath() {
+  const files = fs.readdirSync(blogDir)
     .filter(f => f.endsWith('.md') && f !== '_index.md' && !f.startsWith('draft-'));
   for (const file of files) {
-    const frontMatter = parseFrontMatter(path.join(thoughtsDir, file));
+    const frontMatter = parseFrontMatter(path.join(blogDir, file));
     if (!frontMatter || frontMatter.draft === true || frontMatter.draft === 'true') continue;
     const date = frontMatter.date;
     const slug = frontMatter.slug || path.basename(file, '.md').replace(/^\d{4}-\d{2}-\d{2}-/, '');
@@ -108,7 +108,7 @@ function getOneThoughtSinglePath() {
     const dateMatch = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!dateMatch) continue;
     const [, year, month, day] = dateMatch;
-    const htmlPath = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, slug, 'index.html');
+    const htmlPath = path.join(publicDir, 'blog', `${year}-${month}-${day}`, slug, 'index.html');
     if (fs.existsSync(htmlPath)) return htmlPath;
   }
   return null;
@@ -144,16 +144,16 @@ function validatePrintablePageStructures() {
     }
   }
 
-  // Thoughts list: section and featured-post (minified HTML may use class=section)
-  const thoughtsListPath = path.join(publicDir, 'thoughts', 'index.html');
-  if (fs.existsSync(thoughtsListPath)) {
+  // Blog list: section and featured-post (minified HTML may use class=section)
+  const blogListPath = path.join(publicDir, 'blog', 'index.html');
+  if (fs.existsSync(blogListPath)) {
     checks++;
-    const html = fs.readFileSync(thoughtsListPath, 'utf8');
+    const html = fs.readFileSync(blogListPath, 'utf8');
     if (!html.includes('class="section') && !html.includes("class='section") && !html.includes('class=section')) {
-      errors.push('Thoughts list must contain .section for print');
+      errors.push('Blog list must contain .section for print');
     }
     if (!html.includes('featured-post')) {
-      errors.push('Thoughts list must contain .featured-post for print');
+      errors.push('Blog list must contain .featured-post for print');
     }
   }
 
@@ -167,16 +167,16 @@ function validatePrintablePageStructures() {
     }
   }
 
-  // One thought single: article-content and no-print on supplementary sections
-  const thoughtSinglePath = getOneThoughtSinglePath();
-  if (thoughtSinglePath) {
+  // One blog post: article-content and no-print on supplementary sections
+  const blogSinglePath = getOneBlogSinglePath();
+  if (blogSinglePath) {
     checks++;
-    const html = fs.readFileSync(thoughtSinglePath, 'utf8');
+    const html = fs.readFileSync(blogSinglePath, 'utf8');
     if (!html.includes('article-content')) {
-      errors.push('Thought single page must contain .article-content for print');
+      errors.push('Blog post page must contain .article-content for print');
     }
     if (!html.includes('no-print')) {
-      errors.push('Thought single page must mark supplementary sections with .no-print');
+      errors.push('Blog post page must mark supplementary sections with .no-print');
     }
   }
 

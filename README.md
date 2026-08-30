@@ -16,7 +16,7 @@ This is the source code for Lindsay Brunner's personal website, built with Hugo 
 - [Project Structure](#-project-structure)
 - [React Islands](#-react-islands)
 - [Content Management](#-content-management)
-  - [Thoughts](#thoughts)
+  - [Blog](#blog)
   - [Nemesis](#nemesis)
   - [LOTR: FotF](#lotr-fotf)
   - [Recipes](#recipes)
@@ -94,7 +94,8 @@ Before you begin, ensure you have the following installed:
 
 - `npm test` - Run all tests (builds site, validates HTML, checks links, validates content, React islands, accessibility, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
 - `npm run test:content` - Run content validation tests only
-- `npm run test:thoughts` - Bounded thought-post checks: build, content validation, changed-file spell check, OG image validation, and scheduling workflow tests; does not run React island suites
+- `npm run test:blog` - Bounded blog-post checks: build, content validation, homepage integration, migration contracts, changed-file spell check, OG image validation, and scheduling workflow tests; does not run browser-render suites
+- `npm run test:blog-migration` - Validates dated blog permalinks, legacy redirect ordering, canonical URLs, RSS, sitemap output, and removal of stale section references
 - `npm run test:recipes` - Bounded recipe checks: build, content validation, changed-file spell check, OG image validation, recipe search JSON, recipe template, and dietary label tests; does not run React island suites
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
@@ -118,7 +119,7 @@ Before you begin, ensure you have the following installed:
 - `npm run generate:og-images` - Generate OG images for recipes (creates SVG files for editing)
 - `npm run generate:png` - Convert SVG to PNG for social media compatibility (usage: `npm run generate:png -- static/images/social/working-files/recipe-xxx-og.svg`)
 - `npm run schedule-posts` - Check and auto-publish scheduled posts (runs automatically via GitHub Actions)
-- `node scripts/fix-diagram-backgrounds.js` - Fix diagram image background colors to match site black (#000000). Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: Currently only relevant for diagrams placed in thoughts posts, not other types of images or other page types.
+- `node scripts/fix-diagram-backgrounds.js` - Fix diagram image background colors to match site black (#000000). Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: Currently only relevant for diagrams placed in blog posts, not other types of images or other page types.
 
 ### Maintenance and security
 
@@ -136,7 +137,7 @@ Before you begin, ensure you have the following installed:
 │   ├── about/           # About page content
 │   ├── fate-of-the-fellowship/ # LOTR: FotF tracker section content
 │   ├── nemesis/         # Nemesis tracker section content
-│   ├── thoughts/        # Thought leadership content
+│   ├── blog/            # Blog posts
 │   ├── recipes/         # Recipe content
 │   └── _index.md        # Homepage content
 ├── data/                # Structured data files for Hugo
@@ -145,7 +146,7 @@ Before you begin, ensure you have the following installed:
 │       ├── games.yaml   # Valid games and setup metadata
 │       └── sessions/    # One YAML file per logged session
 ├── docs/                # Project documentation and content templates
-│   ├── thoughts-template.md
+│   ├── blog-template.md
 │   ├── recipe-template.md
 │   ├── fate-of-the-fellowship-tracker.md
 │   ├── fate-of-the-fellowship-tracker-plan.md
@@ -157,7 +158,7 @@ Before you begin, ensure you have the following installed:
 │   ├── about/           # About page specific layout
 │   ├── fate-of-the-fellowship/ # LOTR: FotF tracker layout
 │   ├── nemesis/         # Nemesis tracker layout
-│   ├── thoughts/        # Thoughts section layout
+│   ├── blog/        # Blog section layout
 │   ├── recipes/         # Recipes section layout
 │   │   └── list.json    # Recipe search JSON index template
 │   ├── 404.html         # 404 error page
@@ -205,7 +206,7 @@ Before you begin, ensure you have the following installed:
 
 ## ⚛️ React Islands
 
-Most of the site is still Hugo-rendered Markdown and templates. The homepage and About page now use React islands for the more designed, interactive sections while preserving Hugo as the publishing system for thoughts, recipes, RSS, SEO, and Netlify deploys.
+Most of the site is still Hugo-rendered Markdown and templates. The homepage and About page now use React islands for the more designed, interactive sections while preserving Hugo as the publishing system for blog, recipes, RSS, SEO, and Netlify deploys.
 
 ### How the islands are mounted
 
@@ -235,18 +236,18 @@ Do not commit an Aceternity API key directly to the repo. If the registry needs 
 
 ### Guardrails
 
-- Keep thoughts, recipes, RSS, and standard content pages Hugo-native unless there is a specific reason to make a React island.
+- Keep blog, recipes, RSS, and standard content pages Hugo-native unless there is a specific reason to make a React island.
 - Keep homepage and About React styles scoped to `#homepage-root` and `#about-root` so the rest of the site does not inherit island-specific behavior.
 - Maintain reduced-motion support for moving logos, quote rotations, shader/canvas effects, and CSS transitions.
 - Preserve the `<noscript>` fallbacks, but do not render fallback content visibly when JavaScript is enabled.
 
 ## ✍️ Content Management
 
-### Thoughts
+### Blog
 
-The "thoughts" section is where Lindsay shares insights on developer advocacy, content strategy, and technical leadership.
+The "blog" section is where Lindsay shares insights on developer advocacy, content strategy, and technical leadership.
 
-**📋 For complete thoughts guidelines, see [`docs/thoughts-template.md`](./docs/thoughts-template.md)**
+**📋 For complete blog guidelines, see [`docs/blog-template.md`](./docs/blog-template.md)**
 
 The template includes:
 - Complete front matter template with all required and optional fields
@@ -258,35 +259,35 @@ The template includes:
 
 **Quick start:**
 
-1. **Create a new thought piece using Hugo**:
+1. **Create a new blog post using Hugo**:
 
    ```bash
    # Navigate to your project directory
    cd Lindsay-Brunner-Website
 
-   # Create a new thought piece (Hugo will use the archetype template)
-   hugo new thoughts/your-thought-title.md
+   # Create a new blog post (Hugo will use the archetype template)
+   hugo new blog/your-blog-post-title.md
    ```
 
 2. **Alternative: Manual file creation**:
 
    ```bash
-   # Create the file manually in the thoughts directory
-   touch content/thoughts/your-thought-title.md
+   # Create the file manually in the blog directory
+   touch content/blog/your-blog-post-title.md
    
    # For drafts, use the draft- prefix for easy identification:
-   touch content/thoughts/draft-your-thought-title.md
+   touch content/blog/draft-your-blog-post-title.md
    ```
 
-3. **Use the template**: Copy the front matter template from `docs/thoughts-template.md` and fill in your details
+3. **Use the template**: Copy the front matter template from `docs/blog-template.md` and fill in your details
 
 4. **Set up the front matter** (the metadata at the top of your .md file):
 
    ```markdown
    ---
-   title: "Your Thought Title"
+   title: "Your Blog Post Title"
    date: 2024-01-15
-   slug: "your-thought-slug"
+   slug: "your-blog-post-slug"
    description: "A compelling description that will appear in listings and SEO"
    subtitle: "Or: A brief subtitle or alternative description"
    draft: false
@@ -297,18 +298,18 @@ The template includes:
 
 6. **Optionally create OG image**: Manually create and add to `static/images/social/`, then reference in front matter
 
-7. **For diagram images in thoughts posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to thoughts post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Add the filename to the `diagramFiles` array in `scripts/fix-diagram-backgrounds.js`, then run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. **Note**: This script is specifically for diagrams in thoughts posts, not for other types of images or other page types.
+7. **For diagram images in blog posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to blog post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Add the filename to the `diagramFiles` array in `scripts/fix-diagram-backgrounds.js`, then run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. **Note**: This script is specifically for diagrams in blog posts, not for other types of images or other page types.
 
-8. **Test**: Run `npm run test:thoughts` for the bounded thought-post test bundle
+8. **Test**: Run `npm run test:blog` for the bounded blog-post test bundle
 
 **File naming conventions:**
 - Use lowercase letters, hyphens, or underscores
 - Be descriptive but concise
-- For drafts, use `draft-` prefix: `draft-my-great-thought.md` (helps with organization; the `slug` field determines the URL)
+- For drafts, use `draft-` prefix: `draft-my-great-blog-post.md` (helps with organization; the `slug` field determines the URL)
 
-#### Scheduling thoughts posts
+#### Scheduling blog posts
 
-The site includes an automated scheduling system that publishes draft thoughts posts when their publish date arrives.
+The site includes an automated scheduling system that publishes draft blog posts when their publish date arrives.
 
 **How it works:**
 1. Create your post with `draft: true` and set a future `date` in the front matter
@@ -381,7 +382,7 @@ npm run schedule-posts
 ```
 This shows which posts would be published without making any changes.
 
-**Thoughts publishing checklist:**
+**Blog publishing checklist:**
 - ✅ `draft: true` in front matter
 - ✅ Future `date` in YYYY-MM-DD format
 - ✅ No `skip_scheduling: true` (unless you want to prevent auto-publishing)
@@ -390,7 +391,7 @@ This shows which posts would be published without making any changes.
 **Example: Scheduling a post for December 20, 2025**
 ```yaml
 ---
-title: "My Scheduled Thought"
+title: "My Scheduled Blog Post"
 date: 2025-12-20
 draft: true
 description: "This will publish on December 20, 2025 at 6am PT"
@@ -564,7 +565,7 @@ Recipes can also be scheduled for future publication, but they have one extra re
 
 **How it works:**
 - Set `draft: true` and a future `date`
-- The same GitHub Actions workflow used for thoughts checks scheduled recipes
+- The same GitHub Actions workflow used for blog checks scheduled recipes
 - When the publish window arrives, the script flips `draft: false`
 
 **Important difference for recipes:**
@@ -612,14 +613,14 @@ Recipe pages include optimized print functionality:
 
 - **Homepage**: Edit `content/_index.md`
 - **About**: Edit `content/about/index.md`
-- **Thoughts listing page**: Edit `content/thoughts/_index.md`
+- **Blog listing page**: Edit `content/blog/_index.md`
 
 #### Hugo content organization tips
 
 - **Drafts**: Set `draft: true` to work on content without publishing
-- **Draft file naming (thoughts only)**: Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
+- **Draft file naming (blog only)**: Prefix draft blog files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
 - **Future dates**: Hugo won't show posts with future dates unless in draft mode
-- **URL structure**: Files in `thoughts/` become `/thoughts/filename/` (or use the `slug` field in front matter)
+- **URL structure**: Files in `blog/` become `/blog/filename/` (or use the `slug` field in front matter)
 - **Ordering**: Hugo sorts by date (newest first) by default
 
 **Manual trigger:** You can manually trigger the scheduling workflow from the GitHub Actions tab if needed.
@@ -735,7 +736,7 @@ The site uses custom CSS located in `static/css/`:
 - `custom.css` - Custom styling and overrides
 - `src/react/styles.css` - Scoped styles for the homepage and About React islands
 
-React island styles should stay scoped to their mount roots. Shared header, footer, content list, recipe, thought, and print styles should stay in `static/css/`.
+React island styles should stay scoped to their mount roots. Shared header, footer, content list, recipe, blog post, and print styles should stay in `static/css/`.
 
 ### Responsive Design Features
 
@@ -768,8 +769,8 @@ npm test
 # Run only content validation tests
 npm run test:content
 
-# Run bounded publishing checks for a thought post
-npm run test:thoughts
+# Run bounded publishing checks for a blog post
+npm run test:blog
 
 # Run bounded publishing checks for a recipe
 npm run test:recipes
@@ -781,7 +782,7 @@ npm run test:html
 npm run test:links
 ```
 
-Use `npm run test:thoughts` or `npm run test:recipes` for routine content publishing work. Those bundles build the site and run the relevant content checks without running the React island render, accessibility, mobile, homepage integration, or AI Chat Exporter suites. Use `npm test` when you want the full-site confidence pass before broader releases.
+Use `npm run test:blog` or `npm run test:recipes` for routine content publishing work. Those bundles build the site and run the relevant content checks without running the React island render, accessibility, mobile, homepage integration, or AI Chat Exporter suites. Use `npm test` when you want the full-site confidence pass before broader releases.
 
 ### Test Coverage
 
@@ -818,8 +819,8 @@ The test suite includes:
 **Content validation** (`tests/content-checks.js` - modular structure in `tests/content-checks/`):
 
 - **Content Structure**:
-  - Homepage sections (hero, Recent Thoughts, Let's Connect)
-  - Front matter validation for thoughts and recipes
+  - Homepage sections (hero, Recent Blog, Let's Connect)
+  - Front matter validation for blog and recipes
   - No duplicate recipe page content (identical body in multiple files)
   - Required fields and data format validation
   - Date format validation (YYYY-MM-DD)
@@ -827,7 +828,7 @@ The test suite includes:
   - Dietary labels: only `dairy-free`, `vegetarian`, `vegan`, `gluten-free` allowed; no duplicates (base recipe only; see recipe-template.md)
 
 - **Assets**:
-  - Social image existence (thoughts and recipes)
+  - Social image existence (blog and recipes)
   - Static asset checks (CSS files, favicons, default images)
   - RSS feed structure and validity
   - Sitemap structure and validity
@@ -839,7 +840,7 @@ The test suite includes:
   - Recipe index page validation
   - Context-aware RSS link validation
   - OG image validation on all pages
-  - Draft URL validation (ensures "draft" never appears in thoughts URLs)
+  - Draft URL validation (ensures "draft" never appears in blog URLs)
 
 - **Quality Checks**:
   - HTML validation (via html-validate)
@@ -882,7 +883,7 @@ The test suite includes:
   - Checks print stylesheet has required @media print rules
 - **Printability** (`tests/content-checks/printability.js`):
   - Validates print stylesheet has hide/show rules for all page types (header, footer, .no-print, .hero, .article-content, .about-content, sections, recipe index)
-  - Validates key pages (homepage, about, thoughts list, recipe index, thought single) have the HTML structure (classes) required for print CSS
+  - Validates key pages (homepage, about, blog list, recipe index, blog post) have the HTML structure (classes) required for print CSS
   - Verifies email link format and parameters
   - Ensures print-only URL footer exists
 

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { recipesDir, thoughtsDir, parseFrontMatter } = require('./utils');
+const { recipesDir, blogDir, parseFrontMatter } = require('./utils');
 
 // SEO best practices
 const MAX_META_DESCRIPTION_LENGTH = 160; // Google typically truncates at 155-160 characters
@@ -49,12 +49,12 @@ function validateMetaDescriptionLength() {
     }
   });
   
-  // Check thoughts
-  const thoughtFiles = fs.readdirSync(thoughtsDir)
+  // Check blog
+  const blogFiles = fs.readdirSync(blogDir)
     .filter(file => file.endsWith('.md') && file !== '_index.md');
   
-  thoughtFiles.forEach(file => {
-    const filePath = path.join(thoughtsDir, file);
+  blogFiles.forEach(file => {
+    const filePath = path.join(blogDir, file);
     const frontMatter = parseFrontMatter(filePath);
     
     if (!frontMatter || !frontMatter.description) {
@@ -72,12 +72,12 @@ function validateMetaDescriptionLength() {
     
     if (length > MAX_META_DESCRIPTION_LENGTH) {
       errors.push(
-        `thoughts/${file}: Meta description is ${length} characters (max ${MAX_META_DESCRIPTION_LENGTH}). ` +
+        `blog/${file}: Meta description is ${length} characters (max ${MAX_META_DESCRIPTION_LENGTH}). ` +
         `Current: "${description.substring(0, 80)}${description.length > 80 ? '...' : ''}"`
       );
     } else if (length < MIN_META_DESCRIPTION_LENGTH) {
       warnings.push(
-        `thoughts/${file}: Meta description is ${length} characters (recommended min ${MIN_META_DESCRIPTION_LENGTH}). ` +
+        `blog/${file}: Meta description is ${length} characters (recommended min ${MIN_META_DESCRIPTION_LENGTH}). ` +
         `Consider expanding for better SEO.`
       );
     }
@@ -98,7 +98,7 @@ function validateMetaDescriptionLength() {
     process.exit(1);
   }
   
-  const totalChecked = recipeFiles.length + thoughtFiles.length;
+  const totalChecked = recipeFiles.length + blogFiles.length;
   if (warnings.length === 0 && errors.length === 0) {
     console.log(`✅ All meta descriptions are within recommended length (${MIN_META_DESCRIPTION_LENGTH}-${MAX_META_DESCRIPTION_LENGTH} characters).`);
   } else if (errors.length === 0) {

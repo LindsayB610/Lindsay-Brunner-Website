@@ -58,7 +58,7 @@ function checkStaticAssets() {
 }
 
 function validateRSSFeed() {
-  console.log('\n📡 Validating thoughts RSS feed...');
+  console.log('\n📡 Validating blog RSS feed...');
   
   if (!fs.existsSync(rssFeedPath)) {
     console.error(`❌ RSS feed not found at ${rssFeedPath}`);
@@ -95,8 +95,8 @@ function validateRSSFeed() {
     });
     
     // Check for custom description (from custom template)
-    if (!rssContent.includes('Recent thoughts from')) {
-      console.warn('⚠️  RSS feed may not be using custom template (expected "Recent thoughts from" in description)');
+    if (!rssContent.includes('Recent posts from')) {
+      console.warn('⚠️  RSS feed may not be using custom template (expected "Recent posts from" in description)');
     }
     
     // Check for at least one item
@@ -112,7 +112,7 @@ function validateRSSFeed() {
       console.warn('⚠️  RSS feed may have mismatched XML tags (this is a basic check)');
     }
     
-    console.log('✅ Thoughts RSS feed structure is valid.');
+    console.log('✅ Blog RSS feed structure is valid.');
   } catch (error) {
     console.error(`❌ Error validating RSS feed: ${error.message}`);
     process.exit(1);

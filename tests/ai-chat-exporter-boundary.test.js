@@ -18,6 +18,9 @@ const packageLock = JSON.parse(read('package-lock.json'));
 const claudeDependency = packageJson.dependencies?.['claude-thread-exporter'];
 const claudeLockDependency = packageLock.packages?.['']?.dependencies?.['claude-thread-exporter'];
 const claudePackageLock = packageLock.packages?.['node_modules/claude-thread-exporter'];
+const claudeResolved = claudePackageLock?.resolved;
+const claudeGithubResolution = typeof claudeResolved === 'string' &&
+  /^git\+(?:https:\/\/github\.com\/|ssh:\/\/git@github\.com\/)LindsayB610\/claude-thread-exporter\.git#/.test(claudeResolved);
 
 assert(
   typeof claudeDependency === 'string' &&
@@ -31,8 +34,7 @@ assert(
   failures,
 );
 assert(
-  typeof claudePackageLock?.resolved === 'string' &&
-    claudePackageLock.resolved.startsWith('git+https://github.com/LindsayB610/claude-thread-exporter.git#'),
+  claudeGithubResolution,
   'package-lock should resolve claude-thread-exporter from GitHub, not a local file path',
   failures,
 );

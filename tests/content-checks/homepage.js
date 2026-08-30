@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { homepagePath } = require('./utils');
 
-function checkRecentThoughtsSection() {
+function checkRecentBlogSection() {
   try {
     const homepageContent = fs.readFileSync(homepagePath, 'utf8');
     const expectedText = 'How I Think';
@@ -59,6 +59,6 @@ function checkHomepageContent() {
 }
 
 module.exports = {
-  checkRecentThoughtsSection,
+  checkRecentBlogSection,
   checkHomepageContent
 };

@@ -29,9 +29,9 @@ recipeInstructions:
   - "Finish as-is, or add a small splash of vinegar or lemon juice and/or a pinch of red pepper flakes."
 ---
 
-My Grandma Yola made cabbage and onions for Grandpa Joe for lunch all the time when I was very young, but after I stopped spending every day at their house it wasn't a vegetable I had very often. By the time I became an adult with her own kitchen, cabbage wasn't somethig I knew what to do with, or even knew I liked. 
+My Grandma Yola made cabbage and onions for Grandpa Joe for lunch all the time when I was very young, but after I stopped spending every day at their house it wasn't a vegetable I had very often. By the time I became an adult with her own kitchen, cabbage wasn't something I knew what to do with, or even knew I liked.
 
-Enter Sakkio Japan at the Belden Village Mall Food Court in Canton, Ohio. It was a super standard mall chicken teriyaki joint, with awesome stiry fried veg, including cabbage. I was OBSESSED. Fast forward to today, and cabbage is in the rotation for my family just as often it was for my grandparents so long ago. This prep is super simple, and lends itself to pretty much any dinner vibe you're going for. It cooks up crunchy and salty and pretty much perfect for any dinner, any time.
+Enter Sakkio Japan at the Belden Village Mall Food Court in Canton, Ohio. It was a super standard mall chicken teriyaki joint, with awesome stir fried veg, including cabbage. I was OBSESSED. Fast forward to today, and cabbage is in the rotation for my family just as often it was for my grandparents so long ago. This prep is super simple, and lends itself to pretty much any dinner vibe you're going for. It cooks up crunchy and salty and pretty much perfect for any dinner, any time.
 
 ## Snapshot
 

@@ -59,11 +59,11 @@ function formatDisplayDate(date) {
   return `${month} ${day}, ${match[1]}`;
 }
 
-function getLatestThoughtsFromContent() {
-  return fs.readdirSync(path.join(root, 'content/thoughts'))
+function getLatestBlogFromContent() {
+  return fs.readdirSync(path.join(root, 'content/blog'))
     .filter((file) => file.endsWith('.md') && file !== '_index.md')
     .map((file) => {
-      const content = read(path.join('content/thoughts', file));
+      const content = read(path.join('content/blog', file));
       const frontMatter = parseFrontMatter(content);
       const slug = frontMatter.slug || file.replace(/\.md$/, '');
       const date = frontMatter.date || '';
@@ -73,10 +73,10 @@ function getLatestThoughtsFromContent() {
         draft: frontMatter.draft === true,
         title: frontMatter.title,
         description: frontMatter.subtitle || frontMatter.description,
-        href: `/thoughts/${date.slice(0, 4)}-${date.slice(5, 7)}-${date.slice(8, 10)}/${slug}/`,
+        href: `/blog/${date.slice(0, 4)}-${date.slice(5, 7)}-${date.slice(8, 10)}/${slug}/`,
       };
     })
-    .filter((thought) => !thought.draft && thought.date && thought.title)
+    .filter((blog) => !blog.draft && blog.date && blog.title)
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 3);
 }
@@ -118,7 +118,7 @@ function getPageKind(relativePath) {
   if (relativePath === 'public/index.html') return 'home';
   if (relativePath === 'public/about/index.html') return 'about';
   if (relativePath === 'public/ai-chat-exporter/index.html') return 'ai-chat-exporter';
-  if (relativePath.startsWith('public/thoughts/')) return 'thoughts';
+  if (relativePath.startsWith('public/blog/')) return 'blog';
   if (relativePath.startsWith('public/recipes/')) return 'recipes';
   return 'other';
 }
@@ -305,7 +305,7 @@ function checkReactAssetCleanliness() {
     'assets/react/_redirects',
     'assets/react/css/main.css',
     'assets/react/recipes/index.html',
-    'assets/react/thoughts/index.html',
+    'assets/react/blog/index.html',
     'assets/react/images/social/default-og.png',
   ].forEach((unexpectedPath) => {
     assert(!exists(unexpectedPath), `${unexpectedPath} should not be copied into the Vite output`);
@@ -340,8 +340,8 @@ function checkBuiltSiteIsolation() {
   ].includes(page));
 
   assert(
-    nonIslandPages.some((page) => page.startsWith('public/thoughts/') && page !== 'public/thoughts/index.html'),
-    'isolation checks should include at least one individual Thoughts page',
+    nonIslandPages.some((page) => page.startsWith('public/blog/') && page !== 'public/blog/index.html'),
+    'isolation checks should include at least one individual Blog page',
   );
   assert(
     nonIslandPages.some((page) => page.startsWith('public/recipes/') && page !== 'public/recipes/index.html'),
@@ -350,7 +350,7 @@ function checkBuiltSiteIsolation() {
 
   [
     'homepage-root',
-    'homepage-thoughts-data',
+    'homepage-blog-data',
     'Freelance technical content, developer marketing, and AI-era editorial strategy',
     'Complex technical ideas, made clear enough to trust.',
     'What I Do',
@@ -492,11 +492,11 @@ function checkReactCssScoping() {
     const css = read(file);
     [
       '.recipe-card',
-      '.thought-card',
+      '.blog-card',
       '.site-header',
       '.site-logo',
       '.page-recipe',
-      '.page-thought',
+      '.page-blog',
     ].forEach((legacySelector) => {
       assertNotIncludes(css, legacySelector, `${file} should not contain legacy site selectors`);
     });
@@ -517,7 +517,7 @@ function checkHomepageSourceContent() {
   [
     'Freelance technical content, developer marketing, and AI-era editorial strategy',
     'getHomepageEssays',
-    'homepage-thoughts-data',
+    'homepage-blog-data',
     'text-[clamp(2.75rem,6.5vw,6rem)]',
     'WebkitTextFillColor: "#ffffff"',
     'Complex technical ideas, made clear enough to trust.',
@@ -552,9 +552,9 @@ function checkHomepageSourceContent() {
     '/images/workshop/workshop-shelf.png',
     'group-hover:scale-[1.01]',
     'group-hover:bg-[length:100%_2px]',
-    '/thoughts/2026-04-21/the-problem-is-usually-not-the-prompt/',
-    '/thoughts/2026-04-11/building-a-cli-with-ai/',
-    '/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/',
+    '/blog/2026-04-21/the-problem-is-usually-not-the-prompt/',
+    '/blog/2026-04-11/building-a-cli-with-ai/',
+    '/blog/2026-03-05/content-resonance-framework-beyond-engagement-metrics/',
     'Bring me your weird content problems',
     'Start on LinkedIn',
   ].forEach((expected) => assertIncludes(combined, expected, 'homepage React source'));
@@ -765,7 +765,7 @@ function checkAboutSourceContent() {
   ].forEach((expected) => assertIncludes(combined, expected, 'about page React source'));
 
   [
-    'href: "/thoughts/"',
+    'href: "/blog/"',
     'label: "Read my blog"',
   ].forEach((expected) => assertIncludes(about, expected, 'about quote CTA source'));
 
@@ -784,28 +784,28 @@ function checkAboutSourceContent() {
   ].forEach((unexpected) => assertNotIncludes(combined, unexpected, 'about page React source'));
 }
 
-function checkHomepageThoughtData() {
-  console.log('📰 Checking homepage latest thoughts data...');
+function checkHomepageBlogData() {
+  console.log('📰 Checking homepage latest blog data...');
 
   const home = read('public/index.html');
-  const latestThoughts = getLatestThoughtsFromContent();
-  const scriptMatch = home.match(/<script id=homepage-thoughts-data type=application\/json>([\s\S]*?)<\/script>/) ||
-    home.match(/<script id="homepage-thoughts-data" type="application\/json">([\s\S]*?)<\/script>/);
+  const latestBlog = getLatestBlogFromContent();
+  const scriptMatch = home.match(/<script id=homepage-blog-data type=application\/json>([\s\S]*?)<\/script>/) ||
+    home.match(/<script id="homepage-blog-data" type="application\/json">([\s\S]*?)<\/script>/);
 
-  assert(scriptMatch, 'built homepage should include latest thoughts JSON data');
+  assert(scriptMatch, 'built homepage should include latest blog JSON data');
   if (!scriptMatch) return;
 
-  const parsedThoughts = JSON.parse(scriptMatch[1]);
-  const homepageThoughts = typeof parsedThoughts === 'string' ? JSON.parse(parsedThoughts) : parsedThoughts;
+  const parsedBlog = JSON.parse(scriptMatch[1]);
+  const homepageBlog = typeof parsedBlog === 'string' ? JSON.parse(parsedBlog) : parsedBlog;
 
-  assert(homepageThoughts.length === 3, 'homepage latest thoughts JSON should include exactly three posts');
-  latestThoughts.forEach((thought, index) => {
-    const actual = homepageThoughts[index];
-    assert(actual, `homepage latest thoughts JSON should include item ${index + 1}`);
-    assert(actual?.title === thought.title, `homepage thought ${index + 1} should be latest title "${thought.title}"`);
-    assert(actual?.href === thought.href, `homepage thought ${index + 1} should link to "${thought.href}"`);
-    assert(actual?.description === thought.description, `homepage thought ${index + 1} should use the current subtitle/description`);
-    assert(actual?.date === thought.displayDate, `homepage thought ${index + 1} should include display date "${thought.displayDate}"`);
+  assert(homepageBlog.length === 3, 'homepage latest blog JSON should include exactly three posts');
+  latestBlog.forEach((blog, index) => {
+    const actual = homepageBlog[index];
+    assert(actual, `homepage latest blog JSON should include item ${index + 1}`);
+    assert(actual?.title === blog.title, `homepage blog ${index + 1} should be latest title "${blog.title}"`);
+    assert(actual?.href === blog.href, `homepage blog ${index + 1} should link to "${blog.href}"`);
+    assert(actual?.description === blog.description, `homepage blog ${index + 1} should use the current subtitle/description`);
+    assert(actual?.date === blog.displayDate, `homepage blog ${index + 1} should include display date "${blog.displayDate}"`);
   });
 }
 
@@ -894,12 +894,12 @@ function checkReferencedRoutes() {
   console.log('🔗 Checking homepage-linked routes exist...');
 
   [
-    'public/thoughts/index.html',
+    'public/blog/index.html',
     'public/about/index.html',
     'public/workshop/index.html',
-    'public/thoughts/2026-04-21/the-problem-is-usually-not-the-prompt/index.html',
-    'public/thoughts/2026-04-11/building-a-cli-with-ai/index.html',
-    'public/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/index.html',
+    'public/blog/2026-04-21/the-problem-is-usually-not-the-prompt/index.html',
+    'public/blog/2026-04-11/building-a-cli-with-ai/index.html',
+    'public/blog/2026-03-05/content-resonance-framework-beyond-engagement-metrics/index.html',
   ].forEach((route) => assert(exists(route), `${route} should exist for a homepage link`));
 }
 
@@ -934,7 +934,7 @@ checkBuiltSiteIsolation();
 checkReactCssScoping();
 checkHomepageSourceContent();
 checkAboutSourceContent();
-checkHomepageThoughtData();
+checkHomepageBlogData();
 checkTestimonials();
 checkLogoAssets();
 checkTestimonialAssets();

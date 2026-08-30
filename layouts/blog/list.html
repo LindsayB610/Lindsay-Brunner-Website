@@ -2,11 +2,11 @@
 <section class="section">
   <div class="site-container">
     <div class="section-title">
-      <h1>Thoughts</h1>
+      <h1>Blog</h1>
       <p>Life, the universe, and the meaning of everything. Or something.</p>
     </div>
 
-    {{ $posts := where .Pages "Type" "thoughts" }}
+    {{ $posts := where .Pages "Type" "blog" }}
     {{ $posts = where $posts "Draft" false }}
     {{ $posts = $posts.ByDate.Reverse }}
 
@@ -34,7 +34,7 @@
     <div class="no-posts">
       <h2>Coming Soon</h2>
       <p>
-        Thoughts are brewing! Check back soon for insights on developer
+        Posts are brewing! Check back soon for insights on developer
         experience, content strategy, and building things that matter.
       </p>
     </div>

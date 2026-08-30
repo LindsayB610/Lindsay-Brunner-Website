@@ -1,8 +1,8 @@
 {{ define "main" }}
-{{ $recentThoughts := first 3 (where (where .Site.RegularPages "Type" "thoughts") "Draft" false).ByDate.Reverse }}
-{{ $thoughtItems := slice }}
-{{ range $recentThoughts }}
-  {{ $thoughtItems = $thoughtItems | append (dict
+{{ $recentBlog := first 3 (where (where .Site.RegularPages "Type" "blog") "Draft" false).ByDate.Reverse }}
+{{ $blogItems := slice }}
+{{ range $recentBlog }}
+  {{ $blogItems = $blogItems | append (dict
     "title" .Title
     "description" (or .Params.subtitle .Params.description .Summary)
     "date" (.Date.Format "Jan 2, 2006")
@@ -30,7 +30,7 @@
       >
         Talk to me about a project
       </a>
-      <a href="/thoughts/" class="hero-cta hero-cta-secondary">Read my blog</a>
+      <a href="/blog/" class="hero-cta hero-cta-secondary">Read my blog</a>
     </div>
   </section>
 
@@ -66,7 +66,7 @@
       <h2>How I Think</h2>
       <p>Samples beat adjectives.</p>
       <div class="featured-grid">
-        {{ range $thoughtItems }}
+        {{ range $blogItems }}
           <article>
             <p>{{ .date }}</p>
             <h3><a href="{{ .href }}">{{ .title }}</a></h3>
@@ -74,7 +74,7 @@
           </article>
         {{ end }}
       </div>
-      <p><a href="/thoughts/">Read more thoughts</a></p>
+      <p><a href="/blog/">Read the blog</a></p>
     </div>
   </section>
 
@@ -124,7 +124,7 @@
     </div>
   </section>
 </div>
-<script id="homepage-thoughts-data" type="application/json">{{ $thoughtItems | jsonify | safeJS }}</script>
+<script id="homepage-blog-data" type="application/json">{{ $blogItems | jsonify | safeJS }}</script>
 
 <!-- Person JSON-LD Structured Data -->
 <script type="application/ld+json">

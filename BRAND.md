@@ -200,12 +200,12 @@ border-radius: var(--radius-xl);
 
 ## Page Layouts
 
-### Thoughts List Page (Builder.io inspired)
+### Blog List Page (Builder.io inspired)
 
 ```css
 .featured-post          /* Large hero post layout */
 .posts-grid             /* 3-column grid for remaining posts */
-.grid-title             /* "Latest Thoughts" section header */
+.grid-title             /* "Latest Posts" section header */
 .no-posts               /* Coming soon message when no content */
 ```
 
@@ -221,7 +221,7 @@ border-radius: var(--radius-xl);
 ```css
 Giant "404" with var(--gradient-main)
 Error messages in brand colors (yellow, pink, red)
-Two CTA buttons: "Go home" + "Browse thoughts"
+Two CTA buttons: "Go home" + "Browse the blog"
 Techy error console styling
 ```
 
@@ -233,7 +233,7 @@ Techy error console styling
 
 ## Navigation Structure
 
-**Layout**: LB logo → About → Thoughts → (space) → Social Icons
+**Layout**: LB logo → About → Blog → (space) → Social Icons
 
 - **Position**: Left-aligned next to LB logo
 - **Font**: Space Grotesk accent font
@@ -243,15 +243,15 @@ Techy error console styling
 
 ### Pages & Structure
 
-- **Homepage**: Hero + What I Do + Recent Thoughts sections
+- **Homepage**: Hero + What I Do + Recent Blog sections
 - **About**: Left-aligned content with headshot placeholder (Hugo raw HTML enabled)
-- **Thoughts**: Builder.io-inspired list page with featured post + grid layout
+- **Blog**: Builder.io-inspired list page with featured post + grid layout
 - **404**: Custom error page with gradient "404" and techy error messages
-- **Contact/Blog**: Legacy redirects to home
+- **Contact**: Legacy redirect to home
 
 ### Content Strategy
 
-- **Recent Thoughts section**: Dynamic tiles that show placeholders until 3+ posts exist
+- **Recent Blog section**: Dynamic tiles that show placeholders until 3+ posts exist
 - **No category tags**: Clean, minimal approach to content organization
 - **Hitchhiker's Guide humor**: "Life, the universe, and the meaning of everything. Or something."
 
@@ -260,31 +260,30 @@ Techy error console styling
 - **Brand colors**: `static/css/main.css` (CSS custom properties)
 - **Fonts**: Google Fonts: Inter + Space Grotesk
 - **Templates**:
-  - `layouts/index.html` (homepage with What I Do + Recent Thoughts)
+  - `layouts/index.html` (homepage with What I Do + Recent Blog)
   - `layouts/about/single.html` (left-aligned about page)
-  - `layouts/thoughts/list.html` (Builder.io inspired blog layout)
-  - `layouts/_default/list.html` (override for theme conflicts - ensures thoughts page works)
+  - `layouts/blog/list.html` (Builder.io inspired blog layout)
+  - `layouts/_default/list.html` (override for theme conflicts - ensures blog page works)
   - `layouts/404.html` (custom error page)
 - **Content**:
   - `content/about/index.md` (about page with headshot placeholder)
-  - `content/thoughts/*.md` (blog posts)
+  - `content/blog/*.md` (blog posts)
 - **Config**:
   - `config.toml` (Hugo config with unsafe HTML enabled)
   - Site title: "LB"
 - **Redirects**:
   - `layouts/contact/index.html` → home
-  - `layouts/blog/index.html` → home (legacy)
 
 ## Content Management 📝
 
-### Adding New Thought Posts
+### Adding New Blog Posts
 
 Hugo is fully configured for easy content management:
 
-**1. Create a new file** in `content/thoughts/` directory:
+**1. Create a new file** in `content/blog/` directory:
 
 ```
-content/thoughts/my-new-post.md
+content/blog/my-new-post.md
 ```
 
 **2. Add front matter** at the top:
@@ -301,8 +300,8 @@ Your post content goes here using standard Markdown...
 
 **3. Hugo automatically handles everything:**
 
-- Homepage Recent Thoughts switches from placeholders to real posts (when 3+ exist)
-- Thoughts page displays posts in Builder.io-style grid layout
+- Homepage Recent Blog switches from placeholders to real posts (when 3+ exist)
+- Blog page displays posts in Builder.io-style grid layout
 - Most recent post gets featured treatment
 - Clean URLs and responsive design
 - No manual updates needed
@@ -310,7 +309,7 @@ Your post content goes here using standard Markdown...
 ### File Structure
 
 ```
-content/thoughts/
+content/blog/
 ├── _index.md          # Page configuration (set up)
 ├── post-1.md         # Your posts go here
 ├── post-2.md         # Standard markdown files

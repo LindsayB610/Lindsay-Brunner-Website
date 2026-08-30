@@ -1,44 +1,49 @@
-# Redirect old paths to home
+# Redirect retired paths to home
 /contact/   /   301
-/blog/      /   301
 /thoughts/2024-01-08/the-future-of-technical-content/   /   301
 /thoughts/2024-01-15/on-building-developer-experiences/   /   301
-/tags/   /thoughts/   301
-/tags/*   /thoughts/   301
 /categories/   /   301
 
-# SPA fallback for any other routes
-# /*   /index.html   200
+# Retired taxonomy pages now land on the blog
+/tags/   /blog/   301
+/tags/*   /blog/   301
 
-/blog/building-docs-with-an-arc-reactor-and-a-bit-of-ai/   /thoughts/2025-06-13/meet-guideforge/   301
-/blog/good-developer-content-is-a-conversation-not-a-broadcast/   /thoughts/2025-06-14/developer-content-conversation-not-broadcast/   301
-/blog/i-built-a-custom-ai-assistant-because-my-brain-refused-to-use-notion/   /thoughts/2025-06-12/meet-guppi/   301
+# Legacy undated blog URLs
+/blog/building-docs-with-an-arc-reactor-and-a-bit-of-ai/   /blog/2025-06-13/meet-guideforge/   301
+/blog/good-developer-content-is-a-conversation-not-a-broadcast/   /blog/2025-06-14/developer-content-conversation-not-broadcast/   301
+/blog/i-built-a-custom-ai-assistant-because-my-brain-refused-to-use-notion/   /blog/2025-06-12/meet-guppi/   301
 /blog/1-hello-world/   /about/   301
-/thoughts/meet_guppi/   /thoughts/2025-06-12/meet-guppi/   301
-/thoughts/meet_guideforge/   /thoughts/2025-06-13/meet-guideforge/   301
-/thoughts/convo_vs_broadcast/   /thoughts/2025-06-14/developer-content-conversation-not-broadcast/   301
-/thoughts/meet-guppy/   /thoughts/2025-06-12/meet-guppi/   301
-/thoughts/i-built-a-custom-ai-assistant-because-my-brain-refused-to-use-notion/   /thoughts/2025-06-12/meet-guppi/   301
-/thoughts/2025-06-14/manage-up-without-a-people-manager/   /thoughts/2025-07-01/manage-up/   301
-/thoughts/1-01-01/manage-up/   /thoughts/2025-07-01/manage-up/   301
 
-# Recipe redirects from /thoughts to /recipes
+# Legacy undated and malformed /thoughts/ URLs
+/thoughts/meet_guppi/   /blog/2025-06-12/meet-guppi/   301
+/thoughts/meet_guideforge/   /blog/2025-06-13/meet-guideforge/   301
+/thoughts/convo_vs_broadcast/   /blog/2025-06-14/developer-content-conversation-not-broadcast/   301
+/thoughts/meet-guppy/   /blog/2025-06-12/meet-guppi/   301
+/thoughts/i-built-a-custom-ai-assistant-because-my-brain-refused-to-use-notion/   /blog/2025-06-12/meet-guppi/   301
+/thoughts/2025-06-14/manage-up-without-a-people-manager/   /blog/2025-07-01/manage-up/   301
+/thoughts/1-01-01/manage-up/   /blog/2025-07-01/manage-up/   301
+/thoughts/s/Q   /blog/   301
+
+# Recipe redirects from the former /thoughts/ section
 /thoughts/2025-11-14/recipe-sweet-potato-casserole/   /recipes/2025-11-14/recipe-sweet-potato-casserole/   301
 /thoughts/2025-11-09/recipe-peaches-and-cream-crisp/   /recipes/2025-11-09/recipe-peaches-and-cream-crisp/   301
 /thoughts/2025-11-10/recipe-bachan-pulled-pork/   /recipes/2025-11-10/recipe-bachan-pulled-pork/   301
 /thoughts/2025-11-15/recipe-sheet-pan-doner-kebab/   /recipes/2025-11-15/recipe-sheet-pan-doner-kebab/   301
 
-# Redirect malformed URLs with /Q suffix (crawler errors)
-/thoughts/s/Q   /thoughts/   301
-/recipes/2025-11-09/recipe-peaches-and-cream-crisp/Q   /recipes/2025-11-09/recipe-peaches-and-cream-crisp/   301
-
-# Ensure trailing slashes for thoughts and recipes (fix 502 errors)
+# Specific non-trailing-slash fixes
 /about   /about/   301
-/thoughts/2025-07-01/manage-up   /thoughts/2025-07-01/manage-up/   301
+/thoughts/2025-07-01/manage-up   /blog/2025-07-01/manage-up/   301
 /recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf   /recipes/2025-11-28/recipe-cinnamon-pecan-coffee-cake-loaf/   301
 /recipes/2025-11-16/recipe-turkey-wellington-sausage-roll   /recipes/2025-11-16/recipe-turkey-wellington-sausage-roll/   301
 
-# Discarded recipe (unpublished), redirect to recipe index
+# Preserve all remaining dated /thoughts/ URLs while renaming the section
+/thoughts/   /blog/   301
+/thoughts/*   /blog/:splat   301
+
+# Malformed crawler URL
+/recipes/2025-11-09/recipe-peaches-and-cream-crisp/Q   /recipes/2025-11-09/recipe-peaches-and-cream-crisp/   301
+
+# Discarded recipes (unpublished), redirect to recipe index
 /recipes/2026-01-31/recipe-roasted-tomato-soup/   /recipes/   301
 /recipes/2026-01-31/recipe-roasted-tomato-soup   /recipes/   301
 /recipes/2026-01-17/recipe-bacon-mac-and-cheese-broiled-cheese-cap/   /recipes/   301

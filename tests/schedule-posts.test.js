@@ -15,7 +15,7 @@ const os = require('os');
 const path = require('path');
 const { processFile, isDatePassed, isPacificDST, getNthDayOfMonth } = require('../scripts/schedule-posts');
 
-const thoughtsDir = path.join(__dirname, '..', 'content', 'thoughts');
+const blogDir = path.join(__dirname, '..', 'content', 'blog');
 const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
 
 // Simple test runner
@@ -319,120 +319,136 @@ if (require.main === module) {
     errors.push(`Time-aware date comparison test error: ${error.message}`);
   }
 
-  // Test thought publication filename cleanup
-  console.log('\n🧹 Testing published thought filename cleanup...');
+  // Test blog publication filename cleanup
+  console.log('\n🧹 Testing published blog filename cleanup...');
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'schedule-posts-'));
   try {
-    const draftPath = path.join(tempDir, 'draft-example-thought.md');
-    const publishedPath = path.join(tempDir, 'example-thought.md');
+    const draftPath = path.join(tempDir, 'draft-example-blog.md');
+    const publishedPath = path.join(tempDir, 'example-blog.md');
     fs.writeFileSync(draftPath, `---
-title: "Example Thought"
+title: "Example Blog"
 date: 2000-01-01
 slug: "stable-example-url"
-description: "A scheduled thought used to test publication bookkeeping."
+description: "A scheduled blog used to test publication bookkeeping."
 subtitle: "A stable URL after publication"
 draft: true
 ---
 Body copy.
 `);
 
-    const result = processFile(draftPath, 'thought');
+    const result = processFile(draftPath, 'blog');
     const publishedContent = fs.readFileSync(publishedPath, 'utf8');
     if (
       result.published === true &&
-      result.file === 'example-thought.md' &&
+      result.file === 'example-blog.md' &&
       !fs.existsSync(draftPath) &&
       publishedContent.includes('draft: false') &&
       publishedContent.includes('slug: "stable-example-url"')
     ) {
-      console.log('   ✓ Published thoughts lose draft- while preserving their slug');
+      console.log('   ✓ Published blog posts lose draft- while preserving their slug');
       passed++;
     } else {
-      console.log('   ❌ Published thought filename cleanup changed the wrong fields');
+      console.log('   ❌ Published blog filename cleanup changed the wrong fields');
       failed++;
-      errors.push('Published thought filename cleanup failed');
+      errors.push('Published blog filename cleanup failed');
     }
   } catch (error) {
-    console.log(`   ❌ Published thought filename cleanup test error: ${error.message}`);
+    console.log(`   ❌ Published blog filename cleanup test error: ${error.message}`);
     failed++;
-    errors.push(`Published thought filename cleanup test error: ${error.message}`);
+    errors.push(`Published blog filename cleanup test error: ${error.message}`);
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
   
-  // Test actual content files
-  console.log('\n📝 Testing content files...');
-  
-  // Test thoughts
-  if (fs.existsSync(thoughtsDir)) {
-    const thoughtFiles = fs.readdirSync(thoughtsDir)
-      .filter(file => file.endsWith('.md') && file !== '_index.md');
-    
-    thoughtFiles.forEach(file => {
-      const filePath = path.join(thoughtsDir, file);
-      try {
-        const result = processFile(filePath, 'thought');
-        
-        // Validate result structure
-        if (result && typeof result.published === 'boolean' && typeof result.skipped === 'boolean') {
-          console.log(`   ✓ ${file}: Processed correctly (published: ${result.published}, skipped: ${result.skipped})`);
-          passed++;
-        } else {
-          console.log(`   ❌ ${file}: Invalid result structure`);
+  // Exercise actual content only through disposable copies. processFile mutates
+  // publishable drafts, so pointing this test at the workspace would publish a
+  // real post when its date arrives.
+  console.log('\n📝 Testing disposable copies of content files...');
+  const contentFixtureDir = fs.mkdtempSync(path.join(os.tmpdir(), 'schedule-content-'));
+
+  try {
+    if (fs.existsSync(blogDir)) {
+      const blogFiles = fs.readdirSync(blogDir)
+        .filter(file => file.endsWith('.md') && file !== '_index.md');
+
+      blogFiles.forEach(file => {
+        const sourcePath = path.join(blogDir, file);
+        const fixturePath = path.join(contentFixtureDir, `blog-${file}`);
+        const sourceBefore = fs.readFileSync(sourcePath, 'utf8');
+
+        try {
+          fs.copyFileSync(sourcePath, fixturePath);
+          const result = processFile(fixturePath, 'blog');
+          const sourceAfter = fs.readFileSync(sourcePath, 'utf8');
+
+          if (
+            result &&
+            typeof result.published === 'boolean' &&
+            typeof result.skipped === 'boolean' &&
+            sourceAfter === sourceBefore
+          ) {
+            console.log(`   ✓ ${file}: Processed safely through a disposable copy`);
+            passed++;
+          } else {
+            console.log(`   ❌ ${file}: Invalid result or source file changed`);
+            failed++;
+            errors.push(`${file}: Scheduler test did not preserve the source file`);
+          }
+        } catch (error) {
+          console.log(`   ❌ ${file}: Error processing copy - ${error.message}`);
           failed++;
-          errors.push(`${file}: Invalid result structure`);
+          errors.push(`${file}: ${error.message}`);
         }
-      } catch (error) {
-        console.log(`   ❌ ${file}: Error processing - ${error.message}`);
-        failed++;
-        errors.push(`${file}: ${error.message}`);
-      }
-    });
-  }
-  
-  // Test recipes
-  if (fs.existsSync(recipesDir)) {
-    const recipeFiles = fs.readdirSync(recipesDir)
-      .filter(file => file.endsWith('.md') && file !== '_index.md' && file.startsWith('recipe-'));
-    
-    recipeFiles.forEach(file => {
-      const filePath = path.join(recipesDir, file);
-      try {
-        const result = processFile(filePath, 'recipe');
-        
-        // Validate result structure
-        if (result && typeof result.published === 'boolean' && typeof result.skipped === 'boolean') {
-          // Check if recipe validation is working (recipes without social_image should be skipped)
-          const content = fs.readFileSync(filePath, 'utf8');
-          const hasSocialImage = content.includes('social_image:') || content.includes('og_image:');
-          const isDraft = content.match(/^draft:\s*(true|"true")/m);
-          const dateMatch = content.match(/^date:\s*(\d{4}-\d{2}-\d{2})/m);
-          
-          if (isDraft && dateMatch && isDatePassed(dateMatch[1]) && !hasSocialImage) {
-            // Recipe should be skipped if it's a draft with past date but no social_image
+      });
+    }
+
+    if (fs.existsSync(recipesDir)) {
+      const recipeFiles = fs.readdirSync(recipesDir)
+        .filter(file => file.endsWith('.md') && file !== '_index.md' && file.startsWith('recipe-'));
+
+      recipeFiles.forEach(file => {
+        const sourcePath = path.join(recipesDir, file);
+        const fixturePath = path.join(contentFixtureDir, `recipe-${file}`);
+        const sourceBefore = fs.readFileSync(sourcePath, 'utf8');
+
+        try {
+          fs.copyFileSync(sourcePath, fixturePath);
+          const result = processFile(fixturePath, 'recipe');
+          const sourceAfter = fs.readFileSync(sourcePath, 'utf8');
+          const hasSocialImage = sourceBefore.includes('social_image:') || sourceBefore.includes('og_image:');
+          const isDraft = sourceBefore.match(/^draft:\s*(true|"true")/m);
+          const dateMatch = sourceBefore.match(/^date:\s*(\d{4}-\d{2}-\d{2})/m);
+
+          if (sourceAfter !== sourceBefore) {
+            console.log(`   ❌ ${file}: Source file changed during test`);
+            failed++;
+            errors.push(`${file}: Scheduler test mutated the source file`);
+          } else if (isDraft && dateMatch && isDatePassed(dateMatch[1]) && !hasSocialImage) {
             if (result.skipped && !result.published) {
-              console.log(`   ✓ ${file}: Correctly skipped (draft with past date but no social_image)`);
+              console.log(`   ✓ ${file}: Correctly skipped copy without a social image`);
               passed++;
             } else {
-              console.log(`   ❌ ${file}: Should be skipped (no social_image) but wasn't`);
+              console.log(`   ❌ ${file}: Copy should be skipped without a social image`);
               failed++;
               errors.push(`${file}: Recipe validation not working correctly`);
             }
-          } else {
-            console.log(`   ✓ ${file}: Processed correctly (published: ${result.published}, skipped: ${result.skipped})`);
+          } else if (result && typeof result.published === 'boolean' && typeof result.skipped === 'boolean') {
+            console.log(`   ✓ ${file}: Processed safely through a disposable copy`);
             passed++;
+          } else {
+            console.log(`   ❌ ${file}: Invalid result structure`);
+            failed++;
+            errors.push(`${file}: Invalid result structure`);
           }
-        } else {
-          console.log(`   ❌ ${file}: Invalid result structure`);
+        } catch (error) {
+          console.log(`   ❌ ${file}: Error processing copy - ${error.message}`);
           failed++;
-          errors.push(`${file}: Invalid result structure`);
+          errors.push(`${file}: ${error.message}`);
         }
-      } catch (error) {
-        console.log(`   ❌ ${file}: Error processing - ${error.message}`);
-        failed++;
-        errors.push(`${file}: ${error.message}`);
-      }
-    });
+      });
+    }
+  } finally {
+    fs.rmSync(contentFixtureDir, { recursive: true, force: true });
   }
   
   // Summary

@@ -183,7 +183,7 @@ Developers have a hypersensitive fluff detector. They've been trained by decades
 
 They don't hate marketing because they're grumpy. They hate marketing because "two-minute setup" often means "three-hour yak shave," and "developer-first" brands keep shipping docs that feel like they were assembled from three Slack messages and a prayer.
 
-So resonance for technical audiences is brutally practical. It's specificity. It's honesty. It's respect for time. I've written before about [why developer content is a conversation, not a broadcast](https://lindsaybrunner.com/thoughts/2025-06-14/developer-content-conversation-not-broadcast/); resonance is what you get when that conversation actually lands.
+So resonance for technical audiences is brutally practical. It's specificity. It's honesty. It's respect for time. I've written before about [why developer content is a conversation, not a broadcast](https://lindsaybrunner.com/blog/2025-06-14/developer-content-conversation-not-broadcast/); resonance is what you get when that conversation actually lands.
 
 If you can write content that resonates with developers, it usually resonates with executives too, because clarity scales.
 
@@ -217,5 +217,5 @@ That's the work. That's what makes content compound. And that's the difference b
 
 Resonance isn't a vibe.
 
-It's a [system](https://lindsaybrunner.com/thoughts/2025-12-09/content-systems-chaos-to-works/).
+It's a [system](https://lindsaybrunner.com/blog/2025-12-09/content-systems-chaos-to-works/).
 

@@ -8,7 +8,7 @@
  * Pass --all to check all files.
  */
 
-const { execSync } = require('child_process');
+const { execFileSync, execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -19,7 +19,9 @@ console.log('🔍 Running spell check...\n');
 
 function getChangedFiles() {
   try {
-    // Get staged and unstaged modified markdown files
+    // Get staged, unstaged, and untracked markdown files. Untracked files matter
+    // for directory renames: Git reports the old paths as deleted until staging,
+    // while the replacement paths are otherwise invisible to this check.
     const staged = execSync('git diff --cached --name-only --diff-filter=ACMR', { 
       encoding: 'utf8',
       cwd: path.join(__dirname, '..'),
@@ -31,8 +33,14 @@ function getChangedFiles() {
       cwd: path.join(__dirname, '..'),
       stdio: 'pipe'
     }).trim().split('\n').filter(Boolean);
+
+    const untracked = execSync('git ls-files --others --exclude-standard -- content', {
+      encoding: 'utf8',
+      cwd: path.join(__dirname, '..'),
+      stdio: 'pipe'
+    }).trim().split('\n').filter(Boolean);
     
-    const allChanged = [...new Set([...staged, ...unstaged])];
+    const allChanged = [...new Set([...staged, ...unstaged, ...untracked])];
     const mdFiles = allChanged.filter(file => 
       file.endsWith('.md') && 
       file.startsWith('content/') &&
@@ -47,12 +55,11 @@ function getChangedFiles() {
 }
 
 try {
-  let filesToCheck;
-  let command;
+  let cspellArgs;
   
   if (checkAll) {
     console.log('Checking all content files...\n');
-    command = `npx cspell --no-progress --show-context "${contentDir}/**/*.md"`;
+    cspellArgs = ['cspell', '--no-progress', '--show-context', `${contentDir}/**/*.md`];
   } else {
     const changedFiles = getChangedFiles();
     
@@ -65,16 +72,15 @@ try {
     changedFiles.forEach(file => console.log(`  - ${file}`));
     console.log();
     
-    // cspell needs file paths relative to cwd or absolute
-    const filePaths = changedFiles.map(file => 
-      path.join(__dirname, '..', file)
-    ).join(' ');
-    
-    command = `npx cspell --no-progress --show-context ${filePaths}`;
+    // Pass each path as its own process argument so spaces and shell characters
+    // in content filenames cannot corrupt or expand the command.
+    const filePaths = changedFiles.map(file => path.join(__dirname, '..', file));
+    cspellArgs = ['cspell', '--no-progress', '--show-context', ...filePaths];
   }
   
-  const result = execSync(
-    command,
+  const result = execFileSync(
+    'npx',
+    cspellArgs,
     { 
       encoding: 'utf8',
       stdio: 'pipe',
@@ -97,4 +103,3 @@ try {
     process.exit(1);
   }
 }
-

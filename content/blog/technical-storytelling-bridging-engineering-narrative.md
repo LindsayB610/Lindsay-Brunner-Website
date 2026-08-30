@@ -28,9 +28,9 @@ Technical storytelling is the practice of laying out a system's logic, constrain
 
 **That framing is often mistaken for simplification. In reality, it's closer to exposure.** Most technical systems already contain a narrative structure: a problem that prompted the work, constraints that shaped the design, tradeoffs that ruled out other approaches, and outcomes the system is meant to enable. Engineers tend to internalize that story as they build. Everyone else encounters only the artifacts.
 
-I saw this repeatedly when I was working on developer marketing at [Okta](https://www.okta.com/)￼. Developers don’t usually misunderstand the core problem OAuth solves—they grok why delegated authorization exists. What they don’t understand is what OAuth, and ultimately Okta, is doing on their behalf once they hand control over. Most explanations leap straight into flows, scopes, and redirects, which are accurate but skip the part developers actually care about: whether this abstraction is something they could, or should, build themselves. Developers are rightly suspicious of systems they can’t reason out. When you explain OAuth in terms of what’s happening behind the scenes, including how to wire it up, the abstraction becomes trustworthy instead of opaque. At Okta we often went one step further and wrote technical guides on how to implement OAuth both with and **WITHOUT** Okta.
+I saw this repeatedly when I was working on developer marketing at [Okta](https://www.okta.com/). Developers don’t usually misunderstand the core problem OAuth solves—they grok why delegated authorization exists. What they don’t understand is what OAuth, and ultimately Okta, is doing on their behalf once they hand control over. Most explanations leap straight into flows, scopes, and redirects, which are accurate but skip the part developers actually care about: whether this abstraction is something they could, or should, build themselves. Developers are rightly suspicious of systems they can’t reason out. When you explain OAuth in terms of what’s happening behind the scenes, including how to wire it up, the abstraction becomes trustworthy instead of opaque. At Okta we often went one step further and wrote technical guides on how to implement OAuth both with and **WITHOUT** Okta.
 
-I get it thought, the term "storytelling" starts to make engineers uncomfortable. It gets associated with distortion or gloss. Engineers are trained to remove ambiguity, not introduce it. Precision is the point.
+I get it, though, the term "storytelling" starts to make engineers uncomfortable. It gets associated with distortion or gloss. Engineers are trained to remove ambiguity, not introduce it. Precision is the point.
 
 But accuracy without context doesn't guarantee understanding. A system can be described with perfect precision and still fail to land if the reader can't see why decisions were made, how components relate, or what changes as a result. When that happens, the explanation isn't wrong. It's inert.
 
@@ -58,7 +58,7 @@ Developers and builders tend to care deeply about correctness, depth, and respec
 
 I saw this clearly while working on feature flagging at [Split](https://www.split.io/). Feature flags are often explained as simple toggles, which is true in the narrowest sense and misleading in practice. Developers care about SDK behavior, evaluation latency, and failure modes. Technical decision-makers care about blast radius, rollback speed, and experimentation discipline. The same system needs to be explained differently depending on which decision the reader is trying to make.
 
-This is why effective developer-facing content feels more like dialogue than delivery. When content anticipates real questions and responds to them directly, it builds trust and momentum. I've written more about this dynamic in *[Good Developer Content Is a Conversation, Not a Broadcast](https://lindsaybrunner.com/thoughts/2025-06-14/developer-content-conversation-not-broadcast/)*.
+This is why effective developer-facing content feels more like dialogue than delivery. When content anticipates real questions and responds to them directly, it builds trust and momentum. I've written more about this dynamic in *[Good Developer Content Is a Conversation, Not a Broadcast](https://lindsaybrunner.com/blog/2025-06-14/developer-content-conversation-not-broadcast/)*.
 
 Executives and non-technical stakeholders are usually focused elsewhere entirely. They care about what the technology enables: speed, resilience, differentiation, efficiency. The mechanics themselves are secondary. The challenge is connecting those outcomes to the real constraints of the system without misrepresenting the work underneath.
 
@@ -107,7 +107,7 @@ Let's state the obvious: oversimplifying until the explanation becomes technical
 
 Also, burying the point under layers of implementation detail makes it impossible for non-builders to engage. If someone has to understand your entire architecture before they know why it exists, you've already lost them.
 
-This is where a lot of developer marketing quietly fails. Content that's written to sound technical (dense with buzzwords, feature lists, and architectural name-dropping) gives developers nothing they can actually use. This failure mode becomes especially visible when AI is involved. Fluency without accountability produces exactly this hollow content. I've written about [responsible AI content creation](https://lindsaybrunner.com/thoughts/2026-02-05/responsible-ai-content-creation/) and how to avoid it. When content doesn't help someone ship, debug, or decide, it gets ignored.
+This is where a lot of developer marketing quietly fails. Content that's written to sound technical (dense with buzzwords, feature lists, and architectural name-dropping) gives developers nothing they can actually use. This failure mode becomes especially visible when AI is involved. Fluency without accountability produces exactly this hollow content. I've written about [responsible AI content creation](https://lindsaybrunner.com/blog/2026-02-05/responsible-ai-content-creation/) and how to avoid it. When content doesn't help someone ship, debug, or decide, it gets ignored.
 
 Forgetting to answer "so what" leaves readers stranded. They may understand how the system works, but not why it matters or what to do with that understanding.
 
@@ -119,13 +119,13 @@ Look for evidence that the explanation helped someone move forward. That can inc
 
 No single signal proves that the story worked. The useful standard is simpler: did people understand enough to act?
 
-If they did, the story worked. For a framework on measuring when content actually changes behavior (not just engagement), see [the content resonance framework](https://lindsaybrunner.com/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/).
+If they did, the story worked. For a framework on measuring when content actually changes behavior (not just engagement), see [the content resonance framework](https://lindsaybrunner.com/blog/2026-03-05/content-resonance-framework-beyond-engagement-metrics/).
 
 ## Make the system navigable, not smaller
 
 Before you publish the next launch explanation, architecture overview, or documentation update, map the reader's decision, the constraint that makes the answer true, and the action they should be able to take.
 
-If the explanation lets them inspect the reasoning and move forward, the story worked. For a framework on measuring whether that next action actually happens, see [the content resonance framework](https://lindsaybrunner.com/thoughts/2026-03-05/content-resonance-framework-beyond-engagement-metrics/).
+If the explanation lets them inspect the reasoning and move forward, the story worked. For a framework on measuring whether that next action actually happens, see [the content resonance framework](https://lindsaybrunner.com/blog/2026-03-05/content-resonance-framework-beyond-engagement-metrics/).
 
 ## FAQs about technical storytelling
 

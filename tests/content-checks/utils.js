@@ -3,13 +3,13 @@ const path = require('path');
 
 // Path constants
 const publicDir = path.join(__dirname, '..', '..', 'public');
-const thoughtsDir = path.join(__dirname, '..', '..', 'content', 'thoughts');
+const blogDir = path.join(__dirname, '..', '..', 'content', 'blog');
 const recipesDir = path.join(__dirname, '..', '..', 'content', 'recipes');
 const staticDir = path.join(__dirname, '..', '..', 'static');
 
 // File path constants
 const homepagePath = path.join(publicDir, 'index.html');
-const rssFeedPath = path.join(publicDir, 'thoughts', 'index.xml');
+const rssFeedPath = path.join(publicDir, 'blog', 'index.xml');
 const recipesRssFeedPath = path.join(publicDir, 'recipes', 'index.xml');
 const sitemapPath = path.join(publicDir, 'sitemap.xml');
 const aboutPagePath = path.join(publicDir, 'about', 'index.html');
@@ -19,9 +19,9 @@ const recipeIndexPath2 = path.join(publicDir, 'recipes', 'index', 'index.html');
 const recipeIndexPath3 = path.join(publicDir, 'recipes', 'index.html');
 const recipeIndexPath4 = path.join(publicDir, 'recipes', '1-01-01', 'recipe-index', 'index.html');
 
-// Required front matter fields for thoughts posts
-const REQUIRED_THOUGHTS_FIELDS = ['title', 'description', 'subtitle', 'draft'];
-const OPTIONAL_THOUGHTS_FIELDS = ['slug', 'date', 'og_image', 'social_image'];
+// Required front matter fields for blog posts
+const REQUIRED_BLOG_FIELDS = ['title', 'description', 'subtitle', 'draft'];
+const OPTIONAL_BLOG_FIELDS = ['slug', 'date', 'og_image', 'social_image'];
 
 // Required front matter fields for recipes
 const REQUIRED_RECIPE_FIELDS = ['title', 'description', 'subtitle', 'draft', 'prepTime', 'cookTime', 'totalTime', 'recipeYield', 'recipeCategory', 'recipeCuisine', 'recipeIngredient', 'recipeInstructions'];
@@ -129,7 +129,7 @@ function parseFrontMatter(filePath) {
 module.exports = {
   // Paths
   publicDir,
-  thoughtsDir,
+  blogDir,
   recipesDir,
   staticDir,
   homepagePath,
@@ -144,8 +144,8 @@ module.exports = {
   recipeIndexPath4,
   
   // Constants
-  REQUIRED_THOUGHTS_FIELDS,
-  OPTIONAL_THOUGHTS_FIELDS,
+  REQUIRED_BLOG_FIELDS,
+  OPTIONAL_BLOG_FIELDS,
   REQUIRED_RECIPE_FIELDS,
   OPTIONAL_RECIPE_FIELDS,
   DEFAULT_SOCIAL_IMAGE,

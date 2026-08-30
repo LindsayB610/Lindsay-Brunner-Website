@@ -3,9 +3,9 @@
 /**
  * Schedule Posts Script
  * 
- * This script checks for draft posts (thoughts and recipes) where the publish
+ * This script checks for draft posts (blog and recipes) where the publish
  * date has arrived, and automatically sets draft: false to publish them.
- * Published thought posts also lose the draft- filename prefix.
+ * Published blog posts also lose the draft- filename prefix.
  * 
  * Designed to run via GitHub Actions on a schedule, but can also be run locally
  * for testing purposes.
@@ -14,7 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const thoughtsDir = path.join(__dirname, '..', 'content', 'thoughts');
+const blogDir = path.join(__dirname, '..', 'content', 'blog');
 const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
 
 /**
@@ -175,11 +175,11 @@ function validateRecipeForPublishing(filePath, frontMatter) {
 
 /**
  * Resolve the canonical filename for a published post.
- * Recipe filenames keep their recipe- prefix; thought drafts lose draft-.
+ * Recipe filenames keep their recipe- prefix; blog drafts lose draft-.
  */
 function publishedFilePath(filePath, type) {
   const filename = path.basename(filePath);
-  if (type !== 'thought' || !filename.startsWith('draft-')) {
+  if (type !== 'blog' || !filename.startsWith('draft-')) {
     return filePath;
   }
 
@@ -222,7 +222,7 @@ function processFile(filePath, type) {
     return {
       published: false,
       skipped: true,
-      reason: `Published thought filename already exists: ${path.basename(finalPath)}`,
+      reason: `Published blog filename already exists: ${path.basename(finalPath)}`,
     };
   }
   
@@ -248,16 +248,16 @@ function main() {
   const published = [];
   const skipped = [];
   
-  // Process thoughts
-  if (fs.existsSync(thoughtsDir)) {
-    const thoughtFiles = fs.readdirSync(thoughtsDir)
+  // Process blog
+  if (fs.existsSync(blogDir)) {
+    const blogFiles = fs.readdirSync(blogDir)
       .filter(file => file.endsWith('.md') && file !== '_index.md')
-      .map(file => path.join(thoughtsDir, file));
+      .map(file => path.join(blogDir, file));
     
-    for (const file of thoughtFiles) {
-      const result = processFile(file, 'thought');
+    for (const file of blogFiles) {
+      const result = processFile(file, 'blog');
       if (result.published) {
-        published.push({ file: result.file, type: 'thought' });
+        published.push({ file: result.file, type: 'blog' });
       } else if (!result.skipped || result.reason === 'Date not yet reached') {
         // Only log if it's not just a normal skip
         skipped.push({ file: path.basename(file), reason: result.reason });

@@ -34,7 +34,7 @@ function validateFooterStructure() {
   const errors = [];
   const requiredFooterLinks = [
     { label: 'About', href: '/about/' },
-    { label: 'Thoughts', href: '/thoughts/' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'Recipes', href: '/recipes/' },
     { label: 'Nemesis', href: '/nemesis/' },
     { label: 'Vinyl', href: 'https://github.com/LindsayB610/family-vinyl' },
@@ -87,7 +87,7 @@ function validateFooterStructure() {
       } else {
         const labels = [...primaryNavMatch[1].matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)]
           .map((match) => match[1].trim());
-        const expectedOrder = ['About', 'Nemesis', 'Recipes', 'Thoughts', 'Vinyl', 'Workshop'];
+        const expectedOrder = ['About', 'Nemesis', 'Recipes', 'Blog', 'Vinyl', 'Workshop'];
         if (labels.join('|') !== expectedOrder.join('|')) {
           errors.push(`Homepage footer navigation should be alphabetical; got "${labels.join(', ')}"`);
         }
@@ -233,14 +233,14 @@ function validateFooterSocialAndRSSLinks() {
   const checks = [
     {
       filePath: homepagePath,
-      expectedRssLink: '/thoughts/index.xml',
-      expectedRssLabel: 'Thoughts RSS Feed',
+      expectedRssLink: '/blog/index.xml',
+      expectedRssLabel: 'Blog RSS Feed',
       pageDescription: 'Homepage'
     },
     {
       filePath: aboutPagePath,
-      expectedRssLink: '/thoughts/index.xml',
-      expectedRssLabel: 'Thoughts RSS Feed',
+      expectedRssLink: '/blog/index.xml',
+      expectedRssLabel: 'Blog RSS Feed',
       pageDescription: 'About page'
     },
     {
@@ -250,10 +250,10 @@ function validateFooterSocialAndRSSLinks() {
       pageDescription: 'Recipes list page'
     },
     {
-      filePath: path.join(publicDir, 'thoughts', 'index.html'),
-      expectedRssLink: '/thoughts/index.xml',
-      expectedRssLabel: 'Thoughts RSS Feed',
-      pageDescription: 'Thoughts list page'
+      filePath: path.join(publicDir, 'blog', 'index.html'),
+      expectedRssLink: '/blog/index.xml',
+      expectedRssLabel: 'Blog RSS Feed',
+      pageDescription: 'Blog list page'
     }
   ];
 

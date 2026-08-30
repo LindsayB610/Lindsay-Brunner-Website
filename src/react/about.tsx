@@ -148,7 +148,7 @@ function AboutPage() {
       <ContactSectionWithShader
         colors={["#050505", "#ff0037", "#ff1b8d", "#ffdd00", "#ff8800"]}
         secondaryCta={{
-          href: "/thoughts/",
+          href: "/blog/",
           label: "Read my blog",
         }}
       />

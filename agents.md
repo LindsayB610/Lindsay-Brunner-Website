@@ -4,7 +4,7 @@ This document provides context for AI assistants working on this Hugo static sit
 
 ## Project Overview
 
-This is a personal website built with **Hugo** (v0.149.2+), deployed on **Netlify**. The site showcases thought leadership content and recipes with a custom dark theme design.
+This is a personal website built with **Hugo** (v0.149.2+), deployed on **Netlify**. The site publishes blog posts and recipes with a custom dark theme design.
 
 ## GUPPI MCP services
 
@@ -49,7 +49,7 @@ browser control or claim a service is unavailable before calling
 
 ```
 content/
-  ├── thoughts/          # Thought leadership posts
+  ├── blog/              # Blog posts
   │   ├── _index.md      # Section index
   │   └── *.md           # Individual posts
   ├── recipes/           # Recipe posts
@@ -63,7 +63,7 @@ layouts/
   ├── index.html         # Homepage template
   ├── 404.html          # Error page
   ├── _default/          # Default templates
-  ├── thoughts/          # Thoughts section layouts
+  ├── blog/          # Blog section layouts
   ├── recipes/           # Recipes section layouts
   └── partials/          # Reusable components
 
@@ -96,9 +96,9 @@ static/
 
 ## Content Creation Patterns
 
-### Thoughts Posts
+### Blog Posts
 
-**📋 For complete thoughts guidelines, see [`docs/thoughts-template.md`](./docs/thoughts-template.md)**
+**📋 For complete blog guidelines, see [`docs/blog-template.md`](./docs/blog-template.md)**
 
 The template includes:
 - Complete front matter template with all required and optional fields
@@ -121,22 +121,22 @@ The template includes:
 - `slug` (string)
 - `og_image` or `social_image` (path to image in `/images/social/`)
 
-**Permalink pattern:** `/thoughts/:year-:month-:day/:slug/`
+**Permalink pattern:** `/blog/:year-:month-:day/:slug/`
 
 **File naming for drafts:**
-- Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`)
+- Prefix draft blog files with `draft-` for easy identification (e.g., `draft-my-post.md`)
 - The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs
-- This naming convention only applies to thoughts posts, not recipes
+- This naming convention only applies to blog posts, not recipes
 
 **Example:**
 ```yaml
 ---
-title: "My Thought Title"
+title: "My Blog Post Title"
 date: 2025-01-15
 description: "A compelling description"
 subtitle: "Brief subtitle for homepage"
 draft: false
-slug: "my-thought-title"  # This determines the URL, not the filename
+slug: "my-blog-post-title"  # This determines the URL, not the filename
 social_image: "/images/social/my-image.png"
 ---
 ```
@@ -156,7 +156,7 @@ The template includes:
 **Quick reference:**
 
 **Required front matter fields:**
-- `title`, `date`, `description`, `subtitle`, `draft` (same as thoughts)
+- `title`, `date`, `description`, `subtitle`, `draft` (same as blog)
 - `prepTime` (ISO 8601 duration, e.g., "PT30M")
 - `cookTime` (ISO 8601 duration, e.g., "PT45M")
 - `totalTime` (ISO 8601 duration, e.g., "PT75M")
@@ -216,13 +216,14 @@ npm test           # Run all tests (HTML, links, content, spell check, OG images
 For routine content publishing changes, prefer the bounded bundles so post work does not run the React island suites:
 
 ```bash
-npm run test:thoughts  # Thought-post publishing checks
+npm run test:blog  # Blog-post publishing checks
 npm run test:recipes   # Recipe publishing checks
 ```
 
 **Available test commands:**
 - `npm run test:content` - Content validation tests
-- `npm run test:thoughts` - Bounded thought-post checks; builds the site and validates content, changed-file spelling, OG images, and scheduling without React island suites
+- `npm run test:blog` - Bounded blog-post checks; builds the site and validates content, changed-file spelling, OG images, scheduling, and the section migration without React island suites
+- `npm run test:blog-migration` - Validates the legacy-section migration contract, redirect ordering, dated permalinks, canonical URLs, RSS, and sitemap output
 - `npm run test:recipes` - Bounded recipe checks; builds the site and validates content, changed-file spelling, OG images, search JSON, recipe templates, and dietary labels without React island suites
 - `npm run test:html` - HTML validation
 - `npm run test:links` - Broken link detection (starts dev server, waits for ready, runs check, stops server)
@@ -236,7 +237,7 @@ npm run test:recipes   # Recipe publishing checks
 - `npm test` - Run all tests (includes pretest build step)
 
 **Test coverage includes:**
-- Front matter validation (thoughts & recipes)
+- Front matter validation (blog & recipes)
 - Dietary labels: only `dairy-free`, `vegetarian`, `vegan`, `gluten-free` allowed; no duplicates; labels apply to base recipe only (see docs)
 - No duplicate recipe page content (identical body in multiple files)
 - Social image existence
@@ -264,7 +265,7 @@ npm run test:recipes   # Recipe publishing checks
 - Recent posts number: 4
 
 **Permalink patterns:**
-- Thoughts: `/thoughts/:year-:month-:day/:slug/`
+- Blog: `/blog/:year-:month-:day/:slug/`
 - Recipes: `/recipes/:year-:month-:day/:slug/`
 
 **Output formats:**
@@ -288,17 +289,17 @@ See `BRAND.md` for complete brand guidelines. Key points:
 
 ## Common Tasks
 
-### Adding a New Thought Post
+### Adding a New Blog Post
 
-1. Create file in `content/thoughts/` (lowercase, hyphens)
+1. Create file in `content/blog/` (lowercase, hyphens)
    - For drafts, use `draft-` prefix: `draft-my-post.md` (helps with organization)
    - The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs
-2. Use the complete template from `docs/thoughts-template.md`
+2. Use the complete template from `docs/blog-template.md`
 3. Add required front matter (see template for complete details)
 4. Optionally create and add social image to `static/images/social/` (manual creation, unlike recipes)
 5. Reference image in front matter: `social_image: "/images/social/my-image.png"`
-6. **For diagram images in thoughts posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to thoughts post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: This script is specifically for diagrams in thoughts posts, not for other types of images or other page types.
-7. Run `npm run test:thoughts`
+6. **For diagram images in blog posts**: If adding PNG diagram images (e.g., flowcharts, system diagrams) to blog post content, place them in `static/images/` and ensure their backgrounds match the site's true black (#000000). Run `node scripts/fix-diagram-backgrounds.js` to automatically fix background colors. Add new diagram filenames to the `diagramFiles` array in the script before running. **Note**: This script is specifically for diagrams in blog posts, not for other types of images or other page types.
+7. Run `npm run test:blog`
 
 **To schedule for future publication:**
 - Set `draft: true` and a future `date` in front matter
@@ -342,12 +343,12 @@ See `BRAND.md` for complete brand guidelines. Key points:
 
 - Edit `content/_index.md` for content
 - Edit `layouts/index.html` for structure
-- Recent Thoughts section shows 3 most recent (or placeholders if < 3)
+- Recent Blog section shows 3 most recent (or placeholders if < 3)
 
 ## Important Notes
 
 - **Drafts**: Set `draft: true` to hide from production
-- **Draft file naming (thoughts only)**: Prefix draft thoughts files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
+- **Draft file naming (blog only)**: Prefix draft blog files with `draft-` for easy identification (e.g., `draft-my-post.md`). The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs.
 - **Dates**: Use YYYY-MM-DD format (Hugo sorts by date)
 - **Social Images**: Place in `static/images/social/`, reference with leading slash
 - **Raw HTML**: Allowed in content (config has `unsafe = true`)
@@ -363,7 +364,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 ## References
 
 - **README.md**: Setup, scripts, content management guide, scheduling posts
-- **docs/thoughts-template.md**: Complete thoughts template with front matter, structure, and formatting guidelines
+- **docs/blog-template.md**: Complete blog template with front matter, structure, and formatting guidelines
 - **docs/recipe-template.md**: Complete recipe template with front matter, structure, and formatting guidelines
 - **docs/recipe-snapshot-template.md**: Snapshot section format and field definitions
 - **BRAND.md**: Complete brand guidelines and protected elements
@@ -380,7 +381,7 @@ See `BRAND.md` for complete brand guidelines. Key points:
 - **scripts/schedule-posts.js**: Auto-publish scheduled posts script
 - **scripts/generate-og-images.js**: Generate OG images for recipes
 - **scripts/generate-png-from-svg.js**: Convert SVG to PNG for social media compatibility
-- **scripts/fix-diagram-backgrounds.js**: Fix diagram image background colors to match site black (#000000). Processes PNG files listed in the `diagramFiles` array, replacing dark pixels with pure black to ensure seamless integration with the dark theme. **Note**: Currently only relevant for diagrams placed in thoughts posts, not other types of images or other page types.
+- **scripts/fix-diagram-backgrounds.js**: Fix diagram image background colors to match site black (#000000). Processes PNG files listed in the `diagramFiles` array, replacing dark pixels with pure black to ensure seamless integration with the dark theme. **Note**: Currently only relevant for diagrams placed in blog posts, not other types of images or other page types.
 - **scripts/check-hugo-version.js**: Check Hugo version, security status, and available updates
 - **scripts/check-dependencies.js**: Check all dependencies (npm packages, Node.js, GitHub Actions) for security issues and updates
 - **.github/workflows/security-check.yml**: Monthly automated security and dependency check workflow

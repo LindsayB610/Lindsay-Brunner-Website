@@ -23,8 +23,7 @@ Let's talk about the great lie of digital productivity: structure = control.
 Here's how it actually went:
 
 - **Task managers:** Guilt bombs. The more tasks I added, the less I wanted to open them.  
-- **Calendars:** I'd block time like a CEO and then ignore all of it like a teenager
-er.  
+- **Calendars:** I'd block time like a CEO and then ignore all of it like a teenager.
 - **Sticky notes:** Stress confetti. One gust of wind and I'd lose Q2 strategy and my grocery list. 
 
 The only thing that halfway worked? Paper.

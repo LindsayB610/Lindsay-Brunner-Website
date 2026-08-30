@@ -1,17 +1,17 @@
-# Thoughts Template and Guidelines
+# Blog Template and Guidelines
 
-This document provides a complete template and guidelines for creating thought leadership content files.
+This document provides a complete template and guidelines for creating blog posts.
 
 ## File Naming
 
 - **Format for drafts:** `draft-{name}.md`
 - **Format for published:** `{name}.md` (no `draft-` prefix)
-- **Location:** `content/thoughts/`
+- **Location:** `content/blog/`
 - **Examples:** 
   - Draft: `draft-practical-way-to-think-about-aeo.md`
   - Published: `convo_vs_broadcast.md` or `category-creation-calling-shot.md`
 - **Rules:**
-  - Use `draft-` prefix only for draft thoughts posts (not recipes)
+  - Use `draft-` prefix only for draft blog posts (not recipes)
   - Use lowercase letters, hyphens, or underscores
   - Be descriptive but concise
   - The `slug` field in front matter determines the URL, so "draft" won't appear in production URLs
@@ -20,13 +20,13 @@ This document provides a complete template and guidelines for creating thought l
 
 ```yaml
 ---
-title: "Your Thought Title"
+title: "Your Blog Post Title"
 date: YYYY-MM-DD
-slug: "your-thought-slug"
+slug: "your-blog-post-slug"
 description: "A compelling description for SEO and listings"
 subtitle: "Or: Brief subtitle or alternative description"
 draft: false
-social_image: "/images/social/your-thought-og.png"
+social_image: "/images/social/your-blog-post-og.png"
 ---
 ```
 
@@ -43,7 +43,7 @@ social_image: "/images/social/your-thought-og.png"
   - Use future dates with `draft: true` for scheduling
 
 - **`slug`** (string): URL-friendly identifier
-  - Format: `"your-thought-slug"` (no `draft-` prefix)
+  - Format: `"your-blog-post-slug"` (no `draft-` prefix)
   - Should match desired URL (filename prefix doesn't affect URL)
   - Examples: `"practical-way-to-think-about-aeo"`, `"developer-content-conversation-not-broadcast"`
 
@@ -63,7 +63,7 @@ social_image: "/images/social/your-thought-og.png"
 ### Optional Fields
 
 - **`social_image`** or **`og_image`** (string): Path to Open Graph image
-  - Format: `"/images/social/your-thought-og.png"`
+  - Format: `"/images/social/your-blog-post-og.png"`
   - **Recommended for published posts** (for better social sharing)
   - Created manually (unlike recipes, which have automated generation)
   - Place image file in `static/images/social/` directory
@@ -71,7 +71,7 @@ social_image: "/images/social/your-thought-og.png"
 
 ## Content Structure
 
-After the front matter, thoughts posts follow a flexible structure:
+After the front matter, blog posts follow a flexible structure:
 
 ```markdown
 ---
@@ -82,7 +82,7 @@ After the front matter, thoughts posts follow a flexible structure:
 
 ## First Major Section
 
-[Section content - use headers to organize your thoughts]
+[Section content - use headers to organize your blog]
 
 ### Subsection (if needed)
 
@@ -171,16 +171,16 @@ After the front matter, thoughts posts follow a flexible structure:
 
 ## Permalink Structure
 
-Thoughts posts use the pattern: `/thoughts/:year-:month-:day/:slug/`
+Blog posts use the pattern: `/blog/:year-:month-:day/:slug/`
 
 Example: `draft-practical-way-to-think-about-aeo.md` with slug `"practical-way-to-think-about-aeo"` and date `2025-01-15` becomes:
-`/thoughts/2025-01-15/practical-way-to-think-about-aeo/`
+`/blog/2025-01-15/practical-way-to-think-about-aeo/`
 
 **Important:** The `slug` field determines the URL, not the filename. Using `draft-` prefix in filename won't appear in production URLs.
 
 ## OG Image Workflow
 
-**OG images for thoughts posts are created manually** (unlike recipes which have automated generation):
+**OG images for blog posts are created manually** (unlike recipes which have automated generation):
 
 1. Create OG image using your preferred design tool
    - Standard OG image size: 2400×1260px
@@ -198,11 +198,11 @@ Example: `draft-practical-way-to-think-about-aeo.md` with slug `"practical-way-t
 
 4. Use leading slash in path (`/images/social/...`)
 
-**Why manual?** Thoughts posts often need custom, conceptual imagery that reflects the specific content, unlike recipes which follow a consistent visual template.
+**Why manual?** Blog posts often need custom, conceptual imagery that reflects the specific content, unlike recipes which follow a consistent visual template.
 
-## Scheduling Thoughts Posts
+## Scheduling Blog Posts
 
-To schedule a thought post for future publication:
+To schedule a blog post for future publication:
 
 1. Set `draft: true` and a future `date` in front matter
 2. GitHub Actions workflow runs twice daily (at 13:00 and 14:00 UTC) to cover both PDT and PST timezones
@@ -210,11 +210,11 @@ To schedule a thought post for future publication:
 4. Netlify rebuilds the site on commit, and your post goes live
 5. Test locally: `npm run schedule-posts` to see what would be published
 
-**Note:** OG images are optional for thoughts posts, but recommended for better social sharing.
+**Note:** OG images are optional for blog posts, but recommended for better social sharing.
 
 ## Complete Examples
 
-### Example 1: Structured Thought Piece
+### Example 1: Structured Blog Post
 
 ```markdown
 ---
@@ -297,7 +297,7 @@ Treat developers as the smart, skeptical humans they are. Ditch the megaphone, s
 
 ## Testing
 
-After creating or editing a thoughts post:
+After creating or editing a blog post:
 
 ```bash
 npm run build          # Build the site first

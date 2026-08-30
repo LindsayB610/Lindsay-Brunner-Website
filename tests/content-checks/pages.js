@@ -8,7 +8,7 @@ const {
   recipeIndexPath3,
   recipeIndexPath4,
   publicDir,
-  thoughtsDir,
+  blogDir,
   recipesDir,
   staticDir,
   sitemapPath,
@@ -87,9 +87,9 @@ function validate404Page() {
     
     // Check for navigation links (handle minified HTML)
     const hasHomeLink = error404Content.includes('href="/"') || error404Content.includes('href=/');
-    const hasThoughtsLink = error404Content.includes('href="/thoughts/') || error404Content.includes('href=/thoughts/');
+    const hasBlogLink = error404Content.includes('href="/blog/') || error404Content.includes('href=/blog/');
     
-    if (!hasHomeLink && !hasThoughtsLink) {
+    if (!hasHomeLink && !hasBlogLink) {
       errors.push('404 page missing navigation links');
     }
     
@@ -112,12 +112,12 @@ function validatePermalinks() {
   const errors = [];
   const warnings = [];
   
-  // Check thoughts permalinks (should be /thoughts/YYYY-MM-DD/slug)
-  const thoughtsFiles = fs.readdirSync(thoughtsDir)
+  // Check blog permalinks (should be /blog/YYYY-MM-DD/slug)
+  const blogFiles = fs.readdirSync(blogDir)
     .filter(file => file.endsWith('.md') && file !== '_index.md');
   
-  thoughtsFiles.forEach(file => {
-    const filePath = path.join(thoughtsDir, file);
+  blogFiles.forEach(file => {
+    const filePath = path.join(blogDir, file);
     const frontMatter = parseFrontMatter(filePath);
     
     if (!frontMatter || frontMatter.draft === 'true') return;
@@ -126,17 +126,17 @@ function validatePermalinks() {
       const dateMatch = frontMatter.date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
       if (dateMatch) {
         const [, year, month, day] = dateMatch;
-        const expectedPath = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, frontMatter.slug);
-        const expectedPathAlt = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, frontMatter.slug, 'index.html');
+        const expectedPath = path.join(publicDir, 'blog', `${year}-${month}-${day}`, frontMatter.slug);
+        const expectedPathAlt = path.join(publicDir, 'blog', `${year}-${month}-${day}`, frontMatter.slug, 'index.html');
         
         if (!fs.existsSync(expectedPath) && !fs.existsSync(expectedPathAlt)) {
           // Try without slug (using filename)
           const filenameSlug = file.replace('.md', '');
-          const expectedPathFilename = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, filenameSlug);
-          const expectedPathFilenameAlt = path.join(publicDir, 'thoughts', `${year}-${month}-${day}`, filenameSlug, 'index.html');
+          const expectedPathFilename = path.join(publicDir, 'blog', `${year}-${month}-${day}`, filenameSlug);
+          const expectedPathFilenameAlt = path.join(publicDir, 'blog', `${year}-${month}-${day}`, filenameSlug, 'index.html');
           
           if (!fs.existsSync(expectedPathFilename) && !fs.existsSync(expectedPathFilenameAlt)) {
-            warnings.push(`Thought "${file}" may not have correct permalink structure`);
+            warnings.push(`Blog "${file}" may not have correct permalink structure`);
           }
         }
       }
@@ -290,8 +290,8 @@ function validateRecipeIndexPage() {
   }
 }
 
-function validateNoDraftInThoughtsUrls() {
-  console.log('\n🚫 Validating that "draft" never appears in thoughts URLs...');
+function validateNoDraftInBlogUrls() {
+  console.log('\n🚫 Validating that "draft" never appears in blog URLs...');
   
   if (!fs.existsSync(publicDir)) {
     console.error(`❌ Public directory not found at ${publicDir}`);
@@ -302,9 +302,9 @@ function validateNoDraftInThoughtsUrls() {
   const errors = [];
   
   try {
-    // Check all file paths in the thoughts directory
-    const thoughtsPublicDir = path.join(publicDir, 'thoughts');
-    if (fs.existsSync(thoughtsPublicDir)) {
+    // Check all file paths in the blog directory
+    const blogPublicDir = path.join(publicDir, 'blog');
+    if (fs.existsSync(blogPublicDir)) {
       const checkDirectory = (dir) => {
         const entries = fs.readdirSync(dir, { withFileTypes: true });
         
@@ -323,10 +323,10 @@ function validateNoDraftInThoughtsUrls() {
         }
       };
       
-      checkDirectory(thoughtsPublicDir);
+      checkDirectory(blogPublicDir);
     }
     
-    // Check all HTML files in thoughts for URLs containing "draft"
+    // Check all HTML files in blog for URLs containing "draft"
     const checkHtmlFiles = (dir) => {
       const entries = fs.readdirSync(dir, { withFileTypes: true });
       
@@ -343,7 +343,7 @@ function validateNoDraftInThoughtsUrls() {
           if (hrefMatches) {
             hrefMatches.forEach(match => {
               const url = match.match(/href=["']([^"']*)["']/i)[1];
-              if (url.includes('/thoughts/')) {
+              if (url.includes('/blog/')) {
                 errors.push(`Found "draft" in href URL: ${url} (in ${path.relative(publicDir, fullPath)})`);
               }
             });
@@ -354,7 +354,7 @@ function validateNoDraftInThoughtsUrls() {
           if (canonicalMatches) {
             canonicalMatches.forEach(match => {
               const url = match.match(/href=["']([^"']*)["']/i)[1];
-              if (url.includes('/thoughts/')) {
+              if (url.includes('/blog/')) {
                 errors.push(`Found "draft" in canonical URL: ${url} (in ${path.relative(publicDir, fullPath)})`);
               }
             });
@@ -365,7 +365,7 @@ function validateNoDraftInThoughtsUrls() {
           if (ogUrlMatches) {
             ogUrlMatches.forEach(match => {
               const url = match.match(/content=["']([^"']*)["']/i)[1];
-              if (url.includes('/thoughts/')) {
+              if (url.includes('/blog/')) {
                 errors.push(`Found "draft" in og:url: ${url} (in ${path.relative(publicDir, fullPath)})`);
               }
             });
@@ -374,14 +374,14 @@ function validateNoDraftInThoughtsUrls() {
       }
     };
     
-    if (fs.existsSync(thoughtsPublicDir)) {
-      checkHtmlFiles(thoughtsPublicDir);
+    if (fs.existsSync(blogPublicDir)) {
+      checkHtmlFiles(blogPublicDir);
     }
     
-    // Check sitemap for thoughts URLs containing "draft"
+    // Check sitemap for blog URLs containing "draft"
     if (fs.existsSync(sitemapPath)) {
       const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
-      const urlMatches = sitemapContent.match(/<loc>([^<]*\/thoughts\/[^<]*draft[^<]*)<\/loc>/gi);
+      const urlMatches = sitemapContent.match(/<loc>([^<]*\/blog\/[^<]*draft[^<]*)<\/loc>/gi);
       if (urlMatches) {
         urlMatches.forEach(match => {
           const url = match.match(/<loc>([^<]*)<\/loc>/i)[1];
@@ -390,10 +390,10 @@ function validateNoDraftInThoughtsUrls() {
       }
     }
     
-    // Check RSS feed for thoughts URLs containing "draft"
+    // Check RSS feed for blog URLs containing "draft"
     if (fs.existsSync(rssFeedPath)) {
       const rssContent = fs.readFileSync(rssFeedPath, 'utf8');
-      const linkMatches = rssContent.match(/<link>([^<]*\/thoughts\/[^<]*draft[^<]*)<\/link>/gi);
+      const linkMatches = rssContent.match(/<link>([^<]*\/blog\/[^<]*draft[^<]*)<\/link>/gi);
       if (linkMatches) {
         linkMatches.forEach(match => {
           const url = match.match(/<link>([^<]*)<\/link>/i)[1];
@@ -401,7 +401,7 @@ function validateNoDraftInThoughtsUrls() {
         });
       }
       
-      const guidMatches = rssContent.match(/<guid[^>]*>([^<]*\/thoughts\/[^<]*draft[^<]*)<\/guid>/gi);
+      const guidMatches = rssContent.match(/<guid[^>]*>([^<]*\/blog\/[^<]*draft[^<]*)<\/guid>/gi);
       if (guidMatches) {
         guidMatches.forEach(match => {
           const url = match.match(/<guid[^>]*>([^<]*)<\/guid>/i)[1];
@@ -411,31 +411,31 @@ function validateNoDraftInThoughtsUrls() {
     }
     
     if (errors.length > 0) {
-      console.error('❌ Found "draft" in thoughts URLs:');
+      console.error('❌ Found "draft" in blog URLs:');
       errors.forEach(error => console.error(`   - ${error}`));
       process.exit(1);
     }
     
-    console.log('✅ No "draft" found in thoughts URLs.');
+    console.log('✅ No "draft" found in blog URLs.');
   } catch (error) {
-    console.error(`❌ Error validating thoughts URLs: ${error.message}`);
+    console.error(`❌ Error validating blog URLs: ${error.message}`);
     process.exit(1);
   }
 }
 
-function validateNoDraftPrefixInPublishedThoughts() {
-  console.log('\n📝 Validating that published thoughts posts don\'t have "draft-" prefix in filename...');
+function validateNoDraftPrefixInPublishedBlog() {
+  console.log('\n📝 Validating that published blog posts don\'t have "draft-" prefix in filename...');
   
   const errors = [];
   
   try {
-    const thoughtsFiles = fs.readdirSync(thoughtsDir)
+    const blogFiles = fs.readdirSync(blogDir)
       .filter(file => file.endsWith('.md') && file !== '_index.md');
     
-    thoughtsFiles.forEach(file => {
+    blogFiles.forEach(file => {
       // Check if filename starts with "draft-"
       if (file.startsWith('draft-')) {
-        const filePath = path.join(thoughtsDir, file);
+        const filePath = path.join(blogDir, file);
         const frontMatter = parseFrontMatter(filePath);
         
         if (frontMatter) {
@@ -443,21 +443,21 @@ function validateNoDraftPrefixInPublishedThoughts() {
           const isDraft = frontMatter.draft === true || frontMatter.draft === 'true';
           
           if (!isDraft) {
-            errors.push(`Published thoughts post "${file}" still has "draft-" prefix in filename. Remove the prefix since draft: false.`);
+            errors.push(`Published blog post "${file}" still has "draft-" prefix in filename. Remove the prefix since draft: false.`);
           }
         }
       }
     });
     
     if (errors.length > 0) {
-      console.error('❌ Published thoughts posts with "draft-" prefix found:');
+      console.error('❌ Published blog posts with "draft-" prefix found:');
       errors.forEach(error => console.error(`   - ${error}`));
       process.exit(1);
     }
     
-    console.log('✅ No published thoughts posts have "draft-" prefix in filename.');
+    console.log('✅ No published blog posts have "draft-" prefix in filename.');
   } catch (error) {
-    console.error(`❌ Error validating thoughts filenames: ${error.message}`);
+    console.error(`❌ Error validating blog filenames: ${error.message}`);
     process.exit(1);
   }
 }
@@ -468,15 +468,15 @@ function validateNoDuplicateDraftFiles() {
   const errors = [];
   
   try {
-    const thoughtsFiles = fs.readdirSync(thoughtsDir)
+    const blogFiles = fs.readdirSync(blogDir)
       .filter(file => file.endsWith('.md') && file !== '_index.md');
     
     // Get all draft files and their slugs
     const draftFiles = new Map();
     const nonDraftFiles = new Map();
     
-    thoughtsFiles.forEach(file => {
-      const filePath = path.join(thoughtsDir, file);
+    blogFiles.forEach(file => {
+      const filePath = path.join(blogDir, file);
       const frontMatter = parseFrontMatter(filePath);
       
       if (!frontMatter) return;
@@ -517,7 +517,7 @@ module.exports = {
   validate404Page,
   validatePermalinks,
   validateRecipeIndexPage,
-  validateNoDraftInThoughtsUrls,
-  validateNoDraftPrefixInPublishedThoughts,
+  validateNoDraftInBlogUrls,
+  validateNoDraftPrefixInPublishedBlog,
   validateNoDuplicateDraftFiles
 };

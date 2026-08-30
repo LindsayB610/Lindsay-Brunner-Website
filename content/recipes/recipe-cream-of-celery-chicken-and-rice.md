@@ -39,6 +39,7 @@ recipeInstructions:
 
 IMHO, cream of celery soup is one of the great sleeper pantry ingredients. Honestly, I spent most of my life sleeping on this one as well, but at some point in my early 30s my dad made a declaration that shocked me... He said that cream of celery was his FAVORITE soup. In a world that contains such wonders as broccoli cheddar, baked potato, tomato basil, and, for the love of all, CHICKEN NOODLE, why was this man who raised me waxing poetic about cream of celery of all things?
 
+<!-- cspell:ignore whatevers -->
 It's not even the most famous of the cream-of-whatevers. I think anyone asked to rank the Campbell's line-up of casserole bases would certainly put both cream of chicken and cream of mushroom ahead of celery. Well friends, they would be wrong.
 
 I took some time, after recovering from my shock, to explore cream of celery and reconsider my opinion. I even made a batch from scratch (it was fine, not worth the effort). Here's the thing, Dad's right. Cream of celery reigns supreme. It's quieter, fresher, and weirdly versatile. I've used it in a ton of recipes since then, and I always find that it brings salt, body, aromatics, and a built-in sauce structure without bulldozing the rest of the dish. You just have to think of it less as canned soup and more as a concentrated celery-onion bechamel starter.

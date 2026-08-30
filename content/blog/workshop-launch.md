@@ -40,7 +40,7 @@ Workshop currently includes two apps: Slate and Pulse.
 
 {{< slate-gallery >}}
 
-Slate is the tool that finally pushed me over the edge to build Workshop. I use [GUPPI](/thoughts/2025-06-12/meet-guppi/), my AI agent, to manage the task list for my consulting business and personal life. GUPPI keeps it in one extremely long Markdown file, which had become hard to parse at a glance. Slate turns that same file into a tabbed view and updates whenever the local file changes.
+Slate is the tool that finally pushed me over the edge to build Workshop. I use [GUPPI](/blog/2025-06-12/meet-guppi/), my AI agent, to manage the task list for my consulting business and personal life. GUPPI keeps it in one extremely long Markdown file, which had become hard to parse at a glance. Slate turns that same file into a tabbed view and updates whenever the local file changes.
 
 I also use Slate for the table-based inventory of my outdoor chest freezer, my business opportunity tracker, and a tabbed inventory of all my AI skills. I'm starting to adapt some weekly Codex automations to write their results to Markdown, so the useful output doesn't disappear into chat threads. Those automations surface SEO opportunities for websites I manage and generate blog ideas for me and my clients.
 

@@ -24,7 +24,7 @@ Teams drift when priorities aren't clear. Projects stall when expectations are i
 <img src="/images/leadership-communication-feedback-loop.png" alt="Diagram showing the communication breakdown feedback loop: unclear communication leads to different interpretations, which leads to local decision making, resulting in misaligned execution, causing rework and frustration, and ultimately reducing trust" loading="lazy" decoding="async">
 </div>
 
-This is especially true when leaders are communicating upward as well as downward. Managing stakeholders, executives, or cross-functional partners requires the same clarity and intent as leading a team. If that's a skill you're actively developing, I've written separately about what it really means to [manage up effectively](https://lindsaybrunner.com/thoughts/2025-07-01/manage-up/) and why it's inseparable from strong leadership communication.
+This is especially true when leaders are communicating upward as well as downward. Managing stakeholders, executives, or cross-functional partners requires the same clarity and intent as leading a team. If that's a skill you're actively developing, I've written separately about what it really means to [manage up effectively](https://lindsaybrunner.com/blog/2025-07-01/manage-up/) and why it's inseparable from strong leadership communication.
 
 When leadership communication works, teams move with less friction. People make better decisions without waiting for approval. Problems surface earlier, when they're still solvable. Trust builds because people understand not just what is happening, but why.
 

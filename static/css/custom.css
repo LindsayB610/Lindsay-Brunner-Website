@@ -1120,7 +1120,7 @@ td code {
   script[type="application/ld+json"],
   /* Hide header link to browse recipes */
   header a[href*="/recipes/all/"],
-  /* Hide prev/next and tags footer inside thought articles */
+  /* Hide prev/next and tags footer inside blog articles */
   article.section nav,
   article.section > footer {
     display: none !important;
@@ -1198,7 +1198,7 @@ td code {
     display: none !important;
   }
 
-  /* Article content styling (recipes + thoughts) */
+  /* Article content styling (recipes + blog) */
   .article-content {
     font-size: 11pt !important;
     line-height: 1.7 !important;
@@ -1457,7 +1457,7 @@ td code {
     margin-bottom: 0.5rem !important;
   }
 
-  /* Cards and grids (homepage Recent Thoughts, etc.) */
+  /* Cards and grids (homepage Recent Blog, etc.) */
   .grid {
     display: block !important;
   }
@@ -1501,7 +1501,7 @@ td code {
     display: none !important;
   }
 
-  /* Thoughts list: featured posts */
+  /* Blog list: featured posts */
   .featured-post {
     margin-bottom: 1.5rem !important;
     padding-bottom: 1rem !important;
