@@ -31,7 +31,7 @@
 {{ end }}
 {{ $totalSessions := add ($global.Get "wins") ($global.Get "losses") }}
 
-<section class="section nemesis-page">
+<section class="nemesis-page">
   <div class="site-container">
     <div class="nemesis-terminal-frame">
       <div class="nemesis-terminal-topbar">
@@ -103,44 +103,12 @@
 
       <div class="nemesis-record-groups">
         {{ range $game := $games }}
-          {{ $gameVisibility := newScratch }}
-          {{ $gameVisibility.Set "visibleSetups" 0 }}
-          {{ range $setupGroup := $game.setup_groups }}
-            {{ range $setup := $setupGroup.setups }}
-              {{ $setupVisibility := newScratch }}
-              {{ $setupVisibility.Set "plays" 0 }}
-              {{ range $sessions }}
-                {{ if and (eq .game $game.key) (eq .setup $setup.key) }}
-                  {{ $setupVisibility.Add "plays" 1 }}
-                {{ end }}
-              {{ end }}
-              {{ if or (gt ($setupVisibility.Get "plays") 0) (and (or (eq $game.key "nemesis") (eq $game.key "lockdown")) (eq $setupGroup.key "core") (eq $setup.key "intruders")) }}
-                {{ $gameVisibility.Add "visibleSetups" 1 }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-          {{ if gt ($gameVisibility.Get "visibleSetups") 0 }}
           <section class="nemesis-record-group">
             <div class="nemesis-group-row">
               <h3>{{ $game.name }}</h3>
               <p class="nemesis-group-label">{{ $game.label }}</p>
             </div>
             {{ range $setupGroup := $game.setup_groups }}
-            {{ $groupVisibility := newScratch }}
-            {{ $groupVisibility.Set "visibleSetups" 0 }}
-            {{ range $setup := $setupGroup.setups }}
-              {{ $setupVisibility := newScratch }}
-              {{ $setupVisibility.Set "plays" 0 }}
-              {{ range $sessions }}
-                {{ if and (eq .game $game.key) (eq .setup $setup.key) }}
-                  {{ $setupVisibility.Add "plays" 1 }}
-                {{ end }}
-              {{ end }}
-              {{ if or (gt ($setupVisibility.Get "plays") 0) (and (or (eq $game.key "nemesis") (eq $game.key "lockdown")) (eq $setupGroup.key "core") (eq $setup.key "intruders")) }}
-                {{ $groupVisibility.Add "visibleSetups" 1 }}
-              {{ end }}
-            {{ end }}
-            {{ if gt ($groupVisibility.Get "visibleSetups") 0 }}
             <div class="nemesis-subgroup-heading">
               <h4>{{ $setupGroup.name }}</h4>
             </div>
@@ -177,9 +145,13 @@
                   {{ end }}
                 {{ end }}
                 {{ $rowTotal := add ($stats.Get "wins") ($stats.Get "losses") }}
-                {{ $showSetup := or (gt $rowTotal 0) (and (or (eq $game.key "nemesis") (eq $game.key "lockdown")) (eq $setupGroup.key "core") (eq $setup.key "intruders")) }}
-                {{ if $showSetup }}
-                <article class="nemesis-setup-card">
+                {{ $easyTotal := add ($stats.Get "easyWins") ($stats.Get "easyLosses") }}
+                {{ $hardTotal := add ($stats.Get "hardWins") ($stats.Get "hardLosses") }}
+                <article
+                  class="nemesis-setup-card{{ if eq $rowTotal 0 }} is-unplayed{{ end }}"
+                  data-nemesis-game="{{ $game.key }}"
+                  data-nemesis-setup="{{ $setup.key }}"
+                >
                   <div class="nemesis-setup-head">
                     <div class="nemesis-setup-name">{{ $setup.name }}</div>
                     {{ if gt $rowTotal 0 }}
@@ -190,13 +162,19 @@
                   </div>
 
                   <div class="nemesis-setup-stats">
-                    <div class="nemesis-stat-block">
+                    <div
+                      class="nemesis-stat-block{{ if eq $easyTotal 0 }} is-unplayed{{ end }}"
+                      data-nemesis-record="{{ $game.key }}:{{ $setup.key }}:easy"
+                    >
                       <span class="nemesis-stat-label">Easy board</span>
-                      <span class="nemesis-record-chip">{{ $stats.Get "easyWins" }}W / {{ $stats.Get "easyLosses" }}L</span>
+                      <span class="nemesis-record-chip{{ if eq $easyTotal 0 }} is-unplayed{{ end }}">{{ $stats.Get "easyWins" }}W / {{ $stats.Get "easyLosses" }}L</span>
                     </div>
-                    <div class="nemesis-stat-block">
+                    <div
+                      class="nemesis-stat-block{{ if eq $hardTotal 0 }} is-unplayed{{ end }}"
+                      data-nemesis-record="{{ $game.key }}:{{ $setup.key }}:hard"
+                    >
                       <span class="nemesis-stat-label">Hard board</span>
-                      <span class="nemesis-record-chip is-hard">{{ $stats.Get "hardWins" }}W / {{ $stats.Get "hardLosses" }}L</span>
+                      <span class="nemesis-record-chip is-hard{{ if eq $hardTotal 0 }} is-unplayed{{ end }}">{{ $stats.Get "hardWins" }}W / {{ $stats.Get "hardLosses" }}L</span>
                     </div>
                   </div>
 
@@ -209,13 +187,10 @@
                     {{ end }}
                   </div>
                 </article>
-                {{ end }}
               {{ end }}
             </div>
             {{ end }}
-            {{ end }}
           </section>
-          {{ end }}
         {{ end }}
       </div>
         </section>
@@ -247,12 +222,26 @@
               {{ end }}
             {{ end }}
           {{ end }}
-          <article class="nemesis-log-card">
+          {{ $sessionAnchor := printf "session-%s-%s-%s-%s-%s" $session.date $session.game $session.setup $session.board $session.result }}
+          <article class="nemesis-log-card" id="{{ $sessionAnchor }}">
             <div class="nemesis-log-topline">
               <span class="nemesis-status {{ if eq $session.result "win" }}is-win{{ else }}is-loss{{ end }}">
                 {{ if eq $session.result "win" }}Survived{{ else }}Lost{{ end }}
               </span>
-              <time datetime="{{ $session.date }}">{{ $session.date | time.Format ":date_medium" }}</time>
+              <div class="nemesis-log-session-meta">
+                <time datetime="{{ $session.date }}">{{ $session.date | time.Format ":date_medium" }}</time>
+                <a
+                  class="nemesis-session-anchor"
+                  href="#{{ $sessionAnchor }}"
+                  aria-label="Link to {{ $gameName }} / {{ $setupName }} session on {{ $session.date | time.Format ":date_medium" }}"
+                  title="Link to this session"
+                >
+                  <svg class="nemesis-session-anchor-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                    <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
+                  </svg>
+                </a>
+              </div>
             </div>
             <h3>{{ $gameName }} / {{ $setupName }}</h3>
             <p class="nemesis-log-board">{{ title $session.board }} board / {{ $session.players }} player{{ if ne $session.players 1 }}s{{ end }}</p>
@@ -340,6 +329,30 @@
     const closeButton = document.querySelector(".nemesis-photo-dialog-close");
     const triggers = document.querySelectorAll("[data-nemesis-lightbox-src]");
     const noteWraps = document.querySelectorAll(".nemesis-log-note-wrap");
+
+    const scrollToSessionAnchor = () => {
+      const sessionAnchor = window.location.hash.slice(1);
+
+      if (!sessionAnchor.startsWith("session-")) {
+        return;
+      }
+
+      const target = document.getElementById(sessionAnchor);
+
+      if (target) {
+        window.requestAnimationFrame(() => {
+          target.scrollIntoView({ block: "start" });
+        });
+      }
+    };
+
+    if (document.readyState === "complete") {
+      scrollToSessionAnchor();
+    } else {
+      window.addEventListener("load", scrollToSessionAnchor, { once: true });
+    }
+
+    window.addEventListener("hashchange", scrollToSessionAnchor);
 
     noteWraps.forEach((wrap) => {
       const note = wrap.querySelector(".nemesis-log-note");

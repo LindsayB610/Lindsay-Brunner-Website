@@ -1,0 +1,16 @@
+# Allowed values
+# game: nemesis | lockdown
+# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
+# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# board: easy | hard
+# result: win | loss
+# players: 2 | 3 | 4
+
+date: "2026-08-29"
+game: "nemesis"
+setup: "intruders"
+board: "hard"
+result: "win"
+players: 3
+final_state_image: "/images/nemesis/session-photos/2026-08-29-nemesis-intruders-hard-win.jpg"
+note: "Alex played the Captain, Micah the Scientist, and Lindsay the Bounty Hunter. The early game ran suspiciously smoothly: the crew explored quickly, the engines worked, and Laika made exploration much easier. Then the queen took seven damage without dying, Alex and Micah went down, and Lindsay's Bounty Hunter was the sole survivor. A win, technically."

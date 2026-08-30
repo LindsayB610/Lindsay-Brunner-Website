@@ -1127,14 +1127,14 @@ td code {
   }
 
   /* Base print styles - clean, readable typography */
-  * {
+  body:not(.page-nemesis) * {
     background: white !important;
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
 
-  body {
+  body:not(.page-nemesis) {
     font-family: "Space Grotesk", "Inter", system-ui, sans-serif !important;
     font-size: 12pt !important;
     line-height: 1.6 !important;
@@ -1146,8 +1146,8 @@ td code {
   }
 
   /* Container adjustments for print */
-  .site-container,
-  .container-narrow {
+  body:not(.page-nemesis) .site-container,
+  body:not(.page-nemesis) .container-narrow {
     max-width: 100% !important;
     width: 100% !important;
     padding: 0 !important;

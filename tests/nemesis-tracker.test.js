@@ -7,15 +7,18 @@
  * - filename-to-YAML consistency
  * - setup references point to valid game/setup pairs
  * - rendered /nemesis/ page includes the expected aggregate counts
- * - rendered setup cards reflect matching sessions
+ * - rendered setup cards include every setup/board combination and reflect matching sessions
+ * - every rendered session has a stable deep-link anchor
  * - the GitHub prefilled logging template includes required placeholders
  */
 
 const fs = require('fs');
+const http = require('http');
 const path = require('path');
 const yaml = require('js-yaml');
 const sharp = require('sharp');
 
+const publicDir = path.join(__dirname, '..', 'public');
 const gamesPath = path.join(__dirname, '..', 'data', 'nemesis', 'games.yaml');
 const sessionsDir = path.join(__dirname, '..', 'data', 'nemesis', 'sessions');
 const renderedPagePath = path.join(__dirname, '..', 'public', 'nemesis', 'index.html');
@@ -49,6 +52,381 @@ function stripHtml(value) {
       .replace(/<style[\s\S]*?<\/style>/gi, ' ')
       .replace(/<[^>]+>/g, ' ')
   );
+}
+
+function contentType(filePath) {
+  const extension = path.extname(filePath).toLowerCase();
+  return {
+    '.css': 'text/css; charset=utf-8',
+    '.html': 'text/html; charset=utf-8',
+    '.ico': 'image/x-icon',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.js': 'text/javascript; charset=utf-8',
+    '.json': 'application/json; charset=utf-8',
+    '.png': 'image/png',
+    '.svg': 'image/svg+xml',
+    '.webmanifest': 'application/manifest+json',
+    '.xml': 'application/xml; charset=utf-8',
+  }[extension] || 'application/octet-stream';
+}
+
+function publicFileForRequest(requestUrl) {
+  const decodedPath = decodeURIComponent(new URL(requestUrl, 'http://localhost').pathname);
+  const relativePath = decodedPath.replace(/^\/+/, '');
+  let filePath = path.resolve(publicDir, relativePath);
+
+  if (decodedPath.endsWith('/')) {
+    filePath = path.join(filePath, 'index.html');
+  } else if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+    filePath = path.join(filePath, 'index.html');
+  }
+
+  const publicPrefix = `${path.resolve(publicDir)}${path.sep}`;
+  return filePath.startsWith(publicPrefix) ? filePath : null;
+}
+
+function startStaticServer() {
+  const server = http.createServer((request, response) => {
+    const filePath = publicFileForRequest(request.url);
+
+    if (!filePath || !fs.existsSync(filePath)) {
+      response.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
+      response.end('Not found');
+      return;
+    }
+
+    response.writeHead(200, { 'content-type': contentType(filePath) });
+    fs.createReadStream(filePath).pipe(response);
+  });
+
+  return new Promise((resolve, reject) => {
+    const handleError = (error) => reject(error);
+    server.once('error', handleError);
+    server.listen(0, '127.0.0.1', () => {
+      server.removeListener('error', handleError);
+      resolve({ server, origin: `http://127.0.0.1:${server.address().port}` });
+    });
+  });
+}
+
+async function validateBrowserBehavior(games, sessions) {
+  const browserErrors = [];
+  const assertBrowser = (condition, message) => {
+    if (!condition) browserErrors.push(message);
+  };
+  const setupDefinitions = games.flatMap((game) =>
+    game.setup_groups.flatMap((group) =>
+      group.setups.map((setup) => ({ game: game.key, setup: setup.key }))
+    )
+  );
+  const expectedBoardRecordCount = setupDefinitions.length * ALLOWED_BOARDS.length;
+  const expectedMutedSetupCount = setupDefinitions.filter(
+    ({ game, setup }) => !sessions.some((session) => session.game === game && session.setup === setup)
+  ).length;
+  const expectedMutedBoardCount = setupDefinitions.flatMap(({ game, setup }) =>
+    ALLOWED_BOARDS.map((board) => ({ game, setup, board }))
+  ).filter(
+    ({ game, setup, board }) =>
+      !sessions.some(
+        (session) => session.game === game && session.setup === setup && session.board === board
+      )
+  ).length;
+  const deepLinkSession = sessions.find((session) => session.final_state_image) || sessions[0];
+
+  if (!deepLinkSession) {
+    return ['Browser behavior checks require at least one rendered Nemesis session'];
+  }
+
+  const deepLinkAnchor = `session-${deepLinkSession.date}-${deepLinkSession.game}-${deepLinkSession.setup}-${deepLinkSession.board}-${deepLinkSession.result}`;
+  const { chromium } = await import('playwright');
+  const { server, origin } = await startStaticServer();
+  let browser;
+
+  try {
+    browser = await chromium.launch({ headless: true });
+
+    for (const viewport of [
+      { width: 1280, height: 720, label: 'desktop' },
+      { width: 390, height: 844, label: 'mobile' },
+    ]) {
+      const page = await browser.newPage({
+        viewport: { width: viewport.width, height: viewport.height },
+        deviceScaleFactor: viewport.label === 'mobile' ? 2 : 1,
+        isMobile: viewport.label === 'mobile',
+      });
+
+      try {
+        await page.route(/^https:\/\//, (route) => route.abort());
+        await page.goto(`${origin}/nemesis/#${deepLinkAnchor}`, { waitUntil: 'load' });
+        await page.waitForFunction(
+          (anchor) => {
+            const target = document.getElementById(anchor);
+            if (!target || window.location.hash !== `#${anchor}`) return false;
+            const top = target.getBoundingClientRect().top;
+            return top >= 0 && top <= 40;
+          },
+          deepLinkAnchor,
+          { timeout: 5000 }
+        );
+
+        const pageMetrics = await page.evaluate(() => {
+          const target = document.querySelector(':target');
+          const targetRect = target?.getBoundingClientRect();
+          const targetStyle = target ? getComputedStyle(target) : null;
+          const pageRoot = document.querySelector('.nemesis-page');
+          const pageRootRect = pageRoot?.getBoundingClientRect();
+          const pageRootAfter = pageRoot ? getComputedStyle(pageRoot, '::after') : null;
+          const setupCards = [...document.querySelectorAll('.nemesis-setup-card')];
+          const boardRecords = [...document.querySelectorAll('[data-nemesis-record]')];
+          const sessionAnchors = [...document.querySelectorAll('.nemesis-session-anchor')];
+          const mutedChip = document.querySelector('.nemesis-record-chip.is-unplayed');
+          const playedChip = document.querySelector('.nemesis-record-chip:not(.is-unplayed)');
+
+          return {
+            setupCardCount: setupCards.length,
+            mutedSetupCardCount: setupCards.filter((card) => card.classList.contains('is-unplayed')).length,
+            boardRecordCount: boardRecords.length,
+            mutedBoardRecordCount: boardRecords.filter((record) => record.classList.contains('is-unplayed')).length,
+            sessionAnchorCount: sessionAnchors.length,
+            sessionAnchorIconCount: document.querySelectorAll(
+              '.nemesis-session-anchor > .nemesis-session-anchor-icon'
+            ).length,
+            sessionAnchorsUseIconOnly: sessionAnchors.every(
+              (anchor) => anchor.textContent.trim() === ''
+            ),
+            targetId: target?.id || '',
+            targetTop: targetRect ? Math.round(targetRect.top) : null,
+            targetVisible: Boolean(
+              targetRect && targetRect.bottom > 0 && targetRect.top < window.innerHeight
+            ),
+            targetBorderColor: targetStyle?.borderColor || '',
+            mutedChipColor: mutedChip ? getComputedStyle(mutedChip).color : '',
+            playedChipColor: playedChip ? getComputedStyle(playedChip).color : '',
+            overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+            pageRootHasGenericSectionClass: pageRoot?.classList.contains('section') || false,
+            pageRootAfter: pageRootAfter && pageRootRect ? {
+              backgroundImage: pageRootAfter.backgroundImage,
+              clipPath: pageRootAfter.clipPath,
+              height: Math.round(Number.parseFloat(pageRootAfter.height)),
+              opacity: pageRootAfter.opacity,
+              width: Math.round(Number.parseFloat(pageRootAfter.width)),
+              rootHeight: Math.round(pageRootRect.height),
+              rootWidth: Math.round(pageRootRect.width),
+            } : null,
+          };
+        });
+
+        assertBrowser(
+          pageMetrics.setupCardCount === setupDefinitions.length,
+          `Nemesis ${viewport.label} render should show all ${setupDefinitions.length} setup cards`
+        );
+        assertBrowser(
+          pageMetrics.mutedSetupCardCount === expectedMutedSetupCount,
+          `Nemesis ${viewport.label} render should mute exactly ${expectedMutedSetupCount} unplayed setup cards`
+        );
+        assertBrowser(
+          pageMetrics.boardRecordCount === expectedBoardRecordCount,
+          `Nemesis ${viewport.label} render should show all ${expectedBoardRecordCount} board records`
+        );
+        assertBrowser(
+          pageMetrics.mutedBoardRecordCount === expectedMutedBoardCount,
+          `Nemesis ${viewport.label} render should mute exactly ${expectedMutedBoardCount} 0W / 0L board records`
+        );
+        assertBrowser(
+          pageMetrics.mutedChipColor !== pageMetrics.playedChipColor,
+          `Nemesis ${viewport.label} render should visually distinguish 0W / 0L chips from played records`
+        );
+        assertBrowser(
+          pageMetrics.sessionAnchorCount === sessions.length,
+          `Nemesis ${viewport.label} render should expose one permalink for every session`
+        );
+        assertBrowser(
+          pageMetrics.sessionAnchorIconCount === sessions.length && pageMetrics.sessionAnchorsUseIconOnly,
+          `Nemesis ${viewport.label} render should show the standard copy icon for every session permalink`
+        );
+        assertBrowser(
+          pageMetrics.targetId === deepLinkAnchor && pageMetrics.targetVisible && pageMetrics.targetTop <= 40,
+          `Nemesis ${viewport.label} deep link should scroll the requested session into view`
+        );
+        assertBrowser(
+          pageMetrics.targetBorderColor === 'rgba(121, 243, 187, 0.48)',
+          `Nemesis ${viewport.label} deep-link target should retain its green highlight`
+        );
+        assertBrowser(
+          pageMetrics.overflowX === 0,
+          `Nemesis ${viewport.label} render should not create horizontal overflow`
+        );
+        assertBrowser(
+          !pageMetrics.pageRootHasGenericSectionClass &&
+            pageMetrics.pageRootAfter &&
+            !pageMetrics.pageRootAfter.backgroundImage.includes('rgb(255, 27, 141)') &&
+            pageMetrics.pageRootAfter.clipPath === 'none' &&
+            Math.abs(pageMetrics.pageRootAfter.width - pageMetrics.pageRootAfter.rootWidth) <= 1 &&
+            Math.abs(pageMetrics.pageRootAfter.height - pageMetrics.pageRootAfter.rootHeight) <= 1,
+          `Nemesis ${viewport.label} shell should keep its scanline layer isolated from global section decorations`
+        );
+
+        const sessionAnchor = page.locator('.nemesis-session-anchor').first();
+        await sessionAnchor.hover();
+        const sessionAnchorHover = await sessionAnchor.evaluate((anchor) => {
+          const style = getComputedStyle(anchor);
+          const afterStyle = getComputedStyle(anchor, '::after');
+
+          return {
+            backgroundImage: style.backgroundImage,
+            afterDisplay: afterStyle.display,
+            afterBackgroundImage: afterStyle.backgroundImage,
+          };
+        });
+
+        assertBrowser(
+          sessionAnchorHover.backgroundImage === 'none' &&
+            sessionAnchorHover.afterDisplay === 'none' &&
+            sessionAnchorHover.afterBackgroundImage === 'none',
+          `Nemesis ${viewport.label} session permalink hover should suppress the site-wide link gradient`
+        );
+
+        const moreToggle = page
+          .locator('.nemesis-log-card:has(.nemesis-log-photo) .nemesis-log-note-toggle:not([hidden])')
+          .first();
+
+        assertBrowser(
+          (await moreToggle.count()) === 1,
+          `Nemesis ${viewport.label} render should expose a More control for an overflowing photo session`
+        );
+
+        if ((await moreToggle.count()) === 1) {
+          await moreToggle.click();
+          assertBrowser(
+            (await moreToggle.textContent()).trim() === 'Less' &&
+              (await moreToggle.getAttribute('aria-expanded')) === 'true',
+            `Nemesis ${viewport.label} More control should expand its session note`
+          );
+
+          await moreToggle.click();
+          const moreMetrics = await moreToggle.evaluate((toggle) => {
+            const card = toggle.closest('.nemesis-log-card');
+            const photo = card.querySelector('.nemesis-log-photo');
+            const toggleRect = toggle.getBoundingClientRect();
+            const photoRect = photo.getBoundingClientRect();
+            const style = getComputedStyle(toggle);
+
+            return {
+              label: toggle.textContent.trim(),
+              expanded: toggle.getAttribute('aria-expanded'),
+              gapToPhoto: photoRect.top - toggleRect.bottom,
+              outlineColor: style.outlineColor,
+              outlineWidth: style.outlineWidth,
+            };
+          });
+
+          assertBrowser(
+            moreMetrics.label === 'More' && moreMetrics.expanded === 'false',
+            `Nemesis ${viewport.label} More control should collapse back to its original state`
+          );
+          assertBrowser(
+            moreMetrics.gapToPhoto >= 10,
+            `Nemesis ${viewport.label} More control should keep at least 10px clear of the session photo`
+          );
+          assertBrowser(
+            moreMetrics.outlineColor === 'rgba(121, 243, 187, 0.72)' &&
+              moreMetrics.outlineWidth === '2px',
+            `Nemesis ${viewport.label} More control should use the green focus ring`
+          );
+        }
+
+        const photoTrigger = page.locator('.nemesis-log-photo-trigger').first();
+        await photoTrigger.focus();
+        const photoTriggerFocus = await photoTrigger.evaluate((trigger) => {
+          const style = getComputedStyle(trigger);
+          return {
+            outlineColor: style.outlineColor,
+            outlineWidth: style.outlineWidth,
+          };
+        });
+        assertBrowser(
+          photoTriggerFocus.outlineColor === 'rgba(121, 243, 187, 0.7)' &&
+            photoTriggerFocus.outlineWidth === '2px',
+          `Nemesis ${viewport.label} photo trigger should suppress the site-wide pink focus ring`
+        );
+
+        await photoTrigger.click();
+        await page.waitForFunction(() => {
+          const dialog = document.querySelector('.nemesis-photo-dialog');
+          const image = document.querySelector('.nemesis-photo-dialog-image');
+          return Boolean(dialog?.open && image?.complete && image?.naturalWidth > 0);
+        });
+
+        const dialogMetrics = await page.evaluate(() => {
+          const dialog = document.querySelector('.nemesis-photo-dialog');
+          const close = document.querySelector('.nemesis-photo-dialog-close');
+          const dialogRect = dialog.getBoundingClientRect();
+          const closeStyle = getComputedStyle(close);
+
+          return {
+            centerDelta: Math.abs((dialogRect.top + dialogRect.bottom) / 2 - window.innerHeight / 2),
+            closeFocused: document.activeElement === close,
+            closeOutlineColor: closeStyle.outlineColor,
+            closeOutlineWidth: closeStyle.outlineWidth,
+          };
+        });
+
+        assertBrowser(
+          dialogMetrics.centerDelta <= 1,
+          `Nemesis ${viewport.label} photo dialog should be vertically centered within 1px`
+        );
+        assertBrowser(
+          dialogMetrics.closeFocused,
+          `Nemesis ${viewport.label} photo dialog should focus its close control when opened`
+        );
+        assertBrowser(
+          dialogMetrics.closeOutlineColor === 'rgba(121, 243, 187, 0.72)' &&
+            dialogMetrics.closeOutlineWidth === '2px',
+          `Nemesis ${viewport.label} photo close control should use the green focus ring`
+        );
+
+        await page.locator('.nemesis-photo-dialog-close').click();
+        assertBrowser(
+          !(await page.locator('.nemesis-photo-dialog').evaluate((dialog) => dialog.open)),
+          `Nemesis ${viewport.label} photo dialog should close from its X control`
+        );
+
+        await page.emulateMedia({ media: 'print' });
+        const printMetrics = await page.evaluate(() => {
+          const root = document.querySelector('.nemesis-page');
+          const rootStyle = getComputedStyle(root);
+          const rootAfter = getComputedStyle(root, '::after');
+          const cardStyle = getComputedStyle(document.querySelector('.nemesis-log-card'));
+
+          return {
+            bodyBackground: getComputedStyle(document.body).backgroundImage,
+            bodyColor: getComputedStyle(document.body).color,
+            cardBackground: cardStyle.backgroundImage,
+            rootAfterDisplay: rootAfter.display,
+            rootAfterBackground: rootAfter.backgroundImage,
+            rootColor: rootStyle.color,
+          };
+        });
+        assertBrowser(
+          printMetrics.bodyColor !== 'rgb(0, 0, 0)' &&
+            printMetrics.rootColor !== 'rgb(0, 0, 0)' &&
+            printMetrics.cardBackground !== 'none' &&
+            printMetrics.rootAfterDisplay !== 'none' &&
+            !printMetrics.rootAfterBackground.includes('rgb(255, 27, 141)'),
+          `Nemesis ${viewport.label} print view should not inherit the site-wide white-and-black content reset`
+        );
+        await page.emulateMedia({ media: 'screen' });
+      } finally {
+        await page.close();
+      }
+    }
+  } finally {
+    if (browser) await browser.close();
+    await new Promise((resolve) => server.close(resolve));
+  }
+
+  return browserErrors;
 }
 
 async function main() {
@@ -423,6 +801,8 @@ async function main() {
       '.nemesis-terminal-frame',
       '.nemesis-status.is-win',
       '.nemesis-photo-dialog',
+      'transform: translate(-50%, -50%)',
+      '.nemesis-photo-dialog-close:focus',
     ].forEach((snippet) => {
       if (!nemesisCss.includes(snippet)) {
         failed++;
@@ -480,7 +860,118 @@ async function main() {
       }
     });
 
+    let expectedSetupCardCount = 0;
+    let expectedBoardRecordCount = 0;
+
+    games.forEach((game) => {
+      game.setup_groups.forEach((group) => {
+        group.setups.forEach((setup) => {
+          expectedSetupCardCount++;
+          expectedBoardRecordCount += 2;
+
+          const matchingSessions = sessions.filter(
+            (candidate) => candidate.game === game.key && candidate.setup === setup.key
+          );
+          const setupCardTag = renderedHtmlRaw.match(
+            new RegExp(
+              `<article[^>]*data-nemesis-game=["']?${game.key}["']?[^>]*data-nemesis-setup=["']?${setup.key}["']?[^>]*>`
+            )
+          );
+
+          if (!setupCardTag) {
+            failed++;
+            errors.push(`Rendered Nemesis page is missing setup card for ${game.key}/${setup.key}`);
+            return;
+          }
+
+          const setupShouldBeMuted = matchingSessions.length === 0;
+          if (setupCardTag[0].includes('is-unplayed') !== setupShouldBeMuted) {
+            failed++;
+            errors.push(
+              `Rendered Nemesis setup card has incorrect muted state for ${game.key}/${setup.key}`
+            );
+          }
+
+          ['easy', 'hard'].forEach((board) => {
+            const matchingBoardSessions = matchingSessions.filter(
+              (candidate) => candidate.board === board
+            );
+            const recordKey = `${game.key}:${setup.key}:${board}`;
+            const boardRecordTag = renderedHtmlRaw.match(
+              new RegExp(`<div[^>]*data-nemesis-record=["']?${recordKey}["']?[^>]*>`)
+            );
+
+            if (!boardRecordTag) {
+              failed++;
+              errors.push(`Rendered Nemesis page is missing board record for ${recordKey}`);
+              return;
+            }
+
+            const recordShouldBeMuted = matchingBoardSessions.length === 0;
+            if (boardRecordTag[0].includes('is-unplayed') !== recordShouldBeMuted) {
+              failed++;
+              errors.push(`Rendered Nemesis board record has incorrect muted state for ${recordKey}`);
+            }
+          });
+        });
+      });
+    });
+
+    const renderedSetupCardCount = (renderedHtmlRaw.match(/data-nemesis-game=/g) || []).length;
+    const renderedBoardRecordCount = (renderedHtmlRaw.match(/data-nemesis-record=/g) || []).length;
+
+    if (renderedSetupCardCount !== expectedSetupCardCount) {
+      failed++;
+      errors.push(
+        `Rendered Nemesis page should include ${expectedSetupCardCount} setup cards, found ${renderedSetupCardCount}`
+      );
+    }
+
+    if (renderedBoardRecordCount !== expectedBoardRecordCount) {
+      failed++;
+      errors.push(
+        `Rendered Nemesis page should include ${expectedBoardRecordCount} board records, found ${renderedBoardRecordCount}`
+      );
+    }
+
+    if (
+      !renderedHtmlRaw.includes('scrollIntoView') ||
+      !renderedHtmlRaw.includes('hashchange') ||
+      !renderedHtmlRaw.includes('startsWith("session-")')
+    ) {
+      failed++;
+      errors.push('Rendered Nemesis page is missing session-anchor scroll handling');
+    }
+
     sessions.forEach((session) => {
+      const sessionAnchor = `session-${session.date}-${session.game}-${session.setup}-${session.board}-${session.result}`;
+      const sessionCardTag = renderedHtmlRaw.match(
+        new RegExp(`<article[^>]*id=["']?${sessionAnchor}["']?[^>]*>`)
+      );
+      const sessionAnchorLink = renderedHtmlRaw.match(
+        new RegExp(`<a[^>]*href=["']?#${sessionAnchor}["']?[^>]*>`)
+      );
+      const sessionAnchorIcon = renderedHtmlRaw.match(
+        new RegExp(
+          `<a[^>]*href=["']?#${sessionAnchor}["']?[^>]*>(?:(?!</a>)[\\s\\S])*?<svg[^>]*class=["']nemesis-session-anchor-icon["']`
+        )
+      );
+
+      if (!sessionCardTag) {
+        failed++;
+        errors.push(`Rendered Nemesis page is missing session anchor id "${sessionAnchor}"`);
+      }
+
+      if (!sessionAnchorLink) {
+        failed++;
+        errors.push(`Rendered Nemesis page is missing session anchor link "#${sessionAnchor}"`);
+      }
+
+      if (!sessionAnchorIcon) {
+        failed++;
+        errors.push(`Rendered Nemesis session anchor "#${sessionAnchor}" is missing its copy icon`);
+      }
+
       const setupDetails = gameMap.get(session.game)?.get(session.setup);
       if (!setupDetails) {
         return;
@@ -545,6 +1036,22 @@ async function main() {
       console.log('   ✓ Rendered counts and setup cards match session data');
       passed++;
     }
+  }
+
+  console.log('\n🖥️  Validating real browser behavior...');
+  try {
+    const browserErrors = await validateBrowserBehavior(games, sessions);
+
+    if (browserErrors.length > 0) {
+      failed += browserErrors.length;
+      errors.push(...browserErrors);
+    } else {
+      console.log('   ✓ Desktop and mobile browser interactions are valid');
+      passed++;
+    }
+  } catch (error) {
+    failed++;
+    errors.push(`Nemesis browser behavior checks failed unexpectedly: ${error.message}`);
   }
 
   console.log('\n' + '='.repeat(60));

@@ -263,7 +263,10 @@ body.page-nemesis .social-link:focus-visible {
 }
 
 .nemesis-return-link::after {
+  content: none;
   display: none;
+  width: 0;
+  background: none;
 }
 
 .nemesis-return-link:hover,
@@ -636,6 +639,22 @@ body.page-nemesis .social-link:focus-visible {
   background: linear-gradient(180deg, #6bc5ff, #79f3bb);
 }
 
+.nemesis-setup-card.is-unplayed {
+  border-color: rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 40%),
+    rgba(6, 8, 8, 0.9);
+}
+
+.nemesis-setup-card.is-unplayed::before {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.nemesis-setup-card.is-unplayed .nemesis-setup-name,
+.nemesis-setup-card.is-unplayed .nemesis-setup-last-played {
+  color: #9a9e9c;
+}
+
 .nemesis-setup-head,
 .nemesis-setup-footer {
   display: flex;
@@ -656,6 +675,15 @@ body.page-nemesis .social-link:focus-visible {
   border: 1px solid rgba(121, 243, 187, 0.08);
   border-radius: 0.3rem;
   background: rgba(255, 255, 255, 0.015);
+}
+
+.nemesis-stat-block.is-unplayed {
+  border-color: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.nemesis-stat-block.is-unplayed .nemesis-stat-label {
+  color: #777d7a;
 }
 
 .nemesis-setup-last-played {
@@ -690,6 +718,14 @@ body.page-nemesis .social-link:focus-visible {
   border-color: rgba(107, 197, 255, 0.25);
   background: rgba(107, 197, 255, 0.08);
   color: #9cd9ff;
+}
+
+.nemesis-record-chip.is-unplayed,
+.nemesis-record-chip.is-hard.is-unplayed {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.025);
+  color: #777d7a;
+  box-shadow: none;
 }
 
 .nemesis-record-chip.is-total {
@@ -737,7 +773,10 @@ body.page-nemesis .social-link:focus-visible {
 }
 
 .nemesis-actions a.nemesis-action-button::after {
+  content: none;
   display: none;
+  width: 0;
+  background: none;
 }
 
 .nemesis-actions a.nemesis-action-button:hover,
@@ -769,7 +808,10 @@ body.page-nemesis .social-link:focus-visible {
 }
 
 .nemesis-actions a.nemesis-action-button.is-secondary::after {
+  content: none;
   display: none;
+  width: 0;
+  background: none;
 }
 
 .nemesis-actions a.nemesis-action-button.is-secondary:hover,
@@ -802,6 +844,7 @@ body.page-nemesis .social-link:focus-visible {
 .nemesis-log-card {
   display: flex;
   flex-direction: column;
+  scroll-margin-top: 1.5rem;
   padding: 1.25rem;
   border-radius: 0.4rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -810,6 +853,13 @@ body.page-nemesis .social-link:focus-visible {
     rgba(255, 255, 255, 0.02);
   position: relative;
   overflow: hidden;
+}
+
+.nemesis-log-card:target {
+  border-color: rgba(121, 243, 187, 0.48);
+  box-shadow:
+    0 0 0 1px rgba(121, 243, 187, 0.12),
+    0 0 28px rgba(121, 243, 187, 0.12);
 }
 
 .nemesis-log-card::before {
@@ -836,6 +886,7 @@ body.page-nemesis .social-link:focus-visible {
   flex-direction: column;
   min-height: calc(1.6em * 5 + 1.35rem);
   margin-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .nemesis-log-note {
@@ -872,6 +923,13 @@ body.page-nemesis .social-link:focus-visible {
   color: #e7fff7;
   text-decoration: underline;
   text-underline-offset: 0.2em;
+}
+
+.nemesis-log-note-toggle:focus,
+.nemesis-log-note-toggle:focus-visible {
+  outline: 2px solid rgba(121, 243, 187, 0.72);
+  outline-offset: 3px;
+  border-radius: 0.12rem;
 }
 
 .nemesis-log-note-toggle[hidden] {
@@ -913,20 +971,26 @@ body.page-nemesis .social-link:focus-visible {
   transform: scale(1.01);
 }
 
+.nemesis-log-photo-trigger:focus,
 .nemesis-log-photo-trigger:focus-visible {
   outline: 2px solid rgba(121, 243, 187, 0.7);
   outline-offset: -2px;
 }
 
 .nemesis-photo-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
   width: min(96vw, 92rem);
   max-width: 96vw;
   max-height: 96vh;
+  margin: 0;
   padding: 0;
   border: 1px solid rgba(121, 243, 187, 0.22);
   border-radius: 0.45rem;
   background: rgba(2, 8, 6, 0.98);
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.75);
+  transform: translate(-50%, -50%);
 }
 
 .nemesis-photo-dialog::backdrop {
@@ -976,12 +1040,71 @@ body.page-nemesis .social-link:focus-visible {
   background: rgba(10, 28, 20, 0.94);
 }
 
+.nemesis-photo-dialog-close:focus,
+.nemesis-photo-dialog-close:focus-visible {
+  outline: 2px solid rgba(121, 243, 187, 0.72);
+  outline-offset: 2px;
+}
+
 .nemesis-log-topline {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   margin-bottom: 0.9rem;
+}
+
+.nemesis-log-session-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.nemesis-session-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid rgba(121, 243, 187, 0.16);
+  border-radius: 0.25rem;
+  background: rgba(121, 243, 187, 0.035);
+  color: #8b9c95;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.nemesis-session-anchor-icon {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nemesis-session-anchor::after {
+  content: none;
+  display: none;
+  width: 0;
+  background: none;
+}
+
+.nemesis-session-anchor:hover,
+.nemesis-session-anchor:focus-visible {
+  border-color: rgba(121, 243, 187, 0.46);
+  background: rgba(121, 243, 187, 0.1);
+  color: #d7fff1;
+  text-decoration: none;
+}
+
+.nemesis-session-anchor:focus,
+.nemesis-session-anchor:focus-visible {
+  outline: 2px solid rgba(121, 243, 187, 0.72);
+  outline-offset: 2px;
 }
 
 .nemesis-status {
