@@ -13,6 +13,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const publicDir = path.join(root, 'public');
 const renderedPagePath = path.join(publicDir, 'workshop', 'index.html');
+const renderedLaunchPostPath = path.join(publicDir, 'thoughts', '2026-08-17', 'workshop-launch', 'index.html');
 const layoutPath = path.join(root, 'layouts', 'workshop', 'single.html');
 const contentPath = path.join(root, 'content', 'workshop', 'index.md');
 const cssPath = path.join(root, 'static', 'css', 'workshop.css');
@@ -189,10 +190,13 @@ function testRenderedContracts() {
   console.log('📄 Validating rendered Workshop markup and assets...');
 
   assert(fs.existsSync(renderedPagePath), 'public/workshop/index.html should exist. Run npm run build first.');
-  if (!fs.existsSync(renderedPagePath)) return;
+  assert(fs.existsSync(renderedLaunchPostPath), 'The published Workshop launch post should be built. Run npm run build first.');
+  if (!fs.existsSync(renderedPagePath) || !fs.existsSync(renderedLaunchPostPath)) return;
 
   const rendered = read(renderedPagePath);
-  const siteWideDownloadLinks = listHtmlFiles(publicDir).flatMap((filePath) =>
+  const renderedLaunchPost = read(renderedLaunchPostPath);
+  const siteHtmlFiles = listHtmlFiles(publicDir);
+  const siteWideDownloadLinks = siteHtmlFiles.flatMap((filePath) =>
     workshopDownloadAnchors(read(filePath)).map((anchor) => ({ anchor, filePath })),
   );
   const workshopIndex = rendered.indexOf('One desktop home. Two focused tools.');
@@ -200,6 +204,10 @@ function testRenderedContracts() {
   const pulseIndex = rendered.indexOf('Pulse is the Workshop tool');
 
   assert(rendered.includes('/css/workshop.css'), 'Rendered Workshop page should load its dedicated stylesheet');
+  assert(
+    siteHtmlFiles.every((filePath) => read(filePath).includes(plausibleScriptUrl)),
+    'Every rendered HTML page should load the site-specific Plausible tracker',
+  );
   assert(rendered.includes(`src=${workshopMark}`), 'Rendered Workshop page should include the Workshop mark');
   assert(rendered.includes(`https://lindsaybrunner.com${workshopOgImage}`), 'Rendered Workshop page should expose its page-specific Open Graph image');
   assert(rendered.includes('A home for the tools that keep your real work moving.'), 'Rendered Workshop page should retain its approved hero promise');
@@ -228,6 +236,16 @@ function testRenderedContracts() {
   assert(
     siteWideDownloadLinks.every(({ anchor }) => anchor.includes(workshopDownloadEventClass)),
     `Every rendered ${workshopDownloadPath} link should emit the Workshop Download event`,
+  );
+  const launchPostDownloadLinks = workshopDownloadAnchors(renderedLaunchPost);
+  assert(launchPostDownloadLinks.length === 1, 'The Workshop launch post should render exactly one download CTA');
+  assert(
+    launchPostDownloadLinks[0]?.includes(workshopDownloadEventClass) && launchPostDownloadLinks[0]?.includes('workshop-post-download-button'),
+    'The Workshop launch-post CTA should retain both its tracking event and post-specific class after shortcode expansion',
+  );
+  assert(
+    new RegExp(`<a\\b[^>]*href=${workshopDownloadPath}[^>]*>[\\s\\S]*?Download for macOS\\s*</a>`).test(renderedLaunchPost),
+    'The Workshop launch-post CTA should retain its macOS download label after shortcode expansion',
   );
   assert(
     (rendered.match(new RegExp(`href=${workshopDownloadPath}`, 'g')) || []).length === 2 &&
@@ -261,10 +279,12 @@ async function testBrowserLayout() {
         isMobile: viewport.label === 'mobile',
       });
 
+      // Keep Plausible offline so this verifies the inline fallback before the async tracker replaces it.
+      await page.route(plausibleScriptUrl, (route) => route.abort());
       await page.goto(`${origin}/workshop/`, { waitUntil: 'networkidle' });
       await page.locator('.workshop-pulse-shot--detail').scrollIntoViewIfNeeded();
       await page.waitForTimeout(100);
-      const metrics = await page.evaluate((markSrc) => {
+      const metrics = await page.evaluate(({ markSrc, trackerSrc }) => {
         const doc = document.documentElement;
         const imageMetrics = [...document.querySelectorAll('.workshop-page img')]
           .filter((image) => image.getAttribute('src') !== markSrc)
@@ -327,8 +347,10 @@ async function testBrowserLayout() {
           foundationColumns: foundationCards ? getComputedStyle(foundationCards).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
           slateColumns: slateTool ? getComputedStyle(slateTool).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
           pulseColumns: pulseTool ? getComputedStyle(pulseTool).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
+          plausibleScriptLoaded: Boolean(document.querySelector(`script[src="${trackerSrc}"]`)),
+          plausibleInitialized: typeof window.plausible === 'function' && Boolean(window.plausible.o),
         };
-      }, workshopMark);
+      }, { markSrc: workshopMark, trackerSrc: plausibleScriptUrl });
 
       await page.locator('.workshop-hero .workshop-download-button').focus();
       const focusMetrics = await page.locator('.workshop-hero .workshop-download-button').evaluate((button) => {
@@ -355,6 +377,8 @@ async function testBrowserLayout() {
         assert(metrics.heroHeadingRect.top - metrics.brandLineRect.bottom >= 24, `Workshop ${viewport.label} should leave deliberate space between product line and promise`);
       }
       assert(metrics.imageMetrics.length === expectedImages.length, `Workshop ${viewport.label} render should show all product screenshots`);
+      assert(metrics.plausibleScriptLoaded, `Workshop ${viewport.label} should load the site-specific Plausible tracker`);
+      assert(metrics.plausibleInitialized, `Workshop ${viewport.label} should initialize Plausible before download events can queue`);
       metrics.imageMetrics.forEach((image) => {
         assert(image.alt, `Workshop ${viewport.label} screenshot ${image.src} should have alt text`);
         assert(image.complete && image.naturalWidth > 0, `Workshop ${viewport.label} screenshot ${image.src} should load successfully`);

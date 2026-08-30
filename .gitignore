@@ -10,4 +10,5 @@ node_modules
 .config/
 /reference_docs
 *.backup
-static/images/social/working-files/
+static/images/social/working-files/*
+!static/images/social/working-files/fate-of-the-fellowship-og.svg
