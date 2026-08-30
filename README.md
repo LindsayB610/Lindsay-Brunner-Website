@@ -446,12 +446,12 @@ note: "Short recap of what happened."
 
 **Allowed values currently in the tracker:**
 
-- `game`: `nemesis`, `lockdown`
-- `setup` for base `nemesis` and `lockdown`: `intruders`, `night-stalkers`, `carnomorphs`, `void-seeders`, `chytrids`
-- `setup` for `nemesis` Aftermath: `aftermath-intruders`, `aftermath-night-stalkers`, `aftermath-carnomorphs`, `aftermath-void-seeders`, `aftermath-chytrids`
+- `game`: `nemesis` (core), `aftermath` (Nemesis: Aftermath on the original vessel), `lockdown` (Nemesis: Lockdown on the Martian base)
+- `setup` for every game: `intruders`, `night-stalkers`, `carnomorphs`, `void-seeders`, `chytrids`
 - `board`: `easy`, `hard`
 - `result`: `win`, `loss`
 - `players`: `2`, `3`, `4`
+- `anchor`: optional stable anchor override for a migrated session; leave existing values unchanged
 - `final_state_image`: optional path to a final board-state photo
 
 **Example filename:**

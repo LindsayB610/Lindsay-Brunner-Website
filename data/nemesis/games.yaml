@@ -1,8 +1,8 @@
 - key: "nemesis"
   name: "Nemesis"
   label: "Original vessel"
-  setup_groups:
-    - key: "core"
+  games:
+    - key: "nemesis"
       name: "Core ship"
       setups:
         - key: "intruders"
@@ -18,21 +18,21 @@
     - key: "aftermath"
       name: "Aftermath"
       setups:
-        - key: "aftermath-intruders"
+        - key: "intruders"
           name: "Intruders"
-        - key: "aftermath-night-stalkers"
+        - key: "night-stalkers"
           name: "Night Stalkers"
-        - key: "aftermath-carnomorphs"
+        - key: "carnomorphs"
           name: "Carnomorphs"
-        - key: "aftermath-void-seeders"
+        - key: "void-seeders"
           name: "Void Seeders"
-        - key: "aftermath-chytrids"
+        - key: "chytrids"
           name: "Chytrids"
 - key: "lockdown"
-  name: "Lockdown"
+  name: "Nemesis: Lockdown"
   label: "Martian base incident"
-  setup_groups:
-    - key: "core"
+  games:
+    - key: "lockdown"
       name: "Station variants"
       setups:
         - key: "intruders"

@@ -1,7 +1,6 @@
 # Allowed values
-# game: nemesis | lockdown
-# setup (base): intruders | night-stalkers | carnomorphs | void-seeders | chytrids
-# setup (nemesis aftermath): aftermath-intruders | aftermath-night-stalkers | aftermath-carnomorphs | aftermath-void-seeders | aftermath-chytrids
+# game: nemesis | aftermath | lockdown
+# setup: intruders | night-stalkers | carnomorphs | void-seeders | chytrids
 # board: easy | hard
 # result: win | loss
 # players: 2 | 3 | 4

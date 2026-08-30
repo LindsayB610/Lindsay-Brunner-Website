@@ -41,11 +41,12 @@ Example:
 What to fill in:
 
 - `date`: the actual play date in `YYYY-MM-DD`
-- `game`: `nemesis` or `lockdown`
+- `game`: `nemesis`, `aftermath`, or `lockdown`
 - `setup`: one of the exact setup keys below
 - `board`: `easy` or `hard`
 - `result`: `win` or `loss`
 - `players`: `2`, `3`, or `4`
+- `anchor`: optional stable anchor override for a migrated session; leave existing values unchanged
 - `final_state_image`: optional image path for a final board-state photo
 - `note`: a short recap in plain English
 
@@ -58,9 +59,8 @@ Display notes:
 
 Allowed values currently in the tracker:
 
-- `game`: `nemesis`, `lockdown`
-- `setup` for base `nemesis` and `lockdown`: `intruders`, `night-stalkers`, `carnomorphs`, `void-seeders`, `chytrids`
-- `setup` for `nemesis` Aftermath: `aftermath-intruders`, `aftermath-night-stalkers`, `aftermath-carnomorphs`, `aftermath-void-seeders`, `aftermath-chytrids`
+- `game`: `nemesis` (core), `aftermath` (Nemesis: Aftermath on the original vessel), `lockdown` (Nemesis: Lockdown on the Martian base)
+- `setup` for every game: `intruders`, `night-stalkers`, `carnomorphs`, `void-seeders`, `chytrids`
 - `board`: `easy`, `hard`
 - `result`: `win`, `loss`
 - `players`: `2`, `3`, `4`

@@ -27,7 +27,12 @@ const headPath = path.join(__dirname, '..', 'layouts', 'partials', 'head.html');
 const customCssPath = path.join(__dirname, '..', 'static', 'css', 'custom.css');
 const nemesisCssPath = path.join(__dirname, '..', 'static', 'css', 'nemesis.css');
 
-const ALLOWED_GAMES = ['nemesis', 'lockdown'];
+const ALLOWED_GAMES = ['nemesis', 'aftermath', 'lockdown'];
+const EXPECTED_SETUP_KEYS = ['intruders', 'night-stalkers', 'carnomorphs', 'void-seeders', 'chytrids'];
+const EXPECTED_GAME_GROUPS = [
+  { key: 'nemesis', gameKeys: ['nemesis', 'aftermath'] },
+  { key: 'lockdown', gameKeys: ['lockdown'] },
+];
 const ALLOWED_BOARDS = ['easy', 'hard'];
 const ALLOWED_RESULTS = ['win', 'loss'];
 const ALLOWED_PLAYERS = [2, 3, 4];
@@ -52,6 +57,10 @@ function stripHtml(value) {
       .replace(/<style[\s\S]*?<\/style>/gi, ' ')
       .replace(/<[^>]+>/g, ' ')
   );
+}
+
+function sessionAnchorFor(session) {
+  return session.anchor || `session-${session.date}-${session.game}-${session.setup}-${session.board}-${session.result}`;
 }
 
 function contentType(filePath) {
@@ -115,9 +124,9 @@ async function validateBrowserBehavior(games, sessions) {
   const assertBrowser = (condition, message) => {
     if (!condition) browserErrors.push(message);
   };
-  const setupDefinitions = games.flatMap((game) =>
-    game.setup_groups.flatMap((group) =>
-      group.setups.map((setup) => ({ game: game.key, setup: setup.key }))
+  const setupDefinitions = games.flatMap((group) =>
+    group.games.flatMap((game) =>
+      game.setups.map((setup) => ({ game: game.key, setup: setup.key }))
     )
   );
   const expectedBoardRecordCount = setupDefinitions.length * ALLOWED_BOARDS.length;
@@ -138,7 +147,7 @@ async function validateBrowserBehavior(games, sessions) {
     return ['Browser behavior checks require at least one rendered Nemesis session'];
   }
 
-  const deepLinkAnchor = `session-${deepLinkSession.date}-${deepLinkSession.game}-${deepLinkSession.setup}-${deepLinkSession.board}-${deepLinkSession.result}`;
+  const deepLinkAnchor = sessionAnchorFor(deepLinkSession);
   const { chromium } = await import('playwright');
   const { server, origin } = await startStaticServer();
   let browser;
@@ -478,7 +487,7 @@ async function main() {
       failed++;
       errors.push('games.yaml must contain a non-empty array');
     } else {
-      console.log(`   ✓ Loaded ${games.length} game definition(s)`);
+      console.log(`   ✓ Loaded ${games.length} display group definition(s)`);
       passed++;
     }
   } catch (error) {
@@ -487,47 +496,64 @@ async function main() {
   }
 
   const gameMap = new Map();
-  games.forEach((game, index) => {
-    if (!game || typeof game !== 'object') {
+  const gameGroupMap = new Map();
+  if (games.length !== EXPECTED_GAME_GROUPS.length) {
+    failed++;
+    errors.push(`games.yaml must define exactly ${EXPECTED_GAME_GROUPS.length} display groups`);
+  }
+
+  games.forEach((group, index) => {
+    if (!group || typeof group !== 'object') {
       failed++;
-      errors.push(`Game entry ${index} is not an object`);
+      errors.push(`Game group entry ${index} is not an object`);
       return;
     }
 
-    if (!game.key || !ALLOWED_GAMES.includes(game.key)) {
+    if (!group.key || !group.name || !group.label) {
       failed++;
-      errors.push(`Game entry ${index} has invalid key "${game.key}"`);
+      errors.push(`Game group entry ${index} must include key, name, and label`);
     }
 
-    if (!game.name || !game.label) {
+    if (!EXPECTED_GAME_GROUPS.some((expectedGroup) => expectedGroup.key === group.key)) {
       failed++;
-      errors.push(`Game "${game.key}" must include both name and label`);
+      errors.push(`Game group entry ${index} has unexpected key "${group.key}"`);
     }
 
-    if (!Array.isArray(game.setup_groups) || game.setup_groups.length === 0) {
+    if (!Array.isArray(group.games) || group.games.length === 0) {
       failed++;
-      errors.push(`Game "${game.key}" must include at least one setup group`);
+      errors.push(`Game group "${group.key}" must include at least one game`);
       return;
     }
 
-    const setupMap = new Map();
-    game.setup_groups.forEach((group, groupIndex) => {
-      if (!group.key || !group.name) {
+    if (gameGroupMap.has(group.key)) {
+      failed++;
+      errors.push(`Duplicate game group key "${group.key}" in games.yaml`);
+    }
+    gameGroupMap.set(group.key, group);
+
+    group.games.forEach((game, gameIndex) => {
+      if (!game.key || !ALLOWED_GAMES.includes(game.key)) {
         failed++;
-        errors.push(`Game "${game.key}" setup group ${groupIndex} must include key and name`);
+        errors.push(`Game group "${group.key}" game ${gameIndex} has invalid key "${game.key}"`);
         return;
       }
 
-      if (!Array.isArray(group.setups) || group.setups.length === 0) {
+      if (!game.name) {
         failed++;
-        errors.push(`Game "${game.key}" setup group "${group.key}" must include at least one setup`);
+        errors.push(`Game "${game.key}" must include a name`);
+      }
+
+      if (!Array.isArray(game.setups) || game.setups.length === 0) {
+        failed++;
+        errors.push(`Game "${game.key}" must include at least one setup`);
         return;
       }
 
-      group.setups.forEach((setup, setupIndex) => {
+      const setupMap = new Map();
+      game.setups.forEach((setup, setupIndex) => {
         if (!setup.key || !setup.name) {
           failed++;
-          errors.push(`Game "${game.key}" setup group "${group.key}" setup ${setupIndex} must include key and name`);
+          errors.push(`Game "${game.key}" setup ${setupIndex} must include key and name`);
           return;
         }
 
@@ -538,21 +564,44 @@ async function main() {
 
         setupMap.set(setup.key, {
           name: setup.name,
+          gameName: game.name,
+          gameKey: game.key,
           groupName: group.name,
           groupKey: group.key,
         });
       });
-    });
 
-    if (!gameMap.has(game.key)) {
-      gameMap.set(game.key, setupMap);
-    } else {
+      const actualSetupKeys = [...setupMap.keys()].sort();
+      const expectedSetupKeys = [...EXPECTED_SETUP_KEYS].sort();
+      if (JSON.stringify(actualSetupKeys) !== JSON.stringify(expectedSetupKeys)) {
+        failed++;
+        errors.push(`Game "${game.key}" must define every supported Intruder setup exactly once`);
+      }
+
+      if (!gameMap.has(game.key)) {
+        gameMap.set(game.key, setupMap);
+      } else {
+        failed++;
+        errors.push(`Duplicate game key "${game.key}" in games.yaml`);
+      }
+    });
+  });
+
+  EXPECTED_GAME_GROUPS.forEach(({ key, gameKeys }) => {
+    const group = gameGroupMap.get(key);
+    const actualGameKeys = group?.games?.map((game) => game.key) || [];
+    if (JSON.stringify(actualGameKeys) !== JSON.stringify(gameKeys)) {
       failed++;
-      errors.push(`Duplicate game key "${game.key}" in games.yaml`);
+      errors.push(`Game group "${key}" must contain games in this order: ${gameKeys.join(', ')}`);
     }
   });
 
-  if (!errors.some((error) => error.includes('games.yaml') || error.includes('Game "'))) {
+  if (gameMap.size !== ALLOWED_GAMES.length) {
+    failed++;
+    errors.push(`games.yaml must define exactly these games: ${ALLOWED_GAMES.join(', ')}`);
+  }
+
+  if (!errors.some((error) => error.includes('games.yaml') || error.includes('Game'))) {
     console.log('   ✓ Game/setup metadata is valid');
     passed++;
   }
@@ -567,6 +616,7 @@ async function main() {
   passed++;
 
   const sessions = [];
+  const sessionAnchors = new Set();
   for (const file of sessionFiles) {
     if (!SESSION_FILENAME_REGEX.test(file)) {
       failed++;
@@ -619,6 +669,17 @@ async function main() {
     if (typeof session.note !== 'string' || session.note.trim() === '') {
       failed++;
       errors.push(`Session "${file}" must have a non-empty note`);
+    }
+
+    const sessionAnchor = sessionAnchorFor(session);
+    if (!/^session-[a-z0-9-]+$/.test(sessionAnchor)) {
+      failed++;
+      errors.push(`Session "${file}" has invalid anchor "${sessionAnchor}"`);
+    } else if (sessionAnchors.has(sessionAnchor)) {
+      failed++;
+      errors.push(`Session "${file}" has duplicate anchor "${sessionAnchor}"`);
+    } else {
+      sessionAnchors.add(sessionAnchor);
     }
 
     if (
@@ -753,11 +814,8 @@ async function main() {
       'players: REPLACE-ME-PLAYERS',
       'final_state_image: "/images/nemesis/session-photos/REPLACE-ME.jpg"',
       'note: "REPLACE-ME: Short recap of what happened."',
-      'aftermath-intruders',
-      'aftermath-night-stalkers',
-      'aftermath-carnomorphs',
-      'aftermath-void-seeders',
-      'aftermath-chytrids',
+      'game: nemesis | aftermath | lockdown',
+      'setup: intruders | night-stalkers | carnomorphs | void-seeders | chytrids',
     ];
 
       if (!decodedFilename.includes('REPLACE-ME-YYYY-MM-DD-game-setup-board-result.yaml')) {
@@ -863,32 +921,45 @@ async function main() {
     let expectedSetupCardCount = 0;
     let expectedBoardRecordCount = 0;
 
-    games.forEach((game) => {
-      game.setup_groups.forEach((group) => {
-        group.setups.forEach((setup) => {
+    games.forEach((group) => {
+      group.games.forEach((game) => {
+        game.setups.forEach((setup) => {
           expectedSetupCardCount++;
           expectedBoardRecordCount += 2;
 
           const matchingSessions = sessions.filter(
             (candidate) => candidate.game === game.key && candidate.setup === setup.key
           );
-          const setupCardTag = renderedHtmlRaw.match(
+          const setupCardMatch = renderedHtmlRaw.match(
             new RegExp(
-              `<article[^>]*data-nemesis-game=["']?${game.key}["']?[^>]*data-nemesis-setup=["']?${setup.key}["']?[^>]*>`
+              `<article[^>]*data-nemesis-game=["']?${game.key}["']?[^>]*data-nemesis-setup=["']?${setup.key}["']?[^>]*>[\\s\\S]*?</article>`
             )
           );
 
-          if (!setupCardTag) {
+          if (!setupCardMatch) {
             failed++;
             errors.push(`Rendered Nemesis page is missing setup card for ${game.key}/${setup.key}`);
             return;
           }
 
+          const setupCardMarkup = setupCardMatch[0];
+          const setupCardText = stripHtml(setupCardMarkup);
           const setupShouldBeMuted = matchingSessions.length === 0;
-          if (setupCardTag[0].includes('is-unplayed') !== setupShouldBeMuted) {
+          const setupOpeningTag = setupCardMarkup.match(/^<article[^>]*>/)?.[0] || '';
+          if (setupOpeningTag.includes('is-unplayed') !== setupShouldBeMuted) {
             failed++;
             errors.push(
               `Rendered Nemesis setup card has incorrect muted state for ${game.key}/${setup.key}`
+            );
+          }
+
+          const expectedSessionSummary = matchingSessions.length === 0
+            ? 'No logged sessions yet'
+            : `${matchingSessions.length} logged session${matchingSessions.length === 1 ? '' : 's'}`;
+          if (!setupCardText.includes(expectedSessionSummary)) {
+            failed++;
+            errors.push(
+              `Rendered Nemesis setup card has incorrect session total for ${game.key}/${setup.key}; expected "${expectedSessionSummary}"`
             );
           }
 
@@ -897,20 +968,30 @@ async function main() {
               (candidate) => candidate.board === board
             );
             const recordKey = `${game.key}:${setup.key}:${board}`;
-            const boardRecordTag = renderedHtmlRaw.match(
-              new RegExp(`<div[^>]*data-nemesis-record=["']?${recordKey}["']?[^>]*>`)
+            const boardRecordMatch = setupCardMarkup.match(
+              new RegExp(`<div[^>]*data-nemesis-record=["']?${recordKey}["']?[^>]*>[\\s\\S]*?</div>`)
             );
 
-            if (!boardRecordTag) {
+            if (!boardRecordMatch) {
               failed++;
               errors.push(`Rendered Nemesis page is missing board record for ${recordKey}`);
               return;
             }
 
+            const boardRecordMarkup = boardRecordMatch[0];
+            const boardOpeningTag = boardRecordMarkup.match(/^<div[^>]*>/)?.[0] || '';
             const recordShouldBeMuted = matchingBoardSessions.length === 0;
-            if (boardRecordTag[0].includes('is-unplayed') !== recordShouldBeMuted) {
+            if (boardOpeningTag.includes('is-unplayed') !== recordShouldBeMuted) {
               failed++;
               errors.push(`Rendered Nemesis board record has incorrect muted state for ${recordKey}`);
+            }
+
+            const expectedWins = matchingBoardSessions.filter((session) => session.result === 'win').length;
+            const expectedLosses = matchingBoardSessions.filter((session) => session.result === 'loss').length;
+            const expectedRecord = `${expectedWins}W / ${expectedLosses}L`;
+            if (!stripHtml(boardRecordMarkup).includes(expectedRecord)) {
+              failed++;
+              errors.push(`Rendered Nemesis board record has incorrect count for ${recordKey}; expected "${expectedRecord}"`);
             }
           });
         });
@@ -944,9 +1025,9 @@ async function main() {
     }
 
     sessions.forEach((session) => {
-      const sessionAnchor = `session-${session.date}-${session.game}-${session.setup}-${session.board}-${session.result}`;
-      const sessionCardTag = renderedHtmlRaw.match(
-        new RegExp(`<article[^>]*id=["']?${sessionAnchor}["']?[^>]*>`)
+      const sessionAnchor = sessionAnchorFor(session);
+      const sessionCardMatch = renderedHtmlRaw.match(
+        new RegExp(`<article[^>]*id=["']?${sessionAnchor}["']?[^>]*>[\\s\\S]*?</article>`)
       );
       const sessionAnchorLink = renderedHtmlRaw.match(
         new RegExp(`<a[^>]*href=["']?#${sessionAnchor}["']?[^>]*>`)
@@ -957,7 +1038,7 @@ async function main() {
         )
       );
 
-      if (!sessionCardTag) {
+      if (!sessionCardMatch) {
         failed++;
         errors.push(`Rendered Nemesis page is missing session anchor id "${sessionAnchor}"`);
       }
@@ -977,39 +1058,16 @@ async function main() {
         return;
       }
 
-      const matchingSessions = sessions.filter(
-        (candidate) => candidate.game === session.game && candidate.setup === session.setup
-      );
-      const easyWinsForSetup = matchingSessions.filter(
-        (candidate) => candidate.board === 'easy' && candidate.result === 'win'
-      ).length;
-      const easyLossesForSetup = matchingSessions.filter(
-        (candidate) => candidate.board === 'easy' && candidate.result === 'loss'
-      ).length;
-      const hardWinsForSetup = matchingSessions.filter(
-        (candidate) => candidate.board === 'hard' && candidate.result === 'win'
-      ).length;
-      const hardLossesForSetup = matchingSessions.filter(
-        (candidate) => candidate.board === 'hard' && candidate.result === 'loss'
-      ).length;
-      const setupDisplayName =
-        setupDetails.groupKey === 'core'
-          ? setupDetails.name
-          : `${setupDetails.groupName} ${setupDetails.name}`;
-
-      [
-        setupDisplayName,
-        `${matchingSessions.length} logged session${matchingSessions.length === 1 ? '' : 's'}`,
-        `${easyWinsForSetup}W / ${easyLossesForSetup}L`,
-        `${hardWinsForSetup}W / ${hardLossesForSetup}L`,
-      ].forEach((expected) => {
-        if (!renderedHtml.includes(normalizeText(expected))) {
-          failed++;
-          errors.push(
-            `Rendered Nemesis page is missing expected setup-card text for ${session.game}/${session.setup}: "${expected}"`
-          );
-        }
-      });
+      const gameDisplayName = setupDetails.groupKey === setupDetails.gameKey
+        ? setupDetails.groupName
+        : `${setupDetails.groupName} / ${setupDetails.gameName}`;
+      const expectedSessionHeading = `${gameDisplayName} / ${setupDetails.name}`;
+      if (!stripHtml(sessionCardMatch[0]).includes(expectedSessionHeading)) {
+        failed++;
+        errors.push(
+          `Rendered Nemesis session card has incorrect game/setup heading for ${session.game}/${session.setup}; expected "${expectedSessionHeading}"`
+        );
+      }
 
       if (
         typeof session.final_state_image === 'string' &&
