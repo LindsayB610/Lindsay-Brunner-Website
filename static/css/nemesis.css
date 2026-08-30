@@ -1061,6 +1061,8 @@ body.page-nemesis .social-link:focus-visible {
 }
 
 .nemesis-session-anchor {
+  appearance: none;
+  -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1073,7 +1075,10 @@ body.page-nemesis .social-link:focus-visible {
   font-family: var(--font-mono);
   font-size: 0.82rem;
   line-height: 1;
+  padding: 0;
   text-decoration: none;
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease, color 120ms ease;
 }
 
 .nemesis-session-anchor-icon {
@@ -1084,6 +1089,14 @@ body.page-nemesis .social-link:focus-visible {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.nemesis-session-anchor-icon[hidden] {
+  display: none;
+}
+
+.nemesis-session-anchor-check {
+  stroke-width: 2.2;
 }
 
 .nemesis-session-anchor::after {
@@ -1099,6 +1112,12 @@ body.page-nemesis .social-link:focus-visible {
   background: rgba(121, 243, 187, 0.1);
   color: #d7fff1;
   text-decoration: none;
+}
+
+.nemesis-session-anchor.is-copied {
+  border-color: rgba(121, 243, 187, 0.72);
+  background: rgba(121, 243, 187, 0.16);
+  color: #b9ffdc;
 }
 
 .nemesis-session-anchor:focus,

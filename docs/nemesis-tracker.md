@@ -53,7 +53,7 @@ What to fill in:
 Display notes:
 
 - Setup records show every game, enemy setup, and board combination; unplayed `0W / 0L` records are muted
-- Every session card has a stable `#session-...` anchor for direct links
+- Every session card has a stable `#session-...` anchor; its copy button writes the direct URL without navigating and briefly shows a checkmark
 - Session log cards show notes clamped to five lines, with a More/Less toggle for longer notes
 - Session photos are clickable and open in a screen-sized dialog
 

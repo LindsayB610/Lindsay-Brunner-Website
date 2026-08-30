@@ -167,6 +167,32 @@ async function validateBrowserBehavior(games, sessions) {
 
       try {
         await page.route(/^https:\/\//, (route) => route.abort());
+        await page.addInitScript(({ useFallback }) => {
+          window.__nemesisCopiedText = '';
+
+          if (useFallback) {
+            Object.defineProperty(navigator, 'clipboard', {
+              configurable: true,
+              value: undefined,
+            });
+            Document.prototype.execCommand = function execCommand(command) {
+              const textarea = document.querySelector('textarea[readonly]');
+              if (command !== 'copy' || !textarea) return false;
+              window.__nemesisCopiedText = textarea.value;
+              return true;
+            };
+            return;
+          }
+
+          Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: {
+              writeText: async (text) => {
+                window.__nemesisCopiedText = text;
+              },
+            },
+          });
+        }, { useFallback: viewport.label === 'mobile' });
         await page.goto(`${origin}/nemesis/#${deepLinkAnchor}`, { waitUntil: 'load' });
         await page.waitForFunction(
           (anchor) => {
@@ -198,8 +224,11 @@ async function validateBrowserBehavior(games, sessions) {
             boardRecordCount: boardRecords.length,
             mutedBoardRecordCount: boardRecords.filter((record) => record.classList.contains('is-unplayed')).length,
             sessionAnchorCount: sessionAnchors.length,
-            sessionAnchorIconCount: document.querySelectorAll(
-              '.nemesis-session-anchor > .nemesis-session-anchor-icon'
+            sessionAnchorCopyIconCount: document.querySelectorAll(
+              '.nemesis-session-anchor > .nemesis-session-anchor-copy'
+            ).length,
+            sessionAnchorCheckIconCount: document.querySelectorAll(
+              '.nemesis-session-anchor > .nemesis-session-anchor-check'
             ).length,
             sessionAnchorsUseIconOnly: sessionAnchors.every(
               (anchor) => anchor.textContent.trim() === ''
@@ -251,8 +280,10 @@ async function validateBrowserBehavior(games, sessions) {
           `Nemesis ${viewport.label} render should expose one permalink for every session`
         );
         assertBrowser(
-          pageMetrics.sessionAnchorIconCount === sessions.length && pageMetrics.sessionAnchorsUseIconOnly,
-          `Nemesis ${viewport.label} render should show the standard copy icon for every session permalink`
+          pageMetrics.sessionAnchorCopyIconCount === sessions.length &&
+            pageMetrics.sessionAnchorCheckIconCount === sessions.length &&
+            pageMetrics.sessionAnchorsUseIconOnly,
+          `Nemesis ${viewport.label} render should include copy and success icons for every session permalink`
         );
         assertBrowser(
           pageMetrics.targetId === deepLinkAnchor && pageMetrics.targetVisible && pageMetrics.targetTop <= 40,
@@ -294,6 +325,61 @@ async function validateBrowserBehavior(games, sessions) {
             sessionAnchorHover.afterDisplay === 'none' &&
             sessionAnchorHover.afterBackgroundImage === 'none',
           `Nemesis ${viewport.label} session permalink hover should suppress the site-wide link gradient`
+        );
+
+        await sessionAnchor.scrollIntoViewIfNeeded();
+        const copyTarget = await sessionAnchor.getAttribute('data-nemesis-copy-anchor');
+        const beforeCopy = await page.evaluate(() => ({
+          hash: window.location.hash,
+          scrollX: window.scrollX,
+          scrollY: window.scrollY,
+        }));
+        await sessionAnchor.click();
+        await page.waitForFunction(
+          () => document.querySelector('.nemesis-session-anchor')?.classList.contains('is-copied'),
+          null,
+          { timeout: 2000 }
+        );
+        const afterCopy = await sessionAnchor.evaluate((button) => ({
+          ariaLabel: button.getAttribute('aria-label'),
+          checkHidden: button.querySelector('.nemesis-session-anchor-check')?.hidden,
+          copyHidden: button.querySelector('.nemesis-session-anchor-copy')?.hidden,
+          hash: window.location.hash,
+          copiedText: window.__nemesisCopiedText,
+          scrollX: window.scrollX,
+          scrollY: window.scrollY,
+          title: button.getAttribute('title'),
+        }));
+
+        assertBrowser(
+          afterCopy.copiedText.endsWith(`#${copyTarget}`),
+          `Nemesis ${viewport.label} copy control should write the session permalink to the clipboard`
+        );
+        assertBrowser(
+          afterCopy.hash === beforeCopy.hash &&
+            Math.abs(afterCopy.scrollX - beforeCopy.scrollX) <= 1 &&
+            Math.abs(afterCopy.scrollY - beforeCopy.scrollY) <= 1,
+          `Nemesis ${viewport.label} copy control should not change the hash or jump the page`
+        );
+        assertBrowser(
+          afterCopy.copyHidden === true &&
+            afterCopy.checkHidden === false &&
+            afterCopy.ariaLabel === 'Copied link to clipboard' &&
+            afterCopy.title === 'Copied to clipboard',
+          `Nemesis ${viewport.label} copy control should briefly show an accessible checkmark confirmation`
+        );
+
+        await page.waitForTimeout(1700);
+        const resetCopyState = await sessionAnchor.evaluate((button) => ({
+          copied: button.classList.contains('is-copied'),
+          checkHidden: button.querySelector('.nemesis-session-anchor-check')?.hidden,
+          copyHidden: button.querySelector('.nemesis-session-anchor-copy')?.hidden,
+        }));
+        assertBrowser(
+          resetCopyState.copied === false &&
+            resetCopyState.copyHidden === false &&
+            resetCopyState.checkHidden === true,
+          `Nemesis ${viewport.label} copy confirmation should reset to the copy icon`
         );
 
         const moreToggle = page
@@ -1029,12 +1115,12 @@ async function main() {
       const sessionCardMatch = renderedHtmlRaw.match(
         new RegExp(`<article[^>]*id=["']?${sessionAnchor}["']?[^>]*>[\\s\\S]*?</article>`)
       );
-      const sessionAnchorLink = renderedHtmlRaw.match(
-        new RegExp(`<a[^>]*href=["']?#${sessionAnchor}["']?[^>]*>`)
+      const sessionCopyControl = renderedHtmlRaw.match(
+        new RegExp(`<button[^>]*data-nemesis-copy-anchor=["']?${sessionAnchor}["']?[^>]*>`)
       );
-      const sessionAnchorIcon = renderedHtmlRaw.match(
+      const sessionAnchorIcons = renderedHtmlRaw.match(
         new RegExp(
-          `<a[^>]*href=["']?#${sessionAnchor}["']?[^>]*>(?:(?!</a>)[\\s\\S])*?<svg[^>]*class=["']nemesis-session-anchor-icon["']`
+          `<button[^>]*data-nemesis-copy-anchor=["']?${sessionAnchor}["']?[^>]*>(?:(?!</button>)[\\s\\S])*?nemesis-session-anchor-copy(?:(?!</button>)[\\s\\S])*?nemesis-session-anchor-check`
         )
       );
 
@@ -1043,14 +1129,14 @@ async function main() {
         errors.push(`Rendered Nemesis page is missing session anchor id "${sessionAnchor}"`);
       }
 
-      if (!sessionAnchorLink) {
+      if (!sessionCopyControl) {
         failed++;
-        errors.push(`Rendered Nemesis page is missing session anchor link "#${sessionAnchor}"`);
+        errors.push(`Rendered Nemesis page is missing session copy control for "#${sessionAnchor}"`);
       }
 
-      if (!sessionAnchorIcon) {
+      if (!sessionAnchorIcons) {
         failed++;
-        errors.push(`Rendered Nemesis session anchor "#${sessionAnchor}" is missing its copy icon`);
+        errors.push(`Rendered Nemesis session anchor "#${sessionAnchor}" is missing its copy/check icon pair`);
       }
 
       const setupDetails = gameMap.get(session.game)?.get(session.setup);

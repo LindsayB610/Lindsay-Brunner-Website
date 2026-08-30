@@ -231,17 +231,22 @@
               </span>
               <div class="nemesis-log-session-meta">
                 <time datetime="{{ $session.date }}">{{ $session.date | time.Format ":date_medium" }}</time>
-                <a
+                <button
+                  type="button"
                   class="nemesis-session-anchor"
-                  href="#{{ $sessionAnchor }}"
-                  aria-label="Link to {{ $gameName }} / {{ $setupName }} session on {{ $session.date | time.Format ":date_medium" }}"
-                  title="Link to this session"
+                  data-nemesis-copy-anchor="{{ $sessionAnchor }}"
+                  aria-label="Copy link to {{ $gameName }} / {{ $setupName }} session on {{ $session.date | time.Format ":date_medium" }}"
+                  title="Copy link to this session"
                 >
-                  <svg class="nemesis-session-anchor-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <svg class="nemesis-session-anchor-icon nemesis-session-anchor-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <rect x="9" y="9" width="11" height="11" rx="2"></rect>
                     <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
                   </svg>
-                </a>
+                  <svg class="nemesis-session-anchor-icon nemesis-session-anchor-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false" hidden>
+                    <path d="m5 12 4 4L19 6"></path>
+                  </svg>
+                  <span class="sr-only" data-nemesis-copy-status aria-live="polite"></span>
+                </button>
               </div>
             </div>
             <h3>{{ $gameName }} / {{ $setupName }}</h3>
@@ -330,6 +335,30 @@
     const closeButton = document.querySelector(".nemesis-photo-dialog-close");
     const triggers = document.querySelectorAll("[data-nemesis-lightbox-src]");
     const noteWraps = document.querySelectorAll(".nemesis-log-note-wrap");
+    const copyButtons = document.querySelectorAll("[data-nemesis-copy-anchor]");
+    const copyResetTimers = new WeakMap();
+
+    const writeToClipboard = async (text) => {
+      if (navigator.clipboard?.writeText && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.top = "-9999px";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const copied = document.execCommand("copy");
+      textarea.remove();
+
+      if (!copied) {
+        throw new Error("Clipboard copy failed");
+      }
+    };
 
     const scrollToSessionAnchor = () => {
       const sessionAnchor = window.location.hash.slice(1);
@@ -354,6 +383,53 @@
     }
 
     window.addEventListener("hashchange", scrollToSessionAnchor);
+
+    copyButtons.forEach((button) => {
+      const originalLabel = button.getAttribute("aria-label") || "Copy link to this session";
+      const originalTitle = button.getAttribute("title") || "Copy link to this session";
+      const copyIcon = button.querySelector(".nemesis-session-anchor-copy");
+      const checkIcon = button.querySelector(".nemesis-session-anchor-check");
+      const status = button.querySelector("[data-nemesis-copy-status]");
+
+      button.addEventListener("click", async () => {
+        const sessionAnchor = button.dataset.nemesisCopyAnchor;
+
+        if (!sessionAnchor || button.dataset.copying === "true") {
+          return;
+        }
+
+        const sessionUrl = new URL(window.location.href);
+        sessionUrl.hash = sessionAnchor;
+        button.dataset.copying = "true";
+
+        try {
+          await writeToClipboard(sessionUrl.href);
+          window.clearTimeout(copyResetTimers.get(button));
+          button.classList.add("is-copied");
+          button.setAttribute("aria-label", "Copied link to clipboard");
+          button.setAttribute("title", "Copied to clipboard");
+          if (copyIcon) copyIcon.hidden = true;
+          if (checkIcon) checkIcon.hidden = false;
+          if (status) status.textContent = "Copied to clipboard";
+
+          const resetTimer = window.setTimeout(() => {
+            button.classList.remove("is-copied");
+            button.setAttribute("aria-label", originalLabel);
+            button.setAttribute("title", originalTitle);
+            if (copyIcon) copyIcon.hidden = false;
+            if (checkIcon) checkIcon.hidden = true;
+            if (status) status.textContent = "";
+            copyResetTimers.delete(button);
+          }, 1600);
+          copyResetTimers.set(button, resetTimer);
+        } catch (_error) {
+          button.setAttribute("title", "Could not copy link");
+          if (status) status.textContent = "Could not copy link";
+        } finally {
+          delete button.dataset.copying;
+        }
+      });
+    });
 
     noteWraps.forEach((wrap) => {
       const note = wrap.querySelector(".nemesis-log-note");
