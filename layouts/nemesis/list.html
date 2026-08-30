@@ -242,7 +242,7 @@
                     <rect x="9" y="9" width="11" height="11" rx="2"></rect>
                     <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
                   </svg>
-                  <svg class="nemesis-session-anchor-icon nemesis-session-anchor-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false" hidden>
+                  <svg class="nemesis-session-anchor-icon nemesis-session-anchor-check is-hidden" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path d="m5 12 4 4L19 6"></path>
                   </svg>
                   <span class="sr-only" data-nemesis-copy-status aria-live="polite"></span>
@@ -390,6 +390,11 @@
       const copyIcon = button.querySelector(".nemesis-session-anchor-copy");
       const checkIcon = button.querySelector(".nemesis-session-anchor-check");
       const status = button.querySelector("[data-nemesis-copy-status]");
+
+      if (checkIcon) {
+        checkIcon.hidden = true;
+        checkIcon.classList.remove("is-hidden");
+      }
 
       button.addEventListener("click", async () => {
         const sessionAnchor = button.dataset.nemesisCopyAnchor;
