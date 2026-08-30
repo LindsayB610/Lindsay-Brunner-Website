@@ -1091,10 +1091,6 @@ body.page-nemesis .social-link:focus-visible {
   stroke-linejoin: round;
 }
 
-.nemesis-session-anchor-icon[hidden] {
-  display: none;
-}
-
 .nemesis-session-anchor-icon.is-hidden {
   display: none;
 }
@@ -1124,7 +1120,10 @@ body.page-nemesis .social-link:focus-visible {
   color: #b9ffdc;
 }
 
-.nemesis-session-anchor:focus,
+.nemesis-session-anchor:focus {
+  outline: none;
+}
+
 .nemesis-session-anchor:focus-visible {
   outline: 2px solid rgba(121, 243, 187, 0.72);
   outline-offset: 2px;

@@ -342,10 +342,13 @@ async function validateBrowserBehavior(games, sessions) {
         );
         const afterCopy = await sessionAnchor.evaluate((button) => ({
           ariaLabel: button.getAttribute('aria-label'),
-          checkHidden: button.querySelector('.nemesis-session-anchor-check')?.hidden,
-          copyHidden: button.querySelector('.nemesis-session-anchor-copy')?.hidden,
+          checkDisplay: getComputedStyle(button.querySelector('.nemesis-session-anchor-check')).display,
+          checkHidden: button.querySelector('.nemesis-session-anchor-check')?.classList.contains('is-hidden'),
+          copyDisplay: getComputedStyle(button.querySelector('.nemesis-session-anchor-copy')).display,
+          copyHidden: button.querySelector('.nemesis-session-anchor-copy')?.classList.contains('is-hidden'),
           hash: window.location.hash,
           copiedText: window.__nemesisCopiedText,
+          outlineStyle: getComputedStyle(button).outlineStyle,
           scrollX: window.scrollX,
           scrollY: window.scrollY,
           title: button.getAttribute('title'),
@@ -364,21 +367,28 @@ async function validateBrowserBehavior(games, sessions) {
         assertBrowser(
           afterCopy.copyHidden === true &&
             afterCopy.checkHidden === false &&
+            afterCopy.copyDisplay === 'none' &&
+            afterCopy.checkDisplay !== 'none' &&
+            afterCopy.outlineStyle === 'none' &&
             afterCopy.ariaLabel === 'Copied link to clipboard' &&
             afterCopy.title === 'Copied to clipboard',
-          `Nemesis ${viewport.label} copy control should briefly show an accessible checkmark confirmation`
+          `Nemesis ${viewport.label} copy control should show only an accessible checkmark confirmation without a click outline`
         );
 
-        await page.waitForTimeout(1700);
+        await page.waitForTimeout(2500);
         const resetCopyState = await sessionAnchor.evaluate((button) => ({
           copied: button.classList.contains('is-copied'),
-          checkHidden: button.querySelector('.nemesis-session-anchor-check')?.hidden,
-          copyHidden: button.querySelector('.nemesis-session-anchor-copy')?.hidden,
+          checkDisplay: getComputedStyle(button.querySelector('.nemesis-session-anchor-check')).display,
+          checkHidden: button.querySelector('.nemesis-session-anchor-check')?.classList.contains('is-hidden'),
+          copyDisplay: getComputedStyle(button.querySelector('.nemesis-session-anchor-copy')).display,
+          copyHidden: button.querySelector('.nemesis-session-anchor-copy')?.classList.contains('is-hidden'),
         }));
         assertBrowser(
           resetCopyState.copied === false &&
             resetCopyState.copyHidden === false &&
-            resetCopyState.checkHidden === true,
+            resetCopyState.checkHidden === true &&
+            resetCopyState.copyDisplay !== 'none' &&
+            resetCopyState.checkDisplay === 'none',
           `Nemesis ${viewport.label} copy confirmation should reset to the copy icon`
         );
 

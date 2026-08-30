@@ -391,11 +391,6 @@
       const checkIcon = button.querySelector(".nemesis-session-anchor-check");
       const status = button.querySelector("[data-nemesis-copy-status]");
 
-      if (checkIcon) {
-        checkIcon.hidden = true;
-        checkIcon.classList.remove("is-hidden");
-      }
-
       button.addEventListener("click", async () => {
         const sessionAnchor = button.dataset.nemesisCopyAnchor;
 
@@ -413,19 +408,19 @@
           button.classList.add("is-copied");
           button.setAttribute("aria-label", "Copied link to clipboard");
           button.setAttribute("title", "Copied to clipboard");
-          if (copyIcon) copyIcon.hidden = true;
-          if (checkIcon) checkIcon.hidden = false;
+          if (copyIcon) copyIcon.classList.add("is-hidden");
+          if (checkIcon) checkIcon.classList.remove("is-hidden");
           if (status) status.textContent = "Copied to clipboard";
 
           const resetTimer = window.setTimeout(() => {
             button.classList.remove("is-copied");
             button.setAttribute("aria-label", originalLabel);
             button.setAttribute("title", originalTitle);
-            if (copyIcon) copyIcon.hidden = false;
-            if (checkIcon) checkIcon.hidden = true;
+            if (copyIcon) copyIcon.classList.remove("is-hidden");
+            if (checkIcon) checkIcon.classList.add("is-hidden");
             if (status) status.textContent = "";
             copyResetTimers.delete(button);
-          }, 1600);
+          }, 2400);
           copyResetTimers.set(button, resetTimer);
         } catch (_error) {
           button.setAttribute("title", "Could not copy link");
