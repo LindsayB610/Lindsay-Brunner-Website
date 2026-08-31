@@ -94,12 +94,13 @@ Before you begin, ensure you have the following installed:
 
 - `npm test` - Run all tests (builds site, validates HTML, checks links, validates content, React islands, accessibility, spell check, OG images, scheduling, search JSON, recipe template, dietary labels, mobile responsive)
 - `npm run test:content` - Run content validation tests only
-- `npm run test:blog` - Bounded blog-post checks: build, content validation, homepage integration, migration contracts, changed-file spell check, OG image validation, and scheduling workflow tests; does not run browser-render suites
+- `npm run test:blog` - Bounded blog-post checks: build, content validation, migration, navigation, and Workshop launch source contracts, changed-file spell check, OG image validation, and scheduling workflow tests; does not run browser-render suites
 - `npm run test:blog-migration` - Validates dated blog permalinks, legacy redirect ordering, canonical URLs, RSS, sitemap output, and removal of stale section references
 - `npm run test:recipes` - Bounded recipe checks: build, content validation, changed-file spell check, OG image validation, recipe search JSON, recipe template, and dietary label tests; does not run React island suites
 - `npm run test:html` - Validate generated HTML
 - `npm run test:links` - Check for broken internal links (starts dev server, waits for ready, runs check, then stops server)
 - `npm run test:homepage` - Validate the homepage React island integration, fallback behavior, and protected markup
+- `npm run test:workshop` - Create a fresh build, then validate Workshop source, rendered markup, tracking, and headless browser layout
 - `npm run test:default-branch` - Guard docs, templates, scripts, and config against deprecated default-branch references
 - `npm run test:accessibility` - Run rendered accessibility checks for the homepage and About page
 - `npm run test:spell` - Spell check modified content files (git diff)
