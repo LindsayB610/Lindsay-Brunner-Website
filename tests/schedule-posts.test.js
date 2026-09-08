@@ -18,8 +18,24 @@ const { processFile, isDatePassed, isPacificDST, getNthDayOfMonth } = require('.
 const blogDir = path.join(__dirname, '..', 'content', 'blog');
 const recipesDir = path.join(__dirname, '..', 'content', 'recipes');
 
+function validateWorkflow() {
+  const assert = require('assert');
+  const yaml = require('js-yaml');
+  const workflow = yaml.load(fs.readFileSync(path.join(__dirname, '../.github/workflows/schedule-posts.yml'), 'utf8'));
+  assert.deepStrictEqual(workflow.on.schedule.map(({ cron }) => cron).sort(),
+    ['17 13 * * *', '17 14 * * *'], 'Keep both Pacific publishing windows');
+  const steps = workflow.jobs['publish-scheduled-posts'].steps;
+  assert.strictEqual(steps.find((step) => step.id === 'publish')?.run.trim(),
+    'node scripts/schedule-posts.js', 'Workflow must invoke the publishing script');
+  const staging = steps.flatMap((step) => (step.run || '').split('\n'))
+    .map((line) => line.trim()).filter((line) => /^git add\b/.test(line));
+  assert.deepStrictEqual(staging, ['git add -A content/blog content/recipes'],
+    'Stage blog renames and recipes without unrelated workspace files');
+}
+
 // Simple test runner
 if (require.main === module) {
+  validateWorkflow();
   console.log('🧪 Testing schedule-posts script...\n');
   
   let passed = 0;
