@@ -4,6 +4,31 @@ const path = require('path');
 const { assert, report, root } = require('./ai-chat-exporter-test-utils');
 
 const failures = [];
+let temporaryDir;
+
+// Exporter packages also offer interactive capture commands. This test exercises
+// only fixture rendering, and must fail before opening a window or user profile.
+async function runWithHeadlessGuard() {
+  const { chromium } = await import('playwright');
+  const originalLaunch = chromium.launch;
+  const originalPersistentLaunch = chromium.launchPersistentContext;
+  chromium.launch = function (options) {
+    if (options?.headless !== true || options.channel || options.executablePath) {
+      throw new Error('Exporter runtime tests require the dedicated Chromium headless shell');
+    }
+    return originalLaunch.call(this, options);
+  };
+  chromium.launchPersistentContext = async function () {
+    throw new Error('Exporter runtime tests must not open persistent browser profiles');
+  };
+  try {
+    await run();
+  } finally {
+    chromium.launch = originalLaunch;
+    chromium.launchPersistentContext = originalPersistentLaunch;
+    if (temporaryDir) fs.rmSync(temporaryDir, { recursive: true, force: true });
+  }
+}
 
 async function run() {
   console.log('🔥 Checking AI Chat Exporter real exporter runtime...');
@@ -88,7 +113,8 @@ async function run() {
   assert(claudeHtml.includes('Claude runtime fixture'), 'Claude HTML fixture output should include the snapshot title', failures);
   assert(claudeHtml.includes('https://claude.ai/share/runtime-fixture'), 'Claude HTML fixture output should include the source link', failures);
 
-  const claudePdfPath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'claude-exporter-')), 'fixture.pdf');
+  temporaryDir = fs.mkdtempSync(path.join(os.tmpdir(), 'claude-exporter-'));
+  const claudePdfPath = path.join(temporaryDir, 'fixture.pdf');
   const claudePdfStartedAt = Date.now();
   await claudeExporter.renderPdf({
     snapshot: claudeSnapshot,
@@ -101,10 +127,11 @@ async function run() {
   assert(claudePdfBytes.subarray(0, 4).toString('utf8') === '%PDF', 'Claude PDF fixture output should start with a PDF signature', failures);
   assert(claudePdfDurationMs < 15000, 'Claude PDF fixture export should stay within a local smoke-test budget', failures);
 
-  report(failures, '✅ AI Chat Exporter real exporter runtime passed.');
 }
 
-run().catch((error) => {
+runWithHeadlessGuard().then(() => {
+  report(failures, '✅ AI Chat Exporter real exporter runtime passed.');
+}).catch((error) => {
   failures.push(error?.stack || error?.message || String(error));
   report(failures, '✅ AI Chat Exporter real exporter runtime passed.');
 });
