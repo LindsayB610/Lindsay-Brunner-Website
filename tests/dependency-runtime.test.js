@@ -23,6 +23,8 @@ async function checkBlobsClient() {
   const requests = [];
   const entries = new Map();
   let denyWrites = false;
+  let denyReads = false;
+  let malformedReads = false;
   const fetchFixture = async (url, options) => {
     requests.push({ url, options });
     if (options.method.toUpperCase() === 'PUT') {
@@ -30,6 +32,8 @@ async function checkBlobsClient() {
       entries.set(url, options.body);
       return new Response(null, { status: 200, headers: { etag: 'fixture-etag' } });
     }
+    if (denyReads) return new Response(null, { status: 503 });
+    if (malformedReads) return new Response('{not-json', { headers: { 'content-type': 'application/json' } });
     return entries.has(url)
       ? new Response(entries.get(url), { headers: { 'content-type': 'application/json' } })
       : new Response(null, { status: 404 });
@@ -60,9 +64,9 @@ async function checkBlobsClient() {
     globalThis.fetch = fetchFixture;
     const { handleExportChatRequest } = loadTsModule('netlify/functions/export-chat.mts');
     let exports = 0;
-    const request = () => handleExportChatRequest(new Request('https://example.invalid/api/export-chat', {
+    const request = (clientIp = '192.0.2.1') => handleExportChatRequest(new Request('https://example.invalid/api/export-chat', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-nf-client-connection-ip': '192.0.2.1' },
+      headers: { 'Content-Type': 'application/json', 'x-nf-client-connection-ip': clientIp },
       body: JSON.stringify({ sharedUrl: 'https://chatgpt.com/share/fixture-thread', format: 'pdf' }),
     }), {
       getTurnstileSecret: () => undefined,
@@ -73,9 +77,17 @@ async function checkBlobsClient() {
     assert.equal(limited.status, 429, 'The sixth PDF must be rejected by the real limiter');
     assert.ok(Number(limited.headers.get('Retry-After')) > 0);
     assert.equal(exports, 5, 'Limited requests must not start PDF rendering');
-    assert.equal(entries.size, 1, 'Requests from the same client must share a bucket');
+    assert.equal(entries.size, 1, 'Requests from the same client must share one bucket');
     const [bucketUrl] = entries.keys();
     assert.equal(JSON.parse(entries.get(bucketUrl)).count, 5);
+    assert.equal((await request('198.51.100.2')).status, 200,
+      'A second client must be able to export after the first client reaches its limit');
+    assert.equal(entries.size, 2, 'Different clients must use separate rate-limit buckets');
+    const secondBucketUrl = [...entries.keys()].find((url) => url !== bucketUrl);
+    assert.ok(secondBucketUrl, 'The second client should create a distinct bucket URL');
+    assert.equal(JSON.parse(entries.get(secondBucketUrl)).count, 1);
+    assert.equal((await request()).status, 429, 'The first client must remain limited after another client exports');
+    assert.equal(exports, 6, 'Only the second client should start one additional PDF render');
     for (const resetAt of ['2000-01-01T00:00:00.000Z', 'invalid-date']) {
       entries.set(bucketUrl, JSON.stringify({ count: 5, resetAt }));
       assert.equal((await request()).status, 200, 'Expired or invalid windows must reset');
@@ -87,6 +99,34 @@ async function checkBlobsClient() {
     assert.equal(failed.status, 500, 'Storage failures must return 500');
     assert.deepEqual(await failed.json(), { error: 'The export failed. Please try again.' });
     assert.equal(exports, exportsBeforeFailure, 'A failed storage write must stop PDF rendering');
+
+    denyWrites = false;
+    denyReads = true;
+    const entriesBeforeDeniedRead = new Map(entries);
+    const requestsBeforeDeniedRead = requests.length;
+    const exportsBeforeDeniedRead = exports;
+    const deniedRead = await request('203.0.113.3');
+    assert.equal(deniedRead.status, 500, 'Storage read failures must return 500');
+    assert.deepEqual(await deniedRead.json(), { error: 'The export failed. Please try again.' });
+    assert.equal(exports, exportsBeforeDeniedRead, 'A failed storage read must stop PDF rendering');
+    assert.deepEqual(entries, entriesBeforeDeniedRead, 'A failed storage read must not write a new bucket');
+    assert.ok(requests.slice(requestsBeforeDeniedRead).every(({ options }) => options.method.toUpperCase() === 'GET'),
+      'A failed storage read must not be followed by a bucket write');
+
+    denyReads = false;
+    malformedReads = true;
+    const entriesBeforeMalformedRead = new Map(entries);
+    const requestsBeforeMalformedRead = requests.length;
+    const exportsBeforeMalformedRead = exports;
+    const malformedRead = await request('203.0.113.4');
+    assert.equal(malformedRead.status, 500, 'Malformed storage data must return 500');
+    assert.deepEqual(await malformedRead.json(), { error: 'The export failed. Please try again.' });
+    assert.equal(exports, exportsBeforeMalformedRead, 'Malformed storage data must stop PDF rendering');
+    assert.deepEqual(entries, entriesBeforeMalformedRead, 'Malformed storage data must not write a new bucket');
+    assert.ok(requests.slice(requestsBeforeMalformedRead).every(({ options }) => options.method.toUpperCase() === 'GET'),
+      'Malformed storage data must not be followed by a bucket write');
+    malformedReads = false;
+
     assert.ok(requests.every(({ url }) => new URL(url).hostname === 'strong.example.invalid'),
       'The actual function must use uncached storage for every rate-limit operation');
   } finally {
