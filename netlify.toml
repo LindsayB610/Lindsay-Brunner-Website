@@ -5,7 +5,7 @@ command = "npm ci && npm run build"
 
 [build.environment]
 HUGO_VERSION = "0.152.2"
-NODE_VERSION = "20"
+NODE_VERSION = "24"
 
 [dev]
 command = "npm run dev"

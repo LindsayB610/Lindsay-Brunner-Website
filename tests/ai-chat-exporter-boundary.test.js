@@ -15,6 +15,15 @@ console.log('🚧 Checking AI Chat Exporter bundle boundaries...');
 
 const packageJson = JSON.parse(read('package.json'));
 const packageLock = JSON.parse(read('package-lock.json'));
+const chatgptDependency = packageJson.dependencies?.['chatgpt-thread-exporter'];
+const chatgptResolved = packageLock.packages?.['node_modules/chatgpt-thread-exporter']?.resolved;
+assert(
+  /^github:LindsayB610\/chatgpt-thread-exporter#[a-f0-9]{40}$/.test(chatgptDependency || '') &&
+    chatgptResolved?.endsWith(`#${chatgptDependency.split('#')[1]}`) &&
+    packageLock.packages?.['']?.dependencies?.['chatgpt-thread-exporter'] === chatgptDependency,
+  'ChatGPT exporter must stay pinned to the same exact revision in manifest and lockfile',
+  failures,
+);
 const claudeDependency = packageJson.dependencies?.['claude-thread-exporter'];
 const claudeLockDependency = packageLock.packages?.['']?.dependencies?.['claude-thread-exporter'];
 const claudePackageLock = packageLock.packages?.['node_modules/claude-thread-exporter'];

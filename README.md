@@ -51,8 +51,8 @@ Visit the live site at: [lindsaybrunner.com](https://lindsaybrunner.com)
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/) v18.0.0 or higher (specified in `.nvmrc`)
-- [npm](https://www.npmjs.com/) v8.0.0 or higher
+- [Node.js](https://nodejs.org/) 24 LTS (specified in `.nvmrc`; use `nvm install && nvm use` if you use nvm)
+- [npm](https://www.npmjs.com/) 11.x (bundled with Node.js 24)
 - [Hugo](https://gohugo.io/installation/) v0.152.2 (Netlify provides the pinned build binary; install the same version locally for `npm run dev` and `npm run build`)
 
 ## 🏃‍♀️ Quick Start
@@ -64,20 +64,37 @@ Before you begin, ensure you have the following installed:
    cd Lindsay-Brunner-Website
    ```
 
-2. **Install dependencies**
+2. **Select the project runtime** (when using nvm)
 
    ```bash
-   npm install
+   nvm install
+   nvm use
    ```
 
-3. **Start the development server**
+   Otherwise, install Node.js 24 LTS and confirm `node --version` reports `v24` before continuing.
+
+3. **Install the locked dependencies**
+
+   ```bash
+   npm ci
+   ```
+
+4. **Start the development server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:1313` to see the site running locally.
+
+Before running browser tests on a fresh machine, install the dedicated headless browser:
+
+```bash
+npx --no-install playwright install chromium-headless-shell
+```
+
+Tests use this browser without opening windows or personal browser profiles. See [dependency maintenance](docs/dependency-maintenance.md) for clean-install checks, package upgrades, and hosted verification.
 
 ## 📝 Available Scripts
 
@@ -113,7 +130,9 @@ Before you begin, ensure you have the following installed:
 - `npm run test:recipe-template` - Recipe template structure validation
 - `npm run test:dietary` - Dietary label validation (allowed values, no duplicates)
 - `npm run test:mobile` - Static and rendered mobile/responsive validation
-- `npm run test:netlify-build` - Guard Netlify's native Hugo pin, deterministic install command, and the absence of `hugo-bin`
+- `npm run test:netlify-build` - Guard Netlify's native Hugo pin, deterministic installation, matching Node versions across local and CI settings, and the absence of `hugo-bin`
+- `npm run test:dependency-runtime` - Exercise YAML safety, image conversion and colors, and the exporter's actual rate limiter with the real Blobs SDK and an in-memory transport
+- `npm run test:ai-exporter` - Validate both exporter providers, request handling, browser interactions, client bundle boundaries, and real fixture-based Markdown/PDF rendering
 
 ### Content and asset workflows
 
