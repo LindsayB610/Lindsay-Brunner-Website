@@ -1,0 +1,25 @@
+{{- $slides := site.Data.codex_usage_display_process -}}
+{{- $total := len $slides -}}
+{{- $first := index $slides 0 -}}
+<section class="process-carousel" data-carousel aria-roledescription="carousel" aria-label="Codex usage display build progress">
+  <div class="process-carousel__stage">
+    <div class="process-carousel__track" data-carousel-track data-carousel-align="center" tabindex="0" aria-label="Build progress photos in chronological order. Swipe or use the previous and next buttons to browse.">
+    {{- range $index, $slide := $slides }}
+      <figure class="process-carousel__slide{{ with $slide.fit }} process-carousel__slide--{{ . }}{{ end }}" data-carousel-slide data-slide-phase="{{ $slide.phase }}" data-slide-caption="{{ $slide.caption }}" aria-roledescription="slide" aria-label="{{ add $index 1 }} of {{ $total }}">
+        <div class="process-carousel__media">
+          <img src="{{ $slide.src }}" alt="{{ $slide.alt }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}" decoding="async" />
+        </div>
+      </figure>
+    {{- end }}
+    </div>
+    <div class="process-carousel__controls" role="group" aria-label="Build photo navigation">
+      <button class="process-carousel__button" type="button" data-carousel-previous aria-label="Show previous build photo"><span aria-hidden="true">←</span></button>
+      <button class="process-carousel__button" type="button" data-carousel-next aria-label="Show next build photo"><span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+  <div class="process-carousel__caption" aria-live="polite">
+    <span class="process-carousel__phase" data-carousel-caption-phase>{{ $first.phase }}</span>
+    <span data-carousel-caption>{{ $first.caption }}</span>
+  </div>
+</section>
+<script src="/js/carousel.js"></script>

@@ -9,10 +9,12 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
-const script = fs.readFileSync(path.join(__dirname, '..', 'static', 'js', 'slate-carousel.js'), 'utf8');
+const script = fs.readFileSync(path.join(__dirname, '..', 'static', 'js', 'carousel.js'), 'utf8');
+const shortcode = fs.readFileSync(path.join(__dirname, '..', 'layouts', 'shortcodes', 'slate-gallery.html'), 'utf8');
 
 assert(script.includes('let pausedManually = false;'), 'Carousel should track an explicit manual pause state');
-assert(script.includes('(currentIndex + direction + slides.length) % slides.length'), 'Carousel movement should wrap at both ends');
+assert(shortcode.includes('data-carousel-loop="true"'), 'Slate should enable looping in the shared carousel');
+assert(script.includes('(index + slides.length) % slides.length'), 'Carousel movement should wrap at both ends');
 assert(script.includes('!pausedManually && !reducedMotion.matches'), 'Carousel should rotate unless manually paused or reduced motion is active');
 assert(script.includes("carousel.addEventListener('mouseleave', startRotation)"), 'Carousel should resume after hover ends');
 assert(script.includes("carousel.addEventListener('focusout'"), 'Carousel should resume after focus leaves');
