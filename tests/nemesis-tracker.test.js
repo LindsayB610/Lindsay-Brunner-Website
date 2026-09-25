@@ -176,6 +176,7 @@ async function validateBrowserBehavior(games, sessions) {
               value: undefined,
             });
             Document.prototype.execCommand = function execCommand(command) {
+              if (window.__nemesisCopyFails) return false;
               const textarea = document.querySelector('textarea[readonly]');
               if (command !== 'copy' || !textarea) return false;
               window.__nemesisCopiedText = textarea.value;
@@ -188,11 +189,30 @@ async function validateBrowserBehavior(games, sessions) {
             configurable: true,
             value: {
               writeText: async (text) => {
+                if (window.__nemesisCopyFails) throw new Error('Permission denied');
                 window.__nemesisCopiedText = text;
               },
             },
           });
         }, { useFallback: viewport.label === 'mobile' });
+        await page.goto(`${origin}/nemesis/`, { waitUntil: 'load' });
+        const changeAnchors = sessions.slice(0, 2).map(sessionAnchorFor);
+        assertBrowser(changeAnchors.length === 2, 'Hashchange checks require two sessions');
+        for (const anchor of changeAnchors) {
+          // replaceState avoids the browser's native fragment scroll masking a missing handler.
+          await page.evaluate((id) => {
+            window.scrollTo(0, 0);
+            const oldURL = window.location.href;
+            window.history.replaceState(null, '', `#${id}`);
+            window.dispatchEvent(new HashChangeEvent('hashchange', {
+              oldURL, newURL: window.location.href,
+            }));
+          }, anchor);
+          await page.waitForFunction((id) => {
+            const rect = document.getElementById(id).getBoundingClientRect();
+            return rect.top >= 0 && rect.top <= 40;
+          }, anchor, { timeout: 2000 });
+        }
         await page.goto(`${origin}/nemesis/#${deepLinkAnchor}`, { waitUntil: 'load' });
         await page.waitForFunction(
           (anchor) => {
@@ -308,6 +328,26 @@ async function validateBrowserBehavior(games, sessions) {
         );
 
         const sessionAnchor = page.locator('.nemesis-session-anchor').first();
+        await page.evaluate(() => { window.__nemesisCopyFails = true; });
+        await sessionAnchor.click();
+        await page.waitForFunction(() => {
+          const button = document.querySelector('.nemesis-session-anchor');
+          return button.title === 'Could not copy link' && !button.dataset.copying;
+        }, null, { timeout: 2000 });
+        const failedCopy = await sessionAnchor.evaluate((button) => ({
+          status: button.querySelector('[data-nemesis-copy-status]').textContent,
+          copied: button.classList.contains('is-copied'),
+          copyVisible: getComputedStyle(button.querySelector('.nemesis-session-anchor-copy')).display !== 'none',
+          checkHidden: getComputedStyle(button.querySelector('.nemesis-session-anchor-check')).display === 'none',
+          textareas: document.querySelectorAll('textarea[readonly]').length,
+        }));
+        assertBrowser(
+          failedCopy.status === 'Could not copy link' && !failedCopy.copied &&
+            failedCopy.copyVisible && failedCopy.checkHidden && failedCopy.textareas === 0,
+          `Nemesis ${viewport.label} clipboard failure should announce the error, retain the copy icon, and clean up`,
+        );
+        // The existing success checks now also prove a failed button can be retried.
+        await page.evaluate(() => { window.__nemesisCopyFails = false; });
         await sessionAnchor.hover();
         const sessionAnchorHover = await sessionAnchor.evaluate((anchor) => {
           const style = getComputedStyle(anchor);
