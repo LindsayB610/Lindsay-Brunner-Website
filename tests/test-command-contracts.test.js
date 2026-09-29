@@ -25,6 +25,7 @@ const expectedBlogCommands = [
   'npm run test:content',
   'npm run test:blog-migration',
   'npm run test:blog-navigation',
+  'npm run test:codex-display',
   'npm run test:workshop-launch',
   'npm run test:commands',
   'npm run test:spell',
@@ -40,6 +41,14 @@ assert(
 assert(
   scripts['test:workshop'] === 'npm run build && npm run test:workshop:built',
   'test:workshop should build the site before running its rendered-page checks',
+);
+assert(
+  scripts['test:codex-display'] === 'node --test tests/codex-display-article.test.js',
+  'test:codex-display should remain a browser-free, no-rebuild contract for the built article',
+);
+assert(
+  fullSuiteCommands.includes('npm run test:codex-display'),
+  'the full suite should include the Codex display article contract',
 );
 assert(
   scripts['test:workshop:built'] === 'node tests/workshop-page.test.js',
