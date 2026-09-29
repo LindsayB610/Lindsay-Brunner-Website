@@ -66,7 +66,7 @@
     "cleanup:backups": "node scripts/optimize-images.js --cleanup-only"
   },
   "dependencies": {
-    "@netlify/blobs": "^10.7.6",
+    "@netlify/blobs": "^10.7.13",
     "@sparticuz/chromium": "^147.0.0",
     "@tabler/icons-react": "^3.44.0",
     "chatgpt-thread-exporter": "github:LindsayB610/chatgpt-thread-exporter",
@@ -86,16 +86,16 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "cspell": "^9.4.0",
-    "html-validate": "^10.3.0",
-    "js-yaml": "^4.1.0",
+    "cspell": "^9.8.0",
+    "html-validate": "^10.9.0",
+    "js-yaml": "^4.3.2",
     "linkinator": "^7.6.1",
     "playwright": "^1.60.0",
-    "shadcn": "^4.7.0",
-    "sharp": "^0.33.0",
+    "shadcn": "^4.21.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
-    "vite": "^8.0.12"
+    "vite": "^8.3.1"
   },
   "overrides": {
     "file-type": "^21.3.4"
