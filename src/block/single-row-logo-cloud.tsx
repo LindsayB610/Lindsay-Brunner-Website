@@ -46,7 +46,7 @@ const LOGOS = [
     id: "masterpoint",
     title: "Masterpoint",
     src: "/images/logos/masterpoint.svg",
-    className: "h-6 max-w-[142px]",
+    className: "h-6 max-w-[142px] brightness-0 invert",
   },
 ];
 
