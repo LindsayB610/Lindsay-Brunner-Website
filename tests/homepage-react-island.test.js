@@ -819,12 +819,16 @@ function checkTestimonials() {
   );
 
   [
+    'Alice Alexandra Moore',
+    'Developer Experience, Builder.io',
+    "She's practical in a way I trust. … Any content team is better with her on it. I'd work with her on anything.",
+    '/images/testimonials/alice-alexandra-moore.jpg',
     'Steve Sewell',
     'CEO, Builder.io',
     'Kaitlyn Barnard',
     'Product Marketing, Apollo GraphQL',
     'Scott McAllister',
-    'Principal Developer Advocate, vCluster',
+    'Community Evangelist, F5',
     'Randall Degges',
     'VP Developer Relations, Snyk',
     '/images/testimonials/steve-sewell.jpg',
@@ -881,6 +885,7 @@ function checkTestimonialAssets() {
   console.log('🖼️  Checking testimonial headshot assets...');
 
   [
+    'static/images/testimonials/alice-alexandra-moore.jpg',
     'static/images/testimonials/steve-sewell.jpg',
     'static/images/testimonials/kaitlyn-barnard.jpg',
     'static/images/testimonials/scott-mcallister.jpg',
