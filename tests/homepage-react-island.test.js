@@ -147,7 +147,7 @@ function checkBuiltFallbacks() {
     'Developer audience research',
     'Mentorship and enablement',
     'Trusted by the best',
-    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, Split, and Parasail.',
+    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, Split, Parasail, and Masterpoint.',
     'Samples beat adjectives',
     'A tiny desktop home for the tools I actually use.',
     'I built this',
@@ -535,12 +535,14 @@ function checkHomepageSourceContent() {
     'Builder.io',
     'Braze',
     'Parasail',
+    'Masterpoint',
     '/images/logos/okta.svg',
     '/images/logos/braze.svg',
     '/images/logos/builder.svg',
     '/images/logos/ngrok.svg',
     '/images/logos/split.svg',
     '/images/logos/parasail.png',
+    '/images/logos/masterpoint.svg',
     'Companies Lindsay has worked with',
     'Trusted by the best',
     'Samples beat adjectives',
@@ -673,7 +675,7 @@ function checkHomepageSourceContent() {
   const logoSources = [...logoCloud.matchAll(/src: "([^"]+)"/g)].map((match) => match[1]);
   const uniqueLogoTitles = new Set(logoTitles);
   const uniqueLogoSources = new Set(logoSources);
-  assert(logoTitles.length === 6, 'homepage logo cloud should define exactly one source entry per company');
+  assert(logoTitles.length === 7, 'homepage logo cloud should define exactly one source entry per company');
   assert(
     uniqueLogoTitles.size === logoTitles.length,
     'homepage logo cloud should not define duplicate company titles',
@@ -871,6 +873,7 @@ function checkLogoAssets() {
     'static/images/logos/ngrok.svg',
     'static/images/logos/split.svg',
     'static/images/logos/parasail.png',
+    'static/images/logos/masterpoint.svg',
   ].forEach((asset) => {
     assert(exists(asset), `${asset} should exist for the homepage logo cloud`);
     if (asset.endsWith('.svg')) {

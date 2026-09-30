@@ -42,6 +42,12 @@ const LOGOS = [
     src: "/images/logos/parasail.png",
     className: "h-5 max-w-[126px]",
   },
+  {
+    id: "masterpoint",
+    title: "Masterpoint",
+    src: "/images/logos/masterpoint.svg",
+    className: "h-6 max-w-[142px]",
+  },
 ];
 
 export default function SingleRowLogoCloud() {
