@@ -688,6 +688,10 @@ function checkHomepageSourceContent() {
     uniqueLogoTitles.size > 5,
     'homepage logo cloud should have more unique companies than visible slots so rotation never repeats a visible logo',
   );
+  assert(
+    /title: "Masterpoint"[\s\S]*?className: "h-6 max-w-\[142px\] brightness-0 invert"/.test(logoCloud),
+    'Masterpoint logo should keep the monochrome reel treatment',
+  );
 
   [
     'Experience with',
@@ -860,6 +864,17 @@ function checkTestimonials() {
     testimonialBlock,
     'kaitlyn-barnard.jpg",\n  },\n  {\n    quote:\n      "Lindsay just gets it',
     'contact testimonial ordering',
+  );
+
+  const testimonialNames = [...testimonialBlock.matchAll(/name: "([^"]+)"/g)].map((match) => match[1]);
+  assert(
+    testimonialNames.join(' > ') ===
+      'Steve Sewell > Kaitlyn Barnard > Alice Alexandra Moore > Scott McAllister > Randall Degges > Kaitlyn Barnard',
+    'contact testimonials should keep the approved rotation order',
+  );
+  assert(
+    testimonialBlock.includes('name: "Scott McAllister",\n    designation: "Community Evangelist, F5"'),
+    'Scott testimonial should use the current F5 designation',
   );
 }
 
