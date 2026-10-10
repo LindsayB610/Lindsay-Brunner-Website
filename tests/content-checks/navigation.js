@@ -10,6 +10,27 @@ function validateNavDropdownBehavior() {
   try {
     const headerContent = fs.readFileSync(headerPath, 'utf8');
 
+    const mainNav = headerContent.match(/<nav\b[^>]*class="main-nav"[^>]*>([\s\S]*?)<\/nav>/);
+    const topLevelNav = (mainNav?.[1] || '').replace(/<ul class="dropdown-menu">[\s\S]*?<\/ul>/, '');
+    const navItems = Array.from(topLevelNav.matchAll(/<(a|summary)\b([^>]*)>([\s\S]*?)<\/\1>/g))
+      .map(([, tag, attributes, content]) => ({
+        tag,
+        attributes,
+        label: content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+      }));
+    const expectedLabels = ['About', 'Blog', 'Hello, Piper™', 'Workshop', 'More'];
+    const actualLabels = navItems.map(item => item.label);
+
+    if (actualLabels.join('|') !== expectedLabels.join('|')) {
+      errors.push(`Main navigation must read ${expectedLabels.join(' → ')}; found ${actualLabels.join(', ')}`);
+    }
+
+    const piperLink = navItems.find(item => item.tag === 'a' && item.label === 'Hello, Piper™');
+    const piperHref = piperLink?.attributes.match(/\bhref=["']([^"']*)["']/)?.[1];
+    if (piperHref !== 'https://hellopiper.world/') {
+      errors.push('Main navigation Hello, Piper™ link must point to https://hellopiper.world/');
+    }
+
     if (!headerContent.includes('querySelectorAll(".nav-dropdown details[open]")')) {
       errors.push('Header dropdown must target open nav dropdown details elements');
     }

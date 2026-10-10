@@ -1258,6 +1258,14 @@ blockquote {
     flex-wrap: nowrap;
   }
 
+  .main-nav > ul {
+    flex-wrap: wrap;
+  }
+
+  .main-nav > ul > li > a {
+    white-space: nowrap;
+  }
+
   .main-nav a,
   .main-nav summary {
     padding: var(--space-xs) var(--space-sm);
