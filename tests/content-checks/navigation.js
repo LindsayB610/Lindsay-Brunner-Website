@@ -6,9 +6,11 @@ function validateNavDropdownBehavior() {
 
   const errors = [];
   const headerPath = path.join(__dirname, '..', '..', 'layouts', 'partials', 'header.html');
+  const stylesheetPath = path.join(__dirname, '..', '..', 'static', 'css', 'main.css');
 
   try {
     const headerContent = fs.readFileSync(headerPath, 'utf8');
+    const stylesheetContent = fs.readFileSync(stylesheetPath, 'utf8');
 
     const mainNav = headerContent.match(/<nav\b[^>]*class="main-nav"[^>]*>([\s\S]*?)<\/nav>/);
     const topLevelNav = (mainNav?.[1] || '').replace(/<ul class="dropdown-menu">[\s\S]*?<\/ul>/, '');
@@ -29,6 +31,19 @@ function validateNavDropdownBehavior() {
     const piperHref = piperLink?.attributes.match(/\bhref=["']([^"']*)["']/)?.[1];
     if (piperHref !== 'https://hellopiper.world/') {
       errors.push('Main navigation Hello, Piper™ link must point to https://hellopiper.world/');
+    }
+    if (!piperLink?.attributes.match(/\btarget=["']_blank["']/)) {
+      errors.push('Main navigation Hello, Piper™ link must open in a new tab');
+    }
+    if (!piperLink?.attributes.match(/\brel=["']noopener["']/)) {
+      errors.push('Main navigation Hello, Piper™ link must use noopener');
+    }
+
+    if (!stylesheetContent.includes('.main-nav > ul {\n    flex-wrap: wrap;')) {
+      errors.push('Responsive main navigation must allow top-level items to wrap');
+    }
+    if (!stylesheetContent.includes('.main-nav > ul > li > a {\n    white-space: nowrap;')) {
+      errors.push('Responsive main navigation links must keep labels together');
     }
 
     if (!headerContent.includes('querySelectorAll(".nav-dropdown details[open]")')) {
