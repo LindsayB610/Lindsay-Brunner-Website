@@ -148,6 +148,7 @@ async function validateBrowserBehavior(games, sessions) {
   }
 
   const deepLinkAnchor = sessionAnchorFor(deepLinkSession);
+  const customAnchorSession = sessions.find((session) => session.anchor);
   const { chromium } = await import('playwright');
   const { server, origin } = await startStaticServer();
   let browser;
@@ -189,6 +190,12 @@ async function validateBrowserBehavior(games, sessions) {
             configurable: true,
             value: {
               writeText: async (text) => {
+                if (window.__nemesisClipboardPending) {
+                  window.__nemesisClipboardWriteCount += 1;
+                  await new Promise((resolve) => {
+                    window.__nemesisResolveClipboard = resolve;
+                  });
+                }
                 if (window.__nemesisCopyFails) throw new Error('Permission denied');
                 window.__nemesisCopiedText = text;
               },
@@ -299,6 +306,20 @@ async function validateBrowserBehavior(games, sessions) {
           pageMetrics.sessionAnchorCount === sessions.length,
           `Nemesis ${viewport.label} render should expose one permalink for every session`
         );
+        const customAnchorMetrics = customAnchorSession
+          ? await page.evaluate((anchor) => ({
+            cardCount: document.querySelectorAll(`#${CSS.escape(anchor)}`).length,
+            copyCount: [...document.querySelectorAll('[data-nemesis-copy-anchor]')]
+              .filter((button) => button.dataset.nemesisCopyAnchor === anchor).length,
+          }), customAnchorSession.anchor)
+          : null;
+        assertBrowser(
+          !customAnchorSession || (
+            customAnchorMetrics.cardCount === 1 &&
+            customAnchorMetrics.copyCount === 1
+          ),
+          `Nemesis ${viewport.label} render should use a migrated session's custom anchor for its card and permalink`
+        );
         assertBrowser(
           pageMetrics.sessionAnchorCopyIconCount === sessions.length &&
             pageMetrics.sessionAnchorCheckIconCount === sessions.length &&
@@ -328,6 +349,42 @@ async function validateBrowserBehavior(games, sessions) {
         );
 
         const sessionAnchor = page.locator('.nemesis-session-anchor').first();
+        if (viewport.label === 'desktop') {
+          await page.evaluate(() => {
+            window.__nemesisClipboardPending = true;
+            window.__nemesisClipboardWriteCount = 0;
+            const button = document.querySelector('.nemesis-session-anchor');
+            window.__nemesisOriginalCopyLabel = button.getAttribute('aria-label');
+            window.__nemesisOriginalCopyTitle = button.getAttribute('title');
+          });
+          await sessionAnchor.click();
+          await page.waitForFunction(() => window.__nemesisResolveClipboard instanceof Function);
+          await sessionAnchor.click();
+          const duplicateClicks = await page.evaluate(() => ({
+            writeCount: window.__nemesisClipboardWriteCount,
+            copying: document.querySelector('.nemesis-session-anchor')?.dataset.copying === 'true',
+          }));
+          assertBrowser(
+            duplicateClicks.writeCount === 1 && duplicateClicks.copying,
+            'Nemesis desktop copy control should ignore duplicate clicks while clipboard writing is pending'
+          );
+          await page.evaluate(() => {
+            window.__nemesisResolveClipboard();
+            window.__nemesisClipboardPending = false;
+          });
+          await page.waitForFunction(() =>
+            document.querySelector('.nemesis-session-anchor')?.classList.contains('is-copied')
+          );
+          await page.evaluate(() => {
+            const button = document.querySelector('.nemesis-session-anchor');
+            button.classList.remove('is-copied');
+            button.setAttribute('aria-label', window.__nemesisOriginalCopyLabel);
+            button.setAttribute('title', window.__nemesisOriginalCopyTitle);
+            button.querySelector('.nemesis-session-anchor-copy')?.classList.remove('is-hidden');
+            button.querySelector('.nemesis-session-anchor-check')?.classList.add('is-hidden');
+            button.querySelector('[data-nemesis-copy-status]').textContent = '';
+          });
+        }
         await page.evaluate(() => { window.__nemesisCopyFails = true; });
         await sessionAnchor.click();
         await page.waitForFunction(() => {
@@ -398,6 +455,14 @@ async function validateBrowserBehavior(games, sessions) {
           afterCopy.copiedText.endsWith(`#${copyTarget}`),
           `Nemesis ${viewport.label} copy control should write the session permalink to the clipboard`
         );
+        if (viewport.label === 'mobile') {
+          assertBrowser(
+            afterCopy.copiedText.startsWith(`${origin}/nemesis/`) &&
+              afterCopy.copyHidden === true &&
+              afterCopy.checkHidden === false,
+            'Nemesis mobile fallback should copy the full session URL and show success feedback'
+          );
+        }
         assertBrowser(
           afterCopy.hash === beforeCopy.hash &&
             Math.abs(afterCopy.scrollX - beforeCopy.scrollX) <= 1 &&
