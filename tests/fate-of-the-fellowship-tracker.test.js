@@ -152,6 +152,42 @@ const TEMP_TIED_LEADER_SESSIONS = {
     note: 'Galadriel answered with her own second mark.',
   },
 };
+const TEMP_TIED_CARD_ORDER_SESSIONS = {
+  '2026-11-01-win.yaml': {
+    date: '2026-11-01',
+    result: 'win',
+    players: 4,
+    heroes: ['Legolas', 'Galadriel', 'Frodo & Sam'],
+    objectives: ['Destroy the One Ring', 'Challenge Sauron'],
+    note: 'The first round of bragging rights landed in a tie.',
+  },
+  '2026-11-08-win.yaml': {
+    date: '2026-11-08',
+    result: 'win',
+    players: 4,
+    heroes: ['Galadriel', 'Legolas', 'Frodo & Sam'],
+    objectives: ['Destroy the One Ring', 'Shieldmaiden No Longer'],
+    note: 'No one separated themselves, which is suspiciously tidy.',
+  },
+  '2026-11-15-win.yaml': {
+    date: '2026-11-15',
+    result: 'win',
+    players: 4,
+    heroes: ['Aragorn', 'Boromir', 'Frodo & Sam'],
+    objectives: ['Destroy the One Ring', 'Challenge Sauron'],
+    note: 'The middle of the pack kept the tiebreakers honest.',
+  },
+  '2026-11-22-loss.yaml': {
+    date: '2026-11-22',
+    result: 'loss',
+    players: 4,
+    heroes: ['Aragorn', 'Boromir', 'Frodo & Sam'],
+    objectives: ['Destroy the One Ring', 'Shieldmaiden No Longer'],
+    completed_objectives: ['Shieldmaiden No Longer'],
+    incomplete_objectives: ['Destroy the One Ring'],
+    note: 'Even the losses contributed to the sorting argument.',
+  },
+};
 const TEMP_CROWDED_TIE_SESSIONS = {
   '2026-10-01-win.yaml': {
     date: '2026-10-01',
@@ -1163,6 +1199,8 @@ async function main() {
       ].forEach((snippet) => {
         assert(populated.includes(snippet), `Rendered populated Fate page is missing expected image markup: ${snippet}`, errors);
       });
+      const photoTriggerCount = (populated.match(/data-fate-lightbox-src=/g) || []).length;
+      assert(photoTriggerCount === 1, `Rendered populated Fate page should include one photo trigger for the one imaged session, found ${photoTriggerCount}`, errors);
       const separatorCount = (populated.match(/fate-session-separator/g) || []).length;
       assert(separatorCount === 0, `Rendered populated Fate page should not include session separators in the two-column log, found ${separatorCount}`, errors);
 
@@ -1263,6 +1301,47 @@ async function main() {
       });
 
       removeTempSessions(TEMP_TIED_LEADER_SESSIONS);
+      writeTempSessions(TEMP_TIED_CARD_ORDER_SESSIONS);
+      runHugoBuild();
+      const tiedCardOrderText = stripHtml(fs.readFileSync(renderedPagePath, 'utf8'));
+
+      const orderedHeroSnippets = [
+        'Frodo & Sam 4 journeys 3 wins',
+        'Aragorn 2 journeys 1 win',
+        'Boromir 2 journeys 1 win',
+        'Galadriel 2 journeys 2 wins',
+        'Legolas 2 journeys 2 wins',
+      ];
+      const heroSnippetIndexes = orderedHeroSnippets.map((snippet) => tiedCardOrderText.indexOf(snippet));
+      orderedHeroSnippets.forEach((snippet, index) => {
+        assert(heroSnippetIndexes[index] !== -1, `Tied-card Fate hero ordering is missing snippet: ${snippet}`, errors);
+        if (index > 0) {
+          assert(
+            heroSnippetIndexes[index - 1] < heroSnippetIndexes[index],
+            `Tied-card Fate hero ordering should keep "${orderedHeroSnippets[index - 1]}" ahead of "${snippet}"`,
+            errors
+          );
+        }
+      });
+
+      const orderedQuestSnippets = [
+        'Destroy the One Ring 4 attempts 3 successes',
+        'Challenge Sauron 2 attempts 2 successes',
+        'Shieldmaiden No Longer 2 attempts 1 success',
+      ];
+      const questSnippetIndexes = orderedQuestSnippets.map((snippet) => tiedCardOrderText.indexOf(snippet));
+      orderedQuestSnippets.forEach((snippet, index) => {
+        assert(questSnippetIndexes[index] !== -1, `Tied-card Fate objective ordering is missing snippet: ${snippet}`, errors);
+        if (index > 0) {
+          assert(
+            questSnippetIndexes[index - 1] < questSnippetIndexes[index],
+            `Tied-card Fate objective ordering should keep "${orderedQuestSnippets[index - 1]}" ahead of "${snippet}"`,
+            errors
+          );
+        }
+      });
+
+      removeTempSessions(TEMP_TIED_CARD_ORDER_SESSIONS);
       writeTempSessions(TEMP_CROWDED_TIE_SESSIONS);
       runHugoBuild();
       const crowdedTieText = stripHtml(fs.readFileSync(renderedPagePath, 'utf8'));
@@ -1289,6 +1368,7 @@ async function main() {
     removeTempFixtureSessions();
     removeTempSessions(TEMP_REQUIRED_ONLY_WIN_SESSIONS);
     removeTempSessions(TEMP_TIED_LEADER_SESSIONS);
+    removeTempSessions(TEMP_TIED_CARD_ORDER_SESSIONS);
     removeTempSessions(TEMP_CROWDED_TIE_SESSIONS);
     runHugoBuild();
   }
@@ -1530,6 +1610,7 @@ async function main() {
             firstQuestCardText: document.querySelector('.fate-quest-card')?.textContent.trim() || '',
             secondHeroCardText: document.querySelectorAll('.fate-record-card')[1]?.textContent.trim() || '',
             secondQuestCardText: document.querySelectorAll('.fate-quest-card')[1]?.textContent.trim() || '',
+            placeholderImageSrc: document.querySelector('.fate-photo-dialog-image')?.getAttribute('src') || '',
             headerDisplay: getComputedStyle(document.querySelector('.site-header')).display,
             footerDisplay: getComputedStyle(document.querySelector('.site-footer')).display,
             topExitText: topExit.textContent.trim(),
@@ -1544,6 +1625,7 @@ async function main() {
             logListColumns,
             logCardRects,
             photoCount: document.querySelectorAll('.fate-log-photo img').length,
+            photoTriggerCount: document.querySelectorAll('.fate-log-photo-trigger').length,
           };
         });
         await page.click('.fate-log-photo-trigger');
@@ -1560,9 +1642,27 @@ async function main() {
         await page.click('.fate-photo-dialog-close');
         const closeLightboxMetrics = await page.evaluate(() => {
           const dialog = document.querySelector('.fate-photo-dialog');
+          const image = document.querySelector('.fate-photo-dialog-image');
 
           return {
             open: Boolean(dialog?.open),
+            imageSrc: image?.getAttribute('src') || '',
+            imageAlt: image?.getAttribute('alt') || '',
+          };
+        });
+        await page.click('.fate-log-photo-trigger');
+        await page.evaluate(() => {
+          const dialog = document.querySelector('.fate-photo-dialog');
+          dialog?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+        const backdropCloseMetrics = await page.evaluate(() => {
+          const dialog = document.querySelector('.fate-photo-dialog');
+          const image = document.querySelector('.fate-photo-dialog-image');
+
+          return {
+            open: Boolean(dialog?.open),
+            imageSrc: image?.getAttribute('src') || '',
+            imageAlt: image?.getAttribute('alt') || '',
           };
         });
         const screenshot = await page.screenshot({ fullPage: false });
@@ -1600,6 +1700,7 @@ async function main() {
         assert(visualMetrics.sectionCount >= 5, `Fate ${viewport.label} render should include tracker sections`, errors);
         assert(visualMetrics.heroCardCount === 5, `Fate ${viewport.label} render should include only tracked hero cards`, errors);
         assert(visualMetrics.questCardCount === 3, `Fate ${viewport.label} render should include only tracked quest cards`, errors);
+        assert(visualMetrics.photoTriggerCount === 1, `Fate ${viewport.label} render should include one photo trigger for the one imaged fixture session`, errors);
         assert(visualMetrics.requiredHeroCardCount === 1, `Fate ${viewport.label} render should mark Frodo and Sam as the required hero card`, errors);
         assert(visualMetrics.requiredQuestCardCount === 1, `Fate ${viewport.label} render should mark Destroy the One Ring as the required quest card`, errors);
         assert(
@@ -1645,6 +1746,11 @@ async function main() {
           errors
         );
         assert(!closeLightboxMetrics.open, `Fate ${viewport.label} photo lightbox should close when the close button is clicked`, errors);
+        assert(closeLightboxMetrics.imageSrc === visualMetrics.placeholderImageSrc, `Fate ${viewport.label} photo lightbox should reset the image source after close-button dismissal`, errors);
+        assert(closeLightboxMetrics.imageAlt === '', `Fate ${viewport.label} photo lightbox should clear alt text after close-button dismissal`, errors);
+        assert(!backdropCloseMetrics.open, `Fate ${viewport.label} photo lightbox should close when the backdrop is clicked`, errors);
+        assert(backdropCloseMetrics.imageSrc === visualMetrics.placeholderImageSrc, `Fate ${viewport.label} photo lightbox should reset the image source after backdrop dismissal`, errors);
+        assert(backdropCloseMetrics.imageAlt === '', `Fate ${viewport.label} photo lightbox should clear alt text after backdrop dismissal`, errors);
         assert(
           visualMetrics.pageBackground.includes('linear-gradient') || visualMetrics.pageBackground.includes('radial-gradient'),
           `Fate ${viewport.label} render should include themed page background`,
