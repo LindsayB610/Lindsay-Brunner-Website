@@ -27,7 +27,20 @@ assert(netlifyConfig.includes('command = "npm ci && npm run build"'), 'Netlify s
 assert(!netlifyConfig.includes('npm install'), 'Netlify config should not use npm install in any deploy context');
 assert(netlifyConfig.includes('[build.environment]'), 'Netlify should define shared build environment variables');
 assert(netlifyConfig.includes('HUGO_VERSION = "0.152.2"'), 'Netlify should pin Hugo 0.152.2');
-assert(netlifyConfig.includes('NODE_VERSION = "20"'), 'Netlify should pin Node 20');
+const nodeMajor = fs.readFileSync(path.join(root, '.nvmrc'), 'utf8').trim();
+assert(nodeMajor === '24', 'Local development should use the supported Node 24 LTS line');
+assert(netlifyConfig.includes(`NODE_VERSION = "${nodeMajor}"`), 'Netlify and local development should use the same Node major');
+assert(packageJson.engines?.node === '>=24 <25', 'Package engines should describe the tested Node 24 runtime');
+for (const file of fs.readdirSync(path.join(root, '.github', 'workflows')).filter((file) => /\.ya?ml$/.test(file))) {
+  const workflow = require('js-yaml').load(fs.readFileSync(path.join(root, '.github', 'workflows', file), 'utf8'));
+  for (const job of Object.values(workflow.jobs || {})) {
+    for (const step of job.steps || []) {
+      if (step.uses?.startsWith('actions/setup-node@')) {
+        assert(String(step.with?.['node-version']) === nodeMajor, `${file} should use the same Node major as Netlify`);
+      }
+    }
+  }
+}
 assert(!packageJson.dependencies?.['hugo-bin'] && !packageJson.devDependencies?.['hugo-bin'], 'package.json should not depend on hugo-bin');
 assert(!packageLock.includes('node_modules/hugo-bin'), 'package-lock.json should not retain hugo-bin');
 assert(packageJson.scripts?.build?.includes('hugo --gc --minify --cleanDestinationDir'), 'The production build should invoke Hugo directly');
