@@ -6,9 +6,45 @@ function validateNavDropdownBehavior() {
 
   const errors = [];
   const headerPath = path.join(__dirname, '..', '..', 'layouts', 'partials', 'header.html');
+  const stylesheetPath = path.join(__dirname, '..', '..', 'static', 'css', 'main.css');
 
   try {
     const headerContent = fs.readFileSync(headerPath, 'utf8');
+    const stylesheetContent = fs.readFileSync(stylesheetPath, 'utf8');
+
+    const mainNav = headerContent.match(/<nav\b[^>]*class="main-nav"[^>]*>([\s\S]*?)<\/nav>/);
+    const topLevelNav = (mainNav?.[1] || '').replace(/<ul class="dropdown-menu">[\s\S]*?<\/ul>/, '');
+    const navItems = Array.from(topLevelNav.matchAll(/<(a|summary)\b([^>]*)>([\s\S]*?)<\/\1>/g))
+      .map(([, tag, attributes, content]) => ({
+        tag,
+        attributes,
+        label: content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+      }));
+    const expectedLabels = ['About', 'Blog', 'Hello, Piper™', 'Workshop', 'More'];
+    const actualLabels = navItems.map(item => item.label);
+
+    if (actualLabels.join('|') !== expectedLabels.join('|')) {
+      errors.push(`Main navigation must read ${expectedLabels.join(' → ')}; found ${actualLabels.join(', ')}`);
+    }
+
+    const piperLink = navItems.find(item => item.tag === 'a' && item.label === 'Hello, Piper™');
+    const piperHref = piperLink?.attributes.match(/\bhref=["']([^"']*)["']/)?.[1];
+    if (piperHref !== 'https://hellopiper.world/') {
+      errors.push('Main navigation Hello, Piper™ link must point to https://hellopiper.world/');
+    }
+    if (!piperLink?.attributes.match(/\btarget=["']_blank["']/)) {
+      errors.push('Main navigation Hello, Piper™ link must open in a new tab');
+    }
+    if (!piperLink?.attributes.match(/\brel=["']noopener["']/)) {
+      errors.push('Main navigation Hello, Piper™ link must use noopener');
+    }
+
+    if (!stylesheetContent.includes('.main-nav > ul {\n    flex-wrap: wrap;')) {
+      errors.push('Responsive main navigation must allow top-level items to wrap');
+    }
+    if (!stylesheetContent.includes('.main-nav > ul > li > a {\n    white-space: nowrap;')) {
+      errors.push('Responsive main navigation links must keep labels together');
+    }
 
     if (!headerContent.includes('querySelectorAll(".nav-dropdown details[open]")')) {
       errors.push('Header dropdown must target open nav dropdown details elements');

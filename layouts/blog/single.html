@@ -143,6 +143,11 @@
 
 <section class="section bg-surface no-print">
   <div class="container-narrow text-center">
+    {{ with .Params.article_cta }}
+      <h3>{{ .heading }}</h3>
+      <p>{{ .body }}</p>
+      <a href="{{ .url }}" class="hero-cta" target="_blank" rel="noopener">{{ .label }}</a>
+    {{ else }}
     <h3>Found this useful?</h3>
     <p>
       Follow me for more insights on developer advocacy, technical leadership,
@@ -165,6 +170,7 @@
         >Follow me</a
       >
     </div>
+    {{ end }}
   </div>
 </section>
 

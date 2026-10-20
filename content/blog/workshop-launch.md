@@ -2,7 +2,7 @@
 title: "Meet Workshop, My App for Other Apps"
 date: 2026-08-17
 slug: "workshop-launch"
-description: "Workshop is a macOS shell for small, local-first tools that need a useful home."
+description: "Workshop is a macOS shell for small, local-first tools, giving scattered scripts and apps a shared home without turning them into a monolith."
 subtitle: "Or: What happens after you build the useful little thing."
 draft: false
 social_image: "/images/social/workshop-launch-og-1200x630.png"

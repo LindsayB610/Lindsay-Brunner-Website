@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1600 560" role="img" aria-labelledby="title desc">
+  <title id="title">Codex usage display architecture</title>
+  <desc id="desc">The signed-in Codex app passes local usage data through a privacy filter and USB connection to an ESP32 that draws the e-paper screen.</desc>
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff0037"/>
+      <stop offset="0.52" stop-color="#ff1b8d"/>
+      <stop offset="1" stop-color="#ffdd00"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#ff1b8d"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="560" fill="#000000"/>
+  <text x="80" y="86" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">How the display gets one trustworthy number</text>
+  <rect x="80" y="138" width="1440" height="4" rx="2" fill="url(#accent)"/>
+
+  <g font-family="Space Grotesk, Arial, sans-serif">
+    <rect x="80" y="212" width="250" height="170" rx="22" fill="#0f0f0f" stroke="#3a3a3a" stroke-width="2"/>
+    <text x="205" y="274" text-anchor="middle" fill="#ffffff" font-size="29" font-weight="700">Signed-in Codex</text>
+    <text x="205" y="321" text-anchor="middle" fill="#bdbdbd" font-size="22">Local usage source</text>
+
+    <path d="M 347 297 L 408 297" stroke="#ff1b8d" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <rect x="430" y="212" width="300" height="170" rx="22" fill="#0f0f0f" stroke="#3a3a3a" stroke-width="2"/>
+    <text x="580" y="268" text-anchor="middle" fill="#ffffff" font-size="29" font-weight="700">Mac service</text>
+    <text x="580" y="310" text-anchor="middle" fill="#bdbdbd" font-size="22">Selects the weekly window</text>
+    <text x="580" y="342" text-anchor="middle" fill="#bdbdbd" font-size="22">and removes private fields</text>
+
+    <path d="M 747 297 L 808 297" stroke="#ff1b8d" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="778" y="274" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700">USB</text>
+
+    <rect x="830" y="212" width="250" height="170" rx="22" fill="#0f0f0f" stroke="#3a3a3a" stroke-width="2"/>
+    <text x="955" y="274" text-anchor="middle" fill="#ffffff" font-size="29" font-weight="700">ESP32</text>
+    <text x="955" y="321" text-anchor="middle" fill="#bdbdbd" font-size="22">Draws and confirms</text>
+
+    <path d="M 1097 297 L 1158 297" stroke="#ff1b8d" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <rect x="1180" y="212" width="340" height="170" rx="22" fill="#f5f2e6" stroke="#ffffff" stroke-width="2"/>
+    <text x="1210" y="255" fill="#111413" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="700">CODEX / WEEK</text>
+    <text x="1210" y="326" fill="#111413" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="63" font-weight="900">72%</text>
+    <text x="1390" y="299" fill="#111413" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" font-weight="800">6d 12h</text>
+    <text x="1210" y="356" fill="#111413" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700">LAST REFRESH 8:45 PM</text>
+  </g>
+
+  <text x="80" y="464" fill="#ffffff" font-family="Space Grotesk, Arial, sans-serif" font-size="26" font-weight="700">Authentication stays on the Mac.</text>
+  <text x="80" y="505" fill="#bdbdbd" font-family="Space Grotesk, Arial, sans-serif" font-size="23">The ESP32 receives only the values it needs to draw the screen.</text>
+</svg>

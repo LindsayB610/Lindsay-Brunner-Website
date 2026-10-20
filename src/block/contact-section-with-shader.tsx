@@ -113,9 +113,16 @@ const testimonials = [
   },
   {
     quote:
+      "She's practical in a way I trust. … Any content team is better with her on it. I'd work with her on anything.",
+    name: "Alice Alexandra Moore",
+    designation: "Developer Experience, Builder.io",
+    avatar: "/images/testimonials/alice-alexandra-moore.jpg",
+  },
+  {
+    quote:
       "She has an incredible ability to balance big-picture strategy with genuine care for the people she works with.",
     name: "Scott McAllister",
-    designation: "Principal Developer Advocate, vCluster",
+    designation: "Community Evangelist, F5",
     avatar: "/images/testimonials/scott-mcallister.jpg",
   },
   {

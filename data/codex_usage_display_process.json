@@ -1,0 +1,228 @@
+[
+  {
+    "phase": "Screen design",
+    "src": "/images/blog/codex-usage-display/process/01-screen-portrait-directions.webp",
+    "alt": "Three early portrait interface directions for the small e-paper display",
+    "caption": "The first screen concepts assumed portrait orientation. The actual desk did not agree."
+  },
+  {
+    "phase": "Screen design",
+    "src": "/images/blog/codex-usage-display/process/02-screen-landscape-first-pass.webp",
+    "alt": "First landscape screen layout with remaining usage, reset timing, and reset credits",
+    "caption": "The first landscape pass established the basic information hierarchy.",
+    "fit": "contain"
+  },
+  {
+    "phase": "Screen design",
+    "src": "/images/blog/codex-usage-display/process/03-screen-last-refresh-revision.webp",
+    "alt": "Landscape screen revision with a last refresh timestamp beneath the usage bar",
+    "caption": "Adding the last-refresh time made stale data visible instead of merely suspicious.",
+    "fit": "contain"
+  },
+  {
+    "phase": "Screen design",
+    "src": "/images/blog/codex-usage-display/process/04-screen-final-layout.webp",
+    "alt": "Approved display mock with remaining usage on the left and reset information on the right",
+    "caption": "The approved mock still put the percentage on the left and reset information on the right.",
+    "fit": "contain"
+  },
+  {
+    "phase": "Hardware implementation",
+    "src": "/images/blog/codex-usage-display/screen-implemented-hardware-layout.svg",
+    "alt": "Implemented hardware layout with reset information on the left and remaining usage on the right",
+    "caption": "Elecrow's mirrored landscape X-axis sent the two columns to opposite sides on the physical panel. The result worked, so it became the real layout.",
+    "fit": "contain"
+  },
+  {
+    "phase": "Enclosure concepts",
+    "src": "/images/blog/codex-usage-display/process/05-enclosure-first-easel.webp",
+    "alt": "Early bulky easel-style enclosure concept",
+    "caption": "The first enclosure was an easel. It was also far too much enclosure for this amount of screen."
+  },
+  {
+    "phase": "CAD revisions",
+    "src": "/images/blog/codex-usage-display/process/07-cad-picture-frame-first-pass.webp",
+    "alt": "First CAD pass for a picture-frame enclosure with a removable side piece",
+    "caption": "The first picture-frame CAD pass introduced the removable side stile."
+  },
+  {
+    "phase": "CAD revisions",
+    "src": "/images/blog/codex-usage-display/process/08-cad-thin-rim-revision.webp",
+    "alt": "Thinner-rim CAD revision with an offset right side",
+    "caption": "The bezel got leaner, but the right-side shoulder still looked like an unexplained accident."
+  },
+  {
+    "phase": "CAD revisions",
+    "src": "/images/blog/codex-usage-display/process/09-cad-final-asymmetric-system.webp",
+    "alt": "Measured asymmetric frame proposal with the right edge wider than the other sides",
+    "caption": "We tried making one side wider instead of adding a shoulder. Better, still not the final answer."
+  },
+  {
+    "phase": "CAD revisions",
+    "src": "/images/blog/codex-usage-display/process/10-cad-cable-routing.webp",
+    "alt": "Rear CAD view showing the right-angle USB-C cable routed through the stand",
+    "caption": "The right-angle cable needed a real path through the bottom and out the back."
+  },
+  {
+    "phase": "CAD revisions",
+    "src": "/images/blog/codex-usage-display/process/11-cad-final-exact-assembly.webp",
+    "alt": "Purple CAD rendering of the assembled frame, display, back, and leg",
+    "caption": "The first complete parametric assembly looked extremely plausible on a screen. Physical reality was waiting."
+  },
+  {
+    "phase": "CAD revisions",
+    "src": "/images/blog/codex-usage-display/process/12-cad-final-print-parts.webp",
+    "alt": "CAD rendering of the four original printable enclosure parts",
+    "caption": "V1 went to the printer as four parts: frame, backplate, side stile, and leg."
+  },
+  {
+    "phase": "Print V1",
+    "src": "/images/blog/codex-usage-display/process/14-print-start-bed-overview.webp",
+    "alt": "First enclosure print beginning on the textured Bambu build plate",
+    "caption": "The first physical enclosure began face-down on the textured plate."
+  },
+  {
+    "phase": "Print V1",
+    "src": "/images/blog/codex-usage-display/process/20-first-print-parts-off-plate.webp",
+    "alt": "The four pieces from the first print laid out on a desk",
+    "caption": "All four V1 pieces printed cleanly. Nothing meaningful retained them."
+  },
+  {
+    "phase": "Print V1",
+    "src": "/images/blog/codex-usage-display/process/24-first-print-user-view-close.jpg",
+    "alt": "First printed enclosure propped beneath the monitor from the seated viewing position",
+    "caption": "The taped-together V1 established the real scale and showed that the frame needed a backward lean."
+  },
+  {
+    "phase": "Print V2",
+    "src": "/images/blog/codex-usage-display/process/25-v2-print-on-plate.webp",
+    "alt": "V2 enclosure pieces completed on the textured build plate",
+    "caption": "V2 made the front continuous and moved more structure into the back."
+  },
+  {
+    "phase": "Print V2",
+    "src": "/images/blog/codex-usage-display/process/27-v2-frame-spaghetti-wide.webp",
+    "alt": "V2 frame held up to show failed unsupported strands inside one edge",
+    "caption": "Unsupported geometry supplied the inevitable serving of purple spaghetti."
+  },
+  {
+    "phase": "Print V2",
+    "src": "/images/blog/codex-usage-display/process/29-v2-front-face.webp",
+    "alt": "V2 frame and rear pieces shown from the front",
+    "caption": "The seamless front was right. The retention strategy and internal depth were not."
+  },
+  {
+    "phase": "V3 redesign",
+    "src": "/images/blog/codex-usage-display/process/39-v3-cad-deeper-magnetic-rear.webp",
+    "alt": "CAD view of the deeper V3 rear cavity and magnetic backplate",
+    "caption": "V3 rebuilt the rear around measured hardware depth and a magnetic cover."
+  },
+  {
+    "phase": "V3 redesign",
+    "src": "/images/blog/codex-usage-display/process/40-v3-cad-60-degree-posture.webp",
+    "alt": "CAD side view of the enclosure leaning back at 60 degrees from the desk",
+    "caption": "The corrected posture put the display 60 degrees from the desk, finally leaning the useful direction."
+  },
+  {
+    "phase": "V3 redesign",
+    "src": "/images/blog/codex-usage-display/process/41-v3-cad-seamless-front.webp",
+    "alt": "Front CAD view of the uninterrupted symmetric V3 frame",
+    "caption": "The front became one quiet, symmetric piece aligned to the active pixels."
+  },
+  {
+    "phase": "Print V3",
+    "src": "/images/blog/codex-usage-display/process/43-v3-print-run-3-first-layer-three-parts.webp",
+    "alt": "V3 frame, backplate, and leg beginning on the textured build plate",
+    "caption": "V3 reduced the enclosure to three printable parts."
+  },
+  {
+    "phase": "Print V3",
+    "src": "/images/blog/codex-usage-display/process/46-v3-printed-parts-overview.webp",
+    "alt": "The three completed V3 enclosure parts arranged on the desk",
+    "caption": "The completed V3 parts: seamless frame, magnetic backplate, and removable leg."
+  },
+  {
+    "phase": "Print V3",
+    "src": "/images/blog/codex-usage-display/process/49-v3-front-face-textured-plate-finish.webp",
+    "alt": "Close front view of the V3 frame showing its textured plate finish",
+    "caption": "Printing face-down gave the bezel the build plate's texture. Good, but busier than I wanted at this scale."
+  },
+  {
+    "phase": "V3 fit testing",
+    "src": "/images/blog/codex-usage-display/process/50-v3-magnet-installation-and-glue.webp",
+    "alt": "V3 frame, magnets, and cyanoacrylate glue arranged for installation",
+    "caption": "The first magnetic retention test began with very tiny magnets and a deeply unhelpful amount of superglue."
+  },
+  {
+    "phase": "V3 fit testing",
+    "src": "/images/blog/codex-usage-display/process/54-v3-excess-cavity-depth-retention-test-b-raised.jpg",
+    "alt": "Hand-held V3 enclosure demonstrating excess space behind the screen",
+    "caption": "Then we discovered the cavity was too generous. The display could fall away from the front window."
+  },
+  {
+    "phase": "V3 fit testing",
+    "src": "/images/blog/codex-usage-display/process/58-v3-three-magnet-stack-cover-lip-side-view.webp",
+    "alt": "Side view of a three-magnet test stack leaving the V3 rear cover slightly proud",
+    "caption": "Three stacked magnets proved the pocket depth was off by approximately one printed layer."
+  },
+  {
+    "phase": "V3 fit testing",
+    "src": "/images/blog/codex-usage-display/process/62-v3-rear-leg-cable-and-table-interaction.webp",
+    "alt": "V3 rear leg and USB-C cable shown where they meet the desk",
+    "caption": "The viewing angle worked, but the leg touched on one corner and the cable tunnel needed more height."
+  },
+  {
+    "phase": "Print V4",
+    "src": "/images/blog/codex-usage-display/process/63-v4-smooth-plate-print-in-progress-bed-overview.webp",
+    "alt": "V4 enclosure printing face-down on the smooth build plate",
+    "caption": "V4 moved to the smooth plate and corrected the cavity, feet, leg, cable tunnel, and magnet pockets."
+  },
+  {
+    "phase": "Print V4",
+    "src": "/images/blog/codex-usage-display/process/66-v4-smooth-plate-test-fit-parts-and-magnet-pockets.webp",
+    "alt": "Completed V4 frame, backplate, and leg before magnet installation",
+    "caption": "The finished V4 parts before magnets, with all four corner pockets visible."
+  },
+  {
+    "phase": "V4 assembly",
+    "src": "/images/blog/codex-usage-display/process/69-v4-magnet-installation-blog-select.webp",
+    "alt": "Four magnets being installed into the corners of the V4 frame",
+    "caption": "Four frame magnets cured in the corrected corner pockets."
+  },
+  {
+    "phase": "V4 assembly",
+    "src": "/images/blog/codex-usage-display/process/72-v4-magnet-installation-phase-2-blog-select-uncropped.webp",
+    "alt": "V4 rear cover aligned over the frame during the second magnet-installation stage",
+    "caption": "The mating magnets were aligned by letting the frame hold the rear cover in position."
+  },
+  {
+    "phase": "V4 assembly",
+    "src": "/images/blog/codex-usage-display/process/73-v4-final-magnets-frame-and-backplate.webp",
+    "alt": "V4 frame and backplate separated with all eight magnets installed",
+    "caption": "All eight magnets installed, with the frame and backplate finally behaving like one object."
+  },
+  {
+    "phase": "V4 assembly",
+    "src": "/images/blog/codex-usage-display/process/75-v4-final-assembled-side-profile.webp",
+    "alt": "Side profile of the assembled V4 enclosure showing its backward lean",
+    "caption": "The corrected feet and leg put the screen at the intended reading angle."
+  },
+  {
+    "phase": "V4 assembly",
+    "src": "/images/blog/codex-usage-display/process/77-v4-final-assembled-rear-leg-and-cable-tunnel.webp",
+    "alt": "Rear view of V4 showing the removable leg and USB-C cable tunnel",
+    "caption": "The final rear geometry leaves a clear route for the right-angle USB-C cable."
+  },
+  {
+    "phase": "Finished display",
+    "src": "/images/blog/codex-usage-display/process/79-v4-final-powered-three-quarter-glamour.webp",
+    "alt": "Finished powered purple e-paper display photographed from three quarters",
+    "caption": "The finished object: smooth purple bezel, readable screen, magnetic back, and no unexplained shoulder."
+  },
+  {
+    "phase": "Finished display",
+    "src": "/images/blog/codex-usage-display/process/80-v4-final-in-situ-close-with-astronaut.webp",
+    "alt": "Finished Codex usage display beneath the monitor beside a small astronaut figure",
+    "caption": "In its actual habitat under the monitor, quietly tattling on my remaining Codex budget."
+  }
+]

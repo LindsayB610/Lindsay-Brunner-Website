@@ -7,15 +7,25 @@
 
 const fs = require('fs');
 const path = require('path');
+const assert = require('assert/strict');
 
 const repoRoot = path.join(__dirname, '..');
-const forbiddenTerms = [
-  ['mast', 'er'].join(''),
-  ['origin/', 'mast', 'er'].join(''),
-  ['refs/heads/', 'mast', 'er'].join(''),
-  ['/mast', 'er/'].join(''),
-  ['ai_', 'mast', 'er'].join(''),
-];
+const deprecatedBranchName = ['mast', 'er'].join('');
+const forbiddenReference = new RegExp(`(^|[^a-z0-9])${deprecatedBranchName}($|[^a-z0-9])`, 'i');
+
+function containsForbiddenReference(line) {
+  return forbiddenReference.test(line);
+}
+
+function verifyMatcher() {
+  const branch = deprecatedBranchName;
+  for (const line of [branch, `origin/${branch}`, `refs/heads/${branch}`, `/${branch}/`, `ai_${branch}`]) {
+    assert(containsForbiddenReference(line), `Should detect deprecated branch reference: ${line}`);
+  }
+  for (const line of ['Masterpoint PR #163', `not ${branch}y`, `web${branch}`]) {
+    assert(!containsForbiddenReference(line), `Should ignore a word containing the branch name: ${line}`);
+  }
+}
 
 const ignoredDirs = new Set([
   '.git',
@@ -82,13 +92,11 @@ function findForbiddenReferences() {
     const lines = contents.split(/\r?\n/);
 
     lines.forEach((line, index) => {
-      const lowerLine = line.toLowerCase();
-      const matchedTerm = forbiddenTerms.find((term) => lowerLine.includes(term));
-      if (matchedTerm) {
+      if (containsForbiddenReference(line)) {
         findings.push({
           file: relativePath,
           line: index + 1,
-          term: matchedTerm,
+          term: deprecatedBranchName,
           text: line.trim(),
         });
       }
@@ -100,6 +108,7 @@ function findForbiddenReferences() {
 
 function main() {
   console.log('🧭 Validating default branch references...');
+  verifyMatcher();
 
   const findings = findForbiddenReferences();
   if (findings.length > 0) {

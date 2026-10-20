@@ -147,7 +147,7 @@ function checkBuiltFallbacks() {
     'Developer audience research',
     'Mentorship and enablement',
     'Trusted by the best',
-    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, Split, and Parasail.',
+    'Companies Lindsay has worked with include Okta, Braze, Builder.io, ngrok, Split, Parasail, and Masterpoint.',
     'Samples beat adjectives',
     'A tiny desktop home for the tools I actually use.',
     'I built this',
@@ -535,12 +535,14 @@ function checkHomepageSourceContent() {
     'Builder.io',
     'Braze',
     'Parasail',
+    'Masterpoint',
     '/images/logos/okta.svg',
     '/images/logos/braze.svg',
     '/images/logos/builder.svg',
     '/images/logos/ngrok.svg',
     '/images/logos/split.svg',
     '/images/logos/parasail.png',
+    '/images/logos/masterpoint.svg',
     'Companies Lindsay has worked with',
     'Trusted by the best',
     'Samples beat adjectives',
@@ -673,7 +675,7 @@ function checkHomepageSourceContent() {
   const logoSources = [...logoCloud.matchAll(/src: "([^"]+)"/g)].map((match) => match[1]);
   const uniqueLogoTitles = new Set(logoTitles);
   const uniqueLogoSources = new Set(logoSources);
-  assert(logoTitles.length === 6, 'homepage logo cloud should define exactly one source entry per company');
+  assert(logoTitles.length === 7, 'homepage logo cloud should define exactly one source entry per company');
   assert(
     uniqueLogoTitles.size === logoTitles.length,
     'homepage logo cloud should not define duplicate company titles',
@@ -685,6 +687,10 @@ function checkHomepageSourceContent() {
   assert(
     uniqueLogoTitles.size > 5,
     'homepage logo cloud should have more unique companies than visible slots so rotation never repeats a visible logo',
+  );
+  assert(
+    /title: "Masterpoint"[\s\S]*?className: "h-6 max-w-\[142px\] brightness-0 invert"/.test(logoCloud),
+    'Masterpoint logo should keep the monochrome reel treatment',
   );
 
   [
@@ -819,12 +825,16 @@ function checkTestimonials() {
   );
 
   [
+    'Alice Alexandra Moore',
+    'Developer Experience, Builder.io',
+    "She's practical in a way I trust. … Any content team is better with her on it. I'd work with her on anything.",
+    '/images/testimonials/alice-alexandra-moore.jpg',
     'Steve Sewell',
     'CEO, Builder.io',
     'Kaitlyn Barnard',
     'Product Marketing, Apollo GraphQL',
     'Scott McAllister',
-    'Principal Developer Advocate, vCluster',
+    'Community Evangelist, F5',
     'Randall Degges',
     'VP Developer Relations, Snyk',
     '/images/testimonials/steve-sewell.jpg',
@@ -855,6 +865,17 @@ function checkTestimonials() {
     'kaitlyn-barnard.jpg",\n  },\n  {\n    quote:\n      "Lindsay just gets it',
     'contact testimonial ordering',
   );
+
+  const testimonialNames = [...testimonialBlock.matchAll(/name: "([^"]+)"/g)].map((match) => match[1]);
+  assert(
+    testimonialNames.join(' > ') ===
+      'Steve Sewell > Kaitlyn Barnard > Alice Alexandra Moore > Scott McAllister > Randall Degges > Kaitlyn Barnard',
+    'contact testimonials should keep the approved rotation order',
+  );
+  assert(
+    testimonialBlock.includes('name: "Scott McAllister",\n    designation: "Community Evangelist, F5"'),
+    'Scott testimonial should use the current F5 designation',
+  );
 }
 
 function checkLogoAssets() {
@@ -867,6 +888,7 @@ function checkLogoAssets() {
     'static/images/logos/ngrok.svg',
     'static/images/logos/split.svg',
     'static/images/logos/parasail.png',
+    'static/images/logos/masterpoint.svg',
   ].forEach((asset) => {
     assert(exists(asset), `${asset} should exist for the homepage logo cloud`);
     if (asset.endsWith('.svg')) {
@@ -881,6 +903,7 @@ function checkTestimonialAssets() {
   console.log('🖼️  Checking testimonial headshot assets...');
 
   [
+    'static/images/testimonials/alice-alexandra-moore.jpg',
     'static/images/testimonials/steve-sewell.jpg',
     'static/images/testimonials/kaitlyn-barnard.jpg',
     'static/images/testimonials/scott-mcallister.jpg',

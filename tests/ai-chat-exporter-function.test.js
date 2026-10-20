@@ -152,6 +152,14 @@ async function run() {
   assert(claudeMalformedJsonResponse.status === 400, 'malformed Claude snapshot JSON should return 400', failures);
   assert((await claudeMalformedJsonResponse.json()).error === 'Paste valid Claude snapshot JSON.', 'malformed Claude snapshot JSON should be user-readable', failures);
 
+  const missingClaudeShareLinkResponse = await postJson(handler, {
+    provider: 'claude',
+    mode: 'share-link',
+    format: 'markdown',
+  });
+  assert(missingClaudeShareLinkResponse.status === 400, 'missing Claude share link should return 400', failures);
+  assert((await missingClaudeShareLinkResponse.json()).error === 'Use a public Claude share URL.', 'missing Claude share link should reuse the Claude validation message', failures);
+
   const claudeUnsupportedJsonResponse = await postJson(handler, {
     provider: 'claude',
     mode: 'snapshot-json',
@@ -262,6 +270,30 @@ async function run() {
   assert(claudeMarkdownResponse.headers.get('Content-Type').includes('text/markdown'), 'mock Claude Markdown export should set text/markdown content type', failures);
   assert(claudeMarkdownResponse.headers.get('Content-Disposition').includes('.md'), 'mock Claude Markdown export should set a Markdown filename', failures);
   assert(claudeMarkdownResponse.headers.get('Cache-Control') === 'no-store', 'mock Claude Markdown export should prevent caching', failures);
+
+  let claudeShareLinkRequest = null;
+  const claudeShareLinkResponse = await postJson(handleExportChatRequest, {
+    provider: 'claude',
+    mode: 'share-link',
+    sharedUrl: 'https://claude.ai/share/mock-thread',
+    format: 'markdown',
+  }, {
+    exportChat: async (request) => {
+      claudeShareLinkRequest = request;
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: {
+          'Cache-Control': 'no-store',
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        status: 200,
+      });
+    },
+  });
+  assert(claudeShareLinkResponse.status === 200, 'valid Claude share-link requests should reach the injected exporter dependency', failures);
+  assert(claudeShareLinkRequest.provider === 'claude', 'Claude share-link requests should pass provider claude to the exporter dependency', failures);
+  assert(claudeShareLinkRequest.mode === 'share-link', 'Claude share-link requests should pass share-link mode to the exporter dependency', failures);
+  assert(claudeShareLinkRequest.sharedUrl === 'https://claude.ai/share/mock-thread', 'Claude share-link requests should pass the validated share URL to the exporter dependency', failures);
+  assert(claudeShareLinkRequest.format === 'markdown', 'Claude share-link requests should preserve the selected format', failures);
 
   const markdownResponse = await postJson(handleExportChatRequest, {
     sharedUrl: 'https://chatgpt.com/share/mock-thread',
