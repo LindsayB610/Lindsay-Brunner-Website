@@ -28,3 +28,10 @@
 
 /*.svg
   Cache-Control: public, max-age=31536000
+
+# Unlisted family catalog and its images
+/christmas-2026-lucas
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/christmas-2026-lucas/*
+  X-Robots-Tag: noindex, nofollow, noarchive

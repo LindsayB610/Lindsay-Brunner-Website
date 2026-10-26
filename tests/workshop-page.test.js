@@ -205,8 +205,14 @@ function testRenderedContracts() {
 
   assert(rendered.includes('/css/workshop.css'), 'Rendered Workshop page should load its dedicated stylesheet');
   assert(
-    siteHtmlFiles.every((filePath) => read(filePath).includes(plausibleScriptUrl)),
-    'Every rendered HTML page should load the site-specific Plausible tracker',
+    siteHtmlFiles.every((filePath) => {
+      // The standalone, unlisted family catalog preserves its supplied HTML.
+      if (filePath === path.join(publicDir, 'christmas-2026-lucas', 'index.html')) {
+        return read(filePath).includes('content="noindex, nofollow, noarchive"');
+      }
+      return read(filePath).includes(plausibleScriptUrl);
+    }),
+    'Site pages should load Plausible; the unlisted family catalog must remain noindex',
   );
   assert(rendered.includes(`src=${workshopMark}`), 'Rendered Workshop page should include the Workshop mark');
   assert(rendered.includes(`https://lindsaybrunner.com${workshopOgImage}`), 'Rendered Workshop page should expose its page-specific Open Graph image');
