@@ -15,3 +15,5 @@ Final `npm test` exits0, full-suite-final.log. Includes builds, HTML,725-link cr
 About source-height regression was caught by the full suite, repaired in17 for JS/noJS, and independently cleared across40geometry measurements. JS layout exactly restores baseline; noJS remains square at the earlier deliberate192/252fallback alignment, not its old260/320size. Workshop parsed contracts independently reject12bad-markup mutations. All scoped reviews READY; all child chats archived.
 
 Publication remains next; remote exact SHA, live delivery and headers will be recorded separately.
+
+Committed log copies normalize trailing whitespace only; original command logs remain under /tmp.

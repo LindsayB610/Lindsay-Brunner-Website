@@ -97,19 +97,19 @@ assets/react/assets/contact-section-with-shader-C9QAYfx-.js   40.18 kB │ gzip:
 assets/react/assets/styles-DocxM2ZR.js                       315.64 kB │ gzip: 100.40 kB
 
 ✓ built in 437ms
-Start building sites … 
+Start building sites …
 hugo v0.152.2-6abdacad3f3fe944ea42177844469139e81feda6 darwin/arm64 BuildDate=2025-10-24T15:31:49Z VendorInfo=gohugoio
 
 
-                  │ EN  
+                  │ EN
 ──────────────────┼─────
- Pages            │  97 
- Paginator pages  │   0 
- Non-page files   │   0 
- Static files     │ 295 
- Processed images │   0 
- Aliases          │   0 
- Cleaned          │   0 
+ Pages            │  97
+ Paginator pages  │   0
+ Non-page files   │   0
+ Static files     │ 295
+ Processed images │   0
+ Aliases          │   0
+ Cleaned          │   0
 
 Total in 392 ms
 

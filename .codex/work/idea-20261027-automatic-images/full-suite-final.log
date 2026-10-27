@@ -101,19 +101,19 @@ assets/react/assets/contact-section-with-shader-DgGHtlO2.js   40.18 kB │ gzip:
 assets/react/assets/styles-DHxADz6K.js                       315.64 kB │ gzip: 100.40 kB
 
 ✓ built in 520ms
-Start building sites … 
+Start building sites …
 hugo v0.152.2-6abdacad3f3fe944ea42177844469139e81feda6 darwin/arm64 BuildDate=2025-10-24T15:31:49Z VendorInfo=gohugoio
 
 
-                  │ EN  
+                  │ EN
 ──────────────────┼─────
- Pages            │  97 
- Paginator pages  │   0 
- Non-page files   │   0 
- Static files     │ 295 
- Processed images │   0 
- Aliases          │   0 
- Cleaned          │   0 
+ Pages            │  97
+ Paginator pages  │   0
+ Non-page files   │   0
+ Static files     │ 295
+ Processed images │   0
+ Aliases          │   0
+ Cleaned          │   0
 
 Total in 423 ms
 
@@ -255,19 +255,19 @@ assets/react/assets/contact-section-with-shader-DgGHtlO2.js   40.18 kB │ gzip:
 assets/react/assets/styles-DHxADz6K.js                       315.64 kB │ gzip: 100.40 kB
 
 ✓ built in 434ms
-Start building sites … 
+Start building sites …
 hugo v0.152.2-6abdacad3f3fe944ea42177844469139e81feda6 darwin/arm64 BuildDate=2025-10-24T15:31:49Z VendorInfo=gohugoio
 
 
-                  │ EN  
+                  │ EN
 ──────────────────┼─────
- Pages            │  97 
- Paginator pages  │   0 
- Non-page files   │   0 
- Static files     │ 295 
- Processed images │   0 
- Aliases          │   0 
- Cleaned          │   0 
+ Pages            │  97
+ Paginator pages  │   0
+ Non-page files   │   0
+ Static files     │ 295
+ Processed images │   0
+ Aliases          │   0
+ Cleaned          │   0
 
 Total in 427 ms
 
@@ -2403,28 +2403,28 @@ Tests passed: 10
    ✓ recipe-90s-mom-sausage-rice-bake.md: ["dairy-free", "gluten-free"]
    ✓ recipe-air-fryer-sweet-potatoes.md: ["vegetarian", "vegan", "gluten-free", "dairy-free"]
    ✓ recipe-bachan-pulled-pork.md: ["dairy-free", "gluten-free"]
-   ✓ recipe-baked-ziti-beef-ragu.md: 
+   ✓ recipe-baked-ziti-beef-ragu.md:
    ✓ recipe-beer-bread.md: ["vegetarian"]
    ✓ recipe-chicken-legs-leftover-onion-bits.md: ["dairy-free", "gluten-free"]
    ✓ recipe-cinnamon-brown-sugar-candied-carrots.md: ["vegetarian"]
    ✓ recipe-cinnamon-pecan-coffee-cake-loaf.md: ["vegetarian"]
    ✓ recipe-consummate-chocolate-chip-cookies.md: ["vegetarian"]
    ✓ recipe-cream-cheese-mints.md: ["vegetarian", "gluten-free"]
-   ✓ recipe-cream-of-celery-chicken-and-rice.md: 
+   ✓ recipe-cream-of-celery-chicken-and-rice.md:
    ✓ recipe-creamy-polenta.md: ["vegetarian", "gluten-free"]
    ✓ recipe-deep-cozy-pantry-chili.md: ["dairy-free"]
    ✓ recipe-duck-fat-roasted-turkey-parts.md: ["dairy-free", "gluten-free"]
    ✓ recipe-easy-oven-bacon.md: ["dairy-free", "gluten-free"]
-   ✓ recipe-easy-sini-manti.md: 
+   ✓ recipe-easy-sini-manti.md:
    ✓ recipe-egg-salad-pickle-relish.md: ["vegetarian", "dairy-free", "gluten-free"]
    ✓ recipe-espresso-caramel-lebkuchen-swirl-blondies.md: ["vegetarian"]
-   ✓ recipe-extra-protein-pasta-e-fagioli.md: 
+   ✓ recipe-extra-protein-pasta-e-fagioli.md:
    ✓ recipe-garlic-in-oil-confit-roasted.md: ["vegan", "vegetarian", "dairy-free", "gluten-free"]
    ✓ recipe-german-inspired-carrot-almond-torte-loaf.md: ["vegetarian", "dairy-free"]
    ✓ recipe-golden-raisin-turkey-tacos.md: ["dairy-free"]
    ✓ recipe-grandma-yolas-pizzelles.md: ["vegetarian", "dairy-free"]
    ✓ recipe-herb-roasted-chicken-garlic-pepper-potatoes.md: ["dairy-free", "gluten-free"]
-   ✓ recipe-holiday-crunch-casserole.md: 
+   ✓ recipe-holiday-crunch-casserole.md:
    ✓ recipe-honey-mustard-pretzel-crunchies.md: ["vegetarian", "dairy-free"]
    ✓ recipe-leftover-steak-egg-bowls.md: ["gluten-free", "dairy-free"]
    ✓ recipe-marinated-bavette-steak-chimichurri.md: ["dairy-free", "gluten-free"]
@@ -2435,7 +2435,7 @@ Tests passed: 10
    ✓ recipe-same-day-oven-fried-buffalo-wings.md: ["gluten-free"]
    ✓ recipe-sausage-peppers-onions-over-rice.md: ["dairy-free", "gluten-free"]
    ✓ recipe-schmaltzy-chicken-thighs.md: ["dairy-free", "gluten-free"]
-   ✓ recipe-schmaltzy-potato-fritters.md: 
+   ✓ recipe-schmaltzy-potato-fritters.md:
    ✓ recipe-science-minded-church-picnic-potato-salad.md: ["vegetarian", "dairy-free", "gluten-free"]
    ✓ recipe-sheet-pan-doner-kebab.md: ["gluten-free"]
    ✓ recipe-sheet-pan-sausage-veg.md: ["dairy-free", "gluten-free"]
@@ -2444,12 +2444,12 @@ Tests passed: 10
    ✓ recipe-sous-vide-eye-of-round.md: ["gluten-free", "dairy-free"]
    ✓ recipe-sous-vide-pulled-pork-arbys-bbq.md: ["dairy-free", "gluten-free"]
    ✓ recipe-sous-vide-rack-of-lamb.md: ["dairy-free", "gluten-free"]
-   ✓ recipe-spaghetti-and-meatballs.md: 
+   ✓ recipe-spaghetti-and-meatballs.md:
    ✓ recipe-steak-bites-crispy-potatoes-peas.md: ["gluten-free"]
    ✓ recipe-sweet-moist-jiffy-corn-muffins.md: ["vegetarian"]
    ✓ recipe-sweet-potato-casserole.md: ["vegetarian"]
-   ✓ recipe-turkey-and-dumplings-with-onion-and-tarragon.md: 
-   ✓ recipe-turkey-wellington-sausage-roll.md: 
+   ✓ recipe-turkey-and-dumplings-with-onion-and-tarragon.md:
+   ✓ recipe-turkey-wellington-sausage-roll.md:
    ✓ recipe-ultra-concentrated-baked-potato-mashed-potatoes.md: ["vegetarian", "gluten-free"]
    ✓ recipe-weeknight-rice-pilaf.md: ["vegan", "dairy-free", "gluten-free"]
    ✓ recipe-weeknight-sausage-risotto.md: ["gluten-free"]
