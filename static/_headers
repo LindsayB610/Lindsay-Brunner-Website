@@ -35,3 +35,11 @@
 
 /christmas-2026-lucas/*
   X-Robots-Tag: noindex, nofollow, noarchive
+
+# Stable derivatives must revalidate in browsers AND at the Netlify edge.
+/_img/*
+  Cache-Control: public, max-age=0, must-revalidate
+  Netlify-CDN-Cache-Control: public, max-age=0, must-revalidate
+
+/_img/christmas-2026-lucas/*
+  X-Robots-Tag: noindex, nofollow, noarchive

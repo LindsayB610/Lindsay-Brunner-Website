@@ -12,3 +12,6 @@ node_modules
 *.backup
 static/images/social/working-files/*
 !static/images/social/working-files/fate-of-the-fellowship-og.svg
+
+/.cache/image-optimization/
+/.generated/images/
