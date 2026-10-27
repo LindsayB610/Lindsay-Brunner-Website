@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import sharp from "sharp";
 import { parse, serialize } from "parse5";
 import yaml from "js-yaml";
-import { imageConfig } from "./config.mjs";
+import { imageConfig, profiles } from "./config.mjs";
 import { canonicalImageUrl, resolveImage, parseSrcset } from "./resolver.mjs";
 const hash = (b) => crypto.createHash("sha256").update(b).digest("hex");
 const image = /\.(png|jpe?g|webp|avif|gif|svg)$/i;
@@ -95,7 +95,28 @@ async function sources(root) {
     }
     const fm = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
     if (!fm) throw new Error(`Unsupported bundle front matter: ${index}`);
-    const data = yaml.load(fm[1]);
+    const parsedData = yaml.load(fm[1]);
+    if (!parsedData || typeof parsedData !== "object" || Array.isArray(parsedData))
+      throw new Error(`Unsupported bundle front matter: ${index}`);
+    const data = Object.fromEntries(Object.entries(parsedData).map(([k, v]) => [k.toLowerCase(), v]));
+    // Bounded leaf-bundle support: never guess inherited visibility/build rules.
+    if (data.cascade || data.build || data._build || data.headless || data.resources)
+      throw new Error(`Unsupported bundle build/publication mapping: ${index}`);
+    for (let ancestor = path.dirname(dir); ancestor.startsWith(path.join(root, "content")); ancestor = path.dirname(ancestor)) {
+      const branch = path.join(ancestor, "_index.md");
+      let parentText;
+      try { parentText = await fs.readFile(branch, "utf8"); }
+      catch (e) { if (e.code === "ENOENT") continue; throw e; }
+      const parentFm = parentText.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!parentFm) throw new Error(`Unsupported inherited bundle front matter: ${branch}`);
+      const parentData = yaml.load(parentFm[1]) || {};
+      if (Object.keys(parentData).some(k => ["cascade", "build", "_build", "draft", "publishdate", "expirydate", "headless"].includes(k.toLowerCase())))
+        throw new Error(`Unsupported inherited cascade/publication mapping: ${branch}`);
+    }
+    const publication = data.publishdate ?? data.pubdate ?? data.date;
+    const expiry = data.expirydate;
+    for (const date of [publication, expiry].filter(v => v != null))
+      if (Number.isNaN(new Date(date).getTime())) throw new Error(`Invalid bundle publication date: ${index}`);
     const rel = path.relative(path.join(root, "content"), dir).split(path.sep);
     let base;
     if (data.url && /^\/(?!\/).*\/$/.test(data.url))
@@ -121,7 +142,8 @@ async function sources(root) {
         .pathname,
       excluded:
         data.draft === true ||
-        (data.date && new Date(data.date).getTime() > Date.now()),
+        (publication && new Date(publication).getTime() > Date.now()) ||
+        (expiry && new Date(expiry).getTime() <= Date.now()),
       exclusionReason: "unpublished bundle",
     });
   }
@@ -343,68 +365,116 @@ function inferredProfile(node, documentUrl) {
     ? "half-body"
     : "body";
 }
-export function transformHtml({
-  html,
-  documentUrl = "/",
-  manifest,
-  config = {},
-}) {
-  const doc = parse(html);
-  const list = nodes(doc);
-  const base = attr(list.find((n) => n.tagName === "base") || {}, "href");
-  const effective = base
-    ? new URL(base, new URL(documentUrl, imageConfig.origin)).href
-    : documentUrl;
-  const usages = [];
-  for (const node of list.filter((n) => n.tagName === "img")) {
-    const src = attr(node, "src");
-    if (!src) continue;
-    if (/^data:image\/gif;base64,R0lGODlhAQABA/.test(src)) {
-      usages.push({ sourceUrl: src, reason: "one-pixel dialog placeholder" });
-      continue;
-    }
-    if (attr(node, "data-image-source")) {
-      candidateEntry(manifest, src, effective);
-      validateSrcset(manifest, attr(node, "srcset"), effective);
-      continue;
-    }
-    const profile =
-      attr(node, "data-image-profile") || inferredProfile(node, documentUrl);
-    const d = resolveImage(manifest, src, {
-      documentUrl: effective,
-      profile,
-      sizes: attr(node, "sizes"),
-      loading: attr(node, "loading"),
-      fetchPriority: attr(node, "fetchpriority"),
-    });
-    const existing = attr(node, "srcset");
-    if (existing) validateSrcset(manifest, existing, effective);
-    // An existing picture's media/type/art direction is authoritative. Validate, never flatten.
-    const picture =
-      node.parentNode?.tagName === "picture" ? node.parentNode : null;
-    if (picture)
-      for (const s of picture.childNodes.filter((n) => n.tagName === "source"))
-        validateSrcset(manifest, attr(s, "srcset"), effective);
-    set(node, "data-image-source", d.sourceUrl);
-    set(node, "data-image-profile", profile);
+function imageCandidates(node) {
+  return [
+    ...(attr(node, "src") ? [{ url: attr(node, "src"), fallback: true }] : []),
+    ...parseSrcset(attr(node, "srcset")),
+  ];
+}
+function candidateOwner(manifest, url, effective) {
+  const pathname = canonicalImageUrl(url, effective).pathname;
+  candidateEntry(manifest, url, effective);
+  return manifest.images[pathname] || Object.values(manifest.images).find(e => e.variants.some(v => v.url === pathname));
+}
+function verifyFinalized(node, manifest, effective) {
+  const marker = attr(node, "data-image-source");
+  const entry = marker && manifest.images[canonicalImageUrl(marker, effective).pathname];
+  if (!entry) throw new Error(`Invalid image completion marker: ${marker}`);
+  if (!profiles[attr(node, "data-image-profile")]) throw new Error(`Invalid finalized image profile: ${marker}`);
+  candidateEntry(manifest, marker, effective);
+  validateSrcset(manifest, attr(node, "srcset"), effective);
+  for (const c of imageCandidates(node)) {
+    const pathname = canonicalImageUrl(c.url, effective).pathname;
+    if (candidateOwner(manifest, c.url, effective) !== entry ||
+        (entry.disposition === "raster" && !entry.variants.some(v => v.url === pathname)))
+      throw new Error(`Image marker membership/unfinalized candidate: ${c.url} for ${marker}`);
+    const type = attr(node, "type");
+    const variant = entry.variants.find(v => v.url === pathname);
+    if (type && variant && type !== `image/${variant.format}`)
+      throw new Error(`Image format/type mismatch: ${c.url}`);
+  }
+  return entry;
+}
+function optimizeNode(node, manifest, effective, profile, config) {
+  if (attr(node, "data-image-source")) {
+    verifyFinalized(node, manifest, effective);
+    return;
+  }
+  const candidates = imageCandidates(node);
+  validateSrcset(manifest, attr(node, "srcset"), effective);
+  const source = candidates[0]?.url;
+  if (!source) return;
+  const authoredOwner = (url) => {
+    const owner = candidateOwner(manifest, url, effective);
+    const alias = config.authoredSourceAliases?.[owner.sourceUrl];
+    if (!alias) return owner;
+    const target = manifest.images[alias];
+    if (!target || target.disposition !== "raster" || owner.disposition !== "raster" ||
+        owner.width > target.width || Math.abs(owner.height / owner.width - target.height / target.width) > 1 / owner.width)
+      throw new Error(`Invalid authored image alias: ${owner.sourceUrl}`);
+    return target;
+  };
+  const entry = authoredOwner(source);
+  if (candidates.some(c => authoredOwner(c.url) !== entry))
+    throw new Error(`Unsupported art direction in ${effective} <${node.tagName}> candidate set`);
+  const d = resolveImage(manifest, entry.sourceUrl, {
+    documentUrl: effective, profile, sizes: attr(node, "sizes"),
+    loading: attr(node, "loading"), fetchPriority: attr(node, "fetchpriority"),
+  });
+  // Retain version/hash identity on authored original URLs.
+  const original = canonicalImageUrl(source, effective);
+  set(node, "data-image-source", original.pathname === entry.sourceUrl ? original.sourceUrl : entry.sourceUrl);
+  set(node, "data-image-profile", profile);
+  if (node.tagName === "img") {
     if (!attr(node, "width")) set(node, "width", d.width);
     if (!attr(node, "height")) set(node, "height", d.height);
     set(node, "loading", d.loading);
     if (d.fetchPriority) set(node, "fetchpriority", d.fetchPriority);
-    if (!picture && !existing && d.webpSrcSet) {
-      // WebP srcset on img avoids wrappers changing direct-child CSS and runtime structure.
-      // Browsers without srcset use the original-format fallback src.
-      set(node, "src", d.src);
-      set(node, "srcset", d.webpSrcSet);
+    set(node, "src", d.src);
+  }
+  if (d.webpSrcSet) {
+    const type = attr(node, "type");
+    const format = type ? type.replace(/^image\//, "") : "webp";
+    const available = entry.variants.filter(v => v.format === format);
+    if (!available.length) throw new Error(`Unsupported picture format ${type} in ${effective}`);
+    const authored = parseSrcset(attr(node, "srcset"));
+    if (authored.some(c => c.unit === "x")) {
+      if (authored.some(c => c.unit !== "x")) throw new Error(`Mixed image descriptors in ${effective}`);
+      // Keep density semantics and each candidate's decoded pixel width.
+      set(node, "srcset", authored.map(c => {
+        const width = candidateEntry(manifest, c.url, effective).width;
+        const v = available.find(v => v.width >= width) || available.at(-1);
+        return `${v.url} ${c.value}x`;
+      }).join(", "));
+    } else {
+      const byWidth = new Map();
+      for (const v of available) if (!byWidth.has(v.width)) byWidth.set(v.width, v);
+      const unique = [...byWidth.values()];
+      set(node, "srcset", unique.map(v => `${v.url} ${v.width}w`).join(", "));
       set(node, "sizes", d.sizes);
     }
-    usages.push({
-      sourceUrl: d.sourceUrl,
-      profile,
-      disposition: d.disposition,
-      existingPicture: !!picture,
-      existingSrcset: !!existing,
-    });
+  }
+}
+export function transformHtml({ html, documentUrl = "/", manifest, config = {} }) {
+  config = { ...imageConfig, ...config };
+  const doc = parse(html);
+  const list = nodes(doc);
+  const base = attr(list.find(n => n.tagName === "base") || {}, "href");
+  const effective = base ? new URL(base, new URL(documentUrl, imageConfig.origin)).href : documentUrl;
+  const usages = [];
+  for (const node of list.filter(n => n.tagName === "img")) {
+    const src = attr(node, "src");
+    if (/^data:image\/gif;base64,R0lGODlhAQABA/.test(src || "")) {
+      if (attr(node, "srcset")) throw new Error(`Placeholder has network candidates: ${effective}`);
+      usages.push({ sourceUrl: src, reason: "one-pixel dialog placeholder" });
+      continue;
+    }
+    const profile = attr(node, "data-image-profile") || inferredProfile(node, documentUrl);
+    optimizeNode(node, manifest, effective, profile, config);
+    const picture = node.parentNode?.tagName === "picture" ? node.parentNode : null;
+    if (picture) for (const source of picture.childNodes.filter(n => n.tagName === "source"))
+      optimizeNode(source, manifest, effective, profile, config);
+    if (attr(node, "data-image-source")) usages.push({ sourceUrl: attr(node, "data-image-source"), profile });
   }
   return { html: serialize(doc), usages };
 }
@@ -531,10 +601,18 @@ export async function validateImages(input) {
         candidateEntry(manifest, src, effective);
         images++;
       }
+      if (imageCandidates(n).length && !/^data:image\/gif;base64,R0lGODlhAQABA/.test(src || "")) {
+        if (!attr(n, "data-image-source")) throw new Error(`Unfinalized image: ${file}: ${src || attr(n, "srcset")}`);
+        verifyFinalized(n, manifest, effective);
+      }
+      if (/^data:image\/gif;base64,R0lGODlhAQABA/.test(src || "") && attr(n, "srcset"))
+        throw new Error(`Placeholder has network candidates: ${file}`);
       validateSrcset(manifest, attr(n, "srcset"), effective);
-      for (const candidate of parseSrcset(attr(n, "srcset"))) {
+      for (const candidate of imageCandidates(n)) {
+        if (/^data:image\/gif;base64,R0lGODlhAQABA/.test(candidate.url)) continue;
         const variant = candidateEntry(manifest, candidate.url, effective);
-        if (variant.format !== "webp" || !variant.sha256) continue;
+        // Fallback img src has a separate format cost; selected source sets are gated.
+        if (!variant.sha256 || (candidate.fallback && attr(n, "srcset") && variant.format !== "webp")) continue;
         const source = attr(n, "data-image-source");
         const entry = source
           ? manifest.images[canonicalImageUrl(source, effective).pathname]
@@ -546,6 +624,8 @@ export async function validateImages(input) {
             ? variant.width <= 1600
               ? 1000000
               : 2000000
+            : profile === "thumbnail" && variant.width <= 1200
+              ? variant.width <= 640 ? 100000 : 250000
             : profile === "christmas-cover"
               ? variant.width <= 800
                 ? 150000

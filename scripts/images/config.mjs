@@ -13,6 +13,31 @@ export const imageConfig = {
     "/images/avatar-color-trans.png": [160],
     "/images/logos/parasail.png": [64, 128, 256],
   },
+  // Explicit same-art authored resize pairs; never infer identity from filenames.
+  authoredSourceAliases: {
+    "/images/blog/codex-usage-display/cad-exact-assembly-800.webp":
+      "/images/blog/codex-usage-display/cad-exact-assembly.webp",
+    "/images/blog/codex-usage-display/device-depth-800.webp":
+      "/images/blog/codex-usage-display/device-depth.webp",
+    "/images/blog/codex-usage-display/enclosure-directions-800.webp":
+      "/images/blog/codex-usage-display/enclosure-directions.webp",
+    "/images/blog/codex-usage-display/final-in-situ-close-800.webp":
+      "/images/blog/codex-usage-display/final-in-situ-close.webp",
+    "/images/blog/codex-usage-display/final-side-profile-800.webp":
+      "/images/blog/codex-usage-display/final-side-profile.webp",
+    "/images/blog/codex-usage-display/final-three-quarter-800.webp":
+      "/images/blog/codex-usage-display/final-three-quarter.webp",
+    "/images/blog/codex-usage-display/first-print-parts-800.webp":
+      "/images/blog/codex-usage-display/first-print-parts.webp",
+    "/images/blog/codex-usage-display/magnet-installation-800.webp":
+      "/images/blog/codex-usage-display/magnet-installation.webp",
+    "/images/blog/codex-usage-display/magnets-and-backplate-800.webp":
+      "/images/blog/codex-usage-display/magnets-and-backplate.webp",
+    "/images/blog/codex-usage-display/v2-spaghetti-800.webp":
+      "/images/blog/codex-usage-display/v2-spaghetti.webp",
+    "/images/blog/codex-usage-display/v3-leg-contact-800.webp":
+      "/images/blog/codex-usage-display/v3-leg-contact.webp",
+  },
   budgetExceptions: [
     {
       sourceUrl: "/images/pork-shoulder-two-pieces-new.jpg",
@@ -21,7 +46,8 @@ export const imageConfig = {
       profile: "body",
       width: 1600,
       maxBytes: 401000,
-      owner: "task02 implementation (coordinator review)",
+      owner: "Website maintenance",
+      reviewedOn: "2026-10-27",
       reviewDate: "2026-11-27",
       reason:
         "Measured q85 output is 400438 bytes, 438 bytes over the provisional ceiling. Preserve approved photo quality; no encoder reduction.",

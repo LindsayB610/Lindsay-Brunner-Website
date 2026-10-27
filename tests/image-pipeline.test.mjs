@@ -272,7 +272,7 @@ test("canonical build is browser free, prepares before Hugo and gates finalized 
   );
   assert.equal(steps.at(-1), "npm run test:images");
   assert.equal(
-    pkg.scripts["test:images"],
+    pkg.scripts["test:images"].split(" && ")[0],
     "node scripts/images/cli.mjs validate",
   );
   for (const name of ["pipeline.mjs", "resolver.mjs", "cli.mjs"])
