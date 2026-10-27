@@ -15,3 +15,5 @@ static/images/social/working-files/*
 
 /.cache/image-optimization/
 /.generated/images/
+
+/.generated/optimized-preview/

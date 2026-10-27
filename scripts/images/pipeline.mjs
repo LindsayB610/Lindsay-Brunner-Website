@@ -1,3 +1,4 @@
+import { discoverRuntimeSources } from "./runtime-sources.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -307,15 +308,7 @@ export async function prepareImages(input = {}) {
     path.join(generatedDir, "manifest.json"),
     JSON.stringify(manifest, null, 2) + "\n",
   );
-  const runtimeSources = all
-    .map((s) => s.url)
-    .filter(
-      (u) =>
-        u === "/images/avatar-color-trans.png" ||
-        u === "/images/workshop/workshop-shelf.png" ||
-        u.startsWith("/images/logos/") ||
-        u.startsWith("/images/testimonials/"),
-    );
+  const runtimeSources = await discoverRuntimeSources(root, manifest);
   await atomic(
     path.join(generatedDir, "runtime-manifest.json"),
     JSON.stringify(pickBrowserManifest(manifest, runtimeSources)) + "\n",
@@ -376,6 +369,32 @@ function candidateOwner(manifest, url, effective) {
   candidateEntry(manifest, url, effective);
   return manifest.images[pathname] || Object.values(manifest.images).find(e => e.variants.some(v => v.url === pathname));
 }
+// Density sets are supported only when every candidate has the same intrinsic
+// CSS dimensions and exact decoded dimensions exist in the target ladder.
+function densityDimensions(candidates, manifest, effective) {
+  if (!candidates.some(c => c.unit === "x")) return null;
+  if (candidates.some(c => c.unit !== "x") || new Set(candidates.map(c => c.value)).size !== candidates.length)
+    throw new Error(`Unsupported density descriptors in ${effective}`);
+  const dimensions = candidates.map(c => {
+    const v = candidateEntry(manifest, c.url, effective);
+    return { width: v.width / c.value, height: v.height / c.value };
+  });
+  const first = dimensions[0];
+  if (!Number.isInteger(first.width) || !Number.isInteger(first.height) ||
+      dimensions.some(d => d.width !== first.width || d.height !== first.height))
+    throw new Error(`Unsupported density intrinsic dimensions in ${effective}`);
+  return first;
+}
+function presentationDimensions(node, intrinsic) {
+  const width = attr(node, "width"), height = attr(node, "height");
+  for (const value of [width, height])
+    if (value !== undefined && (!/^[1-9]\d*$/.test(value) || !Number.isSafeInteger(Number(value))))
+      throw new Error("Unsupported image presentation dimension");
+  return {
+    width: width || (height ? Math.max(1, Math.round(Number(height) * intrinsic.width / intrinsic.height)) : intrinsic.width),
+    height: height || (width ? Math.max(1, Math.round(Number(width) * intrinsic.height / intrinsic.width)) : intrinsic.height),
+  };
+}
 function verifyFinalized(node, manifest, effective) {
   const marker = attr(node, "data-image-source");
   const entry = marker && manifest.images[canonicalImageUrl(marker, effective).pathname];
@@ -393,6 +412,34 @@ function verifyFinalized(node, manifest, effective) {
     if (type && variant && type !== `image/${variant.format}`)
       throw new Error(`Image format/type mismatch: ${c.url}`);
   }
+  if (entry.disposition === "raster") {
+    const fail = () => { throw new Error(`Incomplete finalized image presentation: ${marker}`); };
+    const selected = parseSrcset(attr(node, "srcset"));
+    if (!selected.length) fail();
+    const density = densityDimensions(selected, manifest, effective);
+    if (!density) {
+      if (!attr(node, "sizes")?.trim() || selected.some(c => c.unit !== "w")) fail();
+      const format = candidateEntry(manifest, selected[0].url, effective).format;
+      const expected = new Set(entry.variants.filter(v => v.format === format).map(v => v.width));
+      if (selected.length !== expected.size || new Set(selected.map(c => c.value)).size !== expected.size ||
+          selected.some(c => !expected.has(c.value) || candidateEntry(manifest, c.url, effective).format !== format)) fail();
+    }
+    if (node.tagName === "img") {
+      if (!attr(node, "src") || !attr(node, "loading")) fail();
+      const native = attr(node, "data-image-native-dimensions");
+      if (native !== undefined) {
+        // Record exactly which authored attributes remain. This is a distinct
+        // completion shape, not permission to accept a partially stripped img.
+        const shape = [attr(node, "width") !== undefined ? "width" : "", attr(node, "height") !== undefined ? "height" : ""].filter(Boolean).join("-") || "none";
+        if (native !== shape || !["none", "width", "height", "width-height"].includes(native)) fail();
+      } else if (!attr(node, "width") || !attr(node, "height")) fail();
+      presentationDimensions(node, density || entry);
+      const d = resolveImage(manifest, marker, {
+        profile: attr(node, "data-image-profile"), loading: attr(node, "loading"), fetchPriority: attr(node, "fetchpriority"),
+      });
+      if (d.fetchPriority && attr(node, "fetchpriority") !== d.fetchPriority) fail();
+    }
+  }
   return entry;
 }
 function optimizeNode(node, manifest, effective, profile, config) {
@@ -408,7 +455,11 @@ function optimizeNode(node, manifest, effective, profile, config) {
     const owner = candidateOwner(manifest, url, effective);
     const alias = config.authoredSourceAliases?.[owner.sourceUrl];
     if (!alias) return owner;
-    const target = manifest.images[alias];
+    const target = manifest.images[alias.target];
+    if (typeof alias !== "object" || !/^[a-f0-9]{64}$/.test(alias.sourceSha256 || "") ||
+        !/^[a-f0-9]{64}$/.test(alias.targetSha256 || "") ||
+        owner.sourceSha256 !== alias.sourceSha256 || target?.sourceSha256 !== alias.targetSha256)
+      throw new Error(`Authored image alias hash drift; review pair again: ${owner.sourceUrl}`);
     if (!target || target.disposition !== "raster" || owner.disposition !== "raster" ||
         owner.width > target.width || Math.abs(owner.height / owner.width - target.height / target.width) > 1 / owner.width)
       throw new Error(`Invalid authored image alias: ${owner.sourceUrl}`);
@@ -417,8 +468,19 @@ function optimizeNode(node, manifest, effective, profile, config) {
   const entry = authoredOwner(source);
   if (candidates.some(c => authoredOwner(c.url) !== entry))
     throw new Error(`Unsupported art direction in ${effective} <${node.tagName}> candidate set`);
+  const authored = parseSrcset(attr(node, "srcset"));
+  const density = densityDimensions(authored, manifest, effective);
+  const intrinsic = candidateEntry(manifest, source, effective);
+  const widthSet = authored.length > 0 && !density;
+  const picture = node.parentNode?.tagName === "picture";
+  // A width set's default source size is 100vw, not our body profile. Its
+  // density-corrected natural dimensions vary with the viewport. Picture img
+  // dimensions also belong to the selected branch, not the fallback file.
+  const nativeDimensions = picture || widthSet;
+  const sizes = picture && !authored.length ? `${intrinsic.width}px` :
+    attr(node, "sizes") || (widthSet ? "100vw" : undefined);
   const d = resolveImage(manifest, entry.sourceUrl, {
-    documentUrl: effective, profile, sizes: attr(node, "sizes"),
+    documentUrl: effective, profile, sizes,
     loading: attr(node, "loading"), fetchPriority: attr(node, "fetchpriority"),
   });
   // Retain version/hash identity on authored original URLs.
@@ -426,8 +488,13 @@ function optimizeNode(node, manifest, effective, profile, config) {
   set(node, "data-image-source", original.pathname === entry.sourceUrl ? original.sourceUrl : entry.sourceUrl);
   set(node, "data-image-profile", profile);
   if (node.tagName === "img") {
-    if (!attr(node, "width")) set(node, "width", d.width);
-    if (!attr(node, "height")) set(node, "height", d.height);
+    const dimensions = presentationDimensions(node, density || intrinsic);
+    if (nativeDimensions) {
+      set(node, "data-image-native-dimensions", [attr(node, "width") !== undefined ? "width" : "", attr(node, "height") !== undefined ? "height" : ""].filter(Boolean).join("-") || "none");
+    } else {
+      set(node, "width", dimensions.width);
+      set(node, "height", dimensions.height);
+    }
     set(node, "loading", d.loading);
     if (d.fetchPriority) set(node, "fetchpriority", d.fetchPriority);
     set(node, "src", d.src);
@@ -437,13 +504,12 @@ function optimizeNode(node, manifest, effective, profile, config) {
     const format = type ? type.replace(/^image\//, "") : "webp";
     const available = entry.variants.filter(v => v.format === format);
     if (!available.length) throw new Error(`Unsupported picture format ${type} in ${effective}`);
-    const authored = parseSrcset(attr(node, "srcset"));
-    if (authored.some(c => c.unit === "x")) {
-      if (authored.some(c => c.unit !== "x")) throw new Error(`Mixed image descriptors in ${effective}`);
-      // Keep density semantics and each candidate's decoded pixel width.
+    if (density) {
+      // Never round pixels while retaining density labels.
       set(node, "srcset", authored.map(c => {
-        const width = candidateEntry(manifest, c.url, effective).width;
-        const v = available.find(v => v.width >= width) || available.at(-1);
+        const original = candidateEntry(manifest, c.url, effective);
+        const v = available.find(v => v.width === original.width && v.height === original.height);
+        if (!v) throw new Error(`Unsupported density candidate: exact dimensions absent from ladder: ${c.url}`);
         return `${v.url} ${c.value}x`;
       }).join(", "));
     } else {

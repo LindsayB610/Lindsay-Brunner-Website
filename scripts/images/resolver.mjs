@@ -1,9 +1,9 @@
 // Browser safe: imported by the HTML finalizer and task03's consumer adapters.
-import { imageConfig, profiles } from "./config.mjs";
+import { imageOrigin, profiles } from "./config.mjs";
 export function canonicalImageUrl(
   value,
   documentUrl = "/",
-  origin = imageConfig.origin,
+  origin = imageOrigin,
 ) {
   if (typeof value !== "string" || !value.trim())
     throw new Error("Missing image URL");

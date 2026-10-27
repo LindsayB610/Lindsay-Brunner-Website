@@ -1,30 +1,19 @@
 #!/usr/bin/env node
 
-/**
- * Check Links Script
- *
- * Starts a Hugo dev server, waits for it to be ready, runs linkinator
- * against localhost:1313, then stops the server. Used by `npm run test:links`.
- *
- * Run with: npm run test:links
- */
+/** Crawl the existing finalized public output without invoking Hugo or rebuilding. */
+const { spawn } = require('node:child_process');
+const http = require('node:http');
+const fs = require('node:fs');
+const path = require('node:path');
+const { once } = require('node:events');
 
-const { spawn, execSync } = require('child_process');
-const http = require('http');
-const path = require('path');
-
-const PORT = Number(process.env.LINK_CHECK_PORT || 1314);
-const BASE_URL = `http://127.0.0.1:${PORT}`;
-const READY_TIMEOUT_MS = 30_000;
-const POLL_INTERVAL_MS = 300;
-/** Max time for the linkinator crawl; prevents test suite from hanging. */
-const LINK_CHECK_TIMEOUT_MS = 60_000; // 1 minute (66 pages should finish well under this)
+const LINK_CHECK_TIMEOUT_MS = 60_000;
 
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function netlifyExternalRedirectSkips(projectRoot) {
+function netlifyExternalRedirectSkips(projectRoot, baseUrl) {
   const configPath = path.join(projectRoot, 'netlify.toml');
   if (!require('fs').existsSync(configPath)) return [];
 
@@ -40,203 +29,109 @@ function netlifyExternalRedirectSkips(projectRoot) {
       return [];
     }
 
-    return [`^${escapeRegex(`${BASE_URL}${from}`)}$`];
+    return [`^${escapeRegex(`${baseUrl}${from}`)}$`];
   });
 }
 
-function clearPort(projectRoot) {
-  try {
-    // Try to find any Hugo process from this project using the port. lsof can
-    // also return browser helper processes with open connections, so do not
-    // blindly kill every PID on the port.
-    const pids = execSync(`lsof -ti:${PORT}`, { encoding: 'utf8', stdio: 'pipe' })
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean);
-    const hugoPids = pids.filter((pid) => {
-      try {
-        const command = execSync(`ps -p ${pid} -o command=`, { encoding: 'utf8', stdio: 'pipe' });
-        return command.includes('hugo') && command.includes(projectRoot);
-      } catch (err) {
-        return false;
-      }
-    });
-    if (hugoPids.length > 0) {
-      console.log(`Found Hugo process ${hugoPids.join(', ')} on port ${PORT}, killing it...`);
-      execSync(`kill -9 ${hugoPids.join(' ')}`, { stdio: 'pipe' });
-      // Give it a moment to fully release the port
-      return new Promise((resolve) => setTimeout(resolve, 1000));
-    }
-  } catch (err) {
-    // No process found on port, or lsof/kill failed - that's okay
-  }
-  return Promise.resolve();
-}
 
-function waitForServer() {
-  return new Promise((resolve, reject) => {
-    const start = Date.now();
-    let done = false;
-
-    function poll() {
-      if (done) return;
-      if (Date.now() - start > READY_TIMEOUT_MS) {
-        done = true;
-        reject(new Error(`Server did not become ready within ${READY_TIMEOUT_MS / 1000}s`));
+async function startStaticServer(publicRoot, port = 1314) {
+  const root = await fs.promises.realpath(publicRoot);
+  await fs.promises.access(path.join(root, 'index.html'));
+  const server = http.createServer(async (req, res) => {
+    try {
+      if (!['GET', 'HEAD'].includes(req.method)) {
+        res.writeHead(405).end();
         return;
       }
-
-      const req = http.get(BASE_URL, (res) => {
-        if (done) return;
-        res.resume();
-        if (res.statusCode >= 200 && res.statusCode < 400) {
-          done = true;
-          resolve();
+      const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+      let file = path.resolve(root, `.${pathname}`);
+      if (!file.startsWith(`${root}${path.sep}`) && file !== root) {
+        res.writeHead(403).end();
+        return;
+      }
+      const stat = await fs.promises.stat(file);
+      if (stat.isDirectory()) {
+        if (!pathname.endsWith('/')) {
+          res.writeHead(301, { Location: `${pathname}/${new URL(req.url, 'http://localhost').search}` }).end();
           return;
         }
-        setTimeout(poll, POLL_INTERVAL_MS);
-      });
-      req.on('error', () => {
-        if (done) return;
-        setTimeout(poll, POLL_INTERVAL_MS);
-      });
-      req.setTimeout(2000, () => {
-        req.destroy();
-        if (done) return;
-        setTimeout(poll, POLL_INTERVAL_MS);
-      });
+        file = path.join(file, 'index.html');
+      }
+      file = await fs.promises.realpath(file);
+      if (!file.startsWith(`${root}${path.sep}`)) {
+        res.writeHead(403).end();
+        return;
+      }
+      const body = await fs.promises.readFile(file);
+      const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript',
+        '.json': 'application/json', '.xml': 'application/xml', '.svg': 'image/svg+xml',
+        '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+        '.webp': 'image/webp', '.avif': 'image/avif' };
+      res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream',
+        'Content-Length': body.length });
+      res.end(req.method === 'HEAD' ? undefined : body);
+    } catch (error) {
+      res.writeHead(error instanceof URIError ? 400 : 404).end();
     }
-
-    poll();
   });
+  server.listen(port, '127.0.0.1');
+  await once(server, 'listening'); // EADDRINUSE fails; never touch another process.
+  return server;
 }
 
-let currentHugo = null;
-let cleaned = false;
-
-const cleanup = () => {
-  if (cleaned) return;
-  cleaned = true;
-  if (currentHugo && currentHugo.kill) {
-    currentHugo.kill('SIGTERM');
-  }
-};
-
-// Set up cleanup handlers once
-process.on('exit', cleanup);
-process.on('SIGINT', () => {
-  cleanup();
-  process.exit(130);
-});
-process.on('SIGTERM', () => {
-  cleanup();
-  process.exit(143);
-});
-
-function startServerAndCheck(projectRoot, retry = false) {
-  // Hugo is supplied by the developer environment and by Netlify's native
-  // HUGO_VERSION pin. Do not reach into node_modules: hugo-bin is deliberately
-  // not part of this project because its postinstall download is unreliable.
-  const hugoBinary = process.platform === 'win32' ? 'hugo.cmd' : 'hugo';
-
-  currentHugo = spawn(hugoBinary, ['server', '--port', String(PORT)], {
-    cwd: projectRoot,
-    stdio: 'pipe',
-    shell: false,
-  });
-  let hugoOutput = '';
-
-  currentHugo.on('error', async (err) => {
-    console.error('Failed to start Hugo server:', err.message);
-    if (!retry) {
-      console.log('Attempting to clear port and retry...');
-      await clearPort(projectRoot);
-      startServerAndCheck(projectRoot, true);
-    } else {
-      process.exit(1);
+async function runLinkCheck(projectRoot, { port = Number(process.env.LINK_CHECK_PORT || 1314),
+  timeoutMs = LINK_CHECK_TIMEOUT_MS } = {}) {
+  const server = await startStaticServer(path.join(projectRoot, 'public'), port);
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  let child;
+  let timer;
+  let killTimer;
+  let stopped = false;
+  let failure = 0;
+  const stop = (code) => {
+    failure = code;
+    if (stopped) return;
+    stopped = true;
+    if (child) {
+      child.kill('SIGTERM');
+      killTimer = setTimeout(() => child.kill('SIGKILL'), 1000);
     }
-  });
-
-  let resolved = false;
-  currentHugo.stdout?.on('data', (chunk) => {
-    const text = chunk.toString();
-    hugoOutput += text;
-    if (resolved) process.stdout.write(chunk);
-  });
-  currentHugo.stderr?.on('data', (chunk) => {
-    const text = chunk.toString();
-    hugoOutput += text;
-    if (resolved) process.stderr.write(chunk);
-  });
-
-  if (retry) {
-    console.log('Retrying: Starting Hugo server on', BASE_URL, '...');
-  } else {
-    console.log('Starting Hugo server on', BASE_URL, '...');
-  }
-
-  waitForServer()
-    .then(() => {
-      resolved = true;
-      console.log('Server ready. Running link check (max %ds)...\n', LINK_CHECK_TIMEOUT_MS / 1000);
-      const netlifyRedirectSkips = netlifyExternalRedirectSkips(projectRoot);
-      if (netlifyRedirectSkips.length > 0) {
-        console.log('Skipping external Netlify redirect route(s) that Hugo cannot serve locally.');
-      }
-      const linkinator = spawn(
-        'npx',
-        [
-          'linkinator',
-          BASE_URL,
-          '--recurse',
-          '--skip',
-          'index\\.xml$',
-          '--skip',
-          `^https?://(?!(localhost|127\\.0\\.0\\.1):${PORT})`,
-          ...netlifyRedirectSkips.flatMap((skip) => ['--skip', skip]),
-          '--timeout',
-          '10000',
-          '--verbosity',
-          'warning',
-        ],
-        { cwd: projectRoot, stdio: 'inherit', shell: false }
-      );
-      const linkCheckTimeout = setTimeout(() => {
-        if (linkinator.kill) {
-          console.error('\nError: Link check did not finish within %ds. Stopping to avoid hanging.', LINK_CHECK_TIMEOUT_MS / 1000);
-          linkinator.kill('SIGKILL');
-        }
-        cleanup();
-        process.exit(1);
-      }, LINK_CHECK_TIMEOUT_MS);
-      linkinator.on('close', (code, signal) => {
-        clearTimeout(linkCheckTimeout);
-        cleanup();
-        process.exit(code !== null && code !== undefined ? code : 1);
-      });
-    })
-    .catch(async (err) => {
-      if (currentHugo && currentHugo.kill) {
-        currentHugo.kill('SIGTERM');
-      }
-      if (!retry && err.message.includes('did not become ready')) {
-        console.error('Error:', err.message);
-        console.log('Attempting to clear port and retry...');
-        await clearPort(projectRoot);
-        startServerAndCheck(projectRoot, true);
-      } else {
-        console.error('Error:', err.message);
-        if (hugoOutput.trim()) {
-          console.error('\nHugo output before timeout:\n%s', hugoOutput.trim());
-        }
-        process.exit(1);
-      }
+  };
+  const interrupt = () => stop(130);
+  const terminate = () => stop(143);
+  process.once('SIGINT', interrupt);
+  process.once('SIGTERM', terminate);
+  try {
+    console.log(`Checking finalized public output at ${baseUrl} (max ${timeoutMs / 1000}s)`);
+    const skips = netlifyExternalRedirectSkips(projectRoot, baseUrl);
+    // Launch the installed CLI directly: no npx wrapper or unmanaged descendants.
+    const cli = path.join(path.dirname(require.resolve('linkinator')), 'cli.js');
+    child = spawn(process.execPath, [cli, baseUrl, '--recurse',
+      '--skip', 'index\\.xml$', '--skip',
+      `^https?://(?!(localhost|127\\.0\\.0\\.1):${server.address().port})`,
+      ...skips.flatMap((skip) => ['--skip', skip]),
+      '--timeout', '10000', '--verbosity', 'warning'],
+    { cwd: projectRoot, stdio: 'inherit', shell: false });
+    timer = setTimeout(() => {
+      console.error('Link check exceeded its time limit.');
+      stop(1);
+    }, timeoutMs);
+    const [code] = await once(child, 'close');
+    return failure || (code ?? 1);
+  } finally {
+    clearTimeout(timer);
+    clearTimeout(killTimer);
+    process.removeListener('SIGINT', interrupt);
+    process.removeListener('SIGTERM', terminate);
+    await new Promise((resolve) => {
+      server.close(resolve);
+      server.closeAllConnections();
     });
+  }
 }
 
-function main() {
-  const projectRoot = path.join(__dirname, '..');
-  startServerAndCheck(projectRoot);
+module.exports = { startStaticServer, runLinkCheck, netlifyExternalRedirectSkips };
+if (require.main === module) {
+  runLinkCheck(path.join(__dirname, '..')).then((code) => { process.exitCode = code; })
+    .catch((error) => { console.error(error.message); process.exitCode = 1; });
 }
-
-main();

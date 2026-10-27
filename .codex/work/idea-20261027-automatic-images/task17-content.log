@@ -1,0 +1,192 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:content
+> node tests/content-checks.js
+
+🧪 Running comprehensive content validation tests...
+
+✅ "How I Think" section found on homepage.
+
+🏠 Checking homepage content...
+✅ Homepage content structure is valid.
+
+📋 Validating blog front matter structure...
+✅ Front matter validation passed for 19 blog post(s).
+
+🔍 Checking for duplicate recipe page content...
+✅ No duplicate recipe content found.
+
+🍳 Validating recipe front matter structure...
+✅ Recipe front matter validation passed for 54 recipe(s).
+
+🖼️  Checking social images for blog...
+   ✓ alices-restaurant-family-ritual.md: /images/social/alices-restaurant-family-ritual-og.png exists
+   ✓ brand-signals-decoded-quiet-vs-loud.md: /images/social/brand-signals-decoded-quiet-vs-loud-og.png exists
+   ✓ build-e-ink-codex-usage-display-with-ai.md: /images/social/build-e-ink-codex-usage-display-with-ai-og-1200x630.jpg exists
+   ✓ building-a-cli-with-ai.md: /images/social/building-a-cli-with-ai-og.png exists
+   ✓ category-creation-calling-shot.md: /images/social/category-creation-calling-shot-og.png exists
+   ✓ content-resonance-framework-beyond-engagement-metrics.md: /images/social/content-resonance-framework-beyond-engagement-metrics-og.png exists
+   ✓ content-systems-chaos-to-works.md: /images/social/content-systems-chaos-to-works-og.png exists
+   ✓ convo_vs_broadcast.md: /images/social/convo-vs-broadcast-og.png exists
+   ✓ dev_mktg_guide.md: /images/social/dev-mktg.png exists
+   ✓ leadership-communication-skills-every-leader-needs.md: /images/social/leadership-communication-skills-every-leader-needs-og.png exists
+   ✓ manage_up.md: /images/social/managing-up-og.png exists
+   ✓ meet_guideforge.md: /images/social/meet-guideforge-og.png exists
+   ✓ meet_guppi.md: /images/social/meet-guppi-og.png exists
+   ✓ msv-equation-aeo-world.md: /images/social/msv-equation-aeo-world-og.png exists
+   ✓ responsible-ai-content-creation.md: /images/social/responsible-ai-content-creation-is-a-human-problem-og.png exists
+   ✓ technical-storytelling-bridging-engineering-narrative.md: /images/social/technical-storytelling-bridging-engineering-narrative-og.png exists
+   ✓ the-problem-is-usually-not-the-prompt.md: /images/social/the-problem-is-usually-not-the-prompt-og.png exists
+   ✓ workshop-launch.md: /images/social/workshop-launch-og-1200x630.png exists
+✅ All specified social images exist for blog.
+
+🖼️  Checking social images for recipes...
+   ✓ recipe-90s-mom-sausage-rice-bake.md: Social image exists and is valid (/images/social/recipe-90s-mom-sausage-rice-bake-og.png)
+   ✓ recipe-air-fryer-sweet-potatoes.md: Social image exists and is valid (/images/social/recipe-air-fryer-sweet-potatoes-og.png)
+   ✓ recipe-bachan-pulled-pork.md: Social image exists and is valid (/images/social/recipe-bachan-pulled-pork-og.png)
+   ✓ recipe-baked-ziti-beef-ragu.md: Social image exists and is valid (/images/social/recipe-baked-ziti-beef-ragu-og.png)
+   ✓ recipe-beer-bread.md: Social image exists and is valid (/images/social/recipe-beer-bread-og.png)
+   ✓ recipe-chicken-legs-leftover-onion-bits.md: Social image exists and is valid (/images/social/recipe-chicken-legs-leftover-onion-bits-og.png)
+   ✓ recipe-cinnamon-brown-sugar-candied-carrots.md: Social image exists and is valid (/images/social/recipe-cinnamon-brown-sugar-candied-carrots-og.png)
+   ✓ recipe-cinnamon-pecan-coffee-cake-loaf.md: Social image exists and is valid (/images/social/recipe-cinnamon-pecan-coffee-cake-loaf-og.png)
+   ✓ recipe-consummate-chocolate-chip-cookies.md: Social image exists and is valid (/images/social/recipe-favorite-chocolate-chip-cookies-og.png)
+   ✓ recipe-cream-cheese-mints.md: Social image exists and is valid (/images/social/recipe-cream-cheese-mints-og.png)
+   ✓ recipe-cream-of-celery-chicken-and-rice.md: Social image exists and is valid (/images/social/recipe-cream-of-celery-chicken-and-rice-og.png)
+   ✓ recipe-creamy-polenta.md: Social image exists and is valid (/images/social/recipe-creamy-polenta-og.png)
+   ✓ recipe-deep-cozy-pantry-chili.md: Social image exists and is valid (/images/social/recipe-deep-cozy-pantry-chili-og.png)
+   ✓ recipe-duck-fat-roasted-turkey-parts.md: Social image exists and is valid (/images/social/recipe-duck-fat-roasted-turkey-parts-og.png)
+   ✓ recipe-easy-oven-bacon.md: Social image exists and is valid (/images/social/recipe-easy-oven-bacon-og.png)
+   ⏭️  recipe-easy-sini-manti.md: Draft (skipped - images not required for drafts)
+   ✓ recipe-egg-salad-pickle-relish.md: Social image exists and is valid (/images/social/recipe-egg-salad-pickle-relish-og.png)
+   ✓ recipe-espresso-caramel-lebkuchen-swirl-blondies.md: Social image exists and is valid (/images/social/recipe-espresso-caramel-lebkuchen-swirl-blondies-og.png)
+   ✓ recipe-extra-protein-pasta-e-fagioli.md: Social image exists and is valid (/images/social/recipe-extra-protein-pasta-e-fagioli-og.png)
+   ✓ recipe-garlic-in-oil-confit-roasted.md: Social image exists and is valid (/images/social/recipe-garlic-in-oil-confit-roasted-og.png)
+   ✓ recipe-german-inspired-carrot-almond-torte-loaf.md: Social image exists and is valid (/images/social/recipe-german-inspired-carrot-almond-torte-loaf-og.png)
+   ✓ recipe-golden-raisin-turkey-tacos.md: Social image exists and is valid (/images/social/recipe-golden-raisin-turkey-tacos-og.png)
+   ✓ recipe-grandma-yolas-pizzelles.md: Social image exists and is valid (/images/social/recipe-grandma-yolas-pizzelles-og.png)
+   ✓ recipe-herb-roasted-chicken-garlic-pepper-potatoes.md: Social image exists and is valid (/images/social/recipe-herb-roasted-chicken-garlic-pepper-potatoes-og.png)
+   ✓ recipe-holiday-crunch-casserole.md: Social image exists and is valid (/images/social/recipe-holiday-crunch-casserole-og.png)
+   ✓ recipe-honey-mustard-pretzel-crunchies.md: Social image exists and is valid (/images/social/recipe-honey-mustard-pretzel-crunchies-og.png)
+   ✓ recipe-leftover-steak-egg-bowls.md: Social image exists and is valid (/images/social/recipe-leftover-steak-egg-bowls-og.png)
+   ✓ recipe-marinated-bavette-steak-chimichurri.md: Social image exists and is valid (/images/social/recipe-marinated-bavette-steak-chimichurri-og.png)
+   ✓ recipe-peaches-and-cream-crisp.md: Social image exists and is valid (/images/social/recipe-peaches-and-cream-crisp-og.png)
+   ✓ recipe-potato-skin-chips-garlic-avocado-oil.md: Social image exists and is valid (/images/social/recipe-potato-skin-chips-garlic-avocado-oil-og.png)
+   ✓ recipe-roasted-cornish-hens.md: Social image exists and is valid (/images/social/recipe-roasted-cornish-hens-og.png)
+   ✓ recipe-roasted-squash-ditalini-crispy-guanciale.md: Social image exists and is valid (/images/social/recipe-roasted-squash-ditalini-crispy-guanciale-og.png)
+   ✓ recipe-same-day-oven-fried-buffalo-wings.md: Social image exists and is valid (/images/social/recipe-same-day-oven-fried-buffalo-wings-og.png)
+   ✓ recipe-sausage-peppers-onions-over-rice.md: Social image exists and is valid (/images/social/recipe-sausage-peppers-onions-over-rice-og.png)
+   ✓ recipe-schmaltzy-chicken-thighs.md: Social image exists and is valid (/images/social/recipe-schmaltzy-chicken-thighs-og.png)
+   ✓ recipe-schmaltzy-potato-fritters.md: Social image exists and is valid (/images/social/recipe-schmaltzy-potato-fritters-og.png)
+   ✓ recipe-science-minded-church-picnic-potato-salad.md: Social image exists and is valid (/images/social/recipe-science-minded-church-picnic-potato-salad-og.png)
+   ✓ recipe-sheet-pan-doner-kebab.md: Social image exists and is valid (/images/social/recipe-sheet-pan-doner-kebab-og.png)
+   ✓ recipe-sheet-pan-sausage-veg.md: Social image exists and is valid (/images/social/recipe-sheet-pan-sausage-veg-og.png)
+   ✓ recipe-simple-classic-almond-biscotti.md: Social image exists and is valid (/images/social/recipe-simple-classic-almond-biscotti-og.png)
+   ✓ recipe-simple-sauteed-cabbage-onion.md: Social image exists and is valid (/images/social/recipe-simple-sauteed-cabbage-onions-og.png)
+   ✓ recipe-sous-vide-eye-of-round.md: Social image exists and is valid (/images/social/recipe-sous-vide-eye-of-round-og.png)
+   ✓ recipe-sous-vide-pulled-pork-arbys-bbq.md: Social image exists and is valid (/images/social/recipe-sous-vide-pulled-pork-arbys-bbq-og.png)
+   ✓ recipe-sous-vide-rack-of-lamb.md: Social image exists and is valid (/images/social/recipe-sous-vide-rack-of-lamb-og.png)
+   ✓ recipe-spaghetti-and-meatballs.md: Social image exists and is valid (/images/social/recipe-spaghetti-and-meatballs-og.png)
+   ✓ recipe-steak-bites-crispy-potatoes-peas.md: Social image exists and is valid (/images/social/recipe-steak-bites-crispy-potatoes-peas-og.png)
+   ✓ recipe-sweet-moist-jiffy-corn-muffins.md: Social image exists and is valid (/images/social/recipe-sweet-moist-jiffy-corn-muffins-og.png)
+   ✓ recipe-sweet-potato-casserole.md: Social image exists and is valid (/images/social/recipe-sweet-potato-casserole-og.png)
+   ✓ recipe-turkey-and-dumplings-with-onion-and-tarragon.md: Social image exists and is valid (/images/social/recipe-turkey-and-dumplings-og.png)
+   ✓ recipe-turkey-wellington-sausage-roll.md: Social image exists and is valid (/images/social/recipe-turkey-wellington-sausage-roll-og.png)
+   ✓ recipe-ultra-concentrated-baked-potato-mashed-potatoes.md: Social image exists and is valid (/images/social/recipe-ultra-concentrated-baked-potato-mashed-potatoes-og.png)
+   ✓ recipe-weeknight-rice-pilaf.md: Social image exists and is valid (/images/social/recipe-weeknight-rice-pilaf-og.png)
+   ✓ recipe-weeknight-sausage-risotto.md: Social image exists and is valid (/images/social/recipe-weeknight-sausage-risotto-og.png)
+   ✓ recipe-zacks-favorite-plum-buckle.md: Social image exists and is valid (/images/social/recipe-zacks-favorite-plum-buckle-og.png)
+✅ All published recipes have reviewed social images.
+
+🖼️  Checking inline images in recipe content...
+   ✓ recipe-espresso-caramel-lebkuchen-swirl-blondies.md: Image 1 has descriptive alt text: "Two jars of sweet spreads: caramel with espresso a..."
+   ✓ recipe-herb-roasted-chicken-garlic-pepper-potatoes.md: Image 1 has descriptive alt text: "Herb roasted chicken thigh with crispy skin and gr..."
+   ✓ recipe-potato-skin-chips-garlic-avocado-oil.md: Image 1 has descriptive alt text: "Crispy potato skin chips in a bowl, golden brown w..."
+   ✓ recipe-sous-vide-pulled-pork-arbys-bbq.md: Image 1 has descriptive alt text: "Pulled pork sandwich on a bun with sauced meat and..."
+   ✓ recipe-sous-vide-pulled-pork-arbys-bbq.md: Image 2 has descriptive alt text: "Broiled pork shoulder with browned, crispy edges o..."
+✅ All inline images in recipes are valid.
+
+📐 Validating recipe image styling and aspect ratios...
+   ✓ All 5 recipe images have consistent aspect ratio: 1.500
+✅ All recipe images have correct styling and consistent aspect ratios.
+
+🖨️  Validating recipe print functionality...
+   ✓ Print stylesheet exists with @media print rules
+✅ Recipe print functionality validated for 53/53 published recipe(s).
+
+🖨️  Validating print stylesheet...
+   ✓ @media print block and required selectors present
+✅ Print stylesheet is valid.
+
+🖨️  Validating printable page structures...
+   ✓ Checked 5 page type(s) for print structure
+✅ Printable page structures are valid.
+
+📦 Checking static assets...
+   ✓ css/main.css exists
+   ✓ css/custom.css exists
+   ✓ favicons/favicon.ico exists
+   ✓ favicons/favicon-16x16.png exists
+   ✓ favicons/favicon-32x32.png exists
+   ✓ favicons/apple-touch-icon.png exists
+   ✓ favicons/android-chrome-192x192.png exists
+   ✓ favicons/android-chrome-512x512.png exists
+   ✓ favicons/site.webmanifest exists
+   ✓ Default social image exists: /images/social/default-og.png
+✅ All required static assets exist.
+
+📡 Validating blog RSS feed...
+✅ Blog RSS feed structure is valid.
+
+📡 Validating recipes RSS feed...
+✅ Recipes RSS feed structure is valid.
+
+🔗 Validating context-aware RSS links in header...
+✅ Context-aware RSS links are correct.
+
+🧭 Validating nav dropdown behavior...
+✅ Nav dropdown behavior is valid.
+
+🧭 Validating footer structure...
+✅ Footer structure is valid.
+
+🎨 Validating footer logo styles...
+✅ Footer logo styles match the header logo treatment.
+
+🔗 Validating footer social and RSS links...
+✅ Footer social and RSS links are valid.
+
+🗺️  Validating sitemap...
+✅ Sitemap structure is valid.
+
+👤 Validating about page...
+   ✓ Avatar image exists
+✅ About page structure is valid.
+
+🚫 Validating 404 error page...
+✅ 404 page structure is valid.
+
+🔗 Validating permalink structure...
+✅ Permalink structure appears valid.
+
+📚 Validating recipe index page...
+✅ Recipe index page structure is valid.
+
+🚫 Validating that "draft" never appears in blog URLs...
+✅ No "draft" found in blog URLs.
+
+📝 Validating that published blog posts don't have "draft-" prefix in filename...
+✅ No published blog posts have "draft-" prefix in filename.
+
+🔍 Checking for duplicate draft files (draft-* and non-draft with same slug)...
+✅ No duplicate draft files found.
+
+🖼️  Validating OG images on all pages...
+
+   Scanning all pages in public directory...
+   ✅ All 88 pages have OG images
+
+✅ All 88 pages have valid OG images.
+
+🔍 Validating meta description lengths (SEO)...
+✅ All meta descriptions are within recommended length (120-160 characters).
+
+✅ All content validation tests passed!

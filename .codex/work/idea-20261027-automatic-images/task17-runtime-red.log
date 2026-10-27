@@ -1,0 +1,73 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:images:runtime
+> node tests/image-runtime.test.mjs
+
+PASS Christmas 390 DPR1
+PASS Christmas 390 DPR2
+PASS Christmas 1440 DPR1
+PASS Christmas 1440 DPR2
+AssertionError [ERR_ASSERTION]: No-JS portrait must remain square {"url":"http://127.0.0.1:64841/_img/images/avatar-color-trans.png/lossless/320.webp","width":192,"height":3072,"loading":"eager"}
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:96:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+AssertionError [ERR_ASSERTION]: No-JS portrait must remain square {"url":"http://127.0.0.1:64841/_img/images/avatar-color-trans.png/lossless/320.webp","width":192,"height":3072,"loading":"eager"}
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:96:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+AssertionError [ERR_ASSERTION]: No-JS portrait must remain square {"url":"http://127.0.0.1:64841/_img/images/avatar-color-trans.png/lossless/320.webp","width":252,"height":3072,"loading":"eager"}
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:96:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+PASS Nemesis slot 640
+PASS Nemesis slot 800
+PASS Nemesis slot 900
+PASS Nemesis slot 1440
+AssertionError [ERR_ASSERTION]: Retained portrait changed React display height 3072
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:135:16 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+AssertionError [ERR_ASSERTION]: Retained portrait changed React display height 3072
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:135:16
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:541:9) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+AssertionError [ERR_ASSERTION]: Retained portrait changed React display height 3072
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:135:16 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+PASS React takeover / 1440
+PASS Logo rotation and visible testimonial
+PASS Deferred original open/swap/close/reopen /nemesis/
+PASS Deferred original open/swap/close/reopen /fate-of-the-fellowship/
+PASS Deferred original open/swap/close/reopen /__image-runtime-zoom/

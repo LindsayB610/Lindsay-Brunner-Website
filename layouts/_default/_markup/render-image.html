@@ -2,7 +2,8 @@
 <img
   src="{{ $src }}"
   alt="{{ .Text }}"
-  loading="eager"
+  data-image-profile="body"
+  loading="lazy"
   decoding="async"
   {{- with .Title }} title="{{ . }}"{{- end -}}
 >

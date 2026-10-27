@@ -1,0 +1,6 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:mobile:render
+> node tests/react-mobile-render.test.js
+
+📱 Running React mobile render checks...
+✅ React mobile render checks passed.

@@ -1,5 +1,6 @@
 "use client";
 
+import { ResponsiveImage } from "../components/responsive-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
@@ -235,7 +236,7 @@ function TestimonialAvatar({ src }: { src: string }) {
   return (
     <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/15 ring-2 ring-white/30">
       {hasImage ? (
-        <img
+        <ResponsiveImage profile="avatar"
           src={src}
           alt=""
           className="h-full w-full object-cover"

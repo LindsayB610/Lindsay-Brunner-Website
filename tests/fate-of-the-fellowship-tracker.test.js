@@ -14,7 +14,6 @@ const childProcess = require('child_process');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { pathToFileURL } = require('url');
 const yaml = require('js-yaml');
 const sharp = require('sharp');
 
@@ -35,7 +34,9 @@ const customCssPath = path.join(root, 'static', 'css', 'custom.css');
 const fateCssPath = path.join(root, 'static', 'css', 'fate-of-the-fellowship.css');
 const fateSocialImagePath = path.join(root, 'static', 'images', 'social', 'fate-of-the-fellowship-og.png');
 const fateSocialImageSourcePath = path.join(root, 'static', 'images', 'social', 'working-files', 'fate-of-the-fellowship-og.svg');
-const renderedPagePath = path.join(root, 'public', 'fate-of-the-fellowship', 'index.html');
+// Raw fixture builds must never replace the optimized production output.
+const fixtureDestination = fs.mkdtempSync(path.join(os.tmpdir(), 'fate-rendered-'));
+const renderedPagePath = path.join(fixtureDestination, 'fate-of-the-fellowship', 'index.html');
 const TEMP_FIXTURE_IMAGE_PATH = '/images/fate-of-the-fellowship/session-photos/2026-06-12-win-test-fixture.jpg';
 const TEMP_NON_PROGRESSIVE_IMAGE_PATH = '/images/fate-of-the-fellowship/session-photos/2026-06-12-win-non-progressive-test-fixture.jpg';
 const TEMP_PNG_IMAGE_PATH = '/images/fate-of-the-fellowship/session-photos/2026-06-12-win-png-test-fixture.png';
@@ -313,7 +314,7 @@ function stripHtml(value) {
 }
 
 function runHugoBuild() {
-  childProcess.execFileSync('hugo', ['--gc', '--minify', '--cleanDestinationDir'], {
+  childProcess.execFileSync('hugo', ['--minify', '--cleanDestinationDir', '--destination', fixtureDestination], {
     cwd: root,
     stdio: 'pipe',
   });
@@ -1544,12 +1545,6 @@ async function main() {
       ].forEach((snippet) => {
         assert(!renderedPage.includes(snippet), `Fate rendered page should not include removed overlapping decoration: ${snippet}`, errors);
       });
-      const customCss = fs.readFileSync(customCssPath, 'utf8');
-      const fateCss = fs.readFileSync(fateCssPath, 'utf8');
-      const fixtureImageFileUrl = pathToFileURL(path.join(root, 'static', TEMP_FIXTURE_IMAGE_PATH.replace(/^\//, ''))).href;
-      const browserHtml = renderedPage
-        .replace('</head>', `<style>${customCss}\n${fateCss}</style></head>`)
-        .replaceAll(`src="${TEMP_FIXTURE_IMAGE_PATH}"`, `src="${fixtureImageFileUrl}"`);
       let browser;
       try {
         browser = await chromium.launch({ headless: true });
@@ -1564,7 +1559,31 @@ async function main() {
             deviceScaleFactor: viewport.label === 'mobile' ? 2 : 1,
             isMobile: viewport.label === 'mobile',
           });
-          await page.setContent(browserHtml, { waitUntil: 'networkidle' });
+          // Serve the actual fixture output, including shared scripts, at a local
+          // origin. about:blank + setContent cannot resolve root-relative assets.
+          await page.route('**/*', async (route) => {
+            const url = new URL(route.request().url());
+            if (url.origin !== 'http://fate-fixture.test') {
+              await route.abort();
+              return;
+            }
+            const relativePath = decodeURIComponent(url.pathname).replace(/^\/+/, '');
+            const filePath = path.resolve(fixtureDestination, relativePath || 'index.html');
+            if (!filePath.startsWith(fixtureDestination + path.sep)) {
+              await route.fulfill({ status: 403, body: 'Forbidden' });
+              return;
+            }
+            if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+              await route.fulfill({ status: 404, body: 'Not found' });
+              return;
+            }
+            await route.fulfill({ path: filePath });
+          });
+          const pageErrors = [];
+          page.on('pageerror', (error) => pageErrors.push(error.message));
+          await page.goto('http://fate-fixture.test/fate-of-the-fellowship/index.html', { waitUntil: 'networkidle' });
+          assert(await page.evaluate(() => typeof window.ImageDelivery?.openOriginal === 'function'),
+            `Fate ${viewport.label} fixture should load the shared image dialog runtime`, errors);
 
         const visualMetrics = await page.evaluate(() => {
           const doc = document.documentElement;
@@ -1610,7 +1629,6 @@ async function main() {
             firstQuestCardText: document.querySelector('.fate-quest-card')?.textContent.trim() || '',
             secondHeroCardText: document.querySelectorAll('.fate-record-card')[1]?.textContent.trim() || '',
             secondQuestCardText: document.querySelectorAll('.fate-quest-card')[1]?.textContent.trim() || '',
-            placeholderImageSrc: document.querySelector('.fate-photo-dialog-image')?.getAttribute('src') || '',
             headerDisplay: getComputedStyle(document.querySelector('.site-header')).display,
             footerDisplay: getComputedStyle(document.querySelector('.site-footer')).display,
             topExitText: topExit.textContent.trim(),
@@ -1636,6 +1654,7 @@ async function main() {
           return {
             open: Boolean(dialog?.open),
             imageSrc: image?.getAttribute('src') || '',
+            imageSrcset: image?.getAttribute('srcset') || '',
             imageAlt: image?.getAttribute('alt') || '',
           };
         });
@@ -1647,6 +1666,7 @@ async function main() {
           return {
             open: Boolean(dialog?.open),
             imageSrc: image?.getAttribute('src') || '',
+            imageSrcset: image?.getAttribute('srcset') || '',
             imageAlt: image?.getAttribute('alt') || '',
           };
         });
@@ -1662,10 +1682,12 @@ async function main() {
           return {
             open: Boolean(dialog?.open),
             imageSrc: image?.getAttribute('src') || '',
+            imageSrcset: image?.getAttribute('srcset') || '',
             imageAlt: image?.getAttribute('alt') || '',
           };
         });
         const screenshot = await page.screenshot({ fullPage: false });
+        assert(pageErrors.length === 0, `Fate ${viewport.label} runtime errors: ${pageErrors.join('; ')}`, errors);
         await page.close();
 
         assert(visualMetrics.hasFatePage, `Fate ${viewport.label} render should include the page shell`, errors);
@@ -1746,10 +1768,10 @@ async function main() {
           errors
         );
         assert(!closeLightboxMetrics.open, `Fate ${viewport.label} photo lightbox should close when the close button is clicked`, errors);
-        assert(closeLightboxMetrics.imageSrc === visualMetrics.placeholderImageSrc, `Fate ${viewport.label} photo lightbox should reset the image source after close-button dismissal`, errors);
+        assert(closeLightboxMetrics.imageSrc === '' && closeLightboxMetrics.imageSrcset === '', `Fate ${viewport.label} photo lightbox should clear image sources after close-button dismissal`, errors);
         assert(closeLightboxMetrics.imageAlt === '', `Fate ${viewport.label} photo lightbox should clear alt text after close-button dismissal`, errors);
         assert(!backdropCloseMetrics.open, `Fate ${viewport.label} photo lightbox should close when the backdrop is clicked`, errors);
-        assert(backdropCloseMetrics.imageSrc === visualMetrics.placeholderImageSrc, `Fate ${viewport.label} photo lightbox should reset the image source after backdrop dismissal`, errors);
+        assert(backdropCloseMetrics.imageSrc === '' && backdropCloseMetrics.imageSrcset === '', `Fate ${viewport.label} photo lightbox should clear image sources after backdrop dismissal`, errors);
         assert(backdropCloseMetrics.imageAlt === '', `Fate ${viewport.label} photo lightbox should clear alt text after backdrop dismissal`, errors);
         assert(
           visualMetrics.pageBackground.includes('linear-gradient') || visualMetrics.pageBackground.includes('radial-gradient'),
@@ -1814,16 +1836,37 @@ async function main() {
     console.log(`Tests failed: ${errors.length}`);
     console.log('\n❌ Errors:');
     errors.forEach((error) => console.error(`   - ${error}`));
-    process.exit(1);
+    process.exitCode = 1;
+    return;
   }
 
   console.log('Tests passed: 10');
   console.log('\n✅ Fate of the Fellowship tracker tests passed!');
 }
 
+// Retain exact bytes even if a pre-existing file shares a fixture filename.
+const originalSessionFiles = new Map(getSessionFiles().map((file) =>
+  [path.join(sessionsDir, file), fs.readFileSync(path.join(sessionsDir, file))]));
+const originalFixtureImages = new Map([
+  TEMP_FIXTURE_IMAGE_PATH, TEMP_NON_PROGRESSIVE_IMAGE_PATH, TEMP_PNG_IMAGE_PATH,
+].map((file) => {
+  const absolute = path.join(root, 'static', file.replace(/^\//, ''));
+  return [absolute, fs.existsSync(absolute) ? fs.readFileSync(absolute) : null];
+}));
+
 main().catch((error) => {
   console.error('\n❌ Unexpected Fate tracker test failure:', error);
-  process.exit(1);
+  process.exitCode = 1;
+}).finally(() => {
+  try {
+    for (const [file, bytes] of originalSessionFiles) fs.writeFileSync(file, bytes);
+    for (const [file, bytes] of originalFixtureImages) {
+      if (bytes === null) fs.rmSync(file, { force: true });
+      else fs.writeFileSync(file, bytes);
+    }
+  } finally {
+    fs.rmSync(fixtureDestination, { recursive: true, force: true });
+  }
 });
 
 module.exports = {

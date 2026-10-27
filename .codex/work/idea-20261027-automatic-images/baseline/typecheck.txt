@@ -1,0 +1,34 @@
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(33,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(34,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(43,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(44,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(53,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(54,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(57,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/block/hero-section-with-beams-and-grid.tsx(58,9): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/components/ui/background-beams-with-collision.tsx(99,13): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/components/ui/background-beams-with-collision.tsx(100,13): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+../../../../../../tmp/website-image-ts-baseline/src/lib/ai-chat-exporter.ts(364,14): error TS2554: Expected 2 arguments, but got 1.
+../../../../../../tmp/website-image-ts-baseline/src/react/ai-chat-exporter.tsx(505,47): error TS2550: Property 'replaceAll' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2021' or later.
+../../../../../../tmp/website-image-ts-baseline/src/react/ai-chat-exporter.tsx(509,49): error TS2550: Property 'replaceAll' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2021' or later.
+node_modules/@tabler/icons-react/dist/tabler-icons-react.d.ts(2,10): error TS2305: Module '"react"' has no exported member 'ReactSVG'.

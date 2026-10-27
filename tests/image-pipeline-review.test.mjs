@@ -89,13 +89,14 @@ test('source-element budgets are checked even when img candidates are small', as
  const e=f.manifest.images['/a.jpg'];
  const small=e.variants.find(v=>v.format==='webp'&&v.width===320);
  const large=e.variants.find(v=>v.format==='webp'&&v.width===640);
- const html=`<picture><source type="image/webp" srcset="${large.url} 640w" data-image-source="/a.jpg" data-image-profile="thumbnail"><img src="${small.url}" data-image-source="/a.jpg" data-image-profile="thumbnail"></picture>`;
+ const html=`<picture><source type="image/webp" srcset="${large.url} 1x" data-image-source="/a.jpg" data-image-profile="thumbnail"><img src="${small.url}" srcset="${small.url} 1x" width="320" height="320" loading="lazy" data-image-source="/a.jpg" data-image-profile="thumbnail"></picture>`;
  await assert.rejects(gate(f,html),/budget exceeded/);
 });
 test('density sets preserve density; mixed art and unsupported type fail explicitly',async t=>{
  const f=await fixture(t);
- const out=transformHtml({...f,html:'<img src="/a.png" srcset="/a.png 1x, /a.png 2x">'}).html;
- assert.match(out,/1x, [^"]+ 2x/);assert.doesNotMatch(out, /srcset="\/a.png/);
+ const out=transformHtml({...f,html:'<img src="/a.png" srcset="/a.png 1x">'}).html;
+ assert.match(out,/1x/);
+ assert.throws(()=>transformHtml({...f,html:'<img src="/a.png" srcset="/a.png 1x, /a.png 2x">'}),/density intrinsic/);assert.doesNotMatch(out, /srcset="\/a.png/);
  assert.equal(transformHtml({...f,html:out}).html,out);
  await gate(f,out);
  f.manifest.images['/b.png']={...f.manifest.images['/a.png'],sourceUrl:'/b.png',variants:[]};
@@ -117,7 +118,7 @@ test('matching fallback and selected candidate URL cannot bypass thumbnail budge
  const f=await fixture(t,true);
  const v=f.manifest.images['/a.jpg'].variants.find(v=>v.format==='jpeg'&&v.width===640);
  assert.ok(v.bytes>100000);
- await assert.rejects(gate(f,`<img src="${v.url}" srcset="${v.url} 640w" data-image-source="/a.jpg" data-image-profile="thumbnail">`),/budget exceeded/);
+ await assert.rejects(gate(f,`<img src="${v.url}" srcset="${v.url} 1x" width="640" height="640" loading="lazy" data-image-source="/a.jpg" data-image-profile="thumbnail">`),/budget exceeded/);
 });
 
 test('explicit same-art resize pairs regenerate from canonical art',async t=>{
@@ -126,7 +127,7 @@ test('explicit same-art resize pairs regenerate from canonical art',async t=>{
  f.manifest=await prepareImages(f);await publishImages(f);await fs.cp(path.join(f.root,'static'),f.publishDir,{recursive:true});
  const html='<img src="/a.png" srcset="/a-small.png 500w, /a.png 1000w" sizes="80vw">';
  assert.throws(()=>transformHtml({...f,html}),/Unsupported art direction/);
- const out=transformHtml({...f,html,config:{...f.config,authoredSourceAliases:{'/a-small.png':'/a.png'}}}).html;
+ const out=transformHtml({...f,html,config:{...f.config,authoredSourceAliases:{'/a-small.png':{target:'/a.png',sourceSha256:f.manifest.images['/a-small.png'].sourceSha256,targetSha256:f.manifest.images['/a.png'].sourceSha256}}}}).html;
  assert.doesNotMatch(out,/a-small/);assert.match(out,/sizes="80vw"/);
  await gate(f,out);
 });

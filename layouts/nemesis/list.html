@@ -265,7 +265,8 @@
                   aria-label="Open final game state photo for {{ $gameName }} / {{ $setupName }} on {{ $session.date }}"
                 >
                   <img
-                    src="{{ . }}"
+                    data-image-profile="thumbnail" src="{{ . }}"
+                    sizes="(max-width: 640px) 100vw, (max-width: 900px) calc(100vw - 134.4px - clamp(48px, 6vw, 72px)), 640px"
                     alt="Final game state for {{ $gameName }} / {{ $setupName }} on {{ $session.date }}"
                     loading="lazy"
                   />
@@ -323,13 +324,13 @@
 <dialog class="nemesis-photo-dialog" aria-label="Final game state photo">
   <div class="nemesis-photo-dialog-frame">
     <button type="button" class="nemesis-photo-dialog-close" aria-label="Close photo">×</button>
-    <img class="nemesis-photo-dialog-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
+    <img class="nemesis-photo-dialog-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-image-deferred="original" alt="" />
   </div>
 </dialog>
 
+<script src="/js/image-dialog.js"></script>
 <script>
   (() => {
-    const placeholderImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
     const dialog = document.querySelector(".nemesis-photo-dialog");
     const dialogImage = document.querySelector(".nemesis-photo-dialog-image");
     const closeButton = document.querySelector(".nemesis-photo-dialog-close");
@@ -465,13 +466,13 @@
 
     const closeDialog = () => {
       dialog.close();
-      dialogImage.src = placeholderImageSrc;
+      window.ImageDelivery.clearImage(dialogImage);
       dialogImage.alt = "";
     };
 
     triggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
-        dialogImage.src = trigger.dataset.nemesisLightboxSrc;
+        window.ImageDelivery.openOriginal(dialogImage, trigger.dataset.nemesisLightboxSrc);
         dialogImage.alt = trigger.dataset.nemesisLightboxAlt || "";
         dialog.showModal();
       });
@@ -486,7 +487,7 @@
     });
 
     dialog.addEventListener("close", () => {
-      dialogImage.src = placeholderImageSrc;
+      window.ImageDelivery.clearImage(dialogImage);
       dialogImage.alt = "";
     });
   })();

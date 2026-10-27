@@ -75,7 +75,9 @@ section.hero h1,
 }
 
 .about-devpro-fallback__image {
-  width: 100%;
+  width: 192px;
+  height: auto;
+  justify-self: center;
   aspect-ratio: 1;
   object-fit: contain;
   border-radius: 1.75rem;
@@ -136,7 +138,7 @@ section.hero h1,
   }
 
   .about-devpro-fallback__image {
-    max-width: 260px;
+    max-width: 252px;
   }
 
   .about-devpro-fallback__receipts ul {
@@ -1902,4 +1904,16 @@ td code {
   .featured-post[style*="margin-bottom: 3rem"] {
     margin-bottom: var(--space-xl) !important;
   }
+}
+
+@media (min-width: 768px) {
+  .about-devpro-fallback__image { width: 252px; }
+}
+
+/* Match the Workshop fallback image slot to its React replacement. */
+#homepage-root .workshop-home-section > .site-container { max-width: 1328px; padding-inline: 37px; }
+#homepage-root .workshop-home-section figure { margin: 0; }
+#homepage-root .workshop-home-section figure img { width: 100%; }
+@media (min-width: 640px) {
+  #homepage-root .workshop-home-section > .site-container { padding-inline: 45px; }
 }

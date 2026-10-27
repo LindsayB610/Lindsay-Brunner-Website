@@ -1,3 +1,4 @@
+import { RetainedResponsiveImage } from "../components/responsive-image";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
@@ -136,10 +137,10 @@ const timelineItems = [
   },
 ];
 
-function AboutPage() {
+function AboutPage({ portrait }: { portrait: HTMLImageElement | null }) {
   return (
     <div className="bg-site-black text-white">
-      <AboutIntro />
+      <AboutIntro portrait={portrait} />
       <ReceiptsSection />
       <Timeline
         data={timelineItems}
@@ -187,7 +188,7 @@ function ReceiptsSection() {
   );
 }
 
-function AboutIntro() {
+function AboutIntro({ portrait }: { portrait: HTMLImageElement | null }) {
   return (
     <section className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:px-8 md:py-20 lg:grid-cols-[1fr_280px] lg:items-start lg:gap-16">
       <div>
@@ -230,10 +231,10 @@ function AboutIntro() {
         <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-brand-pink via-brand-red to-brand-yellow p-[2px] shadow-2xl">
           <div className="rounded-[1.65rem] bg-[#111] p-3">
             <div className="overflow-hidden rounded-[1.35rem] bg-brand-pink/16">
-              <img
+              <RetainedResponsiveImage fallbackImage={portrait} profile="portrait"
                 src="/images/avatar-color-trans.png"
                 alt="Lindsay Brunner"
-                className="aspect-square w-full object-contain"
+                className="aspect-square h-auto w-full object-contain"
               />
             </div>
           </div>
@@ -317,10 +318,11 @@ function TimelineEntryContent({
 const root = document.getElementById("about-root");
 
 if (root) {
+  const portrait = root.querySelector<HTMLImageElement>('img[data-image-source="/images/avatar-color-trans.png"]');
   createRoot(root).render(
     <React.StrictMode>
       <MotionConfig reducedMotion="user">
-        <AboutPage />
+        <AboutPage portrait={portrait} />
       </MotionConfig>
     </React.StrictMode>,
   );

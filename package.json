@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "hugo server -D --buildFuture --bind 0.0.0.0",
-    "build": "npm run generate:og-images && npm run images:prepare && npm run build:react && hugo --gc --minify --cleanDestinationDir && npm run images:finalize && npm run test:images",
+    "build": "npm run generate:og-images && npm run images:prepare && npm run images:policy && npm run build:react && hugo --gc --minify --cleanDestinationDir && npm run images:finalize && npm run test:images",
     "build:react": "vite build",
     "generate:og-images": "node scripts/generate-og-images.js",
     "generate:png": "node scripts/generate-png-from-svg.js",
@@ -58,7 +58,7 @@
     "test:ai-exporter:runtime": "node tests/ai-chat-exporter-runtime.test.js",
     "test:ai-exporter:docs": "node tests/ai-chat-exporter-docs.test.js",
     "test:ai-exporter": "npm run test:ai-exporter:client && npm run test:ai-exporter:page && npm run test:ai-exporter:interaction && npm run test:ai-exporter:visual && npm run test:ai-exporter:function && npm run test:ai-exporter:boundary && npm run test:ai-exporter:runtime && npm run test:ai-exporter:docs",
-    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:blog-migration && npm run test:blog-navigation && npm run test:codex-display && npm run test:homepage && npm run test:style-boundaries && npm run test:default-branch && npm run test:codex-config && npm run test:commands && npm run test:accessibility && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json && npm run test:nemesis && npm run test:fate && npm run test:workshop:built && npm run test:christmas-catalog && npm run test:netlify-build && npm run test:dependency-runtime && npm run test:recipe-template && npm run test:dietary && npm run test:mobile && npm run test:ai-exporter && npm run test:images:unit",
+    "test": "npm run pretest && npm run test:html && npm run test:links && npm run test:content && npm run test:blog-migration && npm run test:blog-navigation && npm run test:codex-display && npm run test:homepage && npm run test:style-boundaries && npm run test:default-branch && npm run test:codex-config && npm run test:commands && npm run test:accessibility && npm run test:spell && npm run test:og-images && npm run test:schedule && npm run test:search-json && npm run test:nemesis && npm run test:fate && npm run test:workshop:built && npm run test:christmas-catalog && npm run test:netlify-build && npm run test:dependency-runtime && npm run test:recipe-template && npm run test:dietary && npm run test:mobile && npm run test:ai-exporter && npm run test:images:unit && npm run test:images:policy && npm run test:images:consumers && npm run test:images:preview && npm run test:links:unit",
     "pretest": "npm run build",
     "schedule-posts": "node scripts/schedule-posts.js",
     "check:hugo": "node scripts/check-hugo-version.js",
@@ -69,8 +69,18 @@
     "test:dependency-runtime": "node tests/dependency-runtime.test.js",
     "images:prepare": "node scripts/images/cli.mjs prepare",
     "images:finalize": "node scripts/images/cli.mjs finalize",
-    "test:images": "node scripts/images/cli.mjs validate",
-    "test:images:unit": "node --test tests/image-pipeline.test.mjs"
+    "test:images": "node scripts/images/cli.mjs validate && npm run images:policy:rendered",
+    "test:images:unit": "node --test tests/image-pipeline.test.mjs tests/image-pipeline-review.test.mjs tests/image-pipeline-round2.test.mjs",
+    "images:policy": "node scripts/images/policy.mjs",
+    "images:policy:rendered": "node scripts/images/policy.mjs --rendered",
+    "test:images:policy": "node --test tests/image-policy.test.mjs tests/image-runtime-sources.test.mjs",
+    "test:images:runtime": "node tests/image-runtime.test.mjs",
+    "test:images:consumers": "node --test tests/image-consumers.test.mjs",
+    "test:images:release": "npm run build && npm run test:images:unit && npm run test:images:policy && npm run test:images:consumers && npm run test:images:preview && npm run test:images:presentation && npm run test:images:runtime && npm run test:links:unit",
+    "dev:optimized": "node scripts/preview-optimized.mjs",
+    "test:images:preview": "node --test tests/optimized-preview.test.mjs",
+    "test:images:presentation": "node --test tests/image-presentation-runtime.test.mjs",
+    "test:links:unit": "node --test tests/check-links.test.js"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.13",

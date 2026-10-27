@@ -1,0 +1,35 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:images:unit
+> node --test tests/image-pipeline.test.mjs tests/image-pipeline-review.test.mjs tests/image-pipeline-round2.test.mjs
+
+✔ srcset-only images optimize and cannot bypass final gate (237.53275ms)
+✔ forged and mismatched completion markers fail transform and gate (137.332417ms)
+✔ pictures and authored sets optimize while retaining sizes/media/type (125.776ms)
+✔ thumbnail WebP candidates exceed thumbnail budget in img and picture source (418.918042ms)
+✔ real Hugo publishDate omits unpublished bundle derivatives and validates remaining site (230.822541ms)
+✔ unsupported inherited visibility fails explicitly (41.22525ms)
+✔ source-element budgets are checked even when img candidates are small (344.013708ms)
+✔ density sets preserve density; mixed art and unsupported type fail explicitly (95.363333ms)
+✔ documented dialog placeholder passes but cannot hide srcset fetches (150.438375ms)
+✔ matching fallback and selected candidate URL cannot bypass thumbnail budget (339.706334ms)
+✔ explicit same-art resize pairs regenerate from canonical art (131.509958ms)
+✔ incomplete real markers and full width sets without sizes fail transform and gate (282.233334ms)
+✔ ladder-aligned densities retain exact pixels and 1x intrinsic display dimensions (95.053958ms)
+✔ non-ladder density pixel widths fail explicitly instead of rounding (64.881667ms)
+✔ reviewed resize aliases accept genuine bytes then reject either side artwork drift (116.443875ms)
+✔ single-sided authored dimensions preserve aspect ratio for ordinary and density images (150.963ms)
+✔ standalone discovery, stable release URLs, immutable originals, cache repair and decoded descriptors (145.214959ms)
+✔ parsed transform preserves metadata, styles, URL semantics and idempotence; gate catches tampering (135.431709ms)
+✔ existing picture keeps art direction and validates candidates (62.554167ms)
+✔ corrupt source and escaping symlink fail; simple bundle mapping; tiny SVG orientation and animation (71.551542ms)
+✔ animated passthrough, lean browser selection, corrupt/missing derivatives and header contracts (80.909667ms)
+✔ canonical build is browser free, prepares before Hugo and gates finalized output (1.47725ms)
+✔ draft bundle stays private; ambiguous mapping and bad priority fail; AVIF decodes (32.449ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2433.409791

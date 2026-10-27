@@ -1,0 +1,28 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:images:runtime
+> node tests/image-runtime.test.mjs
+
+PASS Christmas 390 DPR1
+PASS Christmas 390 DPR2
+PASS Christmas 1440 DPR1
+PASS Christmas 1440 DPR2
+PASS About no-JS 390
+PASS About no-JS 1440
+PASS Nemesis slot 640
+PASS Nemesis slot 800
+AssertionError [ERR_ASSERTION]: {"width":900,"slot":711.625,"selected":640,"sizes":"(max-width: 640px) 100vw, 640px"}
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:109:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+PASS Nemesis slot 1440
+PASS React takeover /about/
+PASS React takeover /
+PASS Logo rotation and visible testimonial
+PASS Deferred original open/swap/close/reopen /nemesis/
+PASS Deferred original open/swap/close/reopen /fate-of-the-fellowship/
+PASS Deferred original open/swap/close/reopen /__image-runtime-zoom/

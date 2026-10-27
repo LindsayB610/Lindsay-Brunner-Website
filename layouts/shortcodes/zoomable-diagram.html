@@ -10,10 +10,11 @@
 <dialog id="{{ $id }}-dialog" class="zoomable-diagram__dialog" aria-label="Expanded diagram">
   <div class="zoomable-diagram__dialog-frame">
     <button type="button" class="zoomable-diagram__close" aria-label="Close enlarged diagram">Close</button>
-    <img src="{{ $src }}" alt="{{ $alt }}" decoding="async" />
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-image-deferred="original" data-original-src="{{ $src }}" alt="{{ $alt }}" decoding="async" />
   </div>
 </dialog>
 
+<script src="/js/image-dialog.js"></script>
 <script>
   (() => {
     const dialog = document.getElementById("{{ $id }}-dialog");
@@ -22,7 +23,12 @@
 
     if (!dialog || !trigger || !closeButton) return;
 
-    trigger.addEventListener("click", () => dialog.showModal());
+    const image = dialog.querySelector("[data-original-src]");
+    trigger.addEventListener("click", () => {
+      window.ImageDelivery.openOriginal(image, image.dataset.originalSrc);
+      dialog.showModal();
+    });
+    dialog.addEventListener("close", () => window.ImageDelivery.clearImage(image));
     closeButton.addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();

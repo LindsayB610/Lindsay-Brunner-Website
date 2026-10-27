@@ -9,6 +9,7 @@
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
+const { parse } = require('parse5');
 
 const root = path.resolve(__dirname, '..');
 const publicDir = path.join(root, 'public');
@@ -68,10 +69,30 @@ function listHtmlFiles(directory) {
   return files;
 }
 
+function elements(html, tag) {
+  const found = [];
+  function walk(node) {
+    if (node.tagName && (!tag || node.tagName === tag)) found.push(node);
+    for (const child of node.childNodes || []) walk(child);
+  }
+  walk(parse(html));
+  return found;
+}
+
+function attr(node, name) {
+  return node?.attrs?.find((attribute) => attribute.name === name)?.value;
+}
+
+function hasClass(node, name) {
+  return (attr(node, 'class') || '').split(/\s+/).includes(name);
+}
+
+function textContent(node) {
+  return node?.nodeName === '#text' ? node.value : (node?.childNodes || []).map(textContent).join('');
+}
+
 function workshopDownloadAnchors(html) {
-  return (html.match(/<a\b[^>]*>/gi) || []).filter((anchor) =>
-    /\bhref=(?:["']\/workshop\/download["']|\/workshop\/download)(?:\s|>)/i.test(anchor),
-  );
+  return elements(html, 'a').filter((anchor) => attr(anchor, 'href') === workshopDownloadPath);
 }
 
 function contentType(filePath) {
@@ -195,6 +216,10 @@ function testRenderedContracts() {
 
   const rendered = read(renderedPagePath);
   const renderedLaunchPost = read(renderedLaunchPostPath);
+  const manifest = JSON.parse(read(path.join(root, '.generated', 'images', 'manifest.json')));
+  const images = elements(rendered, 'img');
+  const links = elements(rendered, 'a');
+  const downloads = workshopDownloadAnchors(rendered);
   const siteHtmlFiles = listHtmlFiles(publicDir);
   const siteWideDownloadLinks = siteHtmlFiles.flatMap((filePath) =>
     workshopDownloadAnchors(read(filePath)).map((anchor) => ({ anchor, filePath })),
@@ -214,7 +239,7 @@ function testRenderedContracts() {
     }),
     'Site pages should load Plausible; the unlisted family catalog must remain noindex',
   );
-  assert(rendered.includes(`src=${workshopMark}`), 'Rendered Workshop page should include the Workshop mark');
+  assert(images.some((image) => attr(image, 'src') === workshopMark), 'Rendered Workshop page should include the Workshop mark');
   assert(rendered.includes(`https://lindsaybrunner.com${workshopOgImage}`), 'Rendered Workshop page should expose its page-specific Open Graph image');
   assert(rendered.includes('A home for the tools that keep your real work moving.'), 'Rendered Workshop page should retain its approved hero promise');
   assert(rendered.includes('Workshop, Slate, and Pulse are open source.'), 'Rendered Workshop page should state that Workshop and its included tools are open source');
@@ -226,41 +251,50 @@ function testRenderedContracts() {
     const builtPath = path.join(publicDir, src.replace(/^\//, ''));
     assert(fs.existsSync(staticPath), `Workshop source image is missing: ${src}`);
     assert(fs.existsSync(builtPath), `Workshop built image is missing: ${src}`);
-    assert(rendered.includes(`src=${src}`), `Workshop page should render ${src}`);
-    assert(rendered.includes(`alt="${alt}"`), `Workshop image should retain descriptive alt text: ${src}`);
+    const matches = images.filter((image) => attr(image, 'data-image-source') === src);
+    assert(matches.length === 1, `Workshop page should render exactly one image derived from ${src}`);
+    const image = matches[0];
+    assert(attr(image, 'alt') === alt, `Workshop image should retain descriptive alt text: ${src}`);
+    const variants = new Set((manifest.images[src]?.variants || []).map((variant) => variant.url));
+    const delivered = attr(image, 'src') || '';
+    const candidates = (attr(image, 'srcset') || '').split(',').map((candidate) => candidate.trim().split(/\s+/)[0]).filter(Boolean);
+    assert(variants.has(delivered) && delivered.startsWith('/_img/') && fs.existsSync(path.join(publicDir, delivered)), `Workshop image should use an existing optimized derivative: ${src}`);
+    assert(candidates.length > 1 && candidates.every((candidate) => variants.has(candidate) && candidate.startsWith('/_img/') && fs.existsSync(path.join(publicDir, candidate))), `Workshop image should offer existing responsive derivatives: ${src}`);
+    assert(Boolean(attr(image, 'sizes')), `Workshop responsive image should declare its display sizes: ${src}`);
   });
 
+  const githubLinks = links.filter((link) => hasClass(link, 'workshop-github-link'));
   assert(
-    rendered.includes(`href=${workshopRepositoryUrl}`) &&
-      rendered.includes('target=_blank') &&
-      rendered.includes('rel="noopener noreferrer"'),
-    'Workshop GitHub CTA should keep its destination and safe external-link attributes',
+    githubLinks.length === 2 && githubLinks.every((link) =>
+      attr(link, 'href') === workshopRepositoryUrl && attr(link, 'target') === '_blank' &&
+      ['noopener', 'noreferrer'].every((token) => (attr(link, 'rel') || '').split(/\s+/).includes(token)) &&
+      textContent(link).includes('View Workshop on GitHub')),
+    'Both Workshop GitHub CTAs should keep their label, destination and safe external-link attributes',
   );
-  assert(rendered.includes(`href=${workshopDownloadPath}`), 'Workshop should route downloads through its stable local download doorway');
-  assert(rendered.includes(workshopDownloadEventClass), 'Workshop download CTAs should emit a dedicated Plausible goal event');
+  assert(downloads.length === 2, 'Workshop should route both downloads through its stable local download doorway');
   assert(siteWideDownloadLinks.length >= 3, 'The built site should expose the Workshop downloads on the product page and published launch post');
   assert(
-    siteWideDownloadLinks.every(({ anchor }) => anchor.includes(workshopDownloadEventClass)),
+    siteWideDownloadLinks.every(({ anchor }) => hasClass(anchor, workshopDownloadEventClass)),
     `Every rendered ${workshopDownloadPath} link should emit the Workshop Download event`,
   );
   const launchPostDownloadLinks = workshopDownloadAnchors(renderedLaunchPost);
   assert(launchPostDownloadLinks.length === 1, 'The Workshop launch post should render exactly one download CTA');
   assert(
-    launchPostDownloadLinks[0]?.includes(workshopDownloadEventClass) && launchPostDownloadLinks[0]?.includes('workshop-post-download-button'),
+    hasClass(launchPostDownloadLinks[0], workshopDownloadEventClass) && hasClass(launchPostDownloadLinks[0], 'workshop-post-download-button'),
     'The Workshop launch-post CTA should retain both its tracking event and post-specific class after shortcode expansion',
   );
   assert(
-    new RegExp(`<a\\b[^>]*href=${workshopDownloadPath}[^>]*>[\\s\\S]*?Download for macOS\\s*</a>`).test(renderedLaunchPost),
+    textContent(launchPostDownloadLinks[0]).trim().endsWith('Download for macOS'),
     'The Workshop launch-post CTA should retain its macOS download label after shortcode expansion',
   );
   assert(
-    (rendered.match(new RegExp(`href=${workshopDownloadPath}`, 'g')) || []).length === 2 &&
-      (rendered.match(/plausible-event-name=Workshop\+Download/g) || []).length === 2,
-    'Both Workshop download CTAs should use the stable doorway and the same Plausible event',
+    downloads.length === 2 && downloads.every((link) => hasClass(link, workshopDownloadEventClass) && textContent(link).trim().endsWith('Download for macOS')) &&
+      links.filter((link) => hasClass(link, workshopDownloadEventClass)).length === 2,
+    'Both Workshop download CTAs should use the stable doorway, macOS label and the same Plausible event',
   );
   assert(rendered.includes('Download for macOS'), 'Workshop should make the macOS download the primary hero action');
   assert(rendered.split('Built for Apple Silicon Macs · No account required.').length === 3, 'Workshop should state the platform requirement and account policy below both download CTAs');
-  assert(!rendered.includes('class=workshop-proof'), 'Workshop hero should not use a redundant proof-bullet list');
+  assert(!elements(rendered).some((node) => hasClass(node, 'workshop-proof')), 'Workshop hero should not use a redundant proof-bullet list');
 }
 
 async function testBrowserLayout() {

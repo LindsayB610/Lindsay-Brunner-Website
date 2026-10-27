@@ -1,0 +1,146 @@
+
+> lindsay-brunner-hugo-site@1.0.0 build
+> npm run generate:og-images && npm run images:prepare && npm run images:policy && npm run build:react && hugo --gc --minify --cleanDestinationDir && npm run images:finalize && npm run test:images
+
+
+> lindsay-brunner-hugo-site@1.0.0 generate:og-images
+> node scripts/generate-og-images.js
+
+🎨 Generating OG images for recipes...
+
+⏭️  Skipping recipe-90s-mom-sausage-rice-bake.md: Already has social image (reviewed)
+⏭️  Skipping recipe-air-fryer-sweet-potatoes.md: Already has social image (reviewed)
+⏭️  Skipping recipe-bachan-pulled-pork.md: Already has social image (reviewed)
+⏭️  Skipping recipe-baked-ziti-beef-ragu.md: Already has social image (reviewed)
+⏭️  Skipping recipe-beer-bread.md: Already has social image (reviewed)
+⏭️  Skipping recipe-chicken-legs-leftover-onion-bits.md: Already has social image (reviewed)
+⏭️  Skipping recipe-cinnamon-brown-sugar-candied-carrots.md: Already has social image (reviewed)
+⏭️  Skipping recipe-cinnamon-pecan-coffee-cake-loaf.md: Already has social image (reviewed)
+⏭️  Skipping recipe-consummate-chocolate-chip-cookies.md: Already has social image (reviewed)
+⏭️  Skipping recipe-cream-cheese-mints.md: Already has social image (reviewed)
+⏭️  Skipping recipe-cream-of-celery-chicken-and-rice.md: Already has social image (reviewed)
+⏭️  Skipping recipe-creamy-polenta.md: Already has social image (reviewed)
+⏭️  Skipping recipe-deep-cozy-pantry-chili.md: Already has social image (reviewed)
+⏭️  Skipping recipe-duck-fat-roasted-turkey-parts.md: Already has social image (reviewed)
+⏭️  Skipping recipe-easy-oven-bacon.md: Already has social image (reviewed)
+✅ Generated: static/images/social/working-files/recipe-easy-sini-manti-og.svg (editable)
+⏭️  Skipping recipe-egg-salad-pickle-relish.md: Already has social image (reviewed)
+⏭️  Skipping recipe-espresso-caramel-lebkuchen-swirl-blondies.md: Already has social image (reviewed)
+⏭️  Skipping recipe-extra-protein-pasta-e-fagioli.md: Already has social image (reviewed)
+⏭️  Skipping recipe-garlic-in-oil-confit-roasted.md: Already has social image (reviewed)
+⏭️  Skipping recipe-german-inspired-carrot-almond-torte-loaf.md: Already has social image (reviewed)
+⏭️  Skipping recipe-golden-raisin-turkey-tacos.md: Already has social image (reviewed)
+⏭️  Skipping recipe-grandma-yolas-pizzelles.md: Already has social image (reviewed)
+⏭️  Skipping recipe-herb-roasted-chicken-garlic-pepper-potatoes.md: Already has social image (reviewed)
+⏭️  Skipping recipe-holiday-crunch-casserole.md: Already has social image (reviewed)
+⏭️  Skipping recipe-honey-mustard-pretzel-crunchies.md: Already has social image (reviewed)
+⏭️  Skipping recipe-index.md: Already has social image (reviewed)
+⏭️  Skipping recipe-leftover-steak-egg-bowls.md: Already has social image (reviewed)
+⏭️  Skipping recipe-marinated-bavette-steak-chimichurri.md: Already has social image (reviewed)
+⏭️  Skipping recipe-peaches-and-cream-crisp.md: Already has social image (reviewed)
+⏭️  Skipping recipe-potato-skin-chips-garlic-avocado-oil.md: Already has social image (reviewed)
+⏭️  Skipping recipe-roasted-cornish-hens.md: Already has social image (reviewed)
+⏭️  Skipping recipe-roasted-squash-ditalini-crispy-guanciale.md: Already has social image (reviewed)
+⏭️  Skipping recipe-same-day-oven-fried-buffalo-wings.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sausage-peppers-onions-over-rice.md: Already has social image (reviewed)
+⏭️  Skipping recipe-schmaltzy-chicken-thighs.md: Already has social image (reviewed)
+⏭️  Skipping recipe-schmaltzy-potato-fritters.md: Already has social image (reviewed)
+⏭️  Skipping recipe-science-minded-church-picnic-potato-salad.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sheet-pan-doner-kebab.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sheet-pan-sausage-veg.md: Already has social image (reviewed)
+⏭️  Skipping recipe-simple-classic-almond-biscotti.md: Already has social image (reviewed)
+⏭️  Skipping recipe-simple-sauteed-cabbage-onion.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sous-vide-eye-of-round.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sous-vide-pulled-pork-arbys-bbq.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sous-vide-rack-of-lamb.md: Already has social image (reviewed)
+⏭️  Skipping recipe-spaghetti-and-meatballs.md: Already has social image (reviewed)
+⏭️  Skipping recipe-steak-bites-crispy-potatoes-peas.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sweet-moist-jiffy-corn-muffins.md: Already has social image (reviewed)
+⏭️  Skipping recipe-sweet-potato-casserole.md: Already has social image (reviewed)
+⏭️  Skipping recipe-turkey-and-dumplings-with-onion-and-tarragon.md: Already has social image (reviewed)
+⏭️  Skipping recipe-turkey-wellington-sausage-roll.md: Already has social image (reviewed)
+⏭️  Skipping recipe-ultra-concentrated-baked-potato-mashed-potatoes.md: Already has social image (reviewed)
+⏭️  Skipping recipe-weeknight-rice-pilaf.md: Already has social image (reviewed)
+⏭️  Skipping recipe-weeknight-sausage-risotto.md: Already has social image (reviewed)
+⏭️  Skipping recipe-zacks-favorite-plum-buckle.md: Already has social image (reviewed)
+
+✨ Done! Generated 1 image(s), skipped 54.
+
+> lindsay-brunner-hugo-site@1.0.0 images:prepare
+> node scripts/images/cli.mjs prepare
+
+Prepared 273 images, 3384 variants in 1765ms
+
+> lindsay-brunner-hugo-site@1.0.0 images:policy
+> node scripts/images/policy.mjs
+
+Image source policy: 150 files; 0 violations.
+
+> lindsay-brunner-hugo-site@1.0.0 build:react
+> vite build
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vite.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 8296 modules transformed.
+rendering chunks...
+computing gzip size...
+assets/react/.vite/manifest.json                               1.36 kB │ gzip:   0.34 kB
+assets/react/assets/styles-B6KiF-zh.css                       59.05 kB │ gzip:  10.07 kB
+assets/react/assets/about-4g5HURvS.js                         21.25 kB │ gzip:   8.40 kB
+assets/react/assets/homepage-D-_bOahr.js                      22.34 kB │ gzip:   7.54 kB
+assets/react/assets/ai-chat-exporter-BmDqf3-C.js              25.37 kB │ gzip:   8.90 kB
+assets/react/assets/utils-Dk_44zMo.js                         27.25 kB │ gzip:   8.69 kB
+assets/react/assets/contact-section-with-shader-DgGHtlO2.js   40.18 kB │ gzip:   9.66 kB
+assets/react/assets/styles-DHxADz6K.js                       315.64 kB │ gzip: 100.40 kB
+
+✓ built in 433ms
+Start building sites … 
+hugo v0.152.2-6abdacad3f3fe944ea42177844469139e81feda6 darwin/arm64 BuildDate=2025-10-24T15:31:49Z VendorInfo=gohugoio
+
+
+                  │ EN  
+──────────────────┼─────
+ Pages            │  97 
+ Paginator pages  │   0 
+ Non-page files   │   0 
+ Static files     │ 295 
+ Processed images │   0 
+ Aliases          │   0 
+ Cleaned          │   0 
+
+Total in 372 ms
+
+> lindsay-brunner-hugo-site@1.0.0 images:finalize
+> node scripts/images/cli.mjs finalize
+
+Finalized 127 image usages
+
+> lindsay-brunner-hugo-site@1.0.0 test:images
+> node scripts/images/cli.mjs validate && npm run images:policy:rendered
+
+Image output gate: {
+  images: 125,
+  variants: 3384,
+  budgetedCandidates: 652,
+  budgetExceptions: [
+    {
+      sourceUrl: '/images/pork-shoulder-two-pieces-new.jpg',
+      documentUrl: '/recipes/2026-01-14/recipe-sous-vide-pulled-pork-arbys-bbq/',
+      profile: 'body',
+      width: 1600,
+      maxBytes: 401000,
+      owner: 'Website maintenance',
+      reviewedOn: '2026-10-27',
+      reviewDate: '2026-11-27',
+      reason: 'Measured q85 output is 400438 bytes, 438 bytes over the provisional ceiling. Preserve approved photo quality; no encoder reduction.'
+    }
+  ]
+}
+
+> lindsay-brunner-hugo-site@1.0.0 images:policy:rendered
+> node scripts/images/policy.mjs --rendered
+
+Image source policy: 96 files; 0 violations.

@@ -945,3 +945,13 @@ The site is automatically deployed to Netlify when changes are pushed to the mai
 ## 📝 License
 
 This project is private and proprietary. All rights reserved.
+
+## Automatic image delivery
+
+`npm run build` generates responsive local raster derivatives, finalizes Hugo and standalone HTML, and rejects uncovered image sources. Ordinary literal `ResponsiveImage` sources are discovered automatically; dynamic sources use the bounded registrations documented in `scripts/images/POLICY.md`. Original artwork, social metadata and downloads remain at their original URLs. Do not run the legacy source-mutating optimization commands for routine publishing.
+
+Use `npm run dev:optimized` (also Netlify Dev's command) to verify image delivery locally at http://127.0.0.1:1313. It serializes complete production builds and serves a completed disk snapshot. During rebuilds or failures it returns HTTP503; reload after a successful build. Image additions, edits and deletions trigger rebuilds. Direct `dev`, `start` and `serve` Hugo commands remain fast authoring previews and do not provide production image delivery.
+
+Run `npm run test:images:release` before publishing image tooling or consumer changes. It includes static fixtures, preview lifecycle, native image presentation and dedicated headless network checks. CI runs these checks separately from Netlify's browser-free build. Required branch protection/deploy ordering has not been verified; passing local runtime checks remains a release requirement.
+
+Derivative URLs remain stable for a source path, profile and width, with mandatory browser/CDN revalidation. Same-path replacements update those bytes; old pages may display current artwork. Deleted/renamed sources and retired profiles are not retained. Hashed caches are disposable; remove `.cache/image-optimization` to measure a cold generation. Family-page derivatives retain the Christmas noindex policy. The build reports exact byte-budget exceptions; current exception ownership and expiry are in image configuration.

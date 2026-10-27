@@ -1,3 +1,4 @@
+import { ResponsiveImage } from "../components/responsive-image";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
@@ -167,7 +168,7 @@ function Homepage() {
             </div>
           </div>
           <a href="/workshop/" className="group block min-h-11 p-3 no-underline sm:p-5" aria-label="Explore Workshop">
-            <img
+            <ResponsiveImage profile="homepage-workshop"
               src="/images/workshop/workshop-shelf.png"
               alt="Workshop desktop app with Slate and Pulse ready to install"
               className="w-full rounded-lg border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition duration-500 group-hover:scale-[1.01]"

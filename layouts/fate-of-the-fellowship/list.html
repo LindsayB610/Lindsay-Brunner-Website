@@ -273,7 +273,7 @@
                   aria-label="Open final board state photo for Fate of the Fellowship on {{ $session.date }}"
                 >
                   <img
-                    src="{{ . }}"
+                    data-image-profile="thumbnail" src="{{ . }}"
                     alt="Final board state for Fate of the Fellowship on {{ $session.date }}"
                     loading="lazy"
                   />
@@ -321,13 +321,13 @@
 <dialog class="fate-photo-dialog" aria-label="Final board state photo">
   <div class="fate-photo-dialog-frame">
     <button type="button" class="fate-photo-dialog-close" aria-label="Close photo">Close</button>
-    <img class="fate-photo-dialog-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
+    <img class="fate-photo-dialog-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-image-deferred="original" alt="" />
   </div>
 </dialog>
 
+<script src="/js/image-dialog.js"></script>
 <script>
   (() => {
-    const placeholderImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
     const dialog = document.querySelector(".fate-photo-dialog");
     const dialogImage = document.querySelector(".fate-photo-dialog-image");
     const closeButton = document.querySelector(".fate-photo-dialog-close");
@@ -339,13 +339,13 @@
 
     const closeDialog = () => {
       dialog.close();
-      dialogImage.src = placeholderImageSrc;
+      window.ImageDelivery.clearImage(dialogImage);
       dialogImage.alt = "";
     };
 
     triggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
-        dialogImage.src = trigger.dataset.fateLightboxSrc;
+        window.ImageDelivery.openOriginal(dialogImage, trigger.dataset.fateLightboxSrc);
         dialogImage.alt = trigger.dataset.fateLightboxAlt || "";
         dialog.showModal();
       });
@@ -360,7 +360,7 @@
     });
 
     dialog.addEventListener("close", () => {
-      dialogImage.src = placeholderImageSrc;
+      window.ImageDelivery.clearImage(dialogImage);
       dialogImage.alt = "";
     });
   })();

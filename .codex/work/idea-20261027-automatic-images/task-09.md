@@ -1,0 +1,9 @@
+# Task09: second core review repairs
+
+Fresh $implement-task. Dependencies completed review-core-round2.md and core4ecb7dd. Own pipeline.mjs/config.mjs core presentation/alias logic and a new tests/image-pipeline-round2.test.mjs plus narrow existing fixture updates. No resolver API changes, package, consumers, source-policy or shared work.md edits without coordination. Task10 will own runtime-manifest discovery and needs a small later integration in pipeline; preserve its seam and communicate.
+
+Fix all three reproduced MEDIUM findings: finalized markers must have complete profile/responsive presentation or be regenerated/rejected; density srcsets must preserve intrinsic display size/effective density (explicit rejection of nonrepresentable ladder cases allowed); legacy source aliases must bind both reviewed source/target byte hashes and reject artwork drift. Current11 genuine aliases are verified resize pairs; migrate exact registrations, do not infer identity from dimensions. Cover single-sided authored width/height while touching dimension handling so explicit presentation is preserved rather than stretched.
+
+Acceptance: meaningful failing-before/passing-after fixtures for each report case, marked width sets missing sizes, ladder-aligned density set without dimensions, non-ladder density case, genuine alias accepted then same-shape different-art replacement rejected. Existing core tests remain green; canonical build passes after current aliases migrate. Source/OG/art preserved; no blanket bypass. Exact supported limits documented.
+
+Autonomous scoped repair authorized by user; no commit/push/deploy. Node24. You are not alone, no reverts. Task08 owns shared build/runtime slot currently; can edit core sources once parent grants but no .generated/public mutations until slot. Run isolated tests first; canonical build only parent grant. Write completion09 and stop; fresh re-review follows.

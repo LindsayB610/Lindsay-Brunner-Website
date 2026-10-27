@@ -1,0 +1,153 @@
+{
+  "before": {
+    "timelineTop": 2269.8125,
+    "image": {
+      "tag": "IMG",
+      "class": "aspect-square h-auto w-full object-contain",
+      "top": 1313.3125,
+      "width": 190,
+      "height": 190,
+      "cssWidth": "190px",
+      "cssHeight": "190px",
+      "aspectRatio": "1 / 1",
+      "objectFit": "contain",
+      "src": "http://127.0.0.1:65329/_img/images/avatar-color-trans.png/lossless/480.webp",
+      "attrs": {
+        "data-image-profile": "portrait",
+        "src": "/_img/images/avatar-color-trans.png/lossless/800.png",
+        "alt": "Lindsay Brunner",
+        "class": "aspect-square h-auto w-full object-contain",
+        "data-image-source": "/images/avatar-color-trans.png",
+        "width": "3072",
+        "height": "3072",
+        "loading": "eager",
+        "srcset": "/_img/images/avatar-color-trans.png/lossless/160.webp 160w, /_img/images/avatar-color-trans.png/lossless/320.webp 320w, /_img/images/avatar-color-trans.png/lossless/480.webp 480w, /_img/images/avatar-color-trans.png/lossless/640.webp 640w, /_img/images/avatar-color-trans.png/lossless/800.webp 800w, /_img/images/avatar-color-trans.png/lossless/1200.webp 1200w, /_img/images/avatar-color-trans.png/lossless/1600.webp 1600w, /_img/images/avatar-color-trans.png/lossless/2400.webp 2400w",
+        "sizes": "(min-width: 768px) 252px, 192px"
+      },
+      "naturalWidth": 192,
+      "naturalHeight": 192
+    },
+    "ancestors": [
+      {
+        "tag": "SPAN",
+        "class": "",
+        "top": 0,
+        "width": 0,
+        "height": 0,
+        "cssWidth": "auto",
+        "cssHeight": "auto",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      },
+      {
+        "tag": "DIV",
+        "class": "overflow-hidden rounded-[1.35rem] bg-brand-pink/16",
+        "top": 1313.3125,
+        "width": 190,
+        "height": 190,
+        "cssWidth": "190px",
+        "cssHeight": "190px",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      },
+      {
+        "tag": "DIV",
+        "class": "rounded-[1.65rem] bg-[#111] p-3",
+        "top": 1301.3125,
+        "width": 214,
+        "height": 214,
+        "cssWidth": "214px",
+        "cssHeight": "214px",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      },
+      {
+        "tag": "ASIDE",
+        "class": "mx-auto max-w-[220px] md:max-w-[280px] lg:sticky lg:top-28",
+        "top": 1298.3125,
+        "width": 220,
+        "height": 288,
+        "cssWidth": "220px",
+        "cssHeight": "288px",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      }
+    ]
+  },
+  "heightAuto": {
+    "timelineTop": 2269.8125,
+    "image": {
+      "tag": "IMG",
+      "class": "aspect-square h-auto w-full object-contain",
+      "top": 1313.3125,
+      "width": 190,
+      "height": 190,
+      "cssWidth": "190px",
+      "cssHeight": "190px",
+      "aspectRatio": "1 / 1",
+      "objectFit": "contain",
+      "src": "http://127.0.0.1:65329/_img/images/avatar-color-trans.png/lossless/480.webp",
+      "attrs": {
+        "data-image-profile": "portrait",
+        "src": "/_img/images/avatar-color-trans.png/lossless/800.png",
+        "alt": "Lindsay Brunner",
+        "class": "aspect-square h-auto w-full object-contain",
+        "data-image-source": "/images/avatar-color-trans.png",
+        "width": "3072",
+        "height": "3072",
+        "loading": "eager",
+        "srcset": "/_img/images/avatar-color-trans.png/lossless/160.webp 160w, /_img/images/avatar-color-trans.png/lossless/320.webp 320w, /_img/images/avatar-color-trans.png/lossless/480.webp 480w, /_img/images/avatar-color-trans.png/lossless/640.webp 640w, /_img/images/avatar-color-trans.png/lossless/800.webp 800w, /_img/images/avatar-color-trans.png/lossless/1200.webp 1200w, /_img/images/avatar-color-trans.png/lossless/1600.webp 1600w, /_img/images/avatar-color-trans.png/lossless/2400.webp 2400w",
+        "sizes": "(min-width: 768px) 252px, 192px",
+        "style": "height: auto;"
+      },
+      "naturalWidth": 192,
+      "naturalHeight": 192
+    },
+    "ancestors": [
+      {
+        "tag": "SPAN",
+        "class": "",
+        "top": 0,
+        "width": 0,
+        "height": 0,
+        "cssWidth": "auto",
+        "cssHeight": "auto",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      },
+      {
+        "tag": "DIV",
+        "class": "overflow-hidden rounded-[1.35rem] bg-brand-pink/16",
+        "top": 1313.3125,
+        "width": 190,
+        "height": 190,
+        "cssWidth": "190px",
+        "cssHeight": "190px",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      },
+      {
+        "tag": "DIV",
+        "class": "rounded-[1.65rem] bg-[#111] p-3",
+        "top": 1301.3125,
+        "width": 214,
+        "height": 214,
+        "cssWidth": "214px",
+        "cssHeight": "214px",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      },
+      {
+        "tag": "ASIDE",
+        "class": "mx-auto max-w-[220px] md:max-w-[280px] lg:sticky lg:top-28",
+        "top": 1298.3125,
+        "width": 220,
+        "height": 288,
+        "cssWidth": "220px",
+        "cssHeight": "288px",
+        "aspectRatio": "auto",
+        "objectFit": "fill"
+      }
+    ]
+  }
+}

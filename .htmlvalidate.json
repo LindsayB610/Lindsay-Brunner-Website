@@ -10,6 +10,18 @@
     "no-redundant-role": "off",
     "void-style": "off",
     "no-trailing-whitespace": "off",
-    "no-redundant-aria-label": "off"
+    "no-redundant-aria-label": "off",
+    "attribute-boolean-style": [
+      "error",
+      {
+        "style": "empty"
+      }
+    ],
+    "attribute-empty-style": [
+      "error",
+      {
+        "style": "empty"
+      }
+    ]
   }
-} 
+}

@@ -1,0 +1,20 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:images:runtime
+> node tests/image-runtime.test.mjs
+
+PASS Christmas 390 DPR1
+PASS Christmas 390 DPR2
+PASS Christmas 1440 DPR1
+PASS Christmas 1440 DPR2
+PASS About no-JS 390
+PASS About no-JS 1440
+PASS Nemesis slot 640
+PASS Nemesis slot 800
+PASS Nemesis slot 900
+PASS Nemesis slot 1440
+PASS React takeover /about/
+PASS React takeover /
+PASS Logo rotation and visible testimonial
+PASS Deferred original open/swap/close/reopen /nemesis/
+PASS Deferred original open/swap/close/reopen /fate-of-the-fellowship/
+PASS Deferred original open/swap/close/reopen /__image-runtime-zoom/

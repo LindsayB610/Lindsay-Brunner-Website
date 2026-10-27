@@ -1,0 +1,114 @@
+{
+  "checks": [
+    {
+      "name": "Christmas 390 DPR1",
+      "selected": "/_img/christmas-2026-lucas/lucas-christmas-2026-v2-og-1200x630.png/photo/480.webp",
+      "bytes": 51390,
+      "originalBytes": 533071
+    },
+    {
+      "name": "Christmas 390 DPR2",
+      "selected": "/_img/christmas-2026-lucas/lucas-christmas-2026-v2-og-1200x630.png/photo/800.webp",
+      "bytes": 116002,
+      "originalBytes": 533071
+    },
+    {
+      "name": "Christmas 1440 DPR1",
+      "selected": "/_img/christmas-2026-lucas/lucas-christmas-2026-v2-og-1200x630.png/photo/1200.webp",
+      "bytes": 225460,
+      "originalBytes": 533071
+    },
+    {
+      "name": "Christmas 1440 DPR2",
+      "selected": "/_img/christmas-2026-lucas/lucas-christmas-2026-v2-og-1200x630.png/photo/1200.webp",
+      "bytes": 225460,
+      "originalBytes": 533071
+    },
+    {
+      "name": "Nemesis slot 640",
+      "url": "http://127.0.0.1:64841/_img/images/nemesis/session-photos/2026-08-29-nemesis-intruders-hard-win.jpg/photo/640.webp",
+      "width": 476.8125,
+      "sizes": "(max-width: 640px) 100vw, (max-width: 900px) calc(100vw - 134.4px - clamp(48px, 6vw, 72px)), 640px",
+      "selectedWidth": 640
+    },
+    {
+      "name": "Nemesis slot 800",
+      "url": "http://127.0.0.1:64841/_img/images/nemesis/session-photos/2026-08-29-nemesis-intruders-hard-win.jpg/photo/640.webp",
+      "width": 617.625,
+      "sizes": "(max-width: 640px) 100vw, (max-width: 900px) calc(100vw - 134.4px - clamp(48px, 6vw, 72px)), 640px",
+      "selectedWidth": 640
+    },
+    {
+      "name": "Nemesis slot 900",
+      "url": "http://127.0.0.1:64841/_img/images/nemesis/session-photos/2026-08-29-nemesis-intruders-hard-win.jpg/photo/800.webp",
+      "width": 711.625,
+      "sizes": "(max-width: 640px) 100vw, (max-width: 900px) calc(100vw - 134.4px - clamp(48px, 6vw, 72px)), 640px",
+      "selectedWidth": 800
+    },
+    {
+      "name": "Nemesis slot 1440",
+      "url": "http://127.0.0.1:64841/_img/images/nemesis/session-photos/2026-08-29-nemesis-intruders-hard-win.jpg/photo/640.webp",
+      "width": 486.8125,
+      "sizes": "(max-width: 640px) 100vw, (max-width: 900px) calc(100vw - 134.4px - clamp(48px, 6vw, 72px)), 640px",
+      "selectedWidth": 640
+    },
+    {
+      "name": "React takeover / 1440",
+      "selected": "/_img/images/workshop/workshop-shelf.png/lossless/1600.webp",
+      "requests": 1,
+      "width": 1238,
+      "height": 1028
+    },
+    {
+      "name": "Logo rotation and visible testimonial",
+      "logo": "http://127.0.0.1:64841/_img/images/logos/parasail.png/lossless/128.webp",
+      "avatar": "http://127.0.0.1:64841/_img/images/testimonials/steve-sewell.jpg/photo/64.webp"
+    },
+    {
+      "name": "Deferred original open/swap/close/reopen /nemesis/",
+      "originalsTested": 2
+    },
+    {
+      "name": "Deferred original open/swap/close/reopen /fate-of-the-fellowship/",
+      "originalsTested": 2
+    },
+    {
+      "name": "Deferred original open/swap/close/reopen /__image-runtime-zoom/",
+      "originalsTested": 1
+    }
+  ],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: No-JS portrait must remain square {\"url\":\"http://127.0.0.1:64841/_img/images/avatar-color-trans.png/lossless/320.webp\",\"width\":192,\"height\":3072,\"loading\":\"eager\"}\n    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:96:14",
+    "AssertionError [ERR_ASSERTION]: No-JS portrait must remain square {\"url\":\"http://127.0.0.1:64841/_img/images/avatar-color-trans.png/lossless/320.webp\",\"width\":192,\"height\":3072,\"loading\":\"eager\"}\n    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:96:14",
+    "AssertionError [ERR_ASSERTION]: No-JS portrait must remain square {\"url\":\"http://127.0.0.1:64841/_img/images/avatar-color-trans.png/lossless/320.webp\",\"width\":252,\"height\":3072,\"loading\":\"eager\"}\n    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:96:14",
+    "AssertionError [ERR_ASSERTION]: Retained portrait changed React display height 3072\n    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:135:16",
+    "AssertionError [ERR_ASSERTION]: Retained portrait changed React display height 3072\n    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:135:16\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:541:9)",
+    "AssertionError [ERR_ASSERTION]: Retained portrait changed React display height 3072\n    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:135:16"
+  ],
+  "browser": "148.0.7778.96",
+  "cleanup": {
+    "owned": [
+      {
+        "pid": 59055,
+        "ppid": 58786,
+        "command": "/Users/lindsaybrunner/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/vl/87__7z_d50b49y8frgs2f2_m0000gn/T/playwright_chromiumdev_profile-RjZqzM --remote-debugging-pipe --no-startup-window"
+      },
+      {
+        "pid": 59062,
+        "ppid": 59055,
+        "command": "/Users/lindsaybrunner/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --type=gpu-process --no-sandbox --disable-breakpad --headless --use-angle=swiftshader-webgl --enable-unsafe-swiftshader --gpu-preferences=SAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAAwAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --use-gl=angle --shared-files --field-trial-handle=1718379636,r,16689651682256237667,2070432182161149376,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,18380202890847000323,12221816847336221167,4 --trace-process-track-uuid=3190708988185955192"
+      },
+      {
+        "pid": 59063,
+        "ppid": 59055,
+        "command": "/Users/lindsaybrunner/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --use-angle=swiftshader-webgl --use-gl=angle --mute-audio --headless=old --shared-files --field-trial-handle=1718379636,r,16689651682256237667,2070432182161149376,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,18380202890847000323,12221816847336221167,4 --trace-process-track-uuid=3190708989122997041"
+      },
+      {
+        "pid": 59880,
+        "ppid": 59055,
+        "command": "(chrome-headless-)"
+      }
+    ],
+    "remaining": []
+  }
+}

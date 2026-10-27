@@ -1,0 +1,41 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:images:runtime
+> node tests/image-runtime.test.mjs
+
+PASS Christmas 390 DPR1
+PASS Christmas 390 DPR2
+PASS Christmas 1440 DPR1
+PASS Christmas 1440 DPR2
+AssertionError [ERR_ASSERTION]: React takeover double fetched [{"path":"/_img/images/avatar-color-trans.png/lossless/320.webp","bytes":44214},{"path":"/_img/images/avatar-color-trans.png/lossless/320.webp","bytes":44214}]
+
+2 !== 1
+
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:95:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+PASS React takeover /
+PASS Logo rotation and visible testimonial
+AssertionError [ERR_ASSERTION]: No gallery triggers /nemesis/
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:119:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+AssertionError [ERR_ASSERTION]: No gallery triggers /fate-of-the-fellowship/
+    at file:///Users/lindsaybrunner/.codex/worktrees/automatic-image-optimization/Lindsay-Brunner-Website/tests/image-runtime.test.mjs:119:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+PASS Deferred original open/swap/close/reopen /__image-runtime-zoom/

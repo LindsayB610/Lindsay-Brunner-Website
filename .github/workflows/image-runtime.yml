@@ -1,0 +1,36 @@
+name: Image delivery runtime
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  image-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.152.2'
+          extended: true
+      - run: npm ci
+      - name: Install dedicated headless Chromium only
+        run: npx playwright install --with-deps --only-shell chromium
+      - name: Browser-free canonical build and source fixtures
+        run: npm run build && npm run test:images:unit && npm run test:images:policy && npm run test:images:consumers && npm run test:images:preview && npm run test:links:unit
+      - name: Selected-source and network behavior
+        run: npm run test:images:presentation && npm run test:images:runtime
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-runtime-evidence
+          path: .generated/images/runtime-report.json
+          if-no-files-found: warn

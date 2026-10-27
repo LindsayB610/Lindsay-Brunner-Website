@@ -1,0 +1,26 @@
+
+> lindsay-brunner-hugo-site@1.0.0 test:images:policy
+> node --test tests/image-policy.test.mjs tests/image-runtime-sources.test.mjs
+
+✔ unsupported image sinks fail, including aliases and computed properties (6.915667ms)
+✔ ordinary data and non-image DOM operations remain supported (0.510083ms)
+✔ exact reviewed exception does not exempt its file or identical added sink (0.540292ms)
+✔ parse errors and inline scripts fail closed, JSON scripts are data (2.374667ms)
+✔ CSS and inline image URLs cannot bypass responsive delivery (0.319167ms)
+✔ new bypasses in the real adapter files fail their precise exceptions (11.197292ms)
+✔ build gates remain browser-free; runtime is a separate release and CI step (0.92525ms)
+✔ CSS shorthand/CSSOM and reflective spelling/extraction gaps fail in adapter files (2.161333ms)
+✔ static literals, expression literals and named import aliases are automatic (4.122125ms)
+✔ missing, unsupported, unresolved, spread and absent sources fail with location (0.882333ms)
+✔ unsupported namespace/default adapter imports fail explicitly (0.157875ms)
+✔ registered arrays validate literal members; arbitrary dynamics in same file fail (0.853208ms)
+✔ new unrelated raster and authored component render through real lean-manifest adapter (62.2475ms)
+✔ browser resolver bundle excludes build-only policy and alias metadata (99.049375ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 350.184

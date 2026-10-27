@@ -35,7 +35,8 @@ function one(node, selector) {
 }
 
 function assetExists(url, directory) {
-  assert.match(url, /^\/images\//, `Expected a local image path: ${url}`);
+  assert.match(url, directory === 'static' ? /^\/images\// : /^(?:\/_img\/|\/images\/.+\.svg$)/,
+    `Expected ${directory === 'static' ? 'source' : 'generated'} image path: ${url}`);
   const base = path.join(root, directory);
   const file = path.resolve(base, `.${url}`);
   assert(file.startsWith(`${base}${path.sep}`), `Image escapes ${directory}: ${url}`);
@@ -73,7 +74,7 @@ test('built progress gallery preserves all slides, loading policy, and accessibl
   for (const [index, figure] of rendered.entries()) {
     const slide = slides[index];
     const image = one(figure, 'img');
-    assert.equal(attr(image, 'src'), slide.src, `Slide ${index + 1}: image/order mismatch`);
+    assert.equal(attr(image, 'data-image-source'), slide.src, `Slide ${index + 1}: image/order mismatch`);
     assetExists(attr(image, 'src'), 'public');
     assert.equal(attr(image, 'alt'), slide.alt, `Slide ${index + 1}: alt text mismatch`);
     assert.equal(attr(image, 'loading'), index === 0 ? 'eager' : 'lazy', `Slide ${index + 1}: loading policy`);
@@ -107,7 +108,8 @@ test('inline responsive images retain usable srcsets and every candidate is ship
   }
   for (const image of responsive) {
     const src = attr(image, 'src');
-    for (const directory of ['static', 'public']) assetExists(src, directory);
+    assetExists(attr(image, 'data-image-source'), 'static');
+    assetExists(src, 'public');
     assert(attr(image, 'sizes').trim(), `${src}: responsive widths need sizes`);
     const candidates = attr(image, 'srcset').split(',').map((candidate) => candidate.trim());
     assert(candidates.length >= 2, `${src}: expected multiple responsive widths`);
@@ -117,7 +119,21 @@ test('inline responsive images retain usable srcsets and every candidate is ship
       assert(match, `${src}: malformed width candidate: ${candidate}`);
       assert(!widths.has(match[2]), `${src}: duplicate responsive width ${match[2]}w`);
       widths.add(match[2]);
-      for (const directory of ['static', 'public']) assetExists(match[1], directory);
+      assetExists(match[1], 'public');
+    }
+  }
+});
+
+
+test('all gallery and picture source candidates exist in finalized output', async () => {
+  const { content } = await article();
+  for (const node of content.querySelectorAll('[srcset]')) {
+    const candidates = attr(node, 'srcset').split(',').map(value => value.trim());
+    assert(candidates.length > 0);
+    for (const candidate of candidates) {
+      const match = candidate.match(/^(\S+)\s+([1-9]\d*)w$/);
+      assert(match, `Malformed image candidate: ${candidate}`);
+      assetExists(match[1], 'public');
     }
   }
 });

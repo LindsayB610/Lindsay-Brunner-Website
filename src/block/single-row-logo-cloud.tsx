@@ -1,5 +1,6 @@
 "use client";
 
+import { ResponsiveImage } from "../components/responsive-image";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -10,42 +11,49 @@ const LOGOS = [
     id: "okta",
     title: "Okta",
     src: "/images/logos/okta.svg",
+    sizes: "118px",
     className: "h-6 max-w-[118px] invert",
   },
   {
     id: "braze",
     title: "Braze",
     src: "/images/logos/braze.svg",
+    sizes: "110px",
     className: "h-6 max-w-[110px] translate-y-0.5 invert",
   },
   {
     id: "builder",
     title: "Builder.io",
     src: "/images/logos/builder.svg",
+    sizes: "142px",
     className: "h-7 max-w-[142px] invert",
   },
   {
     id: "ngrok",
     title: "ngrok",
     src: "/images/logos/ngrok.svg",
+    sizes: "112px",
     className: "h-6 max-w-[112px] invert",
   },
   {
     id: "split",
     title: "Split",
     src: "/images/logos/split.svg",
+    sizes: "142px",
     className: "h-7 max-w-[142px] grayscale brightness-125 contrast-125",
   },
   {
     id: "parasail",
     title: "Parasail",
     src: "/images/logos/parasail.png",
+    sizes: "126px",
     className: "h-5 max-w-[126px]",
   },
   {
     id: "masterpoint",
     title: "Masterpoint",
     src: "/images/logos/masterpoint.svg",
+    sizes: "142px",
     className: "h-6 max-w-[142px] brightness-0 invert",
   },
 ];
@@ -97,8 +105,9 @@ export default function SingleRowLogoCloud() {
                   }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <img
+                  <ResponsiveImage profile="logo"
                     src={logo.src}
+                    sizes={logo.sizes}
                     alt={logo.title}
                     className={`w-full object-contain transition-opacity duration-200 hover:opacity-100 ${logo.className}`}
                   />
