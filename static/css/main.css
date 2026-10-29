@@ -23,6 +23,15 @@ svg {
   max-width: 100%;
 }
 
+/* Intrinsic HTML dimensions reserve space; responsive widths must also scale
+   height. Keep this default in the base layer so explicit crop/height utilities
+   and component styles retain control of deliberately fixed image frames. */
+@layer base {
+  img {
+    height: auto;
+  }
+}
+
 input,
 button,
 textarea,

@@ -71,6 +71,43 @@ try {
   assert.ok(owned.some(p=>/chromium[_-]headless[_-]shell/.test(p.command)),'Dedicated bundled headless shell required');
   assert.ok(owned.every(p=>!p.command.includes('/Applications/')),'Installed GUI browser forbidden');
   report.browser=browser.version();
+  // Audit actual site CSS, not only synthetic optimizer fixtures. Fixed HTML
+  // dimensions must not distort a responsive image when its width changes.
+  const documents = await fs.readdir(publish, {recursive:true});
+  const imageRoutes = [];
+  for (const file of documents.filter(file => file.endsWith('.html'))) {
+    const html = await fs.readFile(path.join(publish,file),'utf8');
+    if (html.includes('data-image-source=') && !html.includes('http-equiv="refresh"'))
+      imageRoutes.push('/'+file.replace(/index\.html$/, ''));
+  }
+  for (const width of [390, 1440]) for (const javaScriptEnabled of [false,true]) {
+    const {ctx,page}=await context({javaScriptEnabled,reducedMotion:'reduce',viewport:{width,height:1000}});
+    try {
+      const routes=javaScriptEnabled ? ['/', '/about/', '/workshop/'] : imageRoutes;
+      for (const route of routes) {
+        await page.goto(origin+route,{waitUntil:'load'});
+        if(javaScriptEnabled && route==='/') await page.locator('#homepage-root > div').waitFor();
+        const results=await page.evaluate(async()=>{
+          const images=Array.from(document.images).filter(img=>img.clientWidth && img.clientHeight && !img.closest('dialog') && getComputedStyle(img).visibility!=='hidden');
+          return Promise.all(images.map(async img=>{
+            img.loading='eager';
+            try { await img.decode(); } catch { return {source:img.getAttribute('src'),broken:true}; }
+            const css=getComputedStyle(img);
+            const w=img.clientWidth-parseFloat(css.paddingLeft)-parseFloat(css.paddingRight);
+            const h=img.clientHeight-parseFloat(css.paddingTop)-parseFloat(css.paddingBottom);
+            return {source:img.dataset.imageSource||img.getAttribute('src'),w,h,nw:img.naturalWidth,nh:img.naturalHeight,fit:css.objectFit};
+          }));
+        });
+        const failures=results.filter(i=>i.broken || (i.fit==='fill' && Math.abs(i.h-i.w*i.nh/i.nw)>Math.max(2,i.h*.01)));
+        assert.deepEqual(failures,[],`Distorted images: ${route} ${width}px JS=${javaScriptEnabled}`);
+        record(`Image proportions ${route} ${width}px JS=${javaScriptEnabled}`,{images:results.length});
+        if(javaScriptEnabled && width===1440 && ['/', '/workshop/'].includes(route)) {
+          await page.locator('img[data-image-source="/images/workshop/workshop-shelf.png"]').scrollIntoViewIfNeeded();
+          await page.screenshot({path:path.join(root,'.generated/images',route==='/'?'homepage-proportions.png':'workshop-proportions.png')});
+        }
+      }
+    } catch(error) {report.errors.push(error.stack);console.error(error);process.exitCode=1;} finally {await ctx.close();}
+  }
   for(const width of [390,1440])for(const dpr of [1,2]) {
     const {ctx,page}=await context({viewport:{width,height:width===390?844:1000},deviceScaleFactor:dpr,isMobile:width===390});const start=requests.length;
     try {
