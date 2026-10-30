@@ -363,7 +363,8 @@ function getSessionFiles() {
 
 async function withRealSessionFilesHidden(callback) {
   const sessionFiles = getSessionFiles();
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fate-session-files-'));
+  // Rename requires one filesystem; Netlify mounts /tmp separately from the checkout.
+  const tempDir = fs.mkdtempSync(path.join(root, '.fate-session-files-'));
   const movedFiles = [];
 
   try {
