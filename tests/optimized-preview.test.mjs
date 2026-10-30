@@ -5,6 +5,16 @@ import os from 'node:os';
 import path from 'node:path';
 import { startPreview, fingerprint } from '../scripts/preview-optimized.mjs';
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function linuxProcessIsRunning(stat) {
+ const state=stat.slice(stat.lastIndexOf(')')+1).trim().split(/\s+/)[0];
+ assert.match(state,/^[RSDZTWtXxKPI]$/, 'Unrecognized Linux process state');
+ return !['Z','X','x'].includes(state);
+}
+test('cleanup distinguishes terminated processes from live container children',()=>{
+ for(const state of ['Z','X','x']) assert.equal(linuxProcessIsRunning(`123 (test child) ${state} 1 2 3`),false);
+ for(const state of ['R','S','D','T','t','I']) assert.equal(linuxProcessIsRunning(`123 (test child) ${state} 1 2 3`),true);
+ assert.throws(()=>linuxProcessIsRunning('invalid'));
+});
 async function until(fn){for(let i=0;i<200;i++){if(await fn())return;await wait(20);}throw Error('Timed out');}
 test('optimized preview serializes edits, additions, deletions, failures and serves completed output',async()=>{
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'image-preview-'));let active=0,max=0,builds=0,fail=false,hold=false;
@@ -64,20 +74,36 @@ const fs=require('node:fs');
 const {spawn}=require('node:child_process');
 process.on('SIGTERM',()=>{${parentExits?'process.exit(0);':''}});
 fs.writeFileSync('.cache/parent.pid',String(process.pid));
-spawn(process.execPath,['-e',\`process.on('SIGTERM',()=>{});require('node:fs').writeFileSync('.cache/descendant.pid',String(process.pid));setInterval(()=>{},1000)\`],{stdio:'inherit'});
+spawn(process.execPath,['-e',\`process.on('SIGTERM',()=>{});require('node:fs').writeFileSync('.cache/descendant.pid',String(process.pid));require('node:fs').writeFileSync('.cache/descendant-heartbeat','started');setInterval(()=>require('node:fs').writeFileSync('.cache/descendant-heartbeat',String(Date.now())),20)\`],{stdio:'inherit'});
 setInterval(()=>{},1000);
 `;
  await fs.writeFile(path.join(bin,'npm'),script,{mode:0o755});
  const previous=process.env.PATH;process.env.PATH=bin+path.delimiter+previous;
  let app,pid,descendant;
- const alive=id=>{try{process.kill(id,0);return true;}catch(e){if(e.code==='ESRCH')return false;throw e;}};
+ const alive=async id=>{
+  try {
+   process.kill(id,0);
+   if(process.platform==='linux') {
+    // Container PID 1 may retain an exited grandchild as a zombie. It cannot
+    // execute or be killed again; distinguish it from a live orphan.
+    const stat=await fs.readFile(`/proc/${id}/stat`,'utf8');
+    const running=linuxProcessIsRunning(stat);
+    if(!running) console.log(`Confirmed terminated container child ${id}: ${stat.slice(stat.lastIndexOf(')')+1).trim().split(/\s+/)[0]}`);
+    return running;
+   }
+   return true;
+  }catch(e){if(e.code==='ESRCH'||e.code==='ENOENT')return false;throw e;}
+ };
  try{
   app=await startPreview({root,port:0,interval:20,log:()=>{},shutdownGraceMs:100});
   await until(async()=>{try{pid=Number(await fs.readFile(path.join(state,'parent.pid'),'utf8'));descendant=Number(await fs.readFile(path.join(state,'descendant.pid'),'utf8'));return true;}catch{return false;}});
   const closing=app.close();assert.equal(app.server.listening,false);
   await Promise.race([closing,wait(2000).then(()=>{throw Error('Shutdown deadline exceeded');})]);
-  await until(()=>!alive(pid)&&!alive(descendant));
-  assert.equal(alive(pid),false);assert.equal(alive(descendant),false);
+  await until(async()=>!(await alive(pid))&&!(await alive(descendant)));
+  assert.equal(await alive(pid),false);assert.equal(await alive(descendant),false);
+  const heartbeat=path.join(state,'descendant-heartbeat');
+  const stopped=await fs.readFile(heartbeat,'utf8');await wait(100);
+  assert.equal(await fs.readFile(heartbeat,'utf8'),stopped,'Descendant must stop executing after preview closes');
  }finally{
   process.env.PATH=previous;
   if(pid){try{process.kill(-pid,'SIGKILL');}catch{}}
