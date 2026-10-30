@@ -17,14 +17,14 @@ test('every deploy context uses the gate, with no build-only override', () => {
 test('required stages execute in order and test local output even with a live-origin environment variable', () => {
   const calls = [];
   const env = { PATH: process.env.PATH, VISUAL_AUDIT_ORIGIN: 'https://old-production.example' };
-  assert.equal(runDeploymentGate({ platform: 'linux', env, run(command, args, options) {
+  assert.equal(runDeploymentGate({ env, run(command, args, options) {
     calls.push([command, args]);
     assert.equal(options.env.VISUAL_AUDIT_ORIGIN, undefined);
     assert.equal(options.env.PATH, process.env.PATH);
     return { status: 0 };
   }}), 0);
   assert.deepEqual(calls, [
-    ['node', ['node_modules/playwright/cli.js', 'install', '--only-shell', '--with-deps', 'chromium']],
+    ['node', ['node_modules/playwright/cli.js', 'install', '--only-shell', 'chromium']],
     ['npm', ['test']],
     ['npm', ['run', 'test:images:presentation']],
     ['npm', ['run', 'test:images:runtime']],

@@ -2,9 +2,10 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-export function deploymentSteps(platform = process.platform) {
+export function deploymentSteps() {
+  // Netlify builds are unprivileged. Browser launches below validate host libraries.
   return [
-    ['node', ['node_modules/playwright/cli.js', 'install', '--only-shell', ...(platform === 'linux' ? ['--with-deps'] : []), 'chromium']],
+    ['node', ['node_modules/playwright/cli.js', 'install', '--only-shell', 'chromium']],
     ['npm', ['test']],
     ['npm', ['run', 'test:images:presentation']],
     ['npm', ['run', 'test:images:runtime']],
@@ -13,10 +14,10 @@ export function deploymentSteps(platform = process.platform) {
   ];
 }
 
-export function runDeploymentGate({ run = spawnSync, platform = process.platform, env = process.env } = {}) {
+export function runDeploymentGate({ run = spawnSync, env = process.env } = {}) {
   const testEnv = { ...env };
   delete testEnv.VISUAL_AUDIT_ORIGIN;
-  for (const [command, args] of deploymentSteps(platform)) {
+  for (const [command, args] of deploymentSteps()) {
     console.log(`Deployment gate: ${command} ${args.join(' ')}`);
     const result = run(command, args, { stdio: 'inherit', env: testEnv });
     if (result.error || result.signal || result.status !== 0) {
