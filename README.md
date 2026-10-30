@@ -937,10 +937,10 @@ If you're using an AI assistant to work on this project, refer to `agents.md` fo
 
 The site is automatically deployed to Netlify when changes are pushed to the main branch. The deployment process includes:
 
-1. Building the site with Hugo
-2. Minifying assets
-3. Applying Netlify headers and redirects
-4. Deploying to the CDN
+1. Installing locked dependencies and dedicated headless Chromium
+2. Building the site and running the full test suite
+3. Checking image presentation, image delivery and rendered layouts against the final build
+4. Publishing to the CDN only after every stage passes (a failure leaves the previous deployment live)
 
 ## 📝 License
 
@@ -952,6 +952,6 @@ This project is private and proprietary. All rights reserved.
 
 Use `npm run dev:optimized` (also Netlify Dev's command) to verify image delivery locally at http://127.0.0.1:1313. It serializes complete production builds and serves a completed disk snapshot. During rebuilds or failures it returns HTTP503; reload after a successful build. Image additions, edits and deletions trigger rebuilds. Direct `dev`, `start` and `serve` Hugo commands remain fast authoring previews and do not provide production image delivery.
 
-Run `npm run test:images:release` before publishing image tooling or consumer changes. It includes static fixtures, preview lifecycle, native image presentation and dedicated headless network checks. CI runs these checks separately from Netlify's browser-free build. Required branch protection/deploy ordering has not been verified; passing local runtime checks remains a release requirement.
+Run `npm run test:images:release` before publishing image tooling or consumer changes. It includes static fixtures, preview lifecycle, native image presentation and dedicated headless network checks. Netlify runs `npm run deploy:gate` in every Git deploy context. The gate installs dedicated headless Chromium, runs the full site suite, then image presentation, image runtime and rendered layout checks on the final publish directory. Any failure stops publication and leaves the current site live. GitHub CI remains independent; Netlify does not race it to publish. Manual CLI/API uploads without a build bypass this gate and must not be used for releases.
 
 Derivative URLs remain stable for a source path, profile and width, with mandatory browser/CDN revalidation. Same-path replacements update those bytes; old pages may display current artwork. Deleted/renamed sources and retired profiles are not retained. Hashed caches are disposable; remove `.cache/image-optimization` to measure a cold generation. Family-page derivatives retain the Christmas noindex policy. The build reports exact byte-budget exceptions; current exception ownership and expiry are in image configuration.

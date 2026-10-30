@@ -23,7 +23,7 @@ function assert(condition, message) {
 
 console.log('🛡️  Validating Netlify native-Hugo build contract...');
 
-assert(netlifyConfig.includes('command = "npm ci && npm run build"'), 'Netlify should use npm ci for deterministic dependency installation');
+assert(netlifyConfig.includes('command = "npm ci && npm run deploy:gate"'), 'Netlify should use npm ci for deterministic dependency installation');
 assert(!netlifyConfig.includes('npm install'), 'Netlify config should not use npm install in any deploy context');
 assert(netlifyConfig.includes('[build.environment]'), 'Netlify should define shared build environment variables');
 assert(netlifyConfig.includes('HUGO_VERSION = "0.152.2"'), 'Netlify should pin Hugo 0.152.2');

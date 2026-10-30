@@ -25,7 +25,7 @@ jobs:
       - name: Install dedicated headless Chromium only
         run: npx playwright install --with-deps --only-shell chromium
       - name: Browser-free canonical build and source fixtures
-        run: npm run build && npm run test:images:unit && npm run test:images:policy && npm run test:images:consumers && npm run test:images:preview && npm run test:links:unit
+        run: npm run build && npm run test:images:unit && npm run test:images:policy && npm run test:images:consumers && npm run test:images:preview && npm run test:links:unit && npm run test:deploy-gate && npm run test:netlify-build
       - name: Selected-source and network behavior
         run: npm run test:images:presentation && npm run test:images:runtime
       - name: Rendered layout regressions

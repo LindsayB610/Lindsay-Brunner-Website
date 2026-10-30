@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "npm ci && npm run build"
+command = "npm ci && npm run deploy:gate"
 # Build image configured in Netlify dashboard: Ubuntu Noble 24.04
 
 [build.environment]
@@ -35,18 +35,15 @@ HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
 
 [context.split1]
-command = "npm ci && npm run build"
 
 [context.split1.environment]
 HUGO_ENV = "production"
 
 [context.deploy-preview]
-command = "npm ci && npm run build"
 
 [context.deploy-preview.environment]
 
 [context.branch-deploy]
-command = "npm ci && npm run build"
 
 [context.branch-deploy.environment]
 
