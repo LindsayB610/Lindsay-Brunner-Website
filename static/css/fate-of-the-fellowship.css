@@ -73,6 +73,7 @@ body.page-fate-of-the-fellowship .fate-page .site-container {
 body.page-fate-of-the-fellowship .fate-ledger {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1rem, 2vw, 1.5rem);
   padding: clamp(1rem, 2vw, 1.75rem) clamp(0.8rem, 2vw, 1.5rem);
   overflow: hidden;
@@ -113,6 +114,8 @@ body.page-fate-of-the-fellowship .fate-rulebook-hero {
 }
 
 body.page-fate-of-the-fellowship .fate-hero-plate {
+  min-width: 0;
+  width: 100%;
   display: grid;
   justify-items: center;
   gap: clamp(0.55rem, 1vw, 0.85rem);
@@ -645,4 +648,12 @@ body.page-fate-of-the-fellowship .fate-photo-dialog-close:focus-visible {
     word-spacing: 0.12rem;
   }
 
+}
+
+/* Fit the actual decorative font inside narrow parchment columns. */
+@media (max-width: 480px) {
+  body.page-fate-of-the-fellowship .fate-ledger h1 {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+    overflow-wrap: anywhere;
+  }
 }

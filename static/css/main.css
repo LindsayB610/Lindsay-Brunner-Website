@@ -1157,6 +1157,7 @@ blockquote {
   }
 
   .main-nav {
+    position: relative;
     order: 3;
     width: 100%;
     margin-top: var(--space-sm);
@@ -1175,7 +1176,10 @@ blockquote {
     min-height: 44px;
   }
 
-  .nav-dropdown {
+  /* Anchor the popup to the full navigation row, not its wrapped trigger. */
+  .main-nav .nav-dropdown,
+  .main-nav .nav-dropdown details {
+    position: static;
     width: auto;
   }
 
@@ -1624,83 +1628,6 @@ td code {
   th:last-child,
   td:last-child {
     padding-right: var(--space-md);
-  }
-}
-
-@media (max-width: 600px) {
-  .table-wrapper {
-    margin: var(--space-lg) 0;
-    overflow-x: visible;
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  .table-wrapper::before {
-    display: none;
-  }
-
-  /* Stack table cells vertically on small screens */
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
-
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  tbody tr {
-    border: 1px solid var(--dark-border);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-md);
-    padding: var(--space-md);
-    background: var(--dark-surface);
-    position: relative;
-  }
-
-  tbody tr::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-main);
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  }
-
-  tbody tr:hover {
-    transform: none;
-  }
-
-  td {
-    border: none;
-    position: relative;
-    padding: var(--space-sm) 0;
-    padding-left: 40% !important;
-    text-align: left;
-  }
-
-  td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 35%;
-    padding-right: var(--space-sm);
-    white-space: nowrap;
-    font-weight: 600;
-    color: var(--brand-primary);
-    font-family: var(--font-accent);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 }
 

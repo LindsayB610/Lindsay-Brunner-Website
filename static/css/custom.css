@@ -207,23 +207,21 @@ article.section .container-narrow h1,
   font-size: 1rem !important;
   vertical-align: top !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-  max-width: 0 !important;
   overflow-wrap: break-word !important;
   word-wrap: break-word !important;
 }
 
-.article-content td:first-child,
-.article-content table td:first-child,
-table td:first-child,
-tbody td:first-child,
-.article-content tbody tr td:first-child,
-article.section .article-content table tbody tr td:first-child,
-.article-content td:first-child strong,
-.article-content table td:first-child strong,
-table td:first-child strong {
+/* Emphasis belongs in both media; white text belongs only on dark screens. */
+.article-content td:first-child {
   font-weight: 700 !important;
-  color: #ffffff !important;
-  background-color: transparent !important;
+}
+
+@media screen {
+  .article-content td:first-child,
+  .article-content td:first-child strong {
+    color: #ffffff !important;
+    background-color: transparent !important;
+  }
 }
 
 .article-content tbody tr {
@@ -250,10 +248,10 @@ td code {
   max-width: 100% !important;
 }
 
-/* Ensure table wrapper prevents horizontal scroll */
+/* Keep wide semantic tables inside an independently scrollable region. */
 .table-wrapper,
 .article-content .table-wrapper {
-  overflow-x: hidden !important;
+  overflow-x: auto !important;
   max-width: 100% !important;
 }
 
@@ -269,8 +267,8 @@ td code {
   }
 }
 
-@media (max-width: 600px) {
-  /* Override the main.css mobile rules that don't work well */
+@media screen and (max-width: 600px) {
+  /* Retain real column headers and readable cells; scroll inside the article. */
   .table-wrapper {
     overflow-x: auto !important;
     background: transparent !important;
@@ -1457,6 +1455,10 @@ td code {
   }
 
   /* Tables */
+  .article-content .table-wrapper {
+    overflow: visible !important;
+  }
+
   .article-content table {
     width: 100% !important;
     border-collapse: collapse !important;
