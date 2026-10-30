@@ -71,7 +71,8 @@ test('real Hugo publishDate omits unpublished bundle derivatives and validates r
  const refreshed=await prepareImages(f);
  assert.equal(refreshed.images['/blog/2026-01-01/expired/private.png'].variants.length,0);
  Object.assign(manifest,refreshed);
- execFileSync('hugo',['--source',f.root,'--destination',f.publishDir,'--cleanDestinationDir'],{stdio:'pipe'});
+ // This disposable Hugo fixture has no Git repository, regardless of host build settings.
+ execFileSync('hugo',['--source',f.root,'--destination',f.publishDir,'--cleanDestinationDir'],{stdio:'pipe',env:{...process.env,HUGO_ENABLEGITINFO:'false'}});
  await publishImages({...f,manifest});await validateImages({...f,manifest});
  await assert.rejects(fs.stat(path.join(f.publishDir,'_img/blog/2026-01-01/future/private.png')),/ENOENT/);
 });
