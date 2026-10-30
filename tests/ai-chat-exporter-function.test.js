@@ -7,6 +7,9 @@ const {
 } = require('./ai-chat-exporter-test-utils');
 
 const failures = [];
+const originalTurnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+// Always exercise fixtures in a configured host, as on Netlify. Never use its real secret.
+process.env.TURNSTILE_SECRET_KEY = 'fixture-host-secret';
 const { AI_CHAT_EXPORTER_CONTRACT } = loadTsModule('src/lib/ai-chat-exporter.ts');
 
 async function run() {
@@ -30,7 +33,13 @@ async function run() {
   const functionModule = loadTsModule('netlify/functions/export-chat.mts');
   const adapterModule = loadTsModule('netlify/functions/_shared/exporter-adapter.ts');
   const handler = functionModule.default;
-  const handleExportChatRequest = functionModule.handleExportChatRequest;
+  // Mocked exporter scenarios choose their own auth dependencies. Dedicated
+  // Turnstile cases below override this default and still exercise rejection.
+  const handleExportChatRequest = (request, overrides = {}) =>
+    functionModule.handleExportChatRequest(request, {
+      getTurnstileSecret: () => undefined,
+      ...overrides,
+    });
   const config = functionModule.config;
   const exportChatWithExporter = adapterModule.exportChatWithExporter;
   const buildExportFilename = adapterModule.buildExportFilename;
@@ -117,6 +126,11 @@ async function run() {
   }), {});
   assert(invalidJsonResponse.status === 400, 'invalid JSON should return 400', failures);
   assert((await invalidJsonResponse.json()).error === 'Request body must be valid JSON.', 'invalid JSON response should be user-readable', failures);
+
+  const configuredHostResponse = await postJson(handler, {
+    sharedUrl: 'https://chatgpt.com/share/mock-thread', format: 'markdown',
+  });
+  assert(configuredHostResponse.status === 403, 'production handler must still enforce the host Turnstile secret', failures);
 
   const missingUrlResponse = await postJson(handler, { format: 'markdown' });
   assert(missingUrlResponse.status === 400, 'missing URL should return 400', failures);
@@ -597,4 +611,7 @@ function postJson(handler, payload, dependencies) {
 run().catch((error) => {
   failures.push(error?.stack || error?.message || String(error));
   report(failures, '✅ AI Chat Exporter function contract passed.');
+}).finally(() => {
+  if (originalTurnstileSecret === undefined) delete process.env.TURNSTILE_SECRET_KEY;
+  else process.env.TURNSTILE_SECRET_KEY = originalTurnstileSecret;
 });

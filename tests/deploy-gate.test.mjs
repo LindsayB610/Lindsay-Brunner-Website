@@ -12,6 +12,7 @@ test('every deploy context uses the gate, with no build-only override', () => {
   assert.ok(scripts.test.includes('npm run test:deploy-gate'));
   assert.ok(scripts.test.includes('npm run test:visual-layout'));
   assert.equal(scripts.pretest, 'npm run build');
+  assert.ok(!scripts.test.includes('npm run pretest'), 'npm test already runs its pretest lifecycle; do not build twice');
 });
 
 test('required stages execute in order and test local output even with a live-origin environment variable', () => {
