@@ -3,13 +3,9 @@ import assert from 'node:assert/strict';
 import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { linuxProcessIsRunning, isProcessRunning } from './helpers/process-lifecycle.mjs';
 import { startPreview, fingerprint } from '../scripts/preview-optimized.mjs';
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
-function linuxProcessIsRunning(stat) {
- const state=stat.slice(stat.lastIndexOf(')')+1).trim().split(/\s+/)[0];
- assert.match(state,/^[RSDZTWtXxKPI]$/, 'Unrecognized Linux process state');
- return !['Z','X','x'].includes(state);
-}
 test('cleanup distinguishes terminated processes from live container children',()=>{
  for(const state of ['Z','X','x']) assert.equal(linuxProcessIsRunning(`123 (test child) ${state} 1 2 3`),false);
  for(const state of ['R','S','D','T','t','I']) assert.equal(linuxProcessIsRunning(`123 (test child) ${state} 1 2 3`),true);
@@ -80,20 +76,7 @@ setInterval(()=>{},1000);
  await fs.writeFile(path.join(bin,'npm'),script,{mode:0o755});
  const previous=process.env.PATH;process.env.PATH=bin+path.delimiter+previous;
  let app,pid,descendant;
- const alive=async id=>{
-  try {
-   process.kill(id,0);
-   if(process.platform==='linux') {
-    // Container PID 1 may retain an exited grandchild as a zombie. It cannot
-    // execute or be killed again; distinguish it from a live orphan.
-    const stat=await fs.readFile(`/proc/${id}/stat`,'utf8');
-    const running=linuxProcessIsRunning(stat);
-    if(!running) console.log(`Confirmed terminated container child ${id}: ${stat.slice(stat.lastIndexOf(')')+1).trim().split(/\s+/)[0]}`);
-    return running;
-   }
-   return true;
-  }catch(e){if(e.code==='ESRCH'||e.code==='ENOENT')return false;throw e;}
- };
+ const alive=isProcessRunning;
  try{
   app=await startPreview({root,port:0,interval:20,log:()=>{},shutdownGraceMs:100});
   await until(async()=>{try{pid=Number(await fs.readFile(path.join(state,'parent.pid'),'utf8'));descendant=Number(await fs.readFile(path.join(state,'descendant.pid'),'utf8'));return true;}catch{return false;}});

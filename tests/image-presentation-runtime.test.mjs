@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
+import { isProcessRunning } from './helpers/process-lifecycle.mjs';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 const base=fileURLToPath(new URL('../', import.meta.url)).replace(/\/$/, '');
@@ -59,9 +60,7 @@ try {
  try {
   if(browser) await browser.close();
   for(const r of owned){
-   let alive=false;
-   try{process.kill(r.pid,0);alive=true;}catch{}
-   assert.equal(alive,false,'orphan '+r.pid);
+   assert.equal(await isProcessRunning(r.pid),false,'live orphan '+r.pid);
   }
   console.log('owned headless processes closed');
  } finally { await fs.rm(root,{recursive:true,force:true}); }
